@@ -1,0 +1,37 @@
+all:
+
+install: all
+	# install to sbin since script only usable by root
+	install -D -m 755 mkiso $(DESTDIR)/usr/sbin/mkiso
+	install -D -m 755 mkroot $(DESTDIR)/usr/sbin/mkroot
+	install -D -m 755 build.sh $(DESTDIR)/usr/sbin/buildiso
+	install -D -m 755 overlay-pkgs.sh $(DESTDIR)/usr/bin/overlay-pkgs
+	# testiso can be used by anyone
+	install -D -m 755 testiso $(DESTDIR)/usr/bin/testiso
+	# hooks/install are needed by mkinitcpio
+	install -D -m 644 hooks/miso $(DESTDIR)/lib/initcpio/hooks/miso
+	install -D -m 644 install/miso $(DESTDIR)/lib/initcpio/install/miso
+	install -D -m 644 hooks/miso_pxe_nbd $(DESTDIR)/lib/initcpio/hooks/miso_pxe_nbd
+	install -D -m 644 install/miso_pxe_nbd $(DESTDIR)/lib/initcpio/install/miso_pxe_nbd
+	install -D -m 644 hooks/miso_loop_mnt $(DESTDIR)/lib/initcpio/hooks/miso_loop_mnt
+	install -D -m 644 install/miso_loop_mnt $(DESTDIR)/lib/initcpio/install/miso_loop_mnt
+	# install configs, docs and examples
+	install -D -m 755 $(DESTDIR)/usr/share/manjaroiso/
+	install -D -m 755 functions/messages $(DESTDIR)/usr/share/manjaroiso/functions/messages
+	install -D -m 755 functions/colors $(DESTDIR)/usr/share/manjaroiso/functions/colors
+	install -D -m 644 ../README $(DESTDIR)/usr/share/doc/manjaroiso/README
+
+uninstall:
+	rm -f $(DESTDIR)/usr/sbin/mkiso
+	rm -f $(DESTDIR)/usr/sbin/mkroot
+	rm -f $(DESTDIR)/usr/sbin/buildiso
+	rm -f $(DESTDIR)/usr/bin/overlay-pkgs
+	rm -f $(DESTDIR)/usr/bin/testiso
+	rm -f $(DESTDIR)/lib/initcpio/hooks/miso
+	rm -f $(DESTDIR)/lib/initcpio/install/miso
+	rm -f $(DESTDIR)/lib/initcpio/hooks/miso_pxe_nbd
+	rm -f $(DESTDIR)/lib/initcpio/install/miso_pxe_nbd
+	rm -f $(DESTDIR)/lib/initcpio/hooks/miso_loop_mnt
+	rm -f $(DESTDIR)/lib/initcpio/install/miso_loop_mnt
+	rm -rf $(DESTDIR)/usr/share/manjaroiso/
+	rm -rf $(DESTDIR)/usr/share/doc/manjaroiso/

@@ -1,0 +1,182 @@
+#!/bin/bash
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; version 2 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+FORCE='n'
+RUN=''
+NOCOPY='n'
+
+working_dir=''
+
+APPNAME=$(basename "${0}")
+
+# usage: usage <exitvalue>
+usage() {
+    echo "usage ${APPNAME} [options] working-dir [package-list | app]"
+    echo ' options:'
+    echo '    -r <app>      Run "app" within the context of the chroot'
+    echo '    -u            Update the chroot via pacman'
+    echo '    -f            Force overwrite of files in the working-dir'
+    echo '    -C <file>     Location of a pacman config file'
+    echo '    -M <file>     Location of a makepkg config file'
+    echo '    -n            Do not copy config files into the chroot'
+    echo '    -c <dir>      Set pacman cache. Default: /var/cache/pacman/pkg'
+    echo '    -h            This message'
+    exit $1
+}
+
+while getopts 'r:ufnhC:M:c:' arg; do
+    case "${arg}" in
+	r) RUN="$OPTARG" ;;
+	u) RUN='/bin/sh -c "pacman -Syu --noconfirm && (pacman -Qqu >/dev/null && pacman -Su --noconfirm || exit 0)"' ;;
+	f) FORCE='y' ;;
+	C) pac_conf="$OPTARG" ;;
+	M) makepkg_conf="$OPTARG" ;;
+	n) NOCOPY='y' ;;
+	c) cache_dir="$OPTARG" ;;
+	h|?) usage 0 ;;
+	*) echo "invalid argument '${arg}'"; usage 1 ;;
+    esac
+done
+
+if [ "$EUID" != '0' ]; then
+    echo 'error: this script must be run as root.'
+    exit 1
+fi
+
+shift $(($OPTIND - 1))
+
+if [ "$RUN" = '' -a $# -lt 2 ]; then
+    echo 'you must specify a directory and one or more packages'
+    usage 1
+elif [ $# -lt 1 ]; then
+    echo 'you must specify a directory'
+    usage 1
+fi
+
+working_dir="$(readlink -f ${1})"
+shift 1
+
+[ "${working_dir}" = '' ] && echo 'error: please specify a working directory' && usage 1
+
+if [ -z "$cache_dir" ]; then
+    cache_conf=${working_dir}/etc/pacman.conf
+    [ ! -f $cache_conf ] && cache_conf=${pac_conf:-/etc/pacman.conf}
+    cache_dir=$( (grep -m 1 '^CacheDir' $cache_conf || echo 'CacheDir = /var/cache/pacman/pkg') | sed 's/CacheDir\s*=\s*//')
+    unset cache_conf
+fi
+
+host_mirror='http://mirror.rit.edu/kdemod/$repo/$arch'
+
+# {{{ functions
+chroot_mount() {
+    [ -e "${working_dir}/dev" ] || mkdir "${working_dir}/dev"
+    mount -t tmpfs dev "${working_dir}/dev" -o mode=0755,size=10M,nosuid
+    trap 'chroot_umount' EXIT QUIT HUP
+    trap 'chroot_umount_and_exit' INT TERM SIGINT SIGTERM
+}
+
+copy_hostconf () {
+    chroot "${working_dir}" /bin/findmnt -rnu -o SOURCE,TARGET,FSTYPE,OPTIONS > "${working_dir}/etc/mtab"
+    cp /etc/resolv.conf "${working_dir}/etc/resolv.conf"
+    echo "Server = ${host_mirror}" > ${working_dir}/etc/pacman.d/mirrorlist
+}
+
+chroot_umount () {
+    umount "${working_dir}/dev" &>/dev/null
+}
+
+chroot_umount_and_exit () {
+    umount "${working_dir}/dev" &>/dev/null
+    echo 'cancelled by the user, exiting...'
+    exit 1
+}
+
+chroot_lock () {
+    # Only reopen the FD if it wasn't handed to us
+    if [ "$(readlink -f /dev/fd/9)" != "${working_dir}.lock" ]; then
+	exec 9>"${working_dir}.lock"
+    fi
+
+    # Lock the chroot. Take note of the FD number.
+    if ! flock -n 9; then
+	echo -n "locking chroot..."
+	flock 9
+	echo "done"
+    fi
+}
+# }}}
+
+umask 0022
+if [ "$RUN" != "" ]; then
+    # run chroot {{{
+    #Sanity check
+    if [ ! -f "${working_dir}/.manjaro-chroot" ]; then
+	echo "error: '${working_dir}' does not appear to be a manjaro chroot"
+	echo '       please build the image using mkroot'
+	exit 1
+    fi
+
+    chroot_lock
+    chroot_mount
+    copy_hostconf
+
+    eval chroot "${working_dir}" ${RUN}
+    # }}}
+else
+    # {{{ build chroot
+    if [ -e "${working_dir}" -a "${FORCE}" = "n" ]; then
+	echo "error: working dir '${working_dir}' already exists - try using -f"
+	exit 1
+    fi
+
+    if { type -P btrfs && btrfs subvolume create "${working_dir}"; } &>/dev/null; then
+	chmod 0755 "${working_dir}"
+    fi
+
+    mkdir -p "${working_dir}/var/lib/pacman/sync"
+    mkdir -p "${working_dir}/etc/"
+
+    chroot_lock
+    chroot_mount
+
+    pacargs="--noconfirm --root=${working_dir} --cachedir=${cache_dir}"
+    if [ "$pac_conf" != "" ]; then
+	pacargs="$pacargs --config=${pac_conf}"
+    fi
+
+    if [ $# -ne 0 ]; then
+	op='-Sy'
+	if [ "$FORCE" = "y" ]; then
+	    op="${op}f"
+	fi
+	pacman ${op} ${pacargs} $@ || chroot_umount_and_exit
+    fi
+
+    if [ -d "${working_dir}/lib/modules" ]; then
+	ldconfig -r "${working_dir}"
+    fi
+
+    if [ "$pac_conf" != "" -a "$NOCOPY" = "n" ]; then
+	cp ${pac_conf} ${working_dir}/etc/pacman.conf
+    fi
+
+    if [ "$makepkg_conf" != "" -a "$NOCOPY" = "n" ]; then
+	cp ${makepkg_conf} ${working_dir}/etc/makepkg.conf
+    fi
+
+    if [ -e "${working_dir}/etc/locale.gen" ]; then
+	cp ${working_dir}/etc/locale.gen ${working_dir}/etc/locale.gen.bak
+    fi
+
+    if [ ! -e "${working_dir}/.manjaro-chroot" ]; then
+	date +%s > "${working_dir}/.manjaro-chroot"
+    fi
+    # }}}
+fi
