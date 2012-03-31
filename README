@@ -1,10 +1,10 @@
-Manjaro-Live For Dummies Like Me and You
+Manjaroiso For Dummies Like Me and You
 -------------------------------------
 
 
-- What the hell is Manjaro-Live?
+- What the hell is Manjaroiso?
 
-Manjaro-Live is a small set of bash scripts that is capable of building fully
+Manjaroiso is a small set of bash scripts that is capable of building fully
 functional Manjaro GNU/Linux based live CDs. It is a very generic tool, so it
 could potentially be used to generate anything from rescue systems,
 to install disks, to special interest live CD systems, and who knows what
@@ -13,23 +13,23 @@ else. Simply put, if it involves Manjaro on a shiny coaster, it can do it.
 
 - Alright, so how does one install it?
 
-First off, Manjaro-Live has some dependencies:
+First off, Manjaroiso has some dependencies:
     - mkinitcpio
     - cdrkit
     - squashfs-tools
-    - aufs2 (only needed in target media)
-    - aufs2-util (only needed in target media)
+    - aufs3 (only needed in target media)
+    - aufs3-util (only needed in target media)
     - syslinux
     - nbd
     - mkinitcpio-nfs-utils
 
-Manjaro-Live itself can be installed with the handy dandy included Makefile,
+Manjaroiso itself can be installed with the handy dandy included Makefile,
 and the incantation 'make install'.
 
 
 - Great, so how do you use this thing?
 
-The heart and soul of Manjaro-Live is mkanjaroiso. All of its options are
+The heart and soul of Manjaroiso is mkanjaroiso. All of its options are
 documented in its usage output, so we won't go into detail here.
 Instead, let's go over the general process.
 
@@ -99,13 +99,13 @@ pacman -S base base-devel nano vi vim rsync pacman file wget
 mkanjaroroot /tmp/somedir base
 mkanjaroroot -r bash /tmp/somedir
 # vi/nano /etc/pacman.d/mirrorlist and uncomment your prefered mirror.
-pacman -S git squashfs-tools syslinux Manjaro-live cdrkit make nbd mkinitcpio-nfs-utils
+pacman -S git squashfs-tools syslinux Manjaroiso cdrkit make nbd mkinitcpio-nfs-utils
 cd /tmp
 git clone git://git.manjaro.org/manjarolinux/manjaroiso.git
 cd manjaroiso/src
 make install
 cd ../configs/manjaro-xfce/
-build
+buildiso
 
 Done!
 
