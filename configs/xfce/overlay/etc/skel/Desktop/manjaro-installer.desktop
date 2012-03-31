@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Manjaro-Installer
+
+Comment=Install Manjaro Linux on HD
+Comment[de]=Manjaro Linux installieren
+Comment[en_GB]=Install Manjaro Linux on HD
+
+Exec=sudo manjaro-installer
+Type=Application
+Icon=/usr/share/manjaro-installer/install.png
+Categories=Application;System;

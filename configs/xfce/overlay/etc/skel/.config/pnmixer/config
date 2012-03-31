@@ -1,0 +1,12 @@
+
+[PNMixer]
+DisplayTextVolume=true
+TextVolumePosition=3
+MouseScrollStep=1
+MiddleClickAction=0
+CustomCommand=
+AlsaCard=(default)
+IconTheme=Faenza-Dark
+
+[(default)]
+Channel=Master

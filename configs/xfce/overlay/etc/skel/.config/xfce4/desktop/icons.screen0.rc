@@ -1,0 +1,28 @@
+[Manjaro-Installer]
+row=2
+col=1
+
+[705 MB Dateisystem]
+row=4
+col=0
+
+[5,2 GB Dateisystem]
+row=6
+col=0
+
+[root]
+row=5
+col=0
+
+[Müll]
+row=2
+col=0
+
+[Dateiystem]
+row=1
+col=0
+
+[Persönliches Verzeichnis]
+row=0
+col=0
+
