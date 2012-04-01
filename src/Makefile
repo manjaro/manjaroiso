@@ -16,7 +16,6 @@ install: all
 	install -D -m 644 hooks/miso_loop_mnt $(DESTDIR)/lib/initcpio/hooks/miso_loop_mnt
 	install -D -m 644 install/miso_loop_mnt $(DESTDIR)/lib/initcpio/install/miso_loop_mnt
 	# install configs, docs and examples
-	install -D -m 755 $(DESTDIR)/usr/share/manjaroiso/
 	install -D -m 755 functions/messages $(DESTDIR)/usr/share/manjaroiso/functions/messages
 	install -D -m 644 ../README $(DESTDIR)/usr/share/doc/manjaroiso/README
 
