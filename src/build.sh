@@ -7,16 +7,16 @@ if [ ! -e options.conf ] ; then
     exit
 fi
 
-if [ ! -e /usr/share/manjaroiso/functions/colors ] || [ ! -e /usr/share/manjaroiso/functions/messages ] ; then
+if [ ! -e /usr/share/manjaroiso/functions/messages ] ; then
     echo " "
     echo "missing manjaro-live functions file, please run «sudo make install» inside manjaroiso/"
     echo " "
     exit
 fi
 
-source /usr/share/manjaroiso/functions/colors
 .  /usr/share/manjaroiso/functions/messages
 . options.conf
+get_colors
 
 # do UID checking here so someone can at least get usage instructions
 if [ "$EUID" != "0" ]; then

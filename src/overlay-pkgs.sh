@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Configs
-source /usr/share/manjaroiso/functions/colors
 .  /usr/share/manjaroiso/functions/messages
+get_colors
 
 # Variables
 CURRENTDIR=$(pwd)

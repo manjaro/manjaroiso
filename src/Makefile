@@ -18,7 +18,6 @@ install: all
 	# install configs, docs and examples
 	install -D -m 755 $(DESTDIR)/usr/share/manjaroiso/
 	install -D -m 755 functions/messages $(DESTDIR)/usr/share/manjaroiso/functions/messages
-	install -D -m 755 functions/colors $(DESTDIR)/usr/share/manjaroiso/functions/colors
 	install -D -m 644 ../README $(DESTDIR)/usr/share/doc/manjaroiso/README
 
 uninstall:
