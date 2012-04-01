@@ -9,14 +9,15 @@ get_colors() {
 }
 
 banner() {
-	echo " "
-	printf '\e[1;36m'
-	echo ".d88b 8          8                   8    w              "
-	echo "8P    8d8b. .d88 8.dP 8d8b .d88      8    w Yb  dP .d88b "
-	echo "8b    8P Y8 8  8 88b  8P   8  8 wwww 8    8  YbdP  8.dP' "
-	echo "\`Y88P 8   8 \`Y88 8 Yb 8    \`Y88      8888 8   YP   \`Y88P "
-	printf '\e[0m'
-	echo " "
+	echo -e "${_g}"
+	echo " ______               _                  _             "
+	echo "|  ___ \             (_)                (_)            "
+	echo "| | _ | | ____ ____   _  ____  ____ ___  _  ___  ___   "
+	echo "| || || |/ _  |  _ \ | |/ _  |/ ___) _ \| |/___)/ _ \  "
+	echo "| || || ( ( | | | | || ( ( | | |  | |_| | |___ | |_| | "
+	echo "|_||_||_|\_||_|_| |_|| |\_||_|_|   \___/|_(___/ \___/  "
+	echo "                   (__/                                "
+	echo -e "${_r}"
 }
 
 title() {
