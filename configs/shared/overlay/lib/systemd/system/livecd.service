@@ -1,0 +1,10 @@
+[Unit]
+Description=Run livecd script
+Before=systemd-user-sessions.service
+
+[Service]
+Type=oneshot
+ExecStart=/etc/manjaro/livecd
+
+[Install]
+WantedBy=multi-user.target

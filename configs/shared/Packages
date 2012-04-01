@@ -1,4 +1,4 @@
-## Base Packages (Arch Linux Base Group and initscripts + filesystem replaced)
+## Base Packages
 bash
 binutils
 bzip2
@@ -10,7 +10,7 @@ dhcpcd
 diffutils
 e2fsprogs
 file
-filesystem-manjaro
+filesystem
 findutils
 gawk
 gcc-libs
@@ -19,7 +19,6 @@ glibc
 grep
 gzip
 heirloom-mailx
-initscripts-manjaro
 iputils
 jfsutils
 less
@@ -44,7 +43,6 @@ sed
 shadow
 sysfsutils
 syslog-ng
-sysvinit
 tar
 texinfo
 udev
@@ -55,8 +53,9 @@ wget
 which
 wpa_supplicant
 xfsprogs
-
-
+systemd
+manjaro-release
+lsb-release
 
 ## Devel Packages
 base-devel
@@ -66,7 +65,7 @@ yaourt
 ## Extra Base Packages
 qt
 mhwd
-manjaro-mirrorlist
+#manjaro-mirrorlist
 xdg-utils
 xdg-user-dirs
 pkg-config
@@ -76,7 +75,7 @@ sudo
 gamin
 acpid
 cpufrequtils
-grub2-manjaro
+grub2
 os-prober
 linux-headers
 linux-firmware
@@ -138,8 +137,8 @@ ttf-liberation
 terminus-font
 ttf-inconsolata
 ttf-indic-otf
-neuropolitical_font
-sony_sketch_ef_font
+#neuropolitical_font
+#sony_sketch_ef_font
 
 
 

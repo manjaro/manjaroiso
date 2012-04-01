@@ -1,24 +1,59 @@
-# Manjaro System Setup
+#!/bin/sh
 
-. /etc/manjaro/functions
-
-
-scan_swap()
+# kernel_cmdline <param> <default>
+# Looks for a parameter on the kernel's boot-time command line.
+#
+# returns: 0 if param was found. Also prints its value if it was a K=V param.
+#          1 if it was not. Also prints value passed as <default>
+#
+kernel_cmdline ()
 {
-    #Manjaro finds a pagefile.sys for windows/dos machines... may add later
-    stat_busy "Finding existing swap partitions"
-        swapdev="$(fdisk -l 2>/dev/null | grep swap | cut -d' ' -f1)"
-    if [ -e "${swapdev}" ]; then
-        swapon ${swapdev}
-        echo "${swapdev} swap swap defaults 0 0 #configured by archiso" >>/etc/fstab
-    fi
-    stat_done
+    for param in $(/bin/cat /proc/cmdline); do
+        case "${param}" in
+            $1=*) echo "${param##*=}"; return 0 ;;
+            $1) return 0 ;;
+            *) continue ;;
+        esac
+    done
+    [ -n "${2}" ] && echo "${2}"
+    return 1
 }
 
+LOCALE="$(kernel_cmdline LANG en_US.UTF-8)"
+TIMEZONE="$(kernel_cmdline timezone Europe/Berlin)"
+KEYMAP="$(kernel_cmdline vconsole.keymap us)"
+CONSOLEFONT="$(kernel_cmdline vconsole.font)"
+CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
 
+#scan_swap
+#Manjaro finds a pagefile.sys for windows/dos machines... may add later
+swapdev="$(fdisk -l 2>/dev/null | grep swap | cut -d' ' -f1)"
+if [ -e "${swapdev}" ]; then
+	swapon ${swapdev}
+	echo "${swapdev} swap swap defaults 0 0 #configured by archiso" >>/etc/fstab
+fi
 
-set_alsa()
-{
+#prepare_locale_gen
+sed -i "s/#\(${LOCALE/[@.]*}\)/\1/" /etc/locale.gen
+/usr/sbin/locale-gen > /dev/null
+
+#set_timezone
+cp --remove-destination "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime  
+
+#set_locale
+cat > /etc/locale.conf <<EOF
+LANG=${LOCALE}
+LC_COLLATE=C
+EOF
+
+#set_vconsole
+cat > /etc/vconsole.conf <<EOF
+KEYMAP=${KEYMAP}
+FONT=${CONSOLEFONT}
+FONT_MAP=${CONSOLEMAP}
+EOF
+  
+#set_alsa
 	# amixer binary
 	local alsa_amixer="/usr/bin/amixer"
 
@@ -75,49 +110,26 @@ set_alsa()
 
 	# save settings
 	alsactl -f /etc/asound.state store &>/dev/null
-}
 
+#hwdetect_graphics
+local USENONFREE="$(kernel_cmdline nonfree no)"
 
+if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
+	/usr/bin/mhwd -c 0300 -nf
+else
+	/usr/bin/mhwd -c 0300
+fi	
 
-hwdetect_graphics()
-{
-	stat_busy "Detecting graphics driver"
-		local USENONFREE="$(kernel_cmdline nonfree no)"
+#do_makeuser
+addgroups="video,audio,power,disk,storage,optical,network,lp"
+useradd -m -p "" -g users -G $addgroups manjaro
+sed -i "s#manjaro.*#manjaro:\$1\$uYIrxnwJ\$a5wTa84YxxYmD.sKX/Lll1:14942:0:99999:7:::#" /etc/shadow
 
-		if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
-			/usr/bin/mhwd -c 0300 -nf
-		else
-			/usr/bin/mhwd -c 0300
-		fi	
-	stat_done
-}
+#do_fix_perms
+chown root:root /etc/sudoers
+chmod 440 /etc/sudoers
 
-
-
-do_makeuser()
-{
-    stat_busy "Making the default user manjaro"
-		addgroups="video,audio,power,disk,storage,optical,network,lp"
-		useradd -m -p "" -g users -G $addgroups manjaro
-		sed -i "s#manjaro.*#manjaro:\$1\$uYIrxnwJ\$a5wTa84YxxYmD.sKX/Lll1:14942:0:99999:7:::#" /etc/shadow
-    stat_done
-}
-
-
-
-do_fix_perms()
-{
-    stat_busy "Fixing file permissions..."
-		chown root:root /etc/sudoers
-		chmod 440 /etc/sudoers
-		chmod g=r /etc/{inittab,rc.conf}
-    stat_done
-}
-
-
-
-do_lang_settings()
-{
+#do_lang_settings
  	# Determind which language we are using
 	if  [ "$(echo "${LOCALE}" | grep "en_US")" != "" ]; then
 		# Enable United States repos
@@ -149,25 +161,3 @@ do_lang_settings()
 		# Enable standard repos
 		sed -i /'##.*Any'/,/'##'/s/'#Server'/Server/g  /etc/pacman.d/mirrorlist
 	fi
-}
-
-
-
-
-
-
-
-system_setup()
-{
-	scan_swap
-	do_fix_perms
-	do_makeuser
-	do_lang_settings
-	hwdetect_graphics
-	set_alsa
-}
-
-
-
-
-add_hook sysinit_end system_setup
