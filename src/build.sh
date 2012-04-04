@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# switch to basic language
+export LANG=C
+export LC_MESSAGES=C
+
 if [ ! -e options.conf ] ; then
     echo " "
     echo "the config file options.conf is missing, exiting..."
@@ -43,11 +47,13 @@ fi
 set -e -u
 
 pwd=`pwd`
-packages=`sed -e 's/\#.*//' -e 's/[ ^I]*$$//' -e '/^$$/ d' packages.${arch}`
-_kernver=`pacman -Q linux | cut -c7-9 | sed 's/linux //g'`-MANJARO
+_kernver=`pacman -Q linux | cut -c7-14 | sed 's/linux //g'`-MANJARO
 
-export LANG=C
-export LC_MESSAGES=C
+if [ "${arch}" == "i686" ]; then
+	packages=$(sed "s|#.*||g" Packages | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+elif [ "${arch}" == "x86_64" ]; then
+	packages=$(sed "s|#.*||g" Packages | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+fi
 
 # Base installation (root-image)
 make_root_image() {
@@ -66,8 +72,9 @@ make_boot() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
 	echo -e -n "$_r >$_W Prepare ${install_dir}/boot/ \n $_n"
 	mkdir -p ${work_dir}/iso/${install_dir}/boot/${arch}
-	cp ${work_dir}/root-image/boot/vmlinuz-linux ${work_dir}/iso/${install_dir}/boot/${arch}/manjaroiso
-	cp -Lr boot-files/isolinux ${work_dir}/iso/
+	cp ${work_dir}/root-image/boot/vmlinuz* ${work_dir}/iso/${install_dir}/boot/${arch}/manjaroiso
+	cp -Lr ./isolinux ${work_dir}/iso/
+	cp -Lr ./syslinux ${work_dir}/iso/
 	cp ${work_dir}/root-image/usr/lib/syslinux/isolinux.bin ${work_dir}/iso/isolinux/
 	cp /lib/initcpio/hooks/m* ${work_dir}/root-image/lib/initcpio/hooks
 	mkinitcpio -c ./mkinitcpio.conf -b ${work_dir}/root-image -k $_kernver -g ${work_dir}/iso/${install_dir}/boot/${arch}/manjaro.img
@@ -144,7 +151,7 @@ fi
 
 make_root_image
 make_boot
-make_overlay
-make_overlay_pkgs
+#make_overlay
+#make_overlay_pkgs
 make_isomounts
 make_iso
