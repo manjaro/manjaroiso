@@ -25,20 +25,20 @@ KEYMAP="$(kernel_cmdline vconsole.keymap us)"
 CONSOLEFONT="$(kernel_cmdline vconsole.font)"
 CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
 
+## Systemd should do it
 #scan_swap
-#Manjaro finds a pagefile.sys for windows/dos machines... may add later
-swapdev="$(fdisk -l 2>/dev/null | grep swap | cut -d' ' -f1)"
-if [ -e "${swapdev}" ]; then
-	swapon ${swapdev}
-	echo "${swapdev} swap swap defaults 0 0 #configured by archiso" >>/etc/fstab
-fi
+#swapdev="$(fdisk -l 2>/dev/null | grep swap | cut -d' ' -f1)"
+#if [ -e "${swapdev}" ]; then
+#	swapon ${swapdev}
+#	echo "${swapdev} swap swap defaults 0 0 #configured by archiso" >>/etc/fstab
+#fi
 
 #prepare_locale_gen
 sed -i "s/#\(${LOCALE/[@.]*}\)/\1/" /etc/locale.gen
 /usr/sbin/locale-gen > /dev/null
 
 #set_timezone
-cp --remove-destination "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime  
+ln -sf "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime  
 
 #set_locale
 cat > /etc/locale.conf <<EOF
@@ -111,14 +111,15 @@ EOF
 	# save settings
 	alsactl -f /etc/asound.state store &>/dev/null
 
+## Wait for the last mhwd binary
 #hwdetect_graphics
-local USENONFREE="$(kernel_cmdline nonfree no)"
-
-if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
-	/usr/bin/mhwd -c 0300 -nf
-else
-	/usr/bin/mhwd -c 0300
-fi	
+#local USENONFREE="$(kernel_cmdline nonfree no)"
+#
+#if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
+#	/usr/bin/mhwd -c 0300 -nf
+#else
+#	/usr/bin/mhwd -c 0300
+#fi	
 
 #do_makeuser
 addgroups="video,audio,power,disk,storage,optical,network,lp"
@@ -131,33 +132,16 @@ chmod 440 /etc/sudoers
 
 #do_lang_settings
  	# Determind which language we are using
-	if  [ "$(echo "${LOCALE}" | grep "en_US")" != "" ]; then
-		# Enable United States repos
-		sed -i /'##.*United States'/,/'##'/s/'#Server'/Server/g  /etc/pacman.d/mirrorlist
-
-	elif  [ "$(echo "${LOCALE}" | grep "en_GB")" != "" ]; then
-		# Enable Great Britain repos
-		sed -i /'##.*Great Britain'/,/'##'/s/'#Server'/Server/g  /etc/pacman.d/mirrorlist
-
-    elif [ "$(echo "${LOCALE}" | grep "de_")" != "" ]; then
+	if [ "$(echo "${LOCALE}" | grep "de_")" != "" ]; then
 		# Setup system for the German language
-
+		
 		# Set German Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "de"\n        Option "XkbVariant" "nodeadkeys"#' /etc/X11/xorg.conf.d/10-evdev.conf
 
-		# Enable German repos
-		sed -i /'##.*Germany'/,/'##'/s/'#Server'/Server/g  /etc/pacman.d/mirrorlist
 
 	elif [ "$(echo "${LOCALE}" | grep "fr_")" != "" ]; then
 		# Setup system for the French language
-
+		
 		# Set French Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "fr"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-
-		# Enable French repos
-		sed -i /'##.*France'/,/'##'/s/'#Server'/Server/g  /etc/pacman.d/mirrorlist
-
-	else
-		# Enable standard repos
-		sed -i /'##.*Any'/,/'##'/s/'#Server'/Server/g  /etc/pacman.d/mirrorlist
 	fi
