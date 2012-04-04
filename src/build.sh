@@ -73,14 +73,47 @@ make_boot() {
 	echo -e -n "$_r >$_W Prepare ${install_dir}/boot/ \n $_n"
 	mkdir -p ${work_dir}/iso/${install_dir}/boot/${arch}
 	cp ${work_dir}/root-image/boot/vmlinuz* ${work_dir}/iso/${install_dir}/boot/${arch}/manjaroiso
-	cp -Lr ./isolinux ${work_dir}/iso/
-	cp -Lr ./syslinux ${work_dir}/iso/
-	cp ${work_dir}/root-image/usr/lib/syslinux/isolinux.bin ${work_dir}/iso/isolinux/
-	cp /lib/initcpio/hooks/m* ${work_dir}/root-image/lib/initcpio/hooks
-	mkinitcpio -c ./mkinitcpio.conf -b ${work_dir}/root-image -k $_kernver -g ${work_dir}/iso/${install_dir}/boot/${arch}/manjaro.img
-	rm ${work_dir}/root-image/lib/initcpio/hooks/m*
+	mkinitcpio -c ./mkinitcpio.conf -k $_kernver -g ${work_dir}/iso/${install_dir}/boot/${arch}/manjaro.img
 	: > ${work_dir}/build.${FUNCNAME}
 	echo -e "$_g >$_W done $_n"
+    fi
+}
+
+# Prepare /${install_dir}/boot/syslinux
+make_syslinux() {
+    if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
+        echo -e -n "$_r >$_W Prepare ${install_dir}/boot/${arch}/syslinux \n $_n"
+        local _src_syslinux=${work_dir}/root-image/usr/lib/syslinux
+        local _dst_syslinux=${work_dir}/iso/${install_dir}/boot/${arch}/syslinux
+        mkdir -p ${_dst_syslinux}
+        for confile in `ls syslinux/*.cfg`;
+           do  sed "s|%MISO_LABEL%|${iso_label}|g;
+                s|%INSTALL_DIR%|${install_dir}|g;
+                s|%ARCH%|${arch}|g" ${confile} > ${work_dir}/iso/${install_dir}/boot/${arch}/${confile};
+           done
+        cp syslinux/splash.png ${_dst_syslinux}
+        cp ${_src_syslinux}/*.c32 ${_dst_syslinux}
+        cp ${_src_syslinux}/*.com ${_dst_syslinux}
+        cp ${_src_syslinux}/*.0 ${_dst_syslinux}
+        cp ${_src_syslinux}/memdisk ${_dst_syslinux}
+        mkdir -p ${_dst_syslinux}/hdt
+        wget -O - http://pciids.sourceforge.net/v2.2/pci.ids | gzip -9 > ${_dst_syslinux}/hdt/pciids.gz
+        cat ${work_dir}/root-image/lib/modules/*-MANJARO/modules.alias | gzip -9 > ${_dst_syslinux}/hdt/modalias.gz
+
+        : > ${work_dir}/build.${FUNCNAME}
+    fi
+}
+
+# Prepare /isolinux
+make_isolinux() {
+    if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
+        echo -e -n "$_r >$_W Prepare ${install_dir}/iso/isolinux \n $_n"
+        mkdir -p ${work_dir}/iso/isolinux
+        sed "s|%INSTALL_DIR%|${install_dir}|g;
+             s|%ARCH%|${arch}|g" isolinux/isolinux.cfg > ${work_dir}/iso/isolinux/isolinux.cfg
+        cp ${work_dir}/root-image/usr/lib/syslinux/isolinux.bin ${work_dir}/iso/isolinux/
+        cp ${work_dir}/root-image/usr/lib/syslinux/isohdpfx.bin ${work_dir}/iso/isolinux/
+        : > ${work_dir}/build.${FUNCNAME}
     fi
 }
 
@@ -151,6 +184,8 @@ fi
 
 make_root_image
 make_boot
+make_syslinux
+make_isolinux
 #make_overlay
 #make_overlay_pkgs
 make_isomounts

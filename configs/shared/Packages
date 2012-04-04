@@ -26,9 +26,11 @@ libpipeline
 licenses
 linux
 logrotate
+lsb-release
 lvm2
 man-db
 man-pages
+manjaro-release
 mdadm
 nano
 pacman
@@ -43,6 +45,8 @@ sed
 shadow
 sysfsutils
 syslog-ng
+systemd
+tcp_wrappers
 tar
 texinfo
 udev
@@ -53,18 +57,17 @@ wget
 which
 wpa_supplicant
 xfsprogs
-systemd
-manjaro-release
-lsb-release
+
+
 
 ## Devel Packages
 base-devel
-yaourt
+#yaourt
 
 
 ## Extra Base Packages
 qt
-mhwd
+#mhwd
 #manjaro-mirrorlist
 xdg-utils
 xdg-user-dirs
@@ -177,7 +180,7 @@ modemmanager
 nbd
 inetutils
 wireless_tools
-broadcom-wl
+#broadcom-wl
 wpa_supplicant
 wpa_actiond
 zd1211-firmware
