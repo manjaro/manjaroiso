@@ -72,6 +72,7 @@ make_boot() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
 	echo -e -n "$_r >$_W Prepare ${install_dir}/boot/ \n $_n"
 	mkdir -p ${work_dir}/iso/${install_dir}/boot/${arch}
+        cp ${work_dir}/root-image/boot/memtest86+/memtest.bin ${work_dir}/iso/${install_dir}/boot/${arch}/memtest
 	cp ${work_dir}/root-image/boot/vmlinuz* ${work_dir}/iso/${install_dir}/boot/${arch}/manjaroiso
 	mkinitcpio -c ./mkinitcpio.conf -k $_kernver -g ${work_dir}/iso/${install_dir}/boot/${arch}/manjaro.img
 	: > ${work_dir}/build.${FUNCNAME}
