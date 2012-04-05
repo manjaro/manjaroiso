@@ -7,6 +7,6 @@
 # syntax: <img> <arch> <mount point> <type>
 
 # ORDER MATTERS! Files take top-down precedence. Be careful
-#@ARCH@/overlay.sqfs @ARCH@ / squashfs
-#@ARCH@/overlay-pkgs.sqfs @ARCH@ / squashfs
+@ARCH@/overlay.sqfs @ARCH@ / squashfs
+@ARCH@/xfce-image.sqfs @ARCH@ / squashfs
 @ARCH@/root-image.sqfs @ARCH@ / squashfs

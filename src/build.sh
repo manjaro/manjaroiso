@@ -37,12 +37,12 @@ if [ -z "${arch}" ] ; then
 fi
 
 
-if [ ! -e overlay-pkgs.${arch} ] ; then
-    echo " "
-    error "the config file overlay-pkgs.${arch} is missing, exiting..."
-    echo " "
-    exit
-fi
+#if [ ! -e overlay-pkgs.${arch} ] ; then
+#    echo " "
+#    error "the config file overlay-pkgs.${arch} is missing, exiting..."
+#    echo " "
+#    exit
+#fi
 
 set -e -u
 
@@ -55,6 +55,12 @@ elif [ "${arch}" == "x86_64" ]; then
 	packages=$(sed "s|#.*||g" Packages | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
 fi
 
+if [ "${arch}" == "i686" ]; then
+	xfce_packages=$(sed "s|#.*||g" Packages-Xfce | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+elif [ "${arch}" == "x86_64" ]; then
+	xfce_packages=$(sed "s|#.*||g" Packages-Xfce | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+fi
+
 # Base installation (root-image)
 make_root_image() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
@@ -62,6 +68,20 @@ make_root_image() {
          mkiso -v -C pacman.conf -a "${arch}" -D "${install_dir}" -p "${packages}" create "${work_dir}"
          pacman -Qr "${work_dir}/root-image" > "${work_dir}/root-image/root-image-pkgs.txt"
          cp ${work_dir}/root-image/etc/locale.gen.bak ${work_dir}/root-image/etc/locale.gen
+         : > ${work_dir}/build.${FUNCNAME}
+         echo -e "$_g >$_W done $_n"
+    fi
+}
+
+# XFCE installation (xfce-image)
+make_xfce_image() {
+    if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
+         echo -e -n "$_r >$_W XFCE installation (xfce-image) \n $_n"
+         mkdir -p ${work_dir}/xfce-image/var/lib/pacman
+         cp -r ${work_dir}/root-image/var/lib/pacman/local ${work_dir}/xfce-image/var/lib/pacman
+         mkiso -v -C pacman.conf -a "${arch}" -D "${work_dir}/xfce-image" -p "${xfce_packages}" create "${work_dir}"
+         pacman -Qr "${work_dir}/xfce-image" > "${work_dir}/xfce-image/xfce-image-pkgs.txt"
+         cp -Lr xfce-overlay/* ${work_dir}/xfce-image
          : > ${work_dir}/build.${FUNCNAME}
          echo -e "$_g >$_W done $_n"
     fi
@@ -123,16 +143,10 @@ make_overlay() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
         echo -e -n "$_r >$_W Prepare overlay-image \n $_n"
         mkdir -p ${work_dir}/overlay/etc/pacman.d
-        cp -Lr overlay ${work_dir}/
-        wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist https://git.manjaro.org/packages-sources/core-stable/blobs/raw/master/pacman-mirrorlist/mirrorlist
+        cp -Lrd overlay/* ${work_dir}/overlay
+        #wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist https://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist
         sed -i "s/#Server/Server/g" ${work_dir}/overlay/etc/pacman.d/mirrorlist
-        sed -i -e "s/@carch@/${arch}/g" ${work_dir}/overlay/etc/pacman.d/mirrorlist
-        cp ${work_dir}/overlay/etc/locale.gen ${work_dir}/root-image/etc
-        chroot "${work_dir}/root-image" locale-gen
-        cp ${work_dir}/root-image/etc/locale.gen.bak ${work_dir}/root-image/etc/locale.gen
-        mkdir -p ${work_dir}/overlay/usr/lib/locale/
-        mv ${work_dir}/root-image/usr/lib/locale/locale-archive ${work_dir}/overlay/usr/lib/locale/
-        chmod -R 755 ${work_dir}/overlay/home
+        #chmod -R 755 ${work_dir}/overlay/home
         : > ${work_dir}/build.${FUNCNAME}
         echo -e "$_g >$_W done $_n"
     fi
@@ -184,10 +198,11 @@ else
 fi
 
 make_root_image
+make_xfce_image
 make_boot
 make_syslinux
 make_isolinux
-#make_overlay
+make_overlay
 #make_overlay_pkgs
 make_isomounts
 make_iso

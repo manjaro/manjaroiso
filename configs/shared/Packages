@@ -46,7 +46,6 @@ shadow
 sysfsutils
 syslog-ng
 systemd
-tcp_wrappers
 tar
 texinfo
 udev

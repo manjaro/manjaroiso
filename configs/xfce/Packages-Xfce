@@ -1,11 +1,11 @@
 ### Manjaro Packages
 
-Shotwell and transmission
+#Shotwell and transmission
 
 ## XFCE Main Packages
 xfce4
 xfce4-goodies
-slim
+gdm
 gtk-xfce-engine
 gtk-engines
 gtk-engine-murrine
@@ -40,9 +40,9 @@ file-roller
 gparted
 pnmixer
 pavucontrol
-manjaro-installer
+#manjaro-installer
 conky
-manjaro-welcome
+#manjaro-welcome
 viewnior
 epdfview
 gedit
