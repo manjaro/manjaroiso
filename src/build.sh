@@ -177,7 +177,7 @@ make_overlay() {
         mkdir -p ${work_dir}/overlay/etc/pacman.d
         cp -Lrd overlay/* ${work_dir}/overlay
         #wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist https://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist
-        sed -i "s/#Server/Server/g" ${work_dir}/overlay/etc/pacman.d/mirrorlist
+        #sed -i "s/#Server/Server/g" ${work_dir}/overlay/etc/pacman.d/mirrorlist
         #chmod -R 755 ${work_dir}/overlay/home
         : > ${work_dir}/build.${FUNCNAME}
         echo -e "$_g >$_W done $_n"
