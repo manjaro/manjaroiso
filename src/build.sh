@@ -13,7 +13,7 @@ fi
 
 if [ ! -e /usr/share/manjaroiso/functions/messages ] ; then
     echo " "
-    echo "missing manjaro-live functions file, please run «sudo make install» inside manjaroiso/"
+    echo "missing manjaroiso functions file, please run «sudo make install» inside manjaroiso/"
     echo " "
     exit
 fi
@@ -44,13 +44,6 @@ if [ ! -e Packages ] ; then
     exit
 fi
 
-if [ ! -e Packages-Xorg ] ; then
-    echo " "
-    error "the config file Packages-Xorg is missing, exiting..."
-    echo " "
-    exit
-fi
-
 set -e -u
 
 pwd=`pwd`
@@ -62,10 +55,12 @@ elif [ "${arch}" == "x86_64" ]; then
 	packages=$(sed "s|#.*||g" Packages | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
 fi
 
-if [ "${arch}" == "i686" ]; then
-	xorg_packages=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
-elif [ "${arch}" == "x86_64" ]; then
-	xorg_packages=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+if [ -e Packages-Xorg ] ; then
+     if [ "${arch}" == "i686" ]; then
+     	xorg_packages=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     elif [ "${arch}" == "x86_64" ]; then
+     	xorg_packages=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     fi
 fi
 
 if [ -e Packages-Xfce ] ; then
@@ -88,22 +83,24 @@ make_root_image() {
     fi
 }
 
-# Prepare pkgs-image
-make_pkgs_image() {
-    if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
-        echo -e -n "$_r >$_W Prepare pkgs-image \n $_n"
-        mkdir -p ${work_dir}/pkgs-image/opt/manjaro/pkgs
-        mkdir -p ${work_dir}/pkgs-image/var/lib/pacman
-        cp -r ${work_dir}/root-image/var/lib/pacman/local ${work_dir}/pkgs-image/var/lib/pacman
-        pacman -v --config pacman.conf --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/manjaro/pkgs -Syw ${xorg_packages} --noconfirm
-        rm -r ${work_dir}/pkgs-image/var
-        repo-add ${work_dir}/pkgs-image/opt/manjaro/pkgs/manjaro-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/manjaro/pkgs/*pkg*z
-        : > ${work_dir}/build.${FUNCNAME}
-        echo -e "$_g >$_W done $_n"
-    fi
-}
+if [ -e Packages-Xorg ] ; then
+     # Prepare pkgs-image
+     make_pkgs_image() {
+         if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
+             echo -e -n "$_r >$_W Prepare pkgs-image \n $_n"
+             mkdir -p ${work_dir}/pkgs-image/opt/manjaro/pkgs
+             mkdir -p ${work_dir}/pkgs-image/var/lib/pacman
+             cp -r ${work_dir}/root-image/var/lib/pacman/local ${work_dir}/pkgs-image/var/lib/pacman
+             pacman -v --config pacman.conf --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/manjaro/pkgs -Syw ${xorg_packages} --noconfirm
+             rm -r ${work_dir}/pkgs-image/var
+             repo-add ${work_dir}/pkgs-image/opt/manjaro/pkgs/manjaro-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/manjaro/pkgs/*pkg*z
+             : > ${work_dir}/build.${FUNCNAME}
+             echo -e "$_g >$_W done $_n"
+         fi
+     }
+fi
 
-if [ ! -e Packages-Xfce ] ; then
+if [ -e Packages-Xfce ] ; then
      # XFCE installation (xfce-image)
      make_xfce_image() {
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
@@ -176,7 +173,7 @@ make_overlay() {
         echo -e -n "$_r >$_W Prepare overlay-image \n $_n"
         mkdir -p ${work_dir}/overlay/etc/pacman.d
         cp -Lrd overlay/* ${work_dir}/overlay
-        wget --no-check-certificate -O ${work_dir}/overlay/etc/pacman.d/mirrorlist https://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist
+        wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist
         sed -i "s/#Server/Server/g" ${work_dir}/overlay/etc/pacman.d/mirrorlist
         #chmod -R 755 ${work_dir}/overlay/home
         : > ${work_dir}/build.${FUNCNAME}
@@ -221,9 +218,12 @@ fi
 
 # install basic
 make_root_image
-make_pkgs_image
+# install xorg-drivers
+if [ -e Packages-Xorg ] ; then
+    make_pkgs_image
+fi
 # install DE(s)
-if [ ! -e Packages-Xfce ] ; then
+if [ -e Packages-Xfce ] ; then
     make_xfce_image
 fi
 # install common
