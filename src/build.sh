@@ -57,10 +57,11 @@ fi
 
 if [ -e Packages-Xorg ] ; then
      if [ "${arch}" == "i686" ]; then
-     	xorg_packages=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	xorg_packages=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
      elif [ "${arch}" == "x86_64" ]; then
-     	xorg_packages=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	xorg_packages=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
      fi
+     xorg_packages_cleanup=$(sed "s|#.*||g" Packages-Xorg | grep cleanup | sed "s|>cleanup||g")
 fi
 
 if [ -e Packages-Xfce ] ; then
@@ -92,6 +93,11 @@ if [ -e Packages-Xorg ] ; then
              mkdir -p ${work_dir}/pkgs-image/var/lib/pacman
              cp -r ${work_dir}/root-image/var/lib/pacman/local ${work_dir}/pkgs-image/var/lib/pacman
              pacman -v --config pacman.conf --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/manjaro/pkgs -Syw ${xorg_packages} --noconfirm
+             if [ "${xorg_packages_cleanup}" != "" ]; then
+                for xorg_clean in ${xorg_packages_cleanup};
+                   do  rm ${work_dir}/pkgs-image/opt/manjaro/pkgs/${xorg_clean}
+                   done
+             fi
              rm -r ${work_dir}/pkgs-image/var
              repo-add ${work_dir}/pkgs-image/opt/manjaro/pkgs/manjaro-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/manjaro/pkgs/*pkg*z
              : > ${work_dir}/build.${FUNCNAME}
