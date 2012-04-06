@@ -75,7 +75,7 @@ fi
 make_root_image() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
          echo -e -n "$_r >$_W Base installation (root-image) \n $_n"
-         mkiso -v -C pacman.conf -a "${arch}" -D "${install_dir}" -p "${packages}" create "${work_dir}"
+         mkiso -v -C pacman.conf -a "${arch}" -D "${install_dir}" -i "root-image" -p "${packages}" create "${work_dir}"
          pacman -Qr "${work_dir}/root-image" > "${work_dir}/root-image/root-image-pkgs.txt"
          cp ${work_dir}/root-image/etc/locale.gen.bak ${work_dir}/root-image/etc/locale.gen
          : > ${work_dir}/build.${FUNCNAME}
@@ -107,7 +107,7 @@ if [ -e Packages-Xfce ] ; then
               echo -e -n "$_r >$_W XFCE installation (xfce-image) \n $_n"
               mkdir -p ${work_dir}/xfce-image/var/lib/pacman
               cp -r ${work_dir}/root-image/var/lib/pacman/local ${work_dir}/xfce-image/var/lib/pacman
-              mkiso -v -C pacman.conf -a "${arch}" -D "${work_dir}/xfce-image" -p "${xfce_packages}" create "${work_dir}"
+              mkiso -v -C pacman.conf -a "${arch}" -D "${install_dir}" -i "xfce-image" -p "${xfce_packages}" create "${work_dir}"
               pacman -Qr "${work_dir}/xfce-image" > "${work_dir}/xfce-image/xfce-image-pkgs.txt"
               cp -Lr xfce-overlay/* ${work_dir}/xfce-image
               : > ${work_dir}/build.${FUNCNAME}

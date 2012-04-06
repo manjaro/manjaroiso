@@ -10,6 +10,7 @@ APPLICATION="Manjaro Linux Live/Rescue CD"
 COMPRESSION="xz"
 CREATE_DEFAULT="n"
 INSTALL_DIR="manjaro"
+IMAGE_FOLDER="root-image"
 
 APPNAME=$(basename "${0}")
 
@@ -18,23 +19,25 @@ usage ()
 {
     echo "usage ${APPNAME} [options] command <command options>"
     echo " general options:"
-    echo "    -f               Force overwrite of working files/squashfs image/bootable image"
-    echo "    -p PACKAGE(S)    Additional package(s) to install, can be used multiple times"
-    echo "    -C <file>        Config file for pacman. Default $PACCONFIG"
-    echo "    -L <label>       Set a label for the disk"
-    echo "    -P <publisher>   Set a publisher for the disk"
-    echo "    -A <application> Set an application name for the disk"
-    echo "    -a <arch>        Set an architecture for the disk (example: i686)"
-    echo "    -c <compressor>  Set SquashFS compression type: gzip, xz or lzo. Default $COMPRESSION"
-    echo "                     NOTES:"
+    echo "    -f                Force overwrite of working files/squashfs image/bootable image"
+    echo "    -p PACKAGE(S)     Additional package(s) to install, can be used multiple times"
+    echo "    -C <file>         Config file for pacman. Default $PACCONFIG"
+    echo "    -L <label>        Set a label for the disk"
+    echo "    -P <publisher>    Set a publisher for the disk"
+    echo "    -A <application>  Set an application name for the disk"
+    echo "    -a <arch>         Set an architecture for the disk (example: i686)"
+    echo "    -c <compressor>   Set SquashFS compression type: gzip, xz or lzo. Default $COMPRESSION"
+    echo "                      NOTES:"
     echo "                            xz: needs Linux >= 2.6.35 - you can add '-x' for better compression"
     echo "                            lzo:  needs Linux >= 2.6.36"
-    echo "    -D <install_dir> Set an install_dir. All files will by located here on ISO (except for isolinux)"
-    echo "                     Default $INSTALL_DIR"
-    echo "                     NOTE: Max 8 characters, use only [a-z0-9]"
-    echo "    -d               Create default user directory /home/manjaro"
-    echo "    -v               Enable verbose output"
-    echo "    -h               This message"
+    echo "    -D <install_dir>  Set an install_dir. All files will by located here on ISO (except for isolinux)"
+    echo "                      Default $INSTALL_DIR"
+    echo "                      NOTE: Max 8 characters, use only [a-z0-9]"
+    echo "    -i <image_folder> Set an image_folder for installing selected packages to."
+    echo "                      Default $IMAGE_FOLDER"
+    echo "    -d                Create default user directory /home/manjaro"
+    echo "    -v                Enable verbose output"
+    echo "    -h                This message"
     echo " commands:"
     echo "   create <dir>"
     echo "      create a base directory layout to work with"
@@ -44,7 +47,7 @@ usage ()
     exit $1
 }
 
-while getopts 'p:C:L:P:A:a:c:D:dfvhx' arg; do
+while getopts 'p:C:L:P:A:a:c:D:i:dfvhx' arg; do
     case "${arg}" in
         p) PKGLIST="${PKGLIST} ${OPTARG}" ;;
         C) PACCONFIG="${OPTARG}" ;;
@@ -54,6 +57,7 @@ while getopts 'p:C:L:P:A:a:c:D:dfvhx' arg; do
         a) ARCH="${OPTARG}" ;;
         c) COMPRESSION="${OPTARG}" ;;
         D) INSTALL_DIR="${OPTARG}" ;;
+        i) IMAGE_FOLDER="${OPTARG}" ;;
         d) CREATE_DEFAULT="y" ;;
         f) FORCE="y" ;;
         x) HIGHCOMP=" -b 256K -Xbcj x86" ;;
@@ -109,10 +113,10 @@ _pacman ()
 {
     local ret
     if [ "${QUIET}" = "y" ]; then
-        mkroot -n -C "$PACCONFIG" -f "${work_dir}/root-image" $* 2>&1 >/dev/null || exit
+        mkroot -n -C "$PACCONFIG" -f "${work_dir}/${IMAGE_FOLDER}" $* 2>&1 >/dev/null || exit
         ret=$?
     else
-        mkroot -n -C "$PACCONFIG" -f "${work_dir}/root-image" $* || exit
+        mkroot -n -C "$PACCONFIG" -f "${work_dir}/${IMAGE_FOLDER}" $* || exit
         ret=$?
     fi
 
@@ -127,37 +131,37 @@ _pacman ()
 command_create () {
     echo "====> Creating working directory: ${work_dir}"
     mkdir -p "${work_dir}/iso/${INSTALL_DIR}/${ARCH}"
-    mkdir -p "${work_dir}/root-image/"
+    mkdir -p "${work_dir}/${IMAGE_FOLDER}/"
 
     if [ "${PKGLIST}" != "" ]; then
-        echo "====> Installing packages to '${work_dir}/root-image/'"
+        echo "====> Installing packages to '${work_dir}/${IMAGE_FOLDER}/'"
         _pacman "${PKGLIST}"
 
         echo "Cleaning up what we can"
-        if [ -d "${work_dir}/root-image/boot/" ]; then
+        if [ -d "${work_dir}/${IMAGE_FOLDER}/boot/" ]; then
             # remove the initcpio images that were generated for the host system
-            find "${work_dir}/root-image/boot" -name '*.img' -delete
+            find "${work_dir}/${IMAGE_FOLDER}/boot" -name '*.img' -delete
         fi
 
         if [ ${CREATE_DEFAULT} == "y" ]; then
-            if [ -d "${work_dir}/root-image/home/" ]; then
+            if [ -d "${work_dir}/${IMAGE_FOLDER}/home/" ]; then
                 echo "Creating default home directory"
-                install -d -o1000 -g100 -m0755 "${work_dir}/root-image/home/live"
+                install -d -o1000 -g100 -m0755 "${work_dir}/${IMAGE_FOLDER}/home/manjaro"
             fi
         fi
 
         # Delete pacman database sync cache files (*.tar.gz)
-        find "${work_dir}/root-image/var/lib/pacman" -maxdepth 1 -type f -delete
+        find "${work_dir}/${IMAGE_FOLDER}/var/lib/pacman" -maxdepth 1 -type f -delete
         # Delete pacman database sync cache
-        find "${work_dir}/root-image/var/lib/pacman/sync" -delete
+        find "${work_dir}/${IMAGE_FOLDER}/var/lib/pacman/sync" -delete
         # Delete pacman package cache
-        find "${work_dir}/root-image/var/cache/pacman/pkg" -type f -delete
+        find "${work_dir}/${IMAGE_FOLDER}/var/cache/pacman/pkg" -type f -delete
         # Delete all log files, keeps empty dirs.
-        find "${work_dir}/root-image/var/log" -type f -delete
+        find "${work_dir}/${IMAGE_FOLDER}/var/log" -type f -delete
         # Delete all temporary files and dirs
-        find "${work_dir}/root-image/var/tmp" -mindepth 1 -delete
+        find "${work_dir}/${IMAGE_FOLDER}/var/tmp" -mindepth 1 -delete
         # Delete all temporary files and dirs
-        find "${work_dir}/root-image/tmp" -mindepth 1 -delete
+        find "${work_dir}/${IMAGE_FOLDER}/tmp" -mindepth 1 -delete
     fi
 }
 
