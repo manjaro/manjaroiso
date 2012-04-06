@@ -19,8 +19,8 @@ kernel_cmdline ()
     return 1
 }
 
-LOCALE="$(kernel_cmdline LANG en_US.UTF-8)"
-TIMEZONE="$(kernel_cmdline timezone Europe/Berlin)"
+LOCALE="$(kernel_cmdline locale.LANG en_US.UTF-8)"
+TIMEZONE="$(kernel_cmdline timezone UTC)"
 KEYMAP="$(kernel_cmdline vconsole.keymap us)"
 CONSOLEFONT="$(kernel_cmdline vconsole.font)"
 CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
@@ -34,25 +34,12 @@ CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
 #fi
 
 #prepare_locale_gen
-sed -i "s/#\(${LOCALE/[@.]*}\)/\1/" /etc/locale.gen
+sed -i "s/#\(${LOCALE}\)/\1/" /etc/locale.gen
 /usr/sbin/locale-gen > /dev/null
 
 #set_timezone
 ln -sf "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime  
 
-#set_locale
-cat > /etc/locale.conf <<EOF
-LANG=${LOCALE}
-LC_COLLATE=C
-EOF
-
-#set_vconsole
-cat > /etc/vconsole.conf <<EOF
-KEYMAP=${KEYMAP}
-FONT=${CONSOLEFONT}
-FONT_MAP=${CONSOLEMAP}
-EOF
-  
 #set_alsa
 	# amixer binary
 	local alsa_amixer="/usr/bin/amixer"
