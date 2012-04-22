@@ -24,7 +24,7 @@ jfsutils
 less
 libpipeline
 licenses
-linux
+linux32
 logrotate
 lsb-release
 lvm2
@@ -48,7 +48,6 @@ syslog-ng
 systemd
 tar
 texinfo
-udev
 usbutils
 util-linux
 vi
@@ -79,7 +78,7 @@ acpid
 cpufrequtils
 grub2
 os-prober
-linux-headers
+linux32-headers
 linux-firmware
 dbus
 util-linux-ng

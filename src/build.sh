@@ -47,7 +47,6 @@ fi
 set -e -u
 
 pwd=`pwd`
-_kernver=`pacman -Q linux | cut -c7-14 | sed 's/linux //g'`-MANJARO
 
 if [ "${arch}" == "i686" ]; then
 	packages=$(sed "s|#.*||g" Packages | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
