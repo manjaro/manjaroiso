@@ -75,7 +75,9 @@ sudo
 gamin
 acpid
 cpufrequtils
-grub2
+grub2-bios
+grub2-efi-i386
+grub2-efi-x86_64
 os-prober
 linux32-headers
 linux-firmware
