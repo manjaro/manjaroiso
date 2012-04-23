@@ -82,6 +82,7 @@ grub2-efi-x86_64
 os-prober
 linux32-headers
 linux-firmware
+manjaro-firmware
 dbus
 util-linux-ng
 syslinux
