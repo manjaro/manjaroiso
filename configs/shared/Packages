@@ -30,6 +30,7 @@ lsb-release
 lvm2
 man-db
 man-pages
+manjaroiso
 manjaro-release
 mdadm
 nano
@@ -217,6 +218,15 @@ mesa
 >x86_64 lib32-libxv
 >x86_64 lib32-libxvmc
 >x86_64 lib32-libgl
+
+## Printing
+cups
+cups-pdf
+ghostscript
+gsfonts
+gutenprint
+hplip
+
 
 
 

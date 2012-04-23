@@ -44,6 +44,13 @@ if [ ! -e Packages ] ; then
     exit
 fi
 
+if [ ! -e "pacman-${arch}.conf" ] ; then
+    echo " "
+    error "the config file pacman-${arch}.conf is missing, exiting..."
+    echo " "
+    exit
+fi
+
 set -e -u
 
 pwd=`pwd`
@@ -75,9 +82,12 @@ fi
 make_root_image() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
          echo -e -n "$_r >$_W Base installation (root-image) \n $_n"
-         mkiso -v -C pacman.conf -a "${arch}" -D "${install_dir}" -i "root-image" -p "${packages}" create "${work_dir}"
+         mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "root-image" -p "${packages}" create "${work_dir}"
          pacman -Qr "${work_dir}/root-image" > "${work_dir}/root-image/root-image-pkgs.txt"
          cp ${work_dir}/root-image/etc/locale.gen.bak ${work_dir}/root-image/etc/locale.gen
+         if [ -e ${work_dir}/root-image/etc/plymouth/plymouthd.conf ] ; then
+            sed -i -e "s/^.*Theme=.*/Theme=$plymouth_theme/" ${work_dir}/root-image/etc/plymouth/plymouthd.conf
+         fi
          : > ${work_dir}/build.${FUNCNAME}
          echo -e "$_g >$_W done $_n"
     fi
@@ -91,7 +101,7 @@ if [ -e Packages-Xorg ] ; then
              mkdir -p ${work_dir}/pkgs-image/opt/manjaro/pkgs
              mkdir -p ${work_dir}/pkgs-image/var/lib/pacman
              cp -r ${work_dir}/root-image/var/lib/pacman/local ${work_dir}/pkgs-image/var/lib/pacman
-             pacman -v --config pacman.conf --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/manjaro/pkgs -Syw ${xorg_packages} --noconfirm
+             pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/manjaro/pkgs -Syw ${xorg_packages} --noconfirm
              if [ "${xorg_packages_cleanup}" != "" ]; then
                 for xorg_clean in ${xorg_packages_cleanup};
                    do  rm ${work_dir}/pkgs-image/opt/manjaro/pkgs/${xorg_clean}
@@ -112,7 +122,7 @@ if [ -e Packages-Xfce ] ; then
               echo -e -n "$_r >$_W XFCE installation (xfce-image) \n $_n"
               mkdir -p ${work_dir}/xfce-image/var/lib/pacman
               cp -r ${work_dir}/root-image/var/lib/pacman/local ${work_dir}/xfce-image/var/lib/pacman
-              mkiso -v -C pacman.conf -a "${arch}" -D "${install_dir}" -i "xfce-image" -p "${xfce_packages}" create "${work_dir}"
+              mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "xfce-image" -p "${xfce_packages}" create "${work_dir}"
               pacman -Qr "${work_dir}/xfce-image" > "${work_dir}/xfce-image/xfce-image-pkgs.txt"
               cp -Lr xfce-overlay/* ${work_dir}/xfce-image
               : > ${work_dir}/build.${FUNCNAME}
@@ -128,7 +138,7 @@ make_boot() {
 	mkdir -p ${work_dir}/iso/${install_dir}/boot/${arch}
         cp ${work_dir}/root-image/boot/memtest86+/memtest.bin ${work_dir}/iso/${install_dir}/boot/${arch}/memtest
 	cp ${work_dir}/root-image/boot/vmlinuz* ${work_dir}/iso/${install_dir}/boot/${arch}/manjaroiso
-	mkinitcpio -c ./mkinitcpio.conf -k $_kernver -g ${work_dir}/iso/${install_dir}/boot/${arch}/manjaro.img
+	mkinitcpio -c ./mkinitcpio.conf -b ${work_dir}/root-image -k $_kernver -g ${work_dir}/iso/${install_dir}/boot/${arch}/manjaro.img
 	: > ${work_dir}/build.${FUNCNAME}
 	echo -e "$_g >$_W done $_n"
     fi
