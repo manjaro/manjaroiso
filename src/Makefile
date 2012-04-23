@@ -4,8 +4,7 @@ install: all
 	# install to sbin since script only usable by root
 	install -D -m 755 mkiso $(DESTDIR)/usr/sbin/mkiso
 	install -D -m 755 mkroot $(DESTDIR)/usr/sbin/mkroot
-	install -D -m 755 build.sh $(DESTDIR)/usr/sbin/buildiso
-	install -D -m 755 overlay-pkgs.sh $(DESTDIR)/usr/bin/overlay-pkgs
+	install -D -m 755 buildiso $(DESTDIR)/usr/sbin/buildiso
 	# testiso can be used by anyone
 	install -D -m 755 testiso $(DESTDIR)/usr/bin/testiso
 	# hooks/install are needed by mkinitcpio
@@ -23,7 +22,6 @@ uninstall:
 	rm -f $(DESTDIR)/usr/sbin/mkiso
 	rm -f $(DESTDIR)/usr/sbin/mkroot
 	rm -f $(DESTDIR)/usr/sbin/buildiso
-	rm -f $(DESTDIR)/usr/bin/overlay-pkgs
 	rm -f $(DESTDIR)/usr/bin/testiso
 	rm -f $(DESTDIR)/lib/initcpio/hooks/miso
 	rm -f $(DESTDIR)/lib/initcpio/install/miso
