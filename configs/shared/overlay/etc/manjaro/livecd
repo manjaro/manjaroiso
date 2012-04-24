@@ -27,11 +27,11 @@ CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
 
 ## Systemd should do it
 #scan_swap
-#swapdev="$(fdisk -l 2>/dev/null | grep swap | cut -d' ' -f1)"
-#if [ -e "${swapdev}" ]; then
-#	swapon ${swapdev}
-#	echo "${swapdev} swap swap defaults 0 0 #configured by archiso" >>/etc/fstab
-#fi
+swapdev="$(fdisk -l 2>/dev/null | grep swap | cut -d' ' -f1)"
+if [ -e "${swapdev}" ]; then
+	swapon ${swapdev}
+	echo "${swapdev} swap swap defaults 0 0 #configured by manjaroiso" >>/etc/fstab
+fi
 
 #prepare_locale_gen
 sed -i "s/#\(${LOCALE}\)/\1/" /etc/locale.gen
@@ -107,6 +107,23 @@ ln -sf "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime
 #else
 #	/usr/bin/mhwd -c 0300
 #fi	
+
+## Install xf86-video driver
+
+if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
+   driver=`hwinfo --gfxcard | grep -m1 'Module:' | cut -d: -f2 | sed s'/ //'g`
+
+   # replace nv with nouveau
+   if [ "$driver" == "nv" ] ; then
+      driver="nouveau"
+   fi
+
+   if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
+      pacman --config "/opt/manjaro/pacman-gfx.conf" -Sy xf86-video-$driver xf86-video-vesa --noconfirm &> /dev/null
+   else
+      pacman --config "/opt/manjaro/pacman-gfx.conf" -Sy xf86-video-$driver xf86-video-vesa --noconfirm &> /dev/null
+   fi
+fi
 
 #do_makeuser
 addgroups="video,audio,power,disk,storage,optical,network,lp"

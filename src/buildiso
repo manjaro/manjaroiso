@@ -107,6 +107,7 @@ if [ -e Packages-Xorg ] ; then
                    do  rm ${work_dir}/pkgs-image/opt/manjaro/pkgs/${xorg_clean}
                    done
              fi
+             cp pacman-gfx.conf ${work_dir}/pkgs-image/opt/manjaro
              rm -r ${work_dir}/pkgs-image/var
              repo-add ${work_dir}/pkgs-image/opt/manjaro/pkgs/manjaro-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/manjaro/pkgs/*pkg*z
              : > ${work_dir}/build.${FUNCNAME}

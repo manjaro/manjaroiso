@@ -1,0 +1,12 @@
+[Unit]
+Description=LXDE Display Manager
+Requires=dev-tty7.device
+After=dev-tty7.device systemd-user-sessions.service
+Conflicts=plymouth-quit.service
+
+[Service]
+ExecStartPre=/bin/plymouth quit
+ExecStart=/usr/sbin/lxdm
+
+[Install]
+WantedBy=graphical.target

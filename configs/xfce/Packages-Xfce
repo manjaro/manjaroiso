@@ -5,7 +5,7 @@
 ## XFCE Main Packages
 xfce4
 xfce4-goodies
-gdm
+lxdm
 gtk-xfce-engine
 gtk-engines
 gtk-engine-murrine
