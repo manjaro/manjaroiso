@@ -30,7 +30,6 @@ lsb-release
 lvm2
 man-db
 man-pages
-manjaroiso
 manjaro-release
 mdadm
 nano
@@ -66,7 +65,7 @@ base-devel
 ## Extra Base Packages
 qt
 #mhwd
-#manjaro-mirrorlist
+hwinfo
 xdg-utils
 xdg-user-dirs
 pkg-config

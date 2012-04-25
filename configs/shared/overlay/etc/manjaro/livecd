@@ -122,27 +122,28 @@ if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
    if [ "x$driver" != "x" ] ; then
       driver="xf86-video-$driver"
       dri="$driver-dri"
+      if [ "`uname -m`" == "x86_64" ] ; then
+         dri64="lib32-$driver-dri"
+      else
+         dri64=""
+      fi
    fi
 
    # check if driver exists
-   if [ ! -e "/opt/manjaro/pkgs/$driver*" ] ; then
+   if [ "x`ls /opt/manjaro/pkgs/$driver | grep "ls:"`" != "x" ] ; then
       driver=""
-      dri=""
    fi
 
    # check if dri exists
-   if [ "x$dri" != "x" ] ; then
-      if [ ! -e "/opt/manjaro/pkgs/$dri*" ] ; then
-         dri=""
-      fi
-   else
+   if [ "x`ls /opt/manjaro/pkgs/$dri | grep "ls:"`" != "x" ] ; then
       dri=""
+      dri64=""
    fi
 
    if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
-      pacman --config "/opt/manjaro/pacman-gfx.conf" -Sy $driver $dri xf86-video-vesa --noconfirm &> /dev/null
+      pacman --config "/opt/manjaro/pacman-gfx.conf" -Sy $driver $dri $dri64 xf86-video-vesa --noconfirm &> /dev/null
    else
-      pacman --config "/opt/manjaro/pacman-gfx.conf" -Sy $driver $dri xf86-video-vesa --noconfirm &> /dev/null
+      pacman --config "/opt/manjaro/pacman-gfx.conf" -Sy $driver $dri $dri64 xf86-video-vesa --noconfirm &> /dev/null
    fi
 fi
 
