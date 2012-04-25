@@ -118,10 +118,31 @@ if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
       driver="nouveau"
    fi
 
-   if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
-      pacman --config "/opt/manjaro/pacman-gfx.conf" -Sy xf86-video-$driver xf86-video-vesa --noconfirm &> /dev/null
+   # check if some driver was found
+   if [ "x$driver" != "x" ] ; then
+      driver="xf86-video-$driver"
+      dri="$driver-dri"
+   fi
+
+   # check if driver exists
+   if [ ! -e "/opt/manjaro/pkgs/$driver*" ] ; then
+      driver=""
+      dri=""
+   fi
+
+   # check if dri exists
+   if [ "x$dri" != "x" ] ; then
+      if [ ! -e "/opt/manjaro/pkgs/$dri*" ] ; then
+         dri=""
+      fi
    else
-      pacman --config "/opt/manjaro/pacman-gfx.conf" -Sy xf86-video-$driver xf86-video-vesa --noconfirm &> /dev/null
+      dri=""
+   fi
+
+   if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
+      pacman --config "/opt/manjaro/pacman-gfx.conf" -Sy $driver $dri xf86-video-vesa --noconfirm &> /dev/null
+   else
+      pacman --config "/opt/manjaro/pacman-gfx.conf" -Sy $driver $dri xf86-video-vesa --noconfirm &> /dev/null
    fi
 fi
 
