@@ -154,6 +154,19 @@ addgroups="video,audio,power,disk,storage,optical,network,lp"
 useradd -m -p "" -g users -G $addgroups manjaro
 sed -i "s#manjaro.*#manjaro:\$1\$uYIrxnwJ\$a5wTa84YxxYmD.sKX/Lll1:14942:0:99999:7:::#" /etc/shadow
 
+#do_setuplightdm
+if [ -e "/usr/sbin/lightdm" ] ; then
+   getent group lightdm > /dev/null 2>&1 || groupadd -g 620 lightdm
+   getent passwd lightdm > /dev/null 2>&1 || useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /sbin/nologin lightdm
+   passwd -l lightdm > /dev/null
+   mkdir -p /run/lightdm > /dev/null
+   chown -R lightdm:lightdm /run/lightdm > /dev/null
+   sed -i -e 's/^.*autologin-user=.*/autologin-user=manjaro/' /etc/lightdm/lightdm.conf
+   sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
+   sed -i -e 's/^.*pam-service=.*/pam-service=lightdm-autologin/' /etc/lightdm/lightdm.conf
+   chmod +r /etc/lightdm/lightdm.conf
+fi
+
 #do_fix_perms
 chown root:root /etc/sudoers
 chmod 440 /etc/sudoers
