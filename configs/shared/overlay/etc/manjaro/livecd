@@ -161,6 +161,7 @@ if [ -e "/usr/sbin/lightdm" ] ; then
    passwd -l lightdm > /dev/null
    mkdir -p /run/lightdm > /dev/null
    chown -R lightdm:lightdm /run/lightdm > /dev/null
+   sed -i -e 's/^.*user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*autologin-user=.*/autologin-user=manjaro/' /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*pam-service=.*/pam-service=lightdm-autologin/' /etc/lightdm/lightdm.conf
