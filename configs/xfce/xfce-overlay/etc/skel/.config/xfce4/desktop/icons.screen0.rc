@@ -1,17 +1,5 @@
 [Manjaro-Installer]
-row=2
-col=1
-
-[705 MB Dateisystem]
-row=4
-col=0
-
-[5,2 GB Dateisystem]
-row=6
-col=0
-
-[root]
-row=5
+row=3
 col=0
 
 [Müll]
