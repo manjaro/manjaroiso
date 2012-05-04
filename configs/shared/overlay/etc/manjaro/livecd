@@ -19,7 +19,7 @@ kernel_cmdline ()
     return 1
 }
 
-LOCALE="$(kernel_cmdline locale.LANG en_US.UTF-8)"
+LOCALE="$(kernel_cmdline locale.LANG en_US.utf8)"
 TIMEZONE="$(kernel_cmdline timezone UTC)"
 KEYMAP="$(kernel_cmdline vconsole.keymap us)"
 CONSOLEFONT="$(kernel_cmdline vconsole.font)"
@@ -33,8 +33,14 @@ if [ -e "${swapdev}" ]; then
 	echo "${swapdev} swap swap defaults 0 0 #configured by manjaroiso" >>/etc/fstab
 fi
 
+#edit /etc/locale.conf
+echo "LANG=${LOCALE}" > /etc/locale.conf
+echo "LC_COLLATE=C" >> /etc/locale.conf
+
 #prepare_locale_gen
-sed -i "s/#\(${LOCALE}\)/\1/" /etc/locale.gen
+for i in $(grep "^LANG" /etc/locale.conf | sed -e 's/.*=//g' -e's/\..*//g'); do
+	sed -i -e "s/^#$i/$i/g" /etc/locale.gen
+done
 /usr/sbin/locale-gen > /dev/null
 
 #set_timezone
