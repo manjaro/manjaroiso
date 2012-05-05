@@ -128,6 +128,11 @@ if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
       driver="nouveau"
    fi
 
+   # replace radeon with ati
+   if [ "$driver" == "radeon" ] ; then
+      driver="ati"
+   fi
+
    # check if some driver was found
    if [ "x$driver" != "x" ] ; then
       dri="$driver-dri"
