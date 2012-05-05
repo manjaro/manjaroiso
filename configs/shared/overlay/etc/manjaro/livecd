@@ -133,6 +133,11 @@ if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
       driver="ati"
    fi
 
+   # replace i915 with intel
+   if [ "$driver" == "i915" ] ; then
+      driver="intel"
+   fi
+
    # check if some driver was found
    if [ "x$driver" != "x" ] ; then
       dri="$driver-dri"
