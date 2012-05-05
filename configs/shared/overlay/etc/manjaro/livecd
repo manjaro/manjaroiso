@@ -133,11 +133,6 @@ if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
       driver="ati"
    fi
 
-   # replace i915 with intel
-   if [ "$driver" == "i915" ] ; then
-      driver="intel"
-   fi
-
    # check if some driver was found
    if [ "x$driver" != "x" ] ; then
       dri="$driver-dri"
@@ -176,9 +171,6 @@ sed -i "s#manjaro.*#manjaro:\$1\$uYIrxnwJ\$a5wTa84YxxYmD.sKX/Lll1:14942:0:99999:
 
 #do_setuplightdm
 if [ -e "/usr/sbin/lightdm" ] ; then
-   getent group lightdm > /dev/null 2>&1 || groupadd -g 620 lightdm
-   getent passwd lightdm > /dev/null 2>&1 || useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /sbin/nologin lightdm
-   passwd -l lightdm > /dev/null
    mkdir -p /run/lightdm > /dev/null
    chown -R lightdm:lightdm /run/lightdm > /dev/null
    sed -i -e 's/^.*user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
