@@ -33,14 +33,18 @@ if [ -e "${swapdev}" ]; then
 	echo "${swapdev} swap swap defaults 0 0 #configured by manjaroiso" >>/etc/fstab
 fi
 
-#edit /etc/locale.conf
+#edit /etc/locale.conf & /etc/environment
 echo "LANG=${LOCALE}" > /etc/locale.conf
 echo "LC_COLLATE=C" >> /etc/locale.conf
+echo "LANG=${LOCALE}" >> /etc/environment
 
 #prepare_locale_gen
 for i in $(grep "^LANG" /etc/locale.conf | sed -e 's/.*=//g' -e's/\..*//g'); do
 	sed -i -e "s/^#$i/$i/g" /etc/locale.gen
 done
+if [ "$LOCALE" != "en_US.utf8" ]; then
+        sed -i -e "s/^#en_US/en_US/g" /etc/locale.gen
+fi
 /usr/sbin/locale-gen > /dev/null
 
 #set_timezone
