@@ -878,7 +878,7 @@ hd_config()
 
     #set_alsa
 	# amixer binary
-	local alsa_amixer="chroot ${DESTDIR} /usr/bin/amixer"
+	local alsa_amixer=`chroot ${DESTDIR} /usr/bin/amixer`
 
 	# enable all known (tm) outputs
 	$alsa_amixer -c 0 sset "Master" 70% unmute &>/dev/null
@@ -1075,7 +1075,7 @@ dogrub() {
     chroot_mount
 
     #Install grub2
-    echo "grub-install ${bootpart} --no-floppy"  > /tmp/grub.log 2>&1
+    echo "grub-install ${bootpart} --no-floppy --target i386-pc"  > /tmp/grub.log 2>&1
     chroot ${DESTDIR} grub-install ${bootpart} --no-floppy --target i386-pc >> /tmp/grub.log 2>&1
 
     # generate resume string for suspend to disk
