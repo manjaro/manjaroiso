@@ -1076,7 +1076,7 @@ dogrub() {
 
     #Install grub2
     echo "grub-install ${bootpart} --no-floppy"  > /tmp/grub.log 2>&1
-    chroot ${DESTDIR} grub-install ${bootpart} --no-floppy >> /tmp/grub.log 2>&1
+    chroot ${DESTDIR} grub-install ${bootpart} --no-floppy --target i386-pc >> /tmp/grub.log 2>&1
 
     # generate resume string for suspend to disk
     [ -z "${swap_partition}" -o "${swap_partition}" = "${_none_entry}" ] || sed -i -e "s,GRUB_CMDLINE_LINUX=.*,GRUB_CMDLINE_LINUX_DEFAULT=\"`cat $DESTDIR/etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT | cut -d'"' -f2` resume=/dev/disk/by-uuid/`blkid -s UUID -o value -p ${swap_partition}`\",g" $DESTDIR/etc/default/grub
