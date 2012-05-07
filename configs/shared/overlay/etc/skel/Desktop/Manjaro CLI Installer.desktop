@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Manjaro CLI Installer
+Comment=
+Exec=sudo setup
+Icon=cli-installer
+Path=
+Terminal=true
+StartupNotify=false

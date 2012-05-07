@@ -50,7 +50,9 @@ gedit
 gnome-mplayer
 firefox
 thunderbird
-
+wxgtk
+gimp
+abiword
 
 ## Language Support
 firefox-i18n-de
@@ -69,7 +71,6 @@ thunderbird-i18n-fr
 >dvd brasero
 >dvd soundconverter
 >dvd libreoffice
->dvd gimp
 >dvd gcalctool
 >dvd gmusicbrowser
 >dvd gnome-packagekit

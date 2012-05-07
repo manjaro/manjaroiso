@@ -133,6 +133,11 @@ if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
       driver="ati"
    fi
 
+   # replace i915 with intel
+   if [ "$driver" == "i915" ] ; then
+      driver="intel"
+   fi
+
    # check if some driver was found
    if [ "x$driver" != "x" ] ; then
       dri="$driver-dri"
@@ -183,6 +188,10 @@ fi
 #do_fix_perms
 chown root:root /etc/sudoers
 chmod 440 /etc/sudoers
+
+#fix_gnome_apps
+glib-compile-schemas /usr/share/glib-2.0/schemas
+update-desktop-database -q
 
 #do_lang_settings
  	# Determind which language we are using
