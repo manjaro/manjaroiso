@@ -78,6 +78,14 @@ if [ -e Packages-Xfce ] ; then
      fi
 fi
 
+if [ -e Packages-Kde ] ; then
+     if [ "${arch}" == "i686" ]; then
+     	kde_packages=$(sed "s|#.*||g" Packages-Kde | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     elif [ "${arch}" == "x86_64" ]; then
+     	kde_packages=$(sed "s|#.*||g" Packages-Kde | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     fi
+fi
+
 # Base installation (root-image)
 make_root_image() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
@@ -126,6 +134,22 @@ if [ -e Packages-Xfce ] ; then
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "xfce-image" -p "${xfce_packages}" create "${work_dir}"
               pacman -Qr "${work_dir}/xfce-image" > "${work_dir}/xfce-image/xfce-image-pkgs.txt"
               cp -Lr xfce-overlay/* ${work_dir}/xfce-image
+              : > ${work_dir}/build.${FUNCNAME}
+              echo -e "$_g >$_W done $_n"
+         fi
+     }
+fi
+
+if [ -e Packages-Kde ] ; then
+     # KDE installation (kde-image)
+     make_kde_image() {
+         if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
+              echo -e -n "$_r >$_W KDE installation (kde-image) \n $_n"
+              mkdir -p ${work_dir}/kde-image/var/lib/pacman
+              cp -r ${work_dir}/root-image/var/lib/pacman/local ${work_dir}/kde-image/var/lib/pacman
+              mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "kde-image" -p "${kde_packages}" create "${work_dir}"
+              pacman -Qr "${work_dir}/kde-image" > "${work_dir}/kde-image/kde-image-pkgs.txt"
+              cp -Lr kde-overlay/* ${work_dir}/kde-image
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi
@@ -252,6 +276,9 @@ fi
 # install DE(s)
 if [ -e Packages-Xfce ] ; then
     make_xfce_image
+fi
+if [ -e Packages-Kde ] ; then
+    make_kde_image
 fi
 # install common
 make_boot
