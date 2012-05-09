@@ -51,7 +51,7 @@ gnome-mplayer
 firefox
 thunderbird
 wxgtk
-gimp
+>i686 gimp
 
 ## Language Support
 firefox-i18n-de
