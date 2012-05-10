@@ -185,6 +185,12 @@ if [ -e "/usr/sbin/lightdm" ] ; then
    chmod +r /etc/lightdm/lightdm.conf
 fi
 
+#do_setupkdm
+if [ -e "/usr/share/config/kdm/kdmrc" ] ; then
+   sed -i -e 's/^.*AutoLoginUser=.*/AutoLoginUser=manjaro/' /usr/share/config/kdm/kdmrc
+   sed -i -e 's/^.*AutoLoginPass=.*/AutoLoginPass=manjaro/' /usr/share/config/kdm/kdmrc
+fi
+
 #do_fix_perms
 chown root:root /etc/sudoers
 chmod 440 /etc/sudoers
