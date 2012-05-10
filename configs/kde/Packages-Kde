@@ -1,10 +1,16 @@
 ### Manjaro Packages
 
 ## KDE (minimal base)
+kde-wallpapers
 kdelibs
 kdepimlibs
 kdebase-runtime
 kdebase-dolphin
+kdebase-katepart
+kdebase-kdepasswd
+kdebase-kdialog
+kdebase-keditbookmarks
+kdebase-kfind
 kdebase-konsole
 kdebase-workspace
 oxygen-icons
@@ -15,6 +21,7 @@ kdeadmin-kcron
 kdeadmin-ksystemlog
 kdemultimedia-kmix
 kdesdk-kate
+kdeadmin-system-config-printer-kde
 >dvd kdegraphics-kgamma
 >dvd kdegraphics-gwenview
 >dvd kdegraphics-ksnapshot
@@ -26,8 +33,19 @@ kdeplasma-addons-applets-icontasks
 kdeplasma-applets-networkmanagement
 
 ## Applications
+#rekonq
+#kdepim-kmail
+k3b
+apper
+digikam
+smplayer
+
+## GTK
 firefox
 thunderbird
+wxgtk
+oxygen-gtk2
+oxygen-gtk3
 
 ## Language Support
 firefox-i18n-de
