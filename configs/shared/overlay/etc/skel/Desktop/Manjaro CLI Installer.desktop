@@ -1,11 +1,21 @@
 
 [Desktop Entry]
-Version=1.0
-Type=Application
-Name=Manjaro CLI Installer
+Comment[de]=
 Comment=
 Exec=sudo setup
+GenericName[de]=
+GenericName=
 Icon=cli-installer
+MimeType=
+Name[de]=Manjaro CLI Installer
+Name=Manjaro CLI Installer
 Path=
-Terminal=true
 StartupNotify=false
+Terminal=true
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
