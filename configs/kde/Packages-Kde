@@ -1,0 +1,38 @@
+### Manjaro Packages
+
+## KDE (minimal base)
+kdelibs
+kdepimlibs
+kdebase-runtime
+kdebase-dolphin
+kdebase-konsole
+kdebase-workspace
+oxygen-icons
+
+## KDE (everything else)
+kdeadmin-kuser
+kdeadmin-kcron
+kdeadmin-ksystemlog
+kdemultimedia-kmix
+kdesdk-kate
+>dvd kdegraphics-kgamma
+>dvd kdegraphics-gwenview
+>dvd kdegraphics-ksnapshot
+>dvd kdegraphics-okular
+kdeutils-ark
+kdeutils-kgpg
+kdeutils-sweeper
+kdeplasma-addons-applets-icontasks
+kdeplasma-applets-networkmanagement
+
+## Applications
+firefox
+thunderbird
+
+## Language Support
+firefox-i18n-de
+firefox-i18n-fr
+thunderbird-i18n-de
+thunderbird-i18n-fr
+kde-l10n-de
+kde-l10n-fr
