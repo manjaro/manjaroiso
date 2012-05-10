@@ -133,7 +133,7 @@ if [ -e Packages-Xfce ] ; then
               cp -r ${work_dir}/root-image/var/lib/pacman/local ${work_dir}/xfce-image/var/lib/pacman
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "xfce-image" -p "${xfce_packages}" create "${work_dir}"
               pacman -Qr "${work_dir}/xfce-image" > "${work_dir}/xfce-image/xfce-image-pkgs.txt"
-              cp -Lr xfce-overlay/* ${work_dir}/xfce-image
+              cp -LPr xfce-overlay/* ${work_dir}/xfce-image
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi
@@ -149,7 +149,7 @@ if [ -e Packages-Kde ] ; then
               cp -r ${work_dir}/root-image/var/lib/pacman/local ${work_dir}/kde-image/var/lib/pacman
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "kde-image" -p "${kde_packages}" create "${work_dir}"
               pacman -Qr "${work_dir}/kde-image" > "${work_dir}/kde-image/kde-image-pkgs.txt"
-              cp -Lr kde-overlay/* ${work_dir}/kde-image
+              cp -LPr kde-overlay/* ${work_dir}/kde-image
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi
@@ -223,7 +223,7 @@ make_overlay() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
         echo -e -n "$_r >$_W Prepare overlay-image \n $_n"
         mkdir -p ${work_dir}/overlay/etc/pacman.d
-        cp -Lrd overlay/* ${work_dir}/overlay
+        cp -LPrd overlay/* ${work_dir}/overlay
         wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist
         sed -i "s/#Server/Server/g" ${work_dir}/overlay/etc/pacman.d/mirrorlist
         #chmod -R 755 ${work_dir}/overlay/home
