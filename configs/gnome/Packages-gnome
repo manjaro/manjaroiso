@@ -1,0 +1,94 @@
+### Manjaro Packages
+
+## GNOME (core)
+gnome-applets
+gnome-backgrounds
+gnome-control-center
+gnome-desktop
+gnome-icon-theme
+gnome-icon-theme-extras
+gnome-icon-theme-symbolic
+gnome-keyring
+gnome-panel
+gnome-screensaver
+gnome-session
+gnome-settings-daemon
+gnome-shell
+gnome-shell-extensions
+gnome-terminal
+gnome-themes-standard
+gnome-user-docs
+metacity
+mutter
+nautilus
+notification-daemon
+xdg-user-dirs-gtk
+yelp
+
+## GNOME (extra)
+#aisleriot
+baobab
+brasero
+cheese
+#dasher
+#ekiga
+#empathy
+eog
+#eog-plugins
+evince
+#evolution
+file-roller
+gcalctool
+gconf-editor
+dconf
+gdm
+gdm3setup
+gedit
+#gnome-color-manager
+#gnome-contacts
+gnome-disk-utility
+#gnome-documents
+#gnome-font-viewer
+#gnome-games
+#gnome-games-extra-data
+gnome-media
+#gnome-nettool
+gnome-power-manager
+gnome-screenshot
+gnome-system-log
+gnome-system-monitor
+gnome-tweak-tool
+#mousetweaks
+nautilus-sendto
+#orca
+#seahorse
+#sound-juicer
+#sushi
+#tomboy
+totem
+#tracker
+#vinagre
+#vino
+
+## Packagekit
+packagekit
+gnome-packagekit
+gnome-settings-daemon-updates
+
+## Theme
+zukitwo-themes
+zukitwo-colors
+
+## Cinnamon
+#cinnamon
+#muffin
+
+## Other Applications
+firefox
+thunderbird
+
+## Language Support
+firefox-i18n-de
+firefox-i18n-fr
+thunderbird-i18n-de
+thunderbird-i18n-fr
