@@ -78,6 +78,7 @@ gnome-settings-daemon-updates
 
 ## Theme
 faenza-icon-theme
+gtk-engine-unico
 #zukitwo-themes
 zukitwo-colors
 
