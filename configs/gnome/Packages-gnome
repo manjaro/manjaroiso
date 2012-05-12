@@ -2,7 +2,7 @@
 
 ## GNOME (core)
 gnome-applets
-gnome-backgrounds
+#gnome-backgrounds
 gnome-control-center
 gnome-desktop
 gnome-icon-theme
@@ -17,7 +17,7 @@ gnome-shell
 gnome-shell-extensions
 gnome-terminal
 gnome-themes-standard
-gnome-user-docs
+#gnome-user-docs
 metacity
 mutter
 nautilus
@@ -39,7 +39,7 @@ evince
 #evolution
 file-roller
 gcalctool
-gconf-editor
+#gconf-editor
 dconf
 gdm
 gdm3setup
@@ -55,11 +55,12 @@ gnome-media
 #gnome-nettool
 gnome-power-manager
 gnome-screenshot
-gnome-system-log
+#gnome-system-log
 gnome-system-monitor
 gnome-tweak-tool
 #mousetweaks
-nautilus-sendto
+#nautilus-sendto
+network-manager-applet
 #orca
 #seahorse
 #sound-juicer
@@ -76,7 +77,8 @@ gnome-packagekit
 gnome-settings-daemon-updates
 
 ## Theme
-zukitwo-themes
+faenza-icon-theme
+#zukitwo-themes
 zukitwo-colors
 
 ## Cinnamon

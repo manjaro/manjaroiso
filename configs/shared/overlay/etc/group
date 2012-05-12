@@ -36,3 +36,4 @@ rtkit:x:133:
 avahi:x:84:
 nbd:x:44:
 lightdm:x:620:
+gdm:x:120:
