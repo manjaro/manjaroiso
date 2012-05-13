@@ -808,6 +808,15 @@ installsystem() {
        sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
     fi
 
+    if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
+       unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/gnome-image.sqfs
+       echo $? > /tmp/.install-retcode
+       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
+       else echo -e "\n => Gnome-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
+       fi
+       sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
+    fi
+
     # finished, display scrollable output
     local _result=''
     if [ $(cat /tmp/.install-retcode) -ne 0 ]; then
