@@ -191,17 +191,24 @@ if [ -e "/usr/share/config/kdm/kdmrc" ] ; then
    sed -i -e 's/^.*AutoLoginPass=.*/AutoLoginPass=manjaro/' /usr/share/config/kdm/kdmrc
 fi
 
+#do_setupgdm
+if [ -e "/usr/sbin/gdm" ] ; then
+  getent group gdm >/dev/null 2>&1 || groupadd -g 120 gdm
+  getent passwd gdm > /dev/null 2>&1 || usr/sbin/useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /sbin/nologin gdm
+  passwd -l gdm > /dev/null
+  chown -R gdm:gdm /var/lib/gdm > /dev/null
+fi
+
 #do_fix_perms
 chown root:root /etc/sudoers
 chmod 440 /etc/sudoers
 
 #fix_gnome_apps
-if [ -e "/usr/bin/gnome-terminal"] ; then
-   gconfpkg --install gnome-terminal
-fi
+gconfpkg --install gnome-terminal
 glib-compile-schemas /usr/share/glib-2.0/schemas
 update-desktop-database -q
-
+gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+dconf update
 
 #do_lang_settings
  	# Determind which language we are using

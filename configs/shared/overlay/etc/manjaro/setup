@@ -1022,12 +1022,23 @@ hd_config()
        chroot ${DESTDIR} systemctl enable lightdm.service
     fi
 
-    #fix gnome apps
-    if [ -e "/usr/bin/gnome-terminal"] ; then
-       chroot ${DESTDIR} gconfpkg --install gnome-terminal
+    # setup gdm
+    if [ -e "/usr/sbin/gdm" ] ; then
+       chroot ${DESTDIR} getent group gdm >/dev/null 2>&1 || chroot ${DESTDIR} groupadd -g 120 gdm
+       chroot ${DESTDIR} getent passwd gdm > /dev/null 2>&1 || chroot ${DESTDIR} /usr/sbin/useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /sbin/nologin gdm
+       chroot ${DESTDIR} passwd -l gdm > /dev/null
+       chroot ${DESTDIR} chown -R gdm:gdm /var/lib/gdm > /dev/null
+       sed -i '/AutomaticLoginEnable=true/ d' ${DESTDIR}/etc/gdm/custom.conf
+       sed -i '/AutomaticLogin=manjaro/ d' ${DESTDIR}/etc/gdm/custom.conf
+       chroot ${DESTDIR} xhost +SI:localuser:gdm > /dev/null
     fi
+
+    #fix gnome apps
+    chroot ${DESTDIR} gconfpkg --install gnome-terminal
     chroot ${DESTDIR} glib-compile-schemas /usr/share/glib-2.0/schemas
     chroot ${DESTDIR} update-desktop-database -q
+    chroot ${DESTDIR} gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+    chroot ${DESTDIR} dconf update
 
     chroot_umount
 }
