@@ -217,6 +217,7 @@ dconf update &> /dev/null
 		
 		# Set German Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "de"\n        Option "XkbVariant" "nodeadkeys"#' /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=de/' /etc/vconsole.conf
 
 
 	elif [ "$(echo "${LOCALE}" | grep "fr_")" != "" ]; then
@@ -224,4 +225,5 @@ dconf update &> /dev/null
 		
 		# Set French Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "fr"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=fr/' /etc/vconsole.conf
 	fi
