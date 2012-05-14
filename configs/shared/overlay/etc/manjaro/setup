@@ -1025,6 +1025,9 @@ hd_config()
     #fix gnome apps
     chroot ${DESTDIR} glib-compile-schemas /usr/share/glib-2.0/schemas
     chroot ${DESTDIR} update-desktop-database -q
+    if [ -e "/usr/bin/gnome-terminal"] ; then
+       chroot ${DESTDIR} gconfpkg --install gnome-terminal
+    fi
 
     chroot_umount
 }

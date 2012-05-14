@@ -198,6 +198,10 @@ chmod 440 /etc/sudoers
 #fix_gnome_apps
 glib-compile-schemas /usr/share/glib-2.0/schemas
 update-desktop-database -q
+if [ -e "/usr/bin/gnome-terminal"] ; then
+   gconfpkg --install gnome-terminal
+fi
+
 
 #do_lang_settings
  	# Determind which language we are using
