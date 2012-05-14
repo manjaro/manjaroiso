@@ -30,5 +30,6 @@ uninstall:
 	rm -f $(DESTDIR)/lib/initcpio/install/miso_pxe_nbd
 	rm -f $(DESTDIR)/lib/initcpio/hooks/miso_loop_mnt
 	rm -f $(DESTDIR)/lib/initcpio/install/miso_loop_mnt
+	rm -f $(DESTDIR)/lib/initcpio/install/miso_kms
 	rm -rf $(DESTDIR)/usr/share/manjaroiso/
 	rm -rf $(DESTDIR)/usr/share/doc/manjaroiso/
