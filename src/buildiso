@@ -193,7 +193,8 @@ make_boot() {
         cp /lib/initcpio/hooks/miso* ${work_dir}/root-image/lib/initcpio/hooks
         cp /lib/initcpio/install/miso* ${work_dir}/root-image/lib/initcpio/install
         cp mkinitcpio.conf ${work_dir}/root-image/etc/mkinitcpio-manjaroiso.conf
-        chroot ${work_dir}/root-image /sbin/mkinitcpio -k $_kernver -c /etc/mkinitcpio-manjaroiso.conf -g /boot/manjaro.img
+        _kernver=`cat ${work_dir}/root-image/lib/modules/*-MANJARO/version`
+        chroot ${work_dir}/root-image /sbin/mkinitcpio -k ${_kernver} -c /etc/mkinitcpio-manjaroiso.conf -g /boot/manjaro.img
         umount ${work_dir}/root-image/proc ${work_dir}/root-image/sys ${work_dir}/root-image/dev
         rm ${work_dir}/root-image/lib/initcpio/hooks/miso*
         rm ${work_dir}/root-image/lib/initcpio/install/miso*
