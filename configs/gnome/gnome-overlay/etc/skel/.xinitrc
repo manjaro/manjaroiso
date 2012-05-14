@@ -6,4 +6,4 @@
 # Executed by startx (run your window manager from here)
 #
 
-exec gnome-session
+exec ck-launch-session gnome-session
