@@ -9,8 +9,7 @@ lxdm
 lxdm-manjaro-theme
 gtk-xfce-engine
 gtk-engines
-gtk-engine-murrine
-gtk-theme-bsm-simple
+ambiance-radiance-colors-xfce-lxde
 gnome-icon-theme
 faenza-icon-theme
 network-manager-applet
