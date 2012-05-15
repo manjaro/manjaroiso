@@ -1032,7 +1032,17 @@ hd_config()
        sed -i '/AutomaticLogin=manjaro/ d' ${DESTDIR}/etc/gdm/custom.conf
     fi
 
-    #fix gnome apps
+    # setup lxdm
+    if [ -e "/usr/sbin/lxdm" ] ; then
+       if [ -z "`chroot ${DESTDIR} getent group "lxdm" 2> /dev/null`" ]; then
+          chroot ${DESTDIR} groupadd lxdm
+          chown root:lxdm ${DESTDIR}/etc/lxdm/lxdm.conf
+       fi
+       chown -R root:lxdm ${DESTDIR}/var/lib/lxdm > /dev/null
+       chmod +r ${DESTDIR}/etc/lxdm/lxdm.conf
+    fi
+
+    # fix gnome apps
     chroot ${DESTDIR} gconfpkg --install gnome-terminal > /dev/null
     chroot ${DESTDIR} glib-compile-schemas /usr/share/glib-2.0/schemas > /dev/null
     chroot ${DESTDIR} update-desktop-database -q > /dev/null
