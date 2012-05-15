@@ -176,6 +176,7 @@ flashplugin
 
 ## Network
 networkmanager
+networkmanager-dispatcher-ntpd-systemd
 usb_modeswitch
 modemmanager
 nbd
