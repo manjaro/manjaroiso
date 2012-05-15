@@ -184,6 +184,7 @@ fi
 make_boot() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
 	echo -e -n "$_r >$_W Prepare ${install_dir}/boot/ \n $_n"
+        umount ${work_dir}/root-image/proc ${work_dir}/root-image/sys ${work_dir}/root-image/dev &> /dev/null
 	mkdir -p ${work_dir}/iso/${install_dir}/boot/${arch}
         cp ${work_dir}/root-image/boot/memtest86+/memtest.bin ${work_dir}/iso/${install_dir}/boot/${arch}/memtest
 	cp ${work_dir}/root-image/boot/vmlinuz* ${work_dir}/iso/${install_dir}/boot/${arch}/manjaroiso
