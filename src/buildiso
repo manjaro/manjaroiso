@@ -113,21 +113,25 @@ if [ -e Packages-Xorg ] ; then
      # Prepare pkgs-image
      make_pkgs_image() {
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
-             echo -e -n "$_r >$_W Prepare pkgs-image \n $_n"
-             mkdir -p ${work_dir}/pkgs-image/opt/manjaro/pkgs
-             mkdir -p ${work_dir}/pkgs-image/var/lib/pacman
-             cp -r ${work_dir}/root-image/var/lib/pacman/local ${work_dir}/pkgs-image/var/lib/pacman
-             pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/manjaro/pkgs -Syw ${xorg_packages} --noconfirm
-             if [ "${xorg_packages_cleanup}" != "" ]; then
-                for xorg_clean in ${xorg_packages_cleanup};
-                   do  rm ${work_dir}/pkgs-image/opt/manjaro/pkgs/${xorg_clean}
-                   done
-             fi
-             cp pacman-gfx.conf ${work_dir}/pkgs-image/opt/manjaro
-             rm -r ${work_dir}/pkgs-image/var
-             repo-add ${work_dir}/pkgs-image/opt/manjaro/pkgs/manjaro-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/manjaro/pkgs/*pkg*z
-             : > ${work_dir}/build.${FUNCNAME}
-             echo -e "$_g >$_W done $_n"
+              echo -e -n "$_r >$_W Prepare pkgs-image \n $_n"
+              mkdir -p ${work_dir}/pkgs-image/opt/manjaro/pkgs
+              if [ "`mount -l | grep ${work_dir}/pkgs-image`" != "" ]; then
+                 umount ${work_dir}/pkgs-image
+              fi
+              mount -t aufs -o br=${work_dir}/pkgs-image:${work_dir}/root-image=ro none ${work_dir}/pkgs-image
+              pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/manjaro/pkgs -Syw ${xorg_packages} --noconfirm
+              if [ "${xorg_packages_cleanup}" != "" ]; then
+                 for xorg_clean in ${xorg_packages_cleanup};
+                    do  rm ${work_dir}/pkgs-image/opt/manjaro/pkgs/${xorg_clean}
+                    done
+              fi
+              cp pacman-gfx.conf ${work_dir}/pkgs-image/opt/manjaro
+              rm -r ${work_dir}/pkgs-image/var
+              repo-add ${work_dir}/pkgs-image/opt/manjaro/pkgs/manjaro-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/manjaro/pkgs/*pkg*z
+              umount ${work_dir}/pkgs-image
+              rm -R ${work_dir}/pkgs-image/.wh*
+              : > ${work_dir}/build.${FUNCNAME}
+              echo -e "$_g >$_W done $_n"
          fi
      }
 fi
@@ -137,11 +141,16 @@ if [ -e Packages-Xfce ] ; then
      make_xfce_image() {
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
               echo -e -n "$_r >$_W XFCE installation (xfce-image) \n $_n"
-              mkdir -p ${work_dir}/xfce-image/var/lib/pacman
-              cp -r ${work_dir}/root-image/var/lib/pacman/local ${work_dir}/xfce-image/var/lib/pacman
+              mkdir -p ${work_dir}/xfce-image
+              if [ "`mount -l | grep ${work_dir}/xfce-image`" != "" ]; then
+                 umount ${work_dir}/xfce-image
+              fi
+              mount -t aufs -o br=${work_dir}/xfce-image:${work_dir}/root-image=ro none ${work_dir}/xfce-image
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "xfce-image" -p "${xfce_packages}" create "${work_dir}"
               pacman -Qr "${work_dir}/xfce-image" > "${work_dir}/xfce-image/xfce-image-pkgs.txt"
               cp -LPr xfce-overlay/* ${work_dir}/xfce-image
+              umount ${work_dir}/xfce-image
+              rm -R ${work_dir}/xfce-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi
@@ -153,11 +162,16 @@ if [ -e Packages-Kde ] ; then
      make_kde_image() {
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
               echo -e -n "$_r >$_W KDE installation (kde-image) \n $_n"
-              mkdir -p ${work_dir}/kde-image/var/lib/pacman
-              cp -r ${work_dir}/root-image/var/lib/pacman/local ${work_dir}/kde-image/var/lib/pacman
+              mkdir -p ${work_dir}/kde-image
+              if [ "`mount -l | grep ${work_dir}/kde-image`" != "" ]; then
+                 umount ${work_dir}/kde-image
+              fi
+              mount -t aufs -o br=${work_dir}/kde-image:${work_dir}/root-image=ro none ${work_dir}/kde-image
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "kde-image" -p "${kde_packages}" create "${work_dir}"
               pacman -Qr "${work_dir}/kde-image" > "${work_dir}/kde-image/kde-image-pkgs.txt"
               cp -LPr kde-overlay/* ${work_dir}/kde-image
+              umount ${work_dir}/kde-image
+              rm -R ${work_dir}/kde-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi
@@ -169,11 +183,16 @@ if [ -e Packages-gnome ] ; then
      make_gnome_image() {
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
               echo -e -n "$_r >$_W GNOME installation (gnome-image) \n $_n"
-              mkdir -p ${work_dir}/gnome-image/var/lib/pacman
-              cp -r ${work_dir}/root-image/var/lib/pacman/local ${work_dir}/gnome-image/var/lib/pacman
+              mkdir -p ${work_dir}/gnome-image
+              if [ "`mount -l | grep ${work_dir}/gnome-image`" != "" ]; then
+                 umount ${work_dir}/gnome-image
+              fi
+              mount -t aufs -o br=${work_dir}/gnome-image:${work_dir}/root-image=ro none ${work_dir}/gnome-image
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "gnome-image" -p "${gnome_packages}" create "${work_dir}"
               pacman -Qr "${work_dir}/gnome-image" > "${work_dir}/gnome-image/gnome-image-pkgs.txt"
               cp -LPr gnome-overlay/* ${work_dir}/gnome-image
+              umount ${work_dir}/gnome-image
+              rm -R ${work_dir}/gnome-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi
@@ -184,23 +203,25 @@ fi
 make_boot() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
 	echo -e -n "$_r >$_W Prepare ${install_dir}/boot/ \n $_n"
-        umount ${work_dir}/root-image/proc ${work_dir}/root-image/sys ${work_dir}/root-image/dev &> /dev/null
 	mkdir -p ${work_dir}/iso/${install_dir}/boot/${arch}
         cp ${work_dir}/root-image/boot/memtest86+/memtest.bin ${work_dir}/iso/${install_dir}/boot/${arch}/memtest
 	cp ${work_dir}/root-image/boot/vmlinuz* ${work_dir}/iso/${install_dir}/boot/${arch}/manjaroiso
-        mount -t proc none ${work_dir}/root-image/proc
-        mount -t sysfs none ${work_dir}/root-image/sys
-        mount -o bind /dev ${work_dir}/root-image/dev
-        cp /lib/initcpio/hooks/miso* ${work_dir}/root-image/lib/initcpio/hooks
-        cp /lib/initcpio/install/miso* ${work_dir}/root-image/lib/initcpio/install
-        cp mkinitcpio.conf ${work_dir}/root-image/etc/mkinitcpio-manjaroiso.conf
-        _kernver=`cat ${work_dir}/root-image/lib/modules/*-MANJARO/version`
-        chroot ${work_dir}/root-image /sbin/mkinitcpio -k ${_kernver} -c /etc/mkinitcpio-manjaroiso.conf -g /boot/manjaro.img
-        umount ${work_dir}/root-image/proc ${work_dir}/root-image/sys ${work_dir}/root-image/dev
-        rm ${work_dir}/root-image/lib/initcpio/hooks/miso*
-        rm ${work_dir}/root-image/lib/initcpio/install/miso*
-        rm ${work_dir}/root-image/etc/mkinitcpio-manjaroiso.conf
-        mv ${work_dir}/root-image/boot/manjaro.img ${work_dir}/iso/${install_dir}/boot/${arch}/manjaro.img
+        mkdir -p ${work_dir}/boot-image
+        if [ "`mount -l | grep ${work_dir}/boot-image`" != "" ]; then
+           umount ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
+        fi
+        mount -t aufs -o br=${work_dir}/boot-image:${work_dir}/root-image=ro none ${work_dir}/boot-image
+        mount -t proc none ${work_dir}/boot-image/proc
+        mount -t sysfs none ${work_dir}/boot-image/sys
+        mount -o bind /dev ${work_dir}/boot-image/dev
+        cp /lib/initcpio/hooks/miso* ${work_dir}/boot-image/lib/initcpio/hooks
+        cp /lib/initcpio/install/miso* ${work_dir}/boot-image/lib/initcpio/install
+        cp mkinitcpio.conf ${work_dir}/boot-image/etc/mkinitcpio-manjaroiso.conf
+        _kernver=`cat ${work_dir}/boot-image/lib/modules/*-MANJARO/version`
+        chroot ${work_dir}/boot-image /sbin/mkinitcpio -k ${_kernver} -c /etc/mkinitcpio-manjaroiso.conf -g /boot/manjaro.img
+        mv ${work_dir}/boot-image/boot/manjaro.img ${work_dir}/iso/${install_dir}/boot/${arch}/manjaro.img
+        umount ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
+        rm -R ${work_dir}/boot-image
 	: > ${work_dir}/build.${FUNCNAME}
 	echo -e "$_g >$_W done $_n"
     fi
