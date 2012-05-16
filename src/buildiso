@@ -22,6 +22,9 @@ fi
 . options.conf
 get_colors
 
+de=""
+
+
 # do UID checking here so someone can at least get usage instructions
 if [ "$EUID" != "0" ]; then
     echo "error: This script must be run as root."
