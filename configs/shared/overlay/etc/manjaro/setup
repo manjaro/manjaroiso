@@ -1012,9 +1012,6 @@ hd_config()
 
     # setup lightdm
     if [ -e "/usr/sbin/lightdm" ] ; then
-       chroot ${DESTDIR} getent group lightdm > /dev/null 2>&1 || chroot ${DESTDIR} groupadd -g 620 lightdm
-       chroot ${DESTDIR} getent passwd lightdm > /dev/null 2>&1 || chroot ${DESTDIR} useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /sbin/nologin lightdm
-       chroot ${DESTDIR} passwd -l lightdm > /dev/null
        mkdir -p ${DESTDIR}/run/lightdm > /dev/null
        chown -R lightdm:lightdm ${DESTDIR}/run/lightdm > /dev/null
        sed -i -e 's/^.*user-session=.*/user-session=xfce/' ${DESTDIR}/etc/lightdm/lightdm.conf
@@ -1024,9 +1021,6 @@ hd_config()
 
     # setup gdm
     if [ -e "/usr/sbin/gdm" ] ; then
-       chroot ${DESTDIR} getent group gdm >/dev/null 2>&1 || chroot ${DESTDIR} groupadd -g 120 gdm
-       chroot ${DESTDIR} getent passwd gdm > /dev/null 2>&1 || chroot ${DESTDIR} /usr/sbin/useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /sbin/nologin gdm
-       chroot ${DESTDIR} passwd -l gdm > /dev/null
        chroot ${DESTDIR} chown -R gdm:gdm /var/lib/gdm > /dev/null
        sed -i '/AutomaticLoginEnable=true/ d' ${DESTDIR}/etc/gdm/custom.conf
        sed -i '/AutomaticLogin=manjaro/ d' ${DESTDIR}/etc/gdm/custom.conf
@@ -1034,16 +1028,15 @@ hd_config()
 
     # setup lxdm
     if [ -e "/usr/sbin/lxdm" ] ; then
-       if [ -z "`chroot ${DESTDIR} getent group "lxdm" 2> /dev/null`" ]; then
-          chroot ${DESTDIR} groupadd lxdm
-          chown root:lxdm ${DESTDIR}/etc/lxdm/lxdm.conf
-       fi
+       chown root:lxdm ${DESTDIR}/etc/lxdm/lxdm.conf > /dev/null
        chown -R root:lxdm ${DESTDIR}/var/lib/lxdm > /dev/null
        chmod +r ${DESTDIR}/etc/lxdm/lxdm.conf
     fi
 
     # fix gnome apps
-    chroot ${DESTDIR} setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon > /dev/null
+    if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
+       chroot ${DESTDIR} setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon > /dev/null
+    fi
 
     chroot_umount
 }
