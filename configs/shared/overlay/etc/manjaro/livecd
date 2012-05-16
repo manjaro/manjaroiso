@@ -215,11 +215,7 @@ chown root:root /etc/sudoers
 chmod 440 /etc/sudoers
 
 #fix_gnome_apps
-gconfpkg --install gnome-terminal &> /dev/null
-glib-compile-schemas /usr/share/glib-2.0/schemas &> /dev/null
-update-desktop-database -q &> /dev/null
-gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor &> /dev/null
-dconf update &> /dev/null
+setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &> /dev/null
 
 #do_lang_settings
  	# Determind which language we are using

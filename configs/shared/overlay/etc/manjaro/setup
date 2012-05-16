@@ -1043,11 +1043,7 @@ hd_config()
     fi
 
     # fix gnome apps
-    chroot ${DESTDIR} gconfpkg --install gnome-terminal > /dev/null
-    chroot ${DESTDIR} glib-compile-schemas /usr/share/glib-2.0/schemas > /dev/null
-    chroot ${DESTDIR} update-desktop-database -q > /dev/null
-    chroot ${DESTDIR} gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor > /dev/null
-    chroot ${DESTDIR} dconf update > /dev/null
+    chroot ${DESTDIR} setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon > /dev/null
 
     chroot_umount
 }
