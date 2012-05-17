@@ -41,8 +41,8 @@ file-roller
 gcalctool
 #gconf-editor
 dconf
-gdm
-gdm3setup
+lxdm
+lxdm-manjaro-theme
 gedit
 #gnome-color-manager
 #gnome-contacts
