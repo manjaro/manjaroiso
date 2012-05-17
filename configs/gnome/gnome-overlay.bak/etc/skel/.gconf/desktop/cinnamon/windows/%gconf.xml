@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="theme" mtime="1331990020" type="string">
+		<stringvalue>Zukitwo</stringvalue>
+	</entry>
+	<entry name="button_layout" mtime="1332064858" type="string">
+		<stringvalue>:minimize,maximize,close</stringvalue>
+	</entry>
+</gconf>
