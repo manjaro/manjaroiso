@@ -28,14 +28,14 @@ yelp
 ## GNOME (extra)
 #aisleriot
 baobab
-brasero
-cheese
+>i686 brasero
+>i686 cheese
 #dasher
 #ekiga
 #empathy
 eog
 #eog-plugins
-evince
+>i686 evince
 #evolution
 file-roller
 gcalctool
@@ -66,7 +66,7 @@ network-manager-applet
 #sound-juicer
 #sushi
 #tomboy
-totem
+>i686 totem
 #tracker
 #vinagre
 #vino

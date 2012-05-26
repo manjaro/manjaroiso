@@ -1,5 +1,5 @@
 #!/bin/bash
-  TITLE="Manjaro Linux CLI Installation (v0.1)"
+  TITLE="Manjaro Linux CLI Installation (v0.1.2a)"
   PKG_OVERLAY="/opt/manjaro/pkgs"
   manjaro_version="2012.05"
   code_name="Manjaro"
@@ -1105,8 +1105,8 @@ dogrub() {
     chroot_mount
 
     #Install grub2
-    echo "grub-install ${bootpart} --no-floppy --target i386-pc"  > /tmp/grub.log 2>&1
-    chroot ${DESTDIR} grub-install ${bootpart} --no-floppy --target i386-pc >> /tmp/grub.log 2>&1
+    echo "grub-install --directory=/usr/lib/grub/i386-pc --target=i386-pc --recheck --debug ${bootpart}"  > /tmp/grub.log 2>&1
+    chroot ${DESTDIR} grub-install --directory=/usr/lib/grub/i386-pc --target=i386-pc --recheck --debug ${bootpart} >> /tmp/grub.log 2>&1
 
     # generate resume string for suspend to disk
     [ -z "${swap_partition}" -o "${swap_partition}" = "${_none_entry}" ] || sed -i -e "s,GRUB_CMDLINE_LINUX=.*,GRUB_CMDLINE_LINUX_DEFAULT=\"`cat $DESTDIR/etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT | cut -d'"' -f2` resume=/dev/disk/by-uuid/`blkid -s UUID -o value -p ${swap_partition}`\",g" $DESTDIR/etc/default/grub
@@ -1336,6 +1336,26 @@ configure_system()
                    echo -n '=> ' && read
                   done  
                 chroot ${DESTDIR} useradd -m -p "" -g users -G $addgroups $REPLY
+                user_name=$REPLY
+                echo "Should user \"${user_name}\" get sudo rights (Y/n)? "
+                while true ; do
+                    read YN
+                    case $YN in
+                        [yY]* )
+                          echo "Adding user \"${user_name}\" to /etc/sudoers file..."
+                          echo "${user_name}     ALL=(ALL) ALL" >> ${DESTDIR}/etc/sudoers
+                	  # ensure correct permissions
+                          chmod 0440 ${DESTDIR}/etc/sudoers  && break
+	                ;;
+                        [nN]* )
+                          echo "User \"${user_name}\" won't have sudo rights..."
+                          break
+                        ;;
+                	* )
+                          echo "Enter (y)es or (n)o"
+                        ;;
+                    esac
+                done
                 echo "$_givepass"
                 chroot ${DESTDIR} passwd $REPLY && break
             done
@@ -1450,6 +1470,8 @@ mainmenu()
             echo ""
             echo "${_installationfinished}"
             echo ""
+            mkdir -p ${DESTDIR}/var/log/manjaroiso
+            cp /tmp/*.log ${DESTDIR}/var/log/manjaroiso
             _umountall &>/dev/null ; sleep 1 ; exit 0
         ;;
         *)
