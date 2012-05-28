@@ -6,20 +6,20 @@ gnome-applets
 gnome-control-center
 gnome-desktop
 gnome-icon-theme
-gnome-icon-theme-extras
+#gnome-icon-theme-extras
 gnome-icon-theme-symbolic
 gnome-keyring
 gnome-panel
 gnome-screensaver
 gnome-session
 gnome-settings-daemon
-gnome-shell
-gnome-shell-extensions
+#gnome-shell
+#gnome-shell-extensions
 gnome-terminal
 gnome-themes-standard
 #gnome-user-docs
 metacity
-mutter
+#mutter
 nautilus
 notification-daemon
 xdg-user-dirs-gtk
@@ -27,22 +27,22 @@ yelp
 
 ## GNOME (extra)
 #aisleriot
-baobab
->i686 brasero
->i686 cheese
+>dvd baobab
+>dvd brasero
+>dvd cheese
 #dasher
 #ekiga
 #empathy
 eog
 #eog-plugins
->i686 evince
+>dvd evince
 #evolution
 file-roller
 gcalctool
 #gconf-editor
 dconf
-lxdm
-lxdm-manjaro-theme
+lightdm
+lightdm-gtk-greeter
 gedit
 #gnome-color-manager
 #gnome-contacts
@@ -78,13 +78,12 @@ gnome-settings-daemon-updates
 
 ## Theme
 faenza-icon-theme
-gtk-engine-unico
 #zukitwo-themes
 zukitwo-colors
 
 ## Cinnamon
-#cinnamon
-#muffin
+cinnamon
+muffin
 
 ## Other Applications
 firefox

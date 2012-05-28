@@ -1,6 +1,6 @@
 [Unit]
 Description=Run livecd script
-Before=systemd-user-sessions.service
+Before=systemd-user-sessions.service plymouth-transition.service
 
 [Service]
 Type=oneshot
