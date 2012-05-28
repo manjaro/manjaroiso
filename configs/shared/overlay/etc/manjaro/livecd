@@ -178,7 +178,7 @@ sed -i "s#manjaro.*#manjaro:\$1\$uYIrxnwJ\$a5wTa84YxxYmD.sKX/Lll1:14942:0:99999:
 if [ -e "/usr/sbin/lightdm" ] ; then
    mkdir -p /run/lightdm > /dev/null
    chown -R lightdm:lightdm /run/lightdm > /dev/null
-   sed -i -e 's/^.*user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
+   #sed -i -e 's/^.*user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*autologin-user=.*/autologin-user=manjaro/' /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*pam-service=.*/pam-service=lightdm-autologin/' /etc/lightdm/lightdm.conf
