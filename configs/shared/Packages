@@ -64,8 +64,8 @@ base-devel
 
 ## Extra Base Packages
 qt
-#mhwd
-hwinfo
+mhwd
+mhwd-db
 xdg-utils
 xdg-user-dirs
 pkg-config

@@ -954,52 +954,13 @@ hd_config()
 
     # Install xf86-video driver
 
+    local USENONFREE="$(kernel_cmdline nonfree no)"
+
     if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
-       driver=`hwinfo --gfxcard | grep -m1 'Module:' | cut -d: -f2 | sed s'/ //'g`
-
-       # replace nv with nouveau
-       if [ "$driver" == "nv" ] ; then
-          driver="nouveau"
-       fi
-
-       # replace radeon with ati
-       if [ "$driver" == "radeon" ] ; then
-          driver="ati"
-       fi
-
-       # replace i915 with intel
-       if [ "$driver" == "i915" ] ; then
-          driver="intel"
-       fi
-
-       # check if some driver was found
-       if [ "x$driver" != "x" ] ; then
-          dri="$driver-dri"
-          if [ "`uname -m`" == "x86_64" ] ; then
-             dri64="lib32-$driver-dri"
-          else
-             dri64=""
-          fi
-          driver="xf86-video-$driver"
-       fi
-
-       # check if driver exists
-       if [ "`ls /opt/manjaro/pkgs/$driver* | grep "ls:"`" != "" ] ; then
-          driver=""
-       fi
-
-       # check if dri exists
-       if [ "`ls /opt/manjaro/pkgs/$dri* | grep "ls:"`" != "" ] ; then
-          dri=""
-          dri64=""
-       fi
-
-       echo "DEBUG: (hwinfo) - dri: $dri - dri64: $dri64 - driver: $driver" > /var/log/hwinfo-gfx.log
-
        if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
-          pacman --config "/opt/manjaro/pacman-gfx.conf" -Sy $driver $dri $dri64 xf86-video-vesa --noconfirm --root ${DESTDIR} &> /dev/null
+           /usr/bin/mhwd --auto pci nonfree 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf" --pmroot ${DESTDIR}
        else
-          pacman --config "/opt/manjaro/pacman-gfx.conf" -Sy $driver $dri $dri64 xf86-video-vesa --noconfirm --root ${DESTDIR} &> /dev/null
+           /usr/bin/mhwd --auto pci free 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf" --pmroot ${DESTDIR}
        fi
     fi
 
