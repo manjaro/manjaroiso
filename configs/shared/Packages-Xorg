@@ -11,6 +11,9 @@ nouveau-dri
 ## Proprietary Drivers
 nvidia-utils
 linux32-nvidia
+>x86_64 lib32-gcc-libs
+>x86_64 lib32-libxvmc
+>x86_64 lib32-zlib 
 >x86_64 lib32-nvidia-utils
 
 ## Xorg x86_64 Packages
