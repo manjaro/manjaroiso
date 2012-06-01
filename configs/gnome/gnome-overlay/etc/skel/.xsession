@@ -1,1 +1,0 @@
-../../../overlay/etc/skel/.xsession

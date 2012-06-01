@@ -151,7 +151,8 @@ if [ -e Packages-Xfce ] ; then
               mount -t aufs -o br=${work_dir}/xfce-image:${work_dir}/root-image=ro none ${work_dir}/xfce-image
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "xfce-image" -p "${xfce_packages}" create "${work_dir}"
               pacman -Qr "${work_dir}/xfce-image" > "${work_dir}/xfce-image/xfce-image-pkgs.txt"
-              cp -r xfce-overlay/* ${work_dir}/xfce-image
+              cp -LPr xfce-overlay/* ${work_dir}/xfce-image
+              cp -LPr overlay/* ${work_dir}/xfce-image
               umount ${work_dir}/xfce-image
               rm -R ${work_dir}/xfce-image/.wh*
               de="-xfce"
@@ -173,7 +174,8 @@ if [ -e Packages-Kde ] ; then
               mount -t aufs -o br=${work_dir}/kde-image:${work_dir}/root-image=ro none ${work_dir}/kde-image
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "kde-image" -p "${kde_packages}" create "${work_dir}"
               pacman -Qr "${work_dir}/kde-image" > "${work_dir}/kde-image/kde-image-pkgs.txt"
-              cp -r kde-overlay/* ${work_dir}/kde-image
+              cp -LPr kde-overlay/* ${work_dir}/kde-image
+              cp -LPr overlay/* ${work_dir}/kde-image
               umount ${work_dir}/kde-image
               rm -R ${work_dir}/kde-image/.wh*
               de="-kde"
@@ -195,7 +197,8 @@ if [ -e Packages-gnome ] ; then
               mount -t aufs -o br=${work_dir}/gnome-image:${work_dir}/root-image=ro none ${work_dir}/gnome-image
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "gnome-image" -p "${gnome_packages}" create "${work_dir}"
               pacman -Qr "${work_dir}/gnome-image" > "${work_dir}/gnome-image/gnome-image-pkgs.txt"
-              cp -r gnome-overlay/* ${work_dir}/gnome-image
+              cp -LPr gnome-overlay/* ${work_dir}/gnome-image
+              cp -LPr overlay/* ${work_dir}/gnome-image
               umount ${work_dir}/gnome-image
               rm -R ${work_dir}/gnome-image/.wh*
               de="-gnome"
@@ -276,7 +279,7 @@ make_overlay() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
         echo -e -n "$_r >$_W Prepare overlay-image \n $_n"
         mkdir -p ${work_dir}/overlay/etc/pacman.d
-        cp -LPrd overlay/* ${work_dir}/overlay
+        cp -LPrd overlay-livecd/* ${work_dir}/overlay
         wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist
         sed -i "s/#Server/Server/g" ${work_dir}/overlay/etc/pacman.d/mirrorlist
         #chmod -R 755 ${work_dir}/overlay/home
