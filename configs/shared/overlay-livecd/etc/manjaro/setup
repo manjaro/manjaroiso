@@ -954,8 +954,6 @@ hd_config()
 
     # Install xf86-video driver
 
-    local USENONFREE="$(kernel_cmdline nonfree no)"
-
     if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
        if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
            /usr/bin/mhwd --auto pci nonfree 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf" --pmroot ${DESTDIR}
@@ -1461,6 +1459,7 @@ TIMEZONE="$(kernel_cmdline timezone UTC)"
 KEYMAP="$(kernel_cmdline vconsole.keymap us)"
 CONSOLEFONT="$(kernel_cmdline vconsole.font)"
 CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
+USENONFREE="$(kernel_cmdline nonfree no)"
 
 DIALOG --msgbox "${_instwelcomemessage}" 12 65
 
