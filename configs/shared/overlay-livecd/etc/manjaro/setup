@@ -108,6 +108,18 @@
   _runninginitcpiotitle="Building initramfs image..."
   _mkinitcpiofailerror="ERROR - You will have to run mkinitcpio by hand, either way the system may not boot."
 
+  _localegen="Generating locales..."
+  _setupalsa="Configuring ALSA..."
+  _installvideodriver="MHWD is installing your video driver(s)..."
+  _setupsystemd="Configuring SystemD..."
+  _setupdisplaymanager="Configuring the display manager..."
+  _fixgnomeapps="Fixing gnome apps..."
+
+  _unsquash_dialog_title="Installing system files..."
+  _unsquash_dialog_info1="Unsquashing archive:"
+  _unsquash_dialog_info2="\nPlease wait..."
+  _unsquasherror_title="Unsquashing failed..."
+  
   _definerootpass="Change root password"
   _defineuser="Setup user account(s)"
   _defineuserpass="Change user password"
@@ -129,11 +141,10 @@
   _xorgkblayouttext="Xorg keyboard layout"
   _installabootloader="Install a bootloader?"
   _installgrubbl='Install GRUB2 (needed to boot)'
-  _installgrubdl="Grub2 will be installed with followed settings:\n -> Boot partition: ${bootpart}\n -> Target partition (MBR): ${targetpart}\nIs this correct? If not answer with \"No\" to change your target partition, else continue with \"Yes\"."
   _installnobl="If you know what you're doing."
   _none_label="None"
 
-  _mainmenuhelp="Use ↓ and ↑ to choose an entry, enter to launch it."
+  _mainmenuhelp="Use ↓ and ↑ to choose an entry, enter to launch it." 
   _datetimetext="Set date and time"
   _preparediskstext="Disk(s) preparation"
   _installsystemtext="Install system"
@@ -784,7 +795,10 @@ installsystem() {
     DIALOG --msgbox "${_installationwillstart}" 0 0
     clear
     mkdir -p ${DESTDIR}
-    unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/root-image.sqfs
+    #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/root-image.sqfs
+    UNSQUASH_TARGET=${DESTDIR}
+    SQF_FILE=root-image.sqfs
+    run_unsquashfs
     echo $? > /tmp/.install-retcode
     if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
     else echo -e "\n => Root-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
@@ -792,7 +806,10 @@ installsystem() {
     sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
 
     if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
-       unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/xfce-image.sqfs
+       #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/xfce-image.sqfs
+       UNSQUASH_TARGET=${DESTDIR}
+       SQF_FILE=xfce-image.sqfs
+       run_unsquashfs
        echo $? > /tmp/.install-retcode
        if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
        else echo -e "\n => XFCE-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
@@ -801,7 +818,10 @@ installsystem() {
     fi
 
     if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
-       unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/kde-image.sqfs
+       #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/kde-image.sqfs
+       UNSQUASH_TARGET=${DESTDIR}
+       SQF_FILE=kde-image.sqfs
+       run_unsquashfs
        echo $? > /tmp/.install-retcode
        if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
        else echo -e "\n => KDE-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
@@ -810,7 +830,10 @@ installsystem() {
     fi
 
     if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
-       unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/gnome-image.sqfs
+       #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/gnome-image.sqfs
+       UNSQUASH_TARGET=${DESTDIR}
+       SQF_FILE=gnome-image.sqfs
+       run_unsquashfs
        echo $? > /tmp/.install-retcode
        if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
        else echo -e "\n => Gnome-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
@@ -828,7 +851,7 @@ installsystem() {
     rm /tmp/.install-retcode
 
     DIALOG --title "$_result" --exit-label "${_continue_label}" \
-        --textbox "/tmp/unsquasherror.log" 18 83 || return 1
+        --textbox "/tmp/unsquasherror.log" 18 60 || return 1
 
     # ensure the disk is synced
     sync
@@ -838,6 +861,7 @@ installsystem() {
     # automagic time!
     # any automatic configuration should go here
     DIALOG --infobox "${_configuringsystem}" 6 40
+    sleep 3
 
     hd_config
     auto_fstab
@@ -846,56 +870,56 @@ installsystem() {
 
 hd_config()
 {
-    clear
-    echo "initialize special directories"
-    rm -v -rf ${DESTDIR}/sys ${DESTDIR}/proc ${DESTDIR}/dev
-    mkdir -p -v -m 1777 ${DESTDIR}/tmp
-    mkdir -p -v -m 1777 ${DESTDIR}/var/tmp
-    mkdir -p -v ${DESTDIR}/var/log/old
-    mkdir -p -v ${DESTDIR}/var/lock/sane
-    mkdir -p -v ${DESTDIR}/var/cache/pacman/pkg
-    mkdir -p -v ${DESTDIR}/boot/grub
-    mkdir -p -v ${DESTDIR}/usr/lib/locale
-    mkdir -p -v ${DESTDIR}/usr/share/icons/default
-    mkdir -p -v ${DESTDIR}/media
-    mkdir -p -v ${DESTDIR}/mnt
-    mkdir -p -v ${DESTDIR}/sys
-    mkdir -p -v ${DESTDIR}/proc
+    # initialize special directories
+    rm -v -rf ${DESTDIR}/sys ${DESTDIR}/proc ${DESTDIR}/dev &>/dev/null
+    mkdir -p -v -m 1777 ${DESTDIR}/tmp &>/dev/null
+    mkdir -p -v -m 1777 ${DESTDIR}/var/tmp &>/dev/null
+    mkdir -p -v ${DESTDIR}/var/log/old &>/dev/null
+    mkdir -p -v ${DESTDIR}/var/lock/sane &>/dev/null
+    mkdir -p -v ${DESTDIR}/var/cache/pacman/pkg &>/dev/null
+    mkdir -p -v ${DESTDIR}/boot/grub &>/dev/null
+    mkdir -p -v ${DESTDIR}/usr/lib/locale &>/dev/null
+    mkdir -p -v ${DESTDIR}/usr/share/icons/default &>/dev/null
+    mkdir -p -v ${DESTDIR}/media &>/dev/null
+    mkdir -p -v ${DESTDIR}/mnt &>/dev/null
+    mkdir -p -v ${DESTDIR}/sys &>/dev/null
+    mkdir -p -v ${DESTDIR}/proc &>/dev/null
 
-    echo "create the basic devices (/dev/{console,null,zero}) on the target"
-    mkdir -p -v ${DESTDIR}/dev
-    mknod ${DESTDIR}/dev/console c 5 1
-    mknod ${DESTDIR}/dev/null c 1 3
-    mknod ${DESTDIR}/dev/zero c 1 5
+    # create the basic devices (/dev/{console,null,zero}) on the target
+    mkdir -p -v ${DESTDIR}/dev &>/dev/null &>/dev/null
+    mknod ${DESTDIR}/dev/console c 5 1 &>/dev/null
+    mknod ${DESTDIR}/dev/null c 1 3 &>/dev/null
+    mknod ${DESTDIR}/dev/zero c 1 5 &>/dev/null
 
-    echo "adjust permissions on /tmp and /var/tmp"
-    chmod -v 777 ${DESTDIR}/var/tmp
-    chmod -v o+t ${DESTDIR}/var/tmp
-    chmod -v 777 ${DESTDIR}/tmp
-    chmod -v o+t ${DESTDIR}/tmp
+    # adjust permissions on /tmp and /var/tmp
+    chmod -v 777 ${DESTDIR}/var/tmp &>/dev/null
+    chmod -v o+t ${DESTDIR}/var/tmp &>/dev/null
+    chmod -v 777 ${DESTDIR}/tmp &>/dev/null
+    chmod -v o+t ${DESTDIR}/tmp &>/dev/null
 
-    echo "install /etc/resolv.conf"
-    cp -vf /etc/resolv.conf ${DESTDIR}/etc/resolv.conf
+    # install /etc/resolv.conf
+    cp -vf /etc/resolv.conf ${DESTDIR}/etc/resolv.conf &>/dev/null
 
-    echo "install configs for root"
-    cp -vf /etc/skel/.bashrc ${DESTDIR}/root/.bashrc
-    cp -vf /etc/skel/.bash_profile ${DESTDIR}/root/.bash_profile
-    cp -vf /etc/skel/.xinitrc ${DESTDIR}/root/.xinitrc
-    cp -vf /etc/skel/.xsession ${DESTDIR}/root/.xsession
+    echo "install configs for root" &>/dev/null
+    cp -vf /etc/skel/.bashrc ${DESTDIR}/root/.bashrc &>/dev/null
+    cp -vf /etc/skel/.bash_profile ${DESTDIR}/root/.bash_profile &>/dev/null
+    cp -vf /etc/skel/.xinitrc ${DESTDIR}/root/.xinitrc &>/dev/null
+    cp -vf /etc/skel/.xsession ${DESTDIR}/root/.xsession &>/dev/null
 
-    sed -i 's/^#\(en_US.*\)/\1/' ${DESTDIR}/etc/locale.gen
+    sed -i 's/^#\(en_US.*\)/\1/' ${DESTDIR}/etc/locale.gen &>/dev/null
     
     chroot_mount
 
     # copy generated xorg.xonf to target
     if [ -e "/etc/X11/xorg.conf" ] ; then
         echo "copying generated xorg.conf to target"
-        cp -v /etc/X11/xorg.conf ${DESTDIR}/etc/X11/xorg.conf
-    else
-        echo "copying generated xorg.conf to target failed - the system will try to create one at first boot."
+        cp /etc/X11/xorg.conf ${DESTDIR}/etc/X11/xorg.conf &>/dev/null
     fi
 
     #set_alsa
+
+    DIALOG --infobox "${_setupalsa}" 0 0
+    sleep 3
 	# amixer binary
 	local alsa_amixer=`chroot ${DESTDIR} /usr/bin/amixer`
 
@@ -955,47 +979,60 @@ hd_config()
 
     # Install xf86-video driver
 
+    DIALOG --infobox "${_installvideodriver}" 0 0
+
     if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
        if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
-           /usr/bin/mhwd --auto pci nonfree 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf" --pmroot ${DESTDIR}
+           /usr/bin/mhwd --auto pci nonfree 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf" --pmroot ${DESTDIR} &>/dev/null
        else
-           /usr/bin/mhwd --auto pci free 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf" --pmroot ${DESTDIR}
+           /usr/bin/mhwd --auto pci free 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf" --pmroot ${DESTDIR} &>/dev/null
        fi
     fi
 
     # setup systemd
-    chroot ${DESTDIR} systemctl enable cups.service
-    chroot ${DESTDIR} systemctl enable dcron.service
-    chroot ${DESTDIR} systemctl enable NetworkManager.service
-    chroot ${DESTDIR} systemctl enable remote-fs.target
-    chroot ${DESTDIR} systemctl enable plymouth-transition.service
+
+    DIALOG --infobox "${_setupsystemd}" 0 0
+    sleep 3
+
+    chroot ${DESTDIR} systemctl enable cups.service &>/dev/null
+    chroot ${DESTDIR} systemctl enable dcron.service &>/dev/null
+    chroot ${DESTDIR} systemctl enable NetworkManager.service &>/dev/null
+    chroot ${DESTDIR} systemctl enable remote-fs.target &>/dev/null
+    chroot ${DESTDIR} systemctl enable plymouth-transition.service &>/dev/null
+
+    DIALOG --infobox "${_setupdisplaymanager}" 0 0
+    sleep 3
 
     # setup lightdm
     if [ -e "/usr/sbin/lightdm" ] ; then
-       mkdir -p ${DESTDIR}/run/lightdm > /dev/null
-       chown -R lightdm:lightdm ${DESTDIR}/run/lightdm > /dev/null
+       mkdir -p ${DESTDIR}/run/lightdm  &>/dev/null
+       chown -R lightdm:lightdm ${DESTDIR}/run/lightdm  &>/dev/null
        sed -i -e 's/^.*user-session=.*/user-session=xfce/' ${DESTDIR}/etc/lightdm/lightdm.conf
-       chmod +r ${DESTDIR}/etc/lightdm/lightdm.conf
-       chroot ${DESTDIR} systemctl enable lightdm.service
+       chmod +r ${DESTDIR}/etc/lightdm/lightdm.conf &>/dev/null
+       chroot ${DESTDIR} systemctl enable lightdm.service &>/dev/null
     fi
 
     # setup gdm
     if [ -e "/usr/sbin/gdm" ] ; then
-       chroot ${DESTDIR} chown -R gdm:gdm /var/lib/gdm > /dev/null
+       chroot ${DESTDIR} chown -R gdm:gdm /var/lib/gdm  &>/dev/null
        sed -i '/AutomaticLoginEnable=true/ d' ${DESTDIR}/etc/gdm/custom.conf
        sed -i '/AutomaticLogin=manjaro/ d' ${DESTDIR}/etc/gdm/custom.conf
     fi
 
     # setup lxdm
     if [ -e "/usr/sbin/lxdm" ] ; then
-       chown root:lxdm ${DESTDIR}/etc/lxdm/lxdm.conf > /dev/null
-       chown -R root:lxdm ${DESTDIR}/var/lib/lxdm > /dev/null
-       chmod +r ${DESTDIR}/etc/lxdm/lxdm.conf
+       chown root:lxdm ${DESTDIR}/etc/lxdm/lxdm.conf  &>/dev/null
+       chown -R root:lxdm ${DESTDIR}/var/lib/lxdm  &>/dev/null
+       chmod +r ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
     fi
 
     # fix gnome apps
+
+    DIALOG --infobox "${_fixgnomeapps}" 0 0
+    sleep 3
+
     if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
-       chroot ${DESTDIR} setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon > /dev/null
+       chroot ${DESTDIR} setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &>/dev/null
     fi
 
     chroot_umount
@@ -1064,7 +1101,7 @@ dogrub() {
     fi
 
     while [ "$GRUB_SET" = "" ]; do
-          dialog --yesno "${_installgrubdl}" 0 0 && GRUB_SET=1
+          dialog --yesno "Grub2 will be installed with followed settings:\n -> Boot partition: ${bootpart}\n -> Target partition (MBR): ${targetpart}\nIs this correct? If not answer with \"No\" to change your target partition, else continue with \"Yes\"." 0 0 && GRUB_SET=1
           if [ "$GRUB_SET" = "" ]; then
              DIALOG --inputbox "${_whereinststage1}" 8 65 "/dev/sda" 2>$ANSWER || return 1
              targetpart=$(cat $ANSWER)
@@ -1074,6 +1111,7 @@ dogrub() {
     chroot_mount
 
     #Install grub2
+    DIALOG --infobox "${_installinggrub}" 0 0
     echo "grub-install --directory=/usr/lib/grub/i386-pc --target=i386-pc --recheck ${targetpart}"  > /tmp/grub.log 2>&1
     chroot ${DESTDIR} grub-install --directory=/usr/lib/grub/i386-pc --target=i386-pc --recheck ${targetpart} >> /tmp/grub.log 2>&1
 
@@ -1197,6 +1235,51 @@ prepare_harddrive()
                 DONE=1 ;;
         esac
     done
+}
+
+# run_unsquashfs()
+# runs unsquashfs on the target system, displays output
+#
+run_unsquashfs()
+{
+    # all unsquashfs output goes to /tmp/unsquashfs.log, which we tail
+    # into a dialog
+    ( \
+        touch /tmp/setup-unsquashfs-running
+        echo "unsquashing $SQF_FILE..." > /tmp/unsquashfs.log; \
+        echo >> /tmp/unsquashfs.log; \
+        unsquashfs -f -p 1 -d $UNSQUASH_TARGET /bootmnt/manjaro/${arch}/$SQF_FILE >>/tmp/unsquashfs.log 2>&1
+        echo $? > /tmp/.unsquashfs-retcode
+        echo >> /tmp/unsquashfs.log
+        rm -f /tmp/setup-unsquashfs-running
+    ) &
+
+(
+c="0"
+while [ $c -ne 100 ]
+    do
+        sleep 2
+        value=`cat /tmp/unsquashfs.log | grep -Eo " [0-9]*%" | sed -e "s|[^0-9]||g" | tail -1`
+        sleep 2
+        c=$value
+        echo $c
+        echo "###"
+        echo "$c %"
+        echo "###"
+done
+) |
+dialog --title "$_unsquash_dialog_title" --gauge "$_unsquash_dialog_info1 $SQF_FILE $_unsquash_dialog_info2" 10 60 0
+
+    # alert the user to fatal errors
+    if [ $(cat /tmp/.unsquashfs-retcode) -ne 0 ]; then
+        killall unsquashfs
+        DIALOG --title "$_unsquasherror_title" --exit-label \
+        "OK" --textbox "/tmp/unsquashfs.log" 18 70
+        return 1
+    fi
+
+    # save unsquashfs.log
+    mv "/tmp/unsquashfs.log" "/tmp/unsquashfs-$SQF_FILE.log"
 }
 
 # run_mkinitcpio()
@@ -1365,7 +1448,8 @@ configure_system()
     run_mkinitcpio
     # /etc/locale.gen
     #
-    chroot ${DESTDIR} locale-gen
+    DIALOG --infobox "${_localegen}" 0 0
+    chroot ${DESTDIR} locale-gen &> /dev/null
     # /etc/localtime
     cp /etc/localtime ${DESTDIR}/etc/localtime &> /dev/null
 
