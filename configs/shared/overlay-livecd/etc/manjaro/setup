@@ -1,7 +1,7 @@
 #!/bin/bash
-  TITLE="Manjaro Linux CLI Installation (v0.1.2a)"
+  TITLE="Manjaro Linux CLI Installation (v0.1.3pre1)"
   PKG_OVERLAY="/opt/manjaro/pkgs"
-  manjaro_version="2012.05"
+  manjaro_version="2012.06"
   code_name="Manjaro"
   hostname="manjaro"
   _yes="Yes"
@@ -129,6 +129,7 @@
   _xorgkblayouttext="Xorg keyboard layout"
   _installabootloader="Install a bootloader?"
   _installgrubbl='Install GRUB2 (needed to boot)'
+  _installgrubdl="Grub2 will be installed with followed settings:\n -> Boot partition: ${bootpart}\n -> Target partition (MBR): ${targetpart}\nIs this correct? If not answer with \"No\" to change your target partition, else continue with \"Yes\"."
   _installnobl="If you know what you're doing."
   _none_label="None"
 
@@ -1018,6 +1019,7 @@ auto_fstab()
 }
 
 dogrub() {
+    GRUB_SET=""
     local grubmenu="/boot/grub/grub.cfg"
     if [ ! -f $grubmenu ]; then
         DIALOG --msgbox "${_isgrubinst} $grubmenu" 0 0
@@ -1047,7 +1049,7 @@ dogrub() {
         return 1
     fi
 
-    bootpart=$(echo ${bootpart} | cut -b1-8)
+    targetpart=$(echo ${bootpart} | cut -b1-8)
 
     # freeze xfs filesystems if any, to enable grub installation on xfs filesystems
     if [ -x /usr/sbin/xfs_freeze ]; then
@@ -1061,11 +1063,19 @@ dogrub() {
      fi
     fi
 
+    while [ "$GRUB_SET" = "" ]; do
+          dialog --yesno "${_installgrubdl}" 0 0 && GRUB_SET=1
+          if [ "$GRUB_SET" = "" ]; then
+             DIALOG --inputbox "${_whereinststage1}" 8 65 "/dev/sda" 2>$ANSWER || return 1
+             targetpart=$(cat $ANSWER)
+          fi
+    done
+
     chroot_mount
 
     #Install grub2
-    echo "grub-install --directory=/usr/lib/grub/i386-pc --target=i386-pc --recheck --debug ${bootpart}"  > /tmp/grub.log 2>&1
-    chroot ${DESTDIR} grub-install --directory=/usr/lib/grub/i386-pc --target=i386-pc --recheck --debug ${bootpart} >> /tmp/grub.log 2>&1
+    echo "grub-install --directory=/usr/lib/grub/i386-pc --target=i386-pc --recheck ${targetpart}"  > /tmp/grub.log 2>&1
+    chroot ${DESTDIR} grub-install --directory=/usr/lib/grub/i386-pc --target=i386-pc --recheck ${targetpart} >> /tmp/grub.log 2>&1
 
     # generate resume string for suspend to disk
     [ -z "${swap_partition}" -o "${swap_partition}" = "${_none_entry}" ] || sed -i -e "s,GRUB_CMDLINE_LINUX=.*,GRUB_CMDLINE_LINUX_DEFAULT=\"`cat $DESTDIR/etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT | cut -d'"' -f2` resume=/dev/disk/by-uuid/`blkid -s UUID -o value -p ${swap_partition}`\",g" $DESTDIR/etc/default/grub
