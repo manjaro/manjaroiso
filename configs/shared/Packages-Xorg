@@ -11,12 +11,11 @@ nouveau-dri
 ## Proprietary Drivers
 catalyst-utils
 linux32-catalyst
->x86_64 lib32-catalyst-utils
 nvidia-utils
 linux32-nvidia
+>x86_64 lib32-catalyst-utils
 >x86_64 lib32-nvidia-utils
 >x86_64 lib32-gcc-libs
->x86_64 lib32-libxvmc
 >x86_64 lib32-zlib 
 
 ## Virtualbox Drivers

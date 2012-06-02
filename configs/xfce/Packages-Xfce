@@ -1,10 +1,54 @@
 ### Manjaro Packages
 
-#Shotwell and transmission
-
 ## XFCE Main Packages
-xfce4
-xfce4-goodies
+exo
+garcon
+gtk2-xfce-engine
+gtk3-xfce-engine
+terminal
+thunar
+thunar-volman
+tumbler
+xfce4-appfinder
+xfce4-panel
+xfce4-power-manager
+xfce4-session
+xfce4-settings
+xfconf
+xfdesktop
+xfwm4
+xfwm4-themes
+orage
+thunar-archive-plugin
+thunar-media-tags-plugin
+xfce4-artwork
+xfce4-battery-plugin
+xfce4-clipman-plugin
+xfce4-cpufreq-plugin
+xfce4-cpugraph-plugin
+xfce4-datetime-plugin
+xfce4-dict
+xfce4-diskperf-plugin
+xfce4-fsguard-plugin
+xfce4-genmon-plugin
+xfce4-mailwatch-plugin
+xfce4-mount-plugin
+xfce4-mpc-plugin
+xfce4-netload-plugin
+xfce4-notes-plugin
+xfce4-notifyd
+xfce4-quicklauncher-plugin
+xfce4-screenshooter
+xfce4-sensors-plugin
+xfce4-smartbookmark-plugin
+xfce4-systemload-plugin
+xfce4-taskmanager
+xfce4-time-out-plugin
+xfce4-timer-plugin
+xfce4-verve-plugin
+xfce4-wavelan-plugin
+xfce4-weather-plugin
+xfce4-xkb-plugin
 lxdm
 lxdm-manjaro-theme
 gtk-xfce-engine
@@ -16,24 +60,13 @@ network-manager-applet
 gksu
 gvfs
 gvfs-smb
-thunar-volman
 thunar-media-tags-plugin
 thunar-archive-plugin
-tumbler
 ffmpegthumbnailer
 libgnomeui
 xscreensaver
 xcursor-simpleandsoft
 xfce4-volumed
-
-
-
-## Blacklisted XFCE packages
->blacklist xfce4-mixer
->blacklist xfburn
->blacklist ristretto
->blacklist xarchiver
-
 
 ## Applications
 file-roller
@@ -51,6 +84,8 @@ firefox
 thunderbird
 gecko-mediaplayer
 wxgtk
+pidgin
+brasero
 
 ## Language Support
 firefox-i18n-de
@@ -58,6 +93,13 @@ firefox-i18n-fr
 thunderbird-i18n-de
 thunderbird-i18n-fr
 
+## Printing
+>i686 cups
+>i686 cups-pdf
+>i686 ghostscript
+>i686 gsfonts
+>i686 gutenprint
+>i686 hplip
 
 
 ## DVD Packages
@@ -65,16 +107,12 @@ thunderbird-i18n-fr
 ## DVD Extra Applications
 >dvd openjdk6
 >dvd icedtea-web
->dvd pidgin
->dvd brasero
 >dvd soundconverter
 >dvd libreoffice
 >dvd gcalctool
 >dvd gmusicbrowser
 >dvd gnome-packagekit
 >dvd gnome-settings-daemon-updates
-
-
 
 ## Language Support
 >dvd libreoffice-en-GB

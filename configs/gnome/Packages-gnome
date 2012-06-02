@@ -89,6 +89,14 @@ muffin
 firefox
 thunderbird
 
+## Printing
+cups
+cups-pdf
+ghostscript
+gsfonts
+gutenprint
+hplip
+
 ## Language Support
 firefox-i18n-de
 firefox-i18n-fr

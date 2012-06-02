@@ -107,6 +107,10 @@ make_root_image() {
          if [ -e ${work_dir}/root-image/etc/plymouth/plymouthd.conf ] ; then
             sed -i -e "s/^.*Theme=.*/Theme=$plymouth_theme/" ${work_dir}/root-image/etc/plymouth/plymouthd.conf
          fi
+         if [ -e ${work_dir}/root-image/usr/sbin/cupsd ] ; then
+            mkdir -p "${work_dir}/root-image/etc/systemd/system/multi-user.target.wants"
+            ln -sf '/lib/systemd/system/cups.service' "${work_dir}/root-image/etc/systemd/system/multi-user.target.wants/cups.service"
+         fi
          : > ${work_dir}/build.${FUNCNAME}
          echo -e "$_g >$_W done $_n"
     fi
@@ -153,6 +157,10 @@ if [ -e Packages-Xfce ] ; then
               pacman -Qr "${work_dir}/xfce-image" > "${work_dir}/xfce-image/xfce-image-pkgs.txt"
               cp -LPr xfce-overlay/* ${work_dir}/xfce-image
               cp -LPr overlay/* ${work_dir}/xfce-image
+              if [ -e ${work_dir}/xfce-image/usr/sbin/cupsd ] ; then
+                 mkdir -p "${work_dir}/xfce-image/etc/systemd/system/multi-user.target.wants"
+                 ln -sf '/lib/systemd/system/cups.service' "${work_dir}/xfce-image/etc/systemd/system/multi-user.target.wants/cups.service"
+              fi
               umount ${work_dir}/xfce-image
               rm -R ${work_dir}/xfce-image/.wh*
               de="-xfce"
@@ -176,6 +184,10 @@ if [ -e Packages-Kde ] ; then
               pacman -Qr "${work_dir}/kde-image" > "${work_dir}/kde-image/kde-image-pkgs.txt"
               cp -LPr kde-overlay/* ${work_dir}/kde-image
               cp -LPr overlay/* ${work_dir}/kde-image
+              if [ -e ${work_dir}/kde-image/usr/sbin/cupsd ] ; then
+                 mkdir -p "${work_dir}/kde-image/etc/systemd/system/multi-user.target.wants"
+                 ln -sf '/lib/systemd/system/cups.service' "${work_dir}/kde-image/etc/systemd/system/multi-user.target.wants/cups.service"
+              fi
               umount ${work_dir}/kde-image
               rm -R ${work_dir}/kde-image/.wh*
               de="-kde"
@@ -199,6 +211,10 @@ if [ -e Packages-gnome ] ; then
               pacman -Qr "${work_dir}/gnome-image" > "${work_dir}/gnome-image/gnome-image-pkgs.txt"
               cp -LPr gnome-overlay/* ${work_dir}/gnome-image
               cp -LPr overlay/* ${work_dir}/gnome-image
+              if [ -e ${work_dir}/gnome-image/usr/sbin/cupsd ] ; then
+                 mkdir -p "${work_dir}/gnome-image/etc/systemd/system/multi-user.target.wants"
+                 ln -sf '/lib/systemd/system/cups.service' "${work_dir}/gnome-image/etc/systemd/system/multi-user.target.wants/cups.service"
+              fi
               umount ${work_dir}/gnome-image
               rm -R ${work_dir}/gnome-image/.wh*
               de="-gnome"

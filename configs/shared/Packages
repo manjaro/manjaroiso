@@ -56,9 +56,8 @@ wpa_supplicant
 xfsprogs
 
 
-
 ## Devel Packages
-base-devel
+>dvd base-devel
 #yaourt
 
 
@@ -108,7 +107,6 @@ tcpdump
 vpnc
 plymouth
 plymouth-theme-manjaro
-
 
 
 ## Filesystem Packages
@@ -218,14 +216,6 @@ mesa
 >x86_64 lib32-libxv
 >x86_64 lib32-libxvmc
 >x86_64 lib32-libgl
-
-## Printing
-cups
-cups-pdf
-ghostscript
-gsfonts
-gutenprint
-hplip
 
 
 
