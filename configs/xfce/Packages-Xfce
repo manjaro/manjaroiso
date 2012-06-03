@@ -79,29 +79,21 @@ conky
 viewnior
 epdfview
 gedit
-gnome-mplayer
+parole
 firefox
 thunderbird
-gecko-mediaplayer
 wxgtk
 pidgin
-brasero
+xfburn
 gimp
+abiword
+gnumeric
 
 ## Language Support
 firefox-i18n-de
 firefox-i18n-fr
 thunderbird-i18n-de
 thunderbird-i18n-fr
-
-## Printing
->i686 cups
->i686 cups-pdf
->i686 ghostscript
->i686 gsfonts
->i686 gutenprint
->i686 hplip
-
 
 ## DVD Packages
 
@@ -114,6 +106,14 @@ thunderbird-i18n-fr
 >dvd gmusicbrowser
 >dvd gnome-packagekit
 >dvd gnome-settings-daemon-updates
+
+## Printing
+>dvd cups
+>dvd cups-pdf
+>dvd ghostscript
+>dvd gsfonts
+>dvd gutenprint
+>dvd hplip
 
 ## Language Support
 >dvd libreoffice-en-GB

@@ -26,6 +26,9 @@ CONSOLEFONT="$(kernel_cmdline vconsole.font)"
 CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
 USENONFREE="$(kernel_cmdline nonfree no)"
 
+# check if we have a internet connection
+ping_check=$(LC_ALL=C ping -c 1 www.manjaro.org | grep "1 received")
+
 ## Systemd should do it
 #scan_swap
 swapdev="$(fdisk -l 2>/dev/null | grep swap | cut -d' ' -f1)"
@@ -109,6 +112,11 @@ ln -sf "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime
 	# save settings
 	alsactl -f /etc/asound.state store &>/dev/null
 
+if [ "${ping_check}" != "" ] ; then
+    wget -O /etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist &>/dev/null
+    sed -i "s/#Server/Server/g" /etc/pacman.d/mirrorlist
+fi
+
 #hwdetect_graphics
 if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
    if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
@@ -122,6 +130,10 @@ fi
 addgroups="video,audio,power,disk,storage,optical,network,lp"
 useradd -m -p "" -g users -G $addgroups manjaro
 sed -i "s#manjaro.*#manjaro:\$1\$uYIrxnwJ\$a5wTa84YxxYmD.sKX/Lll1:14942:0:99999:7:::#" /etc/shadow
+
+#do_configsforroot
+cp -fR /etc/skel/.* /root/
+cp -fR /etc/skel/* /root/
 
 #do_setuplightdm
 if [ -e "/usr/sbin/lightdm" ] ; then
@@ -161,6 +173,9 @@ chmod 440 /etc/sudoers
 if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
    setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &> /dev/null
 fi
+
+#update_pacman_databases
+pacman -Syy &> /dev/null
 
 #do_lang_settings
  	# Determind which language we are using

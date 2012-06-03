@@ -1,5 +1,5 @@
 #!/bin/bash
-  TITLE="Manjaro Linux CLI Installation (v0.1.3pre1)"
+  TITLE="Manjaro Linux CLI Installation (v0.1.3pre2)"
   PKG_OVERLAY="/opt/manjaro/pkgs"
   manjaro_version="2012.06"
   code_name="Manjaro"
@@ -16,10 +16,10 @@
   _umountingall="Disabling swapspace, unmounting already mounted disk devices..."
   _presentlyavaildisks="Available disks:"
   _selectdisktouse="Select the hard drive to use"
-  _enterbootpartsize="Enter the size (MiB) of your /boot partition.  Minimum is 16."
+  _enterbootpartsize="Enter the size (MiB) of your /boot partition.  Minimum is 50."
   _diskspaceleft="Disk space left:"
   _errorincorrectsize="ERROR: You entered an invalid size, please enter again."
-  _errorsizetoobig="ERROR: You entered a too large size, please enter again."
+  _errorsizetoobig="ERROR: You entered a too small or large size, please enter again."
   _enterswappartsize="Enter the size (MiB) of your swap partition."
   _enterrootpartsize="Enter the size (MiB) of your / (root) partition.  The /home partition will use the remaining space."
   _homepartsize="Size of /home partition:"
@@ -58,9 +58,11 @@
   _mountingpart="Mounting"
   _partsmountsuccess="Partitions were successfully mounted."
 
-  _givecorrectname="Please enter a valid username. (lowercase, can't start with a figure)"
+  _givecorrectname="Please enter a valid username.\n ==> Tip: lowercase, can't start with a figure"
   _givename="Enter the new username"
   _givepass="Type the pasword for the new user :"
+  _addsudouserdl1="Should User \""
+  _addsudouserdl2="\" get sudo rights?"
 
   _installationwillstart='Installation will now start. Please be patient!'
   _installationinprogress="Installation in progress..."
@@ -109,6 +111,8 @@
   _mkinitcpiofailerror="ERROR - You will have to run mkinitcpio by hand, either way the system may not boot."
 
   _localegen="Generating locales..."
+  _syncpacmandb="Synchronising pacman databases..."
+  _updatemirrorlist="Updating pacman mirrorlist..."
   _setupalsa="Configuring ALSA..."
   _installvideodriver="MHWD is installing your video driver(s)..."
   _setupsystemd="Configuring SystemD..."
@@ -119,10 +123,14 @@
   _unsquash_dialog_info1="Unsquashing archive:"
   _unsquash_dialog_info2="\nPlease wait..."
   _unsquasherror_title="Unsquashing failed..."
+
+  _passwdtitle="Password setup..."
+  _passwddl="Enter your password for:"
   
   _definerootpass="Change root password"
   _defineuser="Setup user account(s)"
   _defineuserpass="Change user password"
+  _enterusername="Enter user account name..."
   _doeditconfig="Edit system configuration (optional)"
   _return_label="Back"
   _rcconftext="Main system configuration"
@@ -142,6 +150,10 @@
   _installabootloader="Install a bootloader?"
   _installgrubbl='Install GRUB2 (needed to boot)'
   _installnobl="If you know what you're doing."
+  _installgrubdl1="Grub2 will be installed with followed settings:\n -> Boot partition:"
+  _installgrubdl2=" -> Target partition (MBR):"
+  _installgrubdl3="Is this correct? If not answer with \"No\" to change your target partition, else continue with \"Yes\"."
+
   _none_label="None"
 
   _mainmenuhelp="Use ↓ and ↑ to choose an entry, enter to launch it." 
@@ -154,9 +166,9 @@
   _installationfinished='Installation finished!'
   _cancelinstall="Cancel installation?"
   _instwelcomemessage="Welcome to the Manjaro Linux cli installation program. \nSimply follow the steps in order"
-  _forgotsystemconf="You forgot system configuration. Press enter."
-  _forgotinstalling="Installing before configuring would seem more logical. Press enter."
-  _forgotpreparehd="Prepare HD first or mount what you want in /mnt/install.root and type “continue” here. Press enter."
+  _forgotsystemconf="Information\n\nYou forgot to configurate your system."
+  _forgotinstalling="Information\n\nInstalling before configuring would seem more logical."
+  _forgotpreparehd="Information\n\nPrepare your HDD first."
 
 ANSWER="/tmp/.setup"
 # use the first VT not dedicated to a running console
@@ -184,6 +196,9 @@ PART_ROOT=
 # default filesystem specs (the + is bootable flag)
 # <mountpoint>:<partsize>:<fstype>[:+]
 DEFAULTFS="/boot:100:ext2:+ swap:512:swap /:5500:reiserfs /home:*:reiserfs"
+
+# check if we have a internet connection
+ping_check=$(LC_ALL=C ping -c 1 www.manjaro.org | grep "1 received")
 
 # install stages
 S_SRC=0         # choose install medium
@@ -466,7 +481,7 @@ _umountall()
 # outputs:    disc capacity in bytes
 _getdisccapacity()
 {
- echo $(($(</sys/dev/block/$((16#$(stat -c %t $1))):$((16#$(stat -c %T $1)))/size)*512))
+ echo $(($(</sys/dev/block/$((50#$(stat -c %t $1))):$((50#$(stat -c %T $1)))/size)*512))
 }
 
 # Get a list of available disks for use in the "Available disks" dialogs. This
@@ -509,7 +524,7 @@ autoprepare()
             if [ "$BOOT_PART_SIZE" = "" ]; then
                 DIALOG --msgbox "${_errorincorrectsize}" 0 0
             else
-                if [ "$BOOT_PART_SIZE" -ge "$DISC_SIZE" -o "$BOOT_PART_SIZE" -lt "16" -o "$SBOOT_PART_SIZE" = "$DISC_SIZE" ]; then
+                if [ "$BOOT_PART_SIZE" -ge "$DISC_SIZE" -o "$BOOT_PART_SIZE" -lt "50" -o "$SBOOT_PART_SIZE" = "$DISC_SIZE" ]; then
                     DIALOG --msgbox "${_errorsizetoobig}" 0 0
                 else
                     BOOT_PART_SET=1
@@ -865,6 +880,7 @@ installsystem() {
 
     hd_config
     auto_fstab
+    _system_is_installed=1
 }
 
 
@@ -901,10 +917,8 @@ hd_config()
     cp -vf /etc/resolv.conf ${DESTDIR}/etc/resolv.conf &>/dev/null
 
     echo "install configs for root" &>/dev/null
-    cp -vf /etc/skel/.bashrc ${DESTDIR}/root/.bashrc &>/dev/null
-    cp -vf /etc/skel/.bash_profile ${DESTDIR}/root/.bash_profile &>/dev/null
-    cp -vf /etc/skel/.xinitrc ${DESTDIR}/root/.xinitrc &>/dev/null
-    cp -vf /etc/skel/.xsession ${DESTDIR}/root/.xsession &>/dev/null
+    cp -vfR ${DESTDIR}/etc/skel/.* ${DESTDIR}/root/ &>/dev/null
+    cp -vfR ${DESTDIR}/etc/skel/* ${DESTDIR}/root/ &>/dev/null
 
     sed -i 's/^#\(en_US.*\)/\1/' ${DESTDIR}/etc/locale.gen &>/dev/null
     
@@ -918,7 +932,7 @@ hd_config()
 
     #set_alsa
 
-    DIALOG --infobox "${_setupalsa}" 0 0
+    DIALOG --infobox "${_setupalsa}"  6 40
     sleep 3
 	# amixer binary
 	local alsa_amixer=`chroot ${DESTDIR} /usr/bin/amixer`
@@ -979,7 +993,7 @@ hd_config()
 
     # Install xf86-video driver
 
-    DIALOG --infobox "${_installvideodriver}" 0 0
+    DIALOG --infobox "${_installvideodriver}"  6 40
 
     if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
        if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
@@ -991,7 +1005,7 @@ hd_config()
 
     # setup systemd
 
-    DIALOG --infobox "${_setupsystemd}" 0 0
+    DIALOG --infobox "${_setupsystemd}" 6 40
     sleep 3
 
     chroot ${DESTDIR} systemctl enable cups.service &>/dev/null
@@ -1000,7 +1014,7 @@ hd_config()
     chroot ${DESTDIR} systemctl enable remote-fs.target &>/dev/null
     chroot ${DESTDIR} systemctl enable plymouth-transition.service &>/dev/null
 
-    DIALOG --infobox "${_setupdisplaymanager}" 0 0
+    DIALOG --infobox "${_setupdisplaymanager}" 6 40
     sleep 3
 
     # setup lightdm
@@ -1028,14 +1042,34 @@ hd_config()
 
     # fix gnome apps
 
-    DIALOG --infobox "${_fixgnomeapps}" 0 0
+    DIALOG --infobox "${_fixgnomeapps}" 6 40
     sleep 3
 
     if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
        chroot ${DESTDIR} setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &>/dev/null
     fi
 
+    if [ "${ping_check}" != "" ] ; then
+        DIALOG --infobox "${_updatemirrorlist}" 6 40
+        sleep 3
+        wget -O ${DESTDIR}/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist &>/dev/null
+        sed -i "s/#Server/Server/g" ${DESTDIR}/etc/pacman.d/mirrorlist
+    fi
+
     chroot_umount
+}
+
+set_passwd()
+{
+    # trap tmp-file for passwd
+    trap "rm -f $ANSWER" 0 1 2 5 15
+ 
+    # get password
+    DIALOG --title "$_passwdtitle" \
+    --clear \
+    --insecure \
+    --passwordbox "$_passwddl $PASSWDUSER" 10 30 2> $ANSWER
+    PASSWD="$(cat $ANSWER)"
 }
  
 # auto_fstab()
@@ -1101,7 +1135,7 @@ dogrub() {
     fi
 
     while [ "$GRUB_SET" = "" ]; do
-          dialog --yesno "Grub2 will be installed with followed settings:\n -> Boot partition: ${bootpart}\n -> Target partition (MBR): ${targetpart}\nIs this correct? If not answer with \"No\" to change your target partition, else continue with \"Yes\"." 0 0 && GRUB_SET=1
+          DIALOG --yesno "$_installgrubdl1 ${bootpart}\n$_installgrubdl2 ${targetpart}\n$_installgrubdl3" 10 65 && GRUB_SET=1
           if [ "$GRUB_SET" = "" ]; then
              DIALOG --inputbox "${_whereinststage1}" 8 65 "/dev/sda" 2>$ANSWER || return 1
              targetpart=$(cat $ANSWER)
@@ -1111,7 +1145,7 @@ dogrub() {
     chroot_mount
 
     #Install grub2
-    DIALOG --infobox "${_installinggrub}" 0 0
+    DIALOG --infobox "${_installinggrub}" 6 40
     echo "grub-install --directory=/usr/lib/grub/i386-pc --target=i386-pc --recheck ${targetpart}"  > /tmp/grub.log 2>&1
     chroot ${DESTDIR} grub-install --directory=/usr/lib/grub/i386-pc --target=i386-pc --recheck ${targetpart} >> /tmp/grub.log 2>&1
 
@@ -1135,7 +1169,7 @@ dogrub() {
         DIALOG --msgbox "${_errorinstgrub} (${_errordetails} $LOG)" 0 0
         return 1
     fi
-    DIALOG --msgbox "${_instgrubsuccess}" 0 0
+    DIALOG --msgbox "${_instgrubsuccess}" 6 40
     S_GRUB=1
 }
 
@@ -1191,9 +1225,9 @@ set_clock()
     /sbin/hwclock --hctosys $HWCLOCK_PARAMS --noadjfile
 
     # display and ask to set date/time
-    dialog --calendar "${_choosedatetime}" 0 0 0 0 0 2> $ANSWER || return 1
+    DIALOG --calendar "${_choosedatetime}" 0 0 0 0 0 2> $ANSWER || return 1
     local _date="$(cat $ANSWER)"
-    dialog --timebox "${_choosehourtime}" 0 0 2> $ANSWER || return 1
+    DIALOG --timebox "${_choosehourtime}" 0 0 2> $ANSWER || return 1
     local _time="$(cat $ANSWER)"
     echo "date: $_date time: $_time" >$LOG
 
@@ -1226,11 +1260,13 @@ prepare_harddrive()
         CURRENT_SELECTION="$(cat $ANSWER)"
         case $(cat $ANSWER) in
             "1")
-                autoprepare ;;
+                autoprepare
+                _hd_is_prepared=1 ;;
             "2")
                 partition
                 PARTFINISH=""
-                mountpoints ;;
+                mountpoints
+                _hd_is_prepared=1 ;;
             *)
                 DONE=1 ;;
         esac
@@ -1254,9 +1290,9 @@ run_unsquashfs()
         rm -f /tmp/setup-unsquashfs-running
     ) &
 
-(
-c="0"
-while [ $c -ne 100 ]
+    (
+    c="0"
+    while [ $c -ne 100 ]
     do
         sleep 2
         value=`cat /tmp/unsquashfs.log | grep -Eo " [0-9]*%" | sed -e "s|[^0-9]||g" | tail -1`
@@ -1266,9 +1302,8 @@ while [ $c -ne 100 ]
         echo "###"
         echo "$c %"
         echo "###"
-done
-) |
-dialog --title "$_unsquash_dialog_title" --gauge "$_unsquash_dialog_info1 $SQF_FILE $_unsquash_dialog_info2" 10 60 0
+    done
+    ) | DIALOG --title "$_unsquash_dialog_title" --gauge "$_unsquash_dialog_info1 $SQF_FILE $_unsquash_dialog_info2" 10 60 0
 
     # alert the user to fatal errors
     if [ $(cat /tmp/.unsquashfs-retcode) -ne 0 ]; then
@@ -1362,7 +1397,7 @@ configure_system()
        #     DEFAULT="--default-item $CURRENT_SELECTION"
        # else
 
-        DIALOG $DEFAULT --menu "Configuration" 17 80 10 \
+        DIALOG $DEFAULT --menu "Configuration" 17 78 10 \
             "Root-Password"             "${_definerootpass}" \
             "Setup User"                "${_defineuser}" \
             "Config-system"             "${_doeditconfig}" \
@@ -1373,43 +1408,29 @@ configure_system()
             break
         elif [ "$CURRENT_SELECTION" = "Root-Password" ]; then
             while true; do
-                clear
-                echo "${_definerootpass}"
-                chroot ${DESTDIR} passwd root && break
+                PASSWDUSER="root"
+                set_passwd 
+                echo "$PASSWDUSER:$PASSWD" | chroot ${DESTDIR} chpasswd && break
             done
         elif [ "$CURRENT_SELECTION" = "Setup User" ]; then
             while true; do
-                clear
-                echo "${_defineuser}"
                 addgroups="video,audio,power,disk,storage,optical,network,lp"
-                echo -en "$_givename\n=> " && read
+
+                DIALOG --inputbox "${_enterusername}" 10 65 "manjaro" 2>$ANSWER || return 1
+                REPLY="$(cat $ANSWER)"
                   while [ -z "$(echo $REPLY |grep -E '^[a-z_][a-z0-9_-]*[$]?$')" ];do
-                   echo "$_givecorrectname"
-                   echo -n '=> ' && read
+                   DIALOG --inputbox "${_givecorrectname}" 10 65 "manjaro" 2>$ANSWER || return 1
+                   REPLY="$(cat $ANSWER)"
                   done  
                 chroot ${DESTDIR} useradd -m -p "" -g users -G $addgroups $REPLY
-                user_name=$REPLY
-                echo "Should user \"${user_name}\" get sudo rights (Y/n)? "
-                while true ; do
-                    read YN
-                    case $YN in
-                        [yY]* )
-                          echo "Adding user \"${user_name}\" to /etc/sudoers file..."
-                          echo "${user_name}     ALL=(ALL) ALL" >> ${DESTDIR}/etc/sudoers
-                	  # ensure correct permissions
-                          chmod 0440 ${DESTDIR}/etc/sudoers  && break
-	                ;;
-                        [nN]* )
-                          echo "User \"${user_name}\" won't have sudo rights..."
-                          break
-                        ;;
-                	* )
-                          echo "Enter (y)es or (n)o"
-                        ;;
-                    esac
-                done
-                echo "$_givepass"
-                chroot ${DESTDIR} passwd $REPLY && break
+
+                PASSWDUSER="$REPLY"
+                if DIALOG --yesno "${_addsudouserdl1}${REPLY}${_addsudouserdl2}" 6 40;then
+                   echo "${PASSWDUSER}     ALL=(ALL) ALL" >> ${DESTDIR}/etc/sudoers
+                   chmod 0440 ${DESTDIR}/etc/sudoers
+                fi
+                set_passwd 
+                echo "$PASSWDUSER:$PASSWD" | chroot ${DESTDIR} chpasswd && break
             done
         elif [ "$CURRENT_SELECTION" = "Config-system" ]; then
     while true; do
@@ -1418,7 +1439,7 @@ configure_system()
         else
             DEFAULT=""
         fi
-        DIALOG $DEFAULT --menu "Configuration" 17 80 10 \
+        DIALOG $DEFAULT --menu "Configuration" 17 78 10 \
             "/etc/fstab"                "${_fstabtext}" \
             "/etc/mkinitcpio.conf"      "${_mkinitcpioconftext}" \
             "/etc/resolv.conf"          "${_resolvconftext}" \
@@ -1453,10 +1474,15 @@ configure_system()
     # /etc/localtime
     cp /etc/localtime ${DESTDIR}/etc/localtime &> /dev/null
 
+    DIALOG --infobox "${_syncpacmandb}" 0 0
+    sleep 3
+    chroot ${DESTDIR} pacman -Syy &> /dev/null
+
     ## END POSTPROCESSING ##
     # TODO add end cleaning
 
     S_CONFIG=1
+    _system_is_configured=1
 }
 
 install_bootloader()
@@ -1490,41 +1516,33 @@ mainmenu()
         "1")
             set_clock ;;
         "2")
-            prepare_harddrive;_hd_is_prepared=1
+            prepare_harddrive
         ;;
         "3")
             if [ "$_hd_is_prepared" == "1" ];then
-             installsystem;_system_is_installed=1
+             installsystem
             else
-             echo "$_forgotpreparehd"
-             read
-             if [ "$REPLY" == "continue" ];then
-              installsystem;_system_is_installed=1
-             fi
+             DIALOG --msgbox "$_forgotpreparehd" 10 40
             fi
         ;;
         "4")
             if [ "$_system_is_installed" == "1" ];then
-             configure_system;_system_is_configured=1
+             configure_system
             else 
-             echo "$_forgotinstalling"
-             read
+             DIALOG --msgbox "$_forgotinstalling" 10 40
             fi
         ;;
         "5")
             if [ "$_system_is_configured" == "1" ];then
              install_bootloader
             else
-             echo "$_forgotsystemconf"
-             read
+             DIALOG --msgbox "$_forgotsystemconf" 10 40
             fi
         ;;
         "6")
-            echo ""
-            echo "${_installationfinished}"
-            echo ""
+            DIALOG --infobox "${_installationfinished}" 6 40
             mkdir -p ${DESTDIR}/var/log/manjaroiso
-            cp /tmp/*.log ${DESTDIR}/var/log/manjaroiso
+            cp /tmp/*.log ${DESTDIR}/var/log/manjaroiso &>/dev/null
             _umountall &>/dev/null ; sleep 1 ; exit 0
         ;;
         *)
