@@ -53,9 +53,9 @@ lxdm
 lxdm-manjaro-theme
 gtk-xfce-engine
 gtk-engines
-ambiance-radiance-colors-xfce-lxde
+zukini-theme
 gnome-icon-theme
-faenza-icon-theme
+faenza-green-icon-theme
 network-manager-applet
 gksu
 gvfs

@@ -1,5 +1,5 @@
 #!/bin/bash
-  TITLE="Manjaro Linux CLI Installation (v0.1.3pre2)"
+  TITLE="Manjaro Linux CLI Installation (v0.1.3pre3)"
   PKG_OVERLAY="/opt/manjaro/pkgs"
   manjaro_version="2012.06"
   code_name="Manjaro"
@@ -991,9 +991,21 @@ hd_config()
 	# save settings
 	chroot ${DESTDIR} alsactl -f /etc/asound.state store &>/dev/null
 
+    if [ "${ping_check}" != "" ] ; then
+        DIALOG --infobox "${_updatemirrorlist}" 6 40
+        sleep 3
+        wget -O ${DESTDIR}/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist &>/dev/null
+        sed -i "s/#Server/Server/g" ${DESTDIR}/etc/pacman.d/mirrorlist
+    fi
+
+    chroot ${DESTDIR} pacman -Syy &> /dev/null
+
     # Install xf86-video driver
 
     DIALOG --infobox "${_installvideodriver}"  6 40
+
+    # TODO: fix in mhwd
+    mkdir -p ${DESTDIR}/var/lib/mhwd/local/{pci,usb}
 
     if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
        if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
@@ -1047,13 +1059,6 @@ hd_config()
 
     if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
        chroot ${DESTDIR} setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &>/dev/null
-    fi
-
-    if [ "${ping_check}" != "" ] ; then
-        DIALOG --infobox "${_updatemirrorlist}" 6 40
-        sleep 3
-        wget -O ${DESTDIR}/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist &>/dev/null
-        sed -i "s/#Server/Server/g" ${DESTDIR}/etc/pacman.d/mirrorlist
     fi
 
     chroot_umount

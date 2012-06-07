@@ -117,7 +117,14 @@ if [ "${ping_check}" != "" ] ; then
     sed -i "s/#Server/Server/g" /etc/pacman.d/mirrorlist
 fi
 
+#update_pacman_databases
+pacman -Syy &> /dev/null
+
 #hwdetect_graphics
+
+# TODO: fix in mhwd
+mkdir -p /var/lib/mhwd/local/{pci,usb}
+
 if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
    if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
 	/usr/bin/mhwd --auto pci nonfree 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
@@ -173,9 +180,6 @@ chmod 440 /etc/sudoers
 if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
    setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &> /dev/null
 fi
-
-#update_pacman_databases
-pacman -Syy &> /dev/null
 
 #do_lang_settings
  	# Determind which language we are using
