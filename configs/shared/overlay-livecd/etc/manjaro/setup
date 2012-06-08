@@ -1035,7 +1035,11 @@ hd_config()
        chown -R lightdm:lightdm ${DESTDIR}/run/lightdm  &>/dev/null
        sed -i -e 's/^.*user-session=.*/user-session=xfce/' ${DESTDIR}/etc/lightdm/lightdm.conf
        chmod +r ${DESTDIR}/etc/lightdm/lightdm.conf &>/dev/null
-       chroot ${DESTDIR} systemctl enable lightdm.service &>/dev/null
+       if [ -e "${DESTDIR}/etc/systemd/system/graphical.target.wants/lightdm.service" ] ; then
+          chroot ${DESTDIR} systemctl reenable lightdm.service &>/dev/null
+       else
+          chroot ${DESTDIR} systemctl enable lightdm.service &>/dev/null
+       fi
     fi
 
     # setup gdm
@@ -1043,7 +1047,11 @@ hd_config()
        chroot ${DESTDIR} chown -R gdm:gdm /var/lib/gdm  &>/dev/null
        sed -i '/AutomaticLoginEnable=true/ d' ${DESTDIR}/etc/gdm/custom.conf
        sed -i '/AutomaticLogin=manjaro/ d' ${DESTDIR}/etc/gdm/custom.conf
-       chroot ${DESTDIR} systemctl enable gdm.service &>/dev/null
+       if [ -e "${DESTDIR}/etc/systemd/system/graphical.target.wants/gdm.service" ] ; then
+          chroot ${DESTDIR} systemctl reenable gdm.service &>/dev/null
+       else
+          chroot ${DESTDIR} systemctl enable gdm.service &>/dev/null
+       fi
     fi
 
     # setup lxdm
@@ -1051,12 +1059,20 @@ hd_config()
        chown root:lxdm ${DESTDIR}/etc/lxdm/lxdm.conf  &>/dev/null
        chown -R root:lxdm ${DESTDIR}/var/lib/lxdm  &>/dev/null
        chmod +r ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
-       chroot ${DESTDIR} systemctl enable lxdm.service &>/dev/null
+       if [ -e "${DESTDIR}/etc/systemd/system/graphical.target.wants/lxdm.service" ] ; then
+          chroot ${DESTDIR} systemctl reenable lxdm.service &>/dev/null
+       else
+          chroot ${DESTDIR} systemctl enable lxdm.service &>/dev/null
+       fi
     fi
 
     # setup kdm
     if [ -e "/usr/bin/kdm" ] ; then
-       chroot ${DESTDIR} systemctl enable kdm.service &>/dev/null
+       if [ -e "${DESTDIR}/etc/systemd/system/graphical.target.wants/kdm.service" ] ; then
+          chroot ${DESTDIR} systemctl reenable kdm.service &>/dev/null
+       else
+          chroot ${DESTDIR} systemctl enable kdm.service &>/dev/null
+       fi
     fi
 
     # fix gnome apps
