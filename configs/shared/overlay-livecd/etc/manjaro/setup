@@ -1002,12 +1002,12 @@ hd_config()
 
     # Install xf86-video driver
 
-    DIALOG --infobox "${_installvideodriver}"  6 40
-
     # TODO: fix in mhwd
     mkdir -p ${DESTDIR}/var/lib/mhwd/local/{pci,usb}
+    rm -R /var/lib/mhwd/local/{pci,usb}/* # else mhwd won't install drivers on target
 
     if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
+       DIALOG --infobox "${_installvideodriver}"  6 40
        if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
            /usr/bin/mhwd --auto pci nonfree 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf" --pmroot ${DESTDIR} &>/dev/null
        else
