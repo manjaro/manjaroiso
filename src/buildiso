@@ -105,7 +105,11 @@ create_trustdb() {
          pacman-key --init --gpgdir "${work_dir}/root-image/etc/pacman.d/gnupg"
          echo -e "$_g >$_W done $_n"
          echo -e -n "$_r >$_W Importing trusted keys \n $_n"
+         mkdir -p "${work_dir}/usr/share/pacman/keyrings"
+         ln -sf /usr/share/pacman/keyrings/archlinux.gpg "${work_dir}/usr/share/pacman/keyrings/archlinux.gpg"
+         ln -sf /usr/share/pacman/keyrings/manjaro.gpg "${work_dir}/usr/share/pacman/keyrings/manjaro.gpg"
          pacman-key --populate archlinux manjaro --gpgdir "${work_dir}/root-image/etc/pacman.d/gnupg"
+         rm -R "${work_dir}/usr"
          : > ${work_dir}/build.${FUNCNAME}
          echo -e "$_g >$_W done $_n"
     fi
