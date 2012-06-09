@@ -1080,6 +1080,8 @@ hd_config()
     DIALOG --infobox "${_fixgnomeapps}" 6 40
     sleep 3
 
+    chroot ${DESTDIR} glib-compile-schemas usr/share/glib-2.0/schemas
+
     if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
        chroot ${DESTDIR} setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &>/dev/null
     fi
