@@ -49,8 +49,8 @@ xfce4-verve-plugin
 xfce4-wavelan-plugin
 xfce4-weather-plugin
 xfce4-xkb-plugin
-lxdm
-lxdm-manjaro-theme
+lightdm
+lightdm-unity-greeter
 gtk-xfce-engine
 gtk-engines
 zukini-theme
