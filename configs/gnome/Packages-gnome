@@ -35,14 +35,13 @@ yelp
 #empathy
 eog
 #eog-plugins
->dvd evince
+evince
 #evolution
 file-roller
 gcalctool
 #gconf-editor
 dconf
-lightdm
-lightdm-gtk-greeter
+gdm
 gedit
 #gnome-color-manager
 #gnome-contacts
@@ -66,7 +65,7 @@ network-manager-applet
 #sound-juicer
 #sushi
 #tomboy
->i686 totem
+totem
 #tracker
 #vinagre
 #vino
@@ -77,7 +76,7 @@ gnome-packagekit
 gnome-settings-daemon-updates
 
 ## Theme
-faenza-icon-theme
+faenza-green-icon-theme
 #zukitwo-themes
 zukitwo-colors
 
@@ -90,12 +89,12 @@ firefox
 thunderbird
 
 ## Printing
-cups
-cups-pdf
-ghostscript
-gsfonts
-gutenprint
-hplip
+>dvd cups
+>dvd cups-pdf
+>dvd ghostscript
+>dvd gsfonts
+>dvd gutenprint
+>dvd hplip
 
 ## Language Support
 firefox-i18n-de
