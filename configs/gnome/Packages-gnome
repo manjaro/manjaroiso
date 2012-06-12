@@ -42,6 +42,7 @@ gcalctool
 #gconf-editor
 dconf
 gdm
+gdm3setup
 gedit
 #gnome-color-manager
 #gnome-contacts

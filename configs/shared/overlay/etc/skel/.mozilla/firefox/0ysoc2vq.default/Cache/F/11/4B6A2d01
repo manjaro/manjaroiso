@@ -1,0 +1,839 @@
+@charset "utf-8";
+
+/*
+#################
+### General ####
+################
+*/
+	* {
+	margin: 0;
+	padding: 0;
+	}
+
+	body {
+		margin:0;
+		padding:0;
+		width:100%;
+		color:#4c4c4c;
+		background-color:#4c4c4c;	
+		font:normal 12px/1.8em Arial, Helvetica, sans-serif;
+	}
+	html, .main {
+		padding:0;
+		margin:0;
+	}
+	
+	
+	h1 {
+		font:normal 28px Arial, Helvetica, sans-serif;
+		padding:8px 0;
+		margin:8px 0;
+		color:#5f5f5f;
+	}
+	h1 small {
+		display:block;
+		padding:0;
+		font:normal 13px/1.2em Arial, Helvetica, sans-serif;
+		letter-spacing:normal;
+	}
+	h2 {
+		font:normal 24px Arial, Helvetica, sans-serif;
+		padding:8px 0;
+		margin:8px 0;
+		color:#5f5f5f;
+	}
+	
+	p {
+		margin:8px 0;
+		padding:0 0 8px 0;
+		color:#5f5f5f;
+		font:normal 14px/1.8em Arial, Helvetica, sans-serif;
+	}
+
+	a {
+		color:#1b9d00;
+		text-decoration:underline;
+		font:normal 14px/1.8em Arial, Helvetica, sans-serif;
+	}
+
+	.clr {
+		clear:both;
+		padding:0;
+		margin:0;
+		width:100%;
+		font-size:0;
+		line-height:0;
+	}
+	
+	.err
+	{
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		color: red;
+	}
+/*
+####################
+### General END ####
+####################
+*/
+
+
+
+
+/*
+###############
+### Header ####
+###############
+*/
+
+	.header {
+                background:url(http://manjarolinux.org/images/hbg_img.jpg) no-repeat center 0px;
+                width:1024px;
+		height:293px;
+		padding:0;
+                margin:0 auto;
+		margin-bottom:15px;
+	}
+	
+	.header_resize {
+		padding:20px 0 0 0;
+		margin:auto;
+                width:1024px;
+	}
+/*
+###################
+### Header END ####
+###################
+*/
+
+
+
+/*
+###################
+### Navigation ####
+###################
+*/
+
+	#index .menu .navigation,
+	/*--------------------------------------------------*/
+	#contact .menu .navigation,
+	/*--------------------------------------------------*/
+	#news .menu .navigation,
+	/*--------------------------------------------------*/
+	#screenshots .menu .navigation,
+	/*--------------------------------------------------*/
+	#bugs .menu .navigation,
+	/*--------------------------------------------------*/
+	#about .menu .navigation,
+	/*--------------------------------------------------*/
+	#download .menu .navigation,
+	/*--------------------------------------------------*/
+	#donate .menu .navigation,
+	/*--------------------------------------------------*/
+	#repo .menu .navigation,
+	/*--------------------------------------------------*/
+	#source .menu .navigation,
+	/*--------------------------------------------------*/
+	#mail .menu .navigation,
+	/*--------------------------------------------------*/
+	#irc .menu .navigation,
+	/*--------------------------------------------------*/
+	#shop .menu .navigation {
+		padding:5px 0px 2px 0px;
+		margin-top:0px;
+		width:125px;
+		height:31px;
+		float:right;
+		text-align: center;
+	}
+	
+	#index .menu .navigation a,
+	/*--------------------------------------------------*/
+	#contact .menu .navigation a,
+	/*--------------------------------------------------*/
+	#news .menu .navigation a,
+	/*--------------------------------------------------*/
+	#screenshots .menu .navigation a,
+	/*--------------------------------------------------*/
+	#bugs .menu .navigation a,
+	/*--------------------------------------------------*/
+	#about .menu .navigation a,
+	/*--------------------------------------------------*/
+	#download .menu .navigation a,
+	/*--------------------------------------------------*/
+	#donate .menu .navigation a,
+	/*--------------------------------------------------*/
+	#repo .menu .navigation a,
+	/*--------------------------------------------------*/
+	#source .menu .navigation a,
+	/*--------------------------------------------------*/
+	#mail .menu .navigation a,
+	/*--------------------------------------------------*/
+	#irc .menu .navigation a,
+	/*--------------------------------------------------*/
+	#shop .menu .navigation a {
+		color:#e3e3e3;
+		text-decoration:none;
+		text-align: center;
+		font:bold 17px/1.8em Arial, Helvetica, sans-serif;
+	}
+	
+	#index .menu .navigation a:hover,
+	/*--------------------------------------------------*/
+	#contact .menu .navigation a:hover,
+	/*--------------------------------------------------*/
+	#news .menu .navigation a:hover,
+	/*--------------------------------------------------*/
+	#screenshots .menu .navigation a:hover,
+	/*--------------------------------------------------*/
+	#bugs .menu .navigation a:hover,
+	/*--------------------------------------------------*/
+	#about .menu .navigation a:hover,
+	/*--------------------------------------------------*/
+	#download .menu .navigation a:hover,
+	/*--------------------------------------------------*/
+	#donate .menu .navigation a:hover,
+	/*--------------------------------------------------*/
+	#repo .menu .navigation a:hover,
+	/*--------------------------------------------------*/
+	#source .menu .navigation a:hover,
+	/*--------------------------------------------------*/
+	#mail .menu .navigation a:hover,
+	/*--------------------------------------------------*/
+	#irc .menu .navigation a:hover,
+	/*--------------------------------------------------*/
+	#shop .menu .navigation a:hover {
+		color:#23C10D;
+		text-decoration:none;
+		font:bold 17px/1.8em Arial, Helvetica, sans-serif;
+	}
+
+	#index .menu .navigation a.home,
+	/*--------------------------------------------------*/
+	#contact .menu .navigation a.contact,
+	/*--------------------------------------------------*/
+	#news .menu .navigation a.home,
+	/*--------------------------------------------------*/
+	#screenshots .menu .navigation a.home,
+	/*--------------------------------------------------*/
+	#bugs .menu .navigation a.bugs,
+	/*--------------------------------------------------*/
+	#about .menu .navigation a.about,
+	/*--------------------------------------------------*/
+	#download .menu .navigation a.download,
+	/*--------------------------------------------------*/
+	#donate .menu .navigation a.donate,
+	/*--------------------------------------------------*/
+	#repo .menu .navigation a.repo,
+	/*--------------------------------------------------*/
+	#source .menu .navigation a.source,
+	/*--------------------------------------------------*/
+	#mail .menu .navigation a.mail,
+	/*--------------------------------------------------*/
+	#irc .menu .navigation a.irc,
+	/*--------------------------------------------------*/
+	#shop .menu .navigation a.shop {
+		color:#23C10D;
+		text-decoration:none;
+		font:bold 17px/1.8em Arial, Helvetica, sans-serif;
+	}
+	
+	#index .menu .navigation ul,
+	/*--------------------------------------------------*/
+	#contact .menu .navigation ul,
+	/*--------------------------------------------------*/
+	#news .menu .navigation ul,
+	/*--------------------------------------------------*/
+	#screenshots .menu .navigation ul,
+	/*--------------------------------------------------*/
+	#bugs .menu .navigation ul,
+	/*--------------------------------------------------*/
+	#about .menu .navigation ul,
+	/*--------------------------------------------------*/
+	#download .menu .navigation ul,
+	/*--------------------------------------------------*/
+	#donate .menu .navigation ul,
+	/*--------------------------------------------------*/
+	#repo .menu .navigation ul,
+	/*--------------------------------------------------*/
+	#source .menu .navigation ul,
+	/*--------------------------------------------------*/
+	#mail .menu .navigation ul,
+	/*--------------------------------------------------*/
+	#irc .menu .navigation ul,
+	/*--------------------------------------------------*/
+	#shop .menu .navigation ul {
+		padding:0;
+		margin:0;
+		list-style-type: none;
+		margin-left: 30px;
+	}
+	
+	#index .menu .navigation li,
+	/*--------------------------------------------------*/
+	#contact .menu .navigation li,
+	/*--------------------------------------------------*/
+	#news .menu .navigation li,
+	/*--------------------------------------------------*/
+	#screenshots .menu .navigation li,
+	/*--------------------------------------------------*/
+	#bugs .menu .navigation li,
+	/*--------------------------------------------------*/
+	#about .menu .navigation li,
+	/*--------------------------------------------------*/
+	#download .menu .navigation li,
+	/*--------------------------------------------------*/
+	#donate .menu .navigation li,
+	/*--------------------------------------------------*/
+	#repo .menu .navigation li,
+	/*--------------------------------------------------*/
+	#source .menu .navigation li,
+	/*--------------------------------------------------*/
+	#mail .menu .navigation li,
+	/*--------------------------------------------------*/
+	#irc .menu .navigation li,
+	/*--------------------------------------------------*/
+	#shop .menu .navigation li {
+		padding:0;
+		margin:0;
+		float: left;
+		margin-left: 5px;
+	}
+
+    #index .menu .navigation img,
+	/*--------------------------------------------------*/
+	#contact .menu .navigation img,
+	/*--------------------------------------------------*/
+	#news .menu .navigation img,
+	/*--------------------------------------------------*/
+	#screenshots .menu .navigation img,
+	/*--------------------------------------------------*/
+	#bugs .menu .navigation img,
+	/*--------------------------------------------------*/
+	#about .menu .navigation img,
+	/*--------------------------------------------------*/
+	#download .menu .navigation img,
+	/*--------------------------------------------------*/
+	#donate .menu .navigation img,
+	/*--------------------------------------------------*/
+	#repo .menu .navigation img,
+	/*--------------------------------------------------*/
+	#source .menu .navigation img,
+	/*--------------------------------------------------*/
+	#mail .menu .navigation img,
+	/*--------------------------------------------------*/
+	#irc .menu .navigation img,
+	/*--------------------------------------------------*/
+	#shop .menu .navigation img {
+		padding:7px 0 0 0;
+		margin:0;
+		border:none;
+	}
+
+/*
+#######################
+### Navigation END ####
+######################
+*/
+
+
+/*
+#######################
+### Sub Navigation ####
+#######################
+*/
+	#index .contentarea .subnav,
+	/*--------------------------------------------------*/
+	#news .contentarea .subnav,
+	/*--------------------------------------------------*/
+	#screenshots .contentarea .subnav,
+	/*--------------------------------------------------*/
+	#download .contentarea .subnav,
+	/*--------------------------------------------------*/
+	#donate .contentarea .subnav,
+	/*--------------------------------------------------*/
+	#repo .contentarea .subnav,
+	/*--------------------------------------------------*/
+	#source .contentarea .subnav,
+	/*--------------------------------------------------*/
+	#contact .contentarea .subnav,
+	/*--------------------------------------------------*/
+	#mail .contentarea .subnav,
+	/*--------------------------------------------------*/
+	#irc .contentarea .subnav,
+	/*--------------------------------------------------*/
+	#about .contentarea .subnav,
+	/*--------------------------------------------------*/
+	#shop .contentarea .subnav {
+		background: #f1f1f1;
+		margin: 12px 18px 20px 18px;
+		padding: 0;
+	}
+	
+	#index .contentarea .subnav ul,
+	/*--------------------------------------------------*/
+	#news .contentarea .subnav ul,
+	/*--------------------------------------------------*/
+	#screenshots .contentarea .subnav ul,
+	/*--------------------------------------------------*/
+	#download .contentarea .subnav ul,
+	/*--------------------------------------------------*/
+	#donate .contentarea .subnav ul,
+	/*--------------------------------------------------*/
+	#repo .contentarea .subnav ul,
+	/*--------------------------------------------------*/
+	#source .contentarea .subnav ul,
+	/*--------------------------------------------------*/
+	#contact .contentarea .subnav ul,
+	/*--------------------------------------------------*/
+	#mail .contentarea .subnav ul,
+	/*--------------------------------------------------*/
+	#irc .contentarea .subnav ul,
+	/*--------------------------------------------------*/
+	#about .contentarea .subnav ul,
+	/*--------------------------------------------------*/
+	#shop .contentarea .subnav ul {
+		list-style-type: none;
+		background: #4c4c4c;
+		height: 40px;
+		margin: 0;
+		padding: 0;
+	}
+	
+	#index .contentarea .subnav li,
+	/*--------------------------------------------------*/
+	#news .contentarea .subnav li,
+	/*--------------------------------------------------*/
+	#screenshots .contentarea .subnav li,
+	/*--------------------------------------------------*/
+	#download .contentarea .subnav li,
+	/*--------------------------------------------------*/
+	#donate .contentarea .subnav li,
+	/*--------------------------------------------------*/
+	#repo .contentarea .subnav li,
+	/*--------------------------------------------------*/
+	#source .contentarea .subnav li,
+	/*--------------------------------------------------*/
+	#contact .contentarea .subnav li,
+	/*--------------------------------------------------*/
+	#mail .contentarea .subnav li,
+	/*--------------------------------------------------*/
+	#irc .contentarea .subnav li,
+	/*--------------------------------------------------*/
+	#about .contentarea .subnav li,
+	/*--------------------------------------------------*/
+	#shop .contentarea .subnav li {
+		float: left;
+		list-style:none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	#index .contentarea .subnav a,
+	#index .contentarea .subnav a:link, 
+	#index .contentarea .subnav a:visited,
+	/*--------------------------------------------------*/
+	#news .contentarea .subnav a,
+	#news .contentarea .subnav a:link, 
+	#news .contentarea .subnav a:visited,
+	/*--------------------------------------------------*/
+	#screenshots .contentarea .subnav a,
+	#screenshots .contentarea .subnav a:link, 
+	#screenshots .contentarea .subnav a:visited,
+	/*--------------------------------------------------*/
+	#download .contentarea .subnav a,
+	#download .contentarea .subnav a:link, 
+	#download .contentarea .subnav a:visited,
+	/*--------------------------------------------------*/
+	#donate .contentarea .subnav a,
+	#donate .contentarea .subnav a:link, 
+	#donate .contentarea .subnav a:visited,
+	/*--------------------------------------------------*/
+	#repo .contentarea .subnav a,
+	#repo .contentarea .subnav a:link, 
+	#repo .contentarea .subnav a:visited,
+	#donate .contentarea .subnav a:visited,
+	/*--------------------------------------------------*/
+	#source .contentarea .subnav a,
+	#source .contentarea .subnav a:link, 
+	#source .contentarea .subnav a:visited,
+	/*--------------------------------------------------*/
+	#contact .contentarea .subnav a,
+	#contact .contentarea .subnav a:link, 
+	#contact .contentarea .subnav a:visited,
+	/*--------------------------------------------------*/
+	#mail .contentarea .subnav a,
+	#mail .contentarea .subnav a:link, 
+	#mail .contentarea .subnav a:visited,
+	/*--------------------------------------------------*/
+	#irc .contentarea .subnav a,
+	#irc .contentarea .subnav a:link, 
+	#irc .contentarea .subnav a:visited,
+	/*--------------------------------------------------*/
+	#about .contentarea .subnav a,
+	#about .contentarea .subnav a:link, 
+	#about .contentarea .subnav a:visited,
+	/*--------------------------------------------------*/
+	#shop .contentarea .subnav a,
+	#shop .contentarea .subnav a:link, 
+	#shop .contentarea .subnav a:visited {
+		font:normal 13px/1.8em Arial, Helvetica, sans-serif;
+		text-decoration:none;
+		border-right-style: solid;
+		border-width: 1px;
+		display: block;
+		min-width: 60px;
+		padding: 0 16px 0 8px;
+		white-space: nowrap;
+		background: #4c4c4c;
+		border-color: #fff;
+		color: #d4dae2;
+		line-height: 40px;
+	}
+	
+	#index .contentarea .subnav a:hover, 
+	#index .contentarea .subnav a:active, .subnav a:focus, 
+	#index .contentarea .subnav a.wis,
+	/*--------------------------------------------------*/
+	#news .contentarea .subnav a:hover, 
+	#news .contentarea .subnav a:active, .subnav a:focus, 
+	#news .contentarea .subnav a.news, 
+	/*--------------------------------------------------*/
+	#screenshots .contentarea .subnav a:hover, 
+	#screenshots .contentarea .subnav a:active, .subnav a:focus, 
+	#screenshots .contentarea .subnav a.screenshots,
+	/*--------------------------------------------------*/
+	#download .contentarea .subnav a:hover, 
+	#download .contentarea .subnav a:active, .subnav a:focus, 
+	#download .contentarea .subnav a.download,
+	/*--------------------------------------------------*/
+	#donate .contentarea .subnav a:hover, 
+	#donate .contentarea .subnav a:active, .subnav a:focus, 
+	#donate .contentarea .subnav a.donate,
+	/*--------------------------------------------------*/
+	#repo .contentarea .subnav a:hover, 
+	#repo .contentarea .subnav a:active, .subnav a:focus, 
+	#repo .contentarea .subnav a.repo,
+	/*--------------------------------------------------*/
+	#source .contentarea .subnav a:hover, 
+	#source .contentarea .subnav a:active, .subnav a:focus, 
+	#source .contentarea .subnav a.source,
+	/*--------------------------------------------------*/
+	#contact .contentarea .subnav a:hover, 
+	#contact .contentarea .subnav a:active, .subnav a:focus, 
+	#contact .contentarea .subnav a.contact,
+	/*--------------------------------------------------*/
+	#mail .contentarea .subnav a:hover, 
+	#mail .contentarea .subnav a:active, .subnav a:focus, 
+	#mail .contentarea .subnav a.mail,
+	/*--------------------------------------------------*/
+	#irc .contentarea .subnav a:hover, 
+	#irc .contentarea .subnav a:active, .subnav a:focus, 
+	#irc .contentarea .subnav a.irc,
+	/*--------------------------------------------------*/
+	#about .contentarea .subnav a:hover, 
+	#about .contentarea .subnav a:active, .subnav a:focus, 
+	#about .contentarea .subnav a.about,
+	/*--------------------------------------------------*/
+	#shop .contentarea .subnav a:hover, 
+	#shop .contentarea .subnav a:active, .subnav a:focus, 
+	#shop .contentarea .subnav a.shop {
+		font:normal 13px/1.8em Arial, Helvetica, sans-serif;
+		text-decoration: none;
+		background: #3FBB3F;
+		border-color: #fff;
+		color: #fff;
+		line-height: 40px;
+	}
+	
+	
+/*
+###########################
+### Sub Navigation END ####
+###########################
+*/
+
+
+/*
+###################
+### Contentarea ###
+###################
+*/
+	.contentarea {
+		padding:8px 0 40px 0;
+		margin:0 auto;
+		background-color:#f1f1f1;
+		width:1024px;
+	}
+
+	.contentarea iframe {
+		padding:0;
+		margin:0;
+	}
+	
+	.contentarea h1 {
+		padding:30px 0 0 0;
+		margin:0 50px 0 50px;
+		border-bottom:1px solid #cacaca;
+	}
+
+	.contentarea h2 {
+		font-size: 20px;
+		text-decoration: underline;
+		padding:30px 0 0 0;
+		margin:0 50px 0 50px;
+	}
+	
+	.contentarea p {
+		padding:10px 0 0 0;
+		margin:0 50px 0 50px;
+	}
+
+	.contentarea .space {
+		height: 30px;
+		width: 0px;
+		padding: 0;
+		margin: 0;
+	}
+
+	.contentarea center {
+		padding:0;
+		margin:0 auto;
+		font:normal 14px/1.8em Arial, Helvetica, sans-serif;
+	}
+	
+	.contentarea .warning p {
+		padding:10px 0 0 0;
+		margin:0 50px 0 50px;
+		color:#da0000;
+		font:normal 14px/1.8em Arial, Helvetica, sans-serif;
+	}
+	
+	.contentarea a {
+		padding:0;
+		margin:0;
+	}
+	
+	.contentarea .center {
+		padding:0;
+		margin:0 auto;
+		text-align: center;
+	}
+	
+	.contentarea img {
+		padding:0;
+		margin:0 25px 5px 25px;
+		border:8px solid #757575;
+	}
+	
+	.contentarea .noborder img {
+		border:none;
+		padding:0;
+		margin:0;
+	}
+	
+	.contentarea img .floatleft{
+		float:left;
+	}
+
+	.contentarea .imagebox {
+		padding:0;
+		margin:25px 65px 10px 65px;
+	}
+
+	.contentarea ul {
+		list-style-type: circle;
+		padding:10px 0 0 0;
+		margin:0 50px 0 67px;
+	}
+	
+	.contentarea li {
+		font:normal 14px/1.8em Arial, Helvetica, sans-serif;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.contentarea table {
+		padding:0 3px;
+		margin:10px 46px 0 46px;
+	}
+	
+	.contentarea table h3 {
+		font:normal 14px Arial, Helvetica, sans-serif;
+		padding:0;
+		margin:0;
+		color:#5f5f5f;
+	}
+
+	.contentarea table th, .content table td {
+		border: medium none;
+		text-align: left;
+		vertical-align: top;
+		height:5px;
+	}
+	
+	.contentarea .left{
+		padding:0;
+		margin:10px 10px 10px 30px;
+		float: left;
+	}
+	
+	.contentarea .warning{
+		background-color: #BC635F;
+		margin-top: 5px;
+		color: #6F0500;
+		border: #EF0B00 1px solid;
+		text-align:center;
+		padding: 5px 5px 5px 5px;
+		margin-top: 10px;
+	}
+
+	.contentarea .paypal {
+		padding:10px 0 0 0;
+		margin:0 50px 0 50px;
+		border:none;
+	}
+
+/*
+########################
+### Contentarea END ####
+########################
+*/
+
+
+
+/*
+############################
+### Textboxes & Buttons ####
+############################
+*/
+	.contentarea .contact {
+		padding:0 150px 0 10px;
+		margin:0;	
+	}
+	.contentarea .noborder img {
+		padding:0;
+		margin:0;
+		border:none;
+	}
+	.contentarea .contact p{
+		padding:5px 0;
+		margin:0;	
+	}
+	.contentarea .contact .textbox {
+		width:100%;
+		padding:0;
+		margin:0;	
+	}
+	.contentarea .contact  .textarea {
+		width:100%;
+		padding:0;
+		margin:0;
+		resize: none;
+	}
+	.contentarea .contact  .button {
+		width:100px;
+		padding:0;
+		margin:0;
+	}
+	.contentarea .contact  table {
+		width: 100%;
+		padding:0 0 20px 0;
+		
+	}
+	.contentarea .contact table th, .contentarea .contact  table td {
+		border: medium none;
+		text-align: left;
+		vertical-align: top;
+	}
+/*
+################################
+### Textboxes & Buttons End ####
+################################
+*/
+
+
+
+/*
+###############
+### Footer ####
+###############
+*/
+	.footer {
+		bottom:0px;
+		padding:0;
+		margin:16px auto 3px auto;
+		background-color:#f1f1f1;
+		width:1024px;
+		height:50px;
+	}
+	
+	.share {
+		margin-right: 45px;
+		float:right;
+	}
+	
+	.footer span {
+		margin-top:5px;
+		padding: 0px;
+	}
+	
+	.social {
+		margin-left: 45px;
+		margin-top:10px;
+		float:left;
+	}
+	
+	.footer p {
+		margin:0 175px 0 auto;
+		padding-top:15px;
+		color:#4c4c4c;
+		text-align: center;
+		font:normal 12px/1.8em Arial, Helvetica, sans-serif;
+		float: right;
+	}
+/*
+####################
+### Footer  End ####
+####################
+*/
+
+
+
+/*
+#################
+### Lightbox ####
+#################
+*/
+#lightbox{	position: absolute;	left: 0; width: 100%; z-index: 100; text-align: center; line-height: 0;}
+#lightbox img{ width: auto; height: auto;}
+#lightbox a img{ border: none; }
+
+#outerImageContainer{ position: relative; background-color: #fff; width: 250px; height: 250px; margin: 0 auto; }
+#imageContainer{ padding: 10px; }
+
+#loading{ position: absolute; top: 40%; left: 0%; height: 25%; width: 100%; text-align: center; line-height: 0; }
+#hoverNav{ position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 10; }
+#imageContainer>#hoverNav{ left: 0;}
+#hoverNav a{ outline: none;}
+
+#prevLink, #nextLink{ width: 49%; height: 100%; background-image: url(data:image/gif;base64,AAAA); /* Trick IE into showing hover */ display: block; }
+#prevLink { left: 0; float: left;}
+#nextLink { right: 0; float: right;}
+#prevLink:hover, #prevLink:visited:hover { background: url(http://manjarolinux.org/images/prevlabel.gif) left 15% no-repeat; }
+#nextLink:hover, #nextLink:visited:hover { background: url(http://manjarolinux.org/images/nextlabel.gif) right 15% no-repeat; }
+
+#imageDataContainer{ font: 10px Verdana, Helvetica, sans-serif; background-color: #fff; margin: 0 auto; line-height: 1.4em; overflow: auto; width: 100%	; }
+
+#imageData{	padding:0 10px; color: #666; }
+#imageData #imageDetails{ width: 70%; float: left; text-align: left; }	
+#imageData #caption{ font-weight: bold;	}
+#imageData #numberDisplay{ display: block; clear: left; padding-bottom: 1.0em;	}			
+#imageData #bottomNavClose{ width: 66px; float: right;  padding-bottom: 0.7em; outline: none;}	 	
+
+#overlay{ position: absolute; top: 0; left: 0; z-index: 90; width: 100%; height: 500px; background-color: #000; }
+/*
+######################
+### Lightbox  End ####
+######################
+*/
