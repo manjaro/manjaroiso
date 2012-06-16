@@ -1,5 +1,5 @@
 #!/bin/bash
-  TITLE="Manjaro Linux CLI Installation (v0.1.3a)"
+  TITLE="Manjaro Linux CLI Installation (v0.1.3b)"
   PKG_OVERLAY="/opt/manjaro/pkgs"
   manjaro_version="2012.06"
   code_name="Manjaro"
@@ -126,6 +126,8 @@
 
   _passwdtitle="Password setup..."
   _passwddl="Enter your password for:"
+  _passwddl2="Re-Enter your password for:"
+  _passwddl3="Password don't match!\nRe-Enter your password for:"
   
   _definerootpass="Change root password"
   _defineuser="Setup user account(s)"
@@ -1107,6 +1109,17 @@ set_passwd()
     --insecure \
     --passwordbox "$_passwddl $PASSWDUSER" 10 30 2> $ANSWER
     PASSWD="$(cat $ANSWER)"
+    DIALOG --title "$_passwdtitle" \
+    --clear \
+    --insecure \
+    --passwordbox "$_passwddl2 $PASSWDUSER" 10 30 2> $ANSWER
+    PASSWD2="$(cat $ANSWER)"
+    if [ "$PASSWD" == "$PASSWD2" ]; then
+       PASSWD=$PASSWD
+    else
+       _passwddl=$_passwddl3
+       set_passwd
+    fi
 }
  
 # auto_fstab()
@@ -1462,6 +1475,11 @@ configure_system()
                 chroot ${DESTDIR} useradd -m -p "" -g users -G $addgroups $REPLY
 
                 PASSWDUSER="$REPLY"
+
+                if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
+		   cp /var/lib/AccountsService/users/manjaro ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
+                fi
+
                 if DIALOG --yesno "${_addsudouserdl1}${REPLY}${_addsudouserdl2}" 6 40;then
                    echo "${PASSWDUSER}     ALL=(ALL) ALL" >> ${DESTDIR}/etc/sudoers
                    chmod 0440 ${DESTDIR}/etc/sudoers
