@@ -1,5 +1,5 @@
 #!/bin/bash
-  TITLE="Manjaro Linux CLI Installation (v0.1.3b)"
+  TITLE="Manjaro Linux CLI Installation (v0.1.3c)"
   PKG_OVERLAY="/opt/manjaro/pkgs"
   manjaro_version="2012.06"
   code_name="Manjaro"
@@ -126,6 +126,7 @@
 
   _passwdtitle="Password setup..."
   _passwddl="Enter your password for:"
+  _passwddl1="Enter your password for:"
   _passwddl2="Re-Enter your password for:"
   _passwddl3="Password don't match!\nRe-Enter your password for:"
   
@@ -1116,6 +1117,7 @@ set_passwd()
     PASSWD2="$(cat $ANSWER)"
     if [ "$PASSWD" == "$PASSWD2" ]; then
        PASSWD=$PASSWD
+       _passwddl=$_passwddl1
     else
        _passwddl=$_passwddl3
        set_passwd
@@ -1459,7 +1461,7 @@ configure_system()
         elif [ "$CURRENT_SELECTION" = "Root-Password" ]; then
             while true; do
                 PASSWDUSER="root"
-                set_passwd 
+                set_passwd
                 echo "$PASSWDUSER:$PASSWD" | chroot ${DESTDIR} chpasswd && break
             done
         elif [ "$CURRENT_SELECTION" = "Setup User" ]; then
@@ -1484,7 +1486,7 @@ configure_system()
                    echo "${PASSWDUSER}     ALL=(ALL) ALL" >> ${DESTDIR}/etc/sudoers
                    chmod 0440 ${DESTDIR}/etc/sudoers
                 fi
-                set_passwd 
+                set_passwd
                 echo "$PASSWDUSER:$PASSWD" | chroot ${DESTDIR} chpasswd && break
             done
         elif [ "$CURRENT_SELECTION" = "Config-system" ]; then
@@ -1521,7 +1523,6 @@ configure_system()
     done
 
     ## POSTPROCESSING ##
-    run_mkinitcpio
     # /etc/locale.gen
     #
     DIALOG --infobox "${_localegen}" 0 0
@@ -1529,9 +1530,13 @@ configure_system()
     # /etc/localtime
     cp /etc/localtime ${DESTDIR}/etc/localtime &> /dev/null
 
+    # sync pacman databases
     DIALOG --infobox "${_syncpacmandb}" 0 0
     sleep 3
     chroot ${DESTDIR} pacman -Syy &> /dev/null
+
+    # create kernel images
+    run_mkinitcpio
 
     ## END POSTPROCESSING ##
     # TODO add end cleaning
