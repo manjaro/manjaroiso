@@ -1536,6 +1536,8 @@ configure_system()
     chroot ${DESTDIR} pacman -Syy &> /dev/null
 
     # create kernel images
+    HOOKS=`cat /etc/mkinitcpio.conf | grep HOOKS= | grep -v '#' | cut -d'"' -f2`
+    sed -i -e "s/^HOOKS=.*/HOOKS=\"${HOOKS} plymouth\"/g" ${DESTDIR}/etc/mkinitcpio.conf    
     run_mkinitcpio
 
     ## END POSTPROCESSING ##
