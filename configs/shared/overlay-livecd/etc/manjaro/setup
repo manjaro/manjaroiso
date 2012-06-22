@@ -175,7 +175,7 @@
 
 ANSWER="/tmp/.setup"
 # use the first VT not dedicated to a running console
-LOG="/dev/tty4"
+LOG="/dev/tty8"
 mkdir -p /mnt/install.root
 DESTDIR="/mnt/install.root"
 arch=$(uname -m)
