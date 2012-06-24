@@ -24,7 +24,7 @@ jfsutils
 less
 libpipeline
 licenses
-linux32
+linux
 logrotate
 lsb-release
 lvm2
@@ -78,12 +78,11 @@ grub2-bios
 grub2-efi-i386
 grub2-efi-x86_64
 os-prober
-linux32-headers
+linux-headers
 linux-firmware
 manjaro-firmware
 dbus
 util-linux-ng
-syslinux
 squashfs-tools
 memtest86+
 crda

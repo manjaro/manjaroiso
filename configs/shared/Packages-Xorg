@@ -10,9 +10,9 @@ nouveau-dri
 
 ## Proprietary Drivers
 catalyst-utils
-linux32-catalyst
+catalyst
 nvidia-utils
-linux32-nvidia
+nvidia
 >x86_64 lib32-catalyst-utils
 >x86_64 lib32-nvidia-utils
 >x86_64 lib32-gcc-libs
