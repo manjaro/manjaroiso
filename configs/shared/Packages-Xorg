@@ -19,8 +19,8 @@ nvidia
 >x86_64 lib32-zlib 
 
 ## Virtualbox Drivers
-linux32-virtualbox-modules
-linux32-virtualbox-manjaro-modules
+#virtualbox-modules
+virtualbox-manjaro-modules
 virtualbox-archlinux-additions
 
 ## Xorg x86_64 Packages

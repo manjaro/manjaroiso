@@ -44,6 +44,8 @@ reiserfsprogs
 sed
 shadow
 sysfsutils
+syslinux
+syslog-ng
 systemd
 tar
 texinfo
