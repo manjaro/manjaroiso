@@ -8,6 +8,11 @@ ati-dri
 intel-dri
 nouveau-dri
 
+## Bumblebee Support
+bumblebee
+virtualgl
+bbswitch
+
 ## Proprietary Drivers
 catalyst-utils
 catalyst
