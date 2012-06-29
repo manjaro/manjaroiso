@@ -210,13 +210,7 @@ xorg-server-utils
 xorg-twm
 xorg-utils
 xorg-xinit
-xterm
 mesa
-
-## Xorg x86_64 Packages
->x86_64 lib32-libxv
->x86_64 lib32-libxvmc
->x86_64 lib32-libgl
 
 
 

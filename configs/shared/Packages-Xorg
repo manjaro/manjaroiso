@@ -12,6 +12,7 @@ nouveau-dri
 bumblebee
 virtualgl
 bbswitch
+>x86_64 lib32-virtualgl
 
 ## Proprietary Drivers
 catalyst-utils
@@ -29,6 +30,9 @@ virtualbox-manjaro-modules
 virtualbox-archlinux-additions
 
 ## Xorg x86_64 Packages
+>x86_64 lib32-libxv
+>x86_64 lib32-libxvmc
+>x86_64 lib32-libgl
 >x86_64 lib32-ati-dri
 >x86_64 lib32-intel-dri
 >x86_64 lib32-nouveau-dri
