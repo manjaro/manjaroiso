@@ -1,1 +1,1 @@
-/lib/systemd/system/livecd.service
+/usr/lib/systemd/system/livecd.service
