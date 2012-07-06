@@ -253,10 +253,10 @@ make_boot() {
         mount -t proc none ${work_dir}/boot-image/proc
         mount -t sysfs none ${work_dir}/boot-image/sys
         mount -o bind /dev ${work_dir}/boot-image/dev
-        cp /lib/initcpio/hooks/miso* ${work_dir}/boot-image/lib/initcpio/hooks
-        cp /lib/initcpio/install/miso* ${work_dir}/boot-image/lib/initcpio/install
+        cp /usr/lib/initcpio/hooks/miso* ${work_dir}/boot-image/usr/lib/initcpio/hooks
+        cp /usr/lib/initcpio/install/miso* ${work_dir}/boot-image/usr/lib/initcpio/install
         cp mkinitcpio.conf ${work_dir}/boot-image/etc/mkinitcpio-manjaroiso.conf
-        _kernver=`cat ${work_dir}/boot-image/lib/modules/*-MANJARO/version`
+        _kernver=`cat ${work_dir}/boot-image/usr/lib/modules/*-MANJARO/version`
         chroot ${work_dir}/boot-image /sbin/mkinitcpio -k ${_kernver} -c /etc/mkinitcpio-manjaroiso.conf -g /boot/manjaro.img
         mv ${work_dir}/boot-image/boot/manjaro.img ${work_dir}/iso/${install_dir}/boot/${arch}/manjaro.img
         umount ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image

@@ -85,9 +85,9 @@ thunderbird
 wxgtk
 pidgin
 xfburn
-gimp
-abiword
-gnumeric
+>i686 gimp
+>i686 abiword
+>i686 gnumeric
 
 ## Fonts
 sony_sketch_ef_font
