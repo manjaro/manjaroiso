@@ -17,9 +17,12 @@ bbswitch
 ## Proprietary Drivers
 catalyst-utils
 catalyst
+catalyst-legacy-utils
+catalyst-legacy
 nvidia-utils
 nvidia
 >x86_64 lib32-catalyst-utils
+>x86_64 lib32-catalyst-legacy-utils
 >x86_64 lib32-nvidia-utils
 >x86_64 lib32-gcc-libs
 >x86_64 lib32-zlib 
