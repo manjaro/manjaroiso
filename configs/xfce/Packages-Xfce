@@ -2,25 +2,30 @@
 
 ## XFCE Main Packages
 exo
+faenza-green-icon-theme
+ffmpegthumbnailer
 garcon
+gksu
+gnome-icon-theme
+gtk-engines
+gtk-xfce-engine
 gtk2-xfce-engine
 gtk3-xfce-engine
+gvfs
+gvfs-smb
+lightdm
+lightdm-unity-greeter
+libgnomeui
+network-manager-applet
+orage
 terminal
 thunar
-thunar-volman
-tumbler
-xfce4-appfinder
-xfce4-panel
-xfce4-power-manager
-xfce4-session
-xfce4-settings
-xfconf
-xfdesktop
-xfwm4
-xfwm4-themes
-orage
 thunar-archive-plugin
 thunar-media-tags-plugin
+thunar-volman
+tumbler
+xcursor-simpleandsoft
+xfce4-appfinder
 xfce4-artwork
 xfce4-battery-plugin
 xfce4-clipman-plugin
@@ -37,9 +42,13 @@ xfce4-mpc-plugin
 xfce4-netload-plugin
 xfce4-notes-plugin
 xfce4-notifyd
+xfce4-panel
+xfce4-power-manager
 xfce4-quicklauncher-plugin
 xfce4-screenshooter
 xfce4-sensors-plugin
+xfce4-session
+xfce4-settings
 xfce4-smartbookmark-plugin
 xfce4-systemload-plugin
 xfce4-taskmanager
@@ -49,48 +58,38 @@ xfce4-verve-plugin
 xfce4-wavelan-plugin
 xfce4-weather-plugin
 xfce4-xkb-plugin
-lightdm
-lightdm-unity-greeter
-gtk-xfce-engine
-gtk-engines
-zukini-theme
-gnome-icon-theme
-faenza-green-icon-theme
-network-manager-applet
-gksu
-gvfs
-gvfs-smb
-thunar-media-tags-plugin
-thunar-archive-plugin
-ffmpegthumbnailer
-libgnomeui
-xscreensaver
-xcursor-simpleandsoft
 xfce4-volumed
+xfconf
+xfdesktop
+xfwm4
+xfwm4-themes
+xscreensaver
+zukini-theme
+
 
 ## Applications
-file-roller
-gparted
-pnmixer
-pavucontrol
-#manjaro-installer
 conky
-#manjaro-welcome
-viewnior
 epdfview
-gedit
-parole
+file-roller
 firefox
-thunderbird
-wxgtk
-pidgin
-xfburn
+gedit
 >i686 gimp
->i686 abiword
->i686 gnumeric
+gparted
+#manjaro-installer
+#manjaro-welcome
+parole
+pavucontrol
+>i686 pidgin
+pnmixer
+thunderbird
+viewnior
+#wxgtk # used for 7-zip
+>i686 xfburn
+
 
 ## Fonts
 sony_sketch_ef_font
+
 
 ## Language Support
 firefox-i18n-de
@@ -98,17 +97,19 @@ firefox-i18n-fr
 thunderbird-i18n-de
 thunderbird-i18n-fr
 
+
 ## DVD Packages
 
 ## DVD Extra Applications
->dvd openjdk6
->dvd icedtea-web
->dvd soundconverter
->dvd libreoffice
 >dvd gcalctool
 >dvd gmusicbrowser
 >dvd gnome-packagekit
 >dvd gnome-settings-daemon-updates
+>dvd icedtea-web
+>dvd libreoffice
+>dvd openjdk6
+>dvd soundconverter
+
 
 ## Printing
 >dvd cups
@@ -118,11 +119,12 @@ thunderbird-i18n-fr
 >dvd gutenprint
 >dvd hplip
 
+
 ## Language Support
->dvd libreoffice-en-GB
->dvd libreoffice-en-US
->dvd libreoffice-de
->dvd libreoffice-fr
 >dvd hunspell-de
 >dvd hunspell-en
 >dvd hunspell-fr
+>dvd libreoffice-de
+>dvd libreoffice-en-GB
+>dvd libreoffice-en-US
+>dvd libreoffice-fr

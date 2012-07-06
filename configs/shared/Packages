@@ -64,86 +64,81 @@ xfsprogs
 
 
 ## Extra Base Packages
-qt
-mhwd
-mhwd-db
-xdg-utils
-xdg-user-dirs
-pkg-config
-mkinitcpio-nfs-utils
-usbutils
-sudo
-gamin
 acpid
 cpufrequtils
-grub2-bios
-grub2-efi-i386
-grub2-efi-x86_64
-os-prober
-linux-headers
-linux-firmware
-manjaro-firmware
-dbus
-util-linux-ng
-squashfs-tools
-memtest86+
 crda
 curl
+dbus
 ddrescue
 dhclient
 dialog
 dnsmasq
 dnsutils
+gamin
 gnu-netcat
+grub2-bios
+grub2-efi-i386
+grub2-efi-x86_64
 hdparm
+linux-headers
+linux-firmware
+manjaro-firmware
+memtest86+
+mhwd
+mhwd-db
+mkinitcpio-nfs-utils
 openconnect
 openssh
 openvpn
+os-prober
 parted
+pkg-config
+plymouth
+plymouth-theme-manjaro
 pptpclient
+qt
 rp-pppoe
 rsync
 speedtouch
+squashfs-tools
+sudo
 tcpdump
+usbutils
+util-linux-ng
 vpnc
-plymouth
-plymouth-theme-manjaro
+xdg-utils
+xdg-user-dirs
 
 
 ## Filesystem Packages
 btrfs-progs-unstable
 dmraid
 dosfstools
+e2fsprogs
+jfsutils
+reiserfsprogs
 nilfs-utils
 nfs-utils
 ntfs-3g
 ntfsprogs
-e2fsprogs
-jfsutils
-reiserfsprogs
 xfsprogs
-
 
 
 ## Packages for Sound and Audio
 alsa-utils
 alsa-firmware
 alsa-lib
-pulseaudio-alsa
 pulseaudio
-
+pulseaudio-alsa
 
 
 ## Fonts
+terminus-font
 ttf-bitstream-vera
 ttf-dejavu
-ttf-liberation
-terminus-font
 ttf-inconsolata
 ttf-indic-otf
-#neuropolitical_font
-#sony_sketch_ef_font
-
+ttf-liberation
 
 
 ## Compression Codecs
@@ -155,47 +150,43 @@ p7zip
 tar
 unrar
 unzip
-zip
 xz
-
+zip
 
 
 ## Codecs
-gstreamer0.10-plugins
+flashplugin
 gstreamer0.10-bad
 gstreamer0.10-bad-plugins
 gstreamer0.10-base-plugins
 gstreamer0.10-ffmpeg
 gstreamer0.10-good-plugins
+gstreamer0.10-plugins
 gstreamer0.10-ugly-plugins
 libdvdcss
-flashplugin
-
 
 
 ## Network
+b43-fwcutter
+inetutils
+ipw2100-fw
+ipw2200-fw
+modemmanager
+nbd
 networkmanager
 networkmanager-dispatcher-ntpd-systemd
 usb_modeswitch
-modemmanager
-nbd
-inetutils
-wireless_tools
-#broadcom-wl
-wpa_supplicant
 wpa_actiond
+wpa_supplicant
+wireless_tools
 zd1211-firmware
-ipw2100-fw
-ipw2200-fw
-b43-fwcutter
-
 
 
 ## Xorg Packages
 libdnet
-uriparser
-xinetd
+mesa
 netkit-bsd-finger
+uriparser
 xf86-input-acecad
 xf86-input-aiptek
 xf86-input-evdev
@@ -205,15 +196,9 @@ xf86-input-mouse
 xf86-input-synaptics
 xf86-input-void
 xf86-input-wacom
+xinetd
 xorg-server
 xorg-server-utils
 xorg-twm
 xorg-utils
 xorg-xinit
-mesa
-
-
-
-
-
-
