@@ -2,11 +2,11 @@
 
 ## GNOME (core)
 gnome-applets
-#gnome-backgrounds
+gnome-backgrounds
 gnome-control-center
 gnome-desktop
 gnome-icon-theme
-#gnome-icon-theme-extras
+gnome-icon-theme-extras
 gnome-icon-theme-symbolic
 gnome-keyring
 gnome-panel
@@ -17,7 +17,7 @@ gnome-shell
 gnome-shell-extensions
 gnome-terminal
 gnome-themes-standard
-#gnome-user-docs
+gnome-user-docs
 metacity
 mutter
 nautilus
@@ -26,51 +26,56 @@ xdg-user-dirs-gtk
 yelp
 
 ## GNOME (extra)
-#aisleriot
->dvd baobab
->dvd brasero
->dvd cheese
-#dasher
-#ekiga
-#empathy
+aisleriot
+baobab
+brasero
+cheese
+dasher
+ekiga
+empathy
 eog
-#eog-plugins
+eog-plugins
 evince
 #evolution
 file-roller
 gcalctool
 #gconf-editor
+gimp
 dconf
 gdm
 gdm3setup
 gedit
-#gnome-color-manager
-#gnome-contacts
+gnome-color-manager
+gnome-contacts
 gnome-disk-utility
 #gnome-documents
-#gnome-font-viewer
-#gnome-games
-#gnome-games-extra-data
+gnome-font-viewer
+gnome-games
+gnome-games-extra-data
 gnome-media
 #gnome-nettool
 gnome-power-manager
 gnome-screenshot
-#gnome-system-log
+gnome-system-log
 gnome-system-monitor
 gnome-tweak-tool
-#mousetweaks
-#nautilus-sendto
+mousetweaks
+nautilus-sendto
 network-manager-applet
-#orca
+orca
 #parole
-#seahorse
-#sound-juicer
-#sushi
-#tomboy
+seahorse
+sound-juicer
+sushi
+tomboy
 totem
-#tracker
-#vinagre
-#vino
+tracker
+vinagre
+vino
+
+## Extra
+icedtea-web
+simple-scan
 
 ## Packagekit
 packagekit
@@ -91,15 +96,20 @@ firefox
 thunderbird
 
 ## Printing
->dvd cups
->dvd cups-pdf
->dvd ghostscript
->dvd gsfonts
->dvd gutenprint
->dvd hplip
+cups
+cups-pdf
+ghostscript
+gsfonts
+gutenprint
+hplip
+
+## Office
+libreoffice
 
 ## Language Support
 firefox-i18n-de
 firefox-i18n-fr
 thunderbird-i18n-de
 thunderbird-i18n-fr
+libreoffice-de
+libreoffice-fr
