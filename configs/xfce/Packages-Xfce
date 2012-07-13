@@ -8,7 +8,6 @@ garcon
 gksu
 gnome-icon-theme
 gtk-engines
-gtk-xfce-engine
 gtk2-xfce-engine
 gtk3-xfce-engine
 gvfs
@@ -68,23 +67,26 @@ zukini-theme
 
 
 ## Applications
+>x86_64 claws-mail
 conky
 epdfview
 file-roller
-firefox
+>i686 firefox
 gedit
 >i686 gimp
+gnome-packagekit
 gparted
 #manjaro-installer
 #manjaro-welcome
+>x86_64 midori
 parole
 pavucontrol
->i686 pidgin
+pidgin
 pnmixer
-thunderbird
+>i686 thunderbird
 viewnior
 #wxgtk # used for 7-zip
->i686 xfburn
+xfburn
 
 
 ## Fonts
@@ -92,10 +94,10 @@ sony_sketch_ef_font
 
 
 ## Language Support
-firefox-i18n-de
-firefox-i18n-fr
-thunderbird-i18n-de
-thunderbird-i18n-fr
+>i686 firefox-i18n-de
+>i686 firefox-i18n-fr
+>i686 thunderbird-i18n-de
+>i686 thunderbird-i18n-fr
 
 
 ## DVD Packages
@@ -103,8 +105,6 @@ thunderbird-i18n-fr
 ## DVD Extra Applications
 >dvd gcalctool
 >dvd gmusicbrowser
->dvd gnome-packagekit
->dvd gnome-settings-daemon-updates
 >dvd icedtea-web
 >dvd libreoffice
 >dvd openjdk6
