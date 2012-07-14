@@ -67,26 +67,24 @@ zukini-theme
 
 
 ## Applications
->x86_64 claws-mail
 conky
 epdfview
 file-roller
->i686 firefox
+firefox
 gedit
 >i686 gimp
-gnome-packagekit
+>i686 gnome-packagekit
 gparted
 #manjaro-installer
 #manjaro-welcome
->x86_64 midori
 parole
 pavucontrol
-pidgin
+>i686 pidgin
 pnmixer
->i686 thunderbird
+thunderbird
 viewnior
 #wxgtk # used for 7-zip
-xfburn
+>i686 xfburn
 
 
 ## Fonts
@@ -94,10 +92,10 @@ sony_sketch_ef_font
 
 
 ## Language Support
->i686 firefox-i18n-de
->i686 firefox-i18n-fr
->i686 thunderbird-i18n-de
->i686 thunderbird-i18n-fr
+firefox-i18n-de
+firefox-i18n-fr
+thunderbird-i18n-de
+thunderbird-i18n-fr
 
 
 ## DVD Packages

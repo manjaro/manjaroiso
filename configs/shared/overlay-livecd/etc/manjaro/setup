@@ -1,5 +1,5 @@
 #!/bin/bash
-  TITLE="Manjaro Linux CLI Installation (v0.1.4)"
+  TITLE="Manjaro Linux CLI Installation (v0.1.4d)"
   PKG_OVERLAY="/opt/manjaro/pkgs"
   manjaro_kernel="linux34"
   manjaro_version="2012.06"
@@ -142,6 +142,7 @@
   _mkinitcpioconftext="Initramfs config (can be lightened)"
   _modprobeconftext="Module options (special cases only)"
   _resolvconftext="DNS servers (managed by networkmanager)"
+  _hostname="Network hostname (Systems hostname)"
   _hoststext="Network hosts (local DNS)"
   _hostsdenytext="Blocked network services"
   _hostsallowtext="Authorized network services"
@@ -1482,6 +1483,7 @@ configure_system()
                 PASSWDUSER="$REPLY"
 
                 if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
+                   mkdir -p ${DESTDIR}/var/lib/AccountsService/users
 		   cp /var/lib/AccountsService/users/manjaro ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
                 fi
 
@@ -1503,6 +1505,7 @@ configure_system()
             "/etc/fstab"                "${_fstabtext}" \
             "/etc/mkinitcpio.conf"      "${_mkinitcpioconftext}" \
             "/etc/resolv.conf"          "${_resolvconftext}" \
+            "/etc/hostname"             "${_hostnametext}" \
             "/etc/hosts"                "${_hoststext}" \
             "/etc/hosts.deny"           "${_hostsdenytext}" \
             "/etc/hosts.allow"          "${_hostsallowtext}" \
