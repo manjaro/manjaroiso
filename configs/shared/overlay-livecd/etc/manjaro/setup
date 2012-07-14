@@ -142,7 +142,7 @@
   _mkinitcpioconftext="Initramfs config (can be lightened)"
   _modprobeconftext="Module options (special cases only)"
   _resolvconftext="DNS servers (managed by networkmanager)"
-  _hostname="Network hostname (Systems hostname)"
+  _hostnametext="Network hostname (Systems hostname)"
   _hoststext="Network hosts (local DNS)"
   _hostsdenytext="Blocked network services"
   _hostsallowtext="Authorized network services"
