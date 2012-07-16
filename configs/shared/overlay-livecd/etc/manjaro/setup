@@ -1,8 +1,8 @@
 #!/bin/bash
-  TITLE="Manjaro Linux CLI Installation (v0.1.4d)"
+  TITLE="Manjaro Linux CLI Installation (v0.7.91)"
   PKG_OVERLAY="/opt/manjaro/pkgs"
   manjaro_kernel="linux34"
-  manjaro_version="2012.06"
+  manjaro_version="2012.07"
   code_name="Manjaro"
   hostname="manjaro"
   _yes="Yes"
@@ -1483,7 +1483,6 @@ configure_system()
                 PASSWDUSER="$REPLY"
 
                 if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
-                   mkdir -p ${DESTDIR}/var/lib/AccountsService/users
 		   cp /var/lib/AccountsService/users/manjaro ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
                 fi
 
