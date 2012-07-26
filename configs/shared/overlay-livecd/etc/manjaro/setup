@@ -1,5 +1,5 @@
 #!/bin/bash
-  TITLE="Manjaro Linux CLI Installation (v0.7.91)"
+  TITLE="Manjaro Linux CLI Installation (v0.7.92)"
   PKG_OVERLAY="/opt/manjaro/pkgs"
   manjaro_kernel="linux34"
   manjaro_version="2012.07"
@@ -1206,7 +1206,7 @@ dogrub() {
     chroot ${DESTDIR} cp /usr/share/locale/en@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
 
     # generate resume string for suspend to disk
-    [ -z "${swap_partition}" -o "${swap_partition}" = "${_none_entry}" ] || sed -i -e "s,GRUB_CMDLINE_LINUX=.*,GRUB_CMDLINE_LINUX_DEFAULT=\"`cat $DESTDIR/etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT | cut -d'"' -f2` resume=/dev/disk/by-uuid/`blkid -s UUID -o value -p ${swap_partition}`\",g" $DESTDIR/etc/default/grub
+    [ -z "${swap_partition}" -o "${swap_partition}" = "${_none_entry}" ] || sed -i -e "s,GRUB_CMDLINE_LINUX_DEFAULT=.*,GRUB_CMDLINE_LINUX_DEFAULT=\"`cat $DESTDIR/etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT | cut -d'"' -f2` resume=/dev/disk/by-uuid/`blkid -s UUID -o value -p ${swap_partition}`\",g" $DESTDIR/etc/default/grub
 
     # create grub.cfg
     chroot ${DESTDIR} grub-mkconfig -o $grubmenu >> /tmp/grub.log 2>&1
@@ -1541,7 +1541,7 @@ configure_system()
     chroot ${DESTDIR} pacman -Syy &> /dev/null
 
     # create kernel images
-    HOOKS=`cat /etc/mkinitcpio.conf | grep HOOKS= | grep -v '#' | cut -d'"' -f2`
+    HOOKS=`cat /etc/mkinitcpio.conf | grep HOOKS= | grep -v '#' | cut -d'"' -f2 | sed 's/filesystems/resume filesystems/g'`
     sed -i -e "s/^HOOKS=.*/HOOKS=\"${HOOKS} plymouth\"/g" ${DESTDIR}/etc/mkinitcpio.conf    
     run_mkinitcpio
 

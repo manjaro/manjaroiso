@@ -76,9 +76,9 @@ dnsmasq
 dnsutils
 gamin
 gnu-netcat
-grub2-bios
-grub2-efi-i386
-grub2-efi-x86_64
+grub-bios
+grub-efi-i386
+grub-efi-x86_64
 hdparm
 linux-headers
 linux-firmware
