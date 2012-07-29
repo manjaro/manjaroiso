@@ -79,13 +79,13 @@ gparted
 #manjaro-welcome
 parole
 pavucontrol
-pidgin
+>i686 pidgin
 pnmixer
 sylpheed
 #thunderbird
-viewnior
+>i686 viewnior
 #wxgtk # used for 7-zip
-xfburn
+>i686 xfburn
 
 
 ## Fonts
