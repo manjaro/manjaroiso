@@ -78,6 +78,12 @@ host_mirror='http://mirror.rit.edu/kdemod/$repo/$arch'
 chroot_mount() {
     [ -e "${working_dir}/dev" ] || mkdir "${working_dir}/dev"
     mount -t tmpfs dev "${working_dir}/dev" -o mode=0755,size=10M,nosuid
+    mount -t devpts devpts "${working_dir}/dev/pts"
+    mount -t tmpfs devshm "${working_dir}/dev/shm"
+    mount -t proc proc "${working_dir}/proc"
+    mount -t tmpfs run "${working_dir}/run"
+    mount -t sysfs sys "${working_dir}/sys"
+    mount -t tmpfs tmp "${working_dir}/tmp"
     trap 'chroot_umount' EXIT QUIT HUP
     trap 'chroot_umount_and_exit' INT TERM SIGINT SIGTERM
 }
@@ -89,10 +95,22 @@ copy_hostconf () {
 }
 
 chroot_umount () {
+    umount "${working_dir}/tmp" &>/dev/null
+    umount "${working_dir}/sys" &>/dev/null
+    umount "${working_dir}/run" &>/dev/null
+    umount "${working_dir}/proc" &>/dev/null
+    umount "${working_dir}/dev/shm" &>/dev/null
+    umount "${working_dir}/dev/pts" &>/dev/null
     umount "${working_dir}/dev" &>/dev/null
 }
 
 chroot_umount_and_exit () {
+    umount "${working_dir}/tmp" &>/dev/null
+    umount "${working_dir}/sys" &>/dev/null
+    umount "${working_dir}/run" &>/dev/null
+    umount "${working_dir}/proc" &>/dev/null
+    umount "${working_dir}/dev/shm" &>/dev/null
+    umount "${working_dir}/dev/pts" &>/dev/null
     umount "${working_dir}/dev" &>/dev/null
     echo 'cancelled by the user, exiting...'
     exit 1
