@@ -1386,7 +1386,7 @@ run_mkinitcpio()
         echo "${_runninginitcpio}" > /tmp/mkinitcpio.log; \
         echo >> /tmp/mkinitcpio.log; \
         chroot "$DESTDIR" /sbin/depmod >>/tmp/mkinitcpio.log 2>&1
-        chroot "$DESTDIR" /sbin/mkinitcpio -p "$manjaro_kernel" >>/tmp/mkinitcpio.log 2>&1
+        chroot "$DESTDIR" /usr/bin/mkinitcpio -p "$manjaro_kernel" >>/tmp/mkinitcpio.log 2>&1
         echo $? > /tmp/.mkinitcpio-retcode
         echo >> /tmp/mkinitcpio.log
         rm -f /tmp/setup-mkinitcpio-running
