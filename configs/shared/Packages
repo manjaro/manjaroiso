@@ -58,6 +58,10 @@ wpa_supplicant
 xfsprogs
 
 
+## Hotfixes
+manjaro-hotfixes
+
+
 ## Devel Packages
 >dvd base-devel
 #yaourt
