@@ -77,6 +77,12 @@ host_mirror='http://reponew.manjaro.org/$repo/$arch/bin'
 # {{{ functions
 chroot_mount() {
     [ -e "${working_dir}/dev" ] || mkdir "${working_dir}/dev"
+    [ -e "${working_dir}/dev/pts" ] || mkdir "${working_dir}/dev/pts"
+    [ -e "${working_dir}/dev/shm" ] || mkdir "${working_dir}/dev/shm"
+    [ -e "${working_dir}/proc" ] || mkdir "${working_dir}/proc"
+    [ -e "${working_dir}/run" ] || mkdir "${working_dir}/run"
+    [ -e "${working_dir}/sys" ] || mkdir "${working_dir}/sys"
+    [ -e "${working_dir}/tmp" ] || mkdir "${working_dir}/tmp"
     mount -t tmpfs dev "${working_dir}/dev" -o mode=0755,size=10M,nosuid
     mount -t devpts devpts "${working_dir}/dev/pts"
     mount -t tmpfs devshm "${working_dir}/dev/shm"
