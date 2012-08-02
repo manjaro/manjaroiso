@@ -260,7 +260,7 @@ make_boot() {
         cp /usr/lib/initcpio/install/miso* ${work_dir}/boot-image/usr/lib/initcpio/install
         cp mkinitcpio.conf ${work_dir}/boot-image/etc/mkinitcpio-manjaroiso.conf
         _kernver=`cat ${work_dir}/boot-image/usr/lib/modules/*-MANJARO/version`
-        chroot ${work_dir}/boot-image /sbin/mkinitcpio -k ${_kernver} -c /etc/mkinitcpio-manjaroiso.conf -g /boot/manjaro.img
+        chroot ${work_dir}/boot-image /usr/bin/mkinitcpio -k ${_kernver} -c /etc/mkinitcpio-manjaroiso.conf -g /boot/manjaro.img
         mv ${work_dir}/boot-image/boot/manjaro.img ${work_dir}/iso/${install_dir}/boot/${arch}/manjaro.img
         umount ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
         rm -R ${work_dir}/boot-image

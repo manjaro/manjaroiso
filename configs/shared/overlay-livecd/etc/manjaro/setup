@@ -1,8 +1,8 @@
 #!/bin/bash
-  TITLE="Manjaro Linux CLI Installation (v0.7.92)"
+  TITLE="Manjaro Linux CLI Installation (v0.7.92.1)"
   PKG_OVERLAY="/opt/manjaro/pkgs"
   manjaro_kernel="linux34"
-  manjaro_version="2012.07"
+  manjaro_version="2012.08"
   code_name="Manjaro"
   hostname="manjaro"
   _yes="Yes"

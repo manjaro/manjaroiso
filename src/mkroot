@@ -72,7 +72,7 @@ if [ -z "$cache_dir" ]; then
     unset cache_conf
 fi
 
-host_mirror='http://mirror.rit.edu/kdemod/$repo/$arch'
+host_mirror='http://reponew.manjaro.org/$repo/$arch/bin'
 
 # {{{ functions
 chroot_mount() {

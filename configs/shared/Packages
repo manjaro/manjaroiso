@@ -58,6 +58,10 @@ wpa_supplicant
 xfsprogs
 
 
+## Hotfixes
+manjaro-hotfixes
+
+
 ## Devel Packages
 >dvd base-devel
 #yaourt
@@ -139,6 +143,10 @@ ttf-dejavu
 ttf-inconsolata
 ttf-indic-otf
 ttf-liberation
+
+
+## Artwork
+manjaro-artwork
 
 
 ## Compression Codecs
