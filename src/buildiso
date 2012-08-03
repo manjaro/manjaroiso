@@ -137,7 +137,7 @@ if [ -e Packages-Xorg ] ; then
               echo -e -n "$_r >$_W Prepare pkgs-image \n $_n"
               mkdir -p ${work_dir}/pkgs-image/opt/manjaro/pkgs
               if [ "`mount -l | grep ${work_dir}/pkgs-image`" != "" ]; then
-                 umount ${work_dir}/pkgs-image
+                 umount -f ${work_dir}/pkgs-image
               fi
               mount -t aufs -o br=${work_dir}/pkgs-image:${work_dir}/root-image=ro none ${work_dir}/pkgs-image
               pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/manjaro/pkgs -Syw ${xorg_packages} --noconfirm
@@ -149,7 +149,7 @@ if [ -e Packages-Xorg ] ; then
               cp pacman-gfx.conf ${work_dir}/pkgs-image/opt/manjaro
               rm -r ${work_dir}/pkgs-image/var
               repo-add ${work_dir}/pkgs-image/opt/manjaro/pkgs/manjaro-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/manjaro/pkgs/*pkg*z
-              umount ${work_dir}/pkgs-image
+              umount -f ${work_dir}/pkgs-image
               rm -R ${work_dir}/pkgs-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
@@ -165,7 +165,7 @@ if [ -e Packages-Xfce ] ; then
               echo -e -n "$_r >$_W XFCE installation (xfce-image) \n $_n"
               mkdir -p ${work_dir}/xfce-image
               if [ "`mount -l | grep ${work_dir}/xfce-image`" != "" ]; then
-                 umount ${work_dir}/xfce-image
+                 umount -f ${work_dir}/xfce-image
               fi
               mount -t aufs -o br=${work_dir}/xfce-image:${work_dir}/root-image=ro none ${work_dir}/xfce-image
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "xfce-image" -p "${xfce_packages}" create "${work_dir}"
@@ -177,7 +177,7 @@ if [ -e Packages-Xfce ] ; then
                  mkdir -p "${work_dir}/xfce-image/etc/systemd/system/multi-user.target.wants"
                  ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/xfce-image/etc/systemd/system/multi-user.target.wants/cups.service"
               fi
-              umount ${work_dir}/xfce-image
+              umount -f ${work_dir}/xfce-image
               rm -R ${work_dir}/xfce-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
@@ -193,7 +193,7 @@ if [ -e Packages-Kde ] ; then
               echo -e -n "$_r >$_W KDE installation (kde-image) \n $_n"
               mkdir -p ${work_dir}/kde-image
               if [ "`mount -l | grep ${work_dir}/kde-image`" != "" ]; then
-                 umount ${work_dir}/kde-image
+                 umount -f ${work_dir}/kde-image
               fi
               mount -t aufs -o br=${work_dir}/kde-image:${work_dir}/root-image=ro none ${work_dir}/kde-image
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "kde-image" -p "${kde_packages}" create "${work_dir}"
@@ -205,7 +205,7 @@ if [ -e Packages-Kde ] ; then
                  mkdir -p "${work_dir}/kde-image/etc/systemd/system/multi-user.target.wants"
                  ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/kde-image/etc/systemd/system/multi-user.target.wants/cups.service"
               fi
-              umount ${work_dir}/kde-image
+              umount -f ${work_dir}/kde-image
               rm -R ${work_dir}/kde-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
@@ -221,7 +221,7 @@ if [ -e Packages-gnome ] ; then
               echo -e -n "$_r >$_W GNOME installation (gnome-image) \n $_n"
               mkdir -p ${work_dir}/gnome-image
               if [ "`mount -l | grep ${work_dir}/gnome-image`" != "" ]; then
-                 umount ${work_dir}/gnome-image
+                 umount -f ${work_dir}/gnome-image
               fi
               mount -t aufs -o br=${work_dir}/gnome-image:${work_dir}/root-image=ro none ${work_dir}/gnome-image
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "gnome-image" -p "${gnome_packages}" create "${work_dir}"
@@ -233,7 +233,7 @@ if [ -e Packages-gnome ] ; then
                  mkdir -p "${work_dir}/gnome-image/etc/systemd/system/multi-user.target.wants"
                  ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/gnome-image/etc/systemd/system/multi-user.target.wants/cups.service"
               fi
-              umount ${work_dir}/gnome-image
+              umount -f ${work_dir}/gnome-image
               rm -R ${work_dir}/gnome-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
@@ -250,7 +250,7 @@ make_boot() {
 	cp ${work_dir}/root-image/boot/vmlinuz* ${work_dir}/iso/${install_dir}/boot/${arch}/manjaroiso
         mkdir -p ${work_dir}/boot-image
         if [ "`mount -l | grep ${work_dir}/boot-image`" != "" ]; then
-           umount ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
+           umount -f ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
         fi
         mount -t aufs -o br=${work_dir}/boot-image:${work_dir}/root-image=ro none ${work_dir}/boot-image
         mount -t proc none ${work_dir}/boot-image/proc
@@ -262,7 +262,7 @@ make_boot() {
         _kernver=`cat ${work_dir}/boot-image/usr/lib/modules/*-MANJARO/version`
         chroot ${work_dir}/boot-image /usr/bin/mkinitcpio -k ${_kernver} -c /etc/mkinitcpio-manjaroiso.conf -g /boot/manjaro.img
         mv ${work_dir}/boot-image/boot/manjaro.img ${work_dir}/iso/${install_dir}/boot/${arch}/manjaro.img
-        umount ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
+        umount -f ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
         rm -R ${work_dir}/boot-image
 	: > ${work_dir}/build.${FUNCNAME}
 	echo -e "$_g >$_W done $_n"

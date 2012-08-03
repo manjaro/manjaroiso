@@ -92,16 +92,16 @@ copy_hostconf () {
     echo "Server = ${host_mirror}" > ${working_dir}/etc/pacman.d/mirrorlist
 }
 
-chroot_umount () {
-    umount "${working_dir}/sys" &>/dev/null
-    umount "${working_dir}/proc" &>/dev/null
-    umount "${working_dir}/dev" &>/dev/null
+chroot_umount -f () {
+    umount -f "${working_dir}/sys" &>/dev/null
+    umount -f "${working_dir}/proc" &>/dev/null
+    umount -f "${working_dir}/dev" &>/dev/null
 }
 
 chroot_umount_and_exit () {
-    umount "${working_dir}/sys" &>/dev/null
-    umount "${working_dir}/proc" &>/dev/null
-    umount "${working_dir}/dev" &>/dev/null
+    umount -f "${working_dir}/sys" &>/dev/null
+    umount -f "${working_dir}/proc" &>/dev/null
+    umount -f "${working_dir}/dev" &>/dev/null
     echo 'cancelled by the user, exiting...'
     exit 1
 }
