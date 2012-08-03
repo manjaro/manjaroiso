@@ -76,20 +76,12 @@ host_mirror='http://reponew.manjaro.org/$repo/$arch/bin'
 
 # {{{ functions
 chroot_mount() {
-    [ -e "${working_dir}/dev" ] || mkdir "${working_dir}/dev"
-    [ -e "${working_dir}/dev/pts" ] || mkdir "${working_dir}/dev/pts"
-    [ -e "${working_dir}/dev/shm" ] || mkdir "${working_dir}/dev/shm"
-    [ -e "${working_dir}/proc" ] || mkdir "${working_dir}/proc"
-    [ -e "${working_dir}/run" ] || mkdir "${working_dir}/run"
-    [ -e "${working_dir}/sys" ] || mkdir "${working_dir}/sys"
-    [ -e "${working_dir}/tmp" ] || mkdir "${working_dir}/tmp"
-    mount -t tmpfs dev "${working_dir}/dev" -o mode=0755,size=10M,nosuid
-    mount -t devpts devpts "${working_dir}/dev/pts"
-    mount -t tmpfs devshm "${working_dir}/dev/shm"
+    [ -e "${working_dir}/proc" ] || install -d -m555 "${working_dir}/proc"
+    [ -e "${working_dir}/sys" ] || install -d -m555 "${working_dir}/sys"
+    [ -e "${working_dir}/dev" ] || install -d -m755 "${working_dir}/dev"
     mount -t proc proc "${working_dir}/proc"
-    mount -t tmpfs run "${working_dir}/run"
     mount -t sysfs sys "${working_dir}/sys"
-    mount -t tmpfs tmp "${working_dir}/tmp"
+    mount -o bind /dev "${working_dir}/dev"
     trap 'chroot_umount' EXIT QUIT HUP
     trap 'chroot_umount_and_exit' INT TERM SIGINT SIGTERM
 }
@@ -101,22 +93,14 @@ copy_hostconf () {
 }
 
 chroot_umount () {
-    umount "${working_dir}/tmp" &>/dev/null
     umount "${working_dir}/sys" &>/dev/null
-    umount "${working_dir}/run" &>/dev/null
     umount "${working_dir}/proc" &>/dev/null
-    umount "${working_dir}/dev/shm" &>/dev/null
-    umount "${working_dir}/dev/pts" &>/dev/null
     umount "${working_dir}/dev" &>/dev/null
 }
 
 chroot_umount_and_exit () {
-    umount "${working_dir}/tmp" &>/dev/null
     umount "${working_dir}/sys" &>/dev/null
-    umount "${working_dir}/run" &>/dev/null
     umount "${working_dir}/proc" &>/dev/null
-    umount "${working_dir}/dev/shm" &>/dev/null
-    umount "${working_dir}/dev/pts" &>/dev/null
     umount "${working_dir}/dev" &>/dev/null
     echo 'cancelled by the user, exiting...'
     exit 1
