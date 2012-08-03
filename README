@@ -1,7 +1,6 @@
 Manjaroiso For Dummies Like Me and You
 -------------------------------------
 
-
 - What the hell is Manjaroiso?
 
 Manjaroiso is a small set of bash scripts that is capable of building fully
@@ -10,15 +9,12 @@ could potentially be used to generate anything from rescue systems,
 to install disks, to special interest live CD systems, and who knows what
 else. Simply put, if it involves Manjaro on a shiny coaster, it can do it.
 
-
 - Alright, so how does one install it?
 
 First off, Manjaroiso has some dependencies:
     - mkinitcpio
     - cdrkit
     - squashfs-tools
-    - aufs3 (only needed in target media)
-    - aufs3-util (only needed in target media)
     - syslinux
     - nbd
     - mkinitcpio-nfs-utils
@@ -26,10 +22,9 @@ First off, Manjaroiso has some dependencies:
 Manjaroiso itself can be installed with the handy dandy included Makefile,
 and the incantation 'make install'.
 
-
 - Great, so how do you use this thing?
 
-The heart and soul of Manjaroiso is mkanjaroiso. All of its options are
+The heart and soul of Manjaroiso is mkiso. All of its options are
 documented in its usage output, so we won't go into detail here.
 Instead, let's go over the general process.
 
@@ -64,21 +59,21 @@ If you want to add a squashfs union layer:
 - Set up whatever you want to include in a separate directory someplace,
   as if that directory was / . Then run mksquahfs on it, and copy the
   created image to your addons directory.
-- Add an entry to your addons config file (which must be named 'config',
+- Add an entry to your addons config file (which must be named 'isomounts',
   by the way). Typical squashfs entries look like this:
   live_overlay.sqfs       /                   squashfs
   Where the first component is the path to the image relative to your
   addons directory, the second is the mountpoint (irrelevant for
   squashfs, they will all get layered at /) and of course the third
   component is the type.
-- Be aware that the order of entries on the config matters! Entries will
+- Be aware that the order of entries on the config file matters! Entries will
   be layered on top of one another, later entries are mounted _UNDER_
   earlier entries (an unfortunate counterintuitive result of the way we
   have to mount the unions).
 
 If you want to add plain directories to bind mount:
 - Set up your directory somewhere, and copy it to your addon directory.
-- Add an entry to your addons config file, example entry:
+- Add an entry to your isomounts config file, example entry:
   core                    /packages           bind
   where the first component is the path to the directory relative to
   your addons directory, the second component is where you'd like it
@@ -89,22 +84,22 @@ If you want to add plain directories to bind mount:
 - How can build installation mediums like provided by Manjaro GNU/Linux?
 
 - Just follow these next steps as root.
-- Note that mkanjaroroot is optional, but with it, will ensure to have
+- Note that mkroot is optional, but with it, will ensure to have
   a clean enviroment for building isos.
 - This clean chroot, will take about 400MB (+130MB with all needed tools).
 - After make, max space usage is about 2GB.
 
 
 pacman -S base base-devel nano vi vim rsync pacman file wget
-mkanjaroroot /tmp/somedir base
-mkanjaroroot -r bash /tmp/somedir
+mkroot /tmp/somedir base
+mkroot -r bash /tmp/somedir
 # vi/nano /etc/pacman.d/mirrorlist and uncomment your prefered mirror.
-pacman -S git squashfs-tools syslinux Manjaroiso cdrkit make nbd mkinitcpio-nfs-utils
+pacman -S git squashfs-tools syslinux manjaroiso cdrkit make nbd mkinitcpio-nfs-utils
 cd /tmp
 git clone git://git.manjaro.org/manjarolinux/manjaroiso.git
 cd manjaroiso/src
 make install
-cd ../configs/manjaro-xfce/
+cd ../configs/xfce/
 buildiso
 
 Done!
