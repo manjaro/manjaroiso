@@ -96,7 +96,7 @@ mkroot -r bash /tmp/somedir
 # vi/nano /etc/pacman.d/mirrorlist and uncomment your prefered mirror.
 pacman -S git squashfs-tools syslinux manjaroiso cdrkit make nbd mkinitcpio-nfs-utils
 cd /tmp
-git clone git://git.manjaro.org/manjarolinux/manjaroiso.git
+git clone git://git.manjaro.org/core/manjaroiso.git
 cd manjaroiso/src
 make install
 cd ../configs/xfce/
