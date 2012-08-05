@@ -1,5 +1,5 @@
 #!/bin/bash
-  TITLE="Manjaro Linux CLI Installation (v0.7.92.1)"
+  TITLE="Manjaro Linux CLI Installation (v0.7.92.3)"
   PKG_OVERLAY="/opt/manjaro/pkgs"
   manjaro_kernel="linux34"
   manjaro_version="2012.08"
@@ -1271,8 +1271,10 @@ set_clock()
     local HWCLOCK_PARAMS=""
     if [ "$HARDWARECLOCK" = "UTC" ]; then
         HWCLOCK_PARAMS="$HWCLOCK_PARAMS --utc"
+        ADJFILE=""
     else
         HWCLOCK_PARAMS="$HWCLOCK_PARAMS --localtime"
+        ADJFILE="/etc/adjtime"
     fi
     if [ "$TIMEZONE" != "" -a -e "/usr/share/zoneinfo/$TIMEZONE" ]; then
         /bin/rm -f /etc/localtime
@@ -1532,8 +1534,14 @@ configure_system()
     #
     DIALOG --infobox "${_localegen}" 0 0
     chroot ${DESTDIR} locale-gen &> /dev/null
+
     # /etc/localtime
     cp /etc/localtime ${DESTDIR}/etc/localtime &> /dev/null
+    if [ "$ADJFILE" == "/etc/adjtime" ] ; then
+       echo "0.0 0.0 0.0" > ${DESTDIR}/etc/adjtime &> /dev/null
+       echo "0" >> ${DESTDIR}/etc/adjtime &> /dev/null
+       echo "LOCAL" >> ${DESTDIR}/etc/adjtime &> /dev/null
+    fi
 
     # sync pacman databases
     DIALOG --infobox "${_syncpacmandb}" 0 0
