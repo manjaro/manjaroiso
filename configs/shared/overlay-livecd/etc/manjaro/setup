@@ -1271,10 +1271,11 @@ set_clock()
     local HWCLOCK_PARAMS=""
     if [ "$HARDWARECLOCK" = "UTC" ]; then
         HWCLOCK_PARAMS="$HWCLOCK_PARAMS --utc"
-        ADJFILE=""
     else
         HWCLOCK_PARAMS="$HWCLOCK_PARAMS --localtime"
-        ADJFILE="/etc/adjtime"
+        echo "0.0 0.0 0.0" > /etc/adjtime &> /dev/null
+        echo "0" >> /etc/adjtime &> /dev/null
+        echo "LOCAL" >> /etc/adjtime &> /dev/null
     fi
     if [ "$TIMEZONE" != "" -a -e "/usr/share/zoneinfo/$TIMEZONE" ]; then
         /bin/rm -f /etc/localtime
@@ -1537,10 +1538,8 @@ configure_system()
 
     # /etc/localtime
     cp /etc/localtime ${DESTDIR}/etc/localtime &> /dev/null
-    if [ "$ADJFILE" == "/etc/adjtime" ] ; then
-       echo "0.0 0.0 0.0" > ${DESTDIR}/etc/adjtime &> /dev/null
-       echo "0" >> ${DESTDIR}/etc/adjtime &> /dev/null
-       echo "LOCAL" >> ${DESTDIR}/etc/adjtime &> /dev/null
+    if [ -e "/etc/adjtime" ] ; then
+       cp /etc/adjtime ${DESTDIR}/etc/adjtime &> /dev/null
     fi
 
     # sync pacman databases
