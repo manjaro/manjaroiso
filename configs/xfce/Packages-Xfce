@@ -26,7 +26,6 @@ thunar-volman
 tumbler
 xcursor-simpleandsoft
 xfce4-appfinder
-xfce4-artwork
 xfce4-battery-plugin
 xfce4-clipman-plugin
 xfce4-cpufreq-plugin
@@ -68,12 +67,12 @@ zukini-theme
 
 ## Applications
 conky
-epdfview
+>i686 epdfview
 file-roller
 firefox
 gedit
 >i686 gimp
->i686 gnome-packagekit
+gnome-packagekit
 gparted
 #manjaro-installer
 #manjaro-welcome
