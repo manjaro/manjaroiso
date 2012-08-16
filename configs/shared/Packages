@@ -12,13 +12,11 @@ e2fsprogs
 file
 filesystem
 findutils
-gawk
 gcc-libs
 gettext
 glibc
 grep
 gzip
-heirloom-mailx
 iputils
 jfsutils
 less
@@ -29,7 +27,6 @@ logrotate
 lsb-release
 lvm2
 man-db
-man-pages
 manjaro-release
 mdadm
 nano
