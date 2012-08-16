@@ -5,26 +5,10 @@ Version:0.15:$
 Arch:x86-gcc3:$
 
 [PLUGINS]
-libcinnamon-browser-plugin.so:$
-/usr/lib/mozilla/plugins/libcinnamon-browser-plugin.so:$
-:$
-1338205022000:0:1:$
-This plugin provides integration with Cinnamon for live extension enabling and disabling. It can be used only by extensions.gnome.org:$
-Cinnamon Integration:$
-1
-0:application/x-cinnamon-integration:Cinnamon Integration Dummy Content-Type::$
-libgnome-shell-browser-plugin.so:$
-/usr/lib/mozilla/plugins/libgnome-shell-browser-plugin.so:$
-:$
-1336135882000:0:1:$
-This plugin provides integration with Gnome Shell for live extension enabling and disabling. It can be used only by extensions.gnome.org:$
-Gnome Shell Integration:$
-1
-0:application/x-gnome-shell-integration:Gnome Shell Integration Dummy Content-Type::$
 libflashplayer.so:$
 /usr/lib/mozilla/plugins/libflashplayer.so:$
 :$
-1336124474000:0:1:$
+1339197880000:0:1:$
 Shockwave Flash 11.2 r202:$
 Shockwave Flash:$
 2

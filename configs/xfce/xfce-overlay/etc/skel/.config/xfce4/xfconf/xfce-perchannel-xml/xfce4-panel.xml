@@ -34,27 +34,25 @@
       <property name="appearance" type="uint" value="0"/>
       <property name="invert-orientation" type="bool" value="false"/>
       <property name="items" type="array">
-        <value type="string" value="+logout-dialog"/>
+        <value type="string" value="-logout-dialog"/>
         <value type="string" value="-switch-user"/>
+        <value type="string" value="-separator"/>
+        <value type="string" value="+logout"/>
+        <value type="string" value="-lock-screen"/>
+        <value type="string" value="-hibernate"/>
+        <value type="string" value="-suspend"/>
+        <value type="string" value="-restart"/>
+        <value type="string" value="-shutdown"/>
       </property>
     </property>
     <property name="plugin-4" type="string" value="pager"/>
     <property name="plugin-5" type="string" value="clock"/>
     <property name="plugin-6" type="string" value="systray">
       <property name="names-visible" type="array">
-        <value type="string" value="thunar"/>
         <value type="string" value="pnmixer"/>
-        <value type="string" value="pyvolwheel"/>
-        <value type="string" value="guake.py"/>
-        <value type="string" value="zwischenablage"/>
         <value type="string" value="networkmanager applet"/>
-        <value type="string" value="wiedergabelautstärke"/>
-        <value type="string" value="gnome-volume-control-applet"/>
-        <value type="string" value="pidgin"/>
         <value type="string" value="clipman"/>
         <value type="string" value="xfce4-power-manager"/>
-        <value type="string" value="netzwerk-manager-applet"/>
-        <value type="string" value="alunn"/>
       </property>
     </property>
     <property name="plugin-3" type="string" value="tasklist">
