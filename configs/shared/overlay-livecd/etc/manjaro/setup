@@ -1001,7 +1001,13 @@ hd_config()
         DIALOG --infobox "${_updatemirrorlist}" 6 40
         sleep 3
         wget -O ${DESTDIR}/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist &>/dev/null
-        sed -i "s/#Server/Server/g" ${DESTDIR}/etc/pacman.d/mirrorlist
+        sed '/^#\S/ s|#||' -i ${DESTDIR}/etc/pacman.d/mirrorlist
+        # rankmirrors
+        cp ${DESTDIR}/etc/pacman.d/mirrorlist ${DESTDIR}/etc/pacman.d/mirrorlist.backup
+        rankmirrors -n 4 ${DESTDIR}/etc/pacman.d/mirrorlist.backup > ${DESTDIR}/etc/pacman.d/mirrorlist
+    else
+        # enable default mirror
+        sed -i -e 's~^.*mirror.dacentec.com.*~Server = http://mirror.dacentec.com/manjaro/$repo/$arch~' ${DESTDIR}/etc/pacman.d/mirrorlist
     fi
 
     chroot ${DESTDIR} pacman -Syy &> /dev/null

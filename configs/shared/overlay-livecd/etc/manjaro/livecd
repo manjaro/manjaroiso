@@ -114,7 +114,13 @@ ln -sf "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime
 
 if [ "${ping_check}" != "" ] ; then
     wget -O /etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist &>/dev/null
-    sed -i "s/#Server/Server/g" /etc/pacman.d/mirrorlist
+    sed '/^#\S/ s|#||' -i /etc/pacman.d/mirrorlist
+    # rankmirrors
+    cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+    rankmirrors -n 4 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
+else
+    # enable default mirror
+    sed -i -e 's~^.*mirror.dacentec.com.*~Server = http://mirror.dacentec.com/manjaro/$repo/$arch~' /etc/pacman.d/mirrorlist
 fi
 
 #update_pacman_databases
