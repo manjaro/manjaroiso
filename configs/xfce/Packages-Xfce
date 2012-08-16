@@ -82,8 +82,8 @@ parole
 pavucontrol
 >i686 pidgin
 pnmixer
-sylpheed
-#thunderbird
+#sylpheed
+thunderbird
 >i686 viewnior
 #wxgtk # used for 7-zip
 >i686 xfburn
@@ -96,8 +96,8 @@ sony_sketch_ef_font
 ## Language Support
 firefox-i18n-de
 firefox-i18n-fr
-#thunderbird-i18n-de
-#thunderbird-i18n-fr
+thunderbird-i18n-de
+thunderbird-i18n-fr
 
 
 ## DVD Packages

@@ -84,7 +84,6 @@ grub-bios
 grub-efi-i386
 grub-efi-x86_64
 hdparm
-linux-headers
 linux-firmware
 manjaro-firmware
 memtest86+
