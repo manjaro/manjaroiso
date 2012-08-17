@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.8
+Type=Application
+Name=Manjaro Mirrorcheck
+Comment=
+Exec=sudo /etc/manjaro/mirrorcheck
+StartupNotify=false
+Terminal=false
+Hidden=false
+
+GenericName=
