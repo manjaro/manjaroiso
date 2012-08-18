@@ -1,5 +1,5 @@
 #!/bin/bash
-  TITLE="Manjaro Linux CLI Installation (v0.7.93)"
+  TITLE="Manjaro Linux CLI Installation (v0.7.93.1)"
   PKG_OVERLAY="/opt/manjaro/pkgs"
   #DIALOGRC="./setuprc"
   manjaro_kernel="linux34"
@@ -1001,13 +1001,13 @@ hd_config()
         DIALOG --infobox "${_updatemirrorlist}" 6 40
         sleep 3
         wget -O ${DESTDIR}/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist &>/dev/null
-        sed '/^#\S/ s|#||' -i ${DESTDIR}/etc/pacman.d/mirrorlist
+        sed -i 's/# Server/Server/g' -i ${DESTDIR}/etc/pacman.d/mirrorlist
         # rankmirrors
         cp ${DESTDIR}/etc/pacman.d/mirrorlist ${DESTDIR}/etc/pacman.d/mirrorlist.backup
         rankmirrors -v -n 4 ${DESTDIR}/etc/pacman.d/mirrorlist.backup > ${DESTDIR}/etc/pacman.d/mirrorlist
     else
         # enable default mirror
-        sed -i -e 's~^.*repo.manjaro.org.uk.*~Server = repo.manjaro.org.uk/$repo/$arch~' ${DESTDIR}/etc/pacman.d/mirrorlist
+        sed -i -e 's~^.*repo.manjaro.org.uk.*~Server = http://repo.manjaro.org.uk/$repo/$arch~' ${DESTDIR}/etc/pacman.d/mirrorlist
     fi
 
     chroot ${DESTDIR} pacman -Syy &> /dev/null
