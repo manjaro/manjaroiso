@@ -6,9 +6,9 @@ if [ "$EUID" != "0" ]; then
     exit 1
 fi
 
-xfce="Y"
-gnome="N"
-kde="N"
+xfce="N"
+gnome="Y"
+kde="Y"
 
 if [ "$xfce" == "Y" ] ; then
    echo ">> build xfce image"
@@ -17,9 +17,9 @@ if [ "$xfce" == "Y" ] ; then
    buildiso
    echo ">> done build xfce image"
    rm Packages-Xfce
-   #rm -R work*/*xfce*
+   rm -R work*/*xfce*
    rm -R work*/*isomounts*
-   #rm work*/iso/manjaro/*/xfce-image.sqfs
+   rm work*/iso/manjaro/*/xfce-image.sqfs
 fi
 if [ "$gnome" == "Y" ] ; then
    echo ">> build gnome image"

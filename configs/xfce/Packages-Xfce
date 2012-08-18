@@ -68,7 +68,7 @@ xscreensaver
 
 ## Applications
 conky
->i686 epdfview
+epdfview
 file-roller
 firefox
 gedit
@@ -79,13 +79,13 @@ gparted
 #manjaro-welcome
 parole
 pavucontrol
->i686 pidgin
+pidgin
 pnmixer
 #sylpheed
 thunderbird
->i686 viewnior
+viewnior
 #wxgtk # used for 7-zip
->i686 xfburn
+xfburn
 
 
 ## Fonts
