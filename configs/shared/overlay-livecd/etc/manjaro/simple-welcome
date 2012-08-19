@@ -1,0 +1,40 @@
+#! /usr/bin/python2
+# -*-coding:utf-8 -*
+
+from gi.repository import Gtk, Gdk
+
+window = Gtk.Window()
+window.set_default_size(300, 150)
+window.connect("delete-event", Gtk.main_quit)
+window.set_title("Welcome in Manjaro")
+window.set_icon_from_file("/usr/share/icons/manjaro.png")
+window.set_role("dialog")
+window.set_type_hint(Gdk.WindowTypeHint.DIALOG)
+
+box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+
+label1 = Gtk.Label()
+label1.set_markup("\n<big><big><b><u>Welcome in Manjaro</u></b></big></big>\n\n"
+                  "<big>Thank you for using Manjaro</big>\n")
+label1.set_justify(Gtk.Justification.CENTER)
+box.pack_start(label1, True, True, 0)
+
+label2 = Gtk.Label()
+label2.set_markup("<big>manjaro user password is:  <i>manjaro</i></big>\n"
+                  "<big>root password is:  <i>manjaro</i></big>\n")
+label2.set_justify(Gtk.Justification.CENTER)
+box.pack_start(label2, True, True, 0)
+
+label3 = Gtk.Label()
+label3.set_markup("<big>For news and more informations</big>\n"
+                  "<big>please visit <a href=\"http://manjaro.org\""
+                  "title=\"Click for more infos\">manjaro.org</a></big>.\n")
+label3.set_justify(Gtk.Justification.CENTER)
+box.pack_start(label3, True, True, 0)
+
+window.add(box)
+window.show_all()
+
+
+
+Gtk.main()
