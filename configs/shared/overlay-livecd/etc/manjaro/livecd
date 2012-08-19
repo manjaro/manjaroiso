@@ -197,6 +197,6 @@ fi
 		# Setup system for the British language
 		
 		# Set British Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "uk"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "gb"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=uk/' /etc/vconsole.conf
 	fi
