@@ -1452,6 +1452,12 @@ configure_system()
 		# Set French Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "fr"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=fr/' ${DESTDIR}/etc/vconsole.conf
+	elif [ "$(echo "${LOCALE}" | grep "en_GB")" != "" ]; then
+		# Setup system for the British language
+		
+		# Set British Xorg keyboard layout
+		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "uk"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=uk/' ${DESTDIR}/etc/vconsole.conf
 	fi
     fi
 
