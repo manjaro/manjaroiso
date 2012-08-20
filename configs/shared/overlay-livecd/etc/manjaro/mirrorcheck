@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # update mirrorlist
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+cp -f /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 wget -O /etc/pacman.d/mirrorlist.new http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist &>/dev/null
 
 # rankmirrors
@@ -13,7 +13,7 @@ if [ $(cat /etc/pacman.d/mirrorlist | grep "Server =" -c1) == "" ] ;
 then 
     echo "Error: invalid mirrorlist! Enable default server"
     # enable default mirror
-    cp /etc/pacman.d/mirrorlist.backup /etc/pacman.d/mirrorlist
+    cp -f /etc/pacman.d/mirrorlist.backup /etc/pacman.d/mirrorlist
     sed -i -e 's~^.*repo.manjaro.org.uk.*~Server = http://repo.manjaro.org.uk/$repo/$arch~' /etc/pacman.d/mirrorlist
 fi
 
