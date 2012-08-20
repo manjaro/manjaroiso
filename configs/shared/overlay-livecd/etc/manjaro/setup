@@ -1500,6 +1500,7 @@ configure_system()
 
                 if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
 		   cp /var/lib/AccountsService/users/manjaro ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
+		   cp /var/lib/AccountsService/users/manjaro ${DESTDIR}/var/lib/AccountsService/users/gdm
                 fi
 
                 if DIALOG --yesno "${_addsudouserdl1}${REPLY}${_addsudouserdl2}" 6 40;then

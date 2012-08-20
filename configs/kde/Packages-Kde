@@ -23,10 +23,10 @@ kdeadmin-ksystemlog
 kdemultimedia-kmix
 kdesdk-kate
 kdeadmin-system-config-printer-kde
->dvd kdegraphics-kgamma
->dvd kdegraphics-gwenview
->dvd kdegraphics-ksnapshot
->dvd kdegraphics-okular
+kdegraphics-kgamma
+kdegraphics-gwenview
+kdegraphics-ksnapshot
+kdegraphics-okular
 kdeutils-ark
 kdeutils-kgpg
 kdeutils-sweeper

@@ -59,6 +59,7 @@ gnome-screenshot
 gnome-system-log
 gnome-system-monitor
 gnome-tweak-tool
+gparted
 mousetweaks
 nautilus-sendto
 network-manager-applet
@@ -104,7 +105,15 @@ gutenprint
 hplip
 
 ## Office
-libreoffice
+libreoffice-base
+libreoffice-calc
+libreoffice-draw
+libreoffice-gnome
+libreoffice-impress
+libreoffice-math
+libreoffice-postgresql-connector
+libreoffice-writer
+
 
 ## Language Support
 firefox-i18n-de
