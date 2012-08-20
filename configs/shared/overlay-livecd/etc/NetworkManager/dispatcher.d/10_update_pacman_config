@@ -1,14 +1,5 @@
 #!/bin/sh
 
-case "$2" in
-	up)
-		update_pacman
-	;;
-	vpn-up)
-		update_pacman
-	;;
-esac
-
 update_pacman_config() {
 # configure mirrorlist
 wget -O /etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist &>/dev/null
@@ -19,3 +10,12 @@ rankmirrors -v -n 4 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 # update pacman database
 pacman -Syy
 }
+
+case "$2" in
+	up)
+		update_pacman_config
+	;;
+	vpn-up)
+		update_pacman_config
+	;;
+esac
