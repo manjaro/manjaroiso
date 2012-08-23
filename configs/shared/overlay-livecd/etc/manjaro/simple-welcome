@@ -8,8 +8,6 @@ window.set_default_size(300, 150)
 window.connect("delete-event", Gtk.main_quit)
 window.set_title("Welcome to Manjaro")
 window.set_icon_from_file("/usr/share/icons/manjaro.png")
-window.set_role("dialog")
-window.set_type_hint(Gdk.WindowTypeHint.DIALOG)
 
 box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
 
