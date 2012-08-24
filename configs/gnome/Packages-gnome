@@ -99,10 +99,17 @@ thunderbird
 ## Printing
 cups
 cups-pdf
+foomatic-db
+foomatic-db-engine
+foomatic-db-nonfree
+foomatic-filters
 ghostscript
 gsfonts
 gutenprint
 hplip
+hpoj
+python2-gobject2
+python2-pyqt
 
 ## Office
 libreoffice-base
