@@ -150,6 +150,7 @@ bzip2
 gzip
 lzop
 p7zip
+wxgtk
 tar
 unrar
 unzip
