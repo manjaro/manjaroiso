@@ -110,6 +110,9 @@ hplip
 hpoj
 python2-gobject2
 python2-pyqt
+system-config-printer-gnome
+system-config-printer-common
+cups-pk-helper
 
 ## Office
 libreoffice-base
