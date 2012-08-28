@@ -28,6 +28,7 @@ tumbler
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xfce4-appfinder
+xfce4-artwork
 xfce4-battery-plugin
 xfce4-clipman-plugin
 xfce4-cpufreq-plugin
@@ -63,6 +64,7 @@ xfce4-volumed
 xfconf
 xfdesktop
 xfwm4
+xfwm4-themes
 xscreensaver
 
 
@@ -72,7 +74,7 @@ epdfview
 file-roller
 firefox
 gedit
->i686 gimp
+gimp
 gnome-packagekit
 gparted
 #manjaro-installer
@@ -81,10 +83,9 @@ parole
 pavucontrol
 pidgin
 pnmixer
-#sylpheed
 thunderbird
 viewnior
-#wxgtk # used for 7-zip
+wxgtk # used for 7-zip
 xfburn
 
 
@@ -92,38 +93,41 @@ xfburn
 ttf-source-sans-pro
 
 
+## Extra Applications
+gcalctool
+icedtea-web
+openjdk6
+soundconverter
+vinagre
+
+## Office
+libreoffice-base
+libreoffice-calc
+libreoffice-draw
+libreoffice-gnome
+libreoffice-impress
+libreoffice-math
+libreoffice-postgresql-connector
+libreoffice-writer
+
+## Printing
+cups
+cups-pdf
+ghostscript
+gsfonts
+gutenprint
+hplip
+
+
 ## Language Support
 firefox-i18n-de
 firefox-i18n-fr
 thunderbird-i18n-de
 thunderbird-i18n-fr
-
-
-## DVD Packages
-
-## DVD Extra Applications
->dvd gcalctool
->dvd gmusicbrowser
->dvd icedtea-web
->dvd libreoffice
->dvd openjdk6
->dvd soundconverter
-
-
-## Printing
->dvd cups
->dvd cups-pdf
->dvd ghostscript
->dvd gsfonts
->dvd gutenprint
->dvd hplip
-
-
-## Language Support
->dvd hunspell-de
->dvd hunspell-en
->dvd hunspell-fr
->dvd libreoffice-de
->dvd libreoffice-en-GB
->dvd libreoffice-en-US
->dvd libreoffice-fr
+hunspell-de
+hunspell-en
+hunspell-fr
+libreoffice-de
+libreoffice-en-GB
+libreoffice-en-US
+libreoffice-fr

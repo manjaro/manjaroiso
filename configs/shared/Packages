@@ -96,6 +96,7 @@ pkg-config
 plymouth
 plymouth-theme-manjaro
 pptpclient
+qt
 rp-pppoe
 rsync
 speedtouch
@@ -110,6 +111,7 @@ xdg-user-dirs
 
 
 ## Filesystem Packages
+bluez
 btrfs-progs-unstable
 dmraid
 dosfstools
@@ -172,13 +174,17 @@ libdvdcss
 
 ## Network
 b43-fwcutter
+dhclient
+dnsmasq
 inetutils
+iptables
 ipw2100-fw
 ipw2200-fw
 modemmanager
 nbd
 networkmanager
 networkmanager-dispatcher-ntpd-systemd
+openresolv
 usb_modeswitch
 wpa_actiond
 wpa_supplicant

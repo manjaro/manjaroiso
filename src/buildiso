@@ -71,6 +71,8 @@ if [ -e Packages-Xorg ] ; then
      	xorg_packages=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
      fi
      xorg_packages_cleanup=$(sed "s|#.*||g" Packages-Xorg | grep cleanup | sed "s|>cleanup||g")
+     xorg_packages_overlay=$(echo "$xorg_packages" > /tmp/manjaroiso-xorg-overlay | sed "s|catalyst-legacy-utils||g" /tmp/manjaroiso-xorg-overlay | sed "s|catalyst-legacy||g")
+     rm /tmp/manjaroiso-xorg-overlay
 fi
 
 if [ -e Packages-Xfce ] ; then
@@ -151,6 +153,16 @@ if [ -e Packages-Xorg ] ; then
               repo-add ${work_dir}/pkgs-image/opt/manjaro/pkgs/manjaro-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/manjaro/pkgs/*pkg*z
               umount -f ${work_dir}/pkgs-image
               rm -R ${work_dir}/pkgs-image/.wh*
+              echo -e -n "$_r >$_W Prepare pkgs-overlay \n $_n"
+              mkdir -p ${work_dir}/pkgs-overlay
+              if [ "`mount -l | grep ${work_dir}/pkgs-overlay`" != "" ]; then
+                 umount -f ${work_dir}/pkgs-overlay
+              fi
+              mount -t aufs -o br=${work_dir}/pkgs-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-overlay
+              mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-overlay" -p "${xorg_packages_overlay}" create "${work_dir}"
+              umount -f ${work_dir}/pkgs-overlay
+              rm ${work_dir}/pkgs-overlay/etc/modules-load.d/*virtualbox*conf
+              rm -R ${work_dir}/pkgs-overlay/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi
@@ -315,6 +327,7 @@ make_overlay() {
         cp -LPrd overlay-livecd/* ${work_dir}/overlay
         wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist
         sed -i "s/#Server/Server/g" ${work_dir}/overlay/etc/pacman.d/mirrorlist
+        sed -i "s/TITLE=/TITLE=""Manjaro Linux CLI Installation (v${version})""/g" ${work_dir}/overlay/etc/manjaro/setup
         #chmod -R 755 ${work_dir}/overlay/home
         : > ${work_dir}/build.${FUNCNAME}
         echo -e "$_g >$_W done $_n"
