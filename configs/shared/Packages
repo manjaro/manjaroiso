@@ -60,8 +60,12 @@ manjaro-hotfixes
 
 
 ## Devel Packages
->dvd base-devel
-#yaourt
+base-devel
+git
+packer
+patchutils
+svn
+yaourt
 
 
 ## Extra Base Packages
