@@ -200,4 +200,16 @@ fi
 		# Set British Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "gb"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=uk/' /etc/vconsole.conf
+	elif [ "$(echo "${LOCALE}" | grep "es_ES")" != "" ]; then
+		# Setup system for the Spanish language
+		
+		# Set Spanish Xorg keyboard layout
+		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "es"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=es/' /etc/vconsole.conf
+	elif [ "$(echo "${LOCALE}" | grep "ru_RU")" != "" ]; then
+		# Setup system for the Russian language
+		
+		# Set Russian Xorg keyboard layout
+		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ru"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ru/' /etc/vconsole.conf
 	fi
