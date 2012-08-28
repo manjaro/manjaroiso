@@ -68,9 +68,27 @@ python2-gobject2
 python2-pyqt
 
 ## Language Support
+calligra-l10n-de
+calligra-l10n-en_gb
+calligra-l10n-es
+calligra-l10n-fr
+calligra-l10n-ru
 firefox-i18n-de
+firefox-i18n-en-gb
+firefox-i18n-es
 firefox-i18n-fr
+firefox-i18n-ru
 thunderbird-i18n-de
+thunderbird-i18n-en-gb
+thunderbird-i18n-es
 thunderbird-i18n-fr
+thunderbird-i18n-ru
+hunspell-de
+hunspell-en
+hunspell-es
+hunspell-fr
 kde-l10n-de
+kde-l10n-en_gb
+kde-l10n-es
 kde-l10n-fr
+kde-l10n-ru

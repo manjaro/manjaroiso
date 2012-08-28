@@ -123,13 +123,22 @@ hplip
 
 ## Language Support
 firefox-i18n-de
+firefox-i18n-en-gb
+firefox-i18n-es
 firefox-i18n-fr
+firefox-i18n-ru
 thunderbird-i18n-de
+thunderbird-i18n-en-gb
+thunderbird-i18n-es
 thunderbird-i18n-fr
+thunderbird-i18n-ru
 hunspell-de
 hunspell-en
+hunspell-es
 hunspell-fr
 libreoffice-de
 libreoffice-en-GB
 libreoffice-en-US
+libreoffice-es
 libreoffice-fr
+libreoffice-ru
