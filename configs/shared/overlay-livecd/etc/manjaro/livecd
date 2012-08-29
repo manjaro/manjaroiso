@@ -130,7 +130,7 @@ if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
 fi	
 
 #do_makeuser
-addgroups="video,audio,power,disk,storage,optical,network,lp"
+addgroups="video,audio,power,disk,storage,optical,network,lp,scanner"
 useradd -m -p "" -g users -G $addgroups manjaro
 sed -i "s#manjaro.*#manjaro:\$1\$uYIrxnwJ\$a5wTa84YxxYmD.sKX/Lll1:14942:0:99999:7:::#" /etc/shadow
 

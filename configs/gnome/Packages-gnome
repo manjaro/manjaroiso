@@ -73,6 +73,8 @@ totem
 tracker
 vinagre
 vino
+xsane
+xsane-gimp
 
 ## Extra
 icedtea-web
@@ -106,6 +108,7 @@ foomatic-filters
 ghostscript
 gsfonts
 gutenprint
+splix
 hplip
 hpoj
 python2-gobject2

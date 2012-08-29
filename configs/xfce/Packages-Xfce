@@ -69,6 +69,8 @@ xscreensaver
 
 
 ## Applications
+audacity
+avidemux-gtk
 conky
 epdfview
 file-roller
@@ -79,15 +81,18 @@ gnome-packagekit
 gparted
 #manjaro-installer
 #manjaro-welcome
-parole
+openshot
 pavucontrol
 pidgin
 pnmixer
+smplayer
 thunderbird
 transmission-gtk
 viewnior
 xchat
 xfburn
+xsane
+xsane-gimp
 
 
 ## Fonts
