@@ -106,6 +106,7 @@ foomatic-filters
 ghostscript
 gsfonts
 gutenprint
+splix
 hplip
 hpoj
 python2-gobject2
