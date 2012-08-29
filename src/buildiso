@@ -99,6 +99,14 @@ if [ -e Packages-gnome ] ; then
      fi
 fi
 
+if [ -e Packages-Openbox ] ; then
+     if [ "${arch}" == "i686" ]; then
+     	openbox_packages=$(sed "s|#.*||g" Packages-Openbox | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     elif [ "${arch}" == "x86_64" ]; then
+     	openbox_packages=$(sed "s|#.*||g" Packages-Openbox | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     fi
+fi
+
 # Create trustdb.gpg
 create_trustdb() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
@@ -253,6 +261,34 @@ if [ -e Packages-gnome ] ; then
      }
 fi
 
+if [ -e Packages-Openbox ] ; then
+     # Openbox installation (openbox-image)
+     make_openbox_image() {
+         if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
+              de="-openbox"
+              echo -e -n "$_r >$_W Openbox installation (openbox-image) \n $_n"
+              mkdir -p ${work_dir}/openbox-image
+              if [ "`mount -l | grep ${work_dir}/openbox-image`" != "" ]; then
+                 umount -f ${work_dir}/openbox-image
+              fi
+              mount -t aufs -o br=${work_dir}/openbox-image:${work_dir}/root-image=ro none ${work_dir}/openbox-image
+              mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "openbox-image" -p "${openbox_packages}" create "${work_dir}"
+              pacman -Qr "${work_dir}/openbox-image" > "${work_dir}/openbox-image/openbox-image-pkgs.txt"
+              cp "${work_dir}/openbox-image/openbox-image-pkgs.txt" ${name}${de}-${version}-${arch}-pkgs.txt
+              cp -LPr openbox-overlay/* ${work_dir}/openbox-image
+              cp -LPr overlay/* ${work_dir}/openbox-image
+              if [ -e ${work_dir}/openbox-image/usr/sbin/cupsd ] ; then
+                 mkdir -p "${work_dir}/openbox-image/etc/systemd/system/multi-user.target.wants"
+                 ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/openbox-image/etc/systemd/system/multi-user.target.wants/cups.service"
+              fi
+              umount -f ${work_dir}/openbox-image
+              rm -R ${work_dir}/openbox-image/.wh*
+              : > ${work_dir}/build.${FUNCNAME}
+              echo -e "$_g >$_W done $_n"
+         fi
+     }
+fi
+
 # Prepare ${install_dir}/boot/
 make_boot() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
@@ -386,6 +422,9 @@ if [ -e Packages-Kde ] ; then
 fi
 if [ -e Packages-gnome ] ; then
     make_gnome_image
+fi
+if [ -e Packages-Openbox ] ; then
+    make_openbox_image
 fi
 # install common
 make_boot
