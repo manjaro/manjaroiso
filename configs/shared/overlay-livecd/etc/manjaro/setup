@@ -1,3 +1,4 @@
+#!/bin/bash
   TITLE="Manjaro Linux CLI Installation (v0.8.0)"
   PKG_OVERLAY="/opt/manjaro/pkgs"
   #DIALOGRC="./setuprc"
