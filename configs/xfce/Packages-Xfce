@@ -119,11 +119,21 @@ libreoffice-writer
 ## Printing
 cups
 cups-pdf
+foomatic-db
+foomatic-db-engine
+foomatic-db-nonfree
+foomatic-filters
 ghostscript
 gsfonts
 gutenprint
+splix
 hplip
-
+hpoj
+python2-gobject2
+python2-pyqt
+system-config-printer-gnome
+system-config-printer-common
+cups-pk-helper
 
 ## Language Support
 firefox-i18n-be
