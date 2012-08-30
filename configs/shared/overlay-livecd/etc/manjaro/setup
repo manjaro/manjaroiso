@@ -1043,7 +1043,9 @@ hd_config()
     chroot ${DESTDIR} systemctl enable dcron.service &>/dev/null
     chroot ${DESTDIR} systemctl enable NetworkManager.service &>/dev/null
     chroot ${DESTDIR} systemctl enable remote-fs.target &>/dev/null
-    chroot ${DESTDIR} systemctl enable plymouth-transition.service &>/dev/null
+    if [ -e ${DESTDIR}/etc/plymouth/plymouthd.conf ] ; then
+       chroot ${DESTDIR} systemctl enable plymouth-transition.service &>/dev/null
+    fi
 
     DIALOG --infobox "${_setupdisplaymanager}" 6 40
     sleep 3
@@ -1431,6 +1433,12 @@ configure_system()
         echo "LC_COLLATE=C" >> ${DESTDIR}/etc/locale.conf
         echo "LANG=${LOCALE}" >> ${DESTDIR}/etc/environment
 
+        #edit /etc/mkinitcpio.conf
+        HOOKS=`cat /etc/mkinitcpio.conf | grep HOOKS= | grep -v '#' | cut -d'"' -f2 | sed 's/filesystems/resume filesystems/g'`
+        if [ -e ${DESTDIR}/etc/plymouth/plymouthd.conf ] ; then
+           sed -i -e "s/^HOOKS=.*/HOOKS=\"${HOOKS} plymouth\"/g" ${DESTDIR}/etc/mkinitcpio.conf
+        fi
+
         #prepare_locale_gen
         for i in $(grep "^LANG" ${DESTDIR}/etc/locale.conf | sed -e 's/.*=//g' -e's/\..*//g'); do
 	    sed -i -e "s/^#$i/$i/g" ${DESTDIR}/etc/locale.gen
@@ -1589,9 +1597,7 @@ configure_system()
     sleep 3
     chroot ${DESTDIR} pacman -Syy &> /dev/null
 
-    # create kernel images
-    HOOKS=`cat /etc/mkinitcpio.conf | grep HOOKS= | grep -v '#' | cut -d'"' -f2 | sed 's/filesystems/resume filesystems/g'`
-    sed -i -e "s/^HOOKS=.*/HOOKS=\"${HOOKS} plymouth\"/g" ${DESTDIR}/etc/mkinitcpio.conf    
+    # create kernel images    
     run_mkinitcpio
 
     ## END POSTPROCESSING ##
