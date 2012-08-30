@@ -136,6 +136,7 @@ firefox-i18n-es-ar
 firefox-i18n-es-es
 firefox-i18n-fr
 firefox-i18n-ru
+firefox-i18n-tr
 thunderbird-i18n-be
 thunderbird-i18n-de
 thunderbird-i18n-en-gb
@@ -143,6 +144,7 @@ thunderbird-i18n-es
 thunderbird-i18n-es-ar
 thunderbird-i18n-fr
 thunderbird-i18n-ru
+thunderbird-i18n-tr
 hunspell-de
 hunspell-en
 hunspell-es
@@ -154,4 +156,5 @@ libreoffice-en-US
 libreoffice-es
 libreoffice-fr
 libreoffice-ru
+libreoffice-tr
 

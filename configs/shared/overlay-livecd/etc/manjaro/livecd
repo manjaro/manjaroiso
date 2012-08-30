@@ -229,4 +229,10 @@ fi
 		# Set Russian Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ru"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ru/' /etc/vconsole.conf
+	elif [ "$(echo "${LOCALE}" | grep "tr_TR")" != "" ]; then
+		# Setup system for the Turkish language
+		
+		# Set Turkish Xorg keyboard layout
+		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "trq"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=tr/' /etc/vconsole.conf
 	fi
