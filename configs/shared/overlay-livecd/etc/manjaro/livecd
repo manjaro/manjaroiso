@@ -19,9 +19,11 @@ kernel_cmdline ()
     return 1
 }
 
-LOCALE="$(kernel_cmdline locale.LANG en_US.utf8)"
-TIMEZONE="$(kernel_cmdline timezone UTC)"
-KEYMAP="$(kernel_cmdline vconsole.keymap us)"
+MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
+LOCALE="$(echo "$MISOVAR" | cut -d: -f2 | cut -d, -f1)"
+KEYMAP="$(echo "$MISOVAR" | cut -d: -f3 | cut -d, -f1)"
+TIMEZONE="$(echo "$MISOVAR" | cut -d: -f4 | cut -d, -f1)"
+VIDEO="$(echo "$MISOVAR" | cut -d: -f6 | cut -d, -f1)"
 CONSOLEFONT="$(kernel_cmdline vconsole.font)"
 CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
 USENONFREE="$(kernel_cmdline nonfree no)"
@@ -123,9 +125,17 @@ mkdir -p /var/lib/mhwd/local/{pci,usb}
 
 if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
    if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
-	/usr/bin/mhwd --auto pci nonfree 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
+   	if  [ "${VIDEO}" == "vesa" ]; then
+		/usr/bin/mhwd --i pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf"
+	else
+		/usr/bin/mhwd --auto pci nonfree 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
+	fi
    else
-	/usr/bin/mhwd --auto pci free 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
+   	if  [ "${VIDEO}" == "vesa" ]; then
+		/usr/bin/mhwd --i pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf"
+	else
+		/usr/bin/mhwd --auto pci free 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
+	fi
    fi
 fi	
 
@@ -180,59 +190,157 @@ fi
 
 #do_lang_settings
  	# Determind which language we are using
-	if [ "$(echo "${LOCALE}" | grep "be_BY")" != "" ]; then
+	if [ "$(echo "${KEYMAP}" | grep "en_US")" != "" ]; then
+		# Setup system for the American language
+		
+		# Set American Xorg keyboard layout
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "us"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=us/' /etc/vconsole.conf
+
+	elif [ "$(echo "${KEYMAP}" | grep "en_GB")" != "" ]; then
+		# Setup system for the British language
+		
+		# Set British Xorg keyboard layout
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "gb"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=uk/' /etc/vconsole.conf
+
+	elif [ "$(echo "${KEYMAP}" | grep "be_BY")" != "" ]; then
 		# Setup system for the Belarusian language
 		
 		# Set Belarusian Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "be"#' /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=be/' /etc/vconsole.conf
 
-	elif [ "$(echo "${LOCALE}" | grep "de_")" != "" ]; then
-		# Setup system for the German language
+	elif [ "$(echo "${KEYMAP}" | grep "pt_BR")" != "" ]; then
+		# Setup system for the Brazilian language
 		
-		# Set German Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "de"\n        Option "XkbVariant" "nodeadkeys"#' /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=de/' /etc/vconsole.conf
+		# Set Brazilian Xorg keyboard layout
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "pt"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=pt/' /etc/vconsole.conf
 
-	elif [ "$(echo "${LOCALE}" | grep "en_GB")" != "" ]; then
-		# Setup system for the British language
+	elif [ "$(echo "${KEYMAP}" | grep "bg_BG")" != "" ]; then
+		# Setup system for the Bulgarian language
 		
-		# Set British Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "gb"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=uk/' /etc/vconsole.conf
+		# Set Bulgarian Xorg keyboard layout
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "bg"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=bg/' /etc/vconsole.conf
 
-	elif [ "$(echo "${LOCALE}" | grep "es_AR")" != "" ]; then
-		# Setup system for the Argentinian language
+	elif [ "$(echo "${KEYMAP}" | grep "da_DK")" != "" ]; then
+		# Setup system for the Danish language
 		
-		# Set Argentinian Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "la-latin1"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=la-latin1/' /etc/vconsole.conf
+		# Set Danish Xorg keyboard layout
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "dk"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=dk/' /etc/vconsole.conf
 
-	elif [ "$(echo "${LOCALE}" | grep "es_ES")" != "" ]; then
-		# Setup system for the Spanish language
+	elif [ "$(echo "${KEYMAP}" | grep "fr_BE")" != "" ]; then
+		# Setup system for the Belgian language
 		
-		# Set Spanish Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "es"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=es/' /etc/vconsole.conf
+		# Set Belgian Xorg keyboard layout
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "be-latin1"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=be-latin1/' /etc/vconsole.conf
 
-
-	elif [ "$(echo "${LOCALE}" | grep "fr_")" != "" ]; then
+	elif [ "$(echo "${KEYMAP}" | grep "fr_FR")" != "" ]; then
 		# Setup system for the French language
 		
 		# Set French Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "fr"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=fr/' /etc/vconsole.conf
 
-	elif [ "$(echo "${LOCALE}" | grep "ru_RU")" != "" ]; then
+	elif [ "$(echo "${KEYMAP}" | grep "fr_CA")" != "" ]; then
+		# Setup system for the French Canada language
+		
+		# Set French Canada Xorg keyboard layout
+		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "cf"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=cf/' /etc/vconsole.conf
+
+	elif [ "$(echo "${KEYMAP}" | grep "de_DE")" != "" ]; then
+		# Setup system for the German language
+		
+		# Set German Xorg keyboard layout
+		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "de"\n        Option "XkbVariant" "nodeadkeys"#' /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=de/' /etc/vconsole.conf
+
+	elif [ "$(echo "${KEYMAP}" | grep "is_IS")" != "" ]; then
+		# Setup system for the Icelandic language
+		
+		# Set Icelandic Xorg keyboard layout
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "is"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=is/' /etc/vconsole.conf
+
+	elif [ "$(echo "${KEYMAP}" | grep "it_IT")" != "" ]; then
+		# Setup system for the Italian language
+		
+		# Set Italian Xorg keyboard layout
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "it"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=it/' /etc/vconsole.conf
+
+	elif [ "$(echo "${KEYMAP}" | grep "nn_NO")" != "" ]; then
+		# Setup system for the Nynorsk language
+		
+		# Set Nynorsk Xorg keyboard layout
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "no"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=no-latin1/' /etc/vconsole.conf
+
+	elif [ "$(echo "${KEYMAP}" | grep "pl_PL")" != "" ]; then
+		# Setup system for the Polish language
+		
+		# Set Polish Xorg keyboard layout
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "pl"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=pl/' /etc/vconsole.conf
+
+	elif [ "$(echo "${KEYMAP}" | grep "pt_PT")" != "" ]; then
+		# Setup system for the Portuguese language
+		
+		# Set Portuguese Xorg keyboard layout
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "pt"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=pt/' /etc/vconsole.conf
+
+	elif [ "$(echo "${KEYMAP}" | grep "ro_RO")" != "" ]; then
+		# Setup system for the Romanian language
+		
+		# Set Romanian Xorg keyboard layout
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ro"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ro/' /etc/vconsole.conf
+
+	elif [ "$(echo "${KEYMAP}" | grep "ru_RU")" != "" ]; then
 		# Setup system for the Russian language
 		
 		# Set Russian Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ru"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ru/' /etc/vconsole.conf
-	elif [ "$(echo "${LOCALE}" | grep "tr_TR")" != "" ]; then
+
+	elif [ "$(echo "${KEYMAP}" | grep "es_AR")" != "" ]; then
+		# Setup system for the Argentinian language
+		
+		# Set Argentinian Xorg keyboard layout
+		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "la-latin1"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=la-latin1/' /etc/vconsole.conf
+
+	elif [ "$(echo "${KEYMAP}" | grep "es_ES")" != "" ]; then
+		# Setup system for the Spanish language
+		
+		# Set Spanish Xorg keyboard layout
+		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "es"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=es/' /etc/vconsole.conf
+
+	elif [ "$(echo "${KEYMAP}" | grep "sv_SE")" != "" ]; then
+		# Setup system for the Swedish language
+		
+		# Set Swedish Xorg keyboard layout
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "sv-latin1"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=sv-latin1/' /etc/vconsole.conf
+
+	elif [ "$(echo "${KEYMAP}" | grep "tr_TR")" != "" ]; then
 		# Setup system for the Turkish language
 		
 		# Set Turkish Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "trq"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=tr/' /etc/vconsole.conf
+		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "tr"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=trq/' /etc/vconsole.conf
+
+	elif [ "$(echo "${KEYMAP}" | grep "uk_UA")" != "" ]; then
+		# Setup system for the Ukrainian language
+		
+		# Set Ukrainian Xorg keyboard layout
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ua"#'       /etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ua/' /etc/vconsole.conf
 	fi

@@ -330,6 +330,8 @@ make_syslinux() {
                 s|%ARCH%|${arch}|g" ${confile} > ${work_dir}/iso/${install_dir}/boot/${arch}/${confile};
            done
         cp syslinux/splash.png ${_dst_syslinux}
+        cp syslinux/*.c32 ${_dst_syslinux}
+        cp syslinux/*.txt ${_dst_syslinux}
         cp ${_src_syslinux}/*.c32 ${_dst_syslinux}
         cp ${_src_syslinux}/*.com ${_dst_syslinux}
         cp ${_src_syslinux}/*.0 ${_dst_syslinux}
