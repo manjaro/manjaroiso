@@ -20,10 +20,11 @@ kernel_cmdline ()
 }
 
 MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
-LOCALE="$(echo "$MISOVAR" | cut -d: -f2 | cut -d, -f1)"
-KEYMAP="$(echo "$MISOVAR" | cut -d: -f3 | cut -d, -f1)"
-TIMEZONE="$(echo "$MISOVAR" | cut -d: -f4 | cut -d, -f1)"
-VIDEO="$(echo "$MISOVAR" | cut -d: -f6 | cut -d, -f1)"
+LOCALE="$(echo "$MISOVAR" | cut -d, -f1 | cut -d: -f2)"
+KEYMAP="$(echo "$MISOVAR" | cut -d, -f2 | cut -d: -f2)"
+TIMEZONE="$(echo "$MISOVAR" | cut -d, -f3 | cut -d: -f2)"
+VIDEO="$(echo "$MISOVAR" | cut -d, -f4 | cut -d: -f2)"
+COMPOSITE="$(echo "$MISOVAR" | cut -d, -f5 | cut -d: -f2)"
 CONSOLEFONT="$(kernel_cmdline vconsole.font)"
 CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
 USENONFREE="$(kernel_cmdline nonfree no)"

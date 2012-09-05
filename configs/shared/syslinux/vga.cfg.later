@@ -3,140 +3,140 @@ MENU TITLE Select Resolution
 
 INCLUDE common.cfg
 
-MENUPARAM misovar 3
+MENUPARAM misovar 4
 
 LABEL resolution:auto
         MENU LABEL Auto
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:auto
+        APPEND syslinux.cfg misovar=,,,,resolution:auto
 ENDTEXT
 
 LABEL resolution:640x480
         MENU LABEL 640x480
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:640x480
+        APPEND syslinux.cfg misovar=,,,,resolution:640x480
 
 LABEL resolution:800x480
         MENU LABEL 800x480
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:800x480
+        APPEND syslinux.cfg misovar=,,,,resolution:800x480
 
 LABEL resolution:800x600
         MENU LABEL 800x600
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:800x600
+        APPEND syslinux.cfg misovar=,,,,resolution:800x600
 
 LABEL resolution:1024x576
         MENU LABEL 1024x576
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1024x576
+        APPEND syslinux.cfg misovar=,,,,resolution:1024x576
 
 LABEL resolution:1024x600
         MENU LABEL 1024x600
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1024x600
+        APPEND syslinux.cfg misovar=,,,,resolution:1024x600
 
 LABEL resolution:1024x768
         MENU LABEL 1024x768
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1024x768
+        APPEND syslinux.cfg misovar=,,,,resolution:1024x768
 
 LABEL resolution:1200x800
         MENU LABEL 1200x800
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1200x800
+        APPEND syslinux.cfg misovar=,,,,resolution:1200x800
 
 LABEL resolution:1280x720
         MENU LABEL 1280x720
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1280x720
+        APPEND syslinux.cfg misovar=,,,,resolution:1280x720
 
 LABEL resolution:1280x768
         MENU LABEL 1280x768
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1280x768
+        APPEND syslinux.cfg misovar=,,,,resolution:1280x768
 
 LABEL resolution:1280x800
         MENU LABEL 1280x800
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1280x800
+        APPEND syslinux.cfg misovar=,,,,resolution:1280x800
 
 LABEL resolution:1280x1024
         MENU LABEL 1280x1024
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1280x1024
+        APPEND syslinux.cfg misovar=,,,,resolution:1280x1024
 
 LABEL resolution:1360x768
         MENU LABEL 1360x768
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1360x768
+        APPEND syslinux.cfg misovar=,,,,resolution:1360x768
 
 LABEL resolution:1366x768
         MENU LABEL 1366x768
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1366x768
+        APPEND syslinux.cfg misovar=,,,,resolution:1366x768
 
 LABEL resolution:1368x768
         MENU LABEL 1368x768
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1368x768
+        APPEND syslinux.cfg misovar=,,,,resolution:1368x768
 
 LABEL resolution:1400x1050
         MENU LABEL 1400x1050
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1400x1050
+        APPEND syslinux.cfg misovar=,,,,resolution:1400x1050
 
 LABEL resolution:1440x900
         MENU LABEL 1440x900
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1440x900
+        APPEND syslinux.cfg misovar=,,,,resolution:1440x900
 
 LABEL resolution:1600x768
         MENU LABEL 1600x768
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1600x768
+        APPEND syslinux.cfg misovar=,,,,resolution:1600x768
 
 LABEL resolution:1600x900
         MENU LABEL 1600x900
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1600x900
+        APPEND syslinux.cfg misovar=,,,,resolution:1600x900
 
 LABEL resolution:1600x1200
         MENU LABEL 1600x1200
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1600x1200
+        APPEND syslinux.cfg misovar=,,,,resolution:1600x1200
 
 LABEL resolution:1680x945
         MENU LABEL 1680x945
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1680x945
+        APPEND syslinux.cfg misovar=,,,,resolution:1680x945
 
 LABEL resolution:1680x1050
         MENU LABEL 1680x1050
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1680x1050
+        APPEND syslinux.cfg misovar=,,,,resolution:1680x1050
 
 LABEL resolution:1920x1080
         MENU LABEL 1920x1080
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1920x1080
+        APPEND syslinux.cfg misovar=,,,,resolution:1920x1080
 
 LABEL resolution:1920x1200
         MENU LABEL 1920x1200
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:1920x1200
+        APPEND syslinux.cfg misovar=,,,,resolution:1920x1200
 
 LABEL resolution:2048x1152
         MENU LABEL 2048x1152
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:2048x1152
+        APPEND syslinux.cfg misovar=,,,,resolution:2048x1152
 
 LABEL resolution:2560x1440
         MENU LABEL 2560x1440
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:2560x1440
+        APPEND syslinux.cfg misovar=,,,,resolution:2560x1440
 
 LABEL resolution:2560x1600
         MENU LABEL 2560x1600
         KERNEL manjaro.c32
-        APPEND syslinux.cfg misovar=,,,resolution:2560x1600
+        APPEND syslinux.cfg misovar=,,,,resolution:2560x1600

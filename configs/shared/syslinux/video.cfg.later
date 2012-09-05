@@ -3,69 +3,69 @@ MENU TITLE Select Video Driver
 
 INCLUDE common.cfg
 
-MENUPARAM misovar 4
+MENUPARAM misovar 3
 
 LABEL video:auto
         MENU LABEL Auto
         KERNEL manjaro.c32
-        APPEND vga.cfg misovar=,,,,video:auto,composite:on
+        APPEND vga.cfg misovar=,,,video:auto,composite:on
 ENDTEXT
 
 LABEL video:intel
         MENU LABEL Intel (intel) with composite
         KERNEL manjaro.c32
-        APPEND vga.cfg misovar=,,,,video:i915,composite:on
+        APPEND vga.cfg misovar=,,,video:i915,composite:on
 
 LABEL video:intelnocomp
         MENU LABEL Intel (intel)
         KERNEL manjaro.c32
-        APPEND vga.cfg misovar=,,,,video:i915,composite:off
+        APPEND vga.cfg misovar=,,,video:i915,composite:off
 
 LABEL video:radeon
         MENU LABEL Ati Radeon Open Source (radeon) with composite
         KERNEL manjaro.c32
-        APPEND vga.cfg misovar=,,,,video:radeon,composite:on
+        APPEND vga.cfg misovar=,,,video:radeon,composite:on
 
 LABEL video:radeonnocomp
         MENU LABEL Ati Radeon Open Source (radeon)
         KERNEL manjaro.c32
-        APPEND vga.cfg misovar=,,,,video:radeon,composite:off
+        APPEND vga.cfg misovar=,,,video:radeon,composite:off
 
 LABEL video:fglrx
         MENU LABEL Ati proprietary (fglrx) with composite
         KERNEL manjaro.c32
-        APPEND vga.cfg misovar=,,,,video:fglrx,composite:on
+        APPEND vga.cfg misovar=,,,video:fglrx,composite:on
 
 LABEL video:fglrxnocomp
         MENU LABEL Ati proprietary (fglrx)
         KERNEL manjaro.c32
-        APPEND vga.cfg misovar=,,,,video:fglrx,composite:off
+        APPEND vga.cfg misovar=,,,video:fglrx,composite:off
 LABEL video:nv
         MENU LABEL Nvidia 2D only (nv)
         KERNEL manjaro.c32
-        APPEND vga.cfg misovar=,,,,video:nv,composite:off
+        APPEND vga.cfg misovar=,,,video:nv,composite:off
 
 LABEL video:nouveau
         MENU LABEL Nvidia Open Source (nouveau) with composite
         KERNEL manjaro.c32
-        APPEND vga.cfg misovar=,,,,video:nouveau,composite:on
+        APPEND vga.cfg misovar=,,,video:nouveau,composite:on
 
 LABEL video:nouveaunocomp
         MENU LABEL Nvidia Open Source (nouveau)
         KERNEL manjaro.c32
-        APPEND vga.cfg misovar=,,,,video:nouveau,composite:off
+        APPEND vga.cfg misovar=,,,video:nouveau,composite:off
 
 LABEL video:nvidia
         MENU LABEL Nvidia Proprietary (nvidia) with composite
         KERNEL manjaro.c32
-        APPEND vga.cfg misovar=,,,,video:nvidia,composite:on
+        APPEND vga.cfg misovar=,,,video:nvidia,composite:on
 
 LABEL video:nvidianocomp
         MENU LABEL Nvidia Proprietary (nvidia)
         KERNEL manjaro.c32
-        APPEND vga.cfg misovar=,,,,video:nvidia,composite:off
+        APPEND vga.cfg misovar=,,,video:nvidia,composite:off
 
 LABEL video:vesa
         MENU LABEL Generic Vesa video driver (vesa)
         KERNEL manjaro.c32
-        APPEND vga.cfg misovar=,,,,video:vesa,composite:off
+        APPEND vga.cfg misovar=,,,video:vesa,composite:off
