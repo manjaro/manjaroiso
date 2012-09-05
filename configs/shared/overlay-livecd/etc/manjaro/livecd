@@ -19,7 +19,7 @@ kernel_cmdline ()
     return 1
 }
 
-MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific,)"
+MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
 LOCALE="$(echo "$MISOVAR" | cut -d, -f1 | cut -d: -f2)"
 KEYMAP="$(echo "$MISOVAR" | cut -d, -f2 | cut -d: -f2)"
 TIMEZONE="$(echo "$MISOVAR" | cut -d, -f3 | cut -d: -f2)"
