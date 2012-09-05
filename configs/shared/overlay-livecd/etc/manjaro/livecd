@@ -37,15 +37,15 @@ if [ -e "${swapdev}" ]; then
 fi
 
 #edit /etc/locale.conf & /etc/environment
-echo "LANG=${LOCALE}" > /etc/locale.conf
+echo "LANG=${LOCALE}.UTF-8" > /etc/locale.conf
 echo "LC_COLLATE=C" >> /etc/locale.conf
-echo "LANG=${LOCALE}" >> /etc/environment
+echo "LANG=${LOCALE}.UTF-8" >> /etc/environment
 
 #prepare_locale_gen
 for i in $(grep "^LANG" /etc/locale.conf | sed -e 's/.*=//g' -e's/\..*//g'); do
 	sed -i -e "s/^#$i/$i/g" /etc/locale.gen
 done
-if [ "$LOCALE" != "en_US.utf8" ]; then
+if [ "$LOCALE" != "en_US.UTF-8" ]; then
         sed -i -e "s/^#en_US/en_US/g" /etc/locale.gen
 fi
 /usr/sbin/locale-gen > /dev/null
@@ -126,13 +126,13 @@ mkdir -p /var/lib/mhwd/local/{pci,usb}
 if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
    if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
    	if  [ "${VIDEO}" == "vesa" ]; then
-		/usr/bin/mhwd --i pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf"
+		/usr/bin/mhwd --install pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf"
 	else
 		/usr/bin/mhwd --auto pci nonfree 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
 	fi
    else
    	if  [ "${VIDEO}" == "vesa" ]; then
-		/usr/bin/mhwd --i pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf"
+		/usr/bin/mhwd --install pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf"
 	else
 		/usr/bin/mhwd --auto pci free 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
 	fi
@@ -344,3 +344,6 @@ fi
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ua"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ua/' /etc/vconsole.conf
 	fi
+
+#load keys
+loadkeys $(cat /etc/vconsole.conf | grep "KEYMAP=" | cut -d= -f2)
