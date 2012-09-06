@@ -1,0 +1,23 @@
+ 
+ 
+ 
+
+
+
+
+        
+                Manjaro Linux calisan DVD ortamina hosgeldiniz.
+                        
+             Isletim sisteminizi calistirmadan once, dil, klavye 
+             haritasi ve cozunurlukayarlarinizi F2 ve F5 tuslari
+             ile ayarlamalisiniz.
+
+             Calisan sistem, diskinizde alan isgal etmiyecektir.
+
+             Manjaro Linux' u calistiramadiginizda endiselenmeyin.
+             Yardim etmek icin biz haziriz.
+             
+             Manjaro Linux' u tercih ettiginiz icin tesekkur ederiz!
+             
+             Genis bilgi icin:
+             http://www.manjaro.org
