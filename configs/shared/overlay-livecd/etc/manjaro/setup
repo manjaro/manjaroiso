@@ -1484,8 +1484,8 @@ configure_system()
 		# Setup system for the Brazilian language
 		
 		# Set Brazilian Xorg keyboard layout
-		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "pt"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=pt/' ${DESTDIR}/etc/vconsole.conf
+		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "br-abnt2"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
+                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=br-abnt2/' ${DESTDIR}/etc/vconsole.conf
 
 	elif [ "$(echo "${KEYMAP}" | grep "bg_BG")" != "" ]; then
 		# Setup system for the Bulgarian language
