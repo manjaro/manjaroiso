@@ -1,0 +1,10 @@
+## Base Packages
+linux
+memtest86+
+mkinitcpio-nfs-utils
+nbd
+pacman
+pcmciautils
+syslinux
+
+

@@ -15,8 +15,8 @@
              Das Live-System benoetigt keinen Platz auf Ihrer
              Festplatte.
 
-             Wenn Sie Manjaro Linux nicht starten koennen, laufen
-             Sie nicht weg! Wir sind da um Ihnen weiterzuhelfen!
+             Wenn Sie Manjaro Linux nicht starten koennen, Keine
+             Angst! Wir sind da um Ihnen weiterzuhelfen!
                      
              Danke das Sie Sich fuer Manjaro Linux entschieden haben!
 

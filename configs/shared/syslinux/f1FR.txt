@@ -6,18 +6,19 @@
 
 
         
-                        Welcome to Manjaro Linux Live DVD.
+                    Bienvenue dans le DVD Live Manjaro Linux.
 
-             Before  loading  the operating system,  you  may  choose
-             language,  keymap,  timezone  and   resolution, by using
-             F2-F5 keys.
+             Avant de charger le systeme d'exploitation, vous pouvez
+             chosir langue, configuration de clavier, fuseau horaire
+             et resolution en utilisant les touches F2 a F5.
 
-             The live system does not require space on your harddisk.
+             Le systeme live ne necessite pas d'espace sur votre
+             disque dur.
 
-             If you can't start Manjaro Linux, dont't dispair!
-             We are ready to help you! 
+             Si vous ne pouvez pas demarrer Manjaro Linux, ne vous
+             inquietez pas! Nous sommes prets pour vous aider !
                      
-             Thank you for choosing Manjaro Linux!
+             Merci d'avoir choisi Manjaro Linux !
 
-             See our web site for more information,
+             Consultez notre site web pour plus d'informations,
              http://www.manjaro.org
