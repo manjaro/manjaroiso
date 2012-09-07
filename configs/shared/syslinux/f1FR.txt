@@ -6,17 +6,17 @@
 
 
         
-                    Bienvenue dans le DVD Live Manjaro Linux.
+                 Bienvenue dans le DVD Live de Manjaro Linux.
 
              Avant de charger le systeme d'exploitation, vous pouvez
-             chosir langue, configuration de clavier, fuseau horaire
+             choisir langue, agencement de clavier, fuseau horaire
              et resolution en utilisant les touches F2 a F5.
 
              Le systeme live ne necessite pas d'espace sur votre
              disque dur.
 
              Si vous ne pouvez pas demarrer Manjaro Linux, ne vous
-             inquietez pas! Nous sommes prets pour vous aider !
+             inquietez pas ! Nous sommes la pour vous aider !
                      
              Merci d'avoir choisi Manjaro Linux !
 
