@@ -1,0 +1,23 @@
+ 
+ 
+ 
+
+
+
+
+        
+                        Benvenuto nel DVD Live di Manjaro Linux.
+
+             Prima di avviare il sistema operativo, puoi scegliere 
+             lingua, tastiera, fuso orario e risoluzione, usando
+             i tasti F2-F5.
+
+             Il sistema live non richiede spazio sul tuo hard disk.
+
+             Se non riesci ad avviare Manjaro Linux, non disperarti!
+             Siamo pronti ad aiutarti! 
+                     
+             Grazie per aver scelto Manjaro Linux!
+
+             Visita il nostro sito web per ulteriori informazioni,
+             http://www.manjaro.org
