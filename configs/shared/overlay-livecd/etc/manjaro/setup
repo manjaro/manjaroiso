@@ -186,6 +186,7 @@ EDITOR="nano"
 
 # abstract the common pacman args
 PACMAN="pacman --root ${DESTDIR} --config /etc/pacman.conf --noconfirm --noprogressbar"
+PACMAN_LNG="pacman --root ${DESTDIR} --config /opt/manjaro/pacman-lng.conf --noconfirm --noprogressbar"
 
 # sources
 SYNC_URL=
@@ -1465,6 +1466,7 @@ configure_system()
 		# Set American Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "us"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=us/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S hunspell-en libreoffice-en-US
 
 	elif [ "$(echo "${KEYMAP}" | grep "en_GB")" != "" ]; then
 		# Setup system for the British language
@@ -1472,6 +1474,7 @@ configure_system()
 		# Set British Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "gb"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=uk/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-en-gb thunderbird-i18n-en-gb libreoffice-en-GB hunspell-en
 
 	elif [ "$(echo "${KEYMAP}" | grep "be_BY")" != "" ]; then
 		# Setup system for the Belarusian language
@@ -1479,6 +1482,7 @@ configure_system()
 		# Set Belarusian Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "be"#' ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=be/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-be thunderbird-i18n-be libreoffice-be
 
 	elif [ "$(echo "${KEYMAP}" | grep "pt_BR")" != "" ]; then
 		# Setup system for the Brazilian language
@@ -1486,6 +1490,7 @@ configure_system()
 		# Set Brazilian Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "br-abnt2"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=br-abnt2/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-pt-br thunderbird-i18n-pt-br kde-l10n-pt_br libreoffice-pt-BR
 
 	elif [ "$(echo "${KEYMAP}" | grep "bg_BG")" != "" ]; then
 		# Setup system for the Bulgarian language
@@ -1493,6 +1498,7 @@ configure_system()
 		# Set Bulgarian Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "bg"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=bg/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-bg thunderbird-i18n-bg libreoffice-bg kde-l10n-bg
 
 	elif [ "$(echo "${KEYMAP}" | grep "da_DK")" != "" ]; then
 		# Setup system for the Danish language
@@ -1514,6 +1520,7 @@ configure_system()
 		# Set French Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "fr"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=fr/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr kde-l10n-fr
 
 	elif [ "$(echo "${KEYMAP}" | grep "fr_CA")" != "" ]; then
 		# Setup system for the French Canada language
@@ -1521,6 +1528,7 @@ configure_system()
 		# Set French Canada Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "cf"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=cf/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr kde-l10n-fr
 
 	elif [ "$(echo "${KEYMAP}" | grep "de_DE")" != "" ]; then
 		# Setup system for the German language
@@ -1528,6 +1536,7 @@ configure_system()
 		# Set German Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "de"\n        Option "XkbVariant" "nodeadkeys"#' /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=de/' /etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-de thunderbird-i18n-de hunspell-de kde-l10n-de libreoffice-de
 
 	elif [ "$(echo "${KEYMAP}" | grep "is_IS")" != "" ]; then
 		# Setup system for the Icelandic language
@@ -1542,6 +1551,7 @@ configure_system()
 		# Set Italian Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "it"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=it/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-it thunderbird-i18n-it hunspell-it libreoffice-it kde-l10n-it
 
 	elif [ "$(echo "${KEYMAP}" | grep "nn_NO")" != "" ]; then
 		# Setup system for the Nynorsk language
@@ -1556,6 +1566,7 @@ configure_system()
 		# Set Polish Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "pl"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=pl/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-pl thunderbird-i18n-pl hunspell-pl libreoffice-pl kde-l10n-pl
 
 	elif [ "$(echo "${KEYMAP}" | grep "pt_PT")" != "" ]; then
 		# Setup system for the Portuguese language
@@ -1563,6 +1574,7 @@ configure_system()
 		# Set Portuguese Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "pt"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=pt/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-pt-pt thunderbird-i18n-pt-pt libreoffice-pt kde-l10n-pt
 
 	elif [ "$(echo "${KEYMAP}" | grep "ro_RO")" != "" ]; then
 		# Setup system for the Romanian language
@@ -1570,6 +1582,7 @@ configure_system()
 		# Set Romanian Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ro"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ro/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-ro thunderbird-i18n-ro hunspell-ro libreoffice-ro kde-l10n-ro
 
 	elif [ "$(echo "${KEYMAP}" | grep "ru_RU")" != "" ]; then
 		# Setup system for the Russian language
@@ -1577,6 +1590,7 @@ configure_system()
 		# Set Russian Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ru"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ru/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-ru thunderbird-i18n-ru libreoffice-ru kde-l10n-ru
 
 	elif [ "$(echo "${KEYMAP}" | grep "es_AR")" != "" ]; then
 		# Setup system for the Argentinian language
@@ -1584,6 +1598,7 @@ configure_system()
 		# Set Argentinian Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "la-latin1"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=la-latin1/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-es-ar thunderbird-i18n-es-ar hunspell-es libreoffice-es kde-l10n-es
 
 	elif [ "$(echo "${KEYMAP}" | grep "es_ES")" != "" ]; then
 		# Setup system for the Spanish language
@@ -1591,6 +1606,7 @@ configure_system()
 		# Set Spanish Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "es"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=es/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-es-es thunderbird-i18n-es-es hunspell-es libreoffice-es kde-l10n-es
 
 	elif [ "$(echo "${KEYMAP}" | grep "sv_SE")" != "" ]; then
 		# Setup system for the Swedish language
@@ -1598,6 +1614,7 @@ configure_system()
 		# Set Swedish Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "sv-latin1"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=sv-latin1/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-sv-se thunderbird-i18n-sv-se libreoffice-sv kde-l10n-sv
 
 	elif [ "$(echo "${KEYMAP}" | grep "tr_TR")" != "" ]; then
 		# Setup system for the Turkish language
@@ -1605,6 +1622,7 @@ configure_system()
 		# Set Turkish Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "tr"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=trq/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-tr thunderbird-i18n-tr libreoffice-tr kde-l10n-tr
 
 	elif [ "$(echo "${KEYMAP}" | grep "uk_UA")" != "" ]; then
 		# Setup system for the Ukrainian language
@@ -1612,6 +1630,7 @@ configure_system()
 		# Set Ukrainian Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ua"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ua/' ${DESTDIR}/etc/vconsole.conf
+                $PACMAN_LNG -S firefox-i18n-uk thunderbird-i18n-uk libreoffice-uk kde-l10n-uk
 	fi
     fi
 

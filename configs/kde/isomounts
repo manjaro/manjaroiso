@@ -8,6 +8,7 @@
 
 # ORDER MATTERS! Files take top-down precedence. Be careful
 @ARCH@/overlay.sqfs @ARCH@ / squashfs
+@ARCH@/lng-image.sqfs @ARCH@ / squashfs
 @ARCH@/pkgs-image.sqfs @ARCH@ / squashfs
 @ARCH@/kde-image.sqfs @ARCH@ / squashfs
 @ARCH@/pkgs-overlay.sqfs @ARCH@ / squashfs

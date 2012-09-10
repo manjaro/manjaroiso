@@ -75,6 +75,15 @@ if [ -e Packages-Xorg ] ; then
      rm /tmp/manjaroiso-xorg-overlay
 fi
 
+if [ -e Packages-Lng ] ; then
+     if [ "${arch}" == "i686" ]; then
+     	lng_packages=$(sed "s|#.*||g" Packages-Lng | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     elif [ "${arch}" == "x86_64" ]; then
+     	lng_packages=$(sed "s|#.*||g" Packages-Lng | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     fi
+     lng_packages_cleanup=$(sed "s|#.*||g" Packages-Lng | grep cleanup | sed "s|>cleanup||g")
+fi
+
 if [ -e Packages-Xfce ] ; then
      if [ "${arch}" == "i686" ]; then
      	xfce_packages=$(sed "s|#.*||g" Packages-Xfce | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
@@ -171,6 +180,33 @@ if [ -e Packages-Xorg ] ; then
               umount -f ${work_dir}/pkgs-overlay
               rm ${work_dir}/pkgs-overlay/etc/modules-load.d/*virtualbox*conf
               rm -R ${work_dir}/pkgs-overlay/.wh*
+              : > ${work_dir}/build.${FUNCNAME}
+              echo -e "$_g >$_W done $_n"
+         fi
+     }
+fi
+
+if [ -e Packages-Lng ] ; then
+     # Prepare lng-image
+     make_lng_image() {
+         if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
+              echo -e -n "$_r >$_W Prepare lng-image \n $_n"
+              mkdir -p ${work_dir}/lng-image/opt/manjaro/lng
+              if [ "`mount -l | grep ${work_dir}/lng-image`" != "" ]; then
+                 umount -f ${work_dir}/lng-image
+              fi
+              mount -t aufs -o br=${work_dir}/lng-image:${work_dir}/root-image=ro none ${work_dir}/lng-image
+              pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/manjaro/lng -Syw ${lng_packages} --noconfirm
+              if [ "${lng_packages_cleanup}" != "" ]; then
+                 for lng_clean in ${lng_packages_cleanup};
+                    do  rm ${work_dir}/lng-image/opt/manjaro/lng/${lng_clean}
+                    done
+              fi
+              cp pacman-lng.conf ${work_dir}/lng-image/opt/manjaro
+              rm -r ${work_dir}/lng-image/var
+              repo-add ${work_dir}/lng-image/opt/manjaro/lng/manjaro-lng.db.tar.gz ${work_dir}/lng-image/opt/manjaro/lng/*pkg*z
+              umount -f ${work_dir}/lng-image
+              rm -R ${work_dir}/lng-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi
@@ -414,6 +450,10 @@ make_root_image
 # install xorg-drivers
 if [ -e Packages-Xorg ] ; then
     make_pkgs_image
+fi
+# install translations
+if [ -e Packages-Lng ] ; then
+    make_lng_image
 fi
 # install DE(s)
 if [ -e Packages-Xfce ] ; then

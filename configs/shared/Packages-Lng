@@ -1,0 +1,112 @@
+## Language Support
+
+#American English
+hunspell-en
+libreoffice-en-US
+
+#Belarusian
+firefox-i18n-be
+thunderbird-i18n-be
+libreoffice-be
+
+#British English
+firefox-i18n-en-gb
+thunderbird-i18n-en-gb
+libreoffice-en-GB
+
+#Brazilian Portuguese
+firefox-i18n-pt-br
+thunderbird-i18n-pt-br
+kde-l10n-pt_br
+libreoffice-pt-BR
+
+#Bulgarian
+firefox-i18n-bg
+thunderbird-i18n-bg
+libreoffice-bg
+kde-l10n-bg
+
+#Deutsch
+firefox-i18n-de
+thunderbird-i18n-de
+hunspell-de
+kde-l10n-de
+libreoffice-de
+
+#Espanol
+firefox-i18n-es-es
+thunderbird-i18n-es-es
+hunspell-es
+libreoffice-es
+kde-l10n-es
+
+#Espanol (Argentina)
+firefox-i18n-es-ar
+thunderbird-i18n-es-ar
+
+#Francais
+firefox-i18n-fr
+thunderbird-i18n-fr
+hunspell-fr
+libreoffice-fr
+kde-l10n-fr
+
+#Italian
+firefox-i18n-it
+thunderbird-i18n-it
+hunspell-it
+libreoffice-it
+kde-l10n-it
+
+#Polish
+firefox-i18n-pl
+thunderbird-i18n-pl
+hunspell-pl
+libreoffice-pl
+kde-l10n-pl
+
+#Portuguese
+firefox-i18n-pt-pt
+thunderbird-i18n-pt-pt
+libreoffice-pt
+kde-l10n-pt
+
+#Russian
+firefox-i18n-ru
+thunderbird-i18n-ru
+libreoffice-ru
+kde-l10n-ru
+
+#Romanian
+firefox-i18n-ro
+thunderbird-i18n-ro
+hunspell-ro
+libreoffice-ro
+kde-l10n-ro
+
+#Swedish
+firefox-i18n-sv-se
+thunderbird-i18n-sv-se
+libreoffice-sv
+kde-l10n-sv
+
+#Turkish
+firefox-i18n-tr
+thunderbird-i18n-tr
+libreoffice-tr
+kde-l10n-tr
+
+#Ukrainian
+firefox-i18n-uk
+thunderbird-i18n-uk
+libreoffice-uk
+kde-l10n-uk
+
+#cleanup
+>cleanup xcb-util*
+>cleanup thunderbird-1*
+>cleanup mime-types*
+>cleanup libnotify*
+>cleanup hunspell-1*
+>cleanup firefox-1*
+>cleanup startup-notification*
