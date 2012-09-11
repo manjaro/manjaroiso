@@ -70,8 +70,9 @@ if [ -e Packages-Xorg ] ; then
      elif [ "${arch}" == "x86_64" ]; then
      	xorg_packages=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
      fi
+     echo "$xorg_packages" > /tmp/manjaroiso-xorg-overlay
      xorg_packages_cleanup=$(sed "s|#.*||g" Packages-Xorg | grep cleanup | sed "s|>cleanup||g")
-     xorg_packages_overlay=$(echo "$xorg_packages" > /tmp/manjaroiso-xorg-overlay | sed "s|lib32-catalyst-legacy-utils||g" /tmp/manjaroiso-xorg-overlay | sed "s|catalyst-legacy-utils||g" | sed "s|catalyst-legacy||g")
+     xorg_packages_overlay=$(sed "s|lib32-catalyst-legacy-utils||g" /tmp/manjaroiso-xorg-overlay | sed "s|catalyst-legacy-utils||g" | sed "s|catalyst-legacy||g")
      rm /tmp/manjaroiso-xorg-overlay
 fi
 
