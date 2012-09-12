@@ -114,6 +114,24 @@ jfsutils
 reiserfsprogs
 xfsprogs
 
+## Network
+networkmanager
+usb_modeswitch
+modemmanager
+nbd
+inetutils
+wireless_tools
+wpa_supplicant
+wpa_actiond
+zd1211-firmware
+ipw2100-fw
+ipw2200-fw
+b43-fwcutter
+
+## Tools
+mhwd
+mhwd-db
+
 ## Xorg Packages
 libdnet
 mesa
@@ -135,21 +153,3 @@ xorg-server-utils
 xorg-twm
 xorg-utils
 xorg-xinit
-
-## Drivers
-mhwd
-mhwd-db
-
-## Network
-networkmanager
-usb_modeswitch
-modemmanager
-nbd
-inetutils
-wireless_tools
-wpa_supplicant
-wpa_actiond
-zd1211-firmware
-ipw2100-fw
-ipw2200-fw
-b43-fwcutter

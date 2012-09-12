@@ -26,11 +26,11 @@
       <summary>Background logo file to use</summary>
     </key>
     <key name="theme-name" type="s">
-      <default>'Zukini'</default>
+      <default>'Shiki-Nouveau-Wise'</default>
       <summary>GTK+ theme to use</summary>
     </key>
     <key name="icon-theme-name" type="s">
-      <default>'Faenza-Green'</default>
+      <default>'Faenza-Dark'</default>
       <summary>Icon theme to use</summary>
     </key>
     <key name="font-name" type="s">
