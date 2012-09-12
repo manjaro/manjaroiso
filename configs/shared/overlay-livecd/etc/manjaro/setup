@@ -1479,6 +1479,7 @@ configure_system()
         #do_lang_settings
         if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
              PACMAN_LNG_INST="hunspell-en libreoffice-en-US"
+             PACMAN_LNG_INST_KDE=""
         fi
  	# Determind which language we are using
 	if [ "$(echo "${KEYMAP}" | grep "en_US")" != "" ]; then
@@ -1518,7 +1519,8 @@ configure_system()
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "br-abnt2"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=br-abnt2/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-pt-br thunderbird-i18n-pt-br kde-l10n-pt_br libreoffice-pt-BR"
+                	PACMAN_LNG_INST="firefox-i18n-pt-br thunderbird-i18n-pt-br libreoffice-pt-BR"
+                	PACMAN_LNG_INST_KDE="kde-l10n-pt_br"
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "bg_BG")" != "" ]; then
@@ -1528,7 +1530,8 @@ configure_system()
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "bg"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=bg/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-bg thunderbird-i18n-bg libreoffice-bg kde-l10n-bg"
+                	PACMAN_LNG_INST="firefox-i18n-bg thunderbird-i18n-bg libreoffice-bg"
+                	PACMAN_LNG_INST_KDE="kde-l10n-bg"
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "da_DK")" != "" ]; then
@@ -1552,7 +1555,8 @@ configure_system()
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "fr"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=fr/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr kde-l10n-fr"
+                	PACMAN_LNG_INST="firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr"
+                	PACMAN_LNG_INST_KDE="kde-l10n-fr"
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "fr_CA")" != "" ]; then
@@ -1562,7 +1566,8 @@ configure_system()
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "cf"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=cf/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr kde-l10n-fr"
+                	PACMAN_LNG_INST="firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr"
+                	PACMAN_LNG_INST_KDE="kde-l10n-fr"
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "de_DE")" != "" ]; then
@@ -1572,7 +1577,8 @@ configure_system()
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "de"\n        Option "XkbVariant" "nodeadkeys"#' ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=de/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-de thunderbird-i18n-de hunspell-de kde-l10n-de libreoffice-de"
+                	PACMAN_LNG_INST="firefox-i18n-de thunderbird-i18n-de hunspell-de libreoffice-de"
+                	PACMAN_LNG_INST_KDE="kde-l10n-de"
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "is_IS")" != "" ]; then
@@ -1589,7 +1595,8 @@ configure_system()
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "it"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=it/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-it thunderbird-i18n-it hunspell-it libreoffice-it kde-l10n-it"
+                	PACMAN_LNG_INST="firefox-i18n-it thunderbird-i18n-it hunspell-it libreoffice-it"
+                	PACMAN_LNG_INST_KDE="kde-l10n-it"
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "nn_NO")" != "" ]; then
@@ -1606,7 +1613,8 @@ configure_system()
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "pl"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=pl/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-pl thunderbird-i18n-pl hunspell-pl libreoffice-pl kde-l10n-pl"
+                	PACMAN_LNG_INST="firefox-i18n-pl thunderbird-i18n-pl hunspell-pl libreoffice-pl"
+                	PACMAN_LNG_INST_KDE="kde-l10n-pl"
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "pt_PT")" != "" ]; then
@@ -1616,7 +1624,8 @@ configure_system()
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "pt"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=pt/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-pt-pt thunderbird-i18n-pt-pt libreoffice-pt kde-l10n-pt"
+                	PACMAN_LNG_INST="firefox-i18n-pt-pt thunderbird-i18n-pt-pt libreoffice-pt"
+                	PACMAN_LNG_INST_KDE="kde-l10n-pt"
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "ro_RO")" != "" ]; then
@@ -1626,7 +1635,8 @@ configure_system()
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ro"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ro/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-ro thunderbird-i18n-ro hunspell-ro libreoffice-ro kde-l10n-ro"
+                	PACMAN_LNG_INST="firefox-i18n-ro thunderbird-i18n-ro hunspell-ro libreoffice-ro"
+                	PACMAN_LNG_INST_KDE="kde-l10n-ro"
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "ru_RU")" != "" ]; then
@@ -1636,7 +1646,8 @@ configure_system()
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ru"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ru/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-ru thunderbird-i18n-ru libreoffice-ru kde-l10n-ru"
+                	PACMAN_LNG_INST="firefox-i18n-ru thunderbird-i18n-ru libreoffice-ru"
+                	PACMAN_LNG_INST_KDE="kde-l10n-ru"
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "es_AR")" != "" ]; then
@@ -1646,7 +1657,8 @@ configure_system()
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "la-latin1"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=la-latin1/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-es-ar thunderbird-i18n-es-ar hunspell-es libreoffice-es kde-l10n-es"
+                	PACMAN_LNG_INST="firefox-i18n-es-ar thunderbird-i18n-es-ar hunspell-es libreoffice-es"
+                	PACMAN_LNG_INST_KDE="kde-l10n-es"
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "es_ES")" != "" ]; then
@@ -1656,7 +1668,8 @@ configure_system()
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "es"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=es/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-es-es thunderbird-i18n-es-es hunspell-es libreoffice-es kde-l10n-es"
+                	PACMAN_LNG_INST="firefox-i18n-es-es thunderbird-i18n-es-es hunspell-es libreoffice-es"
+                	PACMAN_LNG_INST_KDE="kde-l10n-es"
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "sv_SE")" != "" ]; then
@@ -1666,7 +1679,8 @@ configure_system()
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "sv-latin1"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=sv-latin1/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-sv-se thunderbird-i18n-sv-se libreoffice-sv kde-l10n-sv"
+                	PACMAN_LNG_INST="firefox-i18n-sv-se thunderbird-i18n-sv-se libreoffice-sv"
+                	PACMAN_LNG_INST_KDE="kde-l10n-sv"
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "tr_TR")" != "" ]; then
@@ -1676,7 +1690,8 @@ configure_system()
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "tr"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=trq/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-tr thunderbird-i18n-tr libreoffice-tr kde-l10n-tr"
+                	PACMAN_LNG_INST="firefox-i18n-tr thunderbird-i18n-tr libreoffice-tr"
+                	PACMAN_LNG_INST_KDE="kde-l10n-tr"
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "uk_UA")" != "" ]; then
@@ -1686,7 +1701,8 @@ configure_system()
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ua"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ua/' ${DESTDIR}/etc/vconsole.conf
                 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-uk thunderbird-i18n-uk libreoffice-uk kde-l10n-uk"
+                	PACMAN_LNG_INST="firefox-i18n-uk thunderbird-i18n-uk libreoffice-uk"
+                	PACMAN_LNG_INST_KDE="kde-l10n-uk"
 		fi
 	fi
     fi
@@ -1782,8 +1798,12 @@ configure_system()
     chroot ${DESTDIR} locale-gen &> /dev/null
 
     # installing localization packages
+    if [ ! -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
+       PACMAN_LNG_INST_KDE=""
+    fi
+
     if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-       ${PACMAN_LNG} -Sy ${PACMAN_LNG_INST} &> /dev/null
+       ${PACMAN_LNG} -Sy ${PACMAN_LNG_INST} ${PACMAN_LNG_INST_KDE} &> /dev/null
     fi
 
     # /etc/localtime
