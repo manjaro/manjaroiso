@@ -29,6 +29,7 @@ CONSOLEFONT="$(kernel_cmdline vconsole.font)"
 CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
 USENONFREE="$(kernel_cmdline nonfree no)"
 PACMAN_LNG="pacman --config /opt/manjaro/pacman-lng.conf --noconfirm --noprogressbar"
+arch=$(uname -m)
 
 ## Systemd should do it
 #scan_swap
@@ -198,7 +199,9 @@ fi
 		# Set American Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "us"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=us/' /etc/vconsole.conf
-                $PACMAN_LNG -S hunspell-en libreoffice-en-US
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S hunspell-en libreoffice-en-US
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "en_GB")" != "" ]; then
 		# Setup system for the British language
@@ -206,7 +209,9 @@ fi
 		# Set British Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "gb"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=uk/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-en-gb thunderbird-i18n-en-gb libreoffice-en-GB hunspell-en
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-en-gb thunderbird-i18n-en-gb libreoffice-en-GB hunspell-en
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "be_BY")" != "" ]; then
 		# Setup system for the Belarusian language
@@ -214,7 +219,9 @@ fi
 		# Set Belarusian Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "be"#' /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=be/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-be thunderbird-i18n-be libreoffice-be
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-be thunderbird-i18n-be libreoffice-be
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "pt_BR")" != "" ]; then
 		# Setup system for the Brazilian language
@@ -222,7 +229,9 @@ fi
 		# Set Brazilian Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "br-abnt2"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=br-abnt2/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-pt-br thunderbird-i18n-pt-br kde-l10n-pt_br libreoffice-pt-BR
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-pt-br thunderbird-i18n-pt-br kde-l10n-pt_br libreoffice-pt-BR
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "bg_BG")" != "" ]; then
 		# Setup system for the Bulgarian language
@@ -230,7 +239,9 @@ fi
 		# Set Bulgarian Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "bg"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=bg/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-bg thunderbird-i18n-bg libreoffice-bg kde-l10n-bg
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-bg thunderbird-i18n-bg libreoffice-bg kde-l10n-bg
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "da_DK")" != "" ]; then
 		# Setup system for the Danish language
@@ -252,7 +263,9 @@ fi
 		# Set French Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "fr"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=fr/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr kde-l10n-fr
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr kde-l10n-fr
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "fr_CA")" != "" ]; then
 		# Setup system for the French Canada language
@@ -260,7 +273,9 @@ fi
 		# Set French Canada Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "cf"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=cf/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr kde-l10n-fr
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr kde-l10n-fr
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "de_DE")" != "" ]; then
 		# Setup system for the German language
@@ -268,7 +283,9 @@ fi
 		# Set German Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "de"\n        Option "XkbVariant" "nodeadkeys"#' /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=de/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-de thunderbird-i18n-de hunspell-de kde-l10n-de libreoffice-de
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-de thunderbird-i18n-de hunspell-de kde-l10n-de libreoffice-de
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "is_IS")" != "" ]; then
 		# Setup system for the Icelandic language
@@ -283,7 +300,9 @@ fi
 		# Set Italian Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "it"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=it/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-it thunderbird-i18n-it hunspell-it libreoffice-it kde-l10n-it
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-it thunderbird-i18n-it hunspell-it libreoffice-it kde-l10n-it
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "nn_NO")" != "" ]; then
 		# Setup system for the Nynorsk language
@@ -298,7 +317,9 @@ fi
 		# Set Polish Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "pl"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=pl/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-pl thunderbird-i18n-pl hunspell-pl libreoffice-pl kde-l10n-pl
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-pl thunderbird-i18n-pl hunspell-pl libreoffice-pl kde-l10n-pl
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "pt_PT")" != "" ]; then
 		# Setup system for the Portuguese language
@@ -306,7 +327,9 @@ fi
 		# Set Portuguese Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "pt"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=pt/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-pt-pt thunderbird-i18n-pt-pt libreoffice-pt kde-l10n-pt
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-pt-pt thunderbird-i18n-pt-pt libreoffice-pt kde-l10n-pt
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "ro_RO")" != "" ]; then
 		# Setup system for the Romanian language
@@ -314,7 +337,9 @@ fi
 		# Set Romanian Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ro"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ro/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-ro thunderbird-i18n-ro hunspell-ro libreoffice-ro kde-l10n-ro
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-ro thunderbird-i18n-ro hunspell-ro libreoffice-ro kde-l10n-ro
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "ru_RU")" != "" ]; then
 		# Setup system for the Russian language
@@ -322,7 +347,9 @@ fi
 		# Set Russian Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ru"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ru/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-ru thunderbird-i18n-ru libreoffice-ru kde-l10n-ru
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-ru thunderbird-i18n-ru libreoffice-ru kde-l10n-ru
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "es_AR")" != "" ]; then
 		# Setup system for the Argentinian language
@@ -330,7 +357,9 @@ fi
 		# Set Argentinian Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "la-latin1"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=la-latin1/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-es-ar thunderbird-i18n-es-ar hunspell-es libreoffice-es kde-l10n-es
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-es-ar thunderbird-i18n-es-ar hunspell-es libreoffice-es kde-l10n-es
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "es_ES")" != "" ]; then
 		# Setup system for the Spanish language
@@ -338,7 +367,9 @@ fi
 		# Set Spanish Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "es"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=es/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-es-es thunderbird-i18n-es-es hunspell-es libreoffice-es kde-l10n-es
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-es-es thunderbird-i18n-es-es hunspell-es libreoffice-es kde-l10n-es
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "sv_SE")" != "" ]; then
 		# Setup system for the Swedish language
@@ -346,7 +377,9 @@ fi
 		# Set Swedish Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "sv-latin1"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=sv-latin1/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-sv-se thunderbird-i18n-sv-se libreoffice-sv kde-l10n-sv
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-sv-se thunderbird-i18n-sv-se libreoffice-sv kde-l10n-sv
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "tr_TR")" != "" ]; then
 		# Setup system for the Turkish language
@@ -354,7 +387,9 @@ fi
 		# Set Turkish Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "tr"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=trq/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-tr thunderbird-i18n-tr libreoffice-tr kde-l10n-tr
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-tr thunderbird-i18n-tr libreoffice-tr kde-l10n-tr
+		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "uk_UA")" != "" ]; then
 		# Setup system for the Ukrainian language
@@ -362,7 +397,9 @@ fi
 		# Set Ukrainian Xorg keyboard layout
 		sed -i 's#Ident	elifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ua"#'       /etc/X11/xorg.conf.d/10-evdev.conf
                 sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ua/' /etc/vconsole.conf
-                $PACMAN_LNG -S firefox-i18n-uk thunderbird-i18n-uk libreoffice-uk kde-l10n-uk
+                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+                	$PACMAN_LNG -S firefox-i18n-uk thunderbird-i18n-uk libreoffice-uk kde-l10n-uk
+		fi
 	fi
 
 #load keys

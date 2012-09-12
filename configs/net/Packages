@@ -58,17 +58,10 @@ which
 wpa_supplicant
 xfsprogs
 
-
-
 ## Devel Packages
 base-devel
-#yaourt
-
 
 ## Extra Base Packages
-#qt
-#mhwd
-#manjaro-mirrorlist
 xdg-utils
 xdg-user-dirs
 pkg-config
@@ -78,9 +71,10 @@ sudo
 gamin
 acpid
 cpufrequtils
-grub2
+grub-bios
+grub-efi-i386
+grub-efi-x86_64
 os-prober
-linux-headers
 linux-firmware
 dbus
 util-linux-ng
@@ -107,8 +101,6 @@ speedtouch
 tcpdump
 vpnc
 
-
-
 ## Filesystem Packages
 btrfs-progs-unstable
 dmraid
@@ -122,51 +114,39 @@ jfsutils
 reiserfsprogs
 xfsprogs
 
+## Xorg Packages
+libdnet
+mesa
+netkit-bsd-finger
+uriparser
+xf86-input-acecad
+xf86-input-aiptek
+xf86-input-evdev
+xf86-input-joystick
+xf86-input-keyboard
+xf86-input-mouse
+xf86-input-synaptics
+xf86-input-void
+xf86-input-wacom
+xf86-video-vesa
+xinetd
+xorg-server
+xorg-server-utils
+xorg-twm
+xorg-utils
+xorg-xinit
 
-
-## Packages for Sound and Audio
-alsa-utils
-alsa-firmware
-alsa-lib
-#pulseaudio-alsa
-#pulseaudio
-
-
-
-## Fonts
-#ttf-bitstream-vera
-#ttf-dejavu
-#ttf-liberation
-terminus-font
-#ttf-inconsolata
-#ttf-indic-otf
-#neuropolitical_font
-#sony_sketch_ef_font
-
-
-
-## Compression Codecs
-arj
-bzip2
-gzip
-lzop
-p7zip
-tar
-unrar
-unzip
-zip
-xz
-
-
+## Drivers
+mhwd
+mhwd-db
 
 ## Network
-#networkmanager
-#usb_modeswitch
-#modemmanager
+networkmanager
+usb_modeswitch
+modemmanager
 nbd
-#inetutils
+inetutils
 wireless_tools
-#broadcom-wl
 wpa_supplicant
 wpa_actiond
 zd1211-firmware
