@@ -191,6 +191,11 @@ if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
    setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &> /dev/null
 fi
 
+#fix_ping_installation
+setcap cap_net_raw=ep /usr/bin/ping &> /dev/null
+setcap cap_net_raw=ep /usr/bin/ping6 &> /dev/null
+
+
 #do_lang_settings
  	# Determind which language we are using
 	if [ "$(echo "${KEYMAP}" | grep "en_US")" != "" ]; then

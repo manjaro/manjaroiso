@@ -119,7 +119,7 @@
   _installvideodriver="MHWD is installing your video driver(s)..."
   _setupsystemd="Configuring SystemD..."
   _setupdisplaymanager="Configuring the display manager..."
-  _fixgnomeapps="Fixing gnome apps..."
+  _fixapps="Fixing some applications..."
 
   _unsquash_dialog_title="Installing system files..."
   _unsquash_dialog_info1="Unsquashing archive:"
@@ -1118,16 +1118,21 @@ hd_config()
        fi
     fi
 
-    # fix gnome apps
+    # fix some apps
 
-    DIALOG --infobox "${_fixgnomeapps}" 6 40
+    DIALOG --infobox "${_fixapps}" 6 40
     sleep 3
 
+    #fix_gnome_apps
     chroot ${DESTDIR} glib-compile-schemas usr/share/glib-2.0/schemas
 
     if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
        chroot ${DESTDIR} setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &>/dev/null
     fi
+
+    #fix_ping_installation
+    chroot ${DESTDIR} setcap cap_net_raw=ep /usr/bin/ping &>/dev/null
+    chroot ${DESTDIR} setcap cap_net_raw=ep /usr/bin/ping6 &>/dev/null
 
     chroot_umount
 }
