@@ -1,14 +1,15 @@
 [Unit]
 Description=LiveMedia Eject Service
+Before=unmount.target
+After=shutdown.target
+DefaultDependencies=no
 
 [Service]
-StandardInput=tty-force
 Type=oneshot
-RemainAfterExit=true
-ExecStart=/bin/true
-ExecStop=/etc/manjaro/ejectcd
+ExecStart=/etc/manjaro/ejectcd
+StandardInput=tty-force
+RemainAfterExit=yes
 
 [Install]
-WantedBy=multi-user.target
-
+WantedBy=shutdown.target
 
