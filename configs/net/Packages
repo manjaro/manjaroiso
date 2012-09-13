@@ -9,6 +9,7 @@ device-mapper
 dhcpcd
 diffutils
 e2fsprogs
+eject
 file
 filesystem
 findutils

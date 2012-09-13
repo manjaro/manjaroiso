@@ -1,5 +1,5 @@
 [Unit]
-Description=Run livecd script
+Description=LiveMedia Config Script
 Before=systemd-user-sessions.service plymouth-transition.service
 
 [Service]

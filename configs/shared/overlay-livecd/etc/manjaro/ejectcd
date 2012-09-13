@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -n "$(blkid -L %MISO_LABEL% |grep -Eo 'sr|cd')" ]; then
+    eject -m /dev/disk/by-label/%MISO_LABEL%
+
+    echo -e "\033[31m"
+    echo -en "Remove the boot medium, close the tray (if any), "
+    echo -en "then press ENTER."
+    echo -e "\033[0m"
+
+    read
+fi
