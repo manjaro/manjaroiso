@@ -2,6 +2,7 @@
 Description=LiveMedia Eject Service
 
 [Service]
+StandardInput=tty-force
 Type=oneshot
 RemainAfterExit=true
 ExecStart=/bin/true

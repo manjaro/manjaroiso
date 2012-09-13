@@ -176,6 +176,8 @@ _mksquash () {
     echo "====> Generating SquashFS image for '${1}'"
     if [ -e "${sqimg}" ]; then
         dirhaschanged=$(find ${1} -newer ${sqimg})
+        echo ">> Possible changes for ${1}..." >> /tmp/mkiso.debug
+        echo "${dirhaschanged}" >> /tmp/mkiso.debug
         if [ "${dirhaschanged}" != "" ]; then
             echo "SquashFS image '${sqimg}' is not up to date, rebuilding..."
             rm "${sqimg}"
