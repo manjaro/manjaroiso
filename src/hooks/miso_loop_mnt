@@ -9,9 +9,6 @@ run_hook () {
 miso_loop_mount_handler () {
     newroot="${1}"
 
-    imgdev=$(resolve_device "$img_dev") && img_dev=$imgdev
-    unset imgdev
-
     msg ":: Waiting for boot device..."
     while ! poll_device ${img_dev} 30; do
         echo "ERROR: boot device didn't show up after 30 seconds..."

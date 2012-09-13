@@ -400,6 +400,7 @@ make_overlay() {
         wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist
         sed -i "s/#Server/Server/g" ${work_dir}/overlay/etc/pacman.d/mirrorlist
         sed -i "s/^.*TITLE=.*/  TITLE=\"Manjaro Linux CLI Installation (v${version})\"/g" ${work_dir}/overlay/etc/manjaro/setup
+        sed -i "s/%MISO_LABEL%/${iso_label}/g" ${work_dir}/overlay/etc/manjaro/ejectcd
         #chmod -R 755 ${work_dir}/overlay/home
         : > ${work_dir}/build.${FUNCNAME}
         echo -e "$_g >$_W done $_n"

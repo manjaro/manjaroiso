@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -n "$(blkid -L %MISO_LABEL% |grep -Eo 'sr|cd')" ]; then
+  eject -m /dev/disk/by-label/%MISO_LABEL%
+  printhl "Remove the CD, close tray then press enter..."
+  read
+fi
+
+

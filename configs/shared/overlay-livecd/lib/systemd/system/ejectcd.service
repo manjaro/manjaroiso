@@ -1,0 +1,13 @@
+[Unit]
+Description="Eject LiveInstall Media"
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/bin/true
+ExecStop=/etc/manjaro/ejectcd
+
+[Install]
+WantedBy=multi-user.target
+
+
