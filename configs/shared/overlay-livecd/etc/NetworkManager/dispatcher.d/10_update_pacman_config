@@ -1,0 +1,10 @@
+#!/bin/sh
+
+case "$2" in
+	up)
+		/etc/manjaro/mirrorcheck
+	;;
+	vpn-up)
+		/etc/manjaro/mirrorcheck
+	;;
+esac

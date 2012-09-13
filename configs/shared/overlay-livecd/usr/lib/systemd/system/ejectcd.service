@@ -8,7 +8,8 @@ DefaultDependencies=no
 Type=oneshot
 ExecStart=/etc/manjaro/ejectcd
 StandardInput=tty-force
-RemainAfterExit=yes
+StandardOutput=inherit
+StandardError=inherit
 
 [Install]
 WantedBy=shutdown.target

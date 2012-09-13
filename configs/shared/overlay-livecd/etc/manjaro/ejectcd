@@ -8,5 +8,5 @@ if [ -n "$(blkid -L %MISO_LABEL% |grep -Eo 'sr|cd')" ]; then
     echo -en "then press ENTER."
     echo -e "\033[0m"
 
-    read
+    read -t 30
 fi
