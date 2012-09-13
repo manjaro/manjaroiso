@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ ! -e /tmp/mirrorcheck.running ]]; then
+if [ ! -f /tmp/mirrorcheck.running ] ; then
 
 	echo "running" > /tmp/mirrorcheck.running
 

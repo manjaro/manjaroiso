@@ -115,11 +115,11 @@ ln -sf "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime
 	alsactl -f /etc/asound.state store &>/dev/null
 
 # enable default mirror
-cp -f /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-sed -i -e 's~^.*repo.manjaro.org.uk.*~Server = http://repo.manjaro.org.uk/$repo/$arch~' /etc/pacman.d/mirrorlist
+#cp -f /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+#sed -i -e 's~^.*repo.manjaro.org.uk.*~Server = http://repo.manjaro.org.uk/$repo/$arch~' /etc/pacman.d/mirrorlist
 
 #update_pacman_databases
-pacman -Syy &> /dev/null
+#pacman -Syy &> /dev/null
 
 #hwdetect_graphics
 
