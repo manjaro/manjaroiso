@@ -1,6 +1,6 @@
 [Unit]
 Description=LiveMedia Eject Service
-Before=unmount.target
+Before=final.target
 After=shutdown.target
 DefaultDependencies=no
 
