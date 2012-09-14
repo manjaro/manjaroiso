@@ -1,12 +1,12 @@
 ## Xorg Drivers
 
-xorg-drivers
-xf86-video-ati
-xf86-video-intel
-xf86-video-nouveau
-ati-dri
-intel-dri
-nouveau-dri
+>free_uni xorg-drivers
+>free_uni xf86-video-ati
+>free_uni xf86-video-intel
+>free_uni xf86-video-nouveau
+>free_uni ati-dri
+>free_uni intel-dri
+>free_uni nouveau-dri
 
 ## Bumblebee Support
 bumblebee
@@ -28,17 +28,17 @@ bbswitch
 >nonfree_x64 lib32-zlib 
 
 ## Virtualbox Drivers
-#virtualbox-modules
-virtualbox-manjaro-modules
-virtualbox-archlinux-additions
+#>free_uni virtualbox-modules
+>free_uni virtualbox-manjaro-modules
+>free_uni virtualbox-archlinux-additions
 
 ## Xorg x86_64 Packages
->x86_64 lib32-libxv
->x86_64 lib32-libxvmc
->x86_64 lib32-libgl
->x86_64 lib32-ati-dri
->x86_64 lib32-intel-dri
->x86_64 lib32-nouveau-dri
+>free_x64 lib32-libxv
+>free_x64 lib32-libxvmc
+>free_x64 lib32-libgl
+>free_x64 lib32-ati-dri
+>free_x64 lib32-intel-dri
+>free_x64 lib32-nouveau-dri
 
 ## Cleanup Xorg packages
 >cleanup xf86-input*
