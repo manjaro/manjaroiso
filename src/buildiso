@@ -66,14 +66,15 @@ fi
 
 if [ -e Packages-Xorg ] ; then
      if [ "${arch}" == "i686" ]; then
-     	xorg_packages=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	xorg_packages=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed "s|>nonfree_x64.*||g" | sed "s|>nonfree_uni||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	xorg_free_overlay=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g" | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed "s|>nonfree_x64.*||g" | sed "s|>nonfree_uni.*||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	xorg_nonfree_overlay=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g" | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed "s|>nonfree_x64.*||g" | sed "s|>nonfree_uni||g" | sed "s|^.*catalyst-legacy.*||g" | sed ':a;N;$!ba;s/\n/ /g')
+
      elif [ "${arch}" == "x86_64" ]; then
-     	xorg_packages=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	xorg_packages=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed "s|>nonfree_uni||g" | sed "s|>nonfree_x64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	xorg_free_overlay=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g" | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed "s|>nonfree_uni.*||g" | sed "s|>nonfree_x64.*||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	xorg_nonfree_overlay=$(sed "s|#.*||g" Packages-Xorg | sed "s| ||g" | sed "s|>dvd.*||g" | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed "s|>nonfree_uni||g" | sed "s|>nonfree_x64||g" | sed "s|^.*catalyst-legacy.*||g" | sed ':a;N;$!ba;s/\n/ /g')
      fi
-     echo "$xorg_packages" > /tmp/manjaroiso-xorg-overlay
-     xorg_packages_cleanup=$(sed "s|#.*||g" Packages-Xorg | grep cleanup | sed "s|>cleanup||g")
-     xorg_packages_overlay=$(sed "s|lib32-catalyst-legacy-utils||g" /tmp/manjaroiso-xorg-overlay | sed "s|catalyst-legacy-utils||g" | sed "s|catalyst-legacy||g")
-     rm /tmp/manjaroiso-xorg-overlay
 fi
 
 if [ -e Packages-Lng ] ; then
@@ -172,16 +173,26 @@ if [ -e Packages-Xorg ] ; then
               repo-add ${work_dir}/pkgs-image/opt/manjaro/pkgs/manjaro-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/manjaro/pkgs/*pkg*z
               umount -f ${work_dir}/pkgs-image
               rm -R ${work_dir}/pkgs-image/.wh*
-              echo -e -n "$_r >$_W Prepare pkgs-overlay \n $_n"
-              mkdir -p ${work_dir}/pkgs-overlay
-              if [ "`mount -l | grep ${work_dir}/pkgs-overlay`" != "" ]; then
-                 umount -f ${work_dir}/pkgs-overlay
+              echo -e -n "$_r >$_W Prepare pkgs-free-overlay \n $_n"
+              mkdir -p ${work_dir}/pkgs-free-overlay
+              if [ "`mount -l | grep ${work_dir}/pkgs-free-overlay`" != "" ]; then
+                 umount -f ${work_dir}/pkgs-free-overlay
               fi
-              mount -t aufs -o br=${work_dir}/pkgs-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-overlay
-              mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-overlay" -p "${xorg_packages_overlay}" create "${work_dir}"
-              umount -f ${work_dir}/pkgs-overlay
-              rm ${work_dir}/pkgs-overlay/etc/modules-load.d/*virtualbox*conf
-              rm -R ${work_dir}/pkgs-overlay/.wh*
+              mount -t aufs -o br=${work_dir}/pkgs-free-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-free-overlay
+              mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-free-overlay" -p "${xorg_free_overlay}" create "${work_dir}"
+              umount -f ${work_dir}/pkgs-free-overlay
+              rm ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf
+              rm -R ${work_dir}/pkgs-free-overlay/.wh*
+              echo -e -n "$_r >$_W Prepare pkgs-nonfree-overlay \n $_n"
+              mkdir -p ${work_dir}/pkgs-nonfree-overlay
+              if [ "`mount -l | grep ${work_dir}/pkgs-nonfree-overlay`" != "" ]; then
+                 umount -f ${work_dir}/pkgs-nonfree-overlay
+              fi
+              mount -t aufs -o br=${work_dir}/pkgs-nonfree-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-nonfree-overlay
+              mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-nonfree-overlay" -p "${xorg_nonfree_overlay}" create "${work_dir}"
+              umount -f ${work_dir}/pkgs-nonfree-overlay
+              rm ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf
+              rm -R ${work_dir}/pkgs-nonfree-overlay/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi

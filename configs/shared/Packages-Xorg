@@ -15,17 +15,17 @@ bbswitch
 >x86_64 lib32-virtualgl
 
 ## Proprietary Drivers
-catalyst-utils
-catalyst
-catalyst-legacy-utils
-catalyst-legacy
-nvidia-utils
-nvidia
->x86_64 lib32-catalyst-utils
->x86_64 lib32-catalyst-legacy-utils
->x86_64 lib32-nvidia-utils
->x86_64 lib32-gcc-libs
->x86_64 lib32-zlib 
+>nonfree_uni catalyst-utils
+>nonfree_uni catalyst
+>nonfree_uni catalyst-legacy-utils
+>nonfree_uni catalyst-legacy
+>nonfree_uni nvidia-utils
+>nonfree_uni nvidia
+>nonfree_x64 lib32-catalyst-utils
+>nonfree_x64 lib32-catalyst-legacy-utils
+>nonfree_x64 lib32-nvidia-utils
+>nonfree_x64 lib32-gcc-libs
+>nonfree_x64 lib32-zlib 
 
 ## Virtualbox Drivers
 #virtualbox-modules
