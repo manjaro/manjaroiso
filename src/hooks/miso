@@ -1,3 +1,32 @@
+# kernel_cmdline <param> <default>
+# Looks for a parameter on the kernel's boot-time command line.
+#
+# returns: 0 if param was found. Also prints its value if it was a K=V param.
+#          1 if it was not. Also prints value passed as <default>
+#
+kernel_cmdline ()
+{
+    for param in $(/bin/cat /proc/cmdline); do
+        case "${param}" in
+            $1=*) echo "${param##*=}"; return 0 ;;
+            $1) return 0 ;;
+            *) continue ;;
+        esac
+    done
+    [ -n "${2}" ] && echo "${2}"
+    return 1
+}
+
+# 1$ : kernel argument to check
+overlay_arg_available() {
+	for arg in $(echo "$(kernel_cmdline overlay)" | /bin/sed 's/,/ /g')
+	do
+		[ "${arg}" == "$1" ] && return 0
+	done
+
+	return 1
+}
+
 # args: source, mountpoint
 _mnt_aufs() {
     local src="${1}"
@@ -135,13 +164,20 @@ miso_mount_handler() {
     fi
 
     msg ":: Mounting images"
-    while read img imgarch mountpoint type; do
+    while read img imgarch mountpoint type kernelarg; do
         # check if this line is a comment (starts with #)
         [ "${img#"#"}" != "${img}" ] && continue
 
         [ "$imgarch" != "$arch" ] && continue
 
         [ ! -r "/bootmnt/${misobasedir}/${img}" ] && continue
+
+        # check if the overlay should be loaded
+        overlay_arg_available "$kernelarg"
+
+        if [ $? == 1 ] && [ "$kernelarg" != "" ]; then
+	        continue
+        fi
 
         if [ "${type}" = "bind" ]; then
             _mnt_bind "/bootmnt/${misobasedir}/${img}" "${newroot}${mountpoint}"
