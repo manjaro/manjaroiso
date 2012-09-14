@@ -102,7 +102,11 @@ chroot_umount_and_exit () {
     umount -f "${working_dir}/sys" &>/dev/null
     umount -f "${working_dir}/proc" &>/dev/null
     umount -f "${working_dir}/dev" &>/dev/null
-    echo 'cancelled by the user, exiting...'
+    case "$?" in
+        1) echo "error: chroot gave an error" ;;
+        2) echo "cancelled by the user, exiting..." ;;
+        9|15|17|19|23) echo "error: the proccess recieved termination signal" ;;
+    esac
     exit 1
 }
 
@@ -122,7 +126,7 @@ chroot_lock () {
 # }}}
 
 umask 0022
-if [ "$RUN" != "" ]; then
+if [ ! -z "$RUN" ]; then
     # run chroot {{{
     #Sanity check
     if [ ! -f "${working_dir}/.manjaro-chroot" ]; then
@@ -136,6 +140,8 @@ if [ "$RUN" != "" ]; then
     copy_hostconf
 
     eval chroot "${working_dir}" ${RUN}
+
+    chroot_umount
     # }}}
 else
     # {{{ build chroot
