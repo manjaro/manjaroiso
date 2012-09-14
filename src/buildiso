@@ -192,7 +192,6 @@ if [ -e Packages-Xorg ] ; then
               mount -t aufs -o br=${work_dir}/pkgs-nonfree-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-nonfree-overlay
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-nonfree-overlay" -p "${xorg_nonfree_overlay}" create "${work_dir}"
               umount -f ${work_dir}/pkgs-nonfree-overlay
-              rm ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf
               rm -R ${work_dir}/pkgs-nonfree-overlay/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
