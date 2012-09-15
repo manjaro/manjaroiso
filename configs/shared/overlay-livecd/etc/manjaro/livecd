@@ -154,7 +154,10 @@ cp -fR /etc/skel/* /root/
 #do_setuplightdm
 if [ -e "/usr/sbin/lightdm" ] ; then
    mkdir -p /run/lightdm > /dev/null
-   chown -R lightdm:lightdm /run/lightdm > /dev/null
+   getent group lightdm > /dev/null 2>&1 || groupadd -g 620 lightdm
+   getent passwd lightdm > /dev/null 2>&1 || useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /sbin/nologin lightdm
+   passwd -l lightdm > /dev/null
+   chown -R lightdm:lightdm /var/run/lightdm > /dev/null
    #sed -i -e 's/^.*user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*autologin-user=.*/autologin-user=manjaro/' /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
@@ -164,17 +167,29 @@ fi
 
 #do_setupkdm
 if [ -e "/usr/share/config/kdm/kdmrc" ] ; then
+   getent group kdm >/dev/null 2>&1 || groupadd -g 135 kdm &>/dev/null
+   getent passwd kdm >/dev/null 2>&1 || useradd -u 135 -g kdm -d /var/lib/kdm -s /bin/false -r -M kdm &>/dev/null
+   chown -R 135:135 var/lib/kdm &>/dev/null
+   xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+   update-desktop-database -q
    sed -i -e 's/^.*AutoLoginUser=.*/AutoLoginUser=manjaro/' /usr/share/config/kdm/kdmrc
    sed -i -e 's/^.*AutoLoginPass=.*/AutoLoginPass=manjaro/' /usr/share/config/kdm/kdmrc
 fi
 
 #do_setupgdm
 if [ -e "/usr/sbin/gdm" ] ; then
+  getent group gdm >/dev/null 2>&1 || groupadd -g 120 gdm
+  getent passwd gdm > /dev/null 2>&1 || usr/sbin/useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /sbin/nologin gdm
+  passwd -l gdm > /dev/null
   chown -R gdm:gdm /var/lib/gdm &> /dev/null
 fi
 
 #do_setuplxdm
 if [ -e "/usr/sbin/lxdm" ] ; then
+   if [ -z "`getent group "lxdm" 2> /dev/null`" ]; then
+     groupadd lxdm  &>/dev/null
+     chown root:lxdm /etc/lxdm/lxdm.conf  &>/dev/null
+   fi
    sed -i -e 's/^.*autologin=.*/autologin=manjaro/' /etc/lxdm/lxdm.conf
    chown root:lxdm /etc/lxdm/lxdm.conf > /dev/null
    chown -R root:lxdm /var/lib/lxdm > /dev/null
@@ -187,6 +202,8 @@ chmod 440 /etc/sudoers
 
 #fix_gnome_apps
 glib-compile-schemas /usr/share/glib-2.0/schemas
+gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+dconf update
 if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
    setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &> /dev/null
 fi

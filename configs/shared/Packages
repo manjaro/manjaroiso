@@ -2,6 +2,7 @@
 bash
 binutils
 bzip2
+cdrkit
 coreutils
 cronie
 cryptsetup
@@ -9,7 +10,6 @@ device-mapper
 dhcpcd
 diffutils
 e2fsprogs
-eject
 file
 filesystem
 findutils

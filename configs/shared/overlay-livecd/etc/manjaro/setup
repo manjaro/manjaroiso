@@ -1075,6 +1075,9 @@ hd_config()
     # setup lightdm
     if [ -e "/usr/sbin/lightdm" ] ; then
        mkdir -p ${DESTDIR}/run/lightdm  &>/dev/null
+       chroot ${DESTDIR} getent group lightdm > /dev/null 2>&1 || groupadd -g 620 lightdm
+       chroot ${DESTDIR} getent passwd lightdm > /dev/null 2>&1 || useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /sbin/nologin lightdm
+       chroot ${DESTDIR} passwd -l lightdm > /dev/null
        chown -R lightdm:lightdm ${DESTDIR}/run/lightdm  &>/dev/null
        sed -i -e 's/^.*user-session=.*/user-session=xfce/' ${DESTDIR}/etc/lightdm/lightdm.conf
        chmod +r ${DESTDIR}/etc/lightdm/lightdm.conf &>/dev/null
@@ -1087,6 +1090,9 @@ hd_config()
 
     # setup gdm
     if [ -e "/usr/sbin/gdm" ] ; then
+       chroot ${DESTDIR} getent group gdm >/dev/null 2>&1 || groupadd -g 120 gdm
+       chroot ${DESTDIR} getent passwd gdm > /dev/null 2>&1 || usr/sbin/useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /sbin/nologin gdm
+       chroot ${DESTDIR} passwd -l gdm > /dev/null
        chroot ${DESTDIR} chown -R gdm:gdm /var/lib/gdm  &>/dev/null
        sed -i '/AutomaticLoginEnable=true/ d' ${DESTDIR}/etc/gdm/custom.conf
        sed -i '/AutomaticLogin=manjaro/ d' ${DESTDIR}/etc/gdm/custom.conf
@@ -1099,6 +1105,10 @@ hd_config()
 
     # setup lxdm
     if [ -e "/usr/sbin/lxdm" ] ; then
+       if [ -z "`chroot ${DESTDIR} getent group "lxdm" 2> /dev/null`" ]; then
+         chroot ${DESTDIR} groupadd lxdm  &>/dev/null
+         chroot ${DESTDIR} chown root:lxdm /etc/lxdm/lxdm.conf  &>/dev/null
+       fi
        chown root:lxdm ${DESTDIR}/etc/lxdm/lxdm.conf  &>/dev/null
        chown -R root:lxdm ${DESTDIR}/var/lib/lxdm  &>/dev/null
        chmod +r ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
@@ -1111,6 +1121,11 @@ hd_config()
 
     # setup kdm
     if [ -e "/usr/bin/kdm" ] ; then
+       chroot ${DESTDIR} getent group kdm >/dev/null 2>&1 || groupadd -g 135 kdm &>/dev/null
+       chroot ${DESTDIR} getent passwd kdm >/dev/null 2>&1 || useradd -u 135 -g kdm -d /var/lib/kdm -s /bin/false -r -M kdm &>/dev/null
+       chroot ${DESTDIR} chown -R 135:135 var/lib/kdm &>/dev/null
+       chroot ${DESTDIR} xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+       chroot ${DESTDIR} update-desktop-database -q
        if [ -e "${DESTDIR}/etc/systemd/system/graphical.target.wants/kdm.service" ] ; then
           chroot ${DESTDIR} systemctl reenable kdm.service &>/dev/null
        else
@@ -1125,6 +1140,8 @@ hd_config()
 
     #fix_gnome_apps
     chroot ${DESTDIR} glib-compile-schemas /usr/share/glib-2.0/schemas
+    chroot ${DESTDIR} gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+    chroot ${DESTDIR} dconf update
 
     if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
        chroot ${DESTDIR} setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &>/dev/null
