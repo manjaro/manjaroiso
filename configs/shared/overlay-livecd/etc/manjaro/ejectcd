@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -n "$(blkid -L %MISO_LABEL% |grep -Eo 'sr|cd|loop')" ]; then
-    cdrecord -eject
+    eject -m /dev/disk/by-label/%MISO_LABEL%
 
     echo -e " : "
     echo -e " : "
