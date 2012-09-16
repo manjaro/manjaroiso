@@ -1065,9 +1065,6 @@ hd_config()
     chroot ${DESTDIR} systemctl enable dcron.service &>/dev/null
     chroot ${DESTDIR} systemctl enable NetworkManager.service &>/dev/null
     chroot ${DESTDIR} systemctl enable remote-fs.target &>/dev/null
-    if [ -e ${DESTDIR}/etc/plymouth/plymouthd.conf ] ; then
-       chroot ${DESTDIR} systemctl enable plymouth-transition.service &>/dev/null
-    fi
 
     DIALOG --infobox "${_setupdisplaymanager}" 6 40
     sleep 3
@@ -1081,11 +1078,6 @@ hd_config()
        chown -R lightdm:lightdm ${DESTDIR}/run/lightdm  &>/dev/null
        sed -i -e 's/^.*user-session=.*/user-session=xfce/' ${DESTDIR}/etc/lightdm/lightdm.conf
        chmod +r ${DESTDIR}/etc/lightdm/lightdm.conf &>/dev/null
-       if [ -e "${DESTDIR}/etc/systemd/system/graphical.target.wants/lightdm.service" ] ; then
-          chroot ${DESTDIR} systemctl reenable lightdm.service &>/dev/null
-       else
-          chroot ${DESTDIR} systemctl enable lightdm.service &>/dev/null
-       fi
     fi
 
     # setup gdm
@@ -1096,11 +1088,6 @@ hd_config()
        chroot ${DESTDIR} chown -R gdm:gdm /var/lib/gdm  &>/dev/null
        sed -i '/AutomaticLoginEnable=true/ d' ${DESTDIR}/etc/gdm/custom.conf
        sed -i '/AutomaticLogin=manjaro/ d' ${DESTDIR}/etc/gdm/custom.conf
-       if [ -e "${DESTDIR}/etc/systemd/system/graphical.target.wants/gdm.service" ] ; then
-          chroot ${DESTDIR} systemctl reenable gdm.service &>/dev/null
-       else
-          chroot ${DESTDIR} systemctl enable gdm.service &>/dev/null
-       fi
     fi
 
     # setup lxdm
@@ -1112,11 +1099,6 @@ hd_config()
        chown root:lxdm ${DESTDIR}/etc/lxdm/lxdm.conf  &>/dev/null
        chown -R root:lxdm ${DESTDIR}/var/lib/lxdm  &>/dev/null
        chmod +r ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
-       if [ -e "${DESTDIR}/etc/systemd/system/graphical.target.wants/lxdm.service" ] ; then
-          chroot ${DESTDIR} systemctl reenable lxdm.service &>/dev/null
-       else
-          chroot ${DESTDIR} systemctl enable lxdm.service &>/dev/null
-       fi
     fi
 
     # setup kdm
@@ -1126,11 +1108,6 @@ hd_config()
        chroot ${DESTDIR} chown -R 135:135 var/lib/kdm &>/dev/null
        chroot ${DESTDIR} xdg-icon-resource forceupdate --theme hicolor &> /dev/null
        chroot ${DESTDIR} update-desktop-database -q
-       if [ -e "${DESTDIR}/etc/systemd/system/graphical.target.wants/kdm.service" ] ; then
-          chroot ${DESTDIR} systemctl reenable kdm.service &>/dev/null
-       else
-          chroot ${DESTDIR} systemctl enable kdm.service &>/dev/null
-       fi
     fi
 
     # fix some apps
