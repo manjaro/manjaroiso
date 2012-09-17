@@ -74,6 +74,7 @@ yaourt
 acpid
 cpufrequtils
 crda
+cparted
 curl
 dbus
 ddrescue

@@ -42,7 +42,7 @@
   _none_entry="NONE"
   _selectdisktopart="Select the disk to partition (or $_done_entry when you have finished)"
   _enterdiskpath="Enter the full path to the device you wish to partition"
-  _prepartitionmessage="You will now partition the selected disk with cfdisk.\nIf it asks you to reboot, do it, launch this program again and restart installation."
+  _prepartitionmessage="You will now partition the selected disk with cparted.\nIf it asks you to reboot, do it, launch this program again and restart installation."
   _nowchooseparts2use="You will now select the partitions to use."
   _selectswappart="Select the partition to use as swap"
   _formatpart="Format"
@@ -709,7 +709,7 @@ partition() {
         [ "$DISC" = "$_done_entry" ] && break
         # Partition disc
         DIALOG --msgbox "${_prepartitionmessage}" 18 70
-        cfdisk $DISC
+        cparted $DISC
     done
     S_PART=1
 }
