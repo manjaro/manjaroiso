@@ -486,8 +486,8 @@ _umountall()
 # Umount all mounted partitions
 _umounthdds()
 {
-    for DISK in $(mount | grep /dev/*da | sed 's|\ .*||g'); do
-        umount ${DISK}
+    for PART in $(findpartitions); do
+        umount ${PART}
     done
 }
 
