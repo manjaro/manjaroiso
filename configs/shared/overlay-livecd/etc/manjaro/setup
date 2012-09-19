@@ -2,7 +2,7 @@
   TITLE="Manjaro Linux CLI Installation (v0.8.1)"
   PKG_OVERLAY="/opt/manjaro/pkgs"
   #DIALOGRC="./setuprc"
-  manjaro_kernel="linux34"
+  manjaro_kernel="linux"
   manjaro_version="2012.09"
   code_name="Manjaro"
   hostname="manjaro"
