@@ -163,6 +163,8 @@ if [ -e "/usr/sbin/lightdm" ] ; then
    sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*pam-service=.*/pam-service=lightdm-autologin/' /etc/lightdm/lightdm.conf
    chmod +r /etc/lightdm/lightdm.conf
+   # livecd fix
+   echo "d /run/lightdm 0770 lightdm lightdm -" > /usr/lib/tmpfiles.d/lightdm.conf
 fi
 
 #do_setupkdm

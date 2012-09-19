@@ -182,8 +182,8 @@ if [ -e Packages-Xorg ] ; then
               mount -t aufs -o br=${work_dir}/pkgs-free-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-free-overlay
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-free-overlay" -p "${xorg_free_overlay}" create "${work_dir}"
               umount -f ${work_dir}/pkgs-free-overlay
-              if [[ -e ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf ]]; then
-                   rm ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf
+              if [ -e ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf ] ; then
+                 rm ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf
               fi
               rm -R ${work_dir}/pkgs-free-overlay/.wh*
               echo -e -n "$_r >$_W Prepare pkgs-nonfree-overlay \n $_n"
@@ -194,8 +194,8 @@ if [ -e Packages-Xorg ] ; then
               mount -t aufs -o br=${work_dir}/pkgs-nonfree-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-nonfree-overlay
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-nonfree-overlay" -p "${xorg_nonfree_overlay}" create "${work_dir}"
               umount -f ${work_dir}/pkgs-nonfree-overlay
-              if [[ -e ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf ]]; then
-                   rm ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf
+              if [ -e ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf ] ; then
+                 rm ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf
               fi
               rm -R ${work_dir}/pkgs-nonfree-overlay/.wh*
               : > ${work_dir}/build.${FUNCNAME}

@@ -489,7 +489,7 @@ _umountall()
 # outputs:    disc capacity in bytes
 _getdisccapacity()
 {
- echo $(($(</sys/dev/block/$((50#$(stat -c %t $1))):$((50#$(stat -c %T $1)))/size)*512))
+ echo $(fdisk -l $1 | grep $1: | cut -d" " -f5)
 }
 
 # Get a list of available disks for use in the "Available disks" dialogs. This
