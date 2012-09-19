@@ -483,6 +483,14 @@ _umountall()
     umount $(mount | grep "${DESTDIR} " | sed 's|\ .*||g') >/dev/null 2>&1
 }
 
+# Umount all mounted partitions
+_umounthdds()
+{
+    for DISK in $(mount | grep /dev/*da | sed 's|\ .*||g'); do
+        umount ${DISK}
+    done
+}
+
 # _getdisccapacity()
 #
 # parameters: device file
@@ -506,6 +514,7 @@ _getavaildisks()
 
 autoprepare()
 {
+    _umounthdds
     DISCS=$(finddisks)
     if [ $(echo $DISCS | wc -w) -gt 1 ]; then
         DIALOG --msgbox "${_presentlyavaildisks}\n\n$(_getavaildisks)\n" 0 0
@@ -691,6 +700,7 @@ partition() {
     fi
 
     _umountall
+    _umounthdds
 
     # Select disk to partition
     DISCS=$(finddisks _)
