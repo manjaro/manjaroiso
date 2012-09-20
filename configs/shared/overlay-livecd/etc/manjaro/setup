@@ -487,9 +487,7 @@ _umountall()
 _umounthdds()
 {
     for UPART in $(findpartitions); do
-	if [ $(mount | grep ${UPART} | grep /bootmnt) = "" ]; then
-           umount ${UPART} &>/dev/null
-	fi
+        umount $(mount | grep ${UPART} | grep -v /bootmnt | sed 's|\ .*||g') >/dev/null 2>&1
     done
 }
 
