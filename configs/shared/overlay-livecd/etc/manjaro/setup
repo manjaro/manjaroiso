@@ -486,8 +486,10 @@ _umountall()
 # Umount all mounted partitions
 _umounthdds()
 {
-    for PART in $(findpartitions); do
-        umount ${PART} &>/dev/null
+    for UPART in $(findpartitions); do
+	if [ $(mount | grep ${UPART} | grep /bootmnt) = "" ]; then
+           umount ${UPART} &>/dev/null
+	fi
     done
 }
 
@@ -1105,6 +1107,9 @@ hd_config()
        if [ -z "`chroot ${DESTDIR} getent group "lxdm" 2> /dev/null`" ]; then
          chroot ${DESTDIR} groupadd lxdm  &>/dev/null
          chroot ${DESTDIR} chown root:lxdm /etc/lxdm/lxdm.conf  &>/dev/null
+       fi
+       if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+         sed -i -e 's|^.*session=.*|session=/usr/bin/startxfce4|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
        chown root:lxdm ${DESTDIR}/etc/lxdm/lxdm.conf  &>/dev/null
        chown -R root:lxdm ${DESTDIR}/var/lib/lxdm  &>/dev/null

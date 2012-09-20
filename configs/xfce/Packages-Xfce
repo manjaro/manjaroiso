@@ -13,9 +13,8 @@ gtk2-xfce-engine
 gtk3-xfce-engine
 gvfs
 gvfs-smb
-lightdm
-lightdm-unity-greeter
 libgnomeui
+lxdm
 network-manager-applet
 orage
 shiki-nouveau-theme
