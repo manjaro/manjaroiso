@@ -72,7 +72,6 @@ usbutils
 sudo
 gamin
 acpid
-cparted
 cpufrequtils
 grub-bios
 grub-efi-i386
