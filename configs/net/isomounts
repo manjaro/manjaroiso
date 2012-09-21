@@ -10,5 +10,5 @@
 
 # ORDER MATTERS! Files take top-down precedence. Be careful
 
-@ARCH@/overlay.sqfs @ARCH@ / squashfs overlay
-@ARCH@/root-image.sqfs @ARCH@ / squashfs root-image
+@ARCH@/overlay.sqfs @ARCH@ / squashfs
+@ARCH@/root-image.sqfs @ARCH@ / squashfs
