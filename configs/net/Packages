@@ -104,7 +104,7 @@ tcpdump
 vpnc
 
 ## Filesystem Packages
-btrfs-progs-unstable
+btrfs-progs
 dmraid
 dosfstools
 nilfs-utils

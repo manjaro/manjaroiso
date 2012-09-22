@@ -118,7 +118,7 @@ xdg-user-dirs
 
 ## Filesystem Packages
 bluez
-btrfs-progs-unstable
+btrfs-progs
 dmraid
 dosfstools
 e2fsprogs

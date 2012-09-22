@@ -9,6 +9,7 @@ fi
 xfce="Y"
 gnome="N"
 kde="N"
+net="N"
 
 if [ "$xfce" == "Y" ] ; then
    echo ">> build xfce image"
@@ -43,4 +44,18 @@ if [ "$kde" == "Y" ] ; then
    rm -R work*/*isomounts*
    rm work*/iso/manjaro/*/kde-image.sqfs
 fi
-
+if [ "$net" == "Y" ] ; then
+   echo ">> build net image"
+   ln -sfv ../net/isomounts isomounts
+   ln -sfv ../net/Packages Packages
+   rm -f Packages-Lng
+   rm -f Packages-Xorg
+   buildiso
+   echo ">> done build net image"
+   ln -sf ../shared/Packages Packages
+   ln -sf ../shared/Packages-Lng Packages-Lng
+   ln -sf ../shared/Packages-Xorg Packages-Xorg
+   rm -R work*/*net*
+   rm -R work*/*isomounts*
+   rm work*/iso/manjaro/*/net-image.sqfs
+fi
