@@ -458,9 +458,9 @@ _mkfs() {
             DIALOG --msgbox "${_errormounting} ${_dest}${_mountpoint}" 0 0
             return 1
         fi 
-        # create main system subvolume if we use btrfs and mount it
-        if [ "${_fstype}" = "btrfs" ]; then
-            btrfs subvolume create ${_dest}${_mountpoint}/manjaro_$arch >$LOG 2>&1
+        # create main system subvolume if we use btrfs for root and mount it
+        if [ "${_fstype}" == "btrfs" ] && [ "${_mountpoint}" == "/" ]; then
+            btrfs subvolume create ${_dest}${_mountpoint}manjaro_$arch >$LOG 2>&1
             umount ${_dest}${_mountpoint} >$LOG 2>&1
             mount -t ${_fstype} -o subvol=manjaro_$arch ${_device} ${_dest}${_mountpoint} >$LOG 2>&1
         fi
@@ -542,7 +542,7 @@ autoprepare()
         [ "$(which mkfs.xfs 2>/dev/null)" ]   && FSOPTS="$FSOPTS xfs XFS"
         [ "$(which mkfs.jfs 2>/dev/null)" ]   && FSOPTS="$FSOPTS jfs JFS"
         [ "$(which mkfs.ext2 2>/dev/null)" ]  && FSOPTS="$FSOPTS ext2 ext2 ext3 ext3 ext4 ext4"
-        [ "$(which mkfs.btrfs 2>/dev/null)" ]  && FSOPTS="$FSOPTS btrfs BTRFS"
+        [ "$(which mkfs.btrfs 2>/dev/null)" ]  && FSOPTS="$FSOPTS btrfs BTRFS(experimental)"
         while [ "$BOOT_PART_SET" = "" ]; do
             DIALOG --inputbox "${_enterbootpartsize}\n\n${_diskspaceleft} $DISC_SIZE MiB" 10 65 "100" 2>$ANSWER || return 1
             BOOT_PART_SIZE="$(cat $ANSWER)"
@@ -746,7 +746,7 @@ mountpoints() {
         [ "$(which mkfs.xfs 2>/dev/null)" ]   && FSOPTS="$FSOPTS xfs XFS"
         [ "$(which mkfs.jfs 2>/dev/null)" ]   && FSOPTS="$FSOPTS jfs JFS"
         [ "$(which mkfs.ext2 2>/dev/null)" ]  && FSOPTS="$FSOPTS ext2 ext2 ext3 ext3 ext4 ext4"
-        [ "$(which mkfs.btrfs 2>/dev/null)" ]   && FSOPTS="$FSOPTS btrfs BTRFS"
+        [ "$(which mkfs.btrfs 2>/dev/null)" ]   && FSOPTS="$FSOPTS btrfs BTRFS(experimental)"
 
         # Select mountpoints
         DIALOG --msgbox "${_nowchooseparts2use}" 0 0
