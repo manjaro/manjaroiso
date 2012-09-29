@@ -99,8 +99,6 @@ openvpn
 os-prober
 parted
 pkg-config
-plymouth
-plymouth-theme-manjaro
 pptpclient
 qt
 rp-pppoe

@@ -66,6 +66,7 @@ network-manager-applet
 orca
 #parole
 seahorse
+simple-scan
 sound-juicer
 sushi
 tomboy
@@ -73,17 +74,10 @@ totem
 tracker
 vinagre
 vino
-xsane
-xsane-gimp
 
 ## Extra
 icedtea-web
 simple-scan
-
-## Packagekit
-packagekit
-gnome-packagekit
-gnome-settings-daemon-updates
 
 ## Theme
 faenza-green-icon-theme

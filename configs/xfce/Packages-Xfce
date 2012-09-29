@@ -81,8 +81,6 @@ fwbuilder
 galculator
 gedit
 gimp
-gnome-packagekit
-gnome-settings-daemon-updates
 gparted
 #manjaro-installer
 #manjaro-welcome
@@ -95,13 +93,12 @@ pnmixer
 q4wine
 skype
 smplayer
+simple-scan
 thunderbird
 transmission-gtk
 viewnior
 xchat
 xfburn
-xsane
-xsane-gimp
 
 
 ## Fonts

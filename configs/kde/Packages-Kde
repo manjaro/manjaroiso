@@ -37,14 +37,12 @@ kdeplasma-applets-networkmanagement
 #rekonq
 #kdepim-kmail
 k3b
-apper
 digikam
 smplayer
+simple-scan
 amarok
 partitionmanager-svn
 gimp
-xsane
-xsane-gimp
 
 ## GTK
 firefox
