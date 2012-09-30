@@ -122,6 +122,7 @@ dosfstools
 e2fsprogs
 jfsutils
 reiserfsprogs
+testdisk
 nilfs-utils
 nfs-utils
 ntfs-3g
