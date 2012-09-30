@@ -1030,18 +1030,9 @@ hd_config()
 	# save settings
 	chroot ${DESTDIR} alsactl -f /etc/asound.state store &>/dev/null
 
-    if [ "${ping_check}" != "" ] ; then
-        DIALOG --infobox "${_updatemirrorlist}" 6 40
-        sleep 3
-        wget -O ${DESTDIR}/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist &>/dev/null
-        sed -i 's/# Server/Server/g' -i ${DESTDIR}/etc/pacman.d/mirrorlist
-        # rankmirrors
-        cp ${DESTDIR}/etc/pacman.d/mirrorlist ${DESTDIR}/etc/pacman.d/mirrorlist.backup
-        rankmirrors -v -n 4 ${DESTDIR}/etc/pacman.d/mirrorlist.backup > ${DESTDIR}/etc/pacman.d/mirrorlist
-    else
-        # enable default mirror
-        sed -i -e 's~^.*repo.manjaro.org.uk.*~Server = http://repo.manjaro.org.uk/$repo/$arch~' ${DESTDIR}/etc/pacman.d/mirrorlist
-    fi
+    cp ${DESTDIR}/etc/pacman.d/mirrorlist ${DESTDIR}/etc/pacman.d/mirrorlist.backup
+    # enable default mirror
+    sed -i -e 's~^.*repo.manjaro.org.uk.*~Server = http://repo.manjaro.org.uk/$repo/$arch~' ${DESTDIR}/etc/pacman.d/mirrorlist
 
     chroot ${DESTDIR} pacman -Syy &> /dev/null
 
