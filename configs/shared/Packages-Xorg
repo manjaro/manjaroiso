@@ -28,8 +28,8 @@ bbswitch
 >nonfree_x64 lib32-zlib 
 
 ## Virtualbox Drivers
-#>free_uni virtualbox-modules
->free_uni virtualbox-manjaro-modules
+#>free_uni virtualbox-host-modules
+>free_uni virtualbox-guest-modules
 >free_uni virtualbox-archlinux-additions
 
 ## Xorg x86_64 Packages
