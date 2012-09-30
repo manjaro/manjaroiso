@@ -973,65 +973,65 @@ hd_config()
 
     DIALOG --infobox "${_setupalsa}"  6 40
     sleep 3
-	# amixer binary
-	local alsa_amixer=`chroot ${DESTDIR} /usr/bin/amixer`
+    # amixer binary
+    local alsa_amixer=`chroot ${DESTDIR} /usr/bin/amixer`
 
-	# enable all known (tm) outputs
-	$alsa_amixer -c 0 sset "Master" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Front" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Side" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Surround" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Center" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "LFE" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Headphone" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Speaker" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "PCM" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Line" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "External" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "FM" 50% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Master Mono" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Master Digital" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Analog Mix" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Aux" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Aux2" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "PCM Center" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "PCM Front" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "PCM LFE" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "PCM Side" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "PCM Surround" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Playback" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "PCM,1" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "DAC" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "DAC,0" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "DAC,0" -12dB &> /dev/null
-	$alsa_amixer -c 0 sset "DAC,1" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "DAC,1" -12dB &> /dev/null
-	$alsa_amixer -c 0 sset "Synth" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "CD" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Wave" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Music" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "AC97" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Analog Front" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "VIA DXS,0" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "VIA DXS,1" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "VIA DXS,2" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "VIA DXS,3" 70% unmute &> /dev/null
+    # enable all known (tm) outputs
+    $alsa_amixer -c 0 sset "Master" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Front" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Side" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Surround" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Center" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "LFE" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Headphone" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Speaker" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "PCM" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Line" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "External" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "FM" 50% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Master Mono" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Master Digital" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Analog Mix" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Aux" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Aux2" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "PCM Center" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "PCM Front" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "PCM LFE" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "PCM Side" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "PCM Surround" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Playback" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "PCM,1" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "DAC" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "DAC,0" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "DAC,0" -12dB &> /dev/null
+    $alsa_amixer -c 0 sset "DAC,1" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "DAC,1" -12dB &> /dev/null
+    $alsa_amixer -c 0 sset "Synth" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "CD" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Wave" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Music" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "AC97" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Analog Front" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "VIA DXS,0" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "VIA DXS,1" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "VIA DXS,2" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "VIA DXS,3" 70% unmute &> /dev/null
 
-	# set input levels
-	$alsa_amixer -c 0 sset "Mic" 70% mute &>/dev/null
-	$alsa_amixer -c 0 sset "IEC958" 70% mute &>/dev/null
+    # set input levels
+    $alsa_amixer -c 0 sset "Mic" 70% mute &>/dev/null
+    $alsa_amixer -c 0 sset "IEC958" 70% mute &>/dev/null
 
-	# special stuff
-	$alsa_amixer -c 0 sset "Master Playback Switch" on &>/dev/null
-	$alsa_amixer -c 0 sset "Master Surround" on &>/dev/null
-	$alsa_amixer -c 0 sset "SB Live Analog/Digital Output Jack" off &>/dev/null
-	$alsa_amixer -c 0 sset "Audigy Analog/Digital Output Jack" off &>/dev/null
+    # special stuff
+    $alsa_amixer -c 0 sset "Master Playback Switch" on &>/dev/null
+    $alsa_amixer -c 0 sset "Master Surround" on &>/dev/null
+    $alsa_amixer -c 0 sset "SB Live Analog/Digital Output Jack" off &>/dev/null
+    $alsa_amixer -c 0 sset "Audigy Analog/Digital Output Jack" off &>/dev/null
 
-	# save settings
-	chroot ${DESTDIR} alsactl -f /etc/asound.state store &>/dev/null
+    # save settings
+    chroot ${DESTDIR} alsactl -f /etc/asound.state store &>/dev/null
 
-    cp ${DESTDIR}/etc/pacman.d/mirrorlist ${DESTDIR}/etc/pacman.d/mirrorlist.backup
     # enable default mirror
+    cp ${DESTDIR}/etc/pacman.d/mirrorlist ${DESTDIR}/etc/pacman.d/mirrorlist.backup
     sed -i -e 's~^.*repo.manjaro.org.uk.*~Server = http://repo.manjaro.org.uk/$repo/$arch~' ${DESTDIR}/etc/pacman.d/mirrorlist
 
     chroot ${DESTDIR} pacman -Syy &> /dev/null
