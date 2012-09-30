@@ -21,6 +21,10 @@ gnome-user-docs
 metacity
 mutter
 nautilus
+nautilus-actions
+nautilus-open-terminal
+nautilus-sendto
+nautilus-sound-converter
 notification-daemon
 xdg-user-dirs-gtk
 yelp
