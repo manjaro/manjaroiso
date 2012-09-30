@@ -136,10 +136,10 @@ alsa-firmware
 alsa-lib
 pulseaudio
 pulseaudio-alsa
-lib32-alsa-lib
-lib32-alsa-plugins
-lib32-libcanberra-pulse
-lib32-libpulse
+>x86_64 lib32-alsa-lib
+>x86_64 lib32-alsa-plugins
+>x86_64 lib32-libcanberra-pulse
+>x86_64 lib32-libpulse
 
 ## Fonts
 terminus-font
