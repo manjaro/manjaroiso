@@ -148,8 +148,7 @@ useradd -m -p "" -g users -G $addgroups manjaro
 sed -i "s#manjaro.*#manjaro:\$1\$uYIrxnwJ\$a5wTa84YxxYmD.sKX/Lll1:14942:0:99999:7:::#" /etc/shadow
 
 #do_configsforroot
-cp -fR /etc/skel/.* /root/
-cp -fR /etc/skel/* /root/
+cp -a /etc/skel/. /root/
 
 #do_setuplightdm
 if [ -e "/usr/sbin/lightdm" ] ; then

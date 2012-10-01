@@ -956,8 +956,7 @@ hd_config()
     cp -vf /etc/resolv.conf ${DESTDIR}/etc/resolv.conf &>/dev/null
 
     echo "install configs for root" &>/dev/null
-    cp -vfR ${DESTDIR}/etc/skel/.* ${DESTDIR}/root/ &>/dev/null
-    cp -vfR ${DESTDIR}/etc/skel/* ${DESTDIR}/root/ &>/dev/null
+    cp -a ${DESTDIR}/etc/skel/. ${DESTDIR}/root/ &>/dev/null
 
     sed -i 's/^#\(en_US.*\)/\1/' ${DESTDIR}/etc/locale.gen &>/dev/null
     
