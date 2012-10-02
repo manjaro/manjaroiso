@@ -30,7 +30,6 @@ bbswitch
 ## Virtualbox Drivers
 #>free_uni virtualbox-host-modules
 >free_uni virtualbox-guest-modules
->free_uni virtualbox-archlinux-additions
 
 # Laptop management
 laptop-mode-tools
