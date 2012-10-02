@@ -32,6 +32,9 @@ bbswitch
 >free_uni virtualbox-guest-modules
 >free_uni virtualbox-archlinux-additions
 
+# Laptop management
+laptop-mode-tools
+
 ## Xorg x86_64 Packages
 >x86_64 lib32-libxv
 >x86_64 lib32-libxvmc
