@@ -72,7 +72,6 @@ yaourt
 
 ## Extra Base Packages
 acpid
-cpufrequtils
 crda
 curl
 dbus
@@ -109,6 +108,7 @@ sudo
 tcpdump
 usbutils
 util-linux-ng
+v86d
 vpnc
 xdg-utils
 xdg-user-dirs
@@ -199,6 +199,10 @@ wpa_actiond
 wpa_supplicant
 wireless_tools
 zd1211-firmware
+
+## Laptop management
+laptop-mode-tools
+cpupower
 
 
 ## Xorg Packages
