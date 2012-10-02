@@ -103,7 +103,6 @@ libreoffice-uk
 kde-l10n-uk
 
 #cleanup
->cleanup xcb-util*
 >cleanup thunderbird-1*
 >cleanup mime-types*
 >cleanup libnotify*
