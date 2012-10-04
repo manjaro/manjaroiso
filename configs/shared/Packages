@@ -46,6 +46,7 @@ sysfsutils
 syslinux
 syslog-ng
 systemd
+systemd-sysvcompat
 tar
 texinfo
 usbutils
