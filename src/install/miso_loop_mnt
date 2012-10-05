@@ -1,18 +1,14 @@
-# vim: set ft=sh:
+#!/bin/bash
 
-build ()
-{
-    MODULES=""
-
-    BINARIES=""
-    FILES=""
-    add_dir /img_dev
-    SCRIPT="miso_loop_mnt"
+build() {
+    add_runscript
 }
 
-help ()
-{
+help() {
 cat<<HELPEOF
   This hook loads the necessary modules for boot via loop device.
 HELPEOF
 }
+
+# vim: set ft=sh ts=4 sw=4 et:
+
