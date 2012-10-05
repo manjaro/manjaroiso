@@ -37,3 +37,6 @@ avahi:x:84:
 nbd:x:44:
 lightdm:x:620:
 gdm:x:120:
+lxdm:x:1001:
+uuidd:x:619:
+
