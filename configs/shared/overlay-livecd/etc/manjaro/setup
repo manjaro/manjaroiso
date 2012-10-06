@@ -1642,7 +1642,7 @@ configure_system()
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "pt_PT")" != "" ]; then
-		# Setup system for the Portugues_definelocalee language
+		# Setup system for the Portuguese language
 		
 		# Set Portuguese Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "pt"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
