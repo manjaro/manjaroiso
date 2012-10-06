@@ -1271,6 +1271,22 @@ dogrub() {
     S_GRUB=1
 }
 
+set_language() {
+    if [[ -e /etc/manjaro/lg ]]; then
+        /etc/manjaro/lg --setup
+    else
+        DIALOG --msgbox "Error:\nlg script not found, aborting language setting" 0 0
+    fi
+}
+
+set_keyboard() {
+    if [[ -e /etc/manjaro/km ]]; then
+        /etc/manjaro/km --setup
+    else
+        DIALOG --msgbox "Error:\nkm script not found, aborting keyboard and console setting" 0 0
+    fi
+}
+
 # set_clock()
 # prompts user to set hardware clock and timezone
 #
