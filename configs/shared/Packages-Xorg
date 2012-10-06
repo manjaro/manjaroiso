@@ -28,7 +28,7 @@ bbswitch
 >nonfree_x64 lib32-zlib 
 
 ## Virtualbox Drivers
-#>free_uni virtualbox-host-modules
+>free_uni virtualbox-guest-utils
 >free_uni virtualbox-guest-modules
 
 # Laptop management
