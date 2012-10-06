@@ -8,8 +8,10 @@ TITLE="Manjaro Language Setting"
 
 if [[ "${1}" = "--setup" ]]; then
     EXIT="Return to Main Menu"
+    DESTDIR="/mnt/install.root"
 else
     EXIT="Exit"
+    DESTDIR=""
 fi
 
 abort()
@@ -38,9 +40,9 @@ error_lgset()
 }
 
 dolanguages() {
-    echo "Scanning for locales..."
-    LOCALES=
-    for i in $(cat /etc/locale.gen | grep .UTF-8|cut -c 2-12|grep -e '[a-z]*\.UTF-8$'); do
+    # "Scanning for locales..."
+    LOCALES=""
+    for i in $(cat ${DESTDIR}/etc/locale.gen | grep -v "#  " | sed 's/#//g' | sed 's/ UTF-8//g' | grep .UTF-8); do
         LOCALES="${LOCALES} ${i} -"
     done
 
@@ -53,8 +55,11 @@ dolanguages() {
     locale=$(cat ${ANSWER})
     echo ${locale} > /tmp/.locale
     if [[ "${locale}" ]]; then
-        DIALOG --infobox "Loading keymap: ${keymap}" 0 0
-        sed -i "s/#\(${locale}\)/\1/" /etc/locale.gen
+        DIALOG --infobox "Set locale: ${locale}" 0 0
+        sed -i "s/#\(${locale}\)/\1/" ${DESTDIR}/etc/locale.gen
+        echo "LANG=${locale}" > ${DESTDIR}/etc/locale.conf
+        echo "LC_COLLATE=C" >> ${DESTDIR}/etc/locale.conf
+        echo "LANG=${locale}" >> ${DESTDIR}/etc/environment
     fi
 S_NEXTITEM=2
 }

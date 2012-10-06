@@ -3,7 +3,7 @@
   PKG_OVERLAY="/opt/manjaro/pkgs"
   #DIALOGRC="./setuprc"
   manjaro_kernel="linux"
-  manjaro_version="2012.09"
+  manjaro_version="2012.10"
   code_name="Manjaro"
   hostname="manjaro"
   _yes="Yes"
@@ -135,6 +135,8 @@
   _definerootpass="Change root password"
   _defineuser="Setup user account(s)"
   _defineuserpass="Change user password"
+  _definelocale="Change locale (optional)"
+  _definekeymap="Change vconsole keymap (optional)"
   _enterusername="Enter user account name..."
   _doeditconfig="Edit system configuration (optional)"
   _return_label="Back"
@@ -1640,7 +1642,7 @@ configure_system()
 		fi
 
 	elif [ "$(echo "${KEYMAP}" | grep "pt_PT")" != "" ]; then
-		# Setup system for the Portuguese language
+		# Setup system for the Portugues_definelocalee language
 		
 		# Set Portuguese Xorg keyboard layout
 		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "pt"#'       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
@@ -1740,7 +1742,9 @@ configure_system()
         DIALOG $DEFAULT --menu "Configuration" 17 78 10 \
             "Root-Password"             "${_definerootpass}" \
             "Setup User"                "${_defineuser}" \
-            "Config-system"             "${_doeditconfig}" \
+            "Setup Locale"              "${_definelocale}" \
+            "Setup Keymap"              "${_definekeymap}" \
+            "Config System"             "${_doeditconfig}" \
             "${_return_label}"          "${_mainmenulabel}" 2>$ANSWER || CURRENT_SELECTION="${_return_label}"
         CURRENT_SELECTION="$(cat $ANSWER)"
 
@@ -1778,7 +1782,15 @@ configure_system()
                 set_passwd
                 echo "$PASSWDUSER:$PASSWD" | chroot ${DESTDIR} chpasswd && break
             done
-        elif [ "$CURRENT_SELECTION" = "Config-system" ]; then
+        elif [ "$CURRENT_SELECTION" = "Setup Locale" ]; then
+            while true; do
+                set_language && break
+            done
+        elif [ "$CURRENT_SELECTION" = "Setup Keymap" ]; then
+            while true; do
+                set_keyboad && break
+            done
+        elif [ "$CURRENT_SELECTION" = "Config System" ]; then
     while true; do
         if [ -n "$CURRENT_SELECTION" ]; then
             DEFAULT="--default-item $CURRENT_SELECTION"
