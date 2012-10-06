@@ -18,6 +18,7 @@ First off, Manjaroiso has some dependencies:
     - syslinux
     - nbd
     - mkinitcpio-nfs-utils
+    - haveged
 
 Manjaroiso itself can be installed with the handy dandy included Makefile,
 and the incantation 'make install'.

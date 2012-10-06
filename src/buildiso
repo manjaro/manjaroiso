@@ -122,12 +122,24 @@ fi
 # Create trustdb.gpg
 create_trustdb() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
-         echo -e -n "$_r >$_W Creating trustdb.gpg for pacman-key \n   --> This might take a while ... \n   --> Answer all followed questions with 'yes' \n $_n"
+         echo -e -n "$_r >$_W Creating trustdb.gpg for pacman-key \n   --> This might take a while ...\n $_n"
          mkdir -p "${work_dir}/root-image/etc/pacman.d/gnupg"
+         # Generate initial keychain, use haveged then no user interaction is required
+         if  [[ -f /var/run/haveged.pid ]]; then
+             kill $(cat /var/run/haveged.pid)
+         fi
+         haveged
          pacman-key --init --gpgdir "${work_dir}/root-image/etc/pacman.d/gnupg"
          echo -e "$_g >$_W done $_n"
          echo -e -n "$_r >$_W Importing trusted keys \n $_n"
+         ### HACK: fix accept of master keys!
+         sed -i -e 's#"${GPG_PACMAN\[\@\]}" --quiet --lsign-key "${key_id}"#"${GPG_PACMAN\[\@\]}" --batch --yes --quiet --lsign-key "${key_id}"#g' \
+         /usr/bin/pacman-key
          pacman-key --populate archlinux manjaro --gpgdir "${work_dir}/root-image/etc/pacman.d/gnupg"
+         ### HACK: fix accept of master keys!
+         sed -i -e 's#"${GPG_PACMAN\[\@\]}" --batch --yes --quiet --lsign-key "${key_id}"#"${GPG_PACMAN\[\@\]}" --quiet --lsign-key "${key_id}"#g' \
+         /usr/bin/pacman-key
+         kill $(cat /var/run/haveged.pid)
          : > ${work_dir}/build.${FUNCNAME}
          echo -e "$_g >$_W done $_n"
     fi
