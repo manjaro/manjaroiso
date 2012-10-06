@@ -54,7 +54,7 @@ dolanguages() {
     echo ${locale} > /tmp/.locale
     if [[ "${locale}" ]]; then
         DIALOG --infobox "Loading keymap: ${keymap}" 0 0
-        sed -i "s/#\(${locale}\)/\1/" /arch/locale.gen
+        sed -i "s/#\(${locale}\)/\1/" /etc/locale.gen
     fi
 S_NEXTITEM=2
 }
