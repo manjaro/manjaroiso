@@ -4180,50 +4180,6 @@ dogrub_uefi_i386() {
     
 }
 
-prepare_harddrive() {
-    S_MKFSAUTO=0
-    S_MKFS=0
-    DONE=0
-    NEXTITEM=""
-    while [[ "${DONE}" = "0" ]]; do
-        if [[ -n "${NEXTITEM}" ]]; then
-            DEFAULT="--default-item ${NEXTITEM}"
-        else
-            DEFAULT=""
-        fi
-        CANCEL=""
-        dialog ${DEFAULT} --backtitle "${TITLE}" --menu "Prepare Hard Drive" 12 60 5 \
-            "1" "Auto-Prepare (erases the ENTIRE hard drive)" \
-            "2" "Partition Hard Drives" \
-            "3" "Create Software Raid, Lvm2 and Luks encryption" \
-            "4" "Set Filesystem Mountpoints" \
-            "5" "Return to Main Menu" 2>${ANSWER} || CANCEL="1"
-        NEXTITEM="$(cat ${ANSWER})"
-        [[ "${S_MKFSAUTO}" = "1" ]] && DONE=1
-        case $(cat ${ANSWER}) in
-            "1")
-                autoprepare
-                [[ "${S_MKFSAUTO}" = "1" ]] && DONE=1
-                ;;
-            "2")
-                partition ;;
-            "3")
-                create_special ;;
-            "4")
-                PARTFINISH=""
-                ASK_MOUNTPOINTS="1"
-                mountpoints ;;
-            *)
-                DONE=1 ;;
-        esac
-    done
-    if [[ "${CANCEL}" = "1" ]]; then
-        NEXTITEM="3"
-    else
-        NEXTITEM="4"
-    fi
-}
-
 # menu for raid, lvm and encrypt
 create_special() {
     NEXTITEM=""
@@ -4895,6 +4851,51 @@ set_clock()
     /sbin/hwclock --systohc $HWCLOCK_PARAMS --noadjfile
 
     S_CLOCK=1
+}
+
+prepare_harddrive() {
+    S_MKFSAUTO=0
+    S_MKFS=0
+    DONE=0
+    NEXTITEM=""
+    while [[ "${DONE}" = "0" ]]; do
+        if [[ -n "${NEXTITEM}" ]]; then
+            DEFAULT="--default-item ${NEXTITEM}"
+        else
+            DEFAULT=""
+        fi
+        CANCEL=""
+        dialog ${DEFAULT} --backtitle "${TITLE}" --menu "Prepare Hard Drive" 12 60 5 \
+            "1" "Auto-Prepare (erases the ENTIRE hard drive)" \
+            "2" "Partition Hard Drives" \
+            "3" "Create Software Raid, Lvm2 and Luks encryption" \
+            "4" "Set Filesystem Mountpoints" \
+            "5" "Return to Main Menu" 2>${ANSWER} || CANCEL="1"
+        NEXTITEM="$(cat ${ANSWER})"
+        [[ "${S_MKFSAUTO}" = "1" ]] && DONE=1
+        case $(cat ${ANSWER}) in
+            "1")
+                autoprepare
+                [[ "${S_MKFSAUTO}" = "1" ]] && DONE=1
+                _hd_is_prepared=1 ;;
+            "2")
+                partition ;;
+            "3")
+                create_special ;;
+            "4")
+                PARTFINISH=""
+                ASK_MOUNTPOINTS="1"
+                mountpoints
+                _hd_is_prepared=1 ;;
+            *)
+                DONE=1 ;;
+        esac
+    done
+    if [[ "${CANCEL}" = "1" ]]; then
+        NEXTITEM="3"
+    else
+        NEXTITEM="4"
+    fi
 }
 
 # run_unsquashfs()
