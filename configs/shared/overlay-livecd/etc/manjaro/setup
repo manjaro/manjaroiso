@@ -4970,6 +4970,9 @@ run_mkinitcpio()
     # fix fsck.btrfs issue
     chroot "$DESTDIR" ln -s /bin/true /sbin/fsck.btrfs
 
+    # fix fsck.nilfs2 issue
+    chroot "$DESTDIR" ln -s /bin/true /sbin/fsck.nilfs2
+
     # all mkinitcpio output goes to /tmp/mkinitcpio.log, which we tail
     # into a dialog
     ( \
