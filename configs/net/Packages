@@ -76,7 +76,9 @@ sudo
 gamin
 acpid
 cpufrequtils
+incron
 expac
+efilinux-efi
 refind-efi
 gummiboot-efi
 grub-bios

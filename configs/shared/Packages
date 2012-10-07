@@ -86,7 +86,9 @@ dnsmasq
 dnsutils
 gamin
 gnu-netcat
+incron
 expac
+efilinux-efi
 refind-efi
 gummiboot-efi
 grub-bios

@@ -2931,10 +2931,6 @@ do_uefi_common() {
         check_uefisyspart
     fi
     
-    PACKAGES="dosfstools efibootmgr"
-    run_pacman
-    PACKAGES=""
-    
 }
 
 do_uefi_x86_64() {
@@ -3043,10 +3039,6 @@ doefistub_uefi_common() {
     if [[ "${__CARCH}" != "${_UEFI_ARCH}" ]]; then
         DIALOG --msgbox "EFISTUB requires Kernel and UEFI arch to match, and requires CONFIG_EFI_STUB enabled kernel. Please install matching MANJARO Kernel and try again." 0 0
     elif [[ "${KERNELPKG}" == "linux-lts" ]]; then
-        PACKAGES="efilinux-efi"
-        run_pacman
-        PACKAGES=""
-        
         mkdir -p "${DESTDIR}/boot/efi/EFI/efilinux/"
         cp -f "${DESTDIR}/usr/lib/efilinux/efilinux${_SPEC_UEFI_ARCH}.efi" "${DESTDIR}/boot/efi/EFI/efilinux/efilinux${_SPEC_UEFI_ARCH}.efi"
         
@@ -3107,9 +3099,6 @@ CONFEOF
         chroot "${DESTDIR}" /usr/bin/systemctl enable efistub_copy.path
         
         if [[ "${SYSTEMD}" != "1" ]]; then
-            PACKAGES="incron"
-            run_pacman
-            PACKAGES=""
             
             cat << CONFEOF > "${DESTDIR}/usr/local/bin/efistub_copy.sh"
 /bin/cp -f /boot/${VMLINUZ} /boot/efi/EFI/manjaro/${_EFISTUB_KERNEL}
@@ -3230,10 +3219,6 @@ dogummiboot_uefi_common() {
     
     DIALOG --msgbox "Setting up gummiboot-efi now ..." 0 0
     
-    PACKAGES="gummiboot-efi"
-    run_pacman
-    PACKAGES=""
-    
     mkdir -p "${DESTDIR}/boot/efi/EFI/gummiboot/"
     cp -f "${DESTDIR}/usr/lib/gummiboot/gummiboot${_SPEC_UEFI_ARCH}.efi" "${DESTDIR}/boot/efi/EFI/gummiboot/gummiboot${_SPEC_UEFI_ARCH}.efi"
     
@@ -3315,10 +3300,6 @@ dorefind_uefi_common() {
     
     DIALOG --msgbox "Setting up refind-efi now ..." 0 0
     
-    PACKAGES="refind-efi"
-    run_pacman
-    PACKAGES=""
-    
     mkdir -p "${DESTDIR}/boot/efi/EFI/refind/"
     cp -f "${DESTDIR}/usr/lib/refind/refind${_SPEC_UEFI_ARCH}.efi" "${DESTDIR}/boot/efi/EFI/refind/refind${_SPEC_UEFI_ARCH}.efi"
     cp -r "${DESTDIR}/usr/share/refind/icons" "${DESTDIR}/boot/efi/EFI/refind/icons"
@@ -3393,13 +3374,6 @@ REFINDEOF
 
 # install syslinux and run preparation
 prepare_syslinux() {
-    if ! [[ -e "${DESTDIR}/usr/sbin/extlinux" || -e "${DESTDIR}/usr/bin/mcopy" ]]; then
-        DIALOG --msgbox "Couldn't find bootloader binary or helper program, installing syslinux now ..." 0 0
-        PACKAGES="${SYSLINUX_PACKAGES}"
-        run_pacman
-        # reset PACKAGES after installing
-        PACKAGES=""
-    fi
     USE_DMRAID=""
     common_bootloader_checks
 }
@@ -3945,14 +3919,6 @@ dogrub_bios() {
     
     dogrub_common_before
     
-    if [[ ! -f "${DESTDIR}/usr/lib/grub/i386-pc/kernel.img" ]]; then
-        DIALOG --msgbox "Couldn't find ${DESTDIR}/usr/lib/grub/i386-pc/kernel.img , installing grub-bios now ..." 0 0
-        PACKAGES="grub-common grub-bios"
-        run_pacman
-        # reset PACKAGES after installing
-        PACKAGES=""
-    fi
-    
     # try to auto-configure GRUB(2)...
     if [[ "${PART_ROOT}" != "" ]]; then
         check_bootpart
@@ -4082,13 +4048,6 @@ dogrub_bios() {
 dogrub_uefi_common() {
     
     dogrub_common_before
-    
-    DIALOG --msgbox "Installing grub-efi-${_UEFI_ARCH} now ..." 0 0
-    PACKAGES="grub-common grub-efi-${_UEFI_ARCH}"
-    
-    run_pacman
-    # reset PACKAGES after installing
-    PACKAGES=""
     
     chroot_mount
     
