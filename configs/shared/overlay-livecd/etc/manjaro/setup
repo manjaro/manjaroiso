@@ -1788,7 +1788,7 @@ configure_system()
             done
         elif [ "$CURRENT_SELECTION" = "Setup Keymap" ]; then
             while true; do
-                set_keyboad && break
+                set_keyboard && break
             done
         elif [ "$CURRENT_SELECTION" = "Config System" ]; then
     while true; do
