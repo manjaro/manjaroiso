@@ -18,6 +18,7 @@ gawk
 gcc-libs
 gettext
 glibc
+gptfdisk
 grep
 gzip
 heirloom-mailx
@@ -75,6 +76,8 @@ sudo
 gamin
 acpid
 cpufrequtils
+refind-efi
+gummiboot-efi
 grub-bios
 grub-efi-i386
 grub-efi-x86_64

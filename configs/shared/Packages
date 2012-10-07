@@ -17,6 +17,7 @@ findutils
 gcc-libs
 gettext
 glibc
+gptfdisk
 grep
 gzip
 iputils
@@ -84,6 +85,8 @@ dnsmasq
 dnsutils
 gamin
 gnu-netcat
+refind-efi
+gummiboot-efi
 grub-bios
 grub-efi-i386
 grub-efi-x86_64
