@@ -2939,8 +2939,8 @@ do_uefi_common() {
 
 do_uefi_x86_64() {
     
-    export _UEFI_MANJARO="x86_64"
-    export _SPEC_UEFI_MANJARO="x64"
+    export _UEFI_ARCH="x86_64"
+    export _SPEC_UEFI_ARCH="x64"
     
     do_uefi_common
     
@@ -2948,8 +2948,8 @@ do_uefi_x86_64() {
 
 do_uefi_i386() {
     
-    export _UEFI_MANJARO="i386"
-    export _SPEC_UEFI_MANJARO="ia32"
+    export _UEFI_ARCH="i386"
+    export _SPEC_UEFI_ARCH="ia32"
     
     do_uefi_common
     
@@ -3040,7 +3040,7 @@ doefistub_uefi_common() {
     [[ "$(uname -m)" == "x86_64" ]] && __CARCH="x86_64"
     [[ "$(uname -m)" == "i686" ]] && __CARCH="i386"
     
-    if [[ "${__CARCH}" != "${_UEFI_MANJARO}" ]]; then
+    if [[ "${__CARCH}" != "${_UEFI_ARCH}" ]]; then
         DIALOG --msgbox "EFISTUB requires Kernel and UEFI arch to match, and requires CONFIG_EFI_STUB enabled kernel. Please install matching MANJARO Kernel and try again." 0 0
     elif [[ "${KERNELPKG}" == "linux-lts" ]]; then
         PACKAGES="efilinux-efi"
@@ -3048,7 +3048,7 @@ doefistub_uefi_common() {
         PACKAGES=""
         
         mkdir -p "${DESTDIR}/boot/efi/EFI/efilinux/"
-        cp -f "${DESTDIR}/usr/lib/efilinux/efilinux${_SPEC_UEFI_MANJARO}.efi" "${DESTDIR}/boot/efi/EFI/efilinux/efilinux${_SPEC_UEFI_MANJARO}.efi"
+        cp -f "${DESTDIR}/usr/lib/efilinux/efilinux${_SPEC_UEFI_ARCH}.efi" "${DESTDIR}/boot/efi/EFI/efilinux/efilinux${_SPEC_UEFI_ARCH}.efi"
         
         _EFILINUX="1"
         _CONTINUE="1"
@@ -3181,26 +3181,26 @@ CONFEOF
                 # geteditor || return 1
                 # "${EDITOR}" "${DESTDIR}/boot/efi/EFI/manjaro/linux.conf"
                 
-                # DIALOG --defaultno --yesno "Do you want to copy /boot/efi/EFI/manjaro/${_EFISTUB_KERNEL} to /boot/efi/EFI/boot/boot${_SPEC_UEFI_MANJARO}.efi .\n\nThis might be needed in some systems where efibootmgr may not work due to firmware issues." 0 0 && _UEFISYS_EFI_BOOT_DIR="1"
+                # DIALOG --defaultno --yesno "Do you want to copy /boot/efi/EFI/manjaro/${_EFISTUB_KERNEL} to /boot/efi/EFI/boot/boot${_SPEC_UEFI_ARCH}.efi .\n\nThis might be needed in some systems where efibootmgr may not work due to firmware issues." 0 0 && _UEFISYS_EFI_BOOT_DIR="1"
                 
                 # if [[ "${_UEFISYS_EFI_BOOT_DIR}" == "1" ]]; then
                     # mkdir -p "${DESTDIR}/boot/efi/EFI/boot"
                     
-                    # rm -f "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_MANJARO}.efi"
+                    # rm -f "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_ARCH}.efi"
                     # rm -f "${DESTDIR}/boot/efi/EFI/boot/linux.conf"
                     
-                    # cp -f "${DESTDIR}/boot/efi/EFI/manjaro/${_EFISTUB_KERNEL}" "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_MANJARO}.efi"
+                    # cp -f "${DESTDIR}/boot/efi/EFI/manjaro/${_EFISTUB_KERNEL}" "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_ARCH}.efi"
                     # cp -f "${DESTDIR}/boot/efi/EFI/boot/linux.conf" "${DESTDIR}/boot/efi/EFI/boot/linux.conf"
                 # fi
             fi
             
             DIALOG --menu "Select which UEFI Boot Manager to install, to provide a menu for EFISTUB kernels?" 13 55 3 \
-                "GUMMIBOOT_UEFI_${UEFI_MANJARO}" "Simple Text Mode ${UEFI_MANJARO} UEFI Boot Manager" \
-                "rEFInd_UEFI_${UEFI_MANJARO}" "rEFInd ${UEFI_MANJARO} UEFI Boot Manager" \
+                "GUMMIBOOT_UEFI_${UEFI_ARCH}" "Simple Text Mode ${UEFI_ARCH} UEFI Boot Manager" \
+                "rEFInd_UEFI_${UEFI_ARCH}" "rEFInd ${UEFI_ARCH} UEFI Boot Manager" \
                 "NONE" "No Boot Manager" 2>${ANSWER} || CANCEL=1
             case $(cat ${ANSWER}) in
-                "GUMMIBOOT_UEFI_${UEFI_MANJARO}") dogummiboot_uefi_common ;;
-                "rEFInd_UEFI_${UEFI_MANJARO}") dorefind_uefi_common ;;
+                "GUMMIBOOT_UEFI_${UEFI_ARCH}") dogummiboot_uefi_common ;;
+                "rEFInd_UEFI_${UEFI_ARCH}") dorefind_uefi_common ;;
                 "NONE") return 0 ;;
             esac
         else
@@ -3235,18 +3235,18 @@ dogummiboot_uefi_common() {
     PACKAGES=""
     
     mkdir -p "${DESTDIR}/boot/efi/EFI/gummiboot/"
-    cp -f "${DESTDIR}/usr/lib/gummiboot/gummiboot${_SPEC_UEFI_MANJARO}.efi" "${DESTDIR}/boot/efi/EFI/gummiboot/gummiboot${_SPEC_UEFI_MANJARO}.efi"
+    cp -f "${DESTDIR}/usr/lib/gummiboot/gummiboot${_SPEC_UEFI_ARCH}.efi" "${DESTDIR}/boot/efi/EFI/gummiboot/gummiboot${_SPEC_UEFI_ARCH}.efi"
     
     if [[ "${_EFILINUX}" == "1" ]]; then
         cat << GUMEOF > "${DESTDIR}/boot/efi/loader/entries/manjaro-lts.conf"
 title   Manjaro Linux LTS via EFILINUX
-efi     /EFI/efilinux/efilinux${_SPEC_UEFI_MANJARO}.efi
+efi     /EFI/efilinux/efilinux${_SPEC_UEFI_ARCH}.efi
 options $(cat "${DESTDIR}/boot/efi/EFI/efilinux/efilinux.cfg")
 GUMEOF
         
         cat << GUMEOF > "${DESTDIR}/boot/efi/loader/entries/manjaro-lts-fallback.conf"
 title   Manjaro Linux LTS via EFILINUX  - fallback initramfs
-efi     /EFI/efilinux/efilinux${_SPEC_UEFI_MANJARO}.efi
+efi     /EFI/efilinux/efilinux${_SPEC_UEFI_ARCH}.efi
 options $(cat "${DESTDIR}/boot/efi/EFI/efilinux/efilinux.cfg") initrd=\\EFI\\manjaro\\${_EFISTUB_INITRAMFS}-fallback.img
 GUMEOF
         
@@ -3277,10 +3277,10 @@ GUMEOF
         
     fi
     
-    if [[ -e "${DESTDIR}/boot/efi/EFIgummiboot/gummiboot${_SPEC_UEFI_MANJARO}.efi" ]]; then
+    if [[ -e "${DESTDIR}/boot/efi/EFIgummiboot/gummiboot${_SPEC_UEFI_ARCH}.efi" ]]; then
         _BOOTMGR_LABEL="Manjaro Linux (gummiboot)"
         _BOOTMGR_LOADER_DIR="gummiboot"
-        _BOOTMGR_LOADER_FILE="gummiboot${_SPEC_UEFI_MANJARO}.efi"
+        _BOOTMGR_LOADER_FILE="gummiboot${_SPEC_UEFI_ARCH}.efi"
         do_uefi_bootmgr_setup
         
         DIALOG --msgbox "gummiboot-efi has been setup successfully." 0 0
@@ -3298,12 +3298,12 @@ GUMEOF
         
         "${EDITOR}" "${DESTDIR}/boot/efi/loader/loader.conf"
         
-        DIALOG --defaultno --yesno "Do you want to copy /boot/efi/EFI/gummiboot/gummiboot${_SPEC_UEFI_MANJARO}.efi to /boot/efi/EFI/boot/boot${_SPEC_UEFI_MANJARO}.efi ?\n\nThis might be needed in some systems where efibootmgr may not work due to firmware issues." 0 0 && _UEFISYS_EFI_BOOT_DIR="1"
+        DIALOG --defaultno --yesno "Do you want to copy /boot/efi/EFI/gummiboot/gummiboot${_SPEC_UEFI_ARCH}.efi to /boot/efi/EFI/boot/boot${_SPEC_UEFI_ARCH}.efi ?\n\nThis might be needed in some systems where efibootmgr may not work due to firmware issues." 0 0 && _UEFISYS_EFI_BOOT_DIR="1"
         
         if [[ "${_UEFISYS_EFI_BOOT_DIR}" == "1" ]]; then
             mkdir -p "${DESTDIR}/boot/efi/EFI/boot"
-            rm -f "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_MANJARO}.efi"
-            cp -f "${DESTDIR}/boot/efi/EFI/gummiboot/gummiboot${_SPEC_UEFI_MANJARO}.efi" "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_MANJARO}.efi"
+            rm -f "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_ARCH}.efi"
+            cp -f "${DESTDIR}/boot/efi/EFI/gummiboot/gummiboot${_SPEC_UEFI_ARCH}.efi" "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_ARCH}.efi"
         fi
     else
         DIALOG --msgbox "Error setting up gummiboot-efi." 0 0
@@ -3320,7 +3320,7 @@ dorefind_uefi_common() {
     PACKAGES=""
     
     mkdir -p "${DESTDIR}/boot/efi/EFI/refind/"
-    cp -f "${DESTDIR}/usr/lib/refind/refind${_SPEC_UEFI_MANJARO}.efi" "${DESTDIR}/boot/efi/EFI/refind/refind${_SPEC_UEFI_MANJARO}.efi"
+    cp -f "${DESTDIR}/usr/lib/refind/refind${_SPEC_UEFI_ARCH}.efi" "${DESTDIR}/boot/efi/EFI/refind/refind${_SPEC_UEFI_ARCH}.efi"
     cp -r "${DESTDIR}/usr/share/refind/icons" "${DESTDIR}/boot/efi/EFI/refind/icons"
     
     _REFIND_CONFIG="${DESTDIR}/boot/efi/EFI/refind/refind.conf"
@@ -3339,13 +3339,13 @@ dorefind_uefi_common() {
 
 menuentry "Manjaro Linux LTS via EFILINUX" {
 	icon /EFI/refind/icons/os_linux.icns
-	loader /EFI/efilinux/efilinux${_SPEC_UEFI_MANJARO}.efi
+	loader /EFI/efilinux/efilinux${_SPEC_UEFI_ARCH}.efi
 	options "$(cat "${DESTDIR}/boot/efi/EFI/efilinux/efilinux.cfg")"
 }
 
 menuentry "Manjaro Linux LTS via EFILINUX - fallback initramfs" {
 	icon /EFI/refind/icons/os_linux.icns
-	loader /EFI/efilinux/efilinux${_SPEC_UEFI_MANJARO}.efi
+	loader /EFI/efilinux/efilinux${_SPEC_UEFI_ARCH}.efi
 	options "$(cat "${DESTDIR}/boot/efi/EFI/efilinux/efilinux.cfg") initrd=\\EFI\\manjaro\\${_EFISTUB_INITRAMFS}-fallback.img"
 }
 
@@ -3359,10 +3359,10 @@ REFINDEOF
         
     fi
     
-    if [[ -e "${DESTDIR}/boot/efi/EFI/refind/refind${_SPEC_UEFI_MANJARO}.efi" ]]; then
+    if [[ -e "${DESTDIR}/boot/efi/EFI/refind/refind${_SPEC_UEFI_ARCH}.efi" ]]; then
         _BOOTMGR_LABEL="Manjaro Linux (rEFInd)"
         _BOOTMGR_LOADER_DIR="refind"
-        _BOOTMGR_LOADER_FILE="refind${_SPEC_UEFI_MANJARO}.efi"
+        _BOOTMGR_LOADER_FILE="refind${_SPEC_UEFI_ARCH}.efi"
         do_uefi_bootmgr_setup
         
         DIALOG --msgbox "refind-efi has been setup successfully." 0 0
@@ -3372,16 +3372,16 @@ REFINDEOF
         "${EDITOR}" "${_REFIND_CONFIG}"
         [[ "${_EFILINUX}" != "1" ]] && "${EDITOR}" "${DESTDIR}/boot/efi/EFI/manjaro/refind_linux.conf"
         
-        DIALOG --defaultno --yesno "Do you want to copy /boot/efi/EFI/refind/refind${_SPEC_UEFI_MANJARO}.efi to /boot/efi/EFI/boot/boot${_SPEC_UEFI_MANJARO}.efi ?\n\nThis might be needed in some systems where efibootmgr may not work due to firmware issues." 0 0 && _UEFISYS_EFI_BOOT_DIR="1"
+        DIALOG --defaultno --yesno "Do you want to copy /boot/efi/EFI/refind/refind${_SPEC_UEFI_ARCH}.efi to /boot/efi/EFI/boot/boot${_SPEC_UEFI_ARCH}.efi ?\n\nThis might be needed in some systems where efibootmgr may not work due to firmware issues." 0 0 && _UEFISYS_EFI_BOOT_DIR="1"
         
         if [[ "${_UEFISYS_EFI_BOOT_DIR}" == "1" ]]; then
             mkdir -p "${DESTDIR}/boot/efi/EFI/boot"
             
-            rm -f "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_MANJARO}.efi"
+            rm -f "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_ARCH}.efi"
             rm -f "${DESTDIR}/boot/efi/EFI/boot/refind.conf"
             rm -rf "${DESTDIR}/boot/efi/EFI/boot/icons"
             
-            cp -f "${DESTDIR}/boot/efi/EFI/refind/refind${_SPEC_UEFI_MANJARO}.efi" "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_MANJARO}.efi"
+            cp -f "${DESTDIR}/boot/efi/EFI/refind/refind${_SPEC_UEFI_ARCH}.efi" "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_ARCH}.efi"
             cp -f "${_REFIND_CONFIG}" "${DESTDIR}/boot/efi/EFI/boot/refind.conf"
             cp -rf "${DESTDIR}/boot/efi/EFI/refind/icons" "${DESTDIR}/boot/efi/EFI/boot/icons"
         fi
@@ -3696,14 +3696,14 @@ dogrub_config() {
     cat << EOF > "${DESTDIR}/${GRUB_PREFIX_DIR}/grub.cfg"
 
 if [ "\${grub_platform}" == "efi" ]; then
-    set _UEFI_MANJARO="\${grub_cpu}"
+    set _UEFI_ARCH="\${grub_cpu}"
     
     if [ "\${grub_cpu}" == "x86_64" ]; then
-        set _SPEC_UEFI_MANJARO="x64"
+        set _SPEC_UEFI_ARCH="x64"
     fi
     
     if [ "\${grub_cpu}" == "i386" ]; then
-        set _SPEC_UEFI_MANJARO="ia32"
+        set _SPEC_UEFI_ARCH="ia32"
     fi
 fi
 
@@ -3857,16 +3857,16 @@ if [ "\${grub_platform}" == "efi" ]; then
     
     ## UEFI Shell 2.0
     ## Will work only in grub(2) uefi
-    #menuentry "UEFI \${_UEFI_MANJARO} Shell 2.0 - For Spec. Ver. >=2.3 systems" {
+    #menuentry "UEFI \${_UEFI_ARCH} Shell 2.0 - For Spec. Ver. >=2.3 systems" {
     #    search --fs-uuid --no-floppy --set=root ${UEFISYS_PART_HINTS_STRING} ${UEFISYS_PART_FS_UUID}
-    #    chainloader /efi/tools/shell\${_SPEC_UEFI_MANJARO}.efi
+    #    chainloader /efi/tools/shell\${_SPEC_UEFI_ARCH}.efi
     #}
     
     ## UEFI Shell 1.0
     ## Will work only in grub(2) uefi
-    #menuentry "UEFI \${_UEFI_MANJARO} Shell 1.0 - For Spec. Ver. <2.3 systems" {
+    #menuentry "UEFI \${_UEFI_ARCH} Shell 1.0 - For Spec. Ver. <2.3 systems" {
     #    search --fs-uuid --no-floppy --set=root ${UEFISYS_PART_HINTS_STRING} ${UEFISYS_PART_FS_UUID}
-    #    chainloader /efi/tools/shell\${_SPEC_UEFI_MANJARO}_old.efi
+    #    chainloader /efi/tools/shell\${_SPEC_UEFI_ARCH}_old.efi
     #}
     
 fi
@@ -4083,8 +4083,8 @@ dogrub_uefi_common() {
     
     dogrub_common_before
     
-    DIALOG --msgbox "Installing grub-efi-${_UEFI_MANJARO} now ..." 0 0
-    PACKAGES="grub-common grub-efi-${_UEFI_MANJARO}"
+    DIALOG --msgbox "Installing grub-efi-${_UEFI_ARCH} now ..." 0 0
+    PACKAGES="grub-common grub-efi-${_UEFI_ARCH}"
     
     run_pacman
     # reset PACKAGES after installing
@@ -4093,13 +4093,13 @@ dogrub_uefi_common() {
     chroot_mount
     
     chroot "${DESTDIR}" "/usr/sbin/grub-install" \
-        --directory="/usr/lib/grub/${_UEFI_MANJARO}-efi" \
-        --target="${_UEFI_MANJARO}-efi" \
+        --directory="/usr/lib/grub/${_UEFI_ARCH}-efi" \
+        --target="${_UEFI_ARCH}-efi" \
         --efi-directory="/boot/efi" \
         --bootloader-id="manjaro_grub" \
         --boot-directory="/boot" \
         --recheck \
-        --debug &>"/tmp/grub_uefi_${_UEFI_MANJARO}_install.log"
+        --debug &>"/tmp/grub_uefi_${_UEFI_ARCH}_install.log"
     
     chroot_umount
     
@@ -4148,7 +4148,7 @@ fi
 
 EOF
     
-    cp -f "${DESTDIR}/boot/grub/grub.cfg" "${DESTDIR}/boot/efi/EFI/manjaro_grub/grub${_SPEC_UEFI_MANJARO}_standalone.cfg"
+    cp -f "${DESTDIR}/boot/grub/grub.cfg" "${DESTDIR}/boot/efi/EFI/manjaro_grub/grub${_SPEC_UEFI_ARCH}_standalone.cfg"
     
     __WD="${PWD}/"
     
@@ -4157,11 +4157,11 @@ EOF
     chroot_mount
     
     chroot "${DESTDIR}" "/usr/bin/grub-mkstandalone" \
-        --directory="/usr/lib/grub/${_UEFI_MANJARO}-efi" \
-        --format="${_UEFI_MANJARO}-efi" \
+        --directory="/usr/lib/grub/${_UEFI_ARCH}-efi" \
+        --format="${_UEFI_ARCH}-efi" \
         --compression="xz" \
-        --output="/boot/efi/EFI/manjaro_grub/grub${_SPEC_UEFI_MANJARO}_standalone.efi" \
-        "boot/grub/grub.cfg" &>"/tmp/grub_${_UEFI_MANJARO}_uefi_mkstandalone.log"
+        --output="/boot/efi/EFI/manjaro_grub/grub${_SPEC_UEFI_ARCH}_standalone.efi" \
+        "boot/grub/grub.cfg" &>"/tmp/grub_${_UEFI_ARCH}_uefi_mkstandalone.log"
     
     chroot_umount
     
@@ -4169,15 +4169,15 @@ EOF
     
     [[ -e "${DESTDIR}/boot/grub/grub.cfg.save" ]] && mv "${DESTDIR}/boot/grub/grub.cfg.save" "${DESTDIR}/boot/grub/grub.cfg"
     
-    cat "/tmp/grub_uefi_${_UEFI_MANJARO}_install.log" >> "${LOG}"
+    cat "/tmp/grub_uefi_${_UEFI_ARCH}_install.log" >> "${LOG}"
     
-    if [[ -e "${DESTDIR}/boot/efi/EFI/manjaro_grub/grub${_SPEC_UEFI_MANJARO}.efi" ]] && [[ -e "${DESTDIR}/boot/grub/${_UEFI_MANJARO}-efi/core.efi" ]]; then
+    if [[ -e "${DESTDIR}/boot/efi/EFI/manjaro_grub/grub${_SPEC_UEFI_ARCH}.efi" ]] && [[ -e "${DESTDIR}/boot/grub/${_UEFI_ARCH}-efi/core.efi" ]]; then
         _BOOTMGR_LABEL="Manjaro Linux (GRUB)"
         _BOOTMGR_LOADER_DIR="manjaro_grub"
-        _BOOTMGR_LOADER_FILE="grub${_SPEC_UEFI_MANJARO}.efi"
+        _BOOTMGR_LOADER_FILE="grub${_SPEC_UEFI_ARCH}.efi"
         do_uefi_bootmgr_setup
         
-        DIALOG --msgbox "GRUB(2) UEFI ${_UEFI_MANJARO} has been successfully installed." 0 0
+        DIALOG --msgbox "GRUB(2) UEFI ${_UEFI_ARCH} has been successfully installed." 0 0
         
         GRUB_PREFIX_DIR="/boot/grub/"
         GRUB_UEFI="1"
@@ -4185,17 +4185,17 @@ EOF
         #dogrub_mkconfig
         GRUB_UEFI=""
         
-        DIALOG --defaultno --yesno "Do you want to copy /boot/efi/EFI/manjaro_grub/grub${_SPEC_UEFI_MANJARO}.efi to /boot/efi/EFI/boot/boot${_SPEC_UEFI_MANJARO}.efi ?\n\nThis might be needed in some systems where efibootmgr may not work due to firmware issues." 0 0 && _UEFISYS_EFI_BOOT_DIR="1"
+        DIALOG --defaultno --yesno "Do you want to copy /boot/efi/EFI/manjaro_grub/grub${_SPEC_UEFI_ARCH}.efi to /boot/efi/EFI/boot/boot${_SPEC_UEFI_ARCH}.efi ?\n\nThis might be needed in some systems where efibootmgr may not work due to firmware issues." 0 0 && _UEFISYS_EFI_BOOT_DIR="1"
         
         if [[ "${_UEFISYS_EFI_BOOT_DIR}" == "1" ]]; then
             mkdir -p "${DESTDIR}/boot/efi/EFI/boot"
             
-            rm -f "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_MANJARO}.efi"
+            rm -f "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_ARCH}.efi"
             
-            cp -f "${DESTDIR}/boot/efi/EFI/manjaro_grub/grub${_SPEC_UEFI_MANJARO}.efi" "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_MANJARO}.efi"
+            cp -f "${DESTDIR}/boot/efi/EFI/manjaro_grub/grub${_SPEC_UEFI_ARCH}.efi" "${DESTDIR}/boot/efi/EFI/boot/boot${_SPEC_UEFI_ARCH}.efi"
         fi
     else
-        DIALOG --msgbox "Error installing GRUB UEFI ${_UEFI_MANJARO}.\nCheck /tmp/grub_uefi_${_UEFI_MANJARO}_install.log for more info.\n\nYou probably need to install it manually by chrooting into ${DESTDIR}.\nDon't forget to bind /dev, /sys and /proc into ${DESTDIR} before chrooting." 0 0
+        DIALOG --msgbox "Error installing GRUB UEFI ${_UEFI_ARCH}.\nCheck /tmp/grub_uefi_${_UEFI_ARCH}_install.log for more info.\n\nYou probably need to install it manually by chrooting into ${DESTDIR}.\nDon't forget to bind /dev, /sys and /proc into ${DESTDIR} before chrooting." 0 0
         return 1
     fi
     
@@ -4505,7 +4505,7 @@ install_bootloader() {
     
     _DIRECT="0"
     
-    [[ "$(grep UEFI_MANJARO_x86_64 /proc/cmdline)" ]] && _UEFI_x86_64="1"
+    [[ "$(grep UEFI_ARCH_x86_64 /proc/cmdline)" ]] && _UEFI_x86_64="1"
     
     [[ "${_UEFI_x86_64}" == "1" ]] && DIALOG --yesno "Setup has detected that you are using x86_64 (64-bit) UEFI ...\nDo you like to install a x86_64 UEFI bootloader?" 0 0 && install_bootloader_uefi_x86_64 && _DIRECT="1"
     
