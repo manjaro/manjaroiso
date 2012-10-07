@@ -9,11 +9,6 @@ manjaro_version="2012.10"
 code_name="Manjaro"
 hostname="manjaro"
 
-# name of the kernel image
-VMLINUZ="vmlinuz-${manjaro_kernel}"
-# name of the initramfs filesystem
-INITRAMFS="initramfs-${manjaro_kernel}"
-
 # Translation
 _yes="Yes"
 _no="No"
@@ -197,6 +192,11 @@ DESTDIR="/install"
 arch=$(uname -m)
 EDITOR="nano"
 _BLKID="blkid -c /dev/null"
+
+# name of the kernel image
+VMLINUZ="vmlinuz-$(expac -Q '%v' linux35)-${arch}-manjaro"
+# name of the initramfs filesystem
+INITRAMFS="initramfs-$(expac -Q '%v' linux35)-${arch}-manjaro"
 
 # abstract the common pacman args
 PACMAN="pacman --root ${DESTDIR} --config /etc/pacman.conf --noconfirm --noprogressbar"
