@@ -1,2 +1,1 @@
-#!/bin/bash
-aif -p partial-keymap
+/etc/manjaro/km

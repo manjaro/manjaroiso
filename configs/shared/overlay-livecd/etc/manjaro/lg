@@ -8,7 +8,7 @@ TITLE="Manjaro Language Setting"
 
 if [[ "${1}" = "--setup" ]]; then
     EXIT="Return to Main Menu"
-    DESTDIR="/mnt/install.root"
+    DESTDIR="/install"
 else
     EXIT="Exit"
     DESTDIR=""
