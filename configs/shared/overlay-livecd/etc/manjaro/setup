@@ -4967,6 +4967,9 @@ run_unsquashfs()
 run_mkinitcpio()
 {
     chroot_mount
+    # fix fsck.btrfs issue
+    chroot "$DESTDIR" ln -s /bin/true /sbin/fsck.btrfs
+
     # all mkinitcpio output goes to /tmp/mkinitcpio.log, which we tail
     # into a dialog
     ( \
