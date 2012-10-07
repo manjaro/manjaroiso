@@ -3622,7 +3622,7 @@ dogrub_mkconfig() {
     chroot ${DESTDIR} cp /usr/share/locale/en@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
 
     # create grub.cfg
-    chroot ${DESTDIR} grub-mkconfig -o "${DESTDIR}/${GRUB_PREFIX_DIR}/grub.cfg" >> /tmp/grub.log 2>&1
+    chroot ${DESTDIR} grub-mkconfig -o "/${GRUB_PREFIX_DIR}/grub.cfg" >> /tmp/grub.log 2>&1
 
     chroot_umount
 }
@@ -4069,8 +4069,8 @@ dogrub_bios() {
         
         GRUB_PREFIX_DIR="/boot/grub/"
         GRUB_BIOS="1"
-        dogrub_config
-        #dogrub_mkconfig
+        #dogrub_config
+        dogrub_mkconfig
         GRUB_BIOS=""
     else
         DIALOG --msgbox "Error installing GRUB(2) BIOS.\nCheck /tmp/grub_bios_install.log for more info.\n\nYou probably need to install it manually by chrooting into ${DESTDIR}.\nDon't forget to bind /dev and /proc into ${DESTDIR} before chrooting." 0 0
@@ -4181,8 +4181,8 @@ EOF
         
         GRUB_PREFIX_DIR="/boot/grub/"
         GRUB_UEFI="1"
-        dogrub_config
-        #dogrub_mkconfig
+        #dogrub_config
+        dogrub_mkconfig
         GRUB_UEFI=""
         
         DIALOG --defaultno --yesno "Do you want to copy /boot/efi/EFI/manjaro_grub/grub${_SPEC_UEFI_ARCH}.efi to /boot/efi/EFI/boot/boot${_SPEC_UEFI_ARCH}.efi ?\n\nThis might be needed in some systems where efibootmgr may not work due to firmware issues." 0 0 && _UEFISYS_EFI_BOOT_DIR="1"
