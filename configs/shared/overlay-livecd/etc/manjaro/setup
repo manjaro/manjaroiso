@@ -4464,9 +4464,6 @@ install_bootloader() {
     if [[ "${NAME_SCHEME_PARAMETER_RUN}" == "" ]]; then
         set_device_name_scheme || return 1
     fi
-    source_set || return 1
-    pacman_conf
-    prepare_pacman
     CANCEL=""
     
     _DIRECT="0"
