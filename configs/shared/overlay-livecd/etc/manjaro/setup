@@ -1741,10 +1741,10 @@ configure_system()
 
         DIALOG $DEFAULT --menu "Configuration" 17 78 10 \
             "Root-Password"             "${_definerootpass}" \
-            "Setup User"                "${_defineuser}" \
-            "Setup Locale"              "${_definelocale}" \
-            "Setup Keymap"              "${_definekeymap}" \
-            "Config System"             "${_doeditconfig}" \
+            "Setup-User"                "${_defineuser}" \
+            "Setup-Locale"              "${_definelocale}" \
+            "Setup-Keymap"              "${_definekeymap}" \
+            "Config-System"             "${_doeditconfig}" \
             "${_return_label}"          "${_mainmenulabel}" 2>$ANSWER || CURRENT_SELECTION="${_return_label}"
         CURRENT_SELECTION="$(cat $ANSWER)"
 
@@ -1756,7 +1756,7 @@ configure_system()
                 set_passwd
                 echo "$PASSWDUSER:$PASSWD" | chroot ${DESTDIR} chpasswd && break
             done
-        elif [ "$CURRENT_SELECTION" = "Setup User" ]; then
+        elif [ "$CURRENT_SELECTION" = "Setup-User" ]; then
             while true; do
                 addgroups="video,audio,power,disk,storage,optical,network,lp,scanner"
 
@@ -1782,15 +1782,15 @@ configure_system()
                 set_passwd
                 echo "$PASSWDUSER:$PASSWD" | chroot ${DESTDIR} chpasswd && break
             done
-        elif [ "$CURRENT_SELECTION" = "Setup Locale" ]; then
+        elif [ "$CURRENT_SELECTION" = "Setup-Locale" ]; then
             while true; do
                 set_language && break
             done
-        elif [ "$CURRENT_SELECTION" = "Setup Keymap" ]; then
+        elif [ "$CURRENT_SELECTION" = "Setup-Keymap" ]; then
             while true; do
                 set_keyboard && break
             done
-        elif [ "$CURRENT_SELECTION" = "Config System" ]; then
+        elif [ "$CURRENT_SELECTION" = "Config-System" ]; then
     while true; do
         if [ -n "$CURRENT_SELECTION" ]; then
             DEFAULT="--default-item $CURRENT_SELECTION"
