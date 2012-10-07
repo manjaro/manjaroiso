@@ -89,6 +89,7 @@ syslinux
 squashfs-tools
 memtest86+
 crda
+cryptsetup
 curl
 ddrescue
 dhclient

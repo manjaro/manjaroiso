@@ -347,6 +347,8 @@ activate_lvm2()
         LVM2_GROUPS="$(vgs -o vg_name --noheading 2>/dev/null)"
         LVM2_VOLUMES="$(lvs -o vg_name,lv_name --noheading --separator - 2>/dev/null)"
         [[ "${OLD_LVM2_GROUPS}" = "${LVM2_GROUPS}" && "${OLD_LVM2_GROUPS}" = "${LVM2_GROUPS}" ]] && ACTIVATE_LVM2="no"
+    else
+        ACTIVATE_LVM2="no"
     fi
 }
 
@@ -358,6 +360,8 @@ activate_raid()
     if [[ -e /sbin/mdadm ]]; then
         DIALOG --infobox "Activating RAID arrays..." 0 0
         /sbin/mdadm --assemble --scan >/dev/null 2>&1 || ACTIVATE_RAID="no"
+    else
+        ACTIVATE_RAID="no"
     fi
 }
 
@@ -387,6 +391,8 @@ activate_luks()
         else
             ACTIVATE_LUKS="no"
         fi
+    else
+        ACTIVATE_LUKS="no"
     fi
 }
 

@@ -76,6 +76,7 @@ yaourt
 ## Extra Base Packages
 acpid
 crda
+cryptsetup
 curl
 dbus
 ddrescue
