@@ -24,7 +24,6 @@ usage ()
     echo "    -C <file>         Config file for pacman. Default $PACCONFIG"
     echo "    -L <label>        Set a label for the disk"
     echo "    -P <publisher>    Set a publisher for the disk"
-    echo "    -A <application>  Set an application name for the disk"
     echo "    -a <arch>         Set an architecture for the disk (example: i686)"
     echo "    -c <compressor>   Set SquashFS compression type: gzip, xz or lzo. Default $COMPRESSION"
     echo "                      NOTES:"
@@ -47,13 +46,12 @@ usage ()
     exit $1
 }
 
-while getopts 'p:C:L:P:A:a:c:D:i:dfvhx' arg; do
+while getopts 'p:C:L:P:a:c:D:i:dfvhx' arg; do
     case "${arg}" in
         p) PKGLIST="${PKGLIST} ${OPTARG}" ;;
         C) PACCONFIG="${OPTARG}" ;;
         L) LABEL="${OPTARG}" ;;
         P) PUBLISHER="${OPTARG}" ;;
-        A) APPLICATION="${OPTARG}" ;;
         a) ARCH="${OPTARG}" ;;
         c) COMPRESSION="${OPTARG}" ;;
         D) INSTALL_DIR="${OPTARG}" ;;
@@ -243,19 +241,20 @@ command_iso () {
     _imgcommon
 
     echo "Creating ISO image..."
-    qflag=""
-    [ "${QUIET}" = "y" ] && qflag="-quiet"
-    mkisofs ${qflag} -r -l \
-        -b isolinux/isolinux.bin -c isolinux/boot.cat \
-        -uid 0 -gid 0 \
-        -udf -allow-limited-size -iso-level 3 \
-        -input-charset utf-8 -p "prepared by mkiso" \
-        -no-emul-boot -boot-load-size 4 -boot-info-table \
-        -publisher "${PUBLISHER}" \
-        -A "${APPLICATION}" \
-        -V "${LABEL}" \
-        -o "${imgname}" "${work_dir}/iso/"
-    isohybrid "${imgname}"
+    ## Generate the BIOS+ISOHYBRID CD image using xorriso (extra/libisoburn package) in mkisofs emulation mode
+    xorriso -as mkisofs \
+            -iso-level 3 -rock -joliet \
+            -max-iso9660-filenames -omit-period \
+            -omit-version-number \
+            -relaxed-filenames -allow-lowercase \
+            -volid "${LABEL}" \
+            -publisher "${PUBLISHER}" \
+            -preparer "prepared by mkiso" \
+            -eltorito-boot isolinux/isolinux.bin \
+            -eltorito-catalog isolinux/boot.cat \
+            -no-emul-boot -boot-load-size 4 -boot-info-table \
+            -isohybrid-mbr /usr/lib/syslinux/isohdpfx.bin \
+            -output "${imgname}" "${work_dir}/iso/"
 }
 
 # Go through the main commands in order. If 'all' was specified, then we want
