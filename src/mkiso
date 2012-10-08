@@ -254,8 +254,8 @@ command_iso () {
     local _iso_efi_boot_args=""
 
     # If exists, add an EFI "El Torito" boot image (FAT filesystem) to ISO-9660 image.
-    if [[ -f "${work_dir}/iso/EFI/miso/efiboot.img" ]]; then
-        _iso_efi_boot_args="--efi-boot EFI/miso/efiboot.img"
+    if [[ -f "${work_dir}/iso/EFI/miso/manjaro.img" ]]; then
+        _iso_efi_boot_args="--efi-boot EFI/miso/manjaro.img"
     fi
 
     echo "Creating ISO image..."
