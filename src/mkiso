@@ -239,11 +239,11 @@ _imgcommon () {
     fi
 
     if [[ ! -f "${work_dir}/iso/isolinux/isolinux.bin" ]]; then
-         echo "Error: The file '${work_dir}/iso/isolinux/isolinux.bin' does not exist."
+         echo "Error: ${work_dir}/iso/isolinux/isolinux.bin, doesn't exist, aborting."
          exit 1
     fi
     if [[ ! -f "${work_dir}/iso/isolinux/isohdpfx.bin" ]]; then
-         echo "Error: The file '${work_dir}/iso/isolinux/isohdpfx.bin' does not exist."
+         echo "Error: ${work_dir}/iso/isolinux/isohdpfx.bin, doesn't exist, aborting."
          exit 1
     fi
 }
