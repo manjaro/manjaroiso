@@ -24,6 +24,7 @@ usage ()
     echo "    -C <file>         Config file for pacman. Default $PACCONFIG"
     echo "    -L <label>        Set a label for the disk"
     echo "    -P <publisher>    Set a publisher for the disk"
+    echo "    -A <application>  Set an application name for the disk"
     echo "    -a <arch>         Set an architecture for the disk (example: i686)"
     echo "    -c <compressor>   Set SquashFS compression type: gzip, xz or lzo. Default $COMPRESSION"
     echo "                      NOTES:"
@@ -46,12 +47,13 @@ usage ()
     exit $1
 }
 
-while getopts 'p:C:L:P:a:c:D:i:dfvhx' arg; do
+while getopts 'p:C:L:P:A:a:c:D:i:dfvhx' arg; do
     case "${arg}" in
         p) PKGLIST="${PKGLIST} ${OPTARG}" ;;
         C) PACCONFIG="${OPTARG}" ;;
         L) LABEL="${OPTARG}" ;;
         P) PUBLISHER="${OPTARG}" ;;
+        A) APPLICATION="${OPTARG}" ;;
         a) ARCH="${OPTARG}" ;;
         c) COMPRESSION="${OPTARG}" ;;
         D) INSTALL_DIR="${OPTARG}" ;;
@@ -235,26 +237,47 @@ _imgcommon () {
         echo "Error: ${work_dir}/iso/isolinux/isolinux.cfg, doesn't exist, aborting."
         exit 1
     fi
+
+    if [[ ! -f "${work_dir}/iso/isolinux/isolinux.bin" ]]; then
+         echo "Error: The file '${work_dir}/iso/isolinux/isolinux.bin' does not exist."
+         exit 1
+    fi
+    if [[ ! -f "${work_dir}/iso/isolinux/isohdpfx.bin" ]]; then
+         echo "Error: The file '${work_dir}/iso/isolinux/isohdpfx.bin' does not exist."
+         exit 1
+    fi
 }
 
 command_iso () {
     _imgcommon
 
+    local _iso_efi_boot_args=""
+
+    # If exists, add an EFI "El Torito" boot image (FAT filesystem) to ISO-9660 image.
+    if [[ -f "${work_dir}/iso/EFI/miso/efiboot.img" ]]; then
+        _iso_efi_boot_args="--efi-boot EFI/miso/efiboot.img"
+    fi
+
     echo "Creating ISO image..."
     ## Generate the BIOS+ISOHYBRID CD image using xorriso (extra/libisoburn package) in mkisofs emulation mode
-    xorriso -as mkisofs \
-            -iso-level 3 -rock -joliet \
-            -max-iso9660-filenames -omit-period \
-            -omit-version-number \
-            -relaxed-filenames -allow-lowercase \
+    local _qflag=""
+    if [[ ${quiet} == "y" ]]; then
+        _qflag="-quiet"
+    fi
+    xorriso -as mkisofs ${_qflag} \
+            -iso-level 3 \
+            -full-iso9660-filenames \
             -volid "${LABEL}" \
+            -appid "${APPLICATION}" \
             -publisher "${PUBLISHER}" \
-            -preparer "prepared by mkiso" \
+            -preparer "prepared by mkarchiso" \
             -eltorito-boot isolinux/isolinux.bin \
             -eltorito-catalog isolinux/boot.cat \
             -no-emul-boot -boot-load-size 4 -boot-info-table \
-            -isohybrid-mbr /usr/lib/syslinux/isohdpfx.bin \
-            -output "${imgname}" "${work_dir}/iso/"
+            ${_iso_efi_boot_args} \
+            -isohybrid-mbr isolinux/isohdpfx.bin \
+            -output "${out_dir}/${img_name}" \
+            "${work_dir}/iso/"
 }
 
 # Go through the main commands in order. If 'all' was specified, then we want
