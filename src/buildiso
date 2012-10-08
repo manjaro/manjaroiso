@@ -392,8 +392,17 @@ make_efi() {
             cp efiboot/loader/entries/uefi-shell-v2-x86_64.conf ${work_dir}/iso/loader/entries/
             cp efiboot/loader/entries/uefi-shell-v1-x86_64.conf ${work_dir}/iso/loader/entries/
 
+            # default entry
             sed "s|%MISO_LABEL%|${iso_label}|g;
                  s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-usb.conf > ${work_dir}/iso/loader/entries/manjaroiso-x86_64.conf
+
+            # nonfree entry
+            sed "s|%MISO_LABEL%|${iso_label}|g;
+                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-usb-nonfree.conf > ${work_dir}/iso/loader/entries/manjaroiso-nonfree-x86_64.conf
+
+            # text entry
+            sed "s|%MISO_LABEL%|${iso_label}|g;
+                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-usb-text.conf > ${work_dir}/iso/loader/entries/manjaroiso-text-x86_64.conf
 
             # EFI Shell 2.0 for UEFI 2.3+ ( http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=UEFI_Shell )
             wget -O ${work_dir}/iso/EFI/shellx64_v2.efi https://edk2.svn.sourceforge.net/svnroot/edk2/trunk/edk2/ShellBinPkg/UefiShell/X64/Shell.efi
@@ -429,8 +438,17 @@ make_efiboot() {
             cp efiboot/loader/entries/uefi-shell-v2-x86_64.conf ${work_dir}/efiboot/loader/entries/
             cp efiboot/loader/entries/uefi-shell-v1-x86_64.conf ${work_dir}/efiboot/loader/entries/
 
+            # default entry
             sed "s|%MISO_LABEL%|${iso_label}|g;
                  s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-cd.conf > ${work_dir}/efiboot/loader/entries/manjaroiso-x86_64.conf
+
+            # nonfree entry
+            sed "s|%MISO_LABEL%|${iso_label}|g;
+                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-cd-nonfree.conf > ${work_dir}/efiboot/loader/entries/manjaroiso-nonfree-x86_64.conf
+
+            # text entry
+            sed "s|%MISO_LABEL%|${iso_label}|g;
+                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-cd-text.conf > ${work_dir}/efiboot/loader/entries/manjaroiso-text-x86_64.conf
 
             cp ${work_dir}/iso/EFI/shellx64_v2.efi ${work_dir}/efiboot/EFI/
             cp ${work_dir}/iso/EFI/shellx64_v1.efi ${work_dir}/efiboot/EFI/
