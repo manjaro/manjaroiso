@@ -394,7 +394,7 @@ make_efi() {
 
             # default entry
             sed "s|%MISO_LABEL%|${iso_label}|g;
-                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-usb.conf > ${work_dir}/iso/loader/entries/manjaroiso-x86_64.conf
+                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-usb.conf > ${work_dir}/iso/loader/entries/manjaroiso-default-x86_64.conf
 
             # nonfree entry
             sed "s|%MISO_LABEL%|${iso_label}|g;
@@ -440,7 +440,7 @@ make_efiboot() {
 
             # default entry
             sed "s|%MISO_LABEL%|${iso_label}|g;
-                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-cd.conf > ${work_dir}/efiboot/loader/entries/manjaroiso-x86_64.conf
+                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-cd.conf > ${work_dir}/efiboot/loader/entries/manjaroiso-default-x86_64.conf
 
             # nonfree entry
             sed "s|%MISO_LABEL%|${iso_label}|g;
