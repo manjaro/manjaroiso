@@ -383,7 +383,7 @@ make_boot() {
 make_efi() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
         if [[ ${arch} == "x86_64" ]]; then
-
+            echo -e -n "$_r >$_W Prepare ${install_dir}/boot/EFI \n $_n"
             mkdir -p ${work_dir}/iso/EFI/boot
             cp ${work_dir}/root-image/usr/lib/gummiboot/gummibootx64.efi ${work_dir}/iso/EFI/boot/bootx64.efi
 
@@ -409,7 +409,7 @@ make_efi() {
 make_efiboot() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
         if [[ ${arch} == "x86_64" ]]; then
-
+            echo -e -n "$_r >$_W Prepare ${install_dir}/iso/EFI \n $_n"
             mkdir -p ${work_dir}/iso/EFI/miso
             truncate -s 31M ${work_dir}/iso/EFI/miso/manjaro.img
             mkfs.vfat -n MISO_EFI ${work_dir}/iso/EFI/miso/manjaro.img
@@ -418,7 +418,7 @@ make_efiboot() {
             mount ${work_dir}/iso/EFI/miso/manjaro.img ${work_dir}/efiboot
 
             mkdir -p ${work_dir}/efiboot/EFI/miso
-            cp ${work_dir}/iso/${install_dir}/boot/x86_64/manjaro ${work_dir}/efiboot/EFI/miso/manjaro.efi
+            cp ${work_dir}/iso/${install_dir}/boot/x86_64/manjaroiso ${work_dir}/efiboot/EFI/miso/manjaroiso.efi
             cp ${work_dir}/iso/${install_dir}/boot/x86_64/manjaro.img ${work_dir}/efiboot/EFI/miso/manjaro.img
 
             mkdir -p ${work_dir}/efiboot/EFI/boot
