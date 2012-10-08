@@ -392,8 +392,8 @@ make_efi() {
             cp efiboot/loader/entries/uefi-shell-v2-x86_64.conf ${work_dir}/iso/loader/entries/
             cp efiboot/loader/entries/uefi-shell-v1-x86_64.conf ${work_dir}/iso/loader/entries/
 
-            sed "s|%ARCHISO_LABEL%|${iso_label}|g;
-                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/archiso-x86_64-usb.conf > ${work_dir}/iso/loader/entries/archiso-x86_64.conf
+            sed "s|%MISO_LABEL%|${iso_label}|g;
+                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-usb.conf > ${work_dir}/iso/loader/entries/manjaroiso-x86_64.conf
 
             # EFI Shell 2.0 for UEFI 2.3+ ( http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=UEFI_Shell )
             wget -O ${work_dir}/iso/EFI/shellx64_v2.efi https://edk2.svn.sourceforge.net/svnroot/edk2/trunk/edk2/ShellBinPkg/UefiShell/X64/Shell.efi
