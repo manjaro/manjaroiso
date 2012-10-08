@@ -238,11 +238,11 @@ _imgcommon () {
         exit 1
     fi
 
-    if [[ ! -f "${work_dir}/iso/isolinux/isolinux.bin" ]]; then
+    if [ ! -f "${work_dir}/iso/isolinux/isolinux.bin" ]; then
          echo "Error: ${work_dir}/iso/isolinux/isolinux.bin, doesn't exist, aborting."
          exit 1
     fi
-    if [[ ! -f "${work_dir}/iso/isolinux/isohdpfx.bin" ]]; then
+    if [ ! -f "${work_dir}/iso/isolinux/isohdpfx.bin" ]; then
          echo "Error: ${work_dir}/iso/isolinux/isohdpfx.bin, doesn't exist, aborting."
          exit 1
     fi
@@ -251,17 +251,17 @@ _imgcommon () {
 command_iso () {
     _imgcommon
 
-    local _iso_efi_boot_args=""
+    _iso_efi_boot_args=""
 
     # If exists, add an EFI "El Torito" boot image (FAT filesystem) to ISO-9660 image.
-    if [[ -f "${work_dir}/iso/EFI/miso/manjaro.img" ]]; then
+    if [ -f "${work_dir}/iso/EFI/miso/manjaro.img" ]; then
         _iso_efi_boot_args="--efi-boot EFI/miso/manjaro.img"
     fi
 
     echo "Creating ISO image..."
     ## Generate the BIOS+ISOHYBRID CD image using xorriso (extra/libisoburn package) in mkisofs emulation mode
-    local _qflag=""
-    if [[ ${quiet} == "y" ]]; then
+    _qflag=""
+    if [ ${QUIET} == "y" ]; then
         _qflag="-quiet"
     fi
     xorriso -as mkisofs ${_qflag} \
@@ -275,8 +275,8 @@ command_iso () {
             -eltorito-catalog isolinux/boot.cat \
             -no-emul-boot -boot-load-size 4 -boot-info-table \
             ${_iso_efi_boot_args} \
-            -isohybrid-mbr isolinux/isohdpfx.bin \
-            -output "${out_dir}/${img_name}" \
+            -isohybrid-mbr "${work_dir}/iso/isolinux/isohdpfx.bin" \
+            -output "${imgname}" \
             "${work_dir}/iso/"
 }
 
