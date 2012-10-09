@@ -143,6 +143,13 @@ b43-fwcutter
 mhwd
 mhwd-db
 
+## Laptop management
+cpupower
+
+## ucode for new cpus
+amd-ucode
+intel-ucode
+
 ## Xorg Packages
 libdnet
 mesa

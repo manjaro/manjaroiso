@@ -212,6 +212,9 @@ zd1211-firmware
 ## Laptop management
 cpupower
 
+## ucode for new cpus
+amd-ucode
+intel-ucode
 
 ## Xorg Packages
 libdnet
