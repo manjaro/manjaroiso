@@ -4991,12 +4991,14 @@ run_mkinitcpio()
 
 _setup_user()
 {
+    addgroups="video,audio,power,disk,storage,optical,network,lp,scanner"
     DIALOG --inputbox "${_enterusername}" 10 65 "manjaro" 2>${ANSWER} || return 1
     REPLY="$(cat ${ANSWER})"
     while [ -z "$(echo $REPLY |grep -E '^[a-z_][a-z0-9_-]*[$]?$')" ];do
        DIALOG --inputbox "${_givecorrectname}" 10 65 "manjaro" 2>${ANSWER} || return 1
        REPLY="$(cat ${ANSWER})"
-    done  
+    done
+
     chroot ${DESTDIR} useradd -m -p "" -g users -G $addgroups $REPLY
 
     PASSWDUSER="$REPLY"
@@ -5043,7 +5045,7 @@ _config_system()
     if [ "${NEXTITEM}" = "${_return_label}" -o -z "${NEXTITEM}" ]; then       # exit
         break
     else
-        $EDITOR ${DESTDIR}${CURRENT_SELECTION}
+        $EDITOR ${DESTDIR}${NEXTITEM}
     fi
 }
 

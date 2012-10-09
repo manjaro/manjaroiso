@@ -30,6 +30,8 @@ CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
 USENONFREE="$(kernel_cmdline nonfree no)"
 PACMAN_LNG="pacman --config /opt/manjaro/pacman-lng.conf --noconfirm --noprogressbar"
 arch=$(uname -m)
+_kernver=$(uname -r)
+EXTRAMODULES=extramodules-${_kernver%.*}-MANJARO
 
 ## Systemd should do it
 #scan_swap
@@ -457,3 +459,6 @@ fi
 
 #load keys
 loadkeys $(cat /etc/vconsole.conf | grep "KEYMAP=" | cut -d= -f2)
+
+#depmod extramodules
+depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
