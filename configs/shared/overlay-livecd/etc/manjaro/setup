@@ -5020,12 +5020,15 @@ _setup_user()
 
 _config_system()
 {
-    if [ -n "${NEXTITEM}" ]; then
-        DEFAULT="--default-item ${NEXTITEM}"
-    else
-        DEFAULT=""
-    fi
-    DIALOG $DEFAULT --menu "Configuration" 17 78 10 \
+    DONE=0
+    NEXTITEM=""
+    while [[ "${DONE}" = "0" ]]; do
+        if [[ -n "${NEXTITEM}" ]]; then
+            DEFAULT="--default-item ${NEXTITEM}"
+        else
+            DEFAULT=""
+        fi
+        DIALOG $DEFAULT --menu "Configuration" 17 78 10 \
             "/etc/fstab"                "${_fstabtext}" \
             "/etc/mkinitcpio.conf"      "${_mkinitcpioconftext}" \
             "/etc/resolv.conf"          "${_resolvconftext}" \
@@ -5040,13 +5043,14 @@ _config_system()
             "/etc/X11/xorg.conf.d/10-evdev.conf"  "${_xorgevdevconftext}" \
             "/etc/vconsole.conf"        "${_vconsoletext}" \
             "${_return_label}"        "${_return_label}" 2>${ANSWER} || NEXTITEM="${_return_label}"
-    NEXTITEM="$(cat ${ANSWER})"
+        NEXTITEM="$(cat ${ANSWER})"
 
-    if [ "${NEXTITEM}" = "${_return_label}" -o -z "${NEXTITEM}" ]; then       # exit
-        break
-    else
-        $EDITOR ${DESTDIR}${NEXTITEM}
-    fi
+        if [ "${NEXTITEM}" = "${_return_label}" -o -z "${NEXTITEM}" ]; then       # exit
+           DONE=1
+        else
+           $EDITOR ${DESTDIR}${NEXTITEM}
+        fi
+    done
 }
 
 _post_process()
