@@ -232,6 +232,7 @@ S_MKFSAUTO=0    # auto fs part/formatting
 S_SELECT=0      # package selection
 S_INSTALL=0     # package installation
 S_CONFIG=0      # configuration editing
+S_PRECONFIG=0   # pre configuration editing
 
 
 # main menu selection tracker
@@ -4988,11 +4989,108 @@ run_mkinitcpio()
     fi
 }
 
+_setup_user()
+{
+    DIALOG --inputbox "${_enterusername}" 10 65 "manjaro" 2>${ANSWER} || return 1
+    REPLY="$(cat ${ANSWER})"
+    while [ -z "$(echo $REPLY |grep -E '^[a-z_][a-z0-9_-]*[$]?$')" ];do
+       DIALOG --inputbox "${_givecorrectname}" 10 65 "manjaro" 2>${ANSWER} || return 1
+       REPLY="$(cat ${ANSWER})"
+    done  
+    chroot ${DESTDIR} useradd -m -p "" -g users -G $addgroups $REPLY
+
+    PASSWDUSER="$REPLY"
+
+    if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
+       cp /var/lib/AccountsService/users/manjaro ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
+       cp -f /var/lib/AccountsService/users/manjaro ${DESTDIR}/var/lib/AccountsService/users/gdm
+    fi
+
+    if DIALOG --yesno "${_addsudouserdl1}${REPLY}${_addsudouserdl2}" 6 40;then
+       echo "${PASSWDUSER}     ALL=(ALL) ALL" >> ${DESTDIR}/etc/sudoers
+       chmod 0440 ${DESTDIR}/etc/sudoers
+    fi
+    set_passwd
+    echo "$PASSWDUSER:$PASSWD" | chroot ${DESTDIR} chpasswd
+    NEXTITEM="Setup-User"
+    DONE_CONFIG=1
+}
+
+_config_system()
+{
+    if [ -n "${NEXTITEM}" ]; then
+        DEFAULT="--default-item ${NEXTITEM}"
+    else
+        DEFAULT=""
+    fi
+    DIALOG $DEFAULT --menu "Configuration" 17 78 10 \
+            "/etc/fstab"                "${_fstabtext}" \
+            "/etc/mkinitcpio.conf"      "${_mkinitcpioconftext}" \
+            "/etc/resolv.conf"          "${_resolvconftext}" \
+            "/etc/hostname"             "${_hostnametext}" \
+            "/etc/hosts"                "${_hoststext}" \
+            "/etc/hosts.deny"           "${_hostsdenytext}" \
+            "/etc/hosts.allow"          "${_hostsallowtext}" \
+            "/etc/locale.gen"           "${_localegentext}" \
+            "/etc/locale.conf"           "${_localeconftext}" \
+            "/etc/environment"           "${_environmenttext}" \
+            "/etc/pacman.d/mirrorlist"  "${_mirrorlisttext}" \
+            "/etc/X11/xorg.conf.d/10-evdev.conf"  "${_xorgevdevconftext}" \
+            "/etc/vconsole.conf"        "${_vconsoletext}" \
+            "${_return_label}"        "${_return_label}" 2>${ANSWER} || NEXTITEM="${_return_label}"
+    NEXTITEM="$(cat ${ANSWER})"
+
+    if [ "${NEXTITEM}" = "${_return_label}" -o -z "${NEXTITEM}" ]; then       # exit
+        break
+    else
+        $EDITOR ${DESTDIR}${CURRENT_SELECTION}
+    fi
+}
+
+_post_process()
+{
+    ## POSTPROCESSING ##
+    # /etc/locale.gen
+    #
+    DIALOG --infobox "${_localegen}" 0 0
+    chroot ${DESTDIR} locale-gen &> /dev/null
+
+    # installing localization packages
+    if [ ! -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
+       PACMAN_LNG_INST_KDE=""
+    fi
+
+    if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+       ${PACMAN_LNG} -Sy ${PACMAN_LNG_INST} ${PACMAN_LNG_INST_KDE} &> /dev/null
+    fi
+
+    # /etc/localtime
+    cp /etc/localtime ${DESTDIR}/etc/localtime &> /dev/null
+    if [ -e "/etc/adjtime" ] ; then
+       cp /etc/adjtime ${DESTDIR}/etc/adjtime &> /dev/null
+    fi
+
+    # sync pacman databases
+    DIALOG --infobox "${_syncpacmandb}" 0 0
+    sleep 3
+    chroot ${DESTDIR} pacman -Syy &> /dev/null
+
+    # create kernel images    
+    run_mkinitcpio
+
+    ## END POSTPROCESSING ##
+    # TODO add end cleaning
+
+    S_CONFIG=1
+    NEXTITEM=5
+    _system_is_configured=1
+}
+
 configure_system()
 {
     ## PREPROCESSING ##
     # only done on first invocation of configure_system
-    if [ $S_CONFIG -eq 0 ]; then
+    if [ $S_PRECONFIG -eq 0 ]; then
         #edit /etc/locale.conf & /etc/environment
         echo "LANG=${LOCALE}.UTF-8" > ${DESTDIR}/etc/locale.conf
         echo "LC_COLLATE=C" >> ${DESTDIR}/etc/locale.conf
@@ -5245,13 +5343,18 @@ configure_system()
 	fi
     fi
 
+    S_PRECONFIG=1
     ## END PREPROCESS ##
 
-    local NEXTITEM=""
-    while true; do
-       # if [ -n "${NEXTITEM}" ]; then
-       #     DEFAULT="--default-item ${NEXTITEM}"
-       # else
+    DONE=0
+    DONE_CONFIG=""
+    NEXTITEM=""
+    while [[ "${DONE}" = "0" ]]; do
+        if [[ -n "${NEXTITEM}" ]]; then
+            DEFAULT="--default-item ${NEXTITEM}"
+        else
+            DEFAULT=""
+        fi
 
         DIALOG $DEFAULT --menu "Configuration" 17 78 10 \
             "Root-Password"             "${_definerootpass}" \
@@ -5262,118 +5365,32 @@ configure_system()
             "${_return_label}"          "${_mainmenulabel}" 2>${ANSWER} || NEXTITEM="${_return_label}"
         NEXTITEM="$(cat ${ANSWER})"
 
-        if [ "${NEXTITEM}" = "${_return_label}" -o -z "${NEXTITEM}" ]; then       # exit
-            break
-        elif [ "${NEXTITEM}" = "Root-Password" ]; then
-            while true; do
+        case $(cat ${ANSWER}) in
+            "Root-Password")
                 PASSWDUSER="root"
                 set_passwd
-                echo "$PASSWDUSER:$PASSWD" | chroot ${DESTDIR} chpasswd && break
-            done
-        elif [ "${NEXTITEM}" = "Setup-User" ]; then
-            while true; do
-                addgroups="video,audio,power,disk,storage,optical,network,lp,scanner"
-
-                DIALOG --inputbox "${_enterusername}" 10 65 "manjaro" 2>${ANSWER} || return 1
-                REPLY="$(cat ${ANSWER})"
-                  while [ -z "$(echo $REPLY |grep -E '^[a-z_][a-z0-9_-]*[$]?$')" ];do
-                   DIALOG --inputbox "${_givecorrectname}" 10 65 "manjaro" 2>${ANSWER} || return 1
-                   REPLY="$(cat ${ANSWER})"
-                  done  
-                chroot ${DESTDIR} useradd -m -p "" -g users -G $addgroups $REPLY
-
-                PASSWDUSER="$REPLY"
-
-                if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
-		   cp /var/lib/AccountsService/users/manjaro ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
-		   cp -f /var/lib/AccountsService/users/manjaro ${DESTDIR}/var/lib/AccountsService/users/gdm
-                fi
-
-                if DIALOG --yesno "${_addsudouserdl1}${REPLY}${_addsudouserdl2}" 6 40;then
-                   echo "${PASSWDUSER}     ALL=(ALL) ALL" >> ${DESTDIR}/etc/sudoers
-                   chmod 0440 ${DESTDIR}/etc/sudoers
-                fi
-                set_passwd
-                echo "$PASSWDUSER:$PASSWD" | chroot ${DESTDIR} chpasswd && break
-            done
-        elif [ "${NEXTITEM}" = "Setup-Locale" ]; then
-            while true; do
-                set_language && break
-            done
-        elif [ "${NEXTITEM}" = "Setup-Keymap" ]; then
-            while true; do
-                set_keyboard && break
-            done
-        elif [ "${NEXTITEM}" = "Config-System" ]; then
-    while true; do
-        if [ -n "${NEXTITEM}" ]; then
-            DEFAULT="--default-item ${NEXTITEM}"
-        else
-            DEFAULT=""
-        fi
-        DIALOG $DEFAULT --menu "Configuration" 17 78 10 \
-            "/etc/fstab"                "${_fstabtext}" \
-            "/etc/mkinitcpio.conf"      "${_mkinitcpioconftext}" \
-            "/etc/resolv.conf"          "${_resolvconftext}" \
-            "/etc/hostname"             "${_hostnametext}" \
-            "/etc/hosts"                "${_hoststext}" \
-            "/etc/hosts.deny"           "${_hostsdenytext}" \
-            "/etc/hosts.allow"          "${_hostsallowtext}" \
-            "/etc/locale.gen"           "${_localegentext}" \
-            "/etc/locale.conf"           "${_localeconftext}" \
-            "/etc/environment"           "${_environmenttext}" \
-            "/etc/pacman.d/mirrorlist"  "${_mirrorlisttext}" \
-            "/etc/X11/xorg.conf.d/10-evdev.conf"  "${_xorgevdevconftext}" \
-            "/etc/vconsole.conf"        "${_vconsoletext}" \
-            "${_return_label}"        "${_return_label}" 2>${ANSWER} || NEXTITEM="${_return_label}"
-        NEXTITEM="$(cat ${ANSWER})"
-
-        if [ "${NEXTITEM}" = "${_return_label}" -o -z "${NEXTITEM}" ]; then       # exit
-            break
-        else
-            $EDITOR ${DESTDIR}${CURRENT_SELECTION}
-        fi
+                echo "$PASSWDUSER:$PASSWD" | chroot ${DESTDIR} chpasswd
+                DONE_CONFIG="1"
+                NEXTITEM="Setup-User" ;;
+            "Setup-User")
+                _setup_user && NEXTITEM="Setup-User" ;;
+            "Setup-Locale")
+                set_language && NEXTITEM="${_return_label}" ;;
+            "Setup-Keymap")
+                set_keyboard && NEXTITEM="${_return_label}" ;;
+            "Config-System")
+                _config_system && NEXTITEM="${_return_label}" ;;
+            "${_return_label}")
+                DONE="1" ;;
+             *)
+                DONE="1" ;;
+        esac
     done
-        else
-            $EDITOR ${DESTDIR}${CURRENT_SELECTION}
-        fi
-    done
-
-    ## POSTPROCESSING ##
-    # /etc/locale.gen
-    #
-    DIALOG --infobox "${_localegen}" 0 0
-    chroot ${DESTDIR} locale-gen &> /dev/null
-
-    # installing localization packages
-    if [ ! -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
-       PACMAN_LNG_INST_KDE=""
+    if [[ "${DONE_CONFIG}" = "1" ]]; then
+       _post_process
+    else
+       NEXTITEM="4"
     fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-       ${PACMAN_LNG} -Sy ${PACMAN_LNG_INST} ${PACMAN_LNG_INST_KDE} &> /dev/null
-    fi
-
-    # /etc/localtime
-    cp /etc/localtime ${DESTDIR}/etc/localtime &> /dev/null
-    if [ -e "/etc/adjtime" ] ; then
-       cp /etc/adjtime ${DESTDIR}/etc/adjtime &> /dev/null
-    fi
-
-    # sync pacman databases
-    DIALOG --infobox "${_syncpacmandb}" 0 0
-    sleep 3
-    chroot ${DESTDIR} pacman -Syy &> /dev/null
-
-    # create kernel images    
-    run_mkinitcpio
-
-    ## END POSTPROCESSING ##
-    # TODO add end cleaning
-
-    S_CONFIG=1
-    NEXTITEM=5
-    _system_is_configured=1
 }
 
 mainmenu()
