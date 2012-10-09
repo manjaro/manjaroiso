@@ -171,6 +171,7 @@ _none_label="None"
 
 _mainmenuhelp="Use ↓ and ↑ to choose an entry, enter to launch it." 
 _datetimetext="Set date and time"
+_networktext="Set up Network"
 _preparediskstext="Disk(s) preparation"
 _installsystemtext="Install system"
 _configuresystemtext="Configure system"
@@ -234,7 +235,6 @@ S_CONFIG=0      # configuration editing
 
 
 # main menu selection tracker
-CURRENT_SELECTION=""
 NEXTITEM=""
 
 DIALOG() {
@@ -2701,6 +2701,13 @@ _mkfs() {
     fi
 }
 
+# list all net devices with mac adress
+net_interfaces() {
+    for i in $(ls /sys/class/net); do 
+        echo "$i $(cat /sys/class/net/$i/address)"
+    done
+}
+
 # donetwork()
 # Hand-hold through setting up networking
 #
@@ -4407,6 +4414,7 @@ installsystem() {
     sync
 
     S_INSTALL=1
+    NEXTITEM=4
 
     # automagic time!
     # any automatic configuration should go here
@@ -4488,9 +4496,9 @@ install_bootloader_menu() {
     esac
     
     if [[ "${CANCEL}" = "1" ]]; then
-        NEXTITEM="8"
+        NEXTITEM="5"
     else
-        NEXTITEM="9"
+        NEXTITEM="6"
     fi
 }
 
@@ -4717,19 +4725,19 @@ hd_config()
 set_passwd()
 {
     # trap tmp-file for passwd
-    trap "rm -f $ANSWER" 0 1 2 5 15
+    trap "rm -f ${ANSWER}" 0 1 2 5 15
  
     # get password
     DIALOG --title "$_passwdtitle" \
     --clear \
     --insecure \
-    --passwordbox "$_passwddl $PASSWDUSER" 10 30 2> $ANSWER
-    PASSWD="$(cat $ANSWER)"
+    --passwordbox "$_passwddl $PASSWDUSER" 10 30 2> ${ANSWER}
+    PASSWD="$(cat ${ANSWER})"
     DIALOG --title "$_passwdtitle" \
     --clear \
     --insecure \
-    --passwordbox "$_passwddl2 $PASSWDUSER" 10 30 2> $ANSWER
-    PASSWD2="$(cat $ANSWER)"
+    --passwordbox "$_passwddl2 $PASSWDUSER" 10 30 2> ${ANSWER}
+    PASSWD2="$(cat ${ANSWER})"
     if [ "$PASSWD" == "$PASSWD2" ]; then
        PASSWD=$PASSWD
      _passwddl=$_passwddl1
@@ -4786,8 +4794,8 @@ set_clock()
     DIALOG --menu "${_machinetimezone}" 10 72 2 \
         "UTC" " " \
         "localtime" " " \
-        2>$ANSWER || return 1
-    HARDWARECLOCK=$(cat $ANSWER)
+        2>${ANSWER} || return 1
+    HARDWARECLOCK=$(cat ${ANSWER})
 
     # timezone?
     REGIONS=""
@@ -4799,17 +4807,17 @@ set_clock()
     while [ -z "$zone" ];do
       region=""
       while [ -z "$region" ];do
-        :>$ANSWER
-        DIALOG --menu "${_selectregion}" 0 0 0 $REGIONS 2>$ANSWER
-        region=$(cat $ANSWER)
+        :>${ANSWER}
+        DIALOG --menu "${_selectregion}" 0 0 0 $REGIONS 2>${ANSWER}
+        region=$(cat ${ANSWER})
       done
       ZONES=""
       for i in $(grep '^[A-Z]' /usr/share/zoneinfo/zone.tab | grep $region/ | cut -f 3 | sed -e "s#$region/##g"| sort -u); do
         ZONES="$ZONES $i -"
       done
-      :>$ANSWER
-      DIALOG --menu "${_selecttimezone}" 0 0 0 $ZONES 2>$ANSWER
-      zone=$(cat $ANSWER)
+      :>${ANSWER}
+      DIALOG --menu "${_selecttimezone}" 0 0 0 $ZONES 2>${ANSWER}
+      zone=$(cat ${ANSWER})
     done
     TIMEZONE="$region/$zone"
 
@@ -4830,10 +4838,10 @@ set_clock()
     /sbin/hwclock --hctosys $HWCLOCK_PARAMS --noadjfile
 
     # display and ask to set date/time
-    DIALOG --calendar "${_choosedatetime}" 0 0 0 0 0 2> $ANSWER || return 1
-    local _date="$(cat $ANSWER)"
-    DIALOG --timebox "${_choosehourtime}" 0 0 2> $ANSWER || return 1
-    local _time="$(cat $ANSWER)"
+    DIALOG --calendar "${_choosedatetime}" 0 0 0 0 0 2> ${ANSWER} || return 1
+    local _date="$(cat ${ANSWER})"
+    DIALOG --timebox "${_choosehourtime}" 0 0 2> ${ANSWER} || return 1
+    local _time="$(cat ${ANSWER})"
     echo "date: $_date time: $_time" >$LOG
 
     # save the time
@@ -4844,6 +4852,7 @@ set_clock()
     /sbin/hwclock --systohc $HWCLOCK_PARAMS --noadjfile
 
     S_CLOCK=1
+    NEXTITEM="1"
 }
 
 prepare_harddrive() {
@@ -4885,9 +4894,9 @@ prepare_harddrive() {
         esac
     done
     if [[ "${CANCEL}" = "1" ]]; then
-        NEXTITEM="3"
+        NEXTITEM="2"
     else
-        NEXTITEM="4"
+        NEXTITEM="3"
     fi
 }
 
@@ -4963,11 +4972,11 @@ run_mkinitcpio()
     sleep 2
 
     DIALOG --title "${_runninginitcpiotitle}" \
-        --no-kill --tailboxbg "/tmp/mkinitcpio.log" 18 70 2>$ANSWER
+        --no-kill --tailboxbg "/tmp/mkinitcpio.log" 18 70 2>${ANSWER}
     while [ -f /tmp/setup-mkinitcpio-running ]; do
         sleep 1
     done
-    kill $(cat $ANSWER)
+    kill $(cat ${ANSWER})
 
     chroot_umount
 
@@ -5238,10 +5247,10 @@ configure_system()
 
     ## END PREPROCESS ##
 
-    local CURRENT_SELECTION=""
+    local NEXTITEM=""
     while true; do
-       # if [ -n "$CURRENT_SELECTION" ]; then
-       #     DEFAULT="--default-item $CURRENT_SELECTION"
+       # if [ -n "${NEXTITEM}" ]; then
+       #     DEFAULT="--default-item ${NEXTITEM}"
        # else
 
         DIALOG $DEFAULT --menu "Configuration" 17 78 10 \
@@ -5250,26 +5259,26 @@ configure_system()
             "Setup-Locale"              "${_definelocale}" \
             "Setup-Keymap"              "${_definekeymap}" \
             "Config-System"             "${_doeditconfig}" \
-            "${_return_label}"          "${_mainmenulabel}" 2>$ANSWER || CURRENT_SELECTION="${_return_label}"
-        CURRENT_SELECTION="$(cat $ANSWER)"
+            "${_return_label}"          "${_mainmenulabel}" 2>${ANSWER} || NEXTITEM="${_return_label}"
+        NEXTITEM="$(cat ${ANSWER})"
 
-        if [ "$CURRENT_SELECTION" = "${_return_label}" -o -z "$CURRENT_SELECTION" ]; then       # exit
+        if [ "${NEXTITEM}" = "${_return_label}" -o -z "${NEXTITEM}" ]; then       # exit
             break
-        elif [ "$CURRENT_SELECTION" = "Root-Password" ]; then
+        elif [ "${NEXTITEM}" = "Root-Password" ]; then
             while true; do
                 PASSWDUSER="root"
                 set_passwd
                 echo "$PASSWDUSER:$PASSWD" | chroot ${DESTDIR} chpasswd && break
             done
-        elif [ "$CURRENT_SELECTION" = "Setup-User" ]; then
+        elif [ "${NEXTITEM}" = "Setup-User" ]; then
             while true; do
                 addgroups="video,audio,power,disk,storage,optical,network,lp,scanner"
 
-                DIALOG --inputbox "${_enterusername}" 10 65 "manjaro" 2>$ANSWER || return 1
-                REPLY="$(cat $ANSWER)"
+                DIALOG --inputbox "${_enterusername}" 10 65 "manjaro" 2>${ANSWER} || return 1
+                REPLY="$(cat ${ANSWER})"
                   while [ -z "$(echo $REPLY |grep -E '^[a-z_][a-z0-9_-]*[$]?$')" ];do
-                   DIALOG --inputbox "${_givecorrectname}" 10 65 "manjaro" 2>$ANSWER || return 1
-                   REPLY="$(cat $ANSWER)"
+                   DIALOG --inputbox "${_givecorrectname}" 10 65 "manjaro" 2>${ANSWER} || return 1
+                   REPLY="$(cat ${ANSWER})"
                   done  
                 chroot ${DESTDIR} useradd -m -p "" -g users -G $addgroups $REPLY
 
@@ -5287,18 +5296,18 @@ configure_system()
                 set_passwd
                 echo "$PASSWDUSER:$PASSWD" | chroot ${DESTDIR} chpasswd && break
             done
-        elif [ "$CURRENT_SELECTION" = "Setup-Locale" ]; then
+        elif [ "${NEXTITEM}" = "Setup-Locale" ]; then
             while true; do
                 set_language && break
             done
-        elif [ "$CURRENT_SELECTION" = "Setup-Keymap" ]; then
+        elif [ "${NEXTITEM}" = "Setup-Keymap" ]; then
             while true; do
                 set_keyboard && break
             done
-        elif [ "$CURRENT_SELECTION" = "Config-System" ]; then
+        elif [ "${NEXTITEM}" = "Config-System" ]; then
     while true; do
-        if [ -n "$CURRENT_SELECTION" ]; then
-            DEFAULT="--default-item $CURRENT_SELECTION"
+        if [ -n "${NEXTITEM}" ]; then
+            DEFAULT="--default-item ${NEXTITEM}"
         else
             DEFAULT=""
         fi
@@ -5316,10 +5325,10 @@ configure_system()
             "/etc/pacman.d/mirrorlist"  "${_mirrorlisttext}" \
             "/etc/X11/xorg.conf.d/10-evdev.conf"  "${_xorgevdevconftext}" \
             "/etc/vconsole.conf"        "${_vconsoletext}" \
-            "${_return_label}"        "${_return_label}" 2>$ANSWER || CURRENT_SELECTION="${_return_label}"
-        CURRENT_SELECTION="$(cat $ANSWER)"
+            "${_return_label}"        "${_return_label}" 2>${ANSWER} || NEXTITEM="${_return_label}"
+        NEXTITEM="$(cat ${ANSWER})"
 
-        if [ "$CURRENT_SELECTION" = "${_return_label}" -o -z "$CURRENT_SELECTION" ]; then       # exit
+        if [ "${NEXTITEM}" = "${_return_label}" -o -z "${NEXTITEM}" ]; then       # exit
             break
         else
             $EDITOR ${DESTDIR}${CURRENT_SELECTION}
@@ -5363,28 +5372,32 @@ configure_system()
     # TODO add end cleaning
 
     S_CONFIG=1
-  _system_is_configured=1
+    NEXTITEM=5
+    _system_is_configured=1
 }
 
 mainmenu()
 {
-    if [ -n "$CURRENT_SELECTION" ]; then
-        DEFAULT="--default-item $CURRENT_SELECTION"
+    if [ -n "${NEXTITEM}" ]; then
+        DEFAULT="--default-item ${NEXTITEM}"
     else
         DEFAULT=""
     fi
     DIALOG $DEFAULT --title " ${_mainmenulabel} " \
         --menu "${_mainmenuhelp}" 16 55 8 \
-        "1" "${_datetimetext}" \
+        "0" "${_datetimetext}" \
+        "1" "${_networktext}" \
         "2" "${_preparediskstext}" \
         "3" "${_installsystemtext}" \
         "4" "${_configuresystemtext}" \
         "5" "${_instbootloadertext}" \
-        "6" "${_quittext}" 2>$ANSWER
-    CURRENT_SELECTION="$(cat $ANSWER)"
-    case $(cat $ANSWER) in
-        "1")
+        "6" "${_quittext}" 2>${ANSWER}
+    NEXTITEM="$(cat ${ANSWER})"
+    case $(cat ${ANSWER}) in
+        "0")
             set_clock ;;
+        "1")
+            donetwork ;;
         "2")
             prepare_harddrive
         ;;

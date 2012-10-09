@@ -200,6 +200,7 @@ ipw2200-fw
 mobile-broadband-provider-info
 modemmanager
 nbd
+netcfg
 networkmanager
 networkmanager-dispatcher-ntpd-systemd
 openresolv

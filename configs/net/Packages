@@ -126,6 +126,7 @@ reiserfsprogs
 xfsprogs
 
 ## Network
+netcfg
 networkmanager
 usb_modeswitch
 modemmanager
