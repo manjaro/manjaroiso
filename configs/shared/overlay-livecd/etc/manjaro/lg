@@ -59,7 +59,11 @@ dolanguages() {
         sed -i "s/#\(${locale}\)/\1/" ${DESTDIR}/etc/locale.gen
         echo "LANG=${locale}" > ${DESTDIR}/etc/locale.conf
         echo "LC_COLLATE=C" >> ${DESTDIR}/etc/locale.conf
-        echo "LANG=${locale}" >> ${DESTDIR}/etc/environment
+        if [[ "$(cat ${DESTDIR}/etc/environment | grep LANG=)" = "" ]]; then
+           echo "LANG=${locale}" >> ${DESTDIR}/etc/environment
+        else
+           sed -i -e "s/^.*LANG=.*/LANG=${locale}/" ${DESTDIR}/etc/environment
+        fi
     fi
 S_NEXTITEM=2
 }
