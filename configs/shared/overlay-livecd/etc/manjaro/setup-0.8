@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Basis settings
-TITLE="Manjaro Linux CLI Installation (stable)"
+TITLE="Manjaro Linux Installation Framework (stable)"
 PKG_OVERLAY="/opt/manjaro/pkgs"
 #DIALOGRC="./setuprc"
 manjaro_kernel="linux"
@@ -179,7 +179,7 @@ _instbootloadertext="Install bootloader"
 _quittext="Quit"
 _installationfinished='Installation finished!'
 _cancelinstall="Cancel installation?"
-_instwelcomemessage="Welcome to the Manjaro Linux cli installation program. \nSimply follow the steps in order"
+_instwelcomemessage="Welcome to the STABLE Manjaro Linux CLI installation program. \nThis version is known to work best installing Manjaro to your harddrive. \nSimply follow the steps in order ..."
 _forgotsystemconf="Information\n\nYou forgot to configurate your system."
 _forgotinstalling="Information\n\nInstalling before configuring would seem more logical."
 _forgotpreparehd="Information\n\nPrepare your HDD first."
@@ -1509,6 +1509,7 @@ prepare_harddrive()
     S_MKFS=0
     DONE=0
     NEXTITEM=""
+    CANCEL="1"
     while [[ "${DONE}" = "0" ]]; do
         if [[ -n "${NEXTITEM}" ]]; then
             DEFAULT="--default-item ${NEXTITEM}"
@@ -1523,12 +1524,16 @@ prepare_harddrive()
         case $(cat ${ANSWER}) in
             "1")
                 autoprepare
-                _hd_is_prepared=1 ;;
+                CANCEL="0"
+                _hd_is_prepared=1 
+                NEXTITEM="3";;
             "2")
                 partition
                 PARTFINISH=""
                 mountpoints
-                _hd_is_prepared=1 ;;
+                CANCEL="0"
+                _hd_is_prepared=1 
+                NEXTITEM="3";;
             *)
                 DONE=1 ;;
         esac
