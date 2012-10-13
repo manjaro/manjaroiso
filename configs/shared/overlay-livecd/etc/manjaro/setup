@@ -43,6 +43,7 @@ mainmenu()
     CURRENT_SELECTION="$(cat $ANSWER)"
     case $(cat $ANSWER) in
         "1")
+            DIALOG --infobox "${_loadinginstaller}" 6 40
             /etc/manjaro/setup-0.8
             exit 0
         ;;
