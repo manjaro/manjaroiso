@@ -1,0 +1,36 @@
+#!/bin/bash
+# update setup
+
+# do UID checking here so someone can at least get usage instructions
+if [ "$EUID" != "0" ]; then
+    echo "error: This script must be run as root."
+    exit 1
+fi
+
+# force to use english
+export LANG=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+
+if [ ! -e "/etc/manjaro" ] ; then
+   echo "error: This script must be run on livecd."
+fi
+
+echo "Cleaning framework..."
+rm /etc/manjaro/km
+rm /etc/manjaro/lg
+rm /etc/manjaro/setu*
+
+echo "Downloading new framework..."
+wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/overlay-livecd/etc/manjaro/km -O /etc/manjaro/km
+wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/overlay-livecd/etc/manjaro/lg -O /etc/manjaro/lg
+wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/overlay-livecd/etc/manjaro/setup -O /etc/manjaro/setup
+wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/overlay-livecd/etc/manjaro/setup-0.8 -O /etc/manjaro/setup-0.8
+wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/overlay-livecd/etc/manjaro/setup-0.9 -O /etc/manjaro/setup-0.9
+chmod a+x /etc/manjaro/km
+chmod a+x /etc/manjaro/lg
+chmod a+x /etc/manjaro/setup
+chmod a+x /etc/manjaro/setup-0.8
+chmod a+x /etc/manjaro/setup-0.9
+
+clear
+echo "Update done. Start with 'sudo setup'"
