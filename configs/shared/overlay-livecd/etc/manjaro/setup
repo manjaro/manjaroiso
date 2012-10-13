@@ -6,6 +6,7 @@ _mainmenuhelp="Use ↓ and ↑ to choose an entry, enter to launch it."
 _mainmenulabel="Wrapper menu"
 _stableinstaller="Use stable installer"
 _testinginstaller="Use testing installer (EFI support)"
+_loadinginstaller="Loading installer. Please wait ..."
 _quittext="Quit"
 _exitwrapper="Quit Installer Wrapper?"
 _cancelwrapper="Cancel installation?"
@@ -46,6 +47,7 @@ mainmenu()
             exit 0
         ;;
         "2")
+            DIALOG --infobox "${_loadinginstaller}" 6 40
             /etc/manjaro/setup-0.9
             exit 0
         ;;
