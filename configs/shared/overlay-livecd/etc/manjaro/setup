@@ -42,11 +42,11 @@ mainmenu()
     CURRENT_SELECTION="$(cat $ANSWER)"
     case $(cat $ANSWER) in
         "1")
-            ./setup-0.8
+            /etc/manjaro/setup-0.8
             exit 0
         ;;
         "2")
-            ./setup-0.9
+            /etc/manjaro/setup-0.9
             exit 0
         ;;
         "3")
