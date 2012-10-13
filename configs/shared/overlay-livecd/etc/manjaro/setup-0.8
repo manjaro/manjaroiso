@@ -2016,9 +2016,9 @@ configure_system()
             "Setup-User")
                 _setup_user && NEXTITEM="Setup-User" ;;
             "Setup-Locale")
-                set_language && NEXTITEM="${_return_label}" ;;
+                set_language && NEXTITEM="Setup-Locale" ;;
             "Setup-Keymap")
-                set_keyboard && NEXTITEM="${_return_label}" ;;
+                set_keyboard && NEXTITEM="Setup-Keymap" ;;
             "Config-System")
                 _config_system && NEXTITEM="${_return_label}" ;;
             "${_return_label}")
