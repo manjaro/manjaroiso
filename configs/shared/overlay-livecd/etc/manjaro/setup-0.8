@@ -1391,6 +1391,11 @@ dogrub() {
     chroot ${DESTDIR} mkdir -p /boot/grub/locale
     chroot ${DESTDIR} cp /usr/share/locale/en@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
 
+    # remove splash if no plymouth was found
+    if [ ! -e ${DESTDIR}/etc/plymouth/plymouthd.conf ] ; then
+       sed -i -e "s,GRUB_CMDLINE_LINUX_DEFAULT=.*,GRUB_CMDLINE_LINUX_DEFAULT=\"`cat $DESTDIR/etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT | sed s'/splash //'g`\",g" $DESTDIR/etc/default/grub
+    fi
+
     # generate resume string for suspend to disk
     [ -z "${swap_partition}" -o "${swap_partition}" = "${_none_entry}" ] || sed -i -e "s,GRUB_CMDLINE_LINUX_DEFAULT=.*,GRUB_CMDLINE_LINUX_DEFAULT=\"`cat $DESTDIR/etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT | cut -d'"' -f2` resume=/dev/disk/by-uuid/`blkid -s UUID -o value -p ${swap_partition}`\",g" $DESTDIR/etc/default/grub
 
