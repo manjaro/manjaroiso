@@ -157,9 +157,6 @@ ttf-dejavu
 ttf-inconsolata
 ttf-indic-otf
 ttf-liberation
-freetype2-infinality
-fontconfig-infinality
->x86_64 lib32-freetype2-infinality
 
 
 ## Artwork
