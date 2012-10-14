@@ -5061,54 +5061,68 @@ _configure_translation_pkgs()
 {
     # Determind which language we are using
     if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-	if [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "en_US")" != "" ]; then
-           PACMAN_LNG_INST="hunspell-en libreoffice-en-US"
-	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "en_GB")" != "" ]; then
-           PACMAN_LNG_INST="firefox-i18n-en-gb thunderbird-i18n-en-gb libreoffice-en-GB hunspell-en"
-	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "be_BY")" != "" ]; then
+	#Belarusian
+	if [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "be_BY")" != "" ]; then
 	   PACMAN_LNG_INST="firefox-i18n-be thunderbird-i18n-be libreoffice-be"
-	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "pt_BR")" != "" ]; then
-	   PACMAN_LNG_INST="firefox-i18n-pt-br thunderbird-i18n-pt-br libreoffice-pt-BR"
-	   PACMAN_LNG_INST_KDE="kde-l10n-pt_br"
+	#Bulgarian
 	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "bg_BG")" != "" ]; then
 	   PACMAN_LNG_INST="firefox-i18n-bg thunderbird-i18n-bg libreoffice-bg"
 	   PACMAN_LNG_INST_KDE="kde-l10n-bg"
-	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "fr_FR")" != "" ]; then
-	   PACMAN_LNG_INST="firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr"
-	   PACMAN_LNG_INST_KDE="kde-l10n-fr"
-	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "fr_CA")" != "" ]; then
-	   PACMAN_LNG_INST="firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr"
-	   PACMAN_LNG_INST_KDE="kde-l10n-fr"
-	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "de_DE")" != "" ]; then
+	#German
+	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "de")" != "" ]; then
 	   PACMAN_LNG_INST="firefox-i18n-de thunderbird-i18n-de hunspell-de libreoffice-de"
 	   PACMAN_LNG_INST_KDE="kde-l10n-de"
-	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "it_IT")" != "" ]; then
-	   PACMAN_LNG_INST="firefox-i18n-it thunderbird-i18n-it hunspell-it libreoffice-it"
-	   PACMAN_LNG_INST_KDE="kde-l10n-it"
-	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "pl_PL")" != "" ]; then
-	   PACMAN_LNG_INST="firefox-i18n-pl thunderbird-i18n-pl hunspell-pl libreoffice-pl"
-	   PACMAN_LNG_INST_KDE="kde-l10n-pl"
-	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "pt_PT")" != "" ]; then
-	   PACMAN_LNG_INST="firefox-i18n-pt-pt thunderbird-i18n-pt-pt libreoffice-pt"
-	   PACMAN_LNG_INST_KDE="kde-l10n-pt"
-	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "ro_RO")" != "" ]; then
-	   PACMAN_LNG_INST="firefox-i18n-ro thunderbird-i18n-ro hunspell-ro libreoffice-ro"
-	   PACMAN_LNG_INST_KDE="kde-l10n-ro"
-	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "ru_RU")" != "" ]; then
-	   PACMAN_LNG_INST="firefox-i18n-ru thunderbird-i18n-ru libreoffice-ru"
-	   PACMAN_LNG_INST_KDE="kde-l10n-ru"
+	#English
+	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "en")" != "" ]; then
+           PACMAN_LNG_INST="hunspell-en libreoffice-en-US"
+	#British English
+	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "en_GB")" != "" ]; then
+           PACMAN_LNG_INST="firefox-i18n-en-gb thunderbird-i18n-en-gb libreoffice-en-GB hunspell-en"
+	#Espanol
+	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "es")" != "" ]; then
+	   PACMAN_LNG_INST="firefox-i18n-es-es thunderbird-i18n-es-es hunspell-es libreoffice-es"
+	   PACMAN_LNG_INST_KDE="kde-l10n-es"
+	#Espanol (Argentina)
 	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "es_AR")" != "" ]; then
 	   PACMAN_LNG_INST="firefox-i18n-es-ar thunderbird-i18n-es-ar hunspell-es libreoffice-es"
 	   PACMAN_LNG_INST_KDE="kde-l10n-es"
-	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "es_ES")" != "" ]; then
-	   PACMAN_LNG_INST="firefox-i18n-es-es thunderbird-i18n-es-es hunspell-es libreoffice-es"
-	   PACMAN_LNG_INST_KDE="kde-l10n-es"
-	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "sv_SE")" != "" ]; then
+	#Francais
+	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "fr")" != "" ]; then
+	   PACMAN_LNG_INST="firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr"
+	   PACMAN_LNG_INST_KDE="kde-l10n-fr"
+	#Italian
+	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "it")" != "" ]; then
+	   PACMAN_LNG_INST="firefox-i18n-it thunderbird-i18n-it hunspell-it libreoffice-it"
+	   PACMAN_LNG_INST_KDE="kde-l10n-it"
+	#Polish
+	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "pl_PL")" != "" ]; then
+	   PACMAN_LNG_INST="firefox-i18n-pl thunderbird-i18n-pl hunspell-pl libreoffice-pl"
+	   PACMAN_LNG_INST_KDE="kde-l10n-pl"
+	#Brazilian Portuguese
+	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "pt_BR")" != "" ]; then
+	   PACMAN_LNG_INST="firefox-i18n-pt-br thunderbird-i18n-pt-br libreoffice-pt-BR"
+	   PACMAN_LNG_INST_KDE="kde-l10n-pt_br"
+	#Portuguese
+	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "pt_PT")" != "" ]; then
+	   PACMAN_LNG_INST="firefox-i18n-pt-pt thunderbird-i18n-pt-pt libreoffice-pt"
+	   PACMAN_LNG_INST_KDE="kde-l10n-pt"
+	#Romanian
+	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "ro_RO")" != "" ]; then
+	   PACMAN_LNG_INST="firefox-i18n-ro thunderbird-i18n-ro hunspell-ro libreoffice-ro"
+	   PACMAN_LNG_INST_KDE="kde-l10n-ro"
+	#Russian
+	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "ru")" != "" ]; then
+	   PACMAN_LNG_INST="firefox-i18n-ru thunderbird-i18n-ru libreoffice-ru"
+	   PACMAN_LNG_INST_KDE="kde-l10n-ru"
+	#Swedish
+	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "sv")" != "" ]; then
 	   PACMAN_LNG_INST="firefox-i18n-sv-se thunderbird-i18n-sv-se libreoffice-sv"
 	   PACMAN_LNG_INST_KDE="kde-l10n-sv"
-	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "tr_TR")" != "" ]; then
+	#Turkish
+	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "tr")" != "" ]; then
 	   PACMAN_LNG_INST="firefox-i18n-tr thunderbird-i18n-tr libreoffice-tr"
 	   PACMAN_LNG_INST_KDE="kde-l10n-tr"
+	#Ukrainian
 	elif [ "$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1 | grep "uk_UA")" != "" ]; then
 	   PACMAN_LNG_INST="firefox-i18n-uk thunderbird-i18n-uk libreoffice-uk"
 	   PACMAN_LNG_INST_KDE="kde-l10n-uk"
