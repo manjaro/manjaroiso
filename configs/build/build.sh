@@ -6,9 +6,9 @@ if [ "$EUID" != "0" ]; then
     exit 1
 fi
 
-xfce="N"
-gnome="N"
-kde="N"
+xfce="Y"
+gnome="Y"
+kde="Y"
 net="Y"
 
 if [ "$xfce" == "Y" ] ; then
