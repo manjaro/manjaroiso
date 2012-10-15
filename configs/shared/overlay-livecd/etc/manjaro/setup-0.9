@@ -5332,9 +5332,9 @@ USENONFREE="$(kernel_cmdline nonfree no)"
 # English
 . setup-0.9-en.lng
 # Turkish
-#if [ "${LOCALE}" = "tr_TR" ]; then
-#   . setup-0.9-tr.lng
-#fi
+if [ "${LOCALE}" = "tr_TR" ]; then
+   . setup-0.9-tr.lng
+fi
 
 DIALOG --msgbox "${_instwelcomemessage}" 12 65
 
