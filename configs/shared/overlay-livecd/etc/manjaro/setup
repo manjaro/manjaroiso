@@ -44,12 +44,14 @@ mainmenu()
     case $(cat $ANSWER) in
         "1")
             DIALOG --infobox "${_loadinginstaller}" 6 40
-            /etc/manjaro/setup-0.8
+            cd /etc/manjaro
+            ./setup-0.8
             exit 0
         ;;
         "2")
             DIALOG --infobox "${_loadinginstaller}" 6 40
-            /etc/manjaro/setup-0.9
+            cd /etc/manjaro
+            ./setup-0.9
             exit 0
         ;;
         "3")
