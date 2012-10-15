@@ -49,12 +49,11 @@ if [ "$kde" == "Y" ] ; then
 fi
 if [ "$net" == "Y" ] ; then
    echo ">> build net image"
+   rm work*/iso/manjaro/*/pkgs*overlay.sqfs
    ln -sfv ../net/isomounts isomounts
-   ln -sfv ../net/Packages Packages
    ln -sfv ../net/Packages-Xorg.conf Packages-Xorg.conf
-   rm -f Packages-Lng
-   rm -f Packages-Xorg
    buildiso
    echo ">> done build net image"
    rm -R work*/*isomounts*
+   rm -R work*/*pkgs*
 fi
