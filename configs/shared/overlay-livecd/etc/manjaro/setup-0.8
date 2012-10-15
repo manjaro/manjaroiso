@@ -9,9 +9,24 @@ manjaro_version="2012.10"
 code_name="Manjaro"
 hostname="manjaro"
 
+# kernel_cmdline
+MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
+LOCALE="$(echo "$MISOVAR" | cut -d, -f1 | cut -d: -f2)"
+KEYMAP="$(echo "$MISOVAR" | cut -d, -f2 | cut -d: -f2)"
+TIMEZONE="$(echo "$MISOVAR" | cut -d, -f3 | cut -d: -f2)"
+VIDEO="$(echo "$MISOVAR" | cut -d, -f4 | cut -d: -f2)"
+COMPOSITE="$(echo "$MISOVAR" | cut -d, -f5 | cut -d: -f2)"
+CONSOLEFONT="$(kernel_cmdline vconsole.font)"
+CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
+USENONFREE="$(kernel_cmdline nonfree no)"
+
 # Translation
 # English
 . setup-0.8-en.lng
+# Turkish
+if [ "${LOCALE}" = "tr_TR" ]; then
+   . setup-0.8-tr.lng
+fi
 
 ANSWER="/tmp/.setup"
 # use the first VT not dedicated to a running console
@@ -1666,7 +1681,7 @@ configure_system()
         done
 
 	#enable en_US always
-        if [ "$LOCALE" != "en_US.UTF-8" ]; then
+        if [ "${LOCALE}.UTF-8" != "en_US.UTF-8" ]; then
         	sed -i -e "s/^#en_US/en_US/g" ${DESTDIR}/etc/locale.gen
         fi
 
@@ -1971,16 +1986,6 @@ fi
 # force to use english
 export LANG=en_US.UTF-8
 export LC_MESSAGES=en_US.UTF-8
-
-MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
-LOCALE="$(echo "$MISOVAR" | cut -d, -f1 | cut -d: -f2)"
-KEYMAP="$(echo "$MISOVAR" | cut -d, -f2 | cut -d: -f2)"
-TIMEZONE="$(echo "$MISOVAR" | cut -d, -f3 | cut -d: -f2)"
-VIDEO="$(echo "$MISOVAR" | cut -d, -f4 | cut -d: -f2)"
-COMPOSITE="$(echo "$MISOVAR" | cut -d, -f5 | cut -d: -f2)"
-CONSOLEFONT="$(kernel_cmdline vconsole.font)"
-CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
-USENONFREE="$(kernel_cmdline nonfree no)"
 
 DIALOG --msgbox "${_instwelcomemessage}" 12 65
 
