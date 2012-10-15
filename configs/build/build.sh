@@ -6,9 +6,9 @@ if [ "$EUID" != "0" ]; then
     exit 1
 fi
 
-xfce="Y"
-gnome="Y"
-kde="Y"
+xfce="N"
+gnome="N"
+kde="N"
 net="Y"
 
 if [ "$xfce" == "Y" ] ; then
@@ -52,6 +52,8 @@ if [ "$net" == "Y" ] ; then
    rm Packages-Lng
    rm -R work*/*lng*
    rm work*/iso/manjaro/*/lng-image.sqfs
+   rm -R work*/pkgs-free-overlay
+   rm -R work*/pkgs-nonfree-overlay
    rm work*/iso/manjaro/*/pkgs-free-overlay.sqfs
    rm work*/iso/manjaro/*/pkgs-nonfree-overlay.sqfs
    ln -sfv ../net/isomounts isomounts
