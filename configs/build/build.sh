@@ -6,8 +6,8 @@ if [ "$EUID" != "0" ]; then
     exit 1
 fi
 
-xfce="N"
-gnome="N"
+xfce="Y"
+gnome="Y"
 kde="Y"
 net="Y"
 
@@ -51,9 +51,9 @@ if [ "$net" == "Y" ] ; then
    echo ">> build net image"
    rm Packages-Lng
    rm -R work*/*lng*
+   rm work*/iso/manjaro/*/lng-image.sqfs
    rm work*/iso/manjaro/*/pkgs-free-overlay.sqfs
    rm work*/iso/manjaro/*/pkgs-nonfree-overlay.sqfs
-   rm work*/iso/manjaro/*/lng-image.sqfs
    ln -sfv ../net/isomounts isomounts
    ln -sfv ../net/Packages-Xorg.conf Packages-Xorg.conf
    buildiso
