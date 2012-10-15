@@ -6,10 +6,10 @@ if [ "$EUID" != "0" ]; then
     exit 1
 fi
 
-xfce="Y"
-gnome="Y"
+xfce="N"
+gnome="N"
 kde="Y"
-net="N"
+net="Y"
 
 if [ "$xfce" == "Y" ] ; then
    echo ">> build xfce image"
@@ -49,11 +49,16 @@ if [ "$kde" == "Y" ] ; then
 fi
 if [ "$net" == "Y" ] ; then
    echo ">> build net image"
-   rm work*/iso/manjaro/*/pkgs*overlay.sqfs
+   rm Packages-Lng
+   rm -R work*/*lng*
+   rm work*/iso/manjaro/*/pkgs-free-overlay.sqfs
+   rm work*/iso/manjaro/*/pkgs-nonfree-overlay.sqfs
+   rm work*/iso/manjaro/*/lng-image.sqfs
    ln -sfv ../net/isomounts isomounts
    ln -sfv ../net/Packages-Xorg.conf Packages-Xorg.conf
    buildiso
    echo ">> done build net image"
    rm -R work*/*isomounts*
    rm -R work*/*pkgs*
+   ln -sfv ../shared/Packages-Lng Packages-Lng
 fi
