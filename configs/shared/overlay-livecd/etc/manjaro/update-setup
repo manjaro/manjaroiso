@@ -25,7 +25,9 @@ wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/over
 wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/overlay-livecd/etc/manjaro/lg -O /etc/manjaro/lg
 wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/overlay-livecd/etc/manjaro/setup -O /etc/manjaro/setup
 wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/overlay-livecd/etc/manjaro/setup-0.8 -O /etc/manjaro/setup-0.8
+wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/overlay-livecd/etc/manjaro/setup-0.8 -O /etc/manjaro/setup-0.8-en.lng
 wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/overlay-livecd/etc/manjaro/setup-0.9 -O /etc/manjaro/setup-0.9
+wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/overlay-livecd/etc/manjaro/setup-0.8 -O /etc/manjaro/setup-0.9-en.lng
 chmod a+x /etc/manjaro/km
 chmod a+x /etc/manjaro/lg
 chmod a+x /etc/manjaro/setup
