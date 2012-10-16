@@ -5,6 +5,7 @@ TITLE="Manjaro Linux Installation Framework (testing)"
 PKG_OVERLAY="/opt/manjaro/pkgs"
 #DIALOGRC="./setuprc"
 manjaro_kernel="linux"
+manjaro_kernel_ver="35"
 manjaro_version="2012.10"
 code_name="Manjaro"
 hostname="manjaro"
@@ -21,9 +22,9 @@ EDITOR="nano"
 _BLKID="blkid -c /dev/null"
 
 # name of the kernel image
-VMLINUZ="vmlinuz-$(expac -Q '%v' linux35)-${arch}-manjaro"
+VMLINUZ="vmlinuz-${manjaro_kernel_ver}-${arch}-manjaro"
 # name of the initramfs filesystem
-INITRAMFS="initramfs-$(expac -Q '%v' linux35)-${arch}-manjaro"
+INITRAMFS="initramfs-${manjaro_kernel_ver}-${arch}-manjaro"
 
 # abstract the common pacman args
 PACMAN="pacman --root ${DESTDIR} --config /etc/pacman.conf --noconfirm --noprogressbar"
