@@ -2,7 +2,7 @@
 _mainmenuhelp="↓ ve ↑ tuslari ile seciminizi yapin ve enter tusu ile calistirin."
 _mainmenulabel="Kalip menusu"
 _stableinstaller="Kararli Kurulum Aracini Kullan"
-_testinginstaller="Deneme Surumu Kurulum Aracini Kullan (EFI destekli)"
+_testinginstaller="Test Kurulum Aracini Kullan (EFI destekli)"
 _loadinginstaller="Kurulum Araci Aciliyor. Lutfen bekleyin..."
 _quittext="Cikis"
 _exitwrapper="Kurulum Kabugundan Cikilsinmi?"
