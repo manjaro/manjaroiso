@@ -154,7 +154,7 @@ getpartlabel()
 activate_dmraid()
 {
     if [[ -e /sbin/dmraid ]]; then
-        DIALOG --infobox "Activating dmraid arrays..." 0 0
+        DIALOG --infobox "${_activate_dmraid}" 0 0
         /sbin/dmraid -ay -I -Z >/dev/null 2>&1
     fi
 }
@@ -167,9 +167,9 @@ activate_lvm2()
     if [[ -e /sbin/lvm ]]; then
         OLD_LVM2_GROUPS=${LVM2_GROUPS}
         OLD_LVM2_VOLUMES=${LVM2_VOLUMES}
-        DIALOG --infobox "Scanning logical volumes..." 0 0
+        DIALOG --infobox "${_scanning_lvm2}" 0 0
         /sbin/lvm vgscan --ignorelockingfailure >/dev/null 2>&1
-        DIALOG --infobox "Activating logical volumes..." 0 0
+        DIALOG --infobox "${_activate_lvm2}" 0 0
         /sbin/lvm vgchange --ignorelockingfailure --ignoremonitoring -ay >/dev/null 2>&1
         LVM2_GROUPS="$(vgs -o vg_name --noheading 2>/dev/null)"
         LVM2_VOLUMES="$(lvs -o vg_name,lv_name --noheading --separator - 2>/dev/null)"
@@ -185,7 +185,7 @@ activate_raid()
 {
     ACTIVATE_RAID=""
     if [[ -e /sbin/mdadm ]]; then
-        DIALOG --infobox "Activating RAID arrays..." 0 0
+        DIALOG --infobox "${_activate_raid}" 0 0
         /sbin/mdadm --assemble --scan >/dev/null 2>&1 || ACTIVATE_RAID="no"
     else
         ACTIVATE_RAID="no"
@@ -198,7 +198,7 @@ activate_luks()
 {
     ACTIVATE_LUKS=""
     if [[ -e /sbin/cryptsetup ]]; then
-        DIALOG --infobox "Scanning for luks encrypted devices..." 0 0
+        DIALOG --infobox "${_scanning_luks}" 0 0
         if [[ "$(${_BLKID} | grep "TYPE=\"crypto_LUKS\"")" ]]; then
             for PART in $(${_BLKID} | grep "TYPE=\"crypto_LUKS\"" | sed -e 's#:.*##g'); do
                 # skip already encrypted devices, device mapper!
@@ -208,7 +208,7 @@ activate_luks()
                 done
                 if ! [[ "${OPEN_LUKS}" = "no" ]]; then
                     RUN_LUKS=""
-                    DIALOG --yesno "Setup detected luks encrypted device, do you want to activate ${PART} ?" 0 0 && RUN_LUKS="1"
+                    DIALOG --yesno "${_setup_luks}" 0 0 && RUN_LUKS="1"
                     [[ "${RUN_LUKS}" = "1" ]] && _enter_luks_name && _enter_luks_passphrase && _opening_luks
                     [[ "${RUN_LUKS}" = "" ]] && ACTIVATE_LUKS="no"
                 else
@@ -250,7 +250,7 @@ destdir_mounts(){
     PART_ROOT="$(mount | grep "${DESTDIR} " | cut -d' ' -f 1)"
     # Run mountpoints, if nothing is mounted on ${DESTDIR}
     if [[ "${PART_ROOT}" = "" ]]; then
-        DIALOG --msgbox "Setup couldn't detect mounted partition(s) in ${DESTDIR}, please set mountpoints first." 0 0
+        DIALOG --msgbox "${_destdir}" 0 0
         mountpoints || return 1
     fi
 }
@@ -623,8 +623,8 @@ printk()
 #
 geteditor() {
     if ! [[ "${EDITOR}" ]]; then
-        DIALOG --menu "Select a Text Editor to Use" 10 35 3 \
-        "1" "nano (easier)" \
+        DIALOG --menu "${_geteditor}" 10 35 3 \
+        "1" "${_nano}" \
         "2" "vi" 2>${ANSWER} || return 1
         case $(cat ${ANSWER}) in
             "1") EDITOR="nano" ;;
@@ -647,11 +647,11 @@ set_device_name_scheme() {
     
     if [[ "${GUID_DETECTED}" == "1" ]]; then
         NAME_SCHEME_LEVELS="${NAME_SCHEME_LEVELS} PARTUUID PARTUUID=<partuuid> PARTLABEL PARTLABEL=<partlabel>"
-        MENU_DESC_TEXT="\nPARTUUID and PARTLABEL are specific to GPT disks.\nIn GPT disks, PARTUUID is recommended.\nIn MBR/msdos disks,"
+        MENU_DESC_TEXT="${_menu_descg}"
     fi
     
     NAME_SCHEME_LEVELS="${NAME_SCHEME_LEVELS} FSUUID UUID=<uuid> FSLABEL LABEL=<label> KERNEL /dev/<kernelname>"
-    DIALOG --menu "Select the device name scheme you want to use in config files. ${MENU_DESC_TEXT} FSUUID is recommended." 15 70 9 ${NAME_SCHEME_LEVELS} 2>${ANSWER} || return 1
+    DIALOG --menu "${_device_name_scheme}" 15 70 9 ${NAME_SCHEME_LEVELS} 2>${ANSWER} || return 1
     NAME_SCHEME_PARAMETER=$(cat ${ANSWER})
     NAME_SCHEME_PARAMETER_RUN="1"
 }
@@ -661,8 +661,7 @@ set_guid() {
     ## Lenovo BIOS-GPT issues - Arch Forum - https://bbs.archlinux.org/viewtopic.php?id=131149 , https://bbs.archlinux.org/viewtopic.php?id=133330 , https://bbs.archlinux.org/viewtopic.php?id=138958
     ## Lenovo BIOS-GPT issues - in Fedora - https://bugzilla.redhat.com/show_bug.cgi?id=735733, https://bugzilla.redhat.com/show_bug.cgi?id=749325 , http://git.fedorahosted.org/git/?p=anaconda.git;a=commit;h=ae74cebff312327ce2d9b5ac3be5dbe22e791f09
     GUIDPARAMETER=""
-    DIALOG --defaultno --yesno "Do you want to use GUID Partition Table (GPT)?\n\nIt is a standard for the layout of the partition table on a physical hard disk. Although it forms a part of the Unified Extensible Firmware Interface (UEFI) standard (replacement for the PC BIOS firmware), it is also used on some BIOS systems because of the limitations of MBR aka msdos partition tables, which restrict maximum disk size to 2 TiB.\n\nWindows XP and earlier Windows systems cannot (without hacks) read or write to drives formatted with a GUID partition table, however, Vista and Windows 7 and later versions include the capability to use GPT for non-boot aka data disks (only UEFI systems can boot Windows from GPT disks).\n\nAttention:\n- Please check if your other operating systems have GPT support!\n- Use this option for a GRUB(2) setup, which should support LVM, RAID\n  etc., which doesn't fit into the usual 30k MS-DOS post-MBR gap.\n- BIOS-GPT boot may not work in some Lenovo systems (irrespective of the\n 
-  bootloader used). " 0 0 && GUIDPARAMETER="yes"
+    DIALOG --defaultno --yesno "${_gptinfo}" 0 0 && GUIDPARAMETER="yes"
 }
 
 # Get a list of available disks for use in the "Available disks" dialogs. This
@@ -732,7 +731,7 @@ _getavailpartitions()
 # the destination root partition last!
 _umountall()
 {
-    DIALOG --infobox "Disabling swapspace, unmounting already mounted disk devices..." 0 0
+    DIALOG --infobox "${_disable_swap}" 0 0
     swapoff -a >/dev/null 2>&1
     for i in $(findmnt --list --submounts ${DESTDIR} -o TARGET -n | tac); do
         umount $i
@@ -744,13 +743,13 @@ _stopmd()
 {
     if [[ "$(cat /proc/mdstat 2>/dev/null | grep ^md)" ]]; then
         DISABLEMD=""
-        DIALOG --defaultno --yesno "Setup detected already running raid devices, do you want to disable them completely?" 0 0 && DISABLEMD="1"
+        DIALOG --defaultno --yesno "${_stop_md}" 0 0 && DISABLEMD="1"
         if [[ "${DISABLEMD}" = "1" ]]; then
-            DIALOG --infobox "Disabling all software raid devices..." 0 0
+            DIALOG --infobox "${_disable_raid}" 0 0
             for i in $(cat /proc/mdstat 2>/dev/null | grep ^md | sed -e 's# :.*##g'); do
                 mdadm --manage --stop /dev/${i} > ${LOG}
             done
-            DIALOG --infobox "Cleaning superblocks of all software raid devices..." 0 0
+            DIALOG --infobox "${_clear_superblock}" 0 0
             for i in $(${_BLKID} | grep "TYPE=\"linux_raid_member\"" | sed -e 's#:.*##g'); do
                 mdadm --zero-superblock ${i} > ${LOG}
             done
@@ -758,9 +757,9 @@ _stopmd()
     fi
     DISABLEMDSB=""
     if [[ "$(${_BLKID} | grep "TYPE=\"linux_raid_member\"")" ]]; then
-        DIALOG --defaultno --yesno "Setup detected superblock of raid devices, do you want to clean the superblock of them?" 0 0 && DISABLEMDSB="1"
+        DIALOG --defaultno --yesno "${_setup_superblock}" 0 0 && DISABLEMDSB="1"
         if [[ "${DISABLEMDSB}" = "1" ]]; then
-            DIALOG --infobox "Cleaning superblocks of all software raid devices..." 0 0
+            DIALOG --infobox "${_clean_superblock}" 0 0
             for i in $(${_BLKID} | grep "TYPE=\"linux_raid_member\"" | sed -e 's#:.*##g'); do
                 mdadm --zero-superblock ${i} > ${LOG}
             done
@@ -780,18 +779,18 @@ _stoplvm()
     ! [[ "${LV_GROUPS}" = "" ]] && DETECTED_LVM=1
     ! [[ "${LV_PHYSICAL}" = "" ]] && DETECTED_LVM=1
     if [[ "${DETECTED_LVM}" = "1" ]]; then
-        DIALOG --defaultno --yesno "Setup detected lvm volumes, volume groups or physical devices, do you want to remove them completely?" 0 0 && DISABLELVM="1"
+        DIALOG --defaultno --yesno "${_stoplvm}" 0 0 && DISABLELVM="1"
     fi
     if [[ "${DISABLELVM}" = "1" ]]; then
-        DIALOG --infobox "Removing logical volumes ..." 0 0
+        DIALOG --infobox "${_remove_lvm}" 0 0
         for i in ${LV_VOLUMES}; do
             lvremove -f /dev/mapper/${i} 2>/dev/null> ${LOG}
         done
-        DIALOG --infobox "Removing logical groups ..." 0 0
+        DIALOG --infobox "${_remove_lvg}" 0 0
         for i in ${LV_GROUPS}; do
             vgremove -f ${i} 2>/dev/null > ${LOG}
         done
-        DIALOG --infobox "Removing physical volumes ..." 0 0
+        DIALOG --infobox "${_remove_pvm}" 0 0
         for i in ${LV_PHYSICAL}; do
             pvremove -f ${i} 2>/dev/null > ${LOG}
         done
@@ -864,57 +863,7 @@ _dmraid_update()
 #helpbox for raid
 _helpraid()
 {
-DIALOG --msgbox "LINUX SOFTWARE RAID SUMMARY:\n
------------------------------\n\n
-Linear mode:\n
-You have two or more partitions which are not necessarily the same size\n
-(but of course can be), which you want to append to each other.\n
-Spare-disks are not supported here. If a disk dies, the array dies with\n
-it.\n\n
-RAID-0:\n
-You have two or more devices, of approximately the same size, and you want\n
-to combine their storage capacity and also combine their performance by\n
-accessing them in parallel. Like in Linear mode, spare disks are not\n
-supported here either. RAID-0 has no redundancy, so when a disk dies, the\n
-array goes with it.\n\n
-RAID-1:\n
-You have two devices of approximately same size, and you want the two to\n
-be mirrors of each other. Eventually you have more devices, which you\n
-want to keep as stand-by spare-disks, that will automatically become a\n
-part of the mirror if one of the active devices break.\n\n
-RAID-4:\n
-You have three or more devices of roughly the same size and you want\n
-a way that protects data against loss of any one disk.\n
-Fault tolerance is achieved by adding an extra disk to the array, which\n
-is dedicated to storing parity information. The overall capacity of the\n
-array is reduced by one disk.\n
-The storage efficiency is 66 percent. With six drives, the storage\n
-efficiency is 87 percent. The main disadvantage is poor performance for\n
-multiple,\ simultaneous, and independent read/write operations.\n
-Thus, if any disk fails, all data stay intact. But if two disks fail,\n
-all data is lost.\n\n
-RAID-5:\n
-You have three or more devices of roughly the same size, you want to\n
-combine them into a larger device, but still to maintain a degree of\n
-redundancy fordata safety. Eventually you have a number of devices to use\n
-as spare-disks, that will not take part in the array before another device\n
-fails. If you use N devices where the smallest has size S, the size of the\n
-entire array will be (N-1)*S. This \"missing\" space is used for parity\n
-(redundancy) information. Thus, if any disk fails, all data stay intact.\n
-But if two disks fail, all data is lost.\n\n
-RAID-6:\n
-You have four or more devices of roughly the same size and you want\n
-a way that protects data against loss of any two disks.\n
-Fault tolerance is achieved by adding an two extra disk to the array,\n
-which is dedicated to storing parity information. The overall capacity\n
-of the array is reduced by 2 disks.\n
-Thus, if any two disks fail, all data stay intact. But if 3 disks fail,\n
-all data is lost.\n\n
-RAID-10:\n
-Shorthand for RAID1+0, a mirrored striped array and needs a minimum of\n
-two disks. It provides superior data security and can survive multiple\n
-disk failures. The main disadvantage is cost, because 50% of your\n
-storage is duplication." 0 0
+DIALOG --msgbox "${_help_raid}" 0 0
 }
 
 # Create raid or raid_partition
@@ -1079,23 +1028,7 @@ _createraid()
 # help for lvm
 _helplvm()
 {
-DIALOG --msgbox "LOGICAL VOLUME SUMMARY:\n
------------------------------\n\n
-LVM is a Logical Volume Manager for the Linux kernel. With LVM you can\n
-abstract your storage space and have \"virtual partitions\" which are easier\n
-to modify.\n\nThe basic building block of LVM are:\n
-- Physical volume (PV):\n
-  Partition on hard disk (or even hard disk itself or loopback file) on\n
-  which you can have virtual groups. It has a special header and is\n
-  divided into physical extents. Think of physical volumes as big building\n
-  blocks which can be used to build your hard drive.\n
-- Volume group (VG):\n 
-  Group of physical volumes that are used as storage volume (as one disk).\n
-  They contain logical volumes. Think of volume groups as hard drives.\n 
-- Logical volume(LV):\n
-  A \"virtual/logical partition\" that resides in a volume group and is\n 
-  composed of physical extents. Think of logical volumes as normal\n
-  partitions." 0 0
+DIALOG --msgbox "${_help_lvm}" 0 0
 }
 
 # Creates physical volume
@@ -1417,24 +1350,7 @@ _opening_luks() {
 # help for luks
 _helpluks()
 {
-DIALOG --msgbox "LUKS ENCRYPTION SUMMARY:\n
------------------------------\n\n
-Encryption is useful for two (related) reasons.\n
-Firstly, it prevents anyone with physical access to your computer,\n
-and your hard drive in particular, from getting the data from it\n
-(unless they have your passphrase/key).\n
-Secondly, it allows you to wipe the data on your hard drive with\n
-far more confidence in the event of you selling or discarding\n
-your drive.\n
-Basically, it supplements the access control mechanisms of the operating\n
-system (like file permissions) by making it harder to bypass the operating\n
-system by inserting a boot CD, for example. Encrypting the root partition\n
-prevents anyone from using this method to insert viruses or trojans onto\n
-your computer.\n\n
-ATTENTION:\n
-Having encrypted partitions does not protect you from all possible\n
-attacks. The encryption is only as good as your key management, and there\n
-are other ways to break into computers, while they are running." 0 0
+DIALOG --msgbox "${_help_luks}" 0 0
 }
 
 # create luks device
