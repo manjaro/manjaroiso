@@ -22,9 +22,9 @@ EDITOR="nano"
 _BLKID="blkid -c /dev/null"
 
 # name of the kernel image
-VMLINUZ="vmlinuz-${manjaro_kernel_ver}-${arch}-manjaro"
+VMLINUZ="vmlinuz-${manjaro_kernel_ver}-${arch}"
 # name of the initramfs filesystem
-INITRAMFS="initramfs-${manjaro_kernel_ver}-${arch}-manjaro"
+INITRAMFS="initramfs-${manjaro_kernel_ver}-${arch}"
 
 # abstract the common pacman args
 PACMAN="pacman --root ${DESTDIR} --config /etc/pacman.conf --noconfirm --noprogressbar"
