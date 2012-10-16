@@ -1,0 +1,10 @@
+# Translation
+_mainmenuhelp="↓ ve ↑ tuslari ile seciminizi yapin ve enter tusu ile calistirin."
+_mainmenulabel="Kalip menusu"
+_stableinstaller="Kararli Kurulum Aracini Kullan"
+_testinginstaller="Deneme Surumu Kurulum Aracini Kullan (EFI destekli)"
+_loadinginstaller="Kurulum Araci Aciliyor. Lutfen bekleyin..."
+_quittext="Cikis"
+_exitwrapper="Kurulum Kabugundan Cikilsinmi?"
+_cancelwrapper="Kurulum Iptal edilsin mi?"
+_wrapperwelcomemessage="Manjaro Linux Kurulum Kabugu' na hos geldiniz. \nSize iki  CLI kurulum secenegi sunuyoruz.\nKararli Kurulum Araci yeni eklenen ozellikleri desteklemeksizin calisir. \n'Deneme Surumu Kurulum Araci' miz ise, EFI, btrfs ve raid yazilimlarini desteklemektedir.\n\nSize en iyi hitap eden Kurulum Aracini seciniz."

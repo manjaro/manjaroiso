@@ -1,0 +1,10 @@
+# Translation
+_mainmenuhelp="Use ↓ and ↑ to choose an entry, enter to launch it." 
+_mainmenulabel="Wrapper menu"
+_stableinstaller="Use stable installer"
+_testinginstaller="Use testing installer (EFI support)"
+_loadinginstaller="Loading installer. Please wait ..."
+_quittext="Quit"
+_exitwrapper="Quit Installer Wrapper?"
+_cancelwrapper="Cancel installation?"
+_wrapperwelcomemessage="Welcome to the Manjaro Linux Installation Framework. \nWe offer two versions of our CLI installer. \nOur 'stable installer' is known to work but don't get new features added. \nWith our 'testing installer' you have new features like EFI, btrfs and software raid support. \n\nChoose the installer which fit's best for you."

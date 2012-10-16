@@ -2,15 +2,6 @@
 # installer wrapper
 
 TITLE="Manjaro Linux Installation Framework (v0.8.2)"
-_mainmenuhelp="Use ↓ and ↑ to choose an entry, enter to launch it." 
-_mainmenulabel="Wrapper menu"
-_stableinstaller="Use stable installer"
-_testinginstaller="Use testing installer (EFI support)"
-_loadinginstaller="Loading installer. Please wait ..."
-_quittext="Quit"
-_exitwrapper="Quit Installer Wrapper?"
-_cancelwrapper="Cancel installation?"
-_wrapperwelcomemessage="Welcome to the Manjaro Linux Installation Framework. \nWe offer two versions of our CLI installer. \nOur 'stable installer' is known to work but don't get new features added. \nWith our 'testing installer' you have new features like EFI, btrfs and software raid support. \n\nChoose the installer which fit's best for you."
 
 _yes="Yes"
 _no="No"
@@ -26,6 +17,19 @@ DIALOG() {
    # returns: whatever dialog did
    dialog --backtitle "$TITLE" --aspect 15 --yes-label "$_yes" --no-label "$_no" --cancel-label "$_cancel" "$@"
    return $?
+}
+
+kernel_cmdline ()
+{
+    for param in $(/bin/cat /proc/cmdline); do
+        case "${param}" in
+            $1=*) echo "${param##*=}"; return 0 ;;
+            $1) return 0 ;;
+            *) continue ;;
+        esac
+    done
+    [ -n "${2}" ] && echo "${2}"
+    return 1
 }
 
 mainmenu()
@@ -79,6 +83,17 @@ fi
 # force to use english
 export LANG=en_US.UTF-8
 export LC_MESSAGES=en_US.UTF-8
+
+MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
+LOCALE="$(echo "$MISOVAR" | cut -d, -f1 | cut -d: -f2)"
+
+# Translation
+# English
+. setup-en.lng
+# Turkish
+if [ "${LOCALE}" = "tr_TR" ]; then
+   . setup-tr.lng
+fi
 
 DIALOG --msgbox "${_wrapperwelcomemessage}" 12 65
 
