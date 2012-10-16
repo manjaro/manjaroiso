@@ -551,7 +551,7 @@ partition() {
     DISC=""
     while true; do
         # Prompt the user with a list of known disks
-        DIALOG --menu "${_selectdisktopart}" 14 55 7 $DISCS 2>${ANSWER} || return 1
+        DIALOG --menu "${_selectdisktopart1}${_done_entry}${_selectdisktopart2}" 14 55 7 $DISCS 2>${ANSWER} || return 1
         DISC=$(cat ${ANSWER})
         if [ "$DISC" = "$_other_entry" ]; then
             DIALOG --inputbox "${_enterdiskpath}" 8 65 "/dev/sda" 2>${ANSWER} || return 1
