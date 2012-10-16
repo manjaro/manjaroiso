@@ -48,13 +48,11 @@ mainmenu()
     case $(cat $ANSWER) in
         "1")
             DIALOG --infobox "${_loadinginstaller}" 6 40
-            cd /etc/manjaro
             ./setup-0.8
             exit 0
         ;;
         "2")
             DIALOG --infobox "${_loadinginstaller}" 6 40
-            cd /etc/manjaro
             ./setup-0.9
             exit 0
         ;;
@@ -86,6 +84,8 @@ export LC_MESSAGES=en_US.UTF-8
 
 MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
 LOCALE="$(echo "$MISOVAR" | cut -d, -f1 | cut -d: -f2)"
+
+cd /etc/manjaro
 
 # Translation
 # English
