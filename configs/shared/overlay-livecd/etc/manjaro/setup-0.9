@@ -208,7 +208,7 @@ activate_luks()
                 done
                 if ! [[ "${OPEN_LUKS}" = "no" ]]; then
                     RUN_LUKS=""
-                    DIALOG --yesno "${_setup_luks}" 0 0 && RUN_LUKS="1"
+                    DIALOG --yesno "${_setup_luks} $PART ?" 0 0 && RUN_LUKS="1"
                     [[ "${RUN_LUKS}" = "1" ]] && _enter_luks_name && _enter_luks_passphrase && _opening_luks
                     [[ "${RUN_LUKS}" = "" ]] && ACTIVATE_LUKS="no"
                 else
@@ -250,7 +250,7 @@ destdir_mounts(){
     PART_ROOT="$(mount | grep "${DESTDIR} " | cut -d' ' -f 1)"
     # Run mountpoints, if nothing is mounted on ${DESTDIR}
     if [[ "${PART_ROOT}" = "" ]]; then
-        DIALOG --msgbox "${_destdir}" 0 0
+        DIALOG --msgbox "${_destdir_1}${DESTDIR}${_destdir_2}" 0 0
         mountpoints || return 1
     fi
 }
@@ -651,7 +651,7 @@ set_device_name_scheme() {
     fi
     
     NAME_SCHEME_LEVELS="${NAME_SCHEME_LEVELS} FSUUID UUID=<uuid> FSLABEL LABEL=<label> KERNEL /dev/<kernelname>"
-    DIALOG --menu "${_device_name_scheme}" 15 70 9 ${NAME_SCHEME_LEVELS} 2>${ANSWER} || return 1
+    DIALOG --menu "${_device_name_scheme_1}${MENU_DESC_TEXT}${_device_name_scheme_2}" 15 70 9 ${NAME_SCHEME_LEVELS} 2>${ANSWER} || return 1
     NAME_SCHEME_PARAMETER=$(cat ${ANSWER})
     NAME_SCHEME_PARAMETER_RUN="1"
 }
