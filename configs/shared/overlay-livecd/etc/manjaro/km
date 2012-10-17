@@ -4,26 +4,39 @@
 # adapted for Manjaro by Philip Müller <philm@manjaro.org>
 
 ANSWER="/tmp/.km"
-TITLE="Manjaro Keymap Setting"
+TITLE="${_title}"
 BASEDIR="/usr/share/kbd"
 
 if [[ "${1}" = "--setup" ]]; then
-    EXIT="Return to Main Menu"
+    EXIT="${_return}"
     DESTDIR="/install"
 else
-    EXIT="Exit"
+    EXIT="${_exit}"
     DESTDIR=""
 fi
 
 abort()
 {
-    DIALOG --yesno "Abort Keymap And Console Font Setting?" 6 42 || return 0
+    DIALOG --yesno "${_abort}" 6 42 || return 0
     [[ -e /tmp/.km ]] && rm -f /tmp/.km
     [[ -e /tmp/.keymap ]] && rm -f /tmp/.keymap
     [[ -e /tmp/.font ]] && rm -f /tmp/.font
         [[ -e /tmp/.km-running ]] && rm /tmp/.km-running
     clear
     exit 1
+}
+
+kernel_cmdline ()
+{
+    for param in $(/bin/cat /proc/cmdline); do
+        case "${param}" in
+            $1=*) echo "${param##*=}"; return 0 ;;
+            $1) return 0 ;;
+            *) continue ;;
+        esac
+    done
+    [ -n "${2}" ] && echo "${2}"
+    return 1
 }
 
 # DIALOG()
@@ -38,17 +51,17 @@ DIALOG() {
 
 error_kmset()
 {
-    DIALOG --msgbox "An error occured, your current keymap was not changed." 0 0
+    DIALOG --msgbox "${_error}" 0 0
 }
 
 dokeymap() {
-    echo "Scanning for keymaps..."
+    echo "${_scanning}"
     KEYMAPS=
     for i in $(find ${BASEDIR}/keymaps -follow -name "*.gz" | sed 's|^.*/||g' | sort); do
         KEYMAPS="${KEYMAPS} ${i} -"
     done
     CANCEL=""
-    DIALOG --menu "Select A Keymap" 22 60 16 ${KEYMAPS} 2>${ANSWER} || CANCEL="1"
+    DIALOG --menu "${_select}" 22 60 16 ${KEYMAPS} 2>${ANSWER} || CANCEL="1"
     if [[ "${CANCEL}" = "1" ]]; then
         S_NEXTITEM="1"
         return 1
@@ -57,7 +70,7 @@ dokeymap() {
     echo ${keymap} > /tmp/.keymap
     sed -i -e "s/^KEYMAP=.*/KEYMAP=\"$(cat /tmp/.keymap | sed -e 's/\..*//g')\"/g"  ${DESTDIR}/etc/vconsole.conf
     if [[ "${keymap}" ]]; then
-        DIALOG --infobox "Loading keymap: ${keymap}" 0 0
+        DIALOG --infobox "{$_load} ${keymap}" 0 0
         #loadkeys -q ${BASEDIR}/keymaps/${keymap}
         loadkeys -q ${keymap} > /dev/null 2>&1 || error_kmset 
     fi
@@ -71,9 +84,9 @@ mainmenu() {
     else
         DEFAULT=""
     fi
-    DIALOG ${DEFAULT} --backtitle "${TITLE}" --title " MAIN MENU " \
-                --menu "Use the UP and DOWN arrows to navigate menus.\nUse TAB to switch between buttons and ENTER to select." 17 58 13 \
-        "1" "Set Keymap" \
+    DIALOG ${DEFAULT} --backtitle "${TITLE}" --title "${_menu}" \
+                --menu "${_desc}" 17 58 13 \
+        "1" "${_keymap}" \
         "2" "${EXIT}" 2>${ANSWER}
     case $(cat ${ANSWER}) in
         "1")
@@ -92,29 +105,52 @@ mainmenu() {
 : >/tmp/.font
 : >/tmp/.km
 
+# do UID checking here so someone can at least get usage instructions
+if [ "$EUID" != "0" ]; then
+    echo "error: This script must be run as root."
+    exit 1
+fi
+
+# force to use english
+export LANG=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+
+MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
+LOCALE="$(echo "$MISOVAR" | cut -d, -f1 | cut -d: -f2)"
+
+cd /etc/manjaro
+
+# Translation
+# English
+. km-en.lng
+# Turkish
+if [ "${LOCALE}" = "tr_TR" ]; then
+   . km-tr.lng
+fi
+
 if [[ ! -d ${BASEDIR}/keymaps ]]; then
-    echo "Cannot load keymaps, as none were found in ${BASEDIR}/keymaps" >&2
+    echo "${_nokeymap} ${BASEDIR}/keymaps" >&2
     exit 1
 fi
 
 if [[ ! -d ${BASEDIR}/consolefonts ]]; then
-    echo "Cannot load consolefonts, as none were found in ${BASEDIR}/consolefonts" >&2
+    echo "${_nofonts} ${BASEDIR}/consolefonts" >&2
 fi
 
 if [[ ! $(which loadkeys) ]]; then
-    echo "'loadkeys' binary not found!" >&2
+    echo "${_loadkeys}" >&2
     exit 1
 fi
 
 
 if [[ ! $(which setfont) ]]; then
-    echo "'setfont' binary not found!" >&2
+    echo "${_setfont}" >&2
     exit 1
 fi
 
 if [[ -e /tmp/.km-running ]]; then
-    echo "km already runs on a different console!"
-    echo "Please remove /tmp/.km-running first to launch km!"
+    echo "${_km}"
+    echo "${_tmp}"
     exit 1
 fi 
 : >/tmp/.km-running

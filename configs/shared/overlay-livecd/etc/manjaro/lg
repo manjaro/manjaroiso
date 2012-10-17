@@ -4,24 +4,37 @@
 
 
 ANSWER="/tmp/.lg"
-TITLE="Manjaro Language Setting"
+TITLE="${_title}"
 
 if [[ "${1}" = "--setup" ]]; then
-    EXIT="Return to Main Menu"
+    EXIT="${_return}"
     DESTDIR="/install"
 else
-    EXIT="Exit"
+    EXIT="${_exit}"
     DESTDIR=""
 fi
 
 abort()
 {
-    DIALOG --yesno "Abort Language Setting?" 6 42 || return 0
+    DIALOG --yesno "${_abort}" 6 42 || return 0
     [[ -e /tmp/.lg ]] && rm -f /tmp/.lg
     [[ -e /tmp/.language ]] && rm -f /tmp/.language
         [[ -e /tmp/.lg-running ]] && rm /tmp/.lg-running
     clear
     exit 1
+}
+
+kernel_cmdline ()
+{
+    for param in $(/bin/cat /proc/cmdline); do
+        case "${param}" in
+            $1=*) echo "${param##*=}"; return 0 ;;
+            $1) return 0 ;;
+            *) continue ;;
+        esac
+    done
+    [ -n "${2}" ] && echo "${2}"
+    return 1
 }
 
 # DIALOG()
@@ -36,7 +49,7 @@ DIALOG() {
 
 error_lgset()
 {
-    DIALOG --msgbox "An error occured, your current language was not selected." 0 0
+    DIALOG --msgbox "${_error}" 0 0
 }
 
 dolanguages() {
@@ -47,7 +60,7 @@ dolanguages() {
     done
 
     CANCEL=""
-    DIALOG --menu "Select A Locale" 22 60 16 ${LOCALES} 2>${ANSWER} || CANCEL="1"
+    DIALOG --menu "${_select}" 22 60 16 ${LOCALES} 2>${ANSWER} || CANCEL="1"
     if [[ "${CANCEL}" = "1" ]]; then
         S_NEXTITEM="1"
         return 1
@@ -55,7 +68,7 @@ dolanguages() {
     locale=$(cat ${ANSWER})
     echo ${locale} > /tmp/.locale
     if [[ "${locale}" ]]; then
-        DIALOG --infobox "Set locale: ${locale}" 0 0
+        DIALOG --infobox "${_set} ${locale}" 0 0
         sed -i "s/#\(${locale}\)/\1/" ${DESTDIR}/etc/locale.gen
         echo "LANG=${locale}" > ${DESTDIR}/etc/locale.conf
         echo "LC_COLLATE=C" >> ${DESTDIR}/etc/locale.conf
@@ -75,9 +88,9 @@ mainmenu() {
     else
         DEFAULT=""
     fi
-    DIALOG ${DEFAULT} --backtitle "${TITLE}" --title " MAIN MENU " \
-                --menu "Use the UP and DOWN arrows to navigate menus.\nUse TAB to switch between buttons and ENTER to select." 17 58 13 \
-        "1" "Set Locale" \
+    DIALOG ${DEFAULT} --backtitle "${TITLE}" --title "${_menu}" \
+                --menu "${_desc}" 17 58 13 \
+        "1" "${_locale}" \
         "2" "${EXIT}" 2>${ANSWER}
     case $(cat ${ANSWER}) in
         "1")
@@ -95,11 +108,32 @@ mainmenu() {
 : >/tmp/.language
 : >/tmp/.lg
 
+# do UID checking here so someone can at least get usage instructions
+if [ "$EUID" != "0" ]; then
+    echo "error: This script must be run as root."
+    exit 1
+fi
 
+# force to use english
+export LANG=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+
+MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
+LOCALE="$(echo "$MISOVAR" | cut -d, -f1 | cut -d: -f2)"
+
+cd /etc/manjaro
+
+# Translation
+# English
+. lg-en.lng
+# Turkish
+if [ "${LOCALE}" = "tr_TR" ]; then
+   . lg-tr.lng
+fi
 
 if [[ -e /tmp/.lg-running ]]; then
-    echo "lg already runs on a different console!"
-    echo "Please remove /tmp/.lg-running first to continue!"
+    echo "${_lg}"
+    echo "${_tmp}"
     exit 1
 fi 
 : >/tmp/.lg-running
