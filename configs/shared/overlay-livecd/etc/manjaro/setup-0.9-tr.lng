@@ -36,11 +36,11 @@ _none_entry="HICBIRI"
 _selectdisktopart1="Bolumlendirilecek diski secin ya da yapildi ise '"
 _selectdisktopart2="' tiklayin"
 _enterdiskpath="Bolumlendirilecek aygit icin tam yolu girin"
-_prepartitionmessage="Sectiginiz disk bolumunu simdi scfdisk ile bolumlendireceksiniz. Sizden yeniden baslatmanizi isterse baslatin, bu uygulamayi calistirin ve kurulumu yeniden baslatin."
-_nowchooseparts2use="Kullanacaginiz bolumleri sececeksiniz."
+_prepartitionmessage="Sectiginiz disk cfdisk ile bolumlendirilecek. Sizden yeniden baslatmanizi isterse baslatin, bu uygulamayi calistirin ve kurulumu yeniden baslatin."
+_nowchooseparts2use="Kullanacaginiz bolumleri secin."
 _selectswappart="Takas alani icin bolum secin"
 _formatpart="Bicimlendir"
-_allcontentswillbelost='Tum icerigi silinecek!'
+_allcontentswillbelost='Tum icerik silinecek!'
 _selecttherootpart="/ (kok) icin bolum secin"
 _selectfsfor="Dosya sistemi secin"
 _wannamountotherparts="Diger bolumleri naslangicta baglamak istiyormusunuz? (secimli)"
@@ -54,18 +54,18 @@ _mountingparton="Baglaniyor"
 _mountingpart="Baglaniyor"
 _partsmountsuccess="Bolumler basari ile baglandi."
 
-_givecorrectname="Lutfen gecerli bir kull. adi girin.\n ==> Tip: kucuk harfler, sekillerle baslayamaz"
+_givecorrectname="Lutfen gecerli bir kull. adi girin.\n ==> Tip: kucuk harfler olmali, sekillerle baslayamaz"
 _givename="Yeni kull. adini girin"
 _givepass="Yeni kull. adi icin parola girin :"
 _addsudouserdl1="Bu kullaniciya \""
 _addsudouserdl2="\" yetkili kull. haklari verilsin mi?"
 
 _installationwillstart='Kurulum basliyor. Lutfen bekleyin!'
-_installationinprogress="Kurulum devam ediyor..."
-_installationfail='Kurulum basarisiz!'
-_installationsuccess='Kurulum basarili!'
+_installationinprogress="Kuruluyor..."
+_installationfail='KURULAMADI!'
+_installationsuccess='KURULDU!'
 
-_configuringsystem="Yapilandirma yurutuluyor..."
+_configuringsystem="Yapilandiriliyor..."
 _addonsinsttitle=" ==== Eklentilerin Kurulmasi ===="
 _wichaddonsinstall="Hangi eklenditleri yuklemek istiyorsunuz?"
 _whichaddonsinst1='1) Erisilebilir kuurulabilir eklentilerden seciniz'
@@ -79,14 +79,14 @@ _livechg_rwroot="Bu rwroot dizini icerigi demektir."
 _pressentercont="Devam icin enter..."
 
 _isgrubinst="Grub2 kurulumu? Bulunamadi"
-_autodetectrootfail="Kok bolumunun algilanmasi basarisiz. El ile baglayin"
+_autodetectrootfail="Kok bolumu algilanamadi. El ile baglayin"
 _youwilleditmenulst="GRUB2 yapilandirma dosyasini olusturacaksiniz (grub.cfg). Herseyin yapilandirildigini kontrol etmelisiniz."
 _nohdfound="Disk bulunamadi"
-_whereinststage1="GRUB2 nereye kurulsun? (Genellikle MBR /dev/sda üzerine kurulur)."
+_whereinststage1="GRUB2 nereye kurulsun? (Genellikle MBR /dev/sda uzerine kurulur)."
 _installinggrub="GRUB2 Kuruluyor..."
 _missingrootpart="HATA:kayip/gecersiz kok root aygiti:"
-_cannotfindgrub="GRUB2 root ve kurulum aygitlari yerlestirilemedi. GRUB2 kabuğu kullanarak önyükleyiciyi manuel kurmalisiniz."
-_bootsonanydisk="Ana disk/ anakartı değiştirmeniz kullanışlı olacak"
+_cannotfindgrub="GRUB2 root ve kurulum aygitlari yerlestirilemedi. GRUB2 kabugu kullanarak onyukleyiciyi manuel kurmalisiniz."
+_bootsonanydisk="Ana disk/anakarti degistirmeniz kullanisli olacak"
 _chainloadexpl="sda1 deki sistem icin secimli giris"
 _enterrootdevpath="root bolumu icin yol girin"
 _errorinstgrub="HATA: GRUB2 kurulamadi."
@@ -102,8 +102,8 @@ _diskpreparation="Disk(ler) in hazirlanmasi"
 _assistprepa="Zorlayarak ayarlama (diskteki tum verileri siler)"
 _manualpartit="El ile bolumlendirme"
 _mainmenulabel="Ana menu"
-_runninginitcpio="Yurutuluyor mkinitcpio..."
-_runninginitcpiotitle="Insa ediliyor initramfs imaj..."
+_runninginitcpio="mkinitcpio yurutuluyor..."
+_runninginitcpiotitle="initramfs imaji olusturuluyor..."
 _mkinitcpiofailerror="HATA - mkinitcpio yu el ile calistirin, degilse sisteminiz acilmayabilir."
 
 _localegen="yerellestiriliyor..."
@@ -115,10 +115,10 @@ _setupsystemd="SystemD yapilandiriliyor..."
 _setupdisplaymanager="Goruntu yoneticisi yapilandiriliyor..."
 _fixapps="Bazi uygulamalar cozumleniyor..."
 
-_unsquash_dialog_title="Sistem dosyalari luruluyor..."
+_unsquash_dialog_title="Sistem dosyalari kuruluyor..."
 _unsquash_dialog_info1="Arsiv aciliyor:"
 _unsquash_dialog_info2="\nLutfen bekleyin..."
-_unsquasherror_title="Arsiv acilmasi basarisiz..."
+_unsquasherror_title="Arsiv acilamadi!..."
 
 _passwdtitle="Parola kurulumu..."
 _passwddl="Parolanizi girin:"
@@ -126,17 +126,17 @@ _passwddl1="Parolanizi girin:"
 _passwddl2="Parolanizi tekrar girin:"
 _passwddl3="Parolalar uyusmuyor!\nYeniden girin:"
 
-_definerootpass="Yetkili kullanici parolanizi degistirin"
-_defineuser="Kullanici hesaplari kurulumu"
-_defineuserpass="Kullanici parolasini degistirin"
+_definerootpass="Yetkili kullanici parolanizi belirleyin"
+_defineuser="Kullanici hesaplari"
+_defineuserpass="Kullanici parolasini belirleyin"
 _definelocale="Yereli degistirin (secimli)"
-_definekeymap="vconsole tus haritasini degistirin (secimli)"
+_definekeymap="vconsole tus haritasini belirleyin (secimli)"
 _enterusername="Kullanici hesap adini degistirin.."
-_doeditconfig="Sistem yapilandirilmasini duzenleyin (secimli)"
+_doeditconfig="Sisteminizi yapilandirin (secimli)"
 _return_label="Geri"
 _rcconftext="Ana sistem yapilandirilmasi"
 _fstabtext="Baglama noktalari ( lutfen kontrol edin)"
-_mkinitcpioconftext="Initramfs ayarlari (aydinlatilabilir"
+_mkinitcpioconftext="Initramfs ayarlari"
 _modprobeconftext="Modul secenekleri ( sadece ozel durumlar )"
 _resolvconftext="DNS sunuculari (ag yoneticisince ayarlanir)"
 _hostnametext="Ag host adi (Sistem host adi)"
@@ -144,22 +144,22 @@ _hoststext="Ag hosts (yerel DNS)"
 _hostsdenytext="Engellenmis ag servisleri"
 _hostsallowtext="Onaylanmis ag servisleri"
 _localegentext="Sistem dilini duzenleyin"
-_localeconftext="Varsayilan kullanilan dili duzenleyin"
-_environmenttext="Ortam dilini duzenleyin"
-_mirrorlisttext="paketlerin yansi listesi"
+_localeconftext="Kullanilacak varsayilan dili belirleyin"
+_environmenttext="Ortam dilini belirleyin"
+_mirrorlisttext="Paketlerin yansi listesi"
 _xorgevdevconftext="Xorg tus haritasi"
 _xorgkblayouttext="Xorg tus haritasi arayuzu"
 _vconsoletext="Ucbirim klavye arayuzu"
 _installabootloader="Onyukleyici kurulsun mu?"
 _installgrubbl='GRUB2 kur (yeniden baslatma gerekli)'
-_installnobl="Ne yaptiginiz biliyorsaniz."
+_installnobl="Ne yaptiginizi biliyorsaniz."
 _installgrubdl1="Grub2 su ayarlarla yuklenecek :\n -> KOK bolumu:"
 _installgrubdl2=" -> Hedef bolum (MBR):"
 _installgrubdl3="Bu dogru mu? Degil ise \HAYIR\ ile devam edin ve hedef bolumu secin,dogru ise \"EVET\" ile devam edin."
 
 _none_label="Hicbiri"
 
-_mainmenuhelp="↓ ve ↑ ile giris secin ve enter tusu ile calistirin."
+_mainmenuhelp="Yon tuslari ile secin ve enter tusu ile calistirin."
 _datetimetext="Tarih ve zamani girin"
 _networktext="Ag ayarini yapin"
 _preparediskstext="Disk(ler) in hazirlanmasi"
@@ -174,45 +174,44 @@ _forgotsystemconf="Bilgi\n\nSistem yapilandirmasini unuttunuz."
 _forgotinstalling="Bilgi\n\nyapilandirmadan once kurulum yapmaniz daha mantiklidir."
 _forgotpreparehd="Bilgi\n\nOnce HDD 'nizi hazirlayin."
 
-_activate_dmraid="Activating dmraid arrays..."
+_activate_dmraid="dmraid dizilisi etkinlestiriliyor..."
 
-_scanning_lvm2="Scanning logical volumes..."
-_activate_lvm2="Activating logical volumes..."
+_scanning_lvm2="Mantiksal birimler taraniyor..."
+_activate_lvm2="Mantiksal birimler etkinlestiriliyor..."
 
-_activate_raid="Activating RAID arrays..."
+_activate_raid="RAID duzeni etkinlestiriliyor..."
 
-_scanning_luks="Scanning for luks encrypted devices..."
-_setup_luks="Setup detected luks encrypted device, do you want to activate"
+_scanning_luks="Seckin sifreli aygitlar taraniyor..."
+_setup_luks="Kurulum, seckin sifreli aygitlar algiladi, etkinlestirilsin mi?"
 
-_destdir_1="Setup couldn't detect mounted partition(s) in "
-_destdir_2=", please set mountpoints first."
+_destdir_1="Icinde kurulum bagli bolumleri algilayamadi "
+_destdir_2=", Lutfen once baglama noktalarini belirleyin."
 
-_geteditor="Select a Text Editor to Use"
-_nano="nano (easier)"
+_geteditor="Yazi Yonetinizi belirleyin"
+_nano="nano (kolaydir)"
 
-_menu_descg="\nPARTUUID and PARTLABEL are specific to GPT disks.\nIn GPT disks, PARTUUID is recommended.\nIn MBR/msdos disks,"
-_device_name_scheme_1="Select the device name scheme you want to use in config files. "
-_device_name_scheme_2=" FSUUID is recommended."
+_menu_descg="\nPARTUUID ve PARTLABEL, GPT disklerine ozgudur.\nGPT disklerinde, PARTUUID onerilir.\nMBR/msdos diskleri,"
+_device_name_scheme_1="Ayar dosyalarinda kullanacaginiz aygit semasi adini secin. "
+_device_name_scheme_2="FSUUID onerilir."
 
-_gptinfo="Do you want to use GUID Partition Table (GPT)?\n\nIt is a standard for the layout of the partition table on a physical hard disk. Although it forms a part of the Unified Extensible Firmware Interface (UEFI) standard (replacement for the PC BIOS firmware), it is also used on some BIOS systems because of the limitations of MBR aka msdos partition tables, which restrict maximum disk size to 2 TiB.\n\nWindows XP and earlier Windows systems cannot (without hacks) read or write to drives formatted with a GUID partition table, however, Vista and Windows 7 and later versions include the capability to use GPT for non-boot aka data disks (only UEFI systems can boot Windows from GPT disks).\n\nAttention:\n- Please check if your other operating systems have GPT support!\n- Use this option for a GRUB(2) setup, which should support LVM, RAID\n  etc., which doesn't fit into the usual 30k MS-DOS post-MBR gap.\n- BIOS-GPT boot may not work in some Lenovo systems (irrespective of the\n 
-  bootloader used). "
+_gptinfo="GUID Bolumleme Tablosu mu kullanacaksiniz(GPT)?\n\nFiziksel diskler arayuzu icin bir standarttir.UEFI nin bir parcasi olmasina ragmen(BIOS PC lerde degistirilebilir),bazi bios sistemlerde, en fazla 2 TiB disk alanini destekleyen.\n\nWindows XP ve daha eski Windows sistemler, kirilmadigi surece GUID bolumlendirme kullanilmis diskleri okuyamazlar yazamazlar,ancak, Vista, Windows 7 ve yeni Windows sistemler,GPT disklere erisebilen UEFI sistem icerirler.(Sadece UEFI sistemler Windows' u <gpt disklerde baslatabilir).\n\nDikkat:\n- Lutfen, diger sisteminizin GPT destegini kontrol edin!\n- LVM, RAID destekli GRUB2 icin bu secenegi secin\n  vs.., her zamanki 30 k MS-DOS eski MBR bosluguna sigmaz.\n- BIOS-GPT boot bazi Lenovo sistemlerde calismaz (Onyukleyici \n varligindan bagimsiz). "
 
-_disable_swap="Disabling swapspace, unmounting already mounted disk devices..."
+_disable_swap="Takas alani devre disi birakiliyor,bagli aygitlar ayriliyor..."
 
-_stop_md="Setup detected already running raid devices, do you want to disable them completely?"
+_stop_md="Kurulum, isler durumda raid aygitlari algiladi, devre disi birakmak istiyor musunuz?"
 
-_disable_raid="Disabling all software raid devices..."
+_disable_raid="Tum raid aygitlari devre disi birakiliyor..."
 
 _clear_superblock="Cleaning superblocks of all software raid devices..."
 _setup_superblock="Setup detected superblock of raid devices, do you want to clean the superblock of them?"
-_clean_superblock="Cleaning superblocks of all software raid devices..."
+_clean_superblock="Raid aygit yazilimlarindan superbloklar temizleniyor..."
 
-_stoplvm="Setup detected lvm volumes, volume groups or physical devices, do you want to remove them completely?"
-_removelvm="Removing logical volumes ..."
-_removelvg="Removing logical groups ..."
-_removepvm="Removing physical volumes ..."
+_stoplvm="Kurulum lvm birimleri algiladi, kaldirmak istiyor musunuz?"
+_removelvm="Mantiksal birimler kaldiriliyor ..."
+_removelvg="Mantiksal gruplar kaldiriliyor ..."
+_removepvm="Fiziksel birimler kaldiriliyor ..."
 
-_help_raid="LINUX SOFTWARE RAID SUMMARY:\n
+_help_raid="LINUX YAZILIMI RAID OZETI:\n
 -----------------------------\n\n
 Linear mode:\n
 You have two or more partitions which are not necessarily the same size\n
@@ -274,11 +273,11 @@ to modify.\n\nThe basic building block of LVM are:\n
   which you can have virtual groups. It has a special header and is\n
   divided into physical extents. Think of physical volumes as big building\n
   blocks which can be used to build your hard drive.\n
-- Volume group (VG):\n 
+- Volume group (VG):\n
   Group of physical volumes that are used as storage volume (as one disk).\n
-  They contain logical volumes. Think of volume groups as hard drives.\n 
+  They contain logical volumes. Think of volume groups as hard drives.\n
 - Logical volume(LV):\n
-  A \"virtual/logical partition\" that resides in a volume group and is\n 
+  A \"virtual/logical partition\" that resides in a volume group and is\n
   composed of physical extents. Think of logical volumes as normal\n
   partitions."
 
