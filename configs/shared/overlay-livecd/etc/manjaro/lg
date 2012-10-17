@@ -2,18 +2,6 @@
 # written by Alex Filgueira <faidoc@gmail.com>
 # adapted for Manjaro by Philip Müller <philm@manjaro.org>
 
-
-ANSWER="/tmp/.lg"
-TITLE="${_title}"
-
-if [[ "${1}" = "--setup" ]]; then
-    EXIT="${_return}"
-    DESTDIR="/install"
-else
-    EXIT="${_exit}"
-    DESTDIR=""
-fi
-
 abort()
 {
     DIALOG --yesno "${_abort}" 6 42 || return 0
@@ -129,6 +117,17 @@ cd /etc/manjaro
 # Turkish
 if [ "${LOCALE}" = "tr_TR" ]; then
    . lg-tr.lng
+fi
+
+ANSWER="/tmp/.lg"
+TITLE="${_title}"
+
+if [[ "${1}" = "--setup" ]]; then
+    EXIT="${_return}"
+    DESTDIR="/install"
+else
+    EXIT="${_exit}"
+    DESTDIR=""
 fi
 
 if [[ -e /tmp/.lg-running ]]; then

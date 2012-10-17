@@ -3,18 +3,6 @@
 # adapted for Cinnarch by Alex Filgueira <faidoc@gmail.com>
 # adapted for Manjaro by Philip Müller <philm@manjaro.org>
 
-ANSWER="/tmp/.km"
-TITLE="${_title}"
-BASEDIR="/usr/share/kbd"
-
-if [[ "${1}" = "--setup" ]]; then
-    EXIT="${_return}"
-    DESTDIR="/install"
-else
-    EXIT="${_exit}"
-    DESTDIR=""
-fi
-
 abort()
 {
     DIALOG --yesno "${_abort}" 6 42 || return 0
@@ -126,6 +114,18 @@ cd /etc/manjaro
 # Turkish
 if [ "${LOCALE}" = "tr_TR" ]; then
    . km-tr.lng
+fi
+
+ANSWER="/tmp/.km"
+TITLE="${_title}"
+BASEDIR="/usr/share/kbd"
+
+if [[ "${1}" = "--setup" ]]; then
+    EXIT="${_return}"
+    DESTDIR="/install"
+else
+    EXIT="${_exit}"
+    DESTDIR=""
 fi
 
 if [[ ! -d ${BASEDIR}/keymaps ]]; then
