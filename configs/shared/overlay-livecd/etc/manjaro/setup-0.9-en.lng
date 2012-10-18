@@ -212,6 +212,17 @@ _removelvm="Removing logical volumes ..."
 _removelvg="Removing logical groups ..."
 _removepvm="Removing physical volumes ..."
 
+_stopluks="Setup detected running luks encrypted devices, do you want to remove them completely?"
+_removeluks="Removing luks encrypted devices ..."
+_stoprluks="Setup detected not running luks encrypted devices, do you want to remove them completely?"
+_removerluks="Removing not running luks encrypted devices ..."
+
+_deactivateraid="Deactivating dmraid devices ..."
+_setupraid="Setup detected running dmraid devices and/or running lvm2, luks encrypted devices. If you reduced/deleted partitions on your dmraid device a complete reset of devicemapper devices is needed. This will reset also your created lvm2 or encrypted devices. Are you sure you want to do this?"
+_resetraid="Resetting devicemapper devices ..."
+_resetdm="Resetting devicemapper devices ..."
+_reactivatedm="Reactivating dmraid devices ..."
+
 _help_raid="LINUX SOFTWARE RAID SUMMARY:\n
 -----------------------------\n\n
 Linear mode:\n
@@ -263,6 +274,37 @@ Shorthand for RAID1+0, a mirrored striped array and needs a minimum of\n
 two disks. It provides superior data security and can survive multiple\n
 disk failures. The main disadvantage is cost, because 50% of your\n
 storage is duplication."
+
+_alldm="All devices in use. No more devices left for new creation."
+
+_enter_node="Enter the node name for the raiddevice:\n/dev/md[number]\n/dev/md0\n/dev/md1\n\n"
+_enter_node2="Enter the node name for partitionable raiddevice:\n/dev/md_d[number]\n/dev/md_d0\n/dev/md_d1"
+_error_node="ERROR: You have defined 2 identical node names! Please enter another name."
+_raid_level="Select the raid level you want to use"
+_select_partiy="Select the parity layout you want to use (default is left-symmetric)"
+_select_dv="Select device"
+_select_addv="Select additional device"
+_degraded_raid="Would you like to create a degraded raid on"
+_question_raid1="Would you like to create"
+_question_raid2="like this?"
+_parted_raid="Now you'll be put into the parted program where you can partition your raiddevice to your needs."
+_no_raid_left="No devices left for physical volume creation."
+_select_dvnr1="Select additional device number"
+_select_dvnr2="for physical volume"
+_create_vm="Would you like to create physical volume on devices below?"
+_creating_vm="Creating physical volume on"
+
+_no_vg_left="No devices left for Volume Group creation."
+_enter_vg="Enter the Volume Group name:"
+_error_vg="ERROR: You have defined 2 identical Volume Group names! Please enter another name."
+_info_vg="Physical Volumes that are not shown in next dialog, are already in use!"
+
+_for="for"
+
+_select_pvg="Select Physical Volume"
+_select_ad_pvg="Select additional Physical Volume"
+_create_vg="Would you like to create Volume Group like this?"
+_creating_vg="Creating Volume Group"
 
 _help_lvm="LOGICAL VOLUME SUMMARY:\n
 -----------------------------\n\n
