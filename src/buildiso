@@ -176,7 +176,7 @@ if [ -e Packages-Xorg ] ; then
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
               echo -e -n "$_r >$_W Prepare pkgs-image \n $_n"
               mkdir -p ${work_dir}/pkgs-image/opt/manjaro/pkgs
-              if [ "`mount -l | grep ${work_dir}/pkgs-image`" != "" ]; then
+              if [ "`mount -l | grep pkgs-image`" != "" ]; then
                  umount -f ${work_dir}/pkgs-image
               fi
               mount -t aufs -o br=${work_dir}/pkgs-image:${work_dir}/root-image=ro none ${work_dir}/pkgs-image
@@ -194,7 +194,7 @@ if [ -e Packages-Xorg ] ; then
               if [ "${xorg_overlays}" = "yes" ] ; then
                  echo -e -n "$_r >$_W Prepare pkgs-free-overlay \n $_n"
                  mkdir -p ${work_dir}/pkgs-free-overlay
-                 if [ "`mount -l | grep ${work_dir}/pkgs-free-overlay`" != "" ]; then
+                 if [ "`mount -l | grep pkgs-free-overlay`" != "" ]; then
                     umount -f ${work_dir}/pkgs-free-overlay
                  fi
                  mount -t aufs -o br=${work_dir}/pkgs-free-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-free-overlay
@@ -206,7 +206,7 @@ if [ -e Packages-Xorg ] ; then
                  rm -R ${work_dir}/pkgs-free-overlay/.wh*
                  echo -e -n "$_r >$_W Prepare pkgs-nonfree-overlay \n $_n"
                  mkdir -p ${work_dir}/pkgs-nonfree-overlay
-                 if [ "`mount -l | grep ${work_dir}/pkgs-nonfree-overlay`" != "" ]; then
+                 if [ "`mount -l | grep pkgs-nonfree-overlay`" != "" ]; then
                     umount -f ${work_dir}/pkgs-nonfree-overlay
                  fi
                  mount -t aufs -o br=${work_dir}/pkgs-nonfree-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-nonfree-overlay
@@ -229,7 +229,7 @@ if [ -e Packages-Lng ] ; then
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
               echo -e -n "$_r >$_W Prepare lng-image \n $_n"
               mkdir -p ${work_dir}/lng-image/opt/manjaro/lng
-              if [ "`mount -l | grep ${work_dir}/lng-image`" != "" ]; then
+              if [ "`mount -l | grep lng-image`" != "" ]; then
                  umount -f ${work_dir}/lng-image
               fi
               mount -t aufs -o br=${work_dir}/lng-image:${work_dir}/root-image=ro none ${work_dir}/lng-image
@@ -257,7 +257,7 @@ if [ -e Packages-Xfce ] ; then
               de="-xfce"
               echo -e -n "$_r >$_W XFCE installation (xfce-image) \n $_n"
               mkdir -p ${work_dir}/xfce-image
-              if [ "`mount -l | grep ${work_dir}/xfce-image`" != "" ]; then
+              if [ "`mount -l | grep xfce-image`" != "" ]; then
                  umount -f ${work_dir}/xfce-image
               fi
               mount -t aufs -o br=${work_dir}/xfce-image:${work_dir}/root-image=ro none ${work_dir}/xfce-image
@@ -284,7 +284,7 @@ if [ -e Packages-Kde ] ; then
               de="-kde"
               echo -e -n "$_r >$_W KDE installation (kde-image) \n $_n"
               mkdir -p ${work_dir}/kde-image
-              if [ "`mount -l | grep ${work_dir}/kde-image`" != "" ]; then
+              if [ "`mount -l | grep kde-image`" != "" ]; then
                  umount -f ${work_dir}/kde-image
               fi
               mount -t aufs -o br=${work_dir}/kde-image:${work_dir}/root-image=ro none ${work_dir}/kde-image
@@ -311,7 +311,7 @@ if [ -e Packages-gnome ] ; then
               de="-gnome"
               echo -e -n "$_r >$_W GNOME installation (gnome-image) \n $_n"
               mkdir -p ${work_dir}/gnome-image
-              if [ "`mount -l | grep ${work_dir}/gnome-image`" != "" ]; then
+              if [ "`mount -l | grep gnome-image`" != "" ]; then
                  umount -f ${work_dir}/gnome-image
               fi
               mount -t aufs -o br=${work_dir}/gnome-image:${work_dir}/root-image=ro none ${work_dir}/gnome-image
@@ -338,7 +338,7 @@ if [ -e Packages-Openbox ] ; then
               de="-openbox"
               echo -e -n "$_r >$_W Openbox installation (openbox-image) \n $_n"
               mkdir -p ${work_dir}/openbox-image
-              if [ "`mount -l | grep ${work_dir}/openbox-image`" != "" ]; then
+              if [ "`mount -l | grep openbox-image`" != "" ]; then
                  umount -f ${work_dir}/openbox-image
               fi
               mount -t aufs -o br=${work_dir}/openbox-image:${work_dir}/root-image=ro none ${work_dir}/openbox-image
@@ -366,7 +366,7 @@ make_boot() {
         cp ${work_dir}/root-image/boot/memtest86+/memtest.bin ${work_dir}/iso/${install_dir}/boot/${arch}/memtest
 	cp ${work_dir}/root-image/boot/vmlinuz* ${work_dir}/iso/${install_dir}/boot/${arch}/manjaroiso
         mkdir -p ${work_dir}/boot-image
-        if [ "`mount -l | grep ${work_dir}/boot-image`" != "" ]; then
+        if [ "`mount -l | grep boot-image`" != "" ]; then
            umount -f ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
         fi
         mount -t aufs -o br=${work_dir}/boot-image:${work_dir}/root-image=ro none ${work_dir}/boot-image
