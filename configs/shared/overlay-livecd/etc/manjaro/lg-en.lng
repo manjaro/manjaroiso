@@ -11,4 +11,3 @@ _desc="Use ↓ and ↑ to navigate menus.\nUse TAB to switch between buttons and
 _locale="Set Locale"
 _lg="lg already runs on a different console!"
 _tmp="Please remove /tmp/.lg-running first to continue!"
-_networktext="Set up Network (optional)"
