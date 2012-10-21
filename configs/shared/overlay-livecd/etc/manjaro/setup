@@ -177,7 +177,8 @@ mainmenu()
         --menu "${_mainmenuhelp}" 16 55 8 \
         "1" "${_stableinstaller}" \
         "2" "${_testinginstaller}" \
-        "3" "${_quittext}" 2>$ANSWER
+        "3" "${_networktext}" \
+        "4" "${_quittext}" 2>$ANSWER
     CURRENT_SELECTION="$(cat $ANSWER)"
     case $(cat $ANSWER) in
         "1")
@@ -191,7 +192,6 @@ mainmenu()
             exit 0
         ;;
         "3")
-            DIALOG --infobox "${_networktext}" 6 40
             donetwork
         ;;
         "4")
