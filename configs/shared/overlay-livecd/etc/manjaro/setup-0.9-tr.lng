@@ -202,8 +202,8 @@ _stop_md="Kurulum, isler durumda raid aygitlari algiladi, devre disi birakmak is
 
 _disable_raid="Tum raid aygitlari devre disi birakiliyor..."
 
-_clear_superblock="Cleaning superblocks of all software raid devices..."
-_setup_superblock="Setup detected superblock of raid devices, do you want to clean the superblock of them?"
+_clear_superblock="Tum yazilimsal raid suruculerinin superbloklari temizleniyor..."
+_setup_superblock="Kurulum raid suruculere ait superbloklar tespit etti, bu superbloklari temizlemek ister misiniz ?"
 _clean_superblock="Raid aygit yazilimlarindan superbloklar temizleniyor..."
 
 _stoplvm="Kurulum lvm birimleri algiladi, kaldirmak istiyor musunuz?"
