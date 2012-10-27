@@ -90,12 +90,14 @@ kernel_cmdline ()
 #
 chroot_mount()
 {
-    [[ -e "${DESTDIR}/sys" ]] || mkdir "${DESTDIR}/sys"
-    [[ -e "${DESTDIR}/proc" ]] || mkdir "${DESTDIR}/proc"
+    [[ -e "${DESTDIR}/sys" ]] || mkdir -m 555 "${DESTDIR}/sys"
+    [[ -e "${DESTDIR}/proc" ]] || mkdir -m 555 "${DESTDIR}/proc"
     [[ -e "${DESTDIR}/dev" ]] || mkdir "${DESTDIR}/dev"
     mount -t sysfs sysfs "${DESTDIR}/sys"
     mount -t proc proc "${DESTDIR}/proc"
     mount -o bind /dev "${DESTDIR}/dev"
+    chmod 555 "${DESTDIR}/sys"
+    chmod 555 "${DESTDIR}/proc"
 }
 
 # chroot_umount()
@@ -1252,9 +1254,7 @@ run_unsquashfs()
         touch /tmp/setup-unsquashfs-running
         echo "unsquashing $SQF_FILE..." > /tmp/unsquashfs.log; \
         echo >> /tmp/unsquashfs.log; \
-        unsquashfs -f -p 1 -d $UNSQUASH_TARGET /bootmnt/manjaro/${arch}/$SQF_FILE >>/tmp/unsquashfs.log 2>&1
-        echo $? > /tmp/.unsquashfs-retcode
-        echo >> /tmp/unsquashfs.log
+        unsquashfs -f -p 1 -d $UNSQUASH_TARGET /bootmnt/manjaro/${arch}/$SQF_FILE >> /tmp/unsquashfs.log 2>&1
         rm -f /tmp/setup-unsquashfs-running
     ) &
 
@@ -1273,14 +1273,6 @@ run_unsquashfs()
     done
     ) | DIALOG --title "$_unsquash_dialog_title" --gauge "$_unsquash_dialog_info1 $SQF_FILE $_unsquash_dialog_info2" 10 60 0
 
-    # alert the user to fatal errors
-    if [ $(cat /tmp/.unsquashfs-retcode) -ne 0 ]; then
-        killall unsquashfs
-        DIALOG --title "$_unsquasherror_title" --exit-label \
-        "OK" --textbox "/tmp/unsquashfs.log" 18 70
-        return 1
-    fi
-
     # save unsquashfs.log
     mv "/tmp/unsquashfs.log" "/tmp/unsquashfs-$SQF_FILE.log"
 }
@@ -1288,8 +1280,7 @@ run_unsquashfs()
 # run_mkinitcpio()
 # runs mkinitcpio on the target system, displays output
 #
-run_mkinitcpio()
-{
+run_mkinitcpio() {
     chroot_mount
     # fix fsck.btrfs issue
     chroot "$DESTDIR" ln -s /bin/true /sbin/fsck.btrfs
@@ -1300,33 +1291,21 @@ run_mkinitcpio()
     # all mkinitcpio output goes to /tmp/mkinitcpio.log, which we tail
     # into a dialog
     ( \
-        touch /tmp/setup-mkinitcpio-running
-        echo "${_runninginitcpio}" > /tmp/mkinitcpio.log; \
-        echo >> /tmp/mkinitcpio.log; \
-        chroot "$DESTDIR" /sbin/depmod >>/tmp/mkinitcpio.log 2>&1
-        chroot "$DESTDIR" /usr/bin/mkinitcpio -p "$manjaro_kernel" >>/tmp/mkinitcpio.log 2>&1
-        echo $? > /tmp/.mkinitcpio-retcode
-        echo >> /tmp/mkinitcpio.log
-        rm -f /tmp/setup-mkinitcpio-running
+    touch /tmp/setup-mkinitcpio-running
+    echo "${_runninginitcpio}" >> /tmp/mkinitcpio.log; \
+    chroot "$DESTDIR" /usr/bin/mkinitcpio -p "$manjaro_kernel" >>/tmp/mkinitcpio.log 2>&1
+    echo >> /tmp/mkinitcpio.log
+    rm -f /tmp/setup-mkinitcpio-running
     ) &
 
     sleep 2
 
-    DIALOG --title "${_runninginitcpiotitle}" \
-        --no-kill --tailboxbg "/tmp/mkinitcpio.log" 18 70 2>${ANSWER}
+    DIALOG --title "${_runninginitcpiotitle}" --no-kill --tailboxbg "/tmp/mkinitcpio.log" 18 70
     while [ -f /tmp/setup-mkinitcpio-running ]; do
-        sleep 1
+        /bin/true
     done
-    kill $(cat ${ANSWER})
 
     chroot_umount
-
-    # alert the user to fatal errors
-    if [ $(cat /tmp/.mkinitcpio-retcode) -ne 0 ]; then
-        DIALOG --title "${_mkinitcpiofailerror}" --exit-label \
-        "${_continue_label}" --textbox "/tmp/mkinitcpio.log" 18 70
-        return 1
-    fi
 }
 
 _setup_user()

@@ -46,6 +46,10 @@ block="/sys/block"
 PART_ROOT=""
 ROOTFS=""
 
+# Mylex DAC960 PCI RAID controller, Compaq Next Generation Drive Array, 
+# Compaq Intelligent Drive Array
+EXTRA_CONTROLLER="rd cciss ida"
+
 # check if we have a internet connection
 ping_check=$(LC_ALL=C ping -c 1 www.manjaro.org | grep "1 received")
 
@@ -96,12 +100,14 @@ kernel_cmdline ()
 #
 chroot_mount()
 {
-    [[ -e "${DESTDIR}/sys" ]] || mkdir "${DESTDIR}/sys"
-    [[ -e "${DESTDIR}/proc" ]] || mkdir "${DESTDIR}/proc"
+    [[ -e "${DESTDIR}/sys" ]] || mkdir -m 555 "${DESTDIR}/sys"
+    [[ -e "${DESTDIR}/proc" ]] || mkdir -m 555 "${DESTDIR}/proc"
     [[ -e "${DESTDIR}/dev" ]] || mkdir "${DESTDIR}/dev"
     mount -t sysfs sysfs "${DESTDIR}/sys"
     mount -t proc proc "${DESTDIR}/proc"
     mount -o bind /dev "${DESTDIR}/dev"
+    chmod 555 "${DESTDIR}/sys"
+    chmod 555 "${DESTDIR}/proc"
 }
 
 # chroot_umount()
@@ -2422,7 +2428,16 @@ _mkfs() {
     # add to .device-names for config files
     local _fsuuid="$(getfsuuid ${_device})"
     local _fslabel="$(getfslabel ${_device})"
-    echo "# DEVICE DETAILS: ${_device} UUID=${_fsuuid} LABEL=${_fslabel}" >> /tmp/.device-names
+    
+    if [[ "${GUID_DETECTED}" == "1" ]]; then
+        local _partuuid="$(getpartuuid ${_device})"
+        local _partlabel="$(getpartlabel ${_device})"
+        
+        echo "# DEVICE DETAILS: ${_device} PARTUUID=${_partuuid} PARTLABEL=${_partlabel} UUID=${_fsuuid} LABEL=${_fslabel}" >> /tmp/.device-names
+    else
+        echo "# DEVICE DETAILS: ${_device} UUID=${_fsuuid} LABEL=${_fslabel}" >> /tmp/.device-names
+    fi
+  
     # add to temp fstab
     if [[ "${NAME_SCHEME_PARAMETER}" == "FSUUID" ]]; then
         if [[ -n "${_fsuuid}" ]]; then
@@ -2432,7 +2447,20 @@ _mkfs() {
         if [[ -n "${_fslabel}" ]]; then
             _device="LABEL=${_fslabel}"
         fi
+    else
+        if [[ "${GUID_DETECTED}" == "1" ]]; then
+           if [[ "${NAME_SCHEME_PARAMETER}" == "PARTUUID" ]]; then
+               if [[ -n "${_partuuid}" ]]; then
+                   _device="PARTUUID=${_partuuid}"
+               fi
+           elif [[ "${NAME_SCHEME_PARAMETER}" == "PARTLABEL" ]]; then
+               if [[ -n "${_partlabel}" ]]; then
+                   _device="PARTLABEL=${_partlabel}"
+               fi
+           fi 
+        fi
     fi
+
     if [[ "${_fstype}" = "btrfs" && -n "${_btrfsmountoptions}" ]]; then
         echo -n "${_device} ${_mountpoint} ${_fstype} defaults,${_btrfsmountoptions} 0 " >>/tmp/.fstab
     else
@@ -2442,6 +2470,37 @@ _mkfs() {
         echo "0" >>/tmp/.fstab
     else
         echo "1" >>/tmp/.fstab
+    fi
+}
+
+# auto_fstab()
+# preprocess fstab file
+# comments out old fields and inserts new ones
+# according to partitioning/formatting stage
+#
+auto_fstab(){
+    # Modify fstab
+    if [[ "${S_MKFS}" = "1" || "${S_MKFSAUTO}" = "1" ]]; then
+        if [[ -f /tmp/.device-names ]]; then
+            sort /tmp/.device-names >>${DESTDIR}/etc/fstab
+        fi
+        if [[ -f /tmp/.fstab ]]; then
+            # clean fstab first from /dev entries
+            sed -i -e '/^\/dev/d' ${DESTDIR}/etc/fstab
+            sort /tmp/.fstab >>${DESTDIR}/etc/fstab
+        fi
+    fi
+}
+
+# auto_mdadm()
+# add mdadm setup to existing /etc/mdadm.conf
+auto_mdadm()
+{
+    if [[ -e ${DESTDIR}/etc/mdadm.conf ]];then
+        if [[ "$(cat /proc/mdstat | grep ^md)" ]]; then
+            DIALOG --infobox "Adding raid setup to ${DESTDIR}/etc/mdadm.conf ..." 4 40
+            mdadm -Ds >> ${DESTDIR}/etc/mdadm.conf
+        fi
     fi
 }
 
@@ -2481,6 +2540,22 @@ getcryptsetup() {
     fi
 }
 
+getrootpartuuid() {
+    _rootpart="${PART_ROOT}"
+    _partuuid="$(getpartuuid ${PART_ROOT})"
+    if [[ -n "${_partuuid}" ]]; then
+        _rootpart="PARTUUID=${_partuuid}"
+    fi
+}
+
+getrootpartlabel() {
+    _rootpart="${PART_ROOT}"
+    _partlabel="$(getpartlabel ${PART_ROOT})"
+    if [[ -n "${_partlabel}" ]]; then
+        _rootpart="PARTLABEL=${_partlabel}"
+    fi
+}
+
 getrootfsuuid() {
     _rootpart="${PART_ROOT}"
     _fsuuid="$(getfsuuid ${PART_ROOT})"
@@ -2504,6 +2579,12 @@ common_bootloader_checks() {
     getraidarrays
     getcryptsetup
     getrootflags
+    
+    if [[ "${GUID_DETECTED}" == "1" ]]; then
+        [[ "${NAME_SCHEME_PARAMETER}" == "PARTUUID" ]] && getrootpartuuid
+        [[ "${NAME_SCHEME_PARAMETER}" == "PARTLABEL" ]] && getrootpartlabel
+    fi
+ 
     [[ "${NAME_SCHEME_PARAMETER}" == "FSUUID" ]] && getrootfsuuid
     [[ "${NAME_SCHEME_PARAMETER}" == "FSLABEL" ]] && getrootfslabel
 }
@@ -3802,6 +3883,87 @@ dogrub_uefi_i386() {
     
 }
 
+# run_mkinitcpio()
+# runs mkinitcpio on the target system, displays output
+#
+run_mkinitcpio() {
+    chroot_mount
+    # fix fsck.btrfs issue
+    chroot "$DESTDIR" ln -s /bin/true /sbin/fsck.btrfs
+
+    # fix fsck.nilfs2 issue
+    chroot "$DESTDIR" ln -s /bin/true /sbin/fsck.nilfs2
+
+    # all mkinitcpio output goes to /tmp/mkinitcpio.log, which we tail
+    # into a dialog
+    ( \
+    touch /tmp/setup-mkinitcpio-running
+    echo "${_runninginitcpio}" >> /tmp/mkinitcpio.log; \
+    chroot "$DESTDIR" /usr/bin/mkinitcpio -p "$manjaro_kernel" >>/tmp/mkinitcpio.log 2>&1
+    echo >> /tmp/mkinitcpio.log
+    rm -f /tmp/setup-mkinitcpio-running
+    ) &
+
+    sleep 2
+
+    DIALOG --title "${_runninginitcpiotitle}" --no-kill --tailboxbg "/tmp/mkinitcpio.log" 18 70
+    while [ -f /tmp/setup-mkinitcpio-running ]; do
+        /bin/true
+    done
+
+    chroot_umount
+}
+
+prepare_harddrive() {
+    S_MKFSAUTO=0
+    S_MKFS=0
+    DONE=0
+    NEXTITEM=""
+    CANCEL="1"
+    while [[ "${DONE}" = "0" ]]; do
+        if [[ -n "${NEXTITEM}" ]]; then
+            DEFAULT="--default-item ${NEXTITEM}"
+        else
+            DEFAULT=""
+        fi
+        CANCEL=""
+        dialog ${DEFAULT} --backtitle "${TITLE}" --menu "Prepare Hard Drive" 12 60 5 \
+            "1" "Auto-Prepare (erases the ENTIRE hard drive)" \
+            "2" "Partition Hard Drives" \
+            "3" "Create Software Raid, Lvm2 and Luks encryption" \
+            "4" "Set Filesystem Mountpoints" \
+            "5" "Return to Main Menu" 2>${ANSWER} || CANCEL="1"
+        NEXTITEM="$(cat ${ANSWER})"
+        [[ "${S_MKFSAUTO}" = "1" ]] && DONE=1
+        case $(cat ${ANSWER}) in
+            "1")
+                autoprepare
+                [[ "${S_MKFSAUTO}" = "1" ]] && DONE=1
+                CANCEL="0"
+                _hd_is_prepared=1 
+                NEXTITEM="5";;
+            "2")
+                partition ;;
+            "3")
+                create_special ;;
+            "4")
+                PARTFINISH=""
+                ASK_MOUNTPOINTS="1"
+                mountpoints
+                CANCEL="0"
+                _hd_is_prepared=1 
+                NEXTITEM="5";;
+            *)
+                DONE=1 ;;
+        esac
+    done
+    if [[ "${CANCEL}" = "1" ]]; then
+        NEXTITEM="2"
+    else
+        NEXTITEM="3"
+    fi
+}
+
 # menu for raid, lvm and encrypt
 create_special() {
     NEXTITEM=""
@@ -4366,24 +4528,7 @@ set_passwd()
     fi
 }
 
-# auto_fstab()
-# preprocess fstab file
-# comments out old fields and inserts new ones
-# according to partitioning/formatting stage
-#
-auto_fstab(){
-    # Modify fstab
-    if [[ "${S_MKFS}" = "1" || "${S_MKFSAUTO}" = "1" ]]; then
-        if [[ -f /tmp/.device-names ]]; then
-            sort /tmp/.device-names >>${DESTDIR}/etc/fstab
-        fi
-        if [[ -f /tmp/.fstab ]]; then
-            # clean fstab first from /dev entries
-            sed -i -e '/^\/dev/d' ${DESTDIR}/etc/fstab
-            sort /tmp/.fstab >>${DESTDIR}/etc/fstab
-        fi
-    fi
-}
+
 
 set_language() {
     if [[ -e /etc/manjaro/lg ]]; then
@@ -4473,56 +4618,6 @@ set_clock()
     NEXTITEM="2"
 }
 
-prepare_harddrive() {
-    S_MKFSAUTO=0
-    S_MKFS=0
-    DONE=0
-    NEXTITEM=""
-    CANCEL="1"
-    while [[ "${DONE}" = "0" ]]; do
-        if [[ -n "${NEXTITEM}" ]]; then
-            DEFAULT="--default-item ${NEXTITEM}"
-        else
-            DEFAULT=""
-        fi
-        CANCEL=""
-        dialog ${DEFAULT} --backtitle "${TITLE}" --menu "Prepare Hard Drive" 12 60 5 \
-            "1" "Auto-Prepare (erases the ENTIRE hard drive)" \
-            "2" "Partition Hard Drives" \
-            "3" "Create Software Raid, Lvm2 and Luks encryption" \
-            "4" "Set Filesystem Mountpoints" \
-            "5" "Return to Main Menu" 2>${ANSWER} || CANCEL="1"
-        NEXTITEM="$(cat ${ANSWER})"
-        [[ "${S_MKFSAUTO}" = "1" ]] && DONE=1
-        case $(cat ${ANSWER}) in
-            "1")
-                autoprepare
-                [[ "${S_MKFSAUTO}" = "1" ]] && DONE=1
-                CANCEL="0"
-                _hd_is_prepared=1 
-                NEXTITEM="5";;
-            "2")
-                partition ;;
-            "3")
-                create_special ;;
-            "4")
-                PARTFINISH=""
-                ASK_MOUNTPOINTS="1"
-                mountpoints
-                CANCEL="0"
-                _hd_is_prepared=1 
-                NEXTITEM="5";;
-            *)
-                DONE=1 ;;
-        esac
-    done
-    if [[ "${CANCEL}" = "1" ]]; then
-        NEXTITEM="2"
-    else
-        NEXTITEM="3"
-    fi
-}
-
 # run_unsquashfs()
 # runs unsquashfs on the target system, displays output
 #
@@ -4534,9 +4629,7 @@ run_unsquashfs()
         touch /tmp/setup-unsquashfs-running
         echo "unsquashing $SQF_FILE..." > /tmp/unsquashfs.log; \
         echo >> /tmp/unsquashfs.log; \
-        unsquashfs -f -p 1 -d $UNSQUASH_TARGET /bootmnt/manjaro/${arch}/$SQF_FILE >>/tmp/unsquashfs.log 2>&1
-        echo $? > /tmp/.unsquashfs-retcode
-        echo >> /tmp/unsquashfs.log
+        unsquashfs -f -p 1 -d $UNSQUASH_TARGET /bootmnt/manjaro/${arch}/$SQF_FILE >> /tmp/unsquashfs.log 2>&1
         rm -f /tmp/setup-unsquashfs-running
     ) &
 
@@ -4555,60 +4648,8 @@ run_unsquashfs()
     done
     ) | DIALOG --title "$_unsquash_dialog_title" --gauge "$_unsquash_dialog_info1 $SQF_FILE $_unsquash_dialog_info2" 10 60 0
 
-    # alert the user to fatal errors
-    if [ $(cat /tmp/.unsquashfs-retcode) -ne 0 ]; then
-        killall unsquashfs
-        DIALOG --title "$_unsquasherror_title" --exit-label \
-        "OK" --textbox "/tmp/unsquashfs.log" 18 70
-        return 1
-    fi
-
     # save unsquashfs.log
     mv "/tmp/unsquashfs.log" "/tmp/unsquashfs-$SQF_FILE.log"
-}
-
-# run_mkinitcpio()
-# runs mkinitcpio on the target system, displays output
-#
-run_mkinitcpio()
-{
-    chroot_mount
-    # fix fsck.btrfs issue
-    chroot "$DESTDIR" ln -s /bin/true /sbin/fsck.btrfs
-
-    # fix fsck.nilfs2 issue
-    chroot "$DESTDIR" ln -s /bin/true /sbin/fsck.nilfs2
-
-    # all mkinitcpio output goes to /tmp/mkinitcpio.log, which we tail
-    # into a dialog
-    ( \
-        touch /tmp/setup-mkinitcpio-running
-        echo "${_runninginitcpio}" > /tmp/mkinitcpio.log; \
-        echo >> /tmp/mkinitcpio.log; \
-        chroot "$DESTDIR" /sbin/depmod >>/tmp/mkinitcpio.log 2>&1
-        chroot "$DESTDIR" /usr/bin/mkinitcpio -p "$manjaro_kernel" >>/tmp/mkinitcpio.log 2>&1
-        echo $? > /tmp/.mkinitcpio-retcode
-        echo >> /tmp/mkinitcpio.log
-        rm -f /tmp/setup-mkinitcpio-running
-    ) &
-
-    sleep 2
-
-    DIALOG --title "${_runninginitcpiotitle}" \
-        --no-kill --tailboxbg "/tmp/mkinitcpio.log" 18 70 2>${ANSWER}
-    while [ -f /tmp/setup-mkinitcpio-running ]; do
-        sleep 1
-    done
-    kill $(cat ${ANSWER})
-
-    chroot_umount
-
-    # alert the user to fatal errors
-    if [ $(cat /tmp/.mkinitcpio-retcode) -ne 0 ]; then
-        DIALOG --title "${_mkinitcpiofailerror}" --exit-label \
-        "${_continue_label}" --textbox "/tmp/mkinitcpio.log" 18 70
-        return 1
-    fi
 }
 
 _setup_user()
