@@ -7,6 +7,5 @@ Default login "manjaro" with password "manjaro".
 You can change your keymap with "sudo km".
 You can change your locales with "sudo lg".
 
-You can start the installation framework with "sudo setup".
-You can update the installation framework with "sudo update-setup".
+You can start the installation with "sudo setup".
 
