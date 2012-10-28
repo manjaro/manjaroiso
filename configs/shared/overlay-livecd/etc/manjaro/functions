@@ -397,7 +397,7 @@ _do_locales ()
                            CKEYMAP="ua"
                            ;;
     esac
-    if [ "${XVARIANT}" != "" ] then 
+    if [ "${XVARIANT}" != "" ] ; then 
        sed -i "s#Identifier \"evdev keyboard catchall\".*#&\n        Option \"XkbLayout\" \"${XKEYMAP}\"\n        Option \"XkbVariant\" \"${XVARIANT}\"#"       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
     else
        sed -i "s#Identifier \"evdev keyboard catchall\".*#&\n        Option \"XkbLayout\" \"${XKEYMAP}\"#"       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
