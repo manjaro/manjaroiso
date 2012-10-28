@@ -106,14 +106,12 @@ export LC_MESSAGES=en_US.UTF-8
 MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
 LOCALE="$(echo "$MISOVAR" | cut -d, -f1 | cut -d: -f2)"
 
-cd /etc/manjaro
-
 # Translation
 # English
-. km-en.lng
+source /etc/manjaro/km-en.lng
 # Turkish
 if [ "${LOCALE}" = "tr_TR" ]; then
-   . km-tr.lng
+   source /etc/manjaro/km-tr.lng
 fi
 
 ANSWER="/tmp/.km"

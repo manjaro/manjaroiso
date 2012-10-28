@@ -12,25 +12,7 @@ ANSWER="/tmp/.setup"
 # main menu selection tracker
 CURRENT_SELECTION=""
 
-DIALOG() {
-   # parameters: see dialog(1)
-   # returns: whatever dialog did
-   dialog --backtitle "$TITLE" --aspect 15 --yes-label "$_yes" --no-label "$_no" --cancel-label "$_cancel" "$@"
-   return $?
-}
-
-kernel_cmdline ()
-{
-    for param in $(/bin/cat /proc/cmdline); do
-        case "${param}" in
-            $1=*) echo "${param##*=}"; return 0 ;;
-            $1) return 0 ;;
-            *) continue ;;
-        esac
-    done
-    [ -n "${2}" ] && echo "${2}"
-    return 1
-}
+source /etc/manjaro/functions
 
 # list all net devices with mac adress
 net_interfaces() {
@@ -223,14 +205,12 @@ export LC_MESSAGES=en_US.UTF-8
 MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
 LOCALE="$(echo "$MISOVAR" | cut -d, -f1 | cut -d: -f2)"
 
-cd /etc/manjaro
-
 # Translation
 # English
-. setup-en.lng
+source /etc/manjaro/setup-en.lng
 # Turkish
 if [ "${LOCALE}" = "tr_TR" ]; then
-   . setup-tr.lng
+   source /etc/manjaro/setup-tr.lng
 fi
 
 DIALOG --msgbox "${_wrapperwelcomemessage}" 12 65
