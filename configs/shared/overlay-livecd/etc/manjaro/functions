@@ -945,6 +945,7 @@ _post_process()
 
     # create kernel images    
     run_mkinitcpio
+    sleep 3
 
     ## END POSTPROCESSING ##
     # TODO add end cleaning
