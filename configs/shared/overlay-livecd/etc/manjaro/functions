@@ -1,0 +1,303 @@
+#!/bin/bash
+
+# Common functions for Manjaro Install Framework
+
+# kernel_cmdline <param> <default>
+# Looks for a parameter on the kernel's boot-time command line.
+#
+# returns: 0 if param was found. Also prints its value if it was a K=V param.
+#          1 if it was not. Also prints value passed as <default>
+#
+kernel_cmdline ()
+{
+    for param in $(/bin/cat /proc/cmdline); do
+        case "${param}" in
+            $1=*) echo "${param##*=}"; return 0 ;;
+            $1) return 0 ;;
+            *) continue ;;
+        esac
+    done
+    [ -n "${2}" ] && echo "${2}"
+    return 1
+}
+
+set_alsa ()
+{
+#set_alsa
+    # amixer binary
+    local alsa_amixer="/usr/bin/amixer"
+
+    # enable all known (tm) outputs
+    $alsa_amixer -c 0 sset "Master" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Front" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Side" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Surround" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Center" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "LFE" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Headphone" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Speaker" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "PCM" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Line" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "External" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "FM" 50% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Master Mono" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Master Digital" 70% unmute &>/dev/null
+    $alsa_amixer -c 0 sset "Analog Mix" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Aux" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Aux2" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "PCM Center" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "PCM Front" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "PCM LFE" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "PCM Side" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "PCM Surround" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Playback" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "PCM,1" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "DAC" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "DAC,0" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "DAC,0" -12dB &> /dev/null
+    $alsa_amixer -c 0 sset "DAC,1" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "DAC,1" -12dB &> /dev/null
+    $alsa_amixer -c 0 sset "Synth" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "CD" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Wave" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Music" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "AC97" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "Analog Front" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "VIA DXS,0" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "VIA DXS,1" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "VIA DXS,2" 70% unmute &> /dev/null
+    $alsa_amixer -c 0 sset "VIA DXS,3" 70% unmute &> /dev/null
+
+    # set input levels
+    $alsa_amixer -c 0 sset "Mic" 70% mute &>/dev/null
+    $alsa_amixer -c 0 sset "IEC958" 70% mute &>/dev/null
+
+    # special stuff
+    $alsa_amixer -c 0 sset "Master Playback Switch" on &>/dev/null
+    $alsa_amixer -c 0 sset "Master Surround" on &>/dev/null
+    $alsa_amixer -c 0 sset "SB Live Analog/Digital Output Jack" off &>/dev/null
+    $alsa_amixer -c 0 sset "Audigy Analog/Digital Output Jack" off &>/dev/null
+}
+
+_configure_translation_pkgs()
+{
+    # Determind which language we are using
+    local LNG_INST=$(cat ${DESTDIR}/etc/locale.conf | grep LANG= | cut -d= -f2 | cut -d. -f1)
+
+    [ -n "$LNG_INST" ] || LNG_INST="en"
+    case "$LNG_INST" in
+                     be_BY)
+                           #Belarusian
+                           PACMAN_LNG_INST="firefox-i18n-be thunderbird-i18n-be libreoffice-be"
+                           ;;
+                     bg_BG)
+                           #Bulgarian
+                           PACMAN_LNG_INST="firefox-i18n-bg thunderbird-i18n-bg libreoffice-bg"
+                           PACMAN_LNG_INST_KDE="kde-l10n-bg"
+                           ;;
+                     de)
+                           #German
+                           PACMAN_LNG_INST="firefox-i18n-de thunderbird-i18n-de hunspell-de libreoffice-de"
+                           PACMAN_LNG_INST_KDE="kde-l10n-de"
+                           ;;
+                     en)
+                           #English
+                           PACMAN_LNG_INST="hunspell-en libreoffice-en-US"
+                           ;;
+                     en_GB)
+                           #British English
+           PACMAN_LNG_INST="firefox-i18n-en-gb thunderbird-i18n-en-gb libreoffice-en-GB hunspell-en"
+                           ;;
+                     es)
+                           #Espanol
+                           PACMAN_LNG_INST="firefox-i18n-es-es thunderbird-i18n-es-es hunspell-es libreoffice-es"
+                           PACMAN_LNG_INST_KDE="kde-l10n-es"
+                           ;;
+                     es_AR)
+                           #Espanol (Argentina)
+                           PACMAN_LNG_INST="firefox-i18n-es-ar thunderbird-i18n-es-ar hunspell-es libreoffice-es"
+                           PACMAN_LNG_INST_KDE="kde-l10n-es"
+                           ;;
+                     fr)
+                           #Francais
+                           PACMAN_LNG_INST="firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr"
+                           PACMAN_LNG_INST_KDE="kde-l10n-fr"
+                           ;;
+                     it)
+                           #Italian
+                           PACMAN_LNG_INST="firefox-i18n-it thunderbird-i18n-it hunspell-it libreoffice-it"
+                           PACMAN_LNG_INST_KDE="kde-l10n-it"
+                           ;;
+                     pl_PL)
+                           #Polish
+                           PACMAN_LNG_INST="firefox-i18n-pl thunderbird-i18n-pl hunspell-pl libreoffice-pl"
+                           PACMAN_LNG_INST_KDE="kde-l10n-pl"
+                           ;;
+                     pt_BR)
+                           #Brazilian Portuguese
+                           PACMAN_LNG_INST="firefox-i18n-pt-br thunderbird-i18n-pt-br libreoffice-pt-BR"
+                           PACMAN_LNG_INST_KDE="kde-l10n-pt_br"
+                           ;;
+                     pt_PT)
+                           #Portuguese
+                           PACMAN_LNG_INST="firefox-i18n-pt-pt thunderbird-i18n-pt-pt libreoffice-pt"
+                           PACMAN_LNG_INST_KDE="kde-l10n-pt"
+                           ;;
+                     ro_RO)
+                           #Romanian
+                           PACMAN_LNG_INST="firefox-i18n-ro thunderbird-i18n-ro hunspell-ro libreoffice-ro"
+                           PACMAN_LNG_INST_KDE="kde-l10n-ro"
+                           ;;
+                     ru)
+                           #Russian
+                           PACMAN_LNG_INST="firefox-i18n-ru thunderbird-i18n-ru libreoffice-ru"
+                           PACMAN_LNG_INST_KDE="kde-l10n-ru"
+                           ;;
+                     sv)
+                           #Swedish
+                           PACMAN_LNG_INST="firefox-i18n-sv-se thunderbird-i18n-sv-se libreoffice-sv"
+                           PACMAN_LNG_INST_KDE="kde-l10n-sv"
+                           ;;
+                     tr)
+                           #Turkish
+                           PACMAN_LNG_INST="firefox-i18n-tr thunderbird-i18n-tr libreoffice-tr"
+                           PACMAN_LNG_INST_KDE="kde-l10n-tr"
+                           ;;
+                     uk_UA)
+                           #Ukrainian
+                           PACMAN_LNG_INST="firefox-i18n-uk thunderbird-i18n-uk libreoffice-uk"
+                           PACMAN_LNG_INST_KDE="kde-l10n-uk"
+                           ;;
+    esac
+}
+
+_do_locales ()
+{
+    XKEYMAP=""
+    XVARIANT=""
+    CKEYMAP=""
+    case "${KEYMAP}" in
+                     en_US)
+                           #Amerikan English
+                           XKEYMAP="us"
+                           CKEYMAP="us"
+                           ;;
+                     en_GB)
+                           #British English
+                           XKEYMAP="gb"
+                           CKEYMAP="uk"
+                           ;;
+                     be_BY)
+                           #Belarusian
+                           XKEYMAP="be"
+                           CKEYMAP="be"
+                           ;;
+                     pt_BR)
+                           #Brazilian Portuguese
+                           XKEYMAP="br-abnt2"
+                           CKEYMAP="br-abnt2"
+                           ;;
+                     bg_BG)
+                           #Bulgarian
+                           XKEYMAP="bg"
+                           CKEYMAP="bg"
+                           ;;
+                     da_DK)
+                           #Danish
+                           XKEYMAP="dk"
+                           CKEYMAP="dk"
+                           ;;
+                     fr_BE)
+                           #Belgian
+                           XKEYMAP="be-latin1"
+                           CKEYMAP="be-latin1"
+                           ;;
+                     fr_BE)
+                           #Belgian
+                           XKEYMAP="be-latin1"
+                           CKEYMAP="be-latin1"
+                           ;;
+                     fr_FR)
+                           #French
+                           XKEYMAP="fr"
+                           CKEYMAP="fr"
+                           ;;
+                     fr_CA)
+                           #Canadian
+                           XKEYMAP="cf"
+                           CKEYMAP="cf"
+                           ;;
+                     de_DE)
+                           #German
+                           XKEYMAP="de"
+                           XVARIANT="nodeadkeys"
+                           CKEYMAP="de"
+                           ;;
+                     is_IS)
+                           #Icelandic
+                           XKEYMAP="is"
+                           CKEYMAP="is"
+                           ;;
+                     it_IT)
+                           #Italian
+                           XKEYMAP="it"
+                           CKEYMAP="it"
+                           ;;
+                     nn_NO)
+                           #Nynorsk
+                           XKEYMAP="no"
+                           CKEYMAP="no-latin1"
+                           ;;
+                     pl_PL)
+                           #Polish
+                           XKEYMAP="pl"
+                           CKEYMAP="pl"
+                           ;;
+                     pt_PT)
+                           #Portuguese
+                           XKEYMAP="pt"
+                           CKEYMAP="pt"
+                           ;;
+                     ro_RO)
+                           #Romanian
+                           XKEYMAP="ro"
+                           CKEYMAP="ro"
+                           ;;
+                     ru_RU)
+                           #Russian
+                           XKEYMAP="ru"
+                           CKEYMAP="ru"
+                           ;;
+                     es_AR)
+                           #Argentinian
+                           XKEYMAP="la-latin1"
+                           CKEYMAP="la-latin1"
+                           ;;
+                     es_ES)
+                           #Spanish
+                           XKEYMAP="es"
+                           CKEYMAP="es"
+                           ;;
+                     sv_SE)
+                           #Swedish
+                           XKEYMAP="sv-latin1"
+                           CKEYMAP="sv-latin1"
+                           ;;
+                     tr_TR)
+                           #Turkish
+                           XKEYMAP="tr"
+                           CKEYMAP="trq"
+                           ;;
+                     uk_UA)
+                           #Ukrainian
+                           XKEYMAP="ua"
+                           CKEYMAP="ua"
+                           ;;
+    esac
+    if [ "${XVARIANT}" != "" ] then 
+       sed -i "s#Identifier \"evdev keyboard catchall\".*#&\n        Option \"XkbLayout\" \"${XKEYMAP}\"\n        Option \"XkbVariant\" \"${XVARIANT}\"#"       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
+    else
+       sed -i "s#Identifier \"evdev keyboard catchall\".*#&\n        Option \"XkbLayout\" \"${XKEYMAP}\"#"       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
+    fi
+    sed -i -e "s/^.*KEYMAP=.*/KEYMAP=${CKEYMAP}/" ${DESTDIR}/etc/vconsole.conf
+}
