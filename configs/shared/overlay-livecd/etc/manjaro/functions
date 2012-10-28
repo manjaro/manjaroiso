@@ -943,7 +943,8 @@ _post_process()
     sleep 3
     chroot ${DESTDIR} pacman -Syy &> /dev/null
 
-    # create kernel images    
+    # create kernel images
+    sleep 3  
     run_mkinitcpio
     sleep 3
 
