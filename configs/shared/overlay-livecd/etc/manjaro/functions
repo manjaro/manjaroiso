@@ -638,10 +638,10 @@ run_unsquashfs()
 run_mkinitcpio() {
     chroot_mount
     # fix fsck.btrfs issue
-    chroot "$DESTDIR" ln -s /bin/true /sbin/fsck.btrfs
+    chroot "$DESTDIR" ln -sf /bin/true /sbin/fsck.btrfs &> /dev/null
 
     # fix fsck.nilfs2 issue
-    chroot "$DESTDIR" ln -s /bin/true /sbin/fsck.nilfs2
+    chroot "$DESTDIR" ln -sf /bin/true /sbin/fsck.nilfs2 &> /dev/null
 
     # all mkinitcpio output goes to /tmp/mkinitcpio.log, which we tail
     # into a dialog
