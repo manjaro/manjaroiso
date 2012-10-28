@@ -1,23 +1,6 @@
 #!/bin/sh
 
-# kernel_cmdline <param> <default>
-# Looks for a parameter on the kernel's boot-time command line.
-#
-# returns: 0 if param was found. Also prints its value if it was a K=V param.
-#          1 if it was not. Also prints value passed as <default>
-#
-kernel_cmdline ()
-{
-    for param in $(/bin/cat /proc/cmdline); do
-        case "${param}" in
-            $1=*) echo "${param##*=}"; return 0 ;;
-            $1) return 0 ;;
-            *) continue ;;
-        esac
-    done
-    [ -n "${2}" ] && echo "${2}"
-    return 1
-}
+source /etc/manjaro/functions
 
 MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
 LOCALE="$(echo "$MISOVAR" | cut -d, -f1 | cut -d: -f2)"
@@ -34,19 +17,19 @@ _kernver=$(uname -r)
 EXTRAMODULES=extramodules-${_kernver%.*}-MANJARO
 
 ## Systemd should do it
-#scan_swap
+# scan_swap
 swapdev="$(fdisk -l 2>/dev/null | grep swap | cut -d' ' -f1)"
 if [ -e "${swapdev}" ]; then
 	swapon ${swapdev}
 	echo "${swapdev} swap swap defaults 0 0 #configured by manjaroiso" >>/etc/fstab
 fi
 
-#edit /etc/locale.conf & /etc/environment
+# edit /etc/locale.conf & /etc/environment
 echo "LANG=${LOCALE}.UTF-8" > /etc/locale.conf
 echo "LC_COLLATE=C" >> /etc/locale.conf
 echo "LANG=${LOCALE}.UTF-8" >> /etc/environment
 
-#prepare_locale_gen
+# prepare_locale_gen
 for i in $(grep "^LANG" /etc/locale.conf | sed -e 's/.*=//g' -e's/\..*//g'); do
 	sed -i -e "s/^#$i/$i/g" /etc/locale.gen
 done
@@ -55,75 +38,23 @@ if [ "$LOCALE" != "en_US.UTF-8" ]; then
 fi
 /usr/sbin/locale-gen > /dev/null
 
-#set_timezone
+# set_timezone
 ln -sf "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime  
 
-#set_alsa
-	# amixer binary
-	local alsa_amixer="/usr/bin/amixer"
+# configure alsa
+set_alsa
 
-	# enable all known (tm) outputs
-	$alsa_amixer -c 0 sset "Master" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Front" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Side" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Surround" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Center" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "LFE" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Headphone" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Speaker" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "PCM" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Line" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "External" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "FM" 50% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Master Mono" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Master Digital" 70% unmute &>/dev/null
-	$alsa_amixer -c 0 sset "Analog Mix" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Aux" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Aux2" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "PCM Center" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "PCM Front" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "PCM LFE" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "PCM Side" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "PCM Surround" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Playback" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "PCM,1" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "DAC" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "DAC,0" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "DAC,0" -12dB &> /dev/null
-	$alsa_amixer -c 0 sset "DAC,1" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "DAC,1" -12dB &> /dev/null
-	$alsa_amixer -c 0 sset "Synth" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "CD" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Wave" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Music" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "AC97" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "Analog Front" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "VIA DXS,0" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "VIA DXS,1" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "VIA DXS,2" 70% unmute &> /dev/null
-	$alsa_amixer -c 0 sset "VIA DXS,3" 70% unmute &> /dev/null
-
-	# set input levels
-	$alsa_amixer -c 0 sset "Mic" 70% mute &>/dev/null
-	$alsa_amixer -c 0 sset "IEC958" 70% mute &>/dev/null
-
-	# special stuff
-	$alsa_amixer -c 0 sset "Master Playback Switch" on &>/dev/null
-	$alsa_amixer -c 0 sset "Master Surround" on &>/dev/null
-	$alsa_amixer -c 0 sset "SB Live Analog/Digital Output Jack" off &>/dev/null
-	$alsa_amixer -c 0 sset "Audigy Analog/Digital Output Jack" off &>/dev/null
-
-	# save settings
-	alsactl -f /etc/asound.state store &>/dev/null
+# save settings
+alsactl -f /etc/asound.state store &>/dev/null
 
 # enable default mirror
 cp -f /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 sed -i -e 's~^.*repo.manjaro.org.uk.*~Server = http://repo.manjaro.org.uk/$repo/$arch~' /etc/pacman.d/mirrorlist
 
-#update_pacman_databases
+# update_pacman_databases
 pacman -Syy &> /dev/null
 
-#hwdetect_graphics
+# hwdetect_graphics
 
 # TODO: fix in mhwd
 mkdir -p /var/lib/mhwd/local/{pci,usb}
@@ -144,15 +75,15 @@ if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
    fi
 fi	
 
-#do_makeuser
+# do_makeuser
 addgroups="video,audio,power,disk,storage,optical,network,lp,scanner"
 useradd -m -p "" -g users -G $addgroups manjaro
 sed -i "s#manjaro.*#manjaro:\$1\$uYIrxnwJ\$a5wTa84YxxYmD.sKX/Lll1:14942:0:99999:7:::#" /etc/shadow
 
-#do_configsforroot
+# do_configsforroot
 cp -a /etc/skel/. /root/
 
-#do_setuplightdm
+# do_setuplightdm
 if [ -e "/usr/sbin/lightdm" ] ; then
    mkdir -p /run/lightdm > /dev/null
    getent group lightdm > /dev/null 2>&1 || groupadd -g 620 lightdm
@@ -168,7 +99,7 @@ if [ -e "/usr/sbin/lightdm" ] ; then
    echo "d /run/lightdm 0770 lightdm lightdm -" > /usr/lib/tmpfiles.d/lightdm.conf
 fi
 
-#do_setupkdm
+# do_setupkdm
 if [ -e "/usr/share/config/kdm/kdmrc" ] ; then
    getent group kdm >/dev/null 2>&1 || groupadd -g 135 kdm &>/dev/null
    getent passwd kdm >/dev/null 2>&1 || useradd -u 135 -g kdm -d /var/lib/kdm -s /bin/false -r -M kdm &>/dev/null
@@ -179,7 +110,7 @@ if [ -e "/usr/share/config/kdm/kdmrc" ] ; then
    sed -i -e 's/^.*AutoLoginPass=.*/AutoLoginPass=manjaro/' /usr/share/config/kdm/kdmrc
 fi
 
-#do_setupgdm
+# do_setupgdm
 if [ -e "/usr/sbin/gdm" ] ; then
   getent group gdm >/dev/null 2>&1 || groupadd -g 120 gdm
   getent passwd gdm > /dev/null 2>&1 || usr/sbin/useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /sbin/nologin gdm
@@ -187,7 +118,7 @@ if [ -e "/usr/sbin/gdm" ] ; then
   chown -R gdm:gdm /var/lib/gdm &> /dev/null
 fi
 
-#do_setuplxdm
+# do_setuplxdm
 if [ -e "/usr/sbin/lxdm" ] ; then
    if [ -z "`getent group "lxdm" 2> /dev/null`" ]; then
      groupadd lxdm  &>/dev/null
@@ -202,11 +133,11 @@ if [ -e "/usr/sbin/lxdm" ] ; then
    chmod +r /etc/lxdm/lxdm.conf
 fi
 
-#do_fix_perms
+# do_fix_perms
 chown root:root /etc/sudoers
 chmod 440 /etc/sudoers
 
-#fix_gnome_apps
+# fix_gnome_apps
 glib-compile-schemas /usr/share/glib-2.0/schemas
 gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 dconf update
@@ -214,251 +145,25 @@ if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
    setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &> /dev/null
 fi
 
-#fix_ping_installation
+# fix_ping_installation
 setcap cap_net_raw=ep /usr/bin/ping &> /dev/null
 setcap cap_net_raw=ep /usr/bin/ping6 &> /dev/null
 
-#do_lang_settings
-        if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-             PACMAN_LNG_INST="hunspell-en libreoffice-en-US"
-             PACMAN_LNG_INST_KDE=""
-        fi
- 	# Determind which language we are using
-	if [ "$(echo "${KEYMAP}" | grep "en_US")" != "" ]; then
-		# Setup system for the American language
-		
-		# Set American Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "us"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=us/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="hunspell-en libreoffice-en-US"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "en_GB")" != "" ]; then
-		# Setup system for the British language
-		
-		# Set British Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "gb"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=uk/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-en-gb thunderbird-i18n-en-gb libreoffice-en-GB hunspell-en"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "be_BY")" != "" ]; then
-		# Setup system for the Belarusian language
-		
-		# Set Belarusian Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "be"#' /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=be/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-be thunderbird-i18n-be libreoffice-be"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "pt_BR")" != "" ]; then
-		# Setup system for the Brazilian language
-		
-		# Set Brazilian Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "br-abnt2"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=br-abnt2/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-pt-br thunderbird-i18n-pt-br libreoffice-pt-BR"
-                	PACMAN_LNG_INST_KDE="kde-l10n-pt_br"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "bg_BG")" != "" ]; then
-		# Setup system for the Bulgarian language
-		
-		# Set Bulgarian Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "bg"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=bg/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-bg thunderbird-i18n-bg libreoffice-bg"
-                	PACMAN_LNG_INST_KDE="kde-l10n-bg"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "da_DK")" != "" ]; then
-		# Setup system for the Danish language
-		
-		# Set Danish Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "dk"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=dk/' /etc/vconsole.conf
-
-	elif [ "$(echo "${KEYMAP}" | grep "fr_BE")" != "" ]; then
-		# Setup system for the Belgian language
-		
-		# Set Belgian Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "be-latin1"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=be-latin1/' /etc/vconsole.conf
-
-	elif [ "$(echo "${KEYMAP}" | grep "fr_FR")" != "" ]; then
-		# Setup system for the French language
-		
-		# Set French Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "fr"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=fr/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr"
-                	PACMAN_LNG_INST_KDE="kde-l10n-fr"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "fr_CA")" != "" ]; then
-		# Setup system for the French Canada language
-		
-		# Set French Canada Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "cf"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=cf/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr"
-                	PACMAN_LNG_INST_KDE="kde-l10n-fr"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "de_DE")" != "" ]; then
-		# Setup system for the German language
-		
-		# Set German Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "de"\n        Option "XkbVariant" "nodeadkeys"#' /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=de/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-de thunderbird-i18n-de hunspell-de libreoffice-de"
-                	PACMAN_LNG_INST_KDE="kde-l10n-de"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "is_IS")" != "" ]; then
-		# Setup system for the Icelandic language
-		
-		# Set Icelandic Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "is"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=is/' /etc/vconsole.conf
-
-	elif [ "$(echo "${KEYMAP}" | grep "it_IT")" != "" ]; then
-		# Setup system for the Italian language
-		
-		# Set Italian Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "it"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=it/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-it thunderbird-i18n-it hunspell-it libreoffice-it"
-                	PACMAN_LNG_INST_KDE="kde-l10n-it"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "nn_NO")" != "" ]; then
-		# Setup system for the Nynorsk language
-		
-		# Set Nynorsk Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "no"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=no-latin1/' /etc/vconsole.conf
-
-	elif [ "$(echo "${KEYMAP}" | grep "pl_PL")" != "" ]; then
-		# Setup system for the Polish language
-		
-		# Set Polish Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "pl"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=pl/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-pl thunderbird-i18n-pl hunspell-pl libreoffice-pl"
-                	PACMAN_LNG_INST_KDE="kde-l10n-pl"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "pt_PT")" != "" ]; then
-		# Setup system for the Portuguese language
-		
-		# Set Portuguese Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "pt"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=pt/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-pt-pt thunderbird-i18n-pt-pt libreoffice-pt"
-                	PACMAN_LNG_INST_KDE="kde-l10n-pt"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "ro_RO")" != "" ]; then
-		# Setup system for the Romanian language
-		
-		# Set Romanian Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ro"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ro/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-ro thunderbird-i18n-ro hunspell-ro libreoffice-ro"
-                	PACMAN_LNG_INST_KDE="kde-l10n-ro"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "ru_RU")" != "" ]; then
-		# Setup system for the Russian language
-		
-		# Set Russian Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ru"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ru/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-ru thunderbird-i18n-ru libreoffice-ru"
-                	PACMAN_LNG_INST_KDE="kde-l10n-ru"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "es_AR")" != "" ]; then
-		# Setup system for the Argentinian language
-		
-		# Set Argentinian Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "la-latin1"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=la-latin1/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-es-ar thunderbird-i18n-es-ar hunspell-es libreoffice-es"
-                	PACMAN_LNG_INST_KDE="kde-l10n-es"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "es_ES")" != "" ]; then
-		# Setup system for the Spanish language
-		
-		# Set Spanish Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "es"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=es/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-es-es thunderbird-i18n-es-es hunspell-es libreoffice-es"
-                	PACMAN_LNG_INST_KDE="kde-l10n-es"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "sv_SE")" != "" ]; then
-		# Setup system for the Swedish language
-		
-		# Set Swedish Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "sv-latin1"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=sv-latin1/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-sv-se thunderbird-i18n-sv-se libreoffice-sv"
-                	PACMAN_LNG_INST_KDE="kde-l10n-sv"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "tr_TR")" != "" ]; then
-		# Setup system for the Turkish language
-		
-		# Set Turkish Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "tr"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=trq/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-tr thunderbird-i18n-tr libreoffice-tr"
-                	PACMAN_LNG_INST_KDE="kde-l10n-tr"
-		fi
-
-	elif [ "$(echo "${KEYMAP}" | grep "uk_UA")" != "" ]; then
-		# Setup system for the Ukrainian language
-		
-		# Set Ukrainian Xorg keyboard layout
-		sed -i 's#Identifier "evdev keyboard catchall".*#&\n        Option "XkbLayout" "ua"#'       /etc/X11/xorg.conf.d/10-evdev.conf
-                sed -i -e 's/^.*KEYMAP=.*/KEYMAP=ua/' /etc/vconsole.conf
-                if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
-                	PACMAN_LNG_INST="firefox-i18n-uk thunderbird-i18n-uk libreoffice-uk"
-                	PACMAN_LNG_INST_KDE="kde-l10n-uk"
-		fi
-	fi
+# do_lang_settings
+# setup locales
+_do_locales
 
 # installing localization packages
-if [ ! -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
-   PACMAN_LNG_INST_KDE=""
-fi
-
 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+   _configure_translation_pkgs
+   if [ ! -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
+      PACMAN_LNG_INST_KDE=""
+   fi
    ${PACMAN_LNG} -Sy ${PACMAN_LNG_INST} ${PACMAN_LNG_INST_KDE} &> /dev/null
 fi
 
-#load keys
+# load keys
 loadkeys $(cat /etc/vconsole.conf | grep "KEYMAP=" | cut -d= -f2)
 
-#depmod extramodules
+# depmod extramodules
 depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
