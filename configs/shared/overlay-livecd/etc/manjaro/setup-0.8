@@ -636,6 +636,8 @@ dogrub() {
 
     chroot_umount
 
+    GRUB_PREFIX_DIR="/boot/grub/"
+
     # do grub.cfg
     dogrub_mkconfig
 
