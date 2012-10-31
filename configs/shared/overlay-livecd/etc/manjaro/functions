@@ -198,12 +198,12 @@ _configure_translation_pkgs()
                            PACMAN_LNG_INST="firefox-i18n-bg thunderbird-i18n-bg libreoffice-bg"
                            PACMAN_LNG_INST_KDE="kde-l10n-bg"
                            ;;
-                     de)
+                     de*)
                            #German
                            PACMAN_LNG_INST="firefox-i18n-de thunderbird-i18n-de hunspell-de libreoffice-de"
                            PACMAN_LNG_INST_KDE="kde-l10n-de"
                            ;;
-                     en)
+                     en*)
                            #English
                            PACMAN_LNG_INST="hunspell-en libreoffice-en-US"
                            ;;
@@ -211,7 +211,7 @@ _configure_translation_pkgs()
                            #British English
            PACMAN_LNG_INST="firefox-i18n-en-gb thunderbird-i18n-en-gb libreoffice-en-GB hunspell-en"
                            ;;
-                     es)
+                     es*)
                            #Espanol
                            PACMAN_LNG_INST="firefox-i18n-es-es thunderbird-i18n-es-es hunspell-es libreoffice-es"
                            PACMAN_LNG_INST_KDE="kde-l10n-es"
@@ -221,12 +221,12 @@ _configure_translation_pkgs()
                            PACMAN_LNG_INST="firefox-i18n-es-ar thunderbird-i18n-es-ar hunspell-es libreoffice-es"
                            PACMAN_LNG_INST_KDE="kde-l10n-es"
                            ;;
-                     fr)
+                     fr*)
                            #Francais
                            PACMAN_LNG_INST="firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr"
                            PACMAN_LNG_INST_KDE="kde-l10n-fr"
                            ;;
-                     it)
+                     it*)
                            #Italian
                            PACMAN_LNG_INST="firefox-i18n-it thunderbird-i18n-it hunspell-it libreoffice-it"
                            PACMAN_LNG_INST_KDE="kde-l10n-it"
@@ -251,17 +251,17 @@ _configure_translation_pkgs()
                            PACMAN_LNG_INST="firefox-i18n-ro thunderbird-i18n-ro hunspell-ro libreoffice-ro"
                            PACMAN_LNG_INST_KDE="kde-l10n-ro"
                            ;;
-                     ru)
+                     ru*)
                            #Russian
                            PACMAN_LNG_INST="firefox-i18n-ru thunderbird-i18n-ru libreoffice-ru"
                            PACMAN_LNG_INST_KDE="kde-l10n-ru"
                            ;;
-                     sv)
+                     sv*)
                            #Swedish
                            PACMAN_LNG_INST="firefox-i18n-sv-se thunderbird-i18n-sv-se libreoffice-sv"
                            PACMAN_LNG_INST_KDE="kde-l10n-sv"
                            ;;
-                     tr)
+                     tr*)
                            #Turkish
                            PACMAN_LNG_INST="firefox-i18n-tr thunderbird-i18n-tr libreoffice-tr"
                            PACMAN_LNG_INST_KDE="kde-l10n-tr"
