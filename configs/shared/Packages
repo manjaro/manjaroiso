@@ -8,6 +8,7 @@ cronie
 cryptsetup
 device-mapper
 dhcpcd
+dmidecode
 diffutils
 e2fsprogs
 eject
