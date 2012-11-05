@@ -25,6 +25,7 @@ for file in $(cat /etc/manjaro/update-setup-files); do
     wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/overlay-livecd/etc/manjaro/$file -O /etc/manjaro/$file
     chmod a+x /etc/manjaro/km
     chmod a+x /etc/manjaro/lg
+    chmod a+x /etc/manjaro/livecd
     chmod a+x /etc/manjaro/setup
     chmod a+x /etc/manjaro/setup-0.8
     chmod a+x /etc/manjaro/setup-0.9
