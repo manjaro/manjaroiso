@@ -68,11 +68,11 @@ python2-pyqt
 cups-pk-helper
 
 ## Office
-libreoffice-base
+#libreoffice-base
 libreoffice-calc
-libreoffice-draw
-libreoffice-impress
+#libreoffice-draw
+#libreoffice-impress
 libreoffice-kde4
-libreoffice-math
-libreoffice-postgresql-connector
+#libreoffice-math
+#libreoffice-postgresql-connector
 libreoffice-writer

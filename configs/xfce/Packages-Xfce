@@ -67,7 +67,6 @@ xfwm4
 xfwm4-themes
 xscreensaver
 
-
 ## Applications
 #audacity
 #avidemux-gtk
@@ -76,7 +75,7 @@ conky-control
 deadbeef
 epdfview
 file-roller
-filezilla
+#filezilla
 firefox
 fwbuilder
 galculator
@@ -92,20 +91,22 @@ pavucontrol
 pidgin
 #playonlinux
 pnmixer-xfce4
-#q4wine
-#skype
+q4wine
+skype
 smplayer
 simple-scan
 thunderbird
-transmission-gtk
+#transmission-gtk
 viewnior
 xchat
 xfburn
 
+## Package management
+pacman-gui
+kalu
 
 ## Fonts
 ttf-source-sans-pro
-
 
 ## Extra Applications
 blueman
@@ -114,18 +115,15 @@ notification-daemon
 openjdk6
 #soundconverter
 vinagre
-kalu
-pacman-gui
-pkgbrowser
 
 ## Office
-libreoffice-base
+#libreoffice-base
 libreoffice-calc
-libreoffice-draw
+#libreoffice-draw
 libreoffice-gnome
-libreoffice-impress
-libreoffice-math
-libreoffice-postgresql-connector
+#libreoffice-impress
+#libreoffice-math
+#libreoffice-postgresql-connector
 libreoffice-writer
 
 ## Printing
