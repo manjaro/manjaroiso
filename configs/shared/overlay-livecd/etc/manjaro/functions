@@ -915,6 +915,23 @@ _config_system()
     done
 }
 
+_rm_kalu() {
+    local base_check_virtualbox=`dmidecode | grep innotek`
+    local base_check_vmware=`dmidecode | grep VMware`
+    local base_check_qemu=`dmidecode | grep QEMU`
+    local base_check_vpc=`dmidecode | grep Microsoft`
+
+    if [ -n "$base_check_virtualbox" ]; then
+       pacman -R kalu --noconfirm --noprogressbar --root ${DESTDIR} &> /dev/null
+    elif [ -n "$base_check_vmware" ]; then
+       pacman -R kalu --noconfirm --noprogressbar --root ${DESTDIR} &> /dev/null
+    elif [ -n "$base_check_qemu" ]; then
+       pacman -R kalu --noconfirm --noprogressbar --root ${DESTDIR} &> /dev/null
+    elif [ -n "$base_check_vpc" ]; then
+       pacman -R kalu --noconfirm --noprogressbar --root ${DESTDIR} &> /dev/null
+    fi
+}
+
 _post_process()
 {
     ## POSTPROCESSING ##
@@ -930,6 +947,11 @@ _post_process()
           PACMAN_LNG_INST_KDE=""
        fi
        ${PACMAN_LNG} -Sy ${PACMAN_LNG_INST} ${PACMAN_LNG_INST_KDE} &> /dev/null
+    fi
+
+    # check if we are running inside a virtual machine and unistall kalu
+    if [ -e "${DESTDIR}/usr/bin/kalu" ] ; then
+       _rm_kalu
     fi
 
     # /etc/localtime

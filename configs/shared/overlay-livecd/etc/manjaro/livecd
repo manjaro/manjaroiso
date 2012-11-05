@@ -167,3 +167,9 @@ loadkeys $(cat /etc/vconsole.conf | grep "KEYMAP=" | cut -d= -f2)
 
 # depmod extramodules
 depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+
+# check if we are running inside a virtual machine and unistall kalu
+DESTDIR="/"
+if [ -e "/usr/bin/kalu" ] ; then
+   _rm_kalu
+fi
