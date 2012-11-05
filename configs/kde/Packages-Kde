@@ -38,11 +38,16 @@ kdeplasma-applets-networkmanagement
 #kdepim-kmail
 k3b
 digikam
-smplayer
+#smplayer
+kdemultimedia-dragonplayer
 simple-scan
 amarok
 partitionmanager-svn
 gimp
+
+## Package management
+pacman-gui
+kalu
 
 ## GTK
 firefox
