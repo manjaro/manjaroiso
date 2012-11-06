@@ -6,16 +6,15 @@ if [ "$EUID" != "0" ]; then
     exit 1
 fi
 
-xfce="N"
-gnome="N"
+xfce="Y"
+gnome="Y"
 kde="Y"
-net="N"
+net="Y"
 
 if [ "$xfce" == "Y" ] ; then
    echo ">> build xfce image"
    ln -sfv ../xfce/isomounts isomounts
    ln -sfv ../xfce/Packages-Xfce Packages-Xfce
-   ln -sfv ../xfce/Packages-Xorg.conf Packages-Xorg.conf
    buildiso
    echo ">> done build xfce image"
    rm Packages-Xfce
@@ -27,7 +26,6 @@ if [ "$gnome" == "Y" ] ; then
    echo ">> build gnome image"
    ln -sfv ../gnome/isomounts isomounts
    ln -sfv ../gnome/Packages-gnome Packages-gnome
-   ln -sfv ../gnome/Packages-Xorg.conf Packages-Xorg.conf
    buildiso
    echo ">> done build gnome image"
    rm Packages-gnome
@@ -41,7 +39,6 @@ if [ "$kde" == "Y" ] ; then
    rm work*/iso/manjaro/*/lng-image.sqfs
    ln -sfv ../kde/isomounts isomounts
    ln -sfv ../kde/Packages-Kde Packages-Kde
-   ln -sfv ../kde/Packages-Xorg.conf Packages-Xorg.conf
    buildiso
    echo ">> done build kde image"
    rm Packages-Kde
@@ -59,7 +56,6 @@ if [ "$net" == "Y" ] ; then
    rm work*/iso/manjaro/*/pkgs-free-overlay.sqfs
    rm work*/iso/manjaro/*/pkgs-nonfree-overlay.sqfs
    ln -sfv ../net/isomounts isomounts
-   ln -sfv ../net/Packages-Xorg.conf Packages-Xorg.conf
    buildiso
    echo ">> done build net image"
    rm -R work*/*isomounts*
