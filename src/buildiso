@@ -20,11 +20,6 @@ fi
 
 .  /usr/share/manjaroiso/functions/messages
 . options.conf
-if [ -e Packages-Xorg.conf ] ; then
-   . Packages-Xorg.conf
-else
-   xorg_overlays="no"
-fi
 get_colors
 
 de=""
@@ -85,11 +80,12 @@ fi
 
 if [ -e Packages-Lng ] ; then
      if [ "${arch}" == "i686" ]; then
-     	lng_packages=$(sed "s|#.*||g" Packages-Lng | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	lng_packages=$(sed "s|#.*||g" Packages-Lng | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed "s|>kde.*||g" | sed ':a;N;$!ba;s/\n/ /g')
      elif [ "${arch}" == "x86_64" ]; then
-     	lng_packages=$(sed "s|#.*||g" Packages-Lng | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	lng_packages=$(sed "s|#.*||g" Packages-Lng | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>cleanup.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed "s|>kde.*||g" | sed ':a;N;$!ba;s/\n/ /g')
      fi
      lng_packages_cleanup=$(sed "s|#.*||g" Packages-Lng | grep cleanup | sed "s|>cleanup||g")
+     lng_packages_kde=$(sed "s|#.*||g" Packages-Lng | grep kde | sed "s|>kde||g")
 fi
 
 if [ -e Packages-Xfce ] ; then
@@ -233,7 +229,11 @@ if [ -e Packages-Lng ] ; then
                  umount -f ${work_dir}/lng-image
               fi
               mount -t aufs -o br=${work_dir}/lng-image:${work_dir}/root-image=ro none ${work_dir}/lng-image
-              pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/manjaro/lng -Syw ${lng_packages} --noconfirm
+              if [ "${kde_packages}" = "yes" ] ; then
+                 pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/manjaro/lng -Syw ${lng_packages} ${lng_packages_kde} --noconfirm
+              else
+                 pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/manjaro/lng -Syw ${lng_packages} --noconfirm
+              fi
               if [ "${lng_packages_cleanup}" != "" ]; then
                  for lng_clean in ${lng_packages_cleanup};
                     do  rm ${work_dir}/lng-image/opt/manjaro/lng/${lng_clean}

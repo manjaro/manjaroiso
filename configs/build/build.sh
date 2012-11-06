@@ -37,6 +37,8 @@ if [ "$gnome" == "Y" ] ; then
 fi
 if [ "$kde" == "Y" ] ; then
    echo ">> build kde image"
+   rm -R work*/*lng*
+   rm work*/iso/manjaro/*/lng-image.sqfs
    ln -sfv ../kde/isomounts isomounts
    ln -sfv ../kde/Packages-Kde Packages-Kde
    ln -sfv ../kde/Packages-Xorg.conf Packages-Xorg.conf
