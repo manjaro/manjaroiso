@@ -46,8 +46,9 @@ partitionmanager-svn
 gimp
 
 ## Package management
-pacman-gui
-kalu
+#pacman-gui
+#kalu
+pkgbrowser
 
 ## GTK
 firefox
