@@ -49,6 +49,7 @@ gimp
 #pacman-gui
 #kalu
 pkgbrowser
+yapan
 
 ## GTK
 firefox
