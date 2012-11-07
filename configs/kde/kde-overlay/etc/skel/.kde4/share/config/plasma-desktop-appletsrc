@@ -1,16 +1,16 @@
-[ActionPlugins]
-MidButton;NoModifier=paste
-RightButton;NoModifier=contextmenu
-wheel:Vertical;NoModifier=switchdesktop
+[AppletGlobals][plasma_applet_systemtray]
+ShowApplicationStatus=true
+ShowCommunications=true
+ShowHardware=true
+ShowJobs=true
+ShowNotifications=true
+ShowSystemServices=true
 
 [Containments][1]
-ActionPluginsSource=Global
 activity=
 desktop=-1
 formfactor=0
 immutability=1
-lastDesktop=-1
-lastScreen=0
 location=0
 plugin=desktop
 screen=0
@@ -39,118 +39,95 @@ screen=-1
 url=desktop:/
 zvalue=0
 
-[Containments][17]
+[Containments][3]
 activity=
-activityId=
 desktop=-1
 formfactor=2
 immutability=1
-lastDesktop=-1
-lastScreen=0
 location=4
 plugin=panel
 screen=0
-zvalue=0
+zvalue=150
 
-[Containments][17][ActionPlugins]
-RightButton;NoModifier=contextmenu
-
-[Containments][17][Applets][18]
+[Containments][3][Applets][4]
 immutability=1
 plugin=launcher
 zvalue=0
 
-[Containments][17][Applets][18][LayoutInformation]
+[Containments][3][Applets][4][LayoutInformation]
 Order=0
 
-[Containments][17][Applets][19]
+[Containments][3][Applets][4][Shortcuts]
+global=Alt+F1
+
+[Containments][3][Applets][54]
+geometry=72,3,941,32
 immutability=1
-plugin=org.kde.showActivityManager
+plugin=icontasks
 zvalue=0
 
-[Containments][17][Applets][19][LayoutInformation]
+[Containments][3][Applets][54][LayoutInformation]
 Order=1
 
-[Containments][17][Applets][20]
-immutability=1
-plugin=pager
-zvalue=0
-
-[Containments][17][Applets][20][LayoutInformation]
-Order=2
-
-[Containments][17][Applets][21]
-immutability=1
-plugin=tasks
-zvalue=0
-
-[Containments][17][Applets][21][Configuration][Launchers]
-browser=preferred://browser, , ,\s
-filemanager=preferred://filemanager, , ,\s
-
-[Containments][17][Applets][21][LayoutInformation]
-Order=3
-
-[Containments][17][Applets][22]
+[Containments][3][Applets][6]
 immutability=1
 plugin=systemtray
-zvalue=0
+zvalue=1
 
-[Containments][17][Applets][22][Configuration]
-DefaultAppletsAdded=true
+[Containments][3][Applets][6][Configuration]
+AutoHidePopup=true
+Share=false
+alwaysShown=
+hidden=
 
-[Containments][17][Applets][22][Configuration][Applets][24]
+[Containments][3][Applets][6][Configuration][Applets][84]
+geometry=0,8,24,24
 immutability=1
-plugin=org.kde.networkmanagement
+plugin=veromix-plasmoid
 zvalue=0
 
-[Containments][17][Applets][22][Configuration][Applets][24][PopupApplet]
-
-[Containments][17][Applets][22][Configuration][Applets][25]
-immutability=1
-plugin=notifier
-zvalue=0
-
-[Containments][17][Applets][22][Configuration][Applets][25][PopupApplet]
-
-[Containments][17][Applets][22][Configuration][Applets][26]
-immutability=1
-plugin=notifications
-zvalue=0
-
-[Containments][17][Applets][22][Configuration][Applets][26][Configuration][ExtenderItems][2]
-extenderIconName=dialog-information
+[Containments][3][Applets][6][Configuration][ExtenderItems][1]
+extenderIconName=
 extenderItemName=jobGroup
-extenderTitle=Jobs
+isGroup=true
+sourceAppletId=6
+sourceAppletPluginName=systemtray
+
+[Containments][3][Applets][6][Configuration][ExtenderItems][2]
+extenderIconName=
+extenderItemName=completedJobsGroup
+extenderTitle=0 Recently Completed Jobs:
+groupCollapsed=false
+isGroup=true
+sourceAppletId=6
+sourceAppletPluginName=systemtray
+
+[Containments][3][Applets][6][Configuration][ExtenderItems][4]
+extenderIconName=dialog-information
+extenderItemName=oldNotificationsGroup
+extenderTitle=Recent notifications
 isCollapsed=true
 isGroup=true
-sourceAppletId=26
-sourceAppletPluginName=notifications
+sourceAppletId=6
+sourceAppletPluginName=systemtray
 
-[Containments][17][Applets][22][Configuration][Applets][27]
-immutability=1
-plugin=battery
-zvalue=0
+[Containments][3][Applets][6][LayoutInformation]
+Order=2
 
-[Containments][17][Applets][22][Configuration][Applets][27][PopupApplet]
+[Containments][3][Applets][6][PopupApplet]
 
-[Containments][17][Applets][22][Configuration][Shortcuts]
-Systemtray-Klipper-22=Ctrl+Alt+V
-
-[Containments][17][Applets][22][LayoutInformation]
-Order=4
-
-[Containments][17][Applets][22][PopupApplet]
-
-[Containments][17][Applets][23]
+[Containments][3][Applets][8]
 immutability=1
 plugin=digital-clock
 zvalue=0
 
-[Containments][17][Applets][23][LayoutInformation]
-Order=5
 
-[Containments][17][Configuration]
+[Containments][3][Applets][8][Configuration][ExtenderItems][3]
+extenderIconName=view-pim-calendar
+extenderItemName=calendar
+extenderTitle=Calendar
+sourceAppletId=8
+sourceAppletPluginName=digital-clock
 
-[Containments][3][Applets][8][Configuration][Applets][12][Configuration][ExtenderItems][1]
-extenderItemPosition=0
+[Containments][3][Applets][8][LayoutInformation]
+Order=3
