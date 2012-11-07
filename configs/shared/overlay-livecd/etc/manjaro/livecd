@@ -162,6 +162,11 @@ if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
    ${PACMAN_LNG} -Sy ${PACMAN_LNG_INST} ${PACMAN_LNG_INST_KDE} &> /dev/null
 fi
 
+# add BROWSER var
+if [ -e "/usr/bin/firefox" ] ; then
+   echo "BROWSER=/usr/bin/firefox" >> /etc/environment
+fi
+
 # load keys
 loadkeys $(cat /etc/vconsole.conf | grep "KEYMAP=" | cut -d= -f2)
 

@@ -709,6 +709,11 @@ configure_system()
         echo "LC_COLLATE=C" >> ${DESTDIR}/etc/locale.conf
         echo "LANG=${LOCALE}.UTF-8" >> ${DESTDIR}/etc/environment
 
+        # add BROWSER var
+        if [ -e "${DESTDIR}/usr/bin/firefox" ] ; then
+           echo "BROWSER=/usr/bin/firefox" >> ${DESTDIR}/etc/environment
+        fi
+
         #edit /etc/mkinitcpio.conf to have external bootup from usb and resume support
         HOOKS=`cat /etc/mkinitcpio.conf | grep HOOKS= | grep -v '#' | cut -d'"' -f2 | sed 's/filesystems/usb fw pcmcia resume filesystems/g'`
         if [ -e ${DESTDIR}/etc/plymouth/plymouthd.conf ] ; then

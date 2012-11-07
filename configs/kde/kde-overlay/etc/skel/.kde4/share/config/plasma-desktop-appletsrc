@@ -44,7 +44,6 @@ activity=
 activityId=
 desktop=-1
 formfactor=2
-geometry=0,-33,1440,27
 immutability=1
 lastDesktop=-1
 lastScreen=0
@@ -57,7 +56,6 @@ zvalue=0
 RightButton;NoModifier=contextmenu
 
 [Containments][17][Applets][18]
-geometry=0,2,25,25
 immutability=1
 plugin=launcher
 zvalue=0
@@ -66,7 +64,6 @@ zvalue=0
 Order=0
 
 [Containments][17][Applets][19]
-geometry=29,2,25,25
 immutability=1
 plugin=org.kde.showActivityManager
 zvalue=0
@@ -75,7 +72,6 @@ zvalue=0
 Order=1
 
 [Containments][17][Applets][20]
-geometry=58,2,30,25
 immutability=1
 plugin=pager
 zvalue=0
@@ -84,7 +80,6 @@ zvalue=0
 Order=2
 
 [Containments][17][Applets][21]
-geometry=92,2,1078,25
 immutability=1
 plugin=tasks
 zvalue=0
@@ -97,7 +92,6 @@ filemanager=preferred://filemanager, , ,\s
 Order=3
 
 [Containments][17][Applets][22]
-geometry=1174,2,188,25
 immutability=1
 plugin=systemtray
 zvalue=0
@@ -106,27 +100,20 @@ zvalue=0
 DefaultAppletsAdded=true
 
 [Containments][17][Applets][22][Configuration][Applets][24]
-geometry=138,0.5,24,24
 immutability=1
 plugin=org.kde.networkmanagement
 zvalue=0
 
 [Containments][17][Applets][22][Configuration][Applets][24][PopupApplet]
-DialogHeight=344
-DialogWidth=746
 
 [Containments][17][Applets][22][Configuration][Applets][25]
-geometry=54,0.5,24,24
 immutability=1
 plugin=notifier
 zvalue=0
 
 [Containments][17][Applets][22][Configuration][Applets][25][PopupApplet]
-DialogHeight=368
-DialogWidth=318
 
 [Containments][17][Applets][22][Configuration][Applets][26]
-geometry=4,32,24,24
 immutability=1
 plugin=notifications
 zvalue=0
@@ -141,14 +128,11 @@ sourceAppletId=26
 sourceAppletPluginName=notifications
 
 [Containments][17][Applets][22][Configuration][Applets][27]
-geometry=110,0.5,24,24
 immutability=1
 plugin=battery
 zvalue=0
 
 [Containments][17][Applets][22][Configuration][Applets][27][PopupApplet]
-DialogHeight=190
-DialogWidth=448
 
 [Containments][17][Applets][22][Configuration][Shortcuts]
 Systemtray-Klipper-22=Ctrl+Alt+V
@@ -157,11 +141,8 @@ Systemtray-Klipper-22=Ctrl+Alt+V
 Order=4
 
 [Containments][17][Applets][22][PopupApplet]
-DialogHeight=74
-DialogWidth=246
 
 [Containments][17][Applets][23]
-geometry=1366,2,50,25
 immutability=1
 plugin=digital-clock
 zvalue=0
@@ -170,8 +151,6 @@ zvalue=0
 Order=5
 
 [Containments][17][Configuration]
-maximumSize=1440,27
-minimumSize=1440,27
 
 [Containments][3][Applets][8][Configuration][Applets][12][Configuration][ExtenderItems][1]
 extenderItemPosition=0
