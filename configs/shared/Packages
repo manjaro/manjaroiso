@@ -219,6 +219,7 @@ amd-ucode
 intel-ucode
 
 ## Xorg Packages
+inxi
 libdnet
 mesa
 mesa-demos
