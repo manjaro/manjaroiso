@@ -221,6 +221,7 @@ intel-ucode
 ## Xorg Packages
 libdnet
 mesa
+mesa-demos
 netkit-bsd-finger
 uriparser
 xf86-input-acecad
