@@ -222,6 +222,7 @@ intel-ucode
 libdnet
 mesa
 mesa-demos
+>x86_64 lib32-mesa-demos
 netkit-bsd-finger
 uriparser
 xf86-input-acecad
