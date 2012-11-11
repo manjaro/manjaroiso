@@ -3614,7 +3614,7 @@ dogrub_bios() {
     if [[ -e "${DESTDIR}/boot/grub/i386-pc/core.img" ]]; then
         DIALOG --msgbox "GRUB(2) BIOS has been successfully installed." 0 0
         
-        GRUB_PREFIX_DIR="/boot/grub/"
+        GRUB_PREFIX_DIR="boot/grub"
         GRUB_BIOS="1"
         #dogrub_config
         dogrub_mkconfig
@@ -3719,7 +3719,7 @@ EOF
         
         DIALOG --msgbox "GRUB(2) UEFI ${_UEFI_ARCH} has been successfully installed." 0 0
         
-        GRUB_PREFIX_DIR="/boot/grub/"
+        GRUB_PREFIX_DIR="boot/grub"
         GRUB_UEFI="1"
         #dogrub_config
         dogrub_mkconfig
