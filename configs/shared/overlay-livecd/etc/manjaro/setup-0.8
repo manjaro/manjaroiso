@@ -9,6 +9,11 @@ manjaro_version="2012.10"
 code_name="Manjaro"
 hostname="manjaro"
 
+# Menu Entries
+_done_entry="DONE"
+_other_entry="OTHER"
+_none_entry="NONE"
+
 ANSWER="/tmp/.setup"
 # use the first VT not dedicated to a running console
 LOG="/dev/tty8"
@@ -629,7 +634,7 @@ dogrub() {
 
     chroot_mount
 
-    # Install grub2
+    #Install grub2
     DIALOG --infobox "${_installinggrub}" 6 40
     echo "grub-install --directory=/usr/lib/grub/i386-pc --target=i386-pc --boot-directory=/boot --recheck ${targetpart}"  > /tmp/grub.log 2>&1
     chroot ${DESTDIR} grub-install --directory=/usr/lib/grub/i386-pc --target=i386-pc --boot-directory=/boot --recheck ${targetpart} >> /tmp/grub.log 2>&1
