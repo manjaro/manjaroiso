@@ -392,31 +392,95 @@ make_efi() {
         if [[ ${arch} == "x86_64" ]]; then
             echo -e -n "$_r >$_W Prepare ${install_dir}/boot/EFI \n $_n"
             mkdir -p ${work_dir}/iso/EFI/boot
-            cp ${work_dir}/root-image/usr/lib/gummiboot/gummibootx64.efi ${work_dir}/iso/EFI/boot/bootx64.efi
+            cp ${work_dir}/root-image/usr/lib/refind/refindx64.efi ${work_dir}/iso/EFI/boot/bootx64.efi
 
-            mkdir -p ${work_dir}/iso/loader/entries
-            cp efiboot/loader/loader.conf ${work_dir}/iso/loader/
-            cp efiboot/loader/entries/uefi-shell-v2-x86_64.conf ${work_dir}/iso/loader/entries/
-            cp efiboot/loader/entries/uefi-shell-v1-x86_64.conf ${work_dir}/iso/loader/entries/
+            cp -rf ${work_dir}/root-image/usr/share/refind/icons ${work_dir}/iso/EFI/boot
+	
+            mkdir -p ${work_dir}/iso/EFI/tools
+            cp -rf ${work_dir}/root-image/usr/lib/refind/drivers_x64 ${work_dir}/iso/EFI/tools
 
-            # default entry
-            sed "s|%MISO_LABEL%|${iso_label}|g;
-                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-usb.conf > ${work_dir}/iso/loader/entries/manjaroiso-default-x86_64.conf
+cat << EOF > "${work_dir}/iso/EFI/boot/refind.conf"
+timeout 5
 
-            # nonfree entry
-            sed "s|%MISO_LABEL%|${iso_label}|g;
-                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-usb-nonfree.conf > ${work_dir}/iso/loader/entries/manjaroiso-nonfree-x86_64.conf
+hideui singleuser
 
-            # text entry
-            sed "s|%MISO_LABEL%|${iso_label}|g;
-                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-usb-text.conf > ${work_dir}/iso/loader/entries/manjaroiso-text-x86_64.conf
+textonly
+#resolution 1024 768
 
-            # EFI Shell 2.0 for UEFI 2.3+ ( http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=UEFI_Shell )
-            # wget -O ${work_dir}/iso/EFI/shellx64_v2.efi https://edk2.svn.sourceforge.net/svnroot/edk2/trunk/edk2/ShellBinPkg/UefiShell/X64/Shell.efi
-            wget -O ${work_dir}/iso/EFI/shellx64_v2.efi https://github.com/tianocore/edk2/raw/master/ShellBinPkg/UefiShell/X64/Shell.efi
-            # EFI Shell 1.0 for non UEFI 2.3+ ( http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=Efi-shell )
-            # wget -O ${work_dir}/iso/EFI/shellx64_v1.efi https://edk2.svn.sourceforge.net/svnroot/edk2/trunk/edk2/EdkShellBinPkg/FullShell/X64/Shell_Full.efi
-            wget -O ${work_dir}/iso/EFI/shellx64_v1.efi https://github.com/tianocore/edk2/raw/master/EdkShellBinPkg/FullShell/X64/Shell_Full.efi
+use_graphics_for osx
+
+showtools about,reboot,shutdown,exit
+
+scan_driver_dirs EFI/tools/drivers_x64
+
+scanfor manual,internal,external,optical
+
+scan_delay 1
+
+#also_scan_dirs boot
+
+dont_scan_dirs EFI/boot
+
+#scan_all_linux_kernels
+
+max_tags 0
+
+default_selection "Manjaro Linux x86_64 UEFI USB (default)"
+
+menuentry "Manjaro Linux x86_64 UEFI USB (default)" {
+	icon /EFI/boot/icons/os_linux.icns
+	loader /${install_dir}/boot/x86_64/manjaroiso
+	initrd /${install_dir}/boot/x86_64/manjaro.img
+	ostype Linux
+	graphics off
+	options "gpt loglevel=7 pci=nocrs add_efi_memmap none=UEFI_ARCH_x64 misobasedir=${install_dir} misolabel=${iso_label} nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 logo.nologo overlay=free"
+}
+
+menuentry "Manjaro Linux x86_64 UEFI USB (nonfree)" {
+	icon /EFI/boot/icons/os_linux.icns
+	loader /${install_dir}/boot/x86_64/manjaroiso
+	initrd /${install_dir}/boot/x86_64/manjaro.img
+	ostype Linux
+	graphics off
+	options "gpt loglevel=7 pci=nocrs add_efi_memmap none=UEFI_ARCH_x64 misobasedir=${install_dir} misolabel=${iso_label} nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 logo.nologo overlay=nonfree nonfree=yes"
+}
+
+menuentry "Manjaro Linux x86_64 UEFI USB (textmode)" {
+	icon /EFI/boot/icons/os_linux.icns
+	loader /${install_dir}/boot/x86_64/manjaroiso
+	initrd /${install_dir}/boot/x86_64/manjaro.img
+	ostype Linux
+	graphics off
+	options "gpt loglevel=7 pci=nocrs add_efi_memmap none=UEFI_ARCH_x64 misobasedir=${install_dir} misolabel=${iso_label} nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 logo.nologo overlay=free 3"
+}
+
+menuentry "UEFI x64 Shell v2" {
+	icon /EFI/boot/icons/tool_shell.icns
+	loader /EFI/tools/shellx64_v2.efi
+	graphics off
+}
+
+menuentry "UEFI x64 Shell v1" {
+	icon /EFI/boot/icons/tool_shell.icns
+	loader /EFI/tools/shellx64_v1.efi
+	graphics off
+}
+EOF
+
+            if [[ -e ${work_dir}/iso/EFI/tools/shellx64_v2.efi ]]; then
+               rm ${work_dir}/iso/EFI/tools/shellx64_v2.efi
+            fi
+
+            if [[ -e ${work_dir}/iso/EFI/tools/shellx64_v1.efi ]]; then
+               rm ${work_dir}/iso/EFI/tools/shellx64_v1.efi
+            fi
+
+            ## Download Tianocore UDK/EDK2 ShellBinPkg UEFI "Full Shell" - For UEFI Spec. >=2.3 systems
+            curl --verbose -f -C - --ftp-pasv --retry 3 --retry-delay 3 -o ${work_dir}/iso/EFI/tools/shellx64_v2.efi https://edk2.svn.sourceforge.net/svnroot/edk2/trunk/edk2/ShellBinPkg/UefiShell/X64/Shell.efi
+	
+            ## Download Tianocore UDK/EDK2 EdkShellBinPkg UEFI "Full Shell" - For UEFI Spec. <2.3 systems
+            curl --verbose -f -C - --ftp-pasv --retry 3 --retry-delay 3 -o ${work_dir}/iso/EFI/tools/shellx64_v1.efi https://edk2.svn.sourceforge.net/svnroot/edk2/trunk/edk2/EdkShellBinPkg/FullShell/X64/Shell_Full.efi
+	
 
         fi
         : > ${work_dir}/build.${FUNCNAME}
@@ -440,27 +504,85 @@ make_efiboot() {
             cp ${work_dir}/iso/${install_dir}/boot/x86_64/manjaro.img ${work_dir}/efiboot/EFI/miso/manjaro.img
 
             mkdir -p ${work_dir}/efiboot/EFI/boot
-            cp ${work_dir}/root-image/usr/lib/gummiboot/gummibootx64.efi ${work_dir}/efiboot/EFI/boot/bootx64.efi
+            cp ${work_dir}/root-image/usr/lib/refind/refindx64.efi ${work_dir}/efiboot/EFI/boot/bootx64.efi
 
-            mkdir -p ${work_dir}/efiboot/loader/entries
-            cp efiboot/loader/loader.conf ${work_dir}/efiboot/loader/
-            cp efiboot/loader/entries/uefi-shell-v2-x86_64.conf ${work_dir}/efiboot/loader/entries/
-            cp efiboot/loader/entries/uefi-shell-v1-x86_64.conf ${work_dir}/efiboot/loader/entries/
+            cp -rf ${work_dir}/root-image/usr/share/refind/icons ${work_dir}/efiboot/EFI/boot
+	
+            mkdir -p ${work_dir}/efiboot/EFI/tools
+            cp -rf ${work_dir}/root-image/usr/lib/refind/drivers_x64 ${work_dir}/efiboot/EFI/tools
 
-            # default entry
-            sed "s|%MISO_LABEL%|${iso_label}|g;
-                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-cd.conf > ${work_dir}/efiboot/loader/entries/manjaroiso-default-x86_64.conf
+cat << EOF > "${work_dir}/efiboot/EFI/boot/refind.conf"
+timeout 5
 
-            # nonfree entry
-            sed "s|%MISO_LABEL%|${iso_label}|g;
-                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-cd-nonfree.conf > ${work_dir}/efiboot/loader/entries/manjaroiso-nonfree-x86_64.conf
+hideui singleuser
 
-            # text entry
-            sed "s|%MISO_LABEL%|${iso_label}|g;
-                 s|%INSTALL_DIR%|${install_dir}|g" efiboot/loader/entries/manjaroiso-x86_64-cd-text.conf > ${work_dir}/efiboot/loader/entries/manjaroiso-text-x86_64.conf
+textonly
+#resolution 1024 768
 
-            cp ${work_dir}/iso/EFI/shellx64_v2.efi ${work_dir}/efiboot/EFI/
-            cp ${work_dir}/iso/EFI/shellx64_v1.efi ${work_dir}/efiboot/EFI/
+use_graphics_for osx
+
+showtools about,reboot,shutdown,exit
+
+scan_driver_dirs EFI/tools/drivers_x64
+
+scanfor manual,internal,external,optical
+
+scan_delay 1
+
+#also_scan_dirs boot
+
+dont_scan_dirs EFI/boot
+
+#scan_all_linux_kernels
+
+max_tags 0
+
+default_selection "Manjaro Linux x86_64 UEFI CD (default)"
+
+menuentry "Manjaro Linux x86_64 UEFI CD (default)" {
+	icon /EFI/boot/icons/os_linux.icns
+	loader /EFI/miso/manjaroiso.efi
+	initrd /EFI/miso/manjaro.img
+	ostype Linux
+	graphics off
+	options "gpt loglevel=7 pci=nocrs add_efi_memmap none=UEFI_ARCH_x64 misobasedir=${install_dir} misolabel=${iso_label} nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 logo.nologo overlay=free"
+}
+
+menuentry "Manjaro Linux x86_64 UEFI CD (nonfree)" {
+	icon /EFI/boot/icons/os_linux.icns
+	loader /EFI/miso/manjaroiso.efi
+	initrd /EFI/miso/manjaro.img
+	ostype Linux
+	graphics off
+	options "gpt loglevel=7 pci=nocrs add_efi_memmap none=UEFI_ARCH_x64 misobasedir=${install_dir} misolabel=${iso_label} nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 logo.nologo overlay=nonfree nonfree=yes"
+}
+
+menuentry "Manjaro Linux x86_64 UEFI CD (textmode)" {
+	icon /EFI/boot/icons/os_linux.icns
+	loader /EFI/miso/manjaroiso.efi
+	initrd /EFI/miso/manjaro.img
+	ostype Linux
+	graphics off
+	options "gpt loglevel=7 pci=nocrs add_efi_memmap none=UEFI_ARCH_x64 misobasedir=${install_dir} misolabel=${iso_label} nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 logo.nologo overlay=free 3"
+}
+
+menuentry "UEFI x64 Shell v2" {
+	icon /EFI/boot/icons/tool_shell.icns
+	loader /EFI/tools/shellx64_v2.efi
+	graphics off
+}
+
+menuentry "UEFI x64 Shell v1" {
+	icon /EFI/boot/icons/tool_shell.icns
+	loader /EFI/tools/shellx64_v1.efi
+	graphics off
+}
+EOF
+
+            cp -R ${work_dir}/iso/EFI/tools ${work_dir}/efiboot/EFI
+
+            # DEBUG
+            #cp -rf ${work_dir}/efiboot ${work_dir}/../efiboot-folder
 
             umount ${work_dir}/efiboot
 
