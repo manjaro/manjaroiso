@@ -655,7 +655,8 @@ run_rsync()
 {
     # all rsync output goes to /tmp/rsync.log, which we tail
     rsync -av --progress ${RSYNC_SOURCE}/* ${RSYNC_TARGET} | \
-    awk -f /etc/manjaro/rsync.awk | \
+    awk '/xfer#/ { sub(".*to-check=",""); sub(")$",""); split($0, p, "/"); \
+    printf "%i\n", (1-p[1]/p[2])*100; fflush(); }' | \
     sed -u 's/\([0-9]*\).*/\1/' | \
     DIALOG --title "$_unsquash_dialog_title" --gauge "$_unsquash_dialog_info1 $SQF_FILE $_unsquash_dialog_info2" 10 60 0
 
