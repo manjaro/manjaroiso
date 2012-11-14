@@ -5,7 +5,7 @@ TITLE="Manjaro Linux Installation Framework (stable)"
 PKG_OVERLAY="/opt/manjaro/pkgs"
 #DIALOGRC="./setuprc"
 manjaro_kernel="linux"
-manjaro_version="2012.10"
+manjaro_version="2012.11"
 code_name="Manjaro"
 hostname="manjaro"
 
@@ -837,7 +837,7 @@ mainmenu()
         ;;
         "3")
             if [ "$_hd_is_prepared" == "1" ];then
-             installsystem
+             installsystem_rsync
             else
              DIALOG --msgbox "$_forgotpreparehd" 10 40
             fi
