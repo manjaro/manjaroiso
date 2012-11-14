@@ -707,7 +707,7 @@ printk()
 # installs to the target folder
 installsystem_unsquash() {
     #DIALOG --msgbox "${_installationwillstart}" 0 0
-    clear
+    #clear
     mkdir -p ${DESTDIR}
     #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/root-image.sqfs
     UNSQUASH_TARGET=${DESTDIR}
@@ -804,7 +804,7 @@ installsystem_unsquash() {
 # installs to the target folder
 installsystem_rsync() {
     #DIALOG --msgbox "${_installationwillstart}" 0 0
-    clear
+    #clear
     mkdir -p ${DESTDIR}
     #rsync -av --progress /source/root-image ${DESTDIR}
     RSYNC_SOURCE=/source/root-image
