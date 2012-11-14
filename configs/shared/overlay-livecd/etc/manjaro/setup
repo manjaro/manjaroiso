@@ -219,7 +219,7 @@ fi
 # check for pv
 if [ ! -e /usr/bin/pv ]; then
    if [ "${ping_check}" != "" ]; then
-      pacman -Sy pv --noconfirm
+      pacman -Sy pv --noconfirm &> /dev/null
    else
       DIALOG --msgbox "Package 'pv' is missing. Connect your PC to the Internet and restart the installer!" 12 65
    fi
