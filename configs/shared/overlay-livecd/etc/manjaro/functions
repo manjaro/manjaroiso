@@ -654,10 +654,10 @@ run_umount_sqf()
 run_rsync()
 {
     # all rsync output goes to /tmp/rsync.log, which we tail
-    rsync -av --progress ${RSYNC_SOURCE}/* ${RSYNC_TARGET} | \
-    awk '/xfer#/ { sub(".*to-check=",""); sub(")$",""); split($0, p, "/"); \
-    printf "%i\n", (1-p[1]/p[2])*100; fflush(); }' | \
-    sed -u 's/\([0-9]*\).*/\1/' | \
+    FILES_TOSYNC=$(find ${RSYNC_SOURCE}/* | wc -l)
+    (rsync -ai ${RSYNC_SOURCE}/* ${RSYNC_TARGET} | \
+    pv -nls ${FILES_TOSYNC} | \
+    grep -v ">" | grep "[0-9]*") 2>&1 | \
     DIALOG --title "$_unsquash_dialog_title" --gauge "$_unsquash_dialog_info1 $SQF_FILE $_unsquash_dialog_info2" 10 60 0
 
     # save rsync.log
@@ -771,6 +771,7 @@ installsystem_unsquash() {
     local _result=''
     if [ $(cat /tmp/.install-retcode) -ne 0 ]; then
       _result="${_installationfail}"
+      BREAK="break"
     else
       _result="${_installationsuccess}"
     fi
@@ -781,6 +782,10 @@ installsystem_unsquash() {
 
     # ensure the disk is synced
     sync
+
+    if [ "${BREAK}" = "break" ]; then
+       break
+    fi
 
     S_INSTALL=1
     NEXTITEM=4
@@ -878,6 +883,7 @@ installsystem_rsync() {
     local _result=''
     if [ $(cat /tmp/.install-retcode) -ne 0 ]; then
       _result="${_installationfail}"
+      BREAK="break"
     else
       _result="${_installationsuccess}"
     fi
@@ -888,6 +894,10 @@ installsystem_rsync() {
 
     # ensure the disk is synced
     sync
+
+    if [ "${BREAK}" = "break" ]; then
+       break
+    fi
 
     S_INSTALL=1
     NEXTITEM=4
