@@ -1,7 +1,7 @@
 #!/bin/bash
 # installer wrapper
 
-TITLE="Manjaro Linux Installation Framework (v0.8.2)"
+TITLE="Manjaro Linux Installation Framework (v0.8.2a)"
 
 _yes="Yes"
 _no="No"
@@ -13,6 +13,9 @@ ANSWER="/tmp/.setup"
 CURRENT_SELECTION=""
 
 source /etc/manjaro/functions
+
+# check if we have a internet connection
+ping_check=$(LC_ALL=C ping -c 1 www.manjaro.org | grep "1 received")
 
 # list all net devices with mac adress
 net_interfaces() {
@@ -212,6 +215,15 @@ source /etc/manjaro/setup-en.lng
 if [ "${LOCALE}" = "tr_TR" ]; then
    source /etc/manjaro/setup-tr.lng
 fi
+
+# check for pv
+if [ ! -e /usr/bin/pv ]; then
+   if [ "${ping_check}" != "" ]; then
+      pacman -Sy pv --noconfirm
+   else
+      DIALOG --msgbox "Package 'pv' is missing. Connect your PC to the Internet and restart the installer!" 12 65
+fi
+
 
 DIALOG --msgbox "${_wrapperwelcomemessage}" 12 65
 
