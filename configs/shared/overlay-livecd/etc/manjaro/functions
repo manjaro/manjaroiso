@@ -637,7 +637,7 @@ run_unsquashfs()
 run_mount_sqf()
 {
     # mount SQF_FILE to RSYNC_SOURCE
-    mount ${SQF_FILE} ${RSYNC_SOURCE} -t squashfs -o loop
+    mount /bootmnt/manjaro/${arch}/${SQF_FILE} ${RSYNC_SOURCE} -t squashfs -o loop
 }
 
 # run_umount_sqf()
