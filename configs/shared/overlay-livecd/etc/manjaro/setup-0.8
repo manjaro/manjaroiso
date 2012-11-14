@@ -837,7 +837,7 @@ mainmenu()
         ;;
         "3")
             if [ "$_hd_is_prepared" == "1" ];then
-             installsystem_rsync
+             installsystem
             else
              DIALOG --msgbox "$_forgotpreparehd" 10 40
             fi
