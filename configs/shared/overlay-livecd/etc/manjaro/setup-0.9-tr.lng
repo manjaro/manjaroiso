@@ -57,7 +57,7 @@ _givepass="Yeni kull. adi icin parola girin :"
 _addsudouserdl1="Bu kullaniciya \""
 _addsudouserdl2="\" yetkili kull. haklari verilsin mi?"
 
-_installchoice='Do you want to use unsquashfs to install your system?\n\nIt is the standard and fastest option to unpack our sqf-files to your harddrive. At least 1 GB of memory (RAM) should be installed on your system (additional RAM is recommended).\n\nIf don\'t want to use "unsquashfs" answer with "No" and continue your installation using "rsync" instead.\n\nNext step will start the installation. Please be patient!'
+_installchoice='Do you want to use unsquashfs to install your system?\n\nIt is the standard and fastest option to unpack our sqf-files to your harddrive. At least 1 GB of memory (RAM) should be installed on your system (additional RAM is recommended).\n\nIf dont want to use "unsquashfs" answer with "No" and continue your installation using "rsync" instead.\n\nNext step will start the installation. Please be patient!'
 _installationwillstart='Kurulum basliyor. Lutfen bekleyin!'
 _installationinprogress="Kuruluyor..."
 _installationfail='KURULAMADI!'
