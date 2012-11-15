@@ -27,8 +27,7 @@ alias grep='grep --color=tty -d skip'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
-alias vp='vim PKGBUILD'
-alias vs='vim SPLITBUILD'
+alias np='nano PKGBUILD'
 
 # ex - archive extractor
 # usage: ex <file>
@@ -53,12 +52,6 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
-
-# vim stuff
-export EDITOR=vim
-export VISUAL=vim
-alias vi=vim
-
 
 # prompt
 PS1='[\u@\h \W]\$ '
