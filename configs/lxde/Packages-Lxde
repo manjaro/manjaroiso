@@ -1,0 +1,87 @@
+### Manjaro Packages
+
+## LXDE Main Packages
+faenza-icon-theme
+gksu
+gnome-keyring
+lxde
+network-manager-applet
+shiki-nouveau-fall-colors
+xcursor-simpleandsoft
+xcursor-vanilla-dmz-aa
+xscreensaver
+
+## Applications
+#audacity
+#avidemux-gtk
+catfish
+epdfview
+file-roller
+#filezilla
+firefox
+fwbuilder
+galculator
+gedit
+gimp
+gparted
+#manjaro-installer
+#manjaro-welcome
+lxmed
+mlocate
+#openshot
+pavucontrol
+pidgin
+#playonlinux
+pnmixer
+q4wine
+skype
+smplayer
+simple-scan
+thunderbird
+#transmission-gtk
+xchat
+xfburn
+
+## Package management
+pacman-gui
+kalu
+
+## Fonts
+ttf-source-sans-pro
+
+## Extra Applications
+blueman
+icedtea-web
+notification-daemon
+openjdk6
+#soundconverter
+vinagre
+
+## Office
+#libreoffice-base
+libreoffice-calc
+#libreoffice-draw
+libreoffice-gnome
+#libreoffice-impress
+#libreoffice-math
+#libreoffice-postgresql-connector
+libreoffice-writer
+
+## Printing
+cups
+cups-pdf
+foomatic-db
+foomatic-db-engine
+foomatic-db-nonfree
+foomatic-filters
+ghostscript
+gsfonts
+gutenprint
+splix
+hplip
+hpoj
+python2-gobject2
+python2-pyqt
+system-config-printer-gnome
+system-config-printer-common
+cups-pk-helper

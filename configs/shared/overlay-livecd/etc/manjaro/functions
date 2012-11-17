@@ -767,6 +767,18 @@ installsystem_unsquash() {
        sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
     fi
 
+    if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
+       #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/lxde-image.sqfs
+       UNSQUASH_TARGET=${DESTDIR}
+       SQF_FILE=lxde-image.sqfs
+       run_unsquashfs
+       echo $? > /tmp/.install-retcode
+       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
+       else echo -e "\n => LXDE-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
+       fi
+       sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
+    fi
+
     # finished, display scrollable output
     local _result=''
     if [ $(cat /tmp/.install-retcode) -ne 0 ]; then
@@ -876,6 +888,21 @@ installsystem_rsync() {
        echo $? > /tmp/.install-retcode
        if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
        else echo -e "\n => Openbox-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
+       fi
+    fi
+
+    if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
+       #rsync -av --progress /source/lxde-image ${DESTDIR}
+       RSYNC_SOURCE=/source/lxde-image
+       mkdir -p ${RSYNC_SOURCE}
+       RSYNC_TARGET=${DESTDIR}
+       SQF_FILE=lxde-image.sqfs
+       run_mount_sqf
+       run_rsync
+       run_umount_sqf
+       echo $? > /tmp/.install-retcode
+       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
+       else echo -e "\n => LXDE-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
        fi
     fi
 

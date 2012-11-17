@@ -9,7 +9,6 @@ Icon=cli-installer
 MimeType=
 Name[de]=Manjaro CLI Installer
 Name=Manjaro CLI Installer
-Path=
 StartupNotify=false
 Terminal=true
 TerminalOptions=

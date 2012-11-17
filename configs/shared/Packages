@@ -109,6 +109,7 @@ os-prober
 parted
 pkg-config
 pptpclient
+pv
 qt
 rp-pppoe
 rsync

@@ -120,6 +120,14 @@ if [ -e Packages-Openbox ] ; then
      fi
 fi
 
+if [ -e Packages-Lxde ] ; then
+     if [ "${arch}" == "i686" ]; then
+     	lxde_packages=$(sed "s|#.*||g" Packages-Lxde | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     elif [ "${arch}" == "x86_64" ]; then
+     	lxde_packages=$(sed "s|#.*||g" Packages-Lxde | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     fi
+fi
+
 # Create trustdb.gpg
 create_trustdb() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
@@ -352,6 +360,33 @@ if [ -e Packages-Openbox ] ; then
               fi
               umount -f ${work_dir}/openbox-image
               rm -R ${work_dir}/openbox-image/.wh*
+              : > ${work_dir}/build.${FUNCNAME}
+              echo -e "$_g >$_W done $_n"
+         fi
+     }
+fi
+
+if [ -e Packages-Lxde ] ; then
+     # LXDE installation (lxde-image)
+     make_lxde_image() {
+         if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
+              de="-lxde"
+              echo -e -n "$_r >$_W LXDE installation (lxde-image) \n $_n"
+              mkdir -p ${work_dir}/lxde-image
+              if [ "`mount -l | grep lxde-image`" != "" ]; then
+                 umount -f ${work_dir}/lxde-image
+              fi
+              mount -t aufs -o br=${work_dir}/lxde-image:${work_dir}/root-image=ro none ${work_dir}/lxde-image
+              mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "lxde-image" -p "${lxde_packages}" create "${work_dir}"
+              pacman -Qr "${work_dir}/lxde-image" > "${work_dir}/lxde-image/lxde-image-pkgs.txt"
+              cp "${work_dir}/lxde-image/lxde-image-pkgs.txt" ${name}${de}-${version}-${arch}-pkgs.txt
+              cp -LPr lxde-overlay/* ${work_dir}/lxde-image
+              if [ -e ${work_dir}/lxde-image/usr/sbin/cupsd ] ; then
+                 mkdir -p "${work_dir}/lxde-image/etc/systemd/system/multi-user.target.wants"
+                 ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/lxde-image/etc/systemd/system/multi-user.target.wants/cups.service"
+              fi
+              umount -f ${work_dir}/lxde-image
+              rm -R ${work_dir}/lxde-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi
@@ -707,6 +742,9 @@ if [ -e Packages-gnome ] ; then
 fi
 if [ -e Packages-Openbox ] ; then
     make_openbox_image
+fi
+if [ -e Packages-Lxde ] ; then
+    make_lxde_image
 fi
 # install common
 make_boot
