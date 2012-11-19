@@ -609,7 +609,7 @@ run_unsquashfs()
         touch /tmp/setup-unsquashfs-running
         echo "unsquashing $SQF_FILE..." > /tmp/unsquashfs.log; \
         echo >> /tmp/unsquashfs.log; \
-        unsquashfs -f -p 1 -d $UNSQUASH_TARGET /bootmnt/manjaro/${arch}/$SQF_FILE >> /tmp/unsquashfs.log 2>&1
+        unsquashfs -f -da 32 -fr 32 -d $UNSQUASH_TARGET /bootmnt/manjaro/${arch}/$SQF_FILE >> /tmp/unsquashfs.log 2>&1
         rm -f /tmp/setup-unsquashfs-running
     ) &
 
