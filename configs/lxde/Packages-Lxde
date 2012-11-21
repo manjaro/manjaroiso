@@ -2,11 +2,13 @@
 
 ## LXDE Main Packages
 faenza-icon-theme
+gamin
 gksu
 gnome-keyring
 gvfs
 lxde
 network-manager-applet
+polkit-gnome
 shiki-nouveau-fall-colors
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa

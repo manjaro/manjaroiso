@@ -14,3 +14,6 @@ case $1 in
   lxde) exec  ck-launch-session dbus-launch startlxde ;;
   *) exec ck-launch-session dbus-launch  $DEFAULT_SESSION ;;
 esac
+
+# fix pcmanfm
+dbus-launch pcmanfm
