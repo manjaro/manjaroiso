@@ -58,6 +58,10 @@ oxygen-gtk2
 oxygen-gtk3
 kde-gtk-config
 
+## Java
+icedtea-web-java7
+openjdk7
+
 ## Printing
 cups
 cups-pdf

@@ -52,8 +52,9 @@ ttf-source-sans-pro
 
 ## Extra Applications
 gcalctool
-icedtea-web
-openjdk6
+icedtea-web-java7
+notification-daemon
+openjdk7
 soundconverter
 vinagre
 

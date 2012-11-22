@@ -110,9 +110,9 @@ ttf-source-sans-pro
 
 ## Extra Applications
 blueman
-icedtea-web
+icedtea-web-java7
 notification-daemon
-openjdk6
+openjdk7
 #soundconverter
 vinagre
 
