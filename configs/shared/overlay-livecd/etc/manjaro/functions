@@ -204,8 +204,8 @@ _configure_translation_pkgs()
                            PACMAN_LNG_INST_KDE="kde-l10n-de"
                            ;;
                      en*)
-                           #English
-                           PACMAN_LNG_INST="hunspell-en libreoffice-en-US"
+                           #English (disabled libreoffice-en-US)
+                           PACMAN_LNG_INST="hunspell-en"
                            ;;
                      en_GB)
                            #British English

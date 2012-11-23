@@ -121,6 +121,7 @@ system-config-printer-common
 cups-pk-helper
 
 ## Office
+libreoffice-en-US
 #libreoffice-base
 libreoffice-calc
 #libreoffice-draw
