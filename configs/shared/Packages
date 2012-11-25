@@ -1,156 +1,70 @@
 ## Base Packages
-bash
-binutils
-bzip2
-cdrkit
-coreutils
-cronie
-cryptsetup
-device-mapper
-dhcpcd
-dmidecode
-diffutils
-e2fsprogs
-eject
-file
-filesystem
-findutils
-gcc-libs
-gettext
-glibc
-gptfdisk
-grep
-gzip
-iputils
-jfsutils
-less
-libpipeline
-licenses
-linux
-logrotate
+base
 lsb-release
-lvm2
-man-db
 manjaro-release
-mdadm
-nano
-pacman
-pciutils
-pcmciautils
-perl
-ppp
-procps
-psmisc
-reiserfsprogs
-sed
-shadow
-sysfsutils
-syslinux
 syslog-ng
-systemd
-systemd-manjaro-units
-systemd-sysvcompat
-tar
-texinfo
-usbutils
-util-linux
-vi
-wget
-which
-wpa_supplicant
-xfsprogs
-
-
-## Hotfixes
-manjaro-hotfixes
-
-
-## Devel Packages
-base-devel
-git
-packer
-patchutils
-svn
-yaourt
-
 
 ## Extra Base Packages
 acpid
 crda
-cryptsetup
 curl
 dbus
 ddrescue
 dhclient
 dialog
+dmidecode
 dnsmasq
 dnsutils
-gamin
-gnu-netcat
-incron
 expac
 efilinux-efi
-refind-efi
-gummiboot-efi
+gamin
+gnu-netcat
 grub-bios
 grub-efi-i386
 grub-efi-x86_64
+gummiboot-efi
 hdparm
+incron
 linux-firmware
 manjaro-firmware
 memtest86+
 mhwd
 mhwd-db
 mkinitcpio-nfs-utils
-openconnect
-openssh
-openvpn
 os-prober
 parted
 pkg-config
-pptpclient
 pv
 qt
+refind-efi
 rp-pppoe
 rsync
 speedtouch
 squashfs-tools
 sudo
+syslinux
 tcpdump
-usbutils
-util-linux-ng
 v86d
-vpnc
 xdg-utils
 xdg-user-dirs
 
-
 ## Filesystem Packages
-bluez
+#bluez
 btrfs-progs
 dmraid
 dosfstools
-e2fsprogs
-jfsutils
-reiserfsprogs
 testdisk
 nilfs-utils
 nfs-utils
 ntfs-3g
 ntfsprogs
-xfsprogs
-
 
 ## Packages for Sound and Audio
 alsa-utils
 alsa-firmware
 alsa-lib
-pulseaudio
-pulseaudio-alsa
 >x86_64 lib32-alsa-lib
 >x86_64 lib32-alsa-plugins
->x86_64 lib32-libcanberra-pulse
->x86_64 lib32-libpulse
 
 ## Fonts
 terminus-font
@@ -160,49 +74,32 @@ ttf-inconsolata
 ttf-indic-otf
 ttf-liberation
 
-
 ## Artwork
 manjaro-artwork
 
-
 ## Compression Codecs
 arj
-bzip2
-gzip
 lzop
-p7zip
-wxgtk
-tar
 unrar
 unzip
 xz
 zip
 
-
 ## Codecs
 flashplugin
 gstreamer0.10-bad
-gstreamer0.10-bad-plugins
 gstreamer0.10-base-plugins
-gstreamer0.10-ffmpeg
 gstreamer0.10-good-plugins
-gstreamer0.10-plugins
-gstreamer0.10-ugly-plugins
 libdvdcss
-
 
 ## Network
 b43-fwcutter
-dhclient
-dnsmasq
-inetutils
 iptables
 ipw2100-fw
 ipw2200-fw
 mobile-broadband-provider-info
 modemmanager
 nbd
-netcfg
 networkmanager
 networkmanager-dispatcher-ntpd-systemd
 openresolv

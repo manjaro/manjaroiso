@@ -81,8 +81,15 @@ vino
 
 ## Extra
 icedtea-web-java7
-openjdk7
 simple-scan
+
+## Devel Packages
+base-devel
+git
+packer
+patchutils
+svn
+yaourt
 
 ## Theme
 faenza-green-icon-theme
@@ -100,6 +107,12 @@ thunderbird
 ## Package management
 pacman-gui
 kalu
+
+## Packages for Sound and Audio
+pulseaudio
+pulseaudio-alsa
+>x86_64 lib32-libcanberra-pulse
+>x86_64 lib32-libpulse
 
 ## Printing
 cups

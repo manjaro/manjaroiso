@@ -60,6 +60,12 @@ openjdk7
 #soundconverter
 vinagre
 
+## Packages for Sound and Audio
+pulseaudio
+pulseaudio-alsa
+>x86_64 lib32-libcanberra-pulse
+>x86_64 lib32-libpulse
+
 ## Office
 libreoffice-en-US
 #libreoffice-base

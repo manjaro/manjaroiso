@@ -35,6 +35,7 @@ dbus:x:81:
 git:x:999:
 dnsmasq:x:998:
 incron:x:997:
+polkitd:x:102:
 rtkit:x:133:
 avahi:x:84:
 nbd:x:44:

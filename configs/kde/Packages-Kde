@@ -33,6 +33,20 @@ kdeutils-sweeper
 kdeplasma-addons-applets-icontasks
 kdeplasma-applets-networkmanagement
 
+## Packages for Sound and Audio
+pulseaudio
+pulseaudio-alsa
+>x86_64 lib32-libcanberra-pulse
+>x86_64 lib32-libpulse
+
+## Devel Packages
+base-devel
+git
+packer
+patchutils
+svn
+yaourt
+
 ## Applications
 #rekonq
 #kdepim-kmail
@@ -60,7 +74,6 @@ kde-gtk-config
 
 ## Java
 icedtea-web-java7
-openjdk7
 
 ## Printing
 cups
