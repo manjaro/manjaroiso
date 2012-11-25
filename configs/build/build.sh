@@ -71,6 +71,6 @@ if [ "$net" == "Y" ] ; then
    buildiso
    echo ">> done build net image"
    rm -R work*/*isomounts*
-   rm -R work*/*pkgs*
+   #rm -R work*/*pkgs*
    ln -sfv ../shared/Packages-Lng Packages-Lng
 fi

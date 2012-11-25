@@ -17,7 +17,9 @@ dnsmasq
 dnsutils
 expac
 efilinux-efi
+eject
 gamin
+gptfdisk
 gnu-netcat
 grub-bios
 grub-efi-i386
