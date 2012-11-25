@@ -7,12 +7,17 @@ if [ "$EUID" != "0" ]; then
 fi
 
 xfce="Y"
-gnome="Y"
-kde="Y"
+gnome="N"
+kde="N"
 net="Y"
 
 if [ "$xfce" == "Y" ] ; then
    echo ">> build xfce image"
+   if [ -e Packages-Lng ] ; then
+      rm Packages-Lng
+      rm -R work*/*lng*
+      rm work*/iso/manjaro/*/lng-image.sqfs
+   fi
    ln -sfv ../xfce/options.conf options.conf
    ln -sfv ../xfce/isomounts isomounts
    ln -sfv ../xfce/Packages-Xfce Packages-Xfce
@@ -22,6 +27,7 @@ if [ "$xfce" == "Y" ] ; then
    rm -R work*/*xfce*
    rm -R work*/*isomounts*
    rm work*/iso/manjaro/*/xfce-image.sqfs
+   ln -sfv ../shared/Packages-Lng Packages-Lng
 fi
 if [ "$gnome" == "Y" ] ; then
    echo ">> build gnome image"
@@ -51,9 +57,11 @@ if [ "$kde" == "Y" ] ; then
 fi
 if [ "$net" == "Y" ] ; then
    echo ">> build net image"
-   rm Packages-Lng
-   rm -R work*/*lng*
-   rm work*/iso/manjaro/*/lng-image.sqfs
+   if [ -e Packages-Lng ] ; then
+      rm Packages-Lng
+      rm -R work*/*lng*
+      rm work*/iso/manjaro/*/lng-image.sqfs
+   fi
    #rm -R work*/pkgs-free-overlay
    #rm -R work*/pkgs-nonfree-overlay
    #rm work*/iso/manjaro/*/pkgs-free-overlay.sqfs

@@ -39,6 +39,7 @@ qt
 refind-efi
 rp-pppoe
 rsync
+sdparm
 speedtouch
 squashfs-tools
 sudo
@@ -49,7 +50,6 @@ xdg-utils
 xdg-user-dirs
 
 ## Filesystem Packages
-#bluez
 btrfs-progs
 dmraid
 dosfstools
