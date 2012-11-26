@@ -34,7 +34,6 @@ mlocate
 #openshot
 pidgin
 #playonlinux
-pnmixer
 q4wine
 skype
 smplayer
@@ -52,6 +51,7 @@ kalu
 ttf-source-sans-pro
 
 ## Extra Applications
+bluez
 blueman
 icedtea-web-java7
 notification-daemon
@@ -62,6 +62,7 @@ vinagre
 ## Packages for Sound and Audio
 manjaro-pulse
 pavucontrol
+pnmixer
 
 ## Office
 libreoffice-en-US
