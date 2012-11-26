@@ -77,7 +77,6 @@ mlocate
 >i686 pidgin
 >i686 q4wine
 >i686 skype
-parole
 sylpheed
 viewnior
 xchat
@@ -85,6 +84,7 @@ xfburn
 xnoise
 
 ## Packages for Sound and Audio
+gstreamer0.10-ugly-plugins
 pnmixer-xfce4
 xfce4-mixer
 

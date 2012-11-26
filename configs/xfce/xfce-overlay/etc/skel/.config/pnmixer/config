@@ -6,7 +6,8 @@ MouseScrollStep=1
 MiddleClickAction=0
 CustomCommand=
 AlsaCard=(default)
-IconTheme=Faenza-Dark
+IconTheme=Faenza-Green
+VolumeControlCommand=xfce4-mixer
 
 [(default)]
 Channel=Master
