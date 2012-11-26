@@ -62,11 +62,7 @@ ntfs-3g
 ntfsprogs
 
 ## Packages for Sound and Audio
-alsa-utils
-alsa-firmware
-alsa-lib
->x86_64 lib32-alsa-lib
->x86_64 lib32-alsa-plugins
+manjaro-alsa
 
 ## Fonts
 terminus-font

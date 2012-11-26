@@ -109,29 +109,10 @@ pacman-gui
 kalu
 
 ## Packages for Sound and Audio
-pulseaudio
-pulseaudio-alsa
->x86_64 lib32-libcanberra-pulse
->x86_64 lib32-libpulse
+manjaro-pulse
 
 ## Printing
-cups
-cups-pdf
-foomatic-db
-foomatic-db-engine
-foomatic-db-nonfree
-foomatic-filters
-ghostscript
-gsfonts
-gutenprint
-splix
-hplip
-hpoj
-python2-gobject2
-python2-pyqt
-system-config-printer-gnome
-system-config-printer-common
-cups-pk-helper
+manjaro-printer
 
 ## Office
 libreoffice-en-US
