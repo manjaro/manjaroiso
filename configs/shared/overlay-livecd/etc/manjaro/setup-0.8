@@ -582,7 +582,7 @@ auto_fstab()
 dogrub() {
     GRUB_SET=""
     local grubmenu="/boot/grub/grub.cfg"
-    if [ ! -f $grubmenu ]; then
+    if [ ! -f /usr/sbin/grub-install ]; then
         DIALOG --msgbox "${_isgrubinst} $grubmenu" 0 0
         return 1
     fi
