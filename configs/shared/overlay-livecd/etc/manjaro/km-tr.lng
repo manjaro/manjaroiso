@@ -1,18 +1,35 @@
 #Translation
-_title="Manjaro Keymap Setting"
-_return="Return to Main Menu"
-_exit="Exit"
-_abort="Abort Keymap And Console Font Setting?"
-_error="An error occured, your current keymap was not changed."
-_scanning="Scanning for keymaps..."
-_select="Select A Keymap"
-_load="Loading keymap:"
-_menu" MAIN MENU "
-_desc="Use ↓ and ↑ to navigate menus.\nUse TAB to switch between buttons and ENTER to select."
-_keymap="Set Keymap"
-_nokeymap="Cannot load keymaps, as none were found in"
-_nofonts="Cannot load consolefonts, as none were found in"
-_loadkeys="'loadkeys' binary not found!"
-_setfont="'setfont' binary not found!"
-_km="km already runs on a different console!"
-_tmp="Please remove /tmp/.km-running first to launch km!"
+
+_title="Manjaro Tus Haritasi Ayarlari"
+
+_return="Ana Menu ye Don"
+
+_exit="Cikis"
+
+_abort="Tus haritasi ve Konsol Font Ayarlarini Gec?"
+
+_error="Hata olustu, gecerli tus haritasi degismedi."
+
+_scanning="Tus haritalari taraniyor..."
+
+_select="Bir Tus Haritasi Secin"
+
+_load="Tus Haritasi Yukleniyor:"
+
+_menu" ANA MENU "
+
+_desc=" ↓ ve ↑ ile menuler arasinda gezinin.\nUse TAB ile sekmeler arasinda gezin ve ENTER ile secin."
+
+_keymap="Tus haritasini Ayarla"
+
+_nokeymap="Tus Haritasi Yuklenemedi"
+
+_nofonts="Konsol Fontlari Yuklenemedi"
+
+_loadkeys="'Yukleme' Insa bulunamadi!"
+
+_setfont="'Font Ayari' Insa bulunamadi!"
+
+_km="km Baska Bir Ucbirimde Halen Calismaktadir!"
+
+_tmp="Lutfen km yurutmeden once /tmp/.km-running kaldirin!"
