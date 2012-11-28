@@ -48,6 +48,7 @@ sudo
 syslinux
 tcpdump
 v86d
+wget
 xdg-utils
 xdg-user-dirs
 
