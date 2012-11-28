@@ -12,6 +12,7 @@ gtk2-xfce-engine
 gtk3-xfce-engine
 gvfs
 gvfs-smb
+libgnome
 lxdm
 network-manager-applet
 orage
@@ -79,7 +80,7 @@ mlocate
 sylpheed
 viewnior
 xchat
-xfburn
+>i686 xfburn
 xnoise
 
 ## Packages for Sound and Audio

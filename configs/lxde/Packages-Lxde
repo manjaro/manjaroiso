@@ -6,6 +6,7 @@ gamin
 gksu
 gnome-keyring
 gvfs
+libgnome
 lxde
 network-manager-applet
 polkit-gnome

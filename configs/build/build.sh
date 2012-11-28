@@ -9,7 +9,7 @@ fi
 xfce="Y"
 gnome="N"
 kde="N"
-net="Y"
+net="N"
 
 if [ "$xfce" == "Y" ] ; then
    echo ">> build xfce image"
