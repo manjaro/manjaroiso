@@ -640,6 +640,7 @@ dogrub() {
     chroot ${DESTDIR} grub-install --directory=/usr/lib/grub/i386-pc --target=i386-pc --boot-directory=/boot --recheck ${targetpart} >> /tmp/grub.log 2>&1
     chroot_umount
 
+    GRUB_PREFIX_DIR="boot/grub"
     dogrub_mkconfig
 
     # unfreeze xfs filesystems if any
