@@ -24,7 +24,6 @@ nautilus
 nautilus-actions
 nautilus-open-terminal
 nautilus-sendto
-nautilus-sound-converter
 notification-daemon
 xdg-user-dirs-gtk
 yelp
@@ -46,8 +45,8 @@ gcalctool
 #gconf-editor
 gimp
 dconf
-gdm
-gdm3setup
+#gdm
+#gdm3setup
 gedit
 gnome-color-manager
 gnome-contacts
@@ -64,6 +63,7 @@ gnome-system-log
 gnome-system-monitor
 gnome-tweak-tool
 gparted
+lxdm
 mousetweaks
 nautilus-sendto
 network-manager-applet
@@ -86,7 +86,6 @@ simple-scan
 ## Devel Packages
 base-devel
 git
-packer
 patchutils
 svn
 yaourt
