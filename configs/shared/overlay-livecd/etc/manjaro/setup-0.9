@@ -6,7 +6,7 @@ PKG_OVERLAY="/opt/manjaro/pkgs"
 #DIALOGRC="./setuprc"
 manjaro_kernel="linux"
 manjaro_kernel_ver="34"
-manjaro_version="2012.11"
+manjaro_version="2012.12"
 code_name="Manjaro"
 hostname="manjaro"
 
@@ -1395,12 +1395,12 @@ autoprepare() {
         fi
         DISC_SIZE=$((${DISC_SIZE}-${GUID_PART_SIZE}-${UEFISYS_PART_SIZE}))
         while [[ "${BOOT_PART_SET}" = "" ]]; do
-            DIALOG --inputbox "Enter the size (MB) of your /boot partition,\nMinimum value is 16.\n\nDisk space left: ${DISC_SIZE} MB" 10 65 "512" 2>${ANSWER} || return 1
+            DIALOG --inputbox "Enter the size (MB) of your /boot partition,\nMinimum value is 150.\n\nDisk space left: ${DISC_SIZE} MB" 10 65 "512" 2>${ANSWER} || return 1
             BOOT_PART_SIZE="$(cat ${ANSWER})"
             if [[ "${BOOT_PART_SIZE}" = "" ]]; then
                 DIALOG --msgbox "ERROR: You have entered a invalid size, please enter again." 0 0
             else
-                if [[ "${BOOT_PART_SIZE}" -ge "${DISC_SIZE}" || "${BOOT_PART_SIZE}" -lt "16" || "${SBOOT_PART_SIZE}" = "${DISC_SIZE}" ]]; then
+                if [[ "${BOOT_PART_SIZE}" -ge "${DISC_SIZE}" || "${BOOT_PART_SIZE}" -lt "150" || "${SBOOT_PART_SIZE}" = "${DISC_SIZE}" ]]; then
                     DIALOG --msgbox "ERROR: You have entered an invalid size, please enter again." 0 0
                 else
                     BOOT_PART_SET=1
@@ -1424,8 +1424,8 @@ autoprepare() {
             fi
         done
         DISC_SIZE=$((${DISC_SIZE}-${SWAP_PART_SIZE}))
-        ROOT_SIZE="7500"
-        [[ "${DISC_SIZE}" -lt "7500" ]] && ROOT_SIZE="${DISC_SIZE}"
+        ROOT_SIZE="6400"
+        [[ "${DISC_SIZE}" -lt "6400" ]] && ROOT_SIZE="${DISC_SIZE}"
         while [[ "${ROOT_PART_SET}" = "" ]]; do
         DIALOG --inputbox "Enter the size (MB) of your / partition,\nthe /home partition will use the remaining space.\n\nDisk space left:  ${DISC_SIZE} MB" 10 65 "${ROOT_SIZE}" 2>${ANSWER} || return 1
         ROOT_PART_SIZE=$(cat ${ANSWER})

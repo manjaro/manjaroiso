@@ -5,7 +5,7 @@ TITLE="Manjaro Linux Installation Framework (stable)"
 PKG_OVERLAY="/opt/manjaro/pkgs"
 #DIALOGRC="./setuprc"
 manjaro_kernel="linux"
-manjaro_version="2012.11"
+manjaro_version="2012.12"
 code_name="Manjaro"
 hostname="manjaro"
 
@@ -41,7 +41,7 @@ PART_ROOT=
 
 # default filesystem specs (the + is bootable flag)
 # <mountpoint>:<partsize>:<fstype>[:+]
-DEFAULTFS="/boot:100:ext2:+ swap:512:swap /:5500:reiserfs /home:*:reiserfs"
+DEFAULTFS="/boot:512:ext2:+ swap:256:swap /:6400:reiserfs /home:*:reiserfs"
 
 # check if we have a internet connection
 ping_check=$(LC_ALL=C ping -c 1 www.manjaro.org | grep "1 received")
@@ -275,12 +275,12 @@ autoprepare()
         [ "$(which mkfs.ext2 2>/dev/null)" ]  && FSOPTS="$FSOPTS ext2 ext2 ext3 ext3 ext4 ext4"
         [ "$(which mkfs.btrfs 2>/dev/null)" ]  && FSOPTS="$FSOPTS btrfs BTRFS(experimental)"
         while [ "$BOOT_PART_SET" = "" ]; do
-            DIALOG --inputbox "${_enterbootpartsize}\n\n${_diskspaceleft} $DISC_SIZE MiB" 10 65 "100" 2>${ANSWER} || return 1
+            DIALOG --inputbox "${_enterbootpartsize}\n\n${_diskspaceleft} $DISC_SIZE MiB" 10 65 "512" 2>${ANSWER} || return 1
             BOOT_PART_SIZE="$(cat ${ANSWER})"
             if [ "$BOOT_PART_SIZE" = "" ]; then
                 DIALOG --msgbox "${_errorincorrectsize}" 0 0
             else
-                if [ "$BOOT_PART_SIZE" -ge "$DISC_SIZE" -o "$BOOT_PART_SIZE" -lt "50" -o "$SBOOT_PART_SIZE" = "$DISC_SIZE" ]; then
+                if [ "$BOOT_PART_SIZE" -ge "$DISC_SIZE" -o "$BOOT_PART_SIZE" -lt "150" -o "$SBOOT_PART_SIZE" = "$DISC_SIZE" ]; then
                     DIALOG --msgbox "${_errorsizetoobig}" 0 0
                 else
                     BOOT_PART_SET=1
@@ -289,7 +289,7 @@ autoprepare()
         done
         DISC_SIZE=$(($DISC_SIZE-$BOOT_PART_SIZE))
         while [ "$SWAP_PART_SET" = "" ]; do
-            DIALOG --inputbox "${_enterswappartsize}\n\n${_diskspaceleft} $DISC_SIZE MiB" 10 65 "512" 2>${ANSWER} || return 1
+            DIALOG --inputbox "${_enterswappartsize}\n\n${_diskspaceleft} $DISC_SIZE MiB" 10 65 "256" 2>${ANSWER} || return 1
             SWAP_PART_SIZE=$(cat ${ANSWER})
             if [ "$SWAP_PART_SIZE" = "" -o  "$SWAP_PART_SIZE" -le "0" ]; then
                 DIALOG --msgbox "${_errorincorrectsize}" 0 0
@@ -303,7 +303,7 @@ autoprepare()
         done
         DISC_SIZE=$(($DISC_SIZE-$SWAP_PART_SIZE))
         while [ "$ROOT_PART_SET" = "" ]; do
-            DIALOG --inputbox "${_enterrootpartsize}\n\n${_diskspaceleft} $DISC_SIZE MiB" 10 65 "5500" 2>${ANSWER} || return 1
+            DIALOG --inputbox "${_enterrootpartsize}\n\n${_diskspaceleft} $DISC_SIZE MiB" 10 65 "6400" 2>${ANSWER} || return 1
             ROOT_PART_SIZE=$(cat ${ANSWER})
             if [ "$ROOT_PART_SIZE" = "" -o "$ROOT_PART_SIZE" -le "0" ]; then
                 DIALOG --msgbox "${_errorincorrectsize}" 0 0
@@ -326,7 +326,7 @@ autoprepare()
     DIALOG --defaultno --yesno "$DISC ${_willbeerased}" 0 0 || return 1
 
     DEVICE=$DISC
-    FSSPECS=$(echo $DEFAULTFS | sed -e "s|/:5500:reiserfs|/:$ROOT_PART_SIZE:$FSTYPE|g" -e "s|/home:\*:reiserfs|/home:\*:$FSTYPE|g" -e "s|swap:512|swap:$SWAP_PART_SIZE|g" -e "s|/boot:100|/boot:$BOOT_PART_SIZE|g")
+    FSSPECS=$(echo $DEFAULTFS | sed -e "s|/:6400:reiserfs|/:$ROOT_PART_SIZE:$FSTYPE|g" -e "s|/home:\*:reiserfs|/home:\*:$FSTYPE|g" -e "s|swap:256|swap:$SWAP_PART_SIZE|g" -e "s|/boot:512|/boot:$BOOT_PART_SIZE|g")
     sfdisk_input=""
 
     case "${DEVICE}" in
