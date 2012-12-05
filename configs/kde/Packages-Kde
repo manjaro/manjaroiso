@@ -34,6 +34,9 @@ kdeplasma-addons-applets-icontasks
 kdeplasma-applets-networkmanagement
 
 ## Packages for Sound and Audio
+gstreamer0.10-bad-plugins
+gstreamer0.10-ffmpeg
+gstreamer0.10-ugly-plugins
 manjaro-pulse
 
 ## Devel Packages

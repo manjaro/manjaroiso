@@ -70,20 +70,21 @@ file-roller
 midori
 galculator
 gedit
->i686 gimp
+gimp
 gparted
 #manjaro-installer
->i686 lxmed
+lxmed
 mlocate
->i686 pidgin
->i686 q4wine
+pidgin
 sylpheed
 viewnior
 xchat
->i686 xfburn
+xfburn
 xnoise
 
 ## Packages for Sound and Audio
+gstreamer0.10-bad-plugins
+gstreamer0.10-ffmpeg
 gstreamer0.10-ugly-plugins
 pnmixer-xfce4
 xfce4-mixer
@@ -94,6 +95,12 @@ kalu
 
 ## Fonts
 ttf-source-sans-pro
+
+## Java
+icedtea-web-java7
+
+## Printing
+manjaro-printer
 
 ## Office
 libreoffice-installer
