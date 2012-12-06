@@ -1164,9 +1164,7 @@ _post_process()
 
 
     # add BROWSER var
-    if [ -e "${DESTDIR}/usr/bin/firefox" ] ; then
-       echo "BROWSER=/usr/bin/firefox" >> ${DESTDIR}/etc/environment
-    fi
+    echo "BROWSER=/usr/bin/xdg-open" >> ${DESTDIR}/etc/environment
 
     # /etc/localtime
     cp /etc/localtime ${DESTDIR}/etc/localtime &> /dev/null

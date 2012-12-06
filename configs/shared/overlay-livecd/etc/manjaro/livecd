@@ -162,9 +162,7 @@ if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
 fi
 
 # add BROWSER var
-if [ -e "/usr/bin/firefox" ] ; then
-   echo "BROWSER=/usr/bin/firefox" >> /etc/environment
-fi
+echo "BROWSER=/usr/bin/xdg-open" >> /etc/environment
 
 # load keys
 loadkeys $(cat /etc/vconsole.conf | grep "KEYMAP=" | cut -d= -f2)
