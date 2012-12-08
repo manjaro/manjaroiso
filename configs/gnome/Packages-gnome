@@ -2,28 +2,28 @@
 
 ## GNOME (core)
 gnome-applets
-gnome-backgrounds
+#gnome-backgrounds
 gnome-control-center
 gnome-desktop
 gnome-icon-theme
-gnome-icon-theme-extras
+#gnome-icon-theme-extras
 gnome-icon-theme-symbolic
 gnome-keyring
 gnome-panel
 gnome-screensaver
 gnome-session
 gnome-settings-daemon
-gnome-shell
-gnome-shell-extensions
+#gnome-shell
+#gnome-shell-extensions
 gnome-terminal
 gnome-themes-standard
 gnome-user-docs
 metacity
-mutter
-nautilus
-nautilus-actions
-nautilus-open-terminal
-nautilus-sendto
+#mutter
+#nautilus
+#nautilus-actions
+#nautilus-open-terminal
+#nautilus-sendto
 notification-daemon
 xdg-user-dirs-gtk
 yelp
@@ -65,7 +65,6 @@ gnome-tweak-tool
 gparted
 lxdm
 mousetweaks
-nautilus-sendto
 network-manager-applet
 orca
 #parole
@@ -73,7 +72,7 @@ seahorse
 simple-scan
 sound-juicer
 sushi
-tomboy
+#tomboy
 totem
 tracker
 vinagre
