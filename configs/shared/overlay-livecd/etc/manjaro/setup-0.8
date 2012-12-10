@@ -716,8 +716,8 @@ configure_system()
            echo "BROWSER=/usr/bin/firefox" >> ${DESTDIR}/etc/environment
         fi
 
-        #edit /etc/mkinitcpio.conf to have external bootup from usb and resume support
-        HOOKS=`cat /etc/mkinitcpio.conf | grep HOOKS= | grep -v '#' | cut -d'"' -f2 | sed 's/filesystems/usb fw pcmcia resume filesystems/g'`
+        #edit /etc/mkinitcpio.conf to have external bootup from pcmcia and resume support
+        HOOKS=`cat /etc/mkinitcpio.conf | grep HOOKS= | grep -v '#' | cut -d'"' -f2 | sed 's/filesystems/pcmcia resume filesystems/g'`
         if [ -e ${DESTDIR}/etc/plymouth/plymouthd.conf ] ; then
            sed -i -e "s/^HOOKS=.*/HOOKS=\"${HOOKS} plymouth\"/g" ${DESTDIR}/etc/mkinitcpio.conf
         fi
