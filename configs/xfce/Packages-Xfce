@@ -16,6 +16,7 @@ libgnome
 lxdm
 network-manager-applet
 orage
+system-tools
 terminal
 thunar
 thunar-archive-plugin
