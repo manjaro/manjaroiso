@@ -65,6 +65,7 @@ xfwm4
 xscreensaver
 
 ## Applications
+blueman
 catfish
 epdfview
 file-roller
@@ -91,7 +92,8 @@ pnmixer-xfce4
 xfce4-mixer
 
 ## Package management
-pamac
+pacman-gui
+kalu
 
 ## Fonts
 ttf-source-sans-pro
