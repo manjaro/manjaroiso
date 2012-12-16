@@ -461,7 +461,7 @@ hd_config()
 
     # enable default mirror
     cp ${DESTDIR}/etc/pacman.d/mirrorlist ${DESTDIR}/etc/pacman.d/mirrorlist.backup
-    sed -i -e 's~^.*repo.manjaro.org.uk.*~Server = http://repo.manjaro.org.uk/$repo/$arch~' ${DESTDIR}/etc/pacman.d/mirrorlist
+    sed -i -e 's~^.*mirrors.mycraft.eu.*~Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch~' ${DESTDIR}/etc/pacman.d/mirrorlist
 
     chroot ${DESTDIR} pacman -Syy &> /dev/null
 

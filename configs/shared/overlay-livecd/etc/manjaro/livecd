@@ -49,7 +49,7 @@ alsactl -f /etc/asound.state store &>/dev/null
 
 # enable default mirror
 cp -f /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-sed -i -e 's~^.*repo.manjaro.org.uk.*~Server = http://repo.manjaro.org.uk/$repo/$arch~' /etc/pacman.d/mirrorlist
+sed -i -e 's~^.*mirrors.mycraft.eu.*~Server = http://mirrors.mycraft.eu/manjaro/$repo/$arch~' /etc/pacman.d/mirrorlist
 
 # update_pacman_databases
 pacman -Syy &> /dev/null
