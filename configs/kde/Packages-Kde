@@ -42,7 +42,6 @@ manjaro-pulse
 ## Devel Packages
 base-devel
 git
-packer
 patchutils
 svn
 yaourt
