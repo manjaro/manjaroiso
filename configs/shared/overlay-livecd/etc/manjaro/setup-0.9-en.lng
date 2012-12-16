@@ -57,7 +57,7 @@ _givepass="Type the pasword for the new user :"
 _addsudouserdl1="Should User \""
 _addsudouserdl2="\" get sudo rights?"
 
-_installchoice='Do you want to use "unsquashfs" to install your system?\n\nIt is the standard and fastest option to unpack our "sqf-files" to your harddrive. At least 1 GB of memory (RAM) should be installed on your system (additional RAM is recommended).\n\nIf you want to use "rsync" instead, answer with "No" and continue your installation.\n\nNext step will start the installation. Please be patient!'
+_installchoice='Do you want to use "unsquashfs" to install your system?\n\nIt is the standard and fastest option to unpack our "sqf-files" to your harddrive. At least 1 GB of memory (RAM) should be installed on your system (additional RAM is recommended).\n\nIf you want to use "cp" instead, answer with "No" and continue your installation.\n\nNext step will start the installation. Please be patient!'
 _installationwillstart='Installation will now start. Please be patient!'
 _installationinprogress="Installation in progress..."
 _installationfail='Installation failed!'

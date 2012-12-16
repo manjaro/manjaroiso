@@ -57,7 +57,7 @@ _givepass="Yeni kull. adi icin parola girin :"
 _addsudouserdl1="Bu kullaniciya \""
 _addsudouserdl2="\" yetkili kull. haklari verilsin mi?"
 
-_installchoice='Sisteminizi yuklemek icin "unsquashfs" kullanmak istermisiniz?\n\nBu, "sqf-files" dosyalarini acmak ve HDD ye yuklemek icin standart ve hizli secenektir. Sisteminize en az 1GB (RAM) yuklenecektir (eklenebilir RAM tavsiye edilir).\n\nEger "rsync"  kullanacaksiniz, 'HAYIR' cevabini verin ve kuruluma devam edin.\n\nSiradaki adim kurulumu baslatacak. Lutfen sabirli olun!'
+_installchoice='Sisteminizi yuklemek icin "unsquashfs" kullanmak istermisiniz?\n\nBu, "sqf-files" dosyalarini acmak ve HDD ye yuklemek icin standart ve hizli secenektir. Sisteminize en az 1GB (RAM) yuklenecektir (eklenebilir RAM tavsiye edilir).\n\nEger "cp"  kullanacaksiniz, 'HAYIR' cevabini verin ve kuruluma devam edin.\n\nSiradaki adim kurulumu baslatacak. Lutfen sabirli olun!'
 _installationwillstart='Kurulum basliyor. Lutfen bekleyin!'
 _installationinprogress="Kuruluyor..."
 _installationfail='KURULAMADI!'

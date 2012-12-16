@@ -635,32 +635,32 @@ run_unsquashfs()
 # runs mount on SQF_FILE
 run_mount_sqf()
 {
-    # mount SQF_FILE to RSYNC_SOURCE
-    mount /bootmnt/manjaro/${arch}/${SQF_FILE} ${RSYNC_SOURCE} -t squashfs -o loop
+    # mount SQF_FILE to CP_SOURCE
+    mount /bootmnt/manjaro/${arch}/${SQF_FILE} ${CP_SOURCE} -t squashfs -o loop
 }
 
 # run_umount_sqf()
 # runs umount on SQF_FILE
 run_umount_sqf()
 {
-    # umount SQF_FILE from RSYNC_SOURCE
-    umount ${RSYNC_SOURCE}
+    # umount SQF_FILE from CP_SOURCE
+    umount ${CP_SOURCE}
 }
 
-# run_rsync()
-# runs rsync on the target system, displays output
+# run_cp()
+# runs cp on the target system, displays output
 #
-run_rsync()
+run_cp()
 {
-    # all rsync output goes to /tmp/rsync.log, which we tail
+    # all cp output goes to /tmp/cp.log, which we tail
     FILES_TOSYNC=$(unsquashfs -l /bootmnt/manjaro/${arch}/${SQF_FILE} | wc -l)
-    (rsync -ai ${RSYNC_SOURCE}/* ${RSYNC_TARGET} | \
+    (cp -av ${CP_SOURCE}/* ${CP_TARGET} | \
     pv -nls ${FILES_TOSYNC} | \
     grep -v ">" | grep "[0-9]*") 2>&1 | \
     DIALOG --title "$_unsquash_dialog_title" --gauge "$_unsquash_dialog_info1 $SQF_FILE $_unsquash_dialog_info2" 10 60 0
 
-    # save rsync.log
-    #mv "/tmp/rsync.log" "/tmp/rsync-$SQF_FILE.log"
+    # save cp.log
+    #mv "/tmp/cp.log" "/tmp/cp-$SQF_FILE.log"
 }
 
 # run_mkinitcpio()
@@ -811,19 +811,19 @@ installsystem_unsquash() {
     _system_is_installed=1
 }
 
-# installsystem_rsync()
+# installsystem_cp()
 # installs to the target folder
-installsystem_rsync() {
+installsystem_cp() {
     #DIALOG --msgbox "${_installationwillstart}" 0 0
     #clear
     mkdir -p ${DESTDIR}
     #rsync -av --progress /source/root-image ${DESTDIR}
-    RSYNC_SOURCE=/source/root-image
-    mkdir -p ${RSYNC_SOURCE}
-    RSYNC_TARGET=${DESTDIR}
+    CP_SOURCE=/source/root-image
+    mkdir -p ${CP_SOURCE}
+    CP_TARGET=${DESTDIR}
     SQF_FILE=root-image.sqfs
     run_mount_sqf
-    run_rsync
+    run_cp
     run_umount_sqf
     echo $? > /tmp/.install-retcode
     if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
@@ -832,12 +832,12 @@ installsystem_rsync() {
 
     if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
        #rsync -av --progress /source/xfce-image ${DESTDIR}
-       RSYNC_SOURCE=/source/xfce-image
-       mkdir -p ${RSYNC_SOURCE}
-       RSYNC_TARGET=${DESTDIR}
+       CP_SOURCE=/source/xfce-image
+       mkdir -p ${CP_SOURCE}
+       CP_TARGET=${DESTDIR}
        SQF_FILE=xfce-image.sqfs
        run_mount_sqf
-       run_rsync
+       run_cp
        run_umount_sqf
        echo $? > /tmp/.install-retcode
        if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
@@ -847,12 +847,12 @@ installsystem_rsync() {
 
     if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
        #rsync -av --progress /source/kde-image ${DESTDIR}
-       RSYNC_SOURCE=/source/kde-image
-       mkdir -p ${RSYNC_SOURCE}
-       RSYNC_TARGET=${DESTDIR}
+       CP_SOURCE=/source/kde-image
+       mkdir -p ${CP_SOURCE}
+       CP_TARGET=${DESTDIR}
        SQF_FILE=kde-image.sqfs
        run_mount_sqf
-       run_rsync
+       run_cp
        run_umount_sqf
        echo $? > /tmp/.install-retcode
        if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
@@ -862,12 +862,12 @@ installsystem_rsync() {
 
     if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
        #rsync -av --progress /source/gnome-image ${DESTDIR}
-       RSYNC_SOURCE=/source/gnome-image
-       mkdir -p ${RSYNC_SOURCE}
-       RSYNC_TARGET=${DESTDIR}
+       CP_SOURCE=/source/gnome-image
+       mkdir -p ${CP_SOURCE}
+       CP_TARGET=${DESTDIR}
        SQF_FILE=gnome-image.sqfs
        run_mount_sqf
-       run_rsync
+       run_cp
        run_umount_sqf
        echo $? > /tmp/.install-retcode
        if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
@@ -877,12 +877,12 @@ installsystem_rsync() {
 
     if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
        #rsync -av --progress /source/openbox-image ${DESTDIR}
-       RSYNC_SOURCE=/source/openbox-image
-       mkdir -p ${RSYNC_SOURCE}
-       RSYNC_TARGET=${DESTDIR}
+       CP_SOURCE=/source/openbox-image
+       mkdir -p ${CP_SOURCE}
+       CP_TARGET=${DESTDIR}
        SQF_FILE=openbox-image.sqfs
        run_mount_sqf
-       run_rsync
+       run_cp
        run_umount_sqf
        echo $? > /tmp/.install-retcode
        if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
@@ -892,12 +892,12 @@ installsystem_rsync() {
 
     if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
        #rsync -av --progress /source/lxde-image ${DESTDIR}
-       RSYNC_SOURCE=/source/lxde-image
-       mkdir -p ${RSYNC_SOURCE}
-       RSYNC_TARGET=${DESTDIR}
+       CP_SOURCE=/source/lxde-image
+       mkdir -p ${CP_SOURCE}
+       CP_TARGET=${DESTDIR}
        SQF_FILE=lxde-image.sqfs
        run_mount_sqf
-       run_rsync
+       run_cp
        run_umount_sqf
        echo $? > /tmp/.install-retcode
        if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
@@ -942,12 +942,12 @@ installsystem_rsync() {
 # select which unsquash system should be used
 installsystem() {
     SQFPARAMETER=""
-    DIALOG --defaultno --yesno "${_installchoice}" 0 0 && SQFPARAMETER="yes"
-    if [[ "${SQFPARAMETER}" == "yes" ]]; then
-       installsystem_unsquash
-    else
-       installsystem_rsync
-    fi
+#    DIALOG --defaultno --yesno "${_installchoice}" 0 0 && SQFPARAMETER="yes"
+#    if [[ "${SQFPARAMETER}" == "yes" ]]; then
+#       installsystem_unsquash
+#    else
+       installsystem_cp
+#    fi
 }
 
 set_language() {
