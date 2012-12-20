@@ -871,7 +871,7 @@ installsystem_cp() {
        run_umount_sqf
        echo $? > /tmp/.install-retcode
        if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
-       else echo -e "\n => cinnamon-image: ${_installationsuccess}" >>/tmp/rsyncerror.log
+       else echo -e "\n => Cinnamon-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
        fi
     fi
 
