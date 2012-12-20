@@ -104,11 +104,11 @@ if [ -e Packages-Kde ] ; then
      fi
 fi
 
-if [ -e Packages-gnome ] ; then
+if [ -e Packages-Cinnamon ] ; then
      if [ "${arch}" == "i686" ]; then
-     	gnome_packages=$(sed "s|#.*||g" Packages-gnome | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	cinnamon_packages=$(sed "s|#.*||g" Packages-Cinnamon | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
      elif [ "${arch}" == "x86_64" ]; then
-     	gnome_packages=$(sed "s|#.*||g" Packages-gnome | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	cinnamon_packages=$(sed "s|#.*||g" Packages-Cinnamon | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
      fi
 fi
 
@@ -316,27 +316,27 @@ if [ -e Packages-Kde ] ; then
      }
 fi
 
-if [ -e Packages-gnome ] ; then
-     # GNOME installation (gnome-image)
-     make_gnome_image() {
+if [ -e Packages-Cinnamon ] ; then
+     # Cinnamon installation (cinnamon-image)
+     make_cinnamon_image() {
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
-              de="-gnome"
-              echo -e -n "$_r >$_W GNOME installation (gnome-image) \n $_n"
-              mkdir -p ${work_dir}/gnome-image
-              if [ "`mount -l | grep gnome-image`" != "" ]; then
-                 umount -l ${work_dir}/gnome-image
+              de="-cinnamon"
+              echo -e -n "$_r >$_W Cinnamon installation (cinnamon-image) \n $_n"
+              mkdir -p ${work_dir}/cinnamon-image
+              if [ "`mount -l | grep cinnamon-image`" != "" ]; then
+                 umount -l ${work_dir}/cinnamon-image
               fi
-              mount -t aufs -o br=${work_dir}/gnome-image:${work_dir}/root-image=ro none ${work_dir}/gnome-image
-              mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "gnome-image" -p "${gnome_packages}" create "${work_dir}"
-              pacman -Qr "${work_dir}/gnome-image" > "${work_dir}/gnome-image/gnome-image-pkgs.txt"
-              cp "${work_dir}/gnome-image/gnome-image-pkgs.txt" ${name}${de}-${version}-${arch}-pkgs.txt
-              cp -LPr gnome-overlay/* ${work_dir}/gnome-image
-              if [ -e ${work_dir}/gnome-image/usr/sbin/cupsd ] ; then
-                 mkdir -p "${work_dir}/gnome-image/etc/systemd/system/multi-user.target.wants"
-                 ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/gnome-image/etc/systemd/system/multi-user.target.wants/cups.service"
+              mount -t aufs -o br=${work_dir}/cinnamon-image:${work_dir}/root-image=ro none ${work_dir}/cinnamon-image
+              mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "cinnamon-image" -p "${cinnamon_packages}" create "${work_dir}"
+              pacman -Qr "${work_dir}/cinnamon-image" > "${work_dir}/cinnamon-image/cinnamon-image-pkgs.txt"
+              cp "${work_dir}/cinnamon-image/cinnamon-image-pkgs.txt" ${name}${de}-${version}-${arch}-pkgs.txt
+              cp -LPr cinnamon-overlay/* ${work_dir}/cinnamon-image
+              if [ -e ${work_dir}/cinnamon-image/usr/sbin/cupsd ] ; then
+                 mkdir -p "${work_dir}/cinnamon-image/etc/systemd/system/multi-user.target.wants"
+                 ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/cinnamon-image/etc/systemd/system/multi-user.target.wants/cups.service"
               fi
-              umount -l ${work_dir}/gnome-image
-              rm -R ${work_dir}/gnome-image/.wh*
+              umount -l ${work_dir}/cinnamon-image
+              rm -R ${work_dir}/cinnamon-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi
@@ -739,8 +739,8 @@ fi
 if [ -e Packages-Kde ] ; then
     make_kde_image
 fi
-if [ -e Packages-gnome ] ; then
-    make_gnome_image
+if [ -e Packages-Cinnamon ] ; then
+    make_cinnamon_image
 fi
 if [ -e Packages-Openbox ] ; then
     make_openbox_image

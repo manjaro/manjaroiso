@@ -7,7 +7,7 @@ if [ "$EUID" != "0" ]; then
 fi
 
 xfce="Y"
-gnome="N"
+cinnamon="N"
 kde="N"
 net="Y"
 
@@ -29,17 +29,17 @@ if [ "$xfce" == "Y" ] ; then
    rm work*/iso/manjaro/*/xfce-image.sqfs
    ln -sfv ../shared/Packages-Lng Packages-Lng
 fi
-if [ "$gnome" == "Y" ] ; then
-   echo ">> build gnome image"
-   ln -sfv ../gnome/options.conf options.conf
-   ln -sfv ../gnome/isomounts isomounts
-   ln -sfv ../gnome/Packages-gnome Packages-gnome
+if [ "$cinnamon" == "Y" ] ; then
+   echo ">> build cinnamon image"
+   ln -sfv ../cinnamon/options.conf options.conf
+   ln -sfv ../cinnamon/isomounts isomounts
+   ln -sfv ../cinnamon/Packages-Cinnamon Packages-Cinnamon
    buildiso
-   echo ">> done build gnome image"
-   rm Packages-gnome
-   rm -R work*/*gnome*
+   echo ">> done build cinnamon image"
+   rm Packages-Cinnamon
+   rm -R work*/*cinnamon*
    rm -R work*/*isomounts*
-   rm work*/iso/manjaro/*/gnome-image.sqfs
+   rm work*/iso/manjaro/*/cinnamon-image.sqfs
 fi
 if [ "$kde" == "Y" ] ; then
    echo ">> build kde image"

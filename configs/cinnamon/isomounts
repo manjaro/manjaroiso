@@ -15,5 +15,5 @@
 @ARCH@/overlay.sqfs @ARCH@ / squashfs
 @ARCH@/lng-image.sqfs @ARCH@ / squashfs
 @ARCH@/pkgs-image.sqfs @ARCH@ / squashfs
-@ARCH@/gnome-image.sqfs @ARCH@ / squashfs
+@ARCH@/cinnamon-image.sqfs @ARCH@ / squashfs
 @ARCH@/root-image.sqfs @ARCH@ / squashfs
