@@ -6,10 +6,10 @@ if [ "$EUID" != "0" ]; then
     exit 1
 fi
 
-xfce="N"
+xfce="Y"
 cinnamon="Y"
-kde="N"
-net="N"
+kde="Y"
+net="Y"
 
 if [ "$xfce" == "Y" ] ; then
    echo ">> build xfce image"
