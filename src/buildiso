@@ -128,6 +128,14 @@ if [ -e Packages-Lxde ] ; then
      fi
 fi
 
+if [ -e Packages-Mate ] ; then
+     if [ "${arch}" == "i686" ]; then
+     	mate_packages=$(sed "s|#.*||g" Packages-Mate | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     elif [ "${arch}" == "x86_64" ]; then
+     	mate_packages=$(sed "s|#.*||g" Packages-Mate | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     fi
+fi
+
 # Create trustdb.gpg
 create_trustdb() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
@@ -391,6 +399,39 @@ if [ -e Packages-Lxde ] ; then
               fi
               umount -l ${work_dir}/lxde-image
               rm -R ${work_dir}/lxde-image/.wh*
+              : > ${work_dir}/build.${FUNCNAME}
+              echo -e "$_g >$_W done $_n"
+         fi
+     }
+fi
+
+if [ -e Packages-Mate ] ; then
+     # MATE installation (mate-image)
+     make_mate_image() {
+         if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
+              de="-mate"
+              echo -e -n "$_r >$_W MATE installation (mate-image) \n $_n"
+              mkdir -p ${work_dir}/mate-image
+              if [ "`mount -l | grep mate-image`" != "" ]; then
+                 umount -l ${work_dir}/mate-image
+              fi
+              mount -t aufs -o br=${work_dir}/mate-image:${work_dir}/root-image=ro none ${work_dir}/mate-image
+              mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "mate-image" -p "${mate_packages}" create "${work_dir}"
+              pacman -Qr "${work_dir}/mate-image" > "${work_dir}/mate-image/mate-image-pkgs.txt"
+              cp "${work_dir}/mate-image/mate-image-pkgs.txt" ${name}${de}-${version}-${arch}-pkgs.txt
+              cp -LPr mate-overlay/* ${work_dir}/mate-image
+              echo "# Followed Repositories are NOT supported by Manjaro Linux." >> ${work_dir}/mate-image/etc/pacman.conf
+              echo "# Use them on your own risk!" >> ${work_dir}/mate-image/etc/pacman.conf
+              echo "" >> ${work_dir}/mate-image/etc/pacman.conf
+              echo "[mate]" >> ${work_dir}/mate-image/etc/pacman.conf
+              echo "# Official MATE repo:" >> ${work_dir}/mate-image/etc/pacman.conf
+              echo 'Server = http://repo.mate-desktop.org/archlinux/$arch' >> ${work_dir}/mate-image/etc/pacman.conf
+              if [ -e ${work_dir}/mate-image/usr/sbin/cupsd ] ; then
+                 mkdir -p "${work_dir}/mate-image/etc/systemd/system/multi-user.target.wants"
+                 ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/mate-image/etc/systemd/system/multi-user.target.wants/cups.service"
+              fi
+              umount -l ${work_dir}/mate-image
+              rm -R ${work_dir}/mate-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi
@@ -747,6 +788,9 @@ if [ -e Packages-Openbox ] ; then
 fi
 if [ -e Packages-Lxde ] ; then
     make_lxde_image
+fi
+if [ -e Packages-Mate ] ; then
+    make_mate_image
 fi
 # install common
 make_boot

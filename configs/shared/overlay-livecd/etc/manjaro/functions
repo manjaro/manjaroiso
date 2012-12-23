@@ -537,6 +537,9 @@ hd_config()
        if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/startxfce4|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
+       if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+         sed -i -e 's|^.*session=.*|session=/usr/bin/mate-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
+       fi
        chgrp -R lxdm ${DESTDIR}/var/lib/lxdm  &>/dev/null
        chgrp lxdm ${DESTDIR}/etc/lxdm/lxdm.conf  &>/dev/null
        chmod +r ${DESTDIR}/etc/lxdm/lxdm.conf  &>/dev/null
@@ -555,6 +558,16 @@ hd_config()
 
     DIALOG --infobox "${_fixapps}" 6 40
     sleep 3
+
+    # add BROWSER var
+    echo "BROWSER=/usr/bin/xdg-open" >> ${DESTDIR}/etc/environment
+    echo "BROWSER=/usr/bin/xdg-open" >> ${DESTDIR}/etc/skel/.bashrc
+    echo "BROWSER=/usr/bin/xdg-open" >> ${DESTDIR}/etc/profile
+    # add TERM var
+    if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+       echo "TERM=mate-terminal" >> ${DESTDIR}/etc/environment
+       echo "TERM=mate-terminal" >> ${DESTDIR}/etc/profile
+    fi
 
     #fix_gnome_apps
     chroot ${DESTDIR} glib-compile-schemas /usr/share/glib-2.0/schemas
@@ -730,6 +743,18 @@ installsystem_unsquash() {
        sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
     fi
 
+    if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+       #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/mate-image.sqfs
+       UNSQUASH_TARGET=${DESTDIR}
+       SQF_FILE=mate-image.sqfs
+       run_unsquashfs
+       echo $? > /tmp/.install-retcode
+       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
+       else echo -e "\n => MATE-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
+       fi
+       sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
+    fi
+
     if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
        #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/kde-image.sqfs
        UNSQUASH_TARGET=${DESTDIR}
@@ -842,6 +867,21 @@ installsystem_cp() {
        echo $? > /tmp/.install-retcode
        if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
        else echo -e "\n => XFCE-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
+       fi
+    fi
+
+    if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+       #rsync -av --progress /source/mate-image ${DESTDIR}
+       CP_SOURCE=/source/mate-image
+       mkdir -p ${CP_SOURCE}
+       CP_TARGET=${DESTDIR}
+       SQF_FILE=mate-image.sqfs
+       run_mount_sqf
+       run_cp
+       run_umount_sqf
+       echo $? > /tmp/.install-retcode
+       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
+       else echo -e "\n => MATE-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
        fi
     fi
 
@@ -1161,10 +1201,6 @@ _post_process()
     if [ -e "${DESTDIR}/usr/bin/kalu" ] ; then
        _rm_kalu
     fi
-
-
-    # add BROWSER var
-    echo "BROWSER=/usr/bin/xdg-open" >> ${DESTDIR}/etc/environment
 
     # /etc/localtime
     cp /etc/localtime ${DESTDIR}/etc/localtime &> /dev/null

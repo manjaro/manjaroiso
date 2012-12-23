@@ -73,7 +73,23 @@ if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
 		/usr/bin/mhwd --auto pci free 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
 	fi
    fi
+fi
+
+# add BROWSER var
+echo "BROWSER=/usr/bin/xdg-open" >> /etc/environment
+echo "BROWSER=/usr/bin/xdg-open" >> /etc/skel/.bashrc
+echo "BROWSER=/usr/bin/xdg-open" >> /etc/profile
+# add TERM var
+if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+   echo "TERM=mate-terminal" >> /etc/environment
+   echo "TERM=mate-terminal" >> /etc/profile
 fi	
+
+## FIXME - Workaround to launch mate-terminal
+if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+   sed -i -e "s~^.*Exec=.*~Exec=mate-terminal -e 'sudo setup'~" "/etc/skel/Desktop/Manjaro CLI Installer.desktop"
+   sed -i -e "s~^.*Terminal=.*~Terminal=false~" "/etc/skel/Desktop/Manjaro CLI Installer.desktop"
+fi
 
 # do_makeuser
 addgroups="video,audio,power,disk,storage,optical,network,lp,scanner"
@@ -127,6 +143,9 @@ if [ -e "/usr/sbin/lxdm" ] ; then
    if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/startxfce4|' /etc/lxdm/lxdm.conf
    fi
+   if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+      sed -i -e 's|^.*session=.*|session=/usr/bin/mate-session|' /etc/lxdm/lxdm.conf
+   fi
    chgrp -R lxdm /var/lib/lxdm > /dev/null
    chgrp lxdm /etc/lxdm/lxdm.conf > /dev/null
    chmod +r /etc/lxdm/lxdm.conf > /dev/null
@@ -160,9 +179,6 @@ if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
    fi
    ${PACMAN_LNG} -Sy ${PACMAN_LNG_INST} ${PACMAN_LNG_INST_KDE} &> /dev/null
 fi
-
-# add BROWSER var
-echo "BROWSER=/usr/bin/xdg-open" >> /etc/environment
 
 # load keys
 loadkeys $(cat /etc/vconsole.conf | grep "KEYMAP=" | cut -d= -f2)

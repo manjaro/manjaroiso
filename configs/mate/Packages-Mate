@@ -1,0 +1,48 @@
+### Manjaro Packages
+
+## MATE Main Packages
+faenza-green-icon-theme
+ffmpegthumbnailer-caja
+gksu
+libgnomeui
+lxdm
+manjaro-artwork
+mate
+mate-file-manager-open-terminal
+mate-extras
+network-manager-applet
+system-tools
+xcursor-simpleandsoft
+xcursor-vanilla-dmz-aa
+
+## Applications
+blueman
+brasero
+epdfview
+midori
+gimp
+gparted
+#manjaro-installer
+pidgin
+sylpheed
+xchat
+xnoise
+yelp
+
+## Packages for Sound and Audio
+gstreamer0.10-bad-plugins
+gstreamer0.10-ffmpeg
+gstreamer0.10-ugly-plugins
+
+## Package management
+pacman-gui
+kalu
+
+## Java
+icedtea-web-java7
+
+## Printing
+manjaro-printer
+
+## Office
+libreoffice-installer
