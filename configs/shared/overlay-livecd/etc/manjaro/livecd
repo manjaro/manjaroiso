@@ -146,6 +146,9 @@ if [ -e "/usr/sbin/lxdm" ] ; then
    if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/mate-session|' /etc/lxdm/lxdm.conf
    fi
+   if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+      sed -i -e 's|^.*session=.*|session=/usr/bin/enlightenment_start|' /etc/lxdm/lxdm.conf
+   fi
    chgrp -R lxdm /var/lib/lxdm > /dev/null
    chgrp lxdm /etc/lxdm/lxdm.conf > /dev/null
    chmod +r /etc/lxdm/lxdm.conf > /dev/null

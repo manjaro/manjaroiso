@@ -1,0 +1,31 @@
+### Manjaro Packages
+
+## E17 Main Packages
+enlightenment17
+faenza-green-icon-theme
+gksu
+libgnomeui
+lxdm
+network-manager-applet
+system-tools
+xcursor-simpleandsoft
+xcursor-vanilla-dmz-aa
+
+## Applications
+blueman
+epdfview
+midori
+mplayer
+gparted
+#manjaro-installer
+sylpheed
+xchat
+xnoise
+
+## Packages for Sound and Audio
+gstreamer0.10-bad-plugins
+gstreamer0.10-ffmpeg
+gstreamer0.10-ugly-plugins
+
+## Package management
+pacman-gui

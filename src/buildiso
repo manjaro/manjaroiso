@@ -136,6 +136,14 @@ if [ -e Packages-Mate ] ; then
      fi
 fi
 
+if [ -e Packages-E17 ] ; then
+     if [ "${arch}" == "i686" ]; then
+     	e17_packages=$(sed "s|#.*||g" Packages-E17 | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     elif [ "${arch}" == "x86_64" ]; then
+     	e17_packages=$(sed "s|#.*||g" Packages-E17 | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     fi
+fi
+
 # Create trustdb.gpg
 create_trustdb() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
@@ -432,6 +440,33 @@ if [ -e Packages-Mate ] ; then
               fi
               umount -l ${work_dir}/mate-image
               rm -R ${work_dir}/mate-image/.wh*
+              : > ${work_dir}/build.${FUNCNAME}
+              echo -e "$_g >$_W done $_n"
+         fi
+     }
+fi
+
+if [ -e Packages-E17 ] ; then
+     # MATE installation (e17-image)
+     make_e17_image() {
+         if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
+              de="-e17"
+              echo -e -n "$_r >$_W E17 installation (e17-image) \n $_n"
+              mkdir -p ${work_dir}/e17-image
+              if [ "`mount -l | grep e17-image`" != "" ]; then
+                 umount -l ${work_dir}/e17-image
+              fi
+              mount -t aufs -o br=${work_dir}/e17-image:${work_dir}/root-image=ro none ${work_dir}/e17-image
+              mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "e17-image" -p "${e17_packages}" create "${work_dir}"
+              pacman -Qr "${work_dir}/e17-image" > "${work_dir}/e17-image/e17-image-pkgs.txt"
+              cp "${work_dir}/e17-image/e17-image-pkgs.txt" ${name}${de}-${version}-${arch}-pkgs.txt
+              cp -LPr e17-overlay/* ${work_dir}/e17-image
+              if [ -e ${work_dir}/e17-image/usr/sbin/cupsd ] ; then
+                 mkdir -p "${work_dir}/e17-image/etc/systemd/system/multi-user.target.wants"
+                 ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/e17-image/etc/systemd/system/multi-user.target.wants/cups.service"
+              fi
+              umount -l ${work_dir}/e17-image
+              rm -R ${work_dir}/e17-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi
@@ -791,6 +826,9 @@ if [ -e Packages-Lxde ] ; then
 fi
 if [ -e Packages-Mate ] ; then
     make_mate_image
+fi
+if [ -e Packages-E17 ] ; then
+    make_e17_image
 fi
 # install common
 make_boot

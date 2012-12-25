@@ -540,6 +540,9 @@ hd_config()
        if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/mate-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
+       if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+         sed -i -e 's|^.*session=.*|session=/usr/bin/enlightenment_start|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
+       fi
        chgrp -R lxdm ${DESTDIR}/var/lib/lxdm  &>/dev/null
        chgrp lxdm ${DESTDIR}/etc/lxdm/lxdm.conf  &>/dev/null
        chmod +r ${DESTDIR}/etc/lxdm/lxdm.conf  &>/dev/null
@@ -803,6 +806,18 @@ installsystem_unsquash() {
        sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
     fi
 
+    if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+       #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/e17-image.sqfs
+       UNSQUASH_TARGET=${DESTDIR}
+       SQF_FILE=e17-image.sqfs
+       run_unsquashfs
+       echo $? > /tmp/.install-retcode
+       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
+       else echo -e "\n => E17-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
+       fi
+       sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
+    fi
+
     # finished, display scrollable output
     local _result=''
     if [ $(cat /tmp/.install-retcode) -ne 0 ]; then
@@ -942,6 +957,21 @@ installsystem_cp() {
        echo $? > /tmp/.install-retcode
        if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
        else echo -e "\n => LXDE-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
+       fi
+    fi
+
+    if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+       #rsync -av --progress /source/e17-image ${DESTDIR}
+       CP_SOURCE=/source/e17-image
+       mkdir -p ${CP_SOURCE}
+       CP_TARGET=${DESTDIR}
+       SQF_FILE=e17-image.sqfs
+       run_mount_sqf
+       run_cp
+       run_umount_sqf
+       echo $? > /tmp/.install-retcode
+       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
+       else echo -e "\n => E17-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
        fi
     fi
 

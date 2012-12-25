@@ -8,6 +8,7 @@ fi
 
 xfce="Y"
 mate="Y"
+e17="Y"
 cinnamon="Y"
 kde="Y"
 net="Y"
@@ -50,6 +51,26 @@ if [ "$mate" == "Y" ] ; then
    rm -R work*/*mate*
    rm -R work*/*isomounts*
    rm work*/iso/manjaro/*/mate-image.sqfs
+   ln -sfv ../shared/Packages-Lng Packages-Lng
+fi
+if [ "$e17" == "Y" ] ; then
+   echo ">> build e17 image"
+   if [ -e Packages-Lng ] ; then
+      rm Packages-Lng
+      rm -R work*/*lng*
+      rm work*/iso/manjaro/*/lng-image.sqfs
+   fi
+   ln -sfv ../e17/options.conf options.conf
+   ln -sfv ../e17/isomounts isomounts
+   ln -sfv ../e17/Packages-E17 Packages-E17
+   ln -sfv ../e17/pacman-i686.conf pacman-i686.conf
+   ln -sfv ../e17/pacman-x86_64.conf pacman-x86_64.conf
+   buildiso
+   echo ">> done build e17 image"
+   rm Packages-E17
+   rm -R work*/*e17*
+   rm -R work*/*isomounts*
+   rm work*/iso/manjaro/*/e17-image.sqfs
    ln -sfv ../shared/Packages-Lng Packages-Lng
 fi
 if [ "$cinnamon" == "Y" ] ; then
