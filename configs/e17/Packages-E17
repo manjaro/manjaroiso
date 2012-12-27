@@ -1,7 +1,9 @@
 ### Manjaro Packages
 
 ## E17 Main Packages
+connman
 enlightenment17
+evas_generic_loaders
 faenza-green-icon-theme
 gksu
 libgnomeui
