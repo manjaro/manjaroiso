@@ -20,21 +20,21 @@ border_color = #C7C7C7 100
 # ID 3
 rounded = 5
 border_width = 2
-background_color = #BF1313 50
+background_color = #BF1313 48
 border_color = #9A9A9A 100
 
 # ID 4
 rounded = 5
 border_width = 0
-background_color = #1F1F1F 60
+background_color = #131313 60
 border_color = #FFFFFF 100
 
 # Panel
 panel_monitor = all
-panel_position = top right horizontal
-panel_size = 0 25
-panel_margin = 40 2
-panel_padding = 45 0 5
+panel_position = top left horizontal
+panel_size = 93% 25
+panel_margin = 2 2
+panel_padding = 0 0 5
 panel_dock = 0
 wm_menu = 1
 panel_layer = bottom

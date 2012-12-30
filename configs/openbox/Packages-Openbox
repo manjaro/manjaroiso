@@ -2,6 +2,7 @@
 
 ## Openbox Main Packages
 devhelp
+faenza-green-icon-theme
 gksu
 gnome-keyring
 gnome-system-monitor
@@ -38,9 +39,9 @@ xterm
 yelp
 
 ## Applications
-faenza-green-icon-theme
 gparted
 kalu
+midori
 xnoise
 
 ## Fonts
@@ -49,8 +50,9 @@ xnoise
 ## Extra Applications
 
 ## Office
-abiword
-gnumeric
+#abiword
+#gnumeric
+libreoffice-installer
 
 ## Printing
 
