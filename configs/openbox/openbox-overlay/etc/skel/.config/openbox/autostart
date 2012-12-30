@@ -24,7 +24,7 @@ nm-applet &
 pnmixer &
 xscreensaver -no-splash &
 udiskie &
-synapse &
+synapse -s &
 
 # Panel
 tint2 &
