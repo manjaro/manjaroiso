@@ -2,13 +2,13 @@
 
 ## Openbox Main Packages
 devhelp
-gamin
 gksu
 gnome-keyring
 gnome-system-monitor
 gsimplecal
 gvfs
 leafpad
+libgnomeui # for qt to find gtk themes
 lxappearance-obconf
 lxdm
 menumaker
@@ -20,7 +20,6 @@ obmenu
 openbox
 openbox-themes
 pnmixer
-polkit
 polkit-gnome
 polkit-qt
 spacefm
@@ -45,7 +44,7 @@ kalu
 xnoise
 
 ## Fonts
-ttf-source-sans-pro
+#ttf-source-sans-pro
 
 ## Extra Applications
 
