@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu>
+	<menu id="root-menu" label="OpenBox 3">
+		<item label="Change Background">
+			<action name="Execute">
+				<execute>nitrogen</execute>
+			</action>
+		</item>
+		<menu id="1" label="Configuration">
+			<item label="Openbox Environment &amp; Workspaces">
+				<action name="Execute">
+					<execute>obconf</execute>
+				</action>
+			</item>
+			<item label="Openbox Theme and Look">
+				<action name="Execute">
+					<execute>lxappearance</execute>
+				</action>
+			</item>
+			<item label="Screensaver">
+				<action name="Execute">
+					<execute>xscreensaver-demo</execute>
+				</action>
+			</item>
+			<item label="Tint2 Panel">
+				<action name="Execute">
+					<execute>tintwizard</execute>
+				</action>
+			</item>
+			<item label="Root Menu">
+				<action name="Execute">
+					<execute>obmenu</execute>
+				</action>
+			</item>
+		</menu>
+		<separator/>
+		<item label="File Manager (SpaceFM)">
+			<action name="Execute">
+				<execute>spacefm</execute>
+			</action>
+		</item>
+		<item label="Terminal">
+			<action name="Execute">
+				<execute>terminal</execute>
+			</action>
+		</item>
+		<item label="Synapse">
+			<action name="Execute">
+				<execute>synapse</execute>
+			</action>
+		</item>
+		<item label="AppFinder">
+			<action name="Execute">
+				<execute>xfce4-appfinder</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label="Logout...">
+			<action name="Execute">
+				<execute>oblogout</execute>
+			</action>
+		</item>
+	</menu>
+</openbox_menu>
+

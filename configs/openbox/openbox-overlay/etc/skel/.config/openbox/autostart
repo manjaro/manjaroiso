@@ -1,0 +1,26 @@
+#
+# Place in /home/[user account]/.config/openbox/autostart as user template
+# Otherwise, can be placed in /etc/xdg/openbox/autostart as global template
+# Written by the Manjaro Team
+#
+
+# Authentication Agent
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# Background
+nitrogen --restore &
+
+# Compositing
+xcompmgr &
+
+# Startup
+nm-applet &
+pnmixer &
+xscreensaver -no-splash &
+udiskie &
+synapse &
+
+# Panel
+tint2 &
+(sleep 1s && tint2 -c ~/.config/tint2/tint2-workspaces) &
+

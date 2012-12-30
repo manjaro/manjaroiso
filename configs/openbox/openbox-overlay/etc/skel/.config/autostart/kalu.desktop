@@ -2,10 +2,11 @@
 Encoding=UTF-8
 Version=0.9.4
 Type=Application
-Name=Conky
-Comment=System Monitor
-Exec=conky
+Name=kalu
+Comment=keep Manjaro Linux up-to-date
+Exec=kalu
 StartupNotify=false
 Terminal=false
 Hidden=false
-
+X-GNOME-Autostart-enabled=true
+GenericName=
