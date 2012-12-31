@@ -143,6 +143,9 @@ if [ -e "/usr/sbin/lxdm" ] ; then
    if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/startxfce4|' /etc/lxdm/lxdm.conf
    fi
+   if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
+      sed -i -e 's|^.*session=.*|session=/usr/bin/gnome-session-cinnamon|' /etc/lxdm/lxdm.conf
+   fi
    if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/mate-session|' /etc/lxdm/lxdm.conf
    fi
