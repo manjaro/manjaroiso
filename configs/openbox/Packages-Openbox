@@ -5,13 +5,14 @@ devhelp
 faenza-green-icon-theme
 gksu
 gnome-keyring
-gnome-system-monitor
+gnome-icons
 gsimplecal
 gvfs
 leafpad
 libgnomeui # for qt to find gtk themes
 lxappearance-obconf
 lxdm
+lxtask
 menumaker
 network-manager-applet
 nitrogen
