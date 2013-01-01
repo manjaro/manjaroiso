@@ -316,13 +316,40 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
-    <keybind key="W-e">
+    <keybind key="W-t">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>Konqueror</name>
+          <name>terminal</name>
         </startupnotify>
-        <command>kfmclient openProfile filemanagement</command>
+        <command>terminal</command>
+      </action>
+    </keybind>
+    <keybind key="W-s">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>synapse</name>
+        </startupnotify>
+        <command>synapse</command>
+      </action>
+    </keybind>
+    <keybind key="W-f">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>thunar</name>
+        </startupnotify>
+        <command>thunar</command>
+      </action>
+    </keybind>
+    <keybind key="W-a">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>xfce4-appfinder</name>
+        </startupnotify>
+        <command>xfce4-appfinder</command>
       </action>
     </keybind>
   </keyboard>

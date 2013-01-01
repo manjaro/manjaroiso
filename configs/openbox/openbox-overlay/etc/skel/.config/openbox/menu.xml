@@ -34,9 +34,9 @@
 			</item>
 		</menu>
 		<separator/>
-		<item label="File Manager (SpaceFM)">
+		<item label="File Manager (Thunar)">
 			<action name="Execute">
-				<execute>spacefm</execute>
+				<execute>thunar</execute>
 			</action>
 		</item>
 		<item label="Terminal">

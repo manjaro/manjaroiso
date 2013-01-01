@@ -5,14 +5,13 @@ devhelp
 faenza-green-icon-theme
 gksu
 gnome-keyring
-gnome-icons
+gnome-system-monitor
 gsimplecal
 gvfs
 leafpad
 libgnomeui # for qt to find gtk themes
 lxappearance-obconf
 lxdm
-lxtask
 menumaker
 network-manager-applet
 nitrogen
@@ -24,9 +23,10 @@ openbox-themes
 pnmixer
 polkit-gnome
 polkit-qt
-spacefm
 synapse
 terminal
+thunar
+thunar-volman
 tint2
 tintwizard
 udiskie
@@ -41,9 +41,7 @@ yelp
 
 ## Applications
 gparted
-kalu
 midori
-xnoise
 
 ## Fonts
 #ttf-source-sans-pro
