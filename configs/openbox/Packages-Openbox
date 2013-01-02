@@ -8,7 +8,6 @@ gnome-keyring
 gnome-system-monitor
 gsimplecal
 gvfs
-leafpad
 libgnomeui # for qt to find gtk themes
 lxappearance-obconf
 lxdm
@@ -39,12 +38,17 @@ xscreensaver
 xterm
 
 ## Applications
+brasero
+epdfview
+gedit
+gimp
 gparted
+hardinfo
 midori
 pacman-gui
 pkgbrowser
 viewnior
-epdfview
+xnoise
 
 ## Fonts
 #ttf-source-sans-pro
