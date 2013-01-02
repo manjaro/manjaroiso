@@ -30,4 +30,4 @@ synapse &
 tint2 &
 (sleep 1s && tint2 -c ~/.config/tint2/tint2-workspaces) &
 
-Thunar /etc/skel/Desktop &
+thunar /etc/skel/Desktop &
