@@ -352,6 +352,15 @@
         <command>xfce4-appfinder</command>
       </action>
     </keybind>
+    <keybind key="W-x">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>oblogout</name>
+        </startupnotify>
+        <command>oblogout</command>
+      </action>
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
