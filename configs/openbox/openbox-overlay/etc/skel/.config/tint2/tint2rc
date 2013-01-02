@@ -87,8 +87,7 @@ time1_font = Sans 8
 clock_font_color = #FFFFFF 69
 clock_padding = 3 0
 clock_background_id = 1
-clock_lclick_command = gsimplecal prev_month
-clock_rclick_command = gsimplecal next_month
+clock_lclick_command = gsimplecal
 
 # Tooltips
 tooltip = 0
