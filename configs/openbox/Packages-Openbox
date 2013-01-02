@@ -37,11 +37,14 @@ xfce4-appfinder
 xfce4-notifyd
 xscreensaver
 xterm
-yelp
 
 ## Applications
 gparted
 midori
+pacman-gui
+pkgbrowser
+viewnior
+epdfview
 
 ## Fonts
 #ttf-source-sans-pro
