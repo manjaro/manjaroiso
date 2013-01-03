@@ -41,7 +41,6 @@ xterm
 brasero
 epdfview
 gedit
-gimp
 gparted
 hardinfo
 midori
@@ -53,11 +52,10 @@ xnoise
 ## Fonts
 #ttf-source-sans-pro
 
-## Extra Applications
+## Extra Artwork
+manjaro-artwork-extra
 
 ## Office
-#abiword
-#gnumeric
 libreoffice-installer
 
 ## Printing
