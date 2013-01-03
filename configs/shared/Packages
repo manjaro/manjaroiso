@@ -4,6 +4,9 @@ lsb-release
 manjaro-release
 syslog-ng
 
+## Kernel
+linux34
+
 ## Extra Base Packages
 acpid
 crda

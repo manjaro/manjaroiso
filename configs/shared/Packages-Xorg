@@ -16,13 +16,13 @@ bbswitch
 
 ## Proprietary Drivers
 >nonfree_uni catalyst-utils
->nonfree_uni catalyst
+>nonfree_uni linux34-catalyst
 #>nonfree_uni catalyst-legacy-utils
-#>nonfree_uni catalyst-legacy
+#>nonfree_uni linux34-catalyst-legacy
 >nonfree_uni nvidia-utils
->nonfree_uni nvidia
+>nonfree_uni linux34-nvidia
 >nonfree_uni nvidia-legacy-utils
->nonfree_uni nvidia-legacy
+>nonfree_uni linux34-nvidia-legacy
 >nonfree_x64 lib32-catalyst-utils
 #>nonfree_x64 lib32-catalyst-legacy-utils
 >nonfree_x64 lib32-nvidia-utils
@@ -31,8 +31,8 @@ bbswitch
 >nonfree_x64 lib32-zlib 
 
 ## Virtualbox Drivers
->free_uni virtualbox-guest-utils
->free_uni virtualbox-guest-modules
+>free_uni linux34-virtualbox-guest-utils
+>free_uni linux34-virtualbox-guest-modules
 
 # Laptop management
 laptop-mode-tools
