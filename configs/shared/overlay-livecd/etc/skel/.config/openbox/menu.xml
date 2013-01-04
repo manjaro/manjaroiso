@@ -3,7 +3,7 @@
 	<menu id="root-menu" label="OpenBox 3">
 		<item label="READ ME!">
 			<action name="Execute">
-				<execute>leafpad /etc/Openbox/READ-ME</execute>
+				<execute>epdfview /etc/Openbox/READ-ME.pdf</execute>
 			</action>
 		</item>
 		<item label="Read PDF User Guide">
