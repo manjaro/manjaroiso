@@ -38,7 +38,7 @@ xscreensaver
 xterm
 
 ## Applications
-brasero
+>i686 brasero
 epdfview
 gparted
 hardinfo
@@ -53,7 +53,7 @@ xnoise
 #ttf-source-sans-pro
 
 ## Extra Artwork
-manjaro-artwork-extra
+>i686 manjaro-artwork-extra
 
 ## Office
 libreoffice-installer

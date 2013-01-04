@@ -30,4 +30,4 @@ synapse -s &
 tint2 &
 (sleep 1s && tint2 -c ~/.config/tint2/tint2-workspaces) &
 
-/etc/skel/.config/autostart/Manjaro\ Welcome\ Message.desktop &
+manjaro-welcome &
