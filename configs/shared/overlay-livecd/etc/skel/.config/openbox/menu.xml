@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu>
 	<menu id="root-menu" label="OpenBox 3">
-		<item label="Install">
+		<item label="READ ME!">
 			<action name="Execute">
-				<execute>terminal -x sudo setup</execute>
+				<execute>leafpad /etc/skel/Desktop/READ-ME</execute>
 			</action>
 		</item>
 		<item label="Read PDF User Guide">
 			<action name="Execute">
 				<execute>epdfview /etc/skel/Desktop/&quot;Beginner User Guide.pdf&quot;</execute>
+			</action>
+		</item>
+		<item label="Install">
+			<action name="Execute">
+				<execute>terminal -x sudo setup</execute>
 			</action>
 		</item>
 		<separator/>
@@ -45,9 +50,9 @@
 			</item>
 		</menu>
 		<separator/>
-		<item label="File Manager (SpaceFM)">
+		<item label="File Manager (Thunar)">
 			<action name="Execute">
-				<execute>spacefm</execute>
+				<execute>thunar</execute>
 			</action>
 		</item>
 		<item label="Terminal">

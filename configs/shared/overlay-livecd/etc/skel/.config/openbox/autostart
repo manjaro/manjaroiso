@@ -24,10 +24,10 @@ nm-applet &
 pnmixer &
 xscreensaver -no-splash &
 udiskie &
-synapse &
+synapse -s &
 
 # Panel
 tint2 &
 (sleep 1s && tint2 -c ~/.config/tint2/tint2-workspaces) &
 
-thunar /etc/skel/Desktop &
+/etc/skel/.config/autostart/Manjaro\ Welcome\ Message.desktop &
