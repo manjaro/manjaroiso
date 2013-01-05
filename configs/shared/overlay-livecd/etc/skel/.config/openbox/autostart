@@ -4,12 +4,10 @@
 # Written by the Manjaro Team
 #
 
-# xdg-user-dirs-update check if user has directories document,download ...
-# If not, create them and copy Manjaro Documents to ~/Documents
+# xdg-user-dirs-update: check if user has directories document,download, etc.
+# If not, then create them
 if [ -x /usr/bin/xdg-user-dirs-update ]; then
     /usr/bin/xdg-user-dirs-update
-    . ~/.config/user-dirs.dirs
-    cp -f /etc/manjaro/documents/* $XDG_DOCUMENTS_DIR
 fi
 
 # Authentication Agent

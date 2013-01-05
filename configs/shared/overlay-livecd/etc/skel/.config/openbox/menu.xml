@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu>
 	<menu id="root-menu" label="OpenBox 3">
-		<item label="READ ME!">
+		<item label="Openbox Quick Guide">
 			<action name="Execute">
-				<execute>epdfview /etc/Openbox/READ-ME.pdf</execute>
+				<execute>epdfview /etc/skel/Manjaro/Openbox-Guide.pdf</execute>
 			</action>
 		</item>
-		<item label="Read PDF User Guide">
+		<item label="Manjaro User Guide">
 			<action name="Execute">
-				<execute>epdfview /etc/skel/Desktop/&quot;Beginner User Guide.pdf&quot;</execute>
+				<execute>epdfview /etc/skel/Manjaro/&quot;Beginner User Guide.pdf&quot;</execute>
 			</action>
 		</item>
 		<item label="Install">
