@@ -13,7 +13,7 @@
 		</item>
 		<item label="Install">
 			<action name="Execute">
-				<execute>terminal -x sudo setup</execute>
+				<execute>xfce4-terminal -x sudo setup</execute>
 			</action>
 		</item>
 		<separator/>
@@ -57,7 +57,7 @@
 		</item>
 		<item label="Terminal">
 			<action name="Execute">
-				<execute>terminal</execute>
+				<execute>xfce4-terminal</execute>
 			</action>
 		</item>
 		<item label="Synapse">
