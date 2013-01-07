@@ -20,7 +20,6 @@ nitrogen --restore &
 xcompmgr &
 
 # Startup
-nm-applet &
 pnmixer &
 xscreensaver -no-splash &
 udiskie &
@@ -29,5 +28,12 @@ synapse -s &
 # Panel
 tint2 &
 (sleep 1s && tint2 -c ~/.config/tint2/tint2-workspaces) &
+
+# Network Manager: Check to see if it has already been called by another
+# process (e.g. /etc/xdg/autostart/nm-applet.desktop - if not, call it
+# here
+if [ "x$(ps -e | grep nm-applet)" == "x" ]; then
+        nm-applet &
+fi
 
 manjaro-welcome &
