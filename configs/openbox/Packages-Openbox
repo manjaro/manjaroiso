@@ -20,7 +20,6 @@ obmenu
 openbox
 openbox-themes
 pnmixer
-pavucontrol
 polkit-gnome
 polkit-qt
 synapse
@@ -35,6 +34,7 @@ xcursor-vanilla-dmz-aa
 xfce4-appfinder
 xfce4-notifyd
 xfce4-terminal
+xfce4-mixer
 xscreensaver
 xterm
 
