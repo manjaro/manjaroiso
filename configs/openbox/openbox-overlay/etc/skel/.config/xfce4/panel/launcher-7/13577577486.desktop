@@ -1,0 +1,34 @@
+[Desktop Entry]
+Version=1.0
+Name=Xnoise
+GenericName=Media Player
+Comment=Organize and play your music and video collections
+Exec=xnoise %U
+Terminal=false
+Type=Application
+Icon=xnoise
+Categories=GTK;Audio;Video;Player;AudioVideo;
+StartupNotify=true
+MimeType=application/x-ogg;application/ogg;video/3gpp;video/avi;video/dv;video/fli;video/flv;video/mp4;video/mp4v-es;video/mpeg;video/msvideo;video/ogg;video/quicktime;video/vivo;video/vnd.divx;video/vnd.vivo;video/x-anim;video/x-avi;video/x-flc;video/x-fli;video/x-flic;video/x-flv;video/x-m4v;video/x-matroska;video/x-mpeg;video/x-mpg;video/x-ms-asf;video/x-msvideo;video/x-ms-wm;video/x-ms-wmv;video/x-ms-wmx;video/x-ms-wvx;video/x-nsv;video/x-ogm+ogg;video/x-theora;video/x-theora+ogg;audio/x-vorbis+ogg;audio/x-scpls;audio/x-mp3;audio/x-mpeg;audio/mpeg;audio/x-mpegurl;audio/x-flac;x-content/audio-cdda;x-content/audio-player;application/vnd.rn-realmedia;application/x-matroska;application/ogg;application/x-flac;application/xspf+xml;application/x-troff-msvideo;application/x-flash-video;
+Actions=Play;Next;Previous;Stop;
+X-XFCE-Source=file:///usr/share/applications/xnoise.desktop
+
+[Desktop Action Play]
+Name=Play/Pause
+Exec=xnoise --play-pause
+OnlyShowIn=Unity;
+
+[Desktop Action Stop]
+Name=Stop
+Exec=xnoise --stop
+OnlyShowIn=Unity;
+
+[Desktop Action Next]
+Name=Next
+Exec=xnoise --next
+OnlyShowIn=Unity;
+
+[Desktop Action Previous]
+Name=Previous
+Exec=xnoise --previous
+OnlyShowIn=Unity;

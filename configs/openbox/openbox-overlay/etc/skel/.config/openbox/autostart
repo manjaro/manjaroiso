@@ -29,6 +29,10 @@ synapse &
 tint2 &
 (sleep 1s && tint2 -c ~/.config/tint2/tint2-workspaces) &
 
+# Optional Launcher (remove hash from the line below to enable it)
+# xfce4-panel &
+
+
 # Network Manager: Check to see if it has already been called by another
 # process (e.g. /etc/xdg/autostart/nm-applet.desktop - if not, call it
 # here

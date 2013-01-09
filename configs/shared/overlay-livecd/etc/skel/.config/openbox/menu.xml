@@ -23,6 +23,11 @@
 			</action>
 		</item>
 		<menu id="1" label="Configuration">
+			<item label="Screen Display &amp; Resolution">
+				<action name="Execute">
+					<execute>arandr</execute>
+				</action>
+			</item>
 			<item label="Openbox Environment &amp; Workspaces">
 				<action name="Execute">
 					<execute>obconf</execute>

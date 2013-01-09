@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Pacman-Gui
+GenericName=Pacman-Gui
+Comment=A user-interface for pacman
+Exec=pacman-gui
+Terminal=false
+Type=Application
+Icon=pacman-gui
+StartupNotify=false
+Categories=System;Application;
+X-XFCE-Source=file:///usr/share/applications/pacman-gui.desktop
