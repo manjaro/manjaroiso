@@ -118,6 +118,9 @@ cpupower
 amd-ucode
 intel-ucode
 
+## CLI tools
+mc
+
 ## Xorg Packages
 inxi
 libdnet

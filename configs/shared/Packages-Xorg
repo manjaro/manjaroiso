@@ -11,7 +11,7 @@ intel-dri
 ## Bumblebee Support
 bumblebee
 virtualgl
-bbswitch
+linux34-bbswitch
 >x86_64 lib32-virtualgl
 
 ## Proprietary Drivers
