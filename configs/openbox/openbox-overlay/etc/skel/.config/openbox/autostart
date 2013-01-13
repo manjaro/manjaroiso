@@ -6,7 +6,7 @@
 
 # xdg-user-dirs-update: check if user has directories document,download, etc.
 # If not, then create them
-if [ -x /usr/bin/xdg-user-dirs-update ]; then
+if [ -x /usr/bin/xdg-user-dirs-update ] ; then
     /usr/bin/xdg-user-dirs-update
 fi
 
@@ -36,7 +36,7 @@ tint2 &
 # Network Manager: Check to see if it has already been called by another
 # process (e.g. /etc/xdg/autostart/nm-applet.desktop - if not, call it
 # here
-if [ "x$(ps -e | grep nm-applet)" == "x" ]; then
+if [ "x$(ps -e | grep nm-applet)" == "x" ] ; then
         nm-applet &
 fi
 
