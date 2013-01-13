@@ -11,18 +11,18 @@ intel-dri
 ## Bumblebee Support
 bumblebee
 virtualgl
-linux34-bbswitch
+KERNEL-bbswitch
 >x86_64 lib32-virtualgl
 
 ## Proprietary Drivers
 >nonfree_uni catalyst-utils
->nonfree_uni linux34-catalyst
+>nonfree_uni KERNEL-catalyst
 #>nonfree_uni catalyst-legacy-utils
-#>nonfree_uni linux34-catalyst-legacy
+#>nonfree_uni KERNEL-catalyst-legacy
 >nonfree_uni nvidia-utils
->nonfree_uni linux34-nvidia
+>nonfree_uni KERNEL-nvidia
 >nonfree_uni nvidia-legacy-utils
->nonfree_uni linux34-nvidia-legacy
+>nonfree_uni KERNEL-nvidia-legacy
 >nonfree_x64 lib32-catalyst-utils
 #>nonfree_x64 lib32-catalyst-legacy-utils
 >nonfree_x64 lib32-nvidia-utils
@@ -32,7 +32,7 @@ linux34-bbswitch
 
 ## Virtualbox Drivers
 >free_uni virtualbox-guest-utils
->free_uni linux34-virtualbox-guest-modules
+>free_uni KERNEL-virtualbox-guest-modules
 
 # Laptop management
 laptop-mode-tools

@@ -5,7 +5,7 @@ manjaro-release
 syslog-ng
 
 ## Kernel
-linux34
+KERNEL
 
 ## Extra Base Packages
 acpid
