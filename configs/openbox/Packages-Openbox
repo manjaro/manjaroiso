@@ -23,6 +23,7 @@ openbox-themes
 pnmixer
 polkit-gnome
 polkit-qt
+python2-xdg
 synapse
 thunar
 thunar-volman
