@@ -754,6 +754,7 @@ make_overlay() {
         cp -LPrd overlay-livecd/* ${work_dir}/overlay
         cp options.conf ${work_dir}/overlay/etc/manjaro/options.conf
         #wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist
+        cp ${work_dir}/root-image/etc/pacman.d/mirrorlist ${work_dir}/overlay/etc/pacman.d/mirrorlist
         sed -i "s/#Server/Server/g" ${work_dir}/overlay/etc/pacman.d/mirrorlist
         sed -i "s/^.*TITLE=.*/  TITLE=\"Manjaro Linux Installation Framework (v${version})\"/g" ${work_dir}/overlay/etc/manjaro/setup
         #chmod -R 755 ${work_dir}/overlay/home

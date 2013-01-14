@@ -6,9 +6,9 @@
 
 # xdg-user-dirs-update: check if user has directories document,download, etc.
 # If not, then create them
-#if [ -x /usr/bin/xdg-user-dirs-update ] ; then
-#    /usr/bin/xdg-user-dirs-update
-#fi
+if [ -x /usr/bin/xdg-user-dirs-update ] ; then
+    /usr/bin/xdg-user-dirs-update
+fi
 
 # Background
 nitrogen --restore &
@@ -28,5 +28,3 @@ tint2 &
 
 # Optional Launcher (remove hash from the line below to enable it)
 # xfce4-panel &
-
-manjaro-welcome &
