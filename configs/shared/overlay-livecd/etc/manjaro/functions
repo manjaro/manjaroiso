@@ -277,7 +277,7 @@ _configure_translation_pkgs()
 _do_locales ()
 {
     # see: http://bazaar.launchpad.net/~ubuntu-core-dev/console-setup/ubuntu/view/head:/debian/keyboard-configuration.config
-    #      https://wiki.archlinux.org/index.php/KEYMAP
+    #      https://wiki.archlinux.org/index.php/KEYMAP & http://cgit.freedesktop.org/systemd/systemd/tree/src/locale/kbd-model-map
 
     XKEYMAP=""
     XVARIANT=""
@@ -296,7 +296,7 @@ _do_locales ()
                      be_BY)
                            #Belarusian
                            XKEYMAP="be"
-                           CKEYMAP="be"
+                           CKEYMAP="be-latin1"
                            ;;
                      pt_BR)
                            #Brazilian Portuguese
@@ -306,13 +306,13 @@ _do_locales ()
                            ;;
                      bg_BG)
                            #Bulgarian
-                           XKEYMAP="bg"
-                           CKEYMAP="bg"
+                           XKEYMAP="bg,us"
+                           CKEYMAP="bg_pho-utf8"
                            ;;
                      da_DK)
                            #Danish
                            XKEYMAP="dk"
-                           CKEYMAP="dk"
+                           CKEYMAP="dk-latin1"
                            ;;
                      fr_BE)
                            #Belgian
@@ -322,7 +322,7 @@ _do_locales ()
                      fr_FR)
                            #French
                            XKEYMAP="fr"
-                           CKEYMAP="fr"
+                           CKEYMAP="fr-latin1"
                            ;;
                      fr_CA)
                            #Canadian
@@ -339,7 +339,7 @@ _do_locales ()
                      is_IS)
                            #Icelandic
                            XKEYMAP="is"
-                           CKEYMAP="is"
+                           CKEYMAP="is-latin1"
                            ;;
                      it_IT)
                            #Italian
@@ -359,16 +359,16 @@ _do_locales ()
                      pt_PT)
                            #Portuguese
                            XKEYMAP="pt"
-                           CKEYMAP="pt"
+                           CKEYMAP="pt-latin9"
                            ;;
                      ro_RO)
                            #Romanian
                            XKEYMAP="ro"
-                           CKEYMAP="ro"
+                           CKEYMAP="ro_win"
                            ;;
                      ru_RU)
                            #Russian
-                           XKEYMAP="ru"
+                           XKEYMAP="ru,us"
                            CKEYMAP="ru"
                            ;;
                      es_AR)
@@ -383,17 +383,17 @@ _do_locales ()
                            ;;
                      sv_SE)
                            #Swedish
-                           XKEYMAP="sv"
+                           XKEYMAP="se"
                            CKEYMAP="sv-latin1"
                            ;;
                      tr_TR)
                            #Turkish
                            XKEYMAP="tr"
-                           CKEYMAP="trq"
+                           CKEYMAP="tr_q-latin5"
                            ;;
                      uk_UA)
                            #Ukrainian
-                           XKEYMAP="ua"
+                           XKEYMAP="ua,us"
                            CKEYMAP="ua"
                            ;;
     esac
