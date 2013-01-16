@@ -276,6 +276,9 @@ _configure_translation_pkgs()
 
 _do_locales ()
 {
+    # see: http://bazaar.launchpad.net/~ubuntu-core-dev/console-setup/ubuntu/view/head:/debian/keyboard-configuration.config
+    #      https://wiki.archlinux.org/index.php/KEYMAP
+
     XKEYMAP=""
     XVARIANT=""
     CKEYMAP=""
@@ -297,7 +300,8 @@ _do_locales ()
                            ;;
                      pt_BR)
                            #Brazilian Portuguese
-                           XKEYMAP="br-abnt2"
+                           XKEYMAP="br"
+                           XVARIANT="abnt2"
                            CKEYMAP="br-abnt2"
                            ;;
                      bg_BG)
@@ -312,12 +316,7 @@ _do_locales ()
                            ;;
                      fr_BE)
                            #Belgian
-                           XKEYMAP="be-latin1"
-                           CKEYMAP="be-latin1"
-                           ;;
-                     fr_BE)
-                           #Belgian
-                           XKEYMAP="be-latin1"
+                           XKEYMAP="be"
                            CKEYMAP="be-latin1"
                            ;;
                      fr_FR)
@@ -327,7 +326,8 @@ _do_locales ()
                            ;;
                      fr_CA)
                            #Canadian
-                           XKEYMAP="cf"
+                           XKEYMAP="ca"
+                           XVARIANT="fr"
                            CKEYMAP="cf"
                            ;;
                      de_DE)
@@ -373,7 +373,7 @@ _do_locales ()
                            ;;
                      es_AR)
                            #Argentinian
-                           XKEYMAP="la-latin1"
+                           XKEYMAP="latam"
                            CKEYMAP="la-latin1"
                            ;;
                      es_ES)
@@ -383,7 +383,7 @@ _do_locales ()
                            ;;
                      sv_SE)
                            #Swedish
-                           XKEYMAP="sv-latin1"
+                           XKEYMAP="sv"
                            CKEYMAP="sv-latin1"
                            ;;
                      tr_TR)
