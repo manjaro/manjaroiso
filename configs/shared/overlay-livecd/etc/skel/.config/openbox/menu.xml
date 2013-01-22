@@ -53,6 +53,11 @@
 					<execute>obmenu</execute>
 				</action>
 			</item>
+			<item label="Power Management">
+				<action name="Execute">
+					<execute>xfce4-power-manager-settings</execute>
+				</action>
+			</item>
 		</menu>
 		<separator/>
 		<item label="File Manager (Thunar)">

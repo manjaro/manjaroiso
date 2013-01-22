@@ -9,12 +9,12 @@
 rounded = 5
 border_width = 1
 background_color = #525252 60
-border_color = #909090 100
+border_color = #656565 100
 
 # ID 2
 rounded = 5
 border_width = 1
-background_color = #2E7D35 60
+background_color = #208226 60
 border_color = #8C8C8C 100
 
 # Panel

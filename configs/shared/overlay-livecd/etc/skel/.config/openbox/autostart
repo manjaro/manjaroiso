@@ -17,14 +17,11 @@ nitrogen --restore &
 xcompmgr &
 
 # Startup
-pnmixer &
+volumeicon &
 xscreensaver -no-splash &
-udiskie &
+xfce4-power-manager &
 synapse -s &
 
 # Panel
 tint2 &
 (sleep 1s && tint2 -c ~/.config/tint2/tint2-workspaces) &
-
-# Optional Launcher (remove hash from the line below to enable it)
-# xfce4-panel &

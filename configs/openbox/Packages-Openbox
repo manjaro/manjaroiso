@@ -2,8 +2,8 @@
 
 ## Openbox Main Packages
 arandr
-devhelp
 faenza-green-icon-theme
+file-roller
 gksu
 gnome-keyring
 gnome-system-monitor
@@ -20,23 +20,25 @@ oblogout
 obmenu
 openbox
 openbox-themes
-pnmixer
 polkit-gnome
 polkit-qt
 python2-xdg
 synapse
+shiki-nouveau-fall-colors
 thunar
 thunar-volman
+thunar-archive-plugin
 tint2
 tintwizard
 udiskie
+volumeicon
 xcompmgr
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xfce4-appfinder
 xfce4-notifyd
+xfce4-power-manager
 xfce4-terminal
-xfce4-mixer
 xscreensaver
 xterm
 
