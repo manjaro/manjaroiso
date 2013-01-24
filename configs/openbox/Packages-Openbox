@@ -2,6 +2,7 @@
 
 ## Openbox Main Packages
 arandr
+catfish
 faenza-green-icon-theme
 file-roller
 gksu
@@ -9,6 +10,8 @@ gnome-keyring
 gnome-system-monitor
 gsimplecal
 gvfs
+gvfs-afc
+gvfs-gphoto2
 libgnomeui # for qt to find gtk themes
 lxappearance-obconf
 lxdm
@@ -30,7 +33,6 @@ thunar-volman
 thunar-archive-plugin
 tint2
 tintwizard
-udiskie
 volumeicon
 xcompmgr
 xcursor-simpleandsoft
