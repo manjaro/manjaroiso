@@ -51,7 +51,7 @@
 		</item>
 		<item label="Terminal">
 			<action name="Execute">
-				<execute>xfce4-terminal</execute>
+				<execute>lxterminal</execute>
 			</action>
 		</item>
 		<item label="Synapse">

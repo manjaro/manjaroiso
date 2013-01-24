@@ -320,9 +320,9 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>xfce4-terminal</name>
+          <name>lxterminal</name>
         </startupnotify>
-        <command>xfce4-terminal</command>
+        <command>lxterminal</command>
       </action>
     </keybind>
     <keybind key="W-s">
