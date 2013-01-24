@@ -20,6 +20,7 @@ xcompmgr &
 volumeicon &
 xscreensaver -no-splash &
 xfce4-power-manager &
+thunar --daemon &
 synapse -s &
 
 # Panel
