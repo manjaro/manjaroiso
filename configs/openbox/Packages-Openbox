@@ -24,6 +24,7 @@ oblogout
 obmenu
 openbox
 openbox-themes
+p7zip
 polkit-gnome
 polkit-qt
 python2-xdg
@@ -46,7 +47,7 @@ xscreensaver
 xterm
 
 ## Applications
->i686 brasero
+brasero
 epdfview
 gparted
 hardinfo
@@ -60,11 +61,15 @@ xnoise
 ## Fonts
 #ttf-source-sans-pro
 
-## Extra Artwork
->i686 manjaro-artwork-extra
+## Multimedia Support
+gstreamer0.10-plugins
 
 ## Office
 libreoffice-installer
 
 ## Printing
+
+## AUR Access
+base-devel
+yaourt
 
