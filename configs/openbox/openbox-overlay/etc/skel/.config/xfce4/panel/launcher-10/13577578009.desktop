@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=PkgBrowser
+GenericName=Package Browser
+Comment=A utility for browsing pacman databases and the AUR
+Exec=pkgbrowser
+Terminal=false
+Type=Application
+Icon=pkgbrowser
+StartupNotify=false
+Categories=Qt;System;
+X-XFCE-Source=file:///usr/share/applications/pkgbrowser.desktop
