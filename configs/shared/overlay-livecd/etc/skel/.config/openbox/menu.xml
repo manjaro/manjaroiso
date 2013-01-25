@@ -28,12 +28,12 @@
 					<execute>arandr</execute>
 				</action>
 			</item>
-			<item label="Openbox Environment &amp; Workspaces">
+			<item label="Environment &amp; Workspaces">
 				<action name="Execute">
 					<execute>obconf</execute>
 				</action>
 			</item>
-			<item label="Openbox Theme and Look">
+			<item label="Look and Feel">
 				<action name="Execute">
 					<execute>lxappearance</execute>
 				</action>
