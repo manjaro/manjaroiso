@@ -27,6 +27,7 @@ openbox-themes
 p7zip
 polkit-gnome
 polkit-qt
+pnmixer
 python2-xdg
 synapse
 shiki-nouveau-fall-colors
@@ -36,13 +37,13 @@ thunar-archive-plugin
 tint2
 tintwizard
 tumbler
-volumeicon
 xcompmgr
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xfce4-appfinder
 xfce4-notifyd
 xfce4-power-manager
+xfce4-mixer
 xscreensaver
 xterm
 

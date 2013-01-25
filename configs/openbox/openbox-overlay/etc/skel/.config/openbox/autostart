@@ -17,7 +17,7 @@ nitrogen --restore &
 xcompmgr &
 
 # Startup
-volumeicon &
+pnmixer &
 xscreensaver -no-splash &
 xfce4-power-manager &
 thunar --daemon &
