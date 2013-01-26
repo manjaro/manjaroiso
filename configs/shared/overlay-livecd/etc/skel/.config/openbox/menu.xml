@@ -62,7 +62,7 @@
 		</item>
 		<item label="Terminal        (Super + T)">
 			<action name="Execute">
-				<execute>xfce4-terminal</execute>
+				<execute>lxterminal</execute>
 			</action>
 		</item>
 		<item label="Synapse       (Ctrl + Space)">
