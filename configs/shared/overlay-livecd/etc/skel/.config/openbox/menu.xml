@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu>
 	<menu id="root-menu" label="OpenBox 3">
-		<item label="Openbox Quick Guide">
-			<action name="Execute">
-				<execute>epdfview /etc/skel/Manjaro/Openbox-Guide.pdf</execute>
-			</action>
-		</item>
-		<item label="Manjaro User Guide">
-			<action name="Execute">
-				<execute>epdfview /etc/skel/Manjaro/&quot;Beginner User Guide.pdf&quot;</execute>
-			</action>
-		</item>
-		<item label="Install">
+		<item label="Install Manjaro">
 			<action name="Execute">
 				<execute>lxterminal -x sudo setup</execute>
 			</action>
 		</item>
 		<separator/>
+		<item label="User Guides">
+			<action name="Execute">
+				<execute>thunar ~/Manjaro</execute>
+			</action>
+		</item>
 		<item label="Change Background">
 			<action name="Execute">
 				<execute>nitrogen</execute>
@@ -33,7 +28,7 @@
 					<execute>obconf</execute>
 				</action>
 			</item>
-			<item label="Look and Feel">
+			<item label="Desktop Look &amp; Feel">
 				<action name="Execute">
 					<execute>lxappearance</execute>
 				</action>
@@ -60,28 +55,28 @@
 			</item>
 		</menu>
 		<separator/>
-		<item label="File Manager (Thunar)">
+		<item label="File Manager (Super + F)">
 			<action name="Execute">
 				<execute>thunar</execute>
 			</action>
 		</item>
-		<item label="Terminal">
+		<item label="Terminal        (Super + T)">
 			<action name="Execute">
-				<execute>lxterminal</execute>
+				<execute>xfce4-terminal</execute>
 			</action>
 		</item>
-		<item label="Synapse">
+		<item label="Synapse       (Ctrl + Space)">
 			<action name="Execute">
 				<execute>synapse</execute>
 			</action>
 		</item>
-		<item label="AppFinder">
+		<item label="AppFinder     (Super + A)">
 			<action name="Execute">
 				<execute>xfce4-appfinder</execute>
 			</action>
 		</item>
 		<separator/>
-		<item label="Logout...">
+		<item label="Logout...       (Super + X)">
 			<action name="Execute">
 				<execute>oblogout</execute>
 			</action>

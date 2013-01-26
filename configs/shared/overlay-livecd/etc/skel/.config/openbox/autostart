@@ -1,11 +1,14 @@
 #
-# Place in /home/[user account]/.config/openbox/autostart as user template
-# Otherwise, can be placed in /etc/xdg/openbox/autostart as global template
+# Placed in /home/[user account]/.config/openbox/autostart as local user template
+# Otherwise, can be placed in /etc/xdg/openbox/autostart as a global template
+# Note: applications such as the network manager (nm-app) have been placed
+# in /etc/xdg/openbox/autostart as global items
+#
 # Written by the Manjaro Team
 #
 
-# xdg-user-dirs-update: check if user has directories document,download, etc.
-# If not, then create them
+# Check if if the standard Home directories exist (Documents, Downloads, etc.), and
+# if not, then create them
 if [ -x /usr/bin/xdg-user-dirs-update ] ; then
     /usr/bin/xdg-user-dirs-update
 fi
@@ -17,6 +20,7 @@ nitrogen --restore &
 xcompmgr &
 
 # Startup
+# Thunar is run in daemon-mode to enable auto-mounting of removable media
 pnmixer &
 xscreensaver -no-splash &
 xfce4-power-manager &
@@ -26,3 +30,6 @@ synapse -s &
 # Panel
 tint2 &
 (sleep 1s && tint2 -c ~/.config/tint2/tint2-workspaces) &
+
+# Optional pre-configured application launcher (remove hash to enable)
+# xfce4-panel
