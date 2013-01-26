@@ -12,6 +12,9 @@ gsimplecal
 gvfs
 gvfs-afc
 gvfs-gphoto2
+gvfs-smb
+gvfs-afp
+gvfs-obexftp
 libgnomeui # for qt to find gtk themes
 lxappearance-obconf
 lxdm
