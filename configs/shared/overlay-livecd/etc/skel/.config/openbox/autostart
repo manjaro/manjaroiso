@@ -17,7 +17,7 @@ fi
 nitrogen --restore &
 
 # Compositing
-xcompmgr &
+compton &
 
 # Startup
 # Thunar is run in daemon-mode to enable auto-mounting of removable media

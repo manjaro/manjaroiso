@@ -3,6 +3,7 @@
 ## Openbox Main Packages
 arandr
 catfish
+compton-git
 faenza-green-icon-theme
 file-roller
 galculator
@@ -14,13 +15,10 @@ gvfs
 gvfs-afc
 gvfs-gphoto2
 gvfs-smb
-gvfs-afp
-gvfs-obexftp
 libgnomeui # for qt to find gtk themes
 lxappearance-obconf
 lxdm
 lxterminal
-menumaker
 network-manager-applet
 nitrogen
 obconf
@@ -42,9 +40,9 @@ thunar-archive-plugin
 tint2
 tintwizard
 tumbler
-xcompmgr
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
+xcursor-themes
 xfce4-appfinder
 xfce4-notifyd
 xfce4-power-manager
@@ -59,10 +57,9 @@ gparted
 hardinfo
 leafpad
 midori
-pacman-gui
-pkgbrowser
+pamac
 viewnior
-xnoise
+vlc
 
 ## Fonts
 #ttf-source-sans-pro
