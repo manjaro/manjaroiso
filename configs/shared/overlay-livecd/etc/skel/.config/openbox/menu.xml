@@ -3,7 +3,7 @@
 	<menu id="root-menu" label="OpenBox 3">
 		<item label="Install Manjaro">
 			<action name="Execute">
-				<execute>lxterminal -x sudo setup</execute>
+				<execute>lxterminal -e sudo setup</execute>
 			</action>
 		</item>
 		<separator/>
