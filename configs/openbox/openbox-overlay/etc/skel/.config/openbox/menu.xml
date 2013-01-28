@@ -42,6 +42,11 @@
 					<execute>obmenu</execute>
 				</action>
 			</item>
+			<item label="Shortcut Keys">
+				<action name="Execute">
+					<execute>obkey</execute>
+				</action>
+			</item>
 			<item label="Power Management">
 				<action name="Execute">
 					<execute>xfce4-power-manager-settings</execute>
@@ -49,28 +54,39 @@
 			</item>
 		</menu>
 		<separator/>
-		<item label="File Manager (Super + F)">
+		<item label="Pamac Updater        (Super + U)">
+			<action name="Execute">
+				<execute>pamac-updater</execute>
+			</action>
+		</item>
+		<item label="Pamac Manager       (Super + M)">
+			<action name="Execute">
+				<execute>pamac-manager</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label="Thunar File Manager (Super + F)">
 			<action name="Execute">
 				<execute>thunar</execute>
 			</action>
 		</item>
-		<item label="Terminal        (Super + T)">
+		<item label="Terminal                    (Super + T)">
 			<action name="Execute">
 				<execute>lxterminal</execute>
 			</action>
 		</item>
-		<item label="Synapse       (Ctrl + Space)">
+		<item label="Synapse                   (Ctrl + Space)">
 			<action name="Execute">
 				<execute>synapse</execute>
 			</action>
 		</item>
-		<item label="AppFinder     (Super + A)">
+		<item label="AppFinder                 (Super + A)">
 			<action name="Execute">
 				<execute>xfce4-appfinder</execute>
 			</action>
 		</item>
 		<separator/>
-		<item label="Logout...       (Super + X)">
+		<item label="Logout...                   (Super + X)">
 			<action name="Execute">
 				<execute>oblogout</execute>
 			</action>
