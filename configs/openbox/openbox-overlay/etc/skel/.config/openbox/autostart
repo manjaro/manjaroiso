@@ -32,4 +32,4 @@ tint2 &
 (sleep 1s && tint2 -c ~/.config/tint2/tint2-workspaces) &
 
 # Optional pre-configured application launcher (remove hash to enable)
-# xfce4-panel
+# xfce4-panel &
