@@ -9,87 +9,87 @@
       <property name="mode" type="uint" value="2"/>
       <property name="length" type="uint" value="94"/>
       <property name="background-alpha" type="uint" value="49"/>
+      <property name="size" type="uint" value="36"/>
+      <property name="position-locked" type="bool" value="true"/>
+      <property name="autohide" type="bool" value="true"/>
+      <property name="disable-struts" type="bool" value="true"/>
+      <property name="nrows" type="uint" value="1"/>
       <property name="plugin-ids" type="array">
         <value type="int" value="1"/>
         <value type="int" value="2"/>
         <value type="int" value="3"/>
         <value type="int" value="4"/>
         <value type="int" value="5"/>
+        <value type="int" value="7"/>
+        <value type="int" value="8"/>
         <value type="int" value="9"/>
         <value type="int" value="10"/>
         <value type="int" value="11"/>
-        <value type="int" value="6"/>
-        <value type="int" value="7"/>
-        <value type="int" value="8"/>
-        <value type="int" value="13"/>
         <value type="int" value="12"/>
+        <value type="int" value="13"/>
+        <value type="int" value="14"/>
+        <value type="int" value="15"/>
       </property>
-      <property name="size" type="uint" value="36"/>
-      <property name="position-locked" type="bool" value="true"/>
-      <property name="autohide" type="bool" value="true"/>
-      <property name="disable-struts" type="bool" value="true"/>
-      <property name="nrows" type="uint" value="1"/>
     </property>
   </property>
   <property name="plugins" type="empty">
     <property name="plugin-1" type="string" value="launcher">
       <property name="items" type="array">
-        <value type="string" value="13577576341.desktop"/>
+        <value type="string" value="13594991621.desktop"/>
       </property>
     </property>
     <property name="plugin-2" type="string" value="launcher">
       <property name="items" type="array">
-        <value type="string" value="13577576482.desktop"/>
+        <value type="string" value="13594991732.desktop"/>
       </property>
     </property>
     <property name="plugin-3" type="string" value="launcher">
       <property name="items" type="array">
-        <value type="string" value="13577576603.desktop"/>
+        <value type="string" value="13594991903.desktop"/>
       </property>
     </property>
     <property name="plugin-4" type="string" value="launcher">
       <property name="items" type="array">
-        <value type="string" value="13577576764.desktop"/>
+        <value type="string" value="13594992114.desktop"/>
       </property>
     </property>
-    <property name="plugin-5" type="string" value="separator">
-      <property name="style" type="uint" value="1"/>
-    </property>
-    <property name="plugin-6" type="string" value="launcher">
+    <property name="plugin-5" type="string" value="launcher">
       <property name="items" type="array">
-        <value type="string" value="13577577375.desktop"/>
+        <value type="string" value="13594992165.desktop"/>
       </property>
     </property>
-    <property name="plugin-7" type="string" value="launcher">
-      <property name="items" type="array">
-        <value type="string" value="13577577486.desktop"/>
-      </property>
-    </property>
+    <property name="plugin-7" type="string" value="separator"/>
     <property name="plugin-8" type="string" value="launcher">
       <property name="items" type="array">
-        <value type="string" value="13577577607.desktop"/>
+        <value type="string" value="13594992747.desktop"/>
       </property>
     </property>
     <property name="plugin-9" type="string" value="launcher">
       <property name="items" type="array">
-        <value type="string" value="13577577938.desktop"/>
+        <value type="string" value="13594992798.desktop"/>
       </property>
     </property>
-    <property name="plugin-10" type="string" value="launcher">
+    <property name="plugin-10" type="string" value="separator"/>
+    <property name="plugin-11" type="string" value="launcher">
       <property name="items" type="array">
-        <value type="string" value="13577578009.desktop"/>
+        <value type="string" value="13594993019.desktop"/>
       </property>
-    </property>
-    <property name="plugin-11" type="string" value="separator">
-      <property name="style" type="uint" value="1"/>
     </property>
     <property name="plugin-12" type="string" value="launcher">
       <property name="items" type="array">
-        <value type="string" value="135775790010.desktop"/>
+        <value type="string" value="135949931110.desktop"/>
       </property>
     </property>
-    <property name="plugin-13" type="string" value="separator">
-      <property name="expand" type="bool" value="false"/>
+    <property name="plugin-13" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="135949932011.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-14" type="string" value="separator"/>
+    <property name="plugin-15" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="135949934912.desktop"/>
+      </property>
     </property>
   </property>
 </channel>
