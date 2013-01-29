@@ -1,0 +1,41 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Midori
+Name[en_GB]=Midori
+GenericName=Web Browser
+GenericName[en_GB]=Web Browser
+X-GNOME-Fullname=Midori Web Browser
+Comment=Browse the Web
+Comment[en_GB]=Browse the Web
+X-GNOME-Keywords=Internet;WWW;Explorer
+X-GNOME-Keywords[en_GB]=Internet;WWW;Explorer
+X-AppInstall-Keywords=Internet;WWW;Explorer
+X-AppInstall-Keywords[en_GB]=Internet;WWW;Explorer
+Categories=GTK;Network;WebBrowser;
+MimeType=text/html;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/geo;image/svg+xml;
+Exec=midori %U
+Icon=midori
+Terminal=false
+StartupNotify=true
+X-Osso-Type=application/x-executable
+X-Osso-Service=midori
+X-Ayatana-Desktop-Shortcuts=TabNew;WindowNew;Private
+X-XFCE-Source=file:///usr/share/applications/midori.desktop
+
+[TabNew Shortcut Group]
+Name=New Tab
+Name[en_GB]=New Tab
+Exec=midori -e TabNew
+TargetEnvironment=Unity
+
+[WindowNew Shortcut Group]
+Name=New Window
+Name[en_GB]=New Window
+Exec=midori -e WindowNew
+TargetEnvironment=Unity
+
+[Private Shortcut Group]
+Name=New Private Browsing Window
+Exec=midori --private
+TargetEnvironment=Unity

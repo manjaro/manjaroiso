@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Configure Lxdm
+Name[en_GB]=Configure Lxdm
+Comment=Configure the Display Manager
+Comment[en_GB]=Configure the Display Manager
+Icon=preferences-system
+Exec=lxdm-config-pkexec
+Terminal=false
+Type=Application
+Categories=GTK;System;
+StartupNotify=true
+X-XFCE-Source=file:///usr/share/applications/lxdm-config.desktop
