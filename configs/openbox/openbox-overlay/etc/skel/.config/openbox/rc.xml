@@ -361,6 +361,23 @@
         <command>oblogout</command>
       </action>
     </keybind>
+    <keybind key="W-u">
+      <action name="Execute">
+        <command>pamac-updater</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <name>pamac-updater</name>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="W-m">
+      <action name="Execute">
+        <command>pamac-manager</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+        </startupnotify>
+      </action>
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
