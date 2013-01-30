@@ -507,7 +507,7 @@ make_efi() {
         if [[ ${arch} == "x86_64" ]]; then
             echo -e -n "$_r >$_W Prepare ${install_dir}/boot/EFI \n $_n"
             mkdir -p ${work_dir}/iso/EFI/boot
-            cp ${work_dir}/root-image/usr/lib/refind/refindx64.efi ${work_dir}/iso/EFI/boot/bootx64.efi
+            cp ${work_dir}/root-image/usr/lib/refind/refind_x64.efi ${work_dir}/iso/EFI/boot/bootx64.efi
 
             cp -rf ${work_dir}/root-image/usr/share/refind/icons ${work_dir}/iso/EFI/boot
 	
@@ -619,7 +619,7 @@ make_efiboot() {
             cp ${work_dir}/iso/${install_dir}/boot/x86_64/manjaro.img ${work_dir}/efiboot/EFI/miso/manjaro.img
 
             mkdir -p ${work_dir}/efiboot/EFI/boot
-            cp ${work_dir}/root-image/usr/lib/refind/refindx64.efi ${work_dir}/efiboot/EFI/boot/bootx64.efi
+            cp ${work_dir}/root-image/usr/lib/refind/refind_x64.efi ${work_dir}/efiboot/EFI/boot/bootx64.efi
 
             cp -rf ${work_dir}/root-image/usr/share/refind/icons ${work_dir}/efiboot/EFI/boot
 	
