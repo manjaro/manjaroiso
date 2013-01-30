@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=Logout
-Comment=Logout, Restart, Shutdown, Lock..
+Comment=Logout, Restart, Shutdown, Suspend, Hibernate, Lock
 Exec=oblogout
 Icon=application-exit
 Path=
