@@ -68,6 +68,9 @@ vlc
 ## Multimedia Support
 gstreamer0.10-plugins
 
+## Java
+icedtea-web-java7
+
 ## Office
 libreoffice-installer
 
