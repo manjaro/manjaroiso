@@ -36,7 +36,7 @@ done
 if [ "$LOCALE" != "en_US.UTF-8" ]; then
         sed -i -e "s/^#en_US/en_US/g" /etc/locale.gen
 fi
-/usr/sbin/locale-gen > /dev/null
+locale-gen > /dev/null
 
 # set_timezone
 ln -sf "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime  
@@ -62,15 +62,15 @@ mkdir -p /var/lib/mhwd/local/{pci,usb}
 if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
    if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
    	if  [ "${VIDEO}" == "vesa" ]; then
-		/usr/bin/mhwd --install pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf"
+		mhwd --install pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf"
 	else
-		/usr/bin/mhwd --auto pci nonfree 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
+		mhwd --auto pci nonfree 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
 	fi
    else
    	if  [ "${VIDEO}" == "vesa" ]; then
-		/usr/bin/mhwd --install pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf"
+		mhwd --install pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf"
 	else
-		/usr/bin/mhwd --auto pci free 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
+		mhwd --auto pci free 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
 	fi
    fi
 fi
