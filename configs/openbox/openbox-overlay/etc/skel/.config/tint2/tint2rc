@@ -6,19 +6,19 @@
 
 # Background definitions
 # ID 1
-rounded = 5
+rounded = 2
 border_width = 1
 background_color = #525252 60
 border_color = #656565 100
 
 # ID 2
-rounded = 5
+rounded = 2
 border_width = 0
 background_color = #208226 60
 border_color = #FFFFFF 40
 
 # ID 3
-rounded = 5
+rounded = 2
 border_width = 0
 background_color = #0C0C0C 60
 border_color = #FFFFFF 60

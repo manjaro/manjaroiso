@@ -54,7 +54,8 @@ xterm
 
 ## Applications
 >x86_64 brasero
-epdfview
+evince
+#epdfview
 gparted
 hardinfo
 leafpad
@@ -70,7 +71,7 @@ vlc
 gstreamer0.10-plugins
 
 ## Java
-icedtea-web-java7
+>x86_64 icedtea-web-java7
 
 ## Office
 libreoffice-installer
