@@ -19,6 +19,7 @@ libgnomeui # for qt to find gtk themes
 lxappearance-obconf
 lxdm
 lxterminal
+manjaro-artwork-openbox
 network-manager-applet
 nitrogen
 obconf
