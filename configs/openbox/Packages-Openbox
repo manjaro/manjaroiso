@@ -2,11 +2,9 @@
 
 ## Openbox Main Packages
 arandr
-catfish
 compton-git
 faenza-green-icon-theme
 file-roller
-galculator
 gksu
 gnome-keyring
 gnome-system-monitor
@@ -19,7 +17,6 @@ libgnomeui # for qt to find gtk themes
 lxappearance-obconf
 lxdm
 lxterminal
-manjaro-artwork-openbox
 network-manager-applet
 nitrogen
 obconf
@@ -28,6 +25,7 @@ obmenu
 openbox
 openbox-themes
 obkey
+openssh
 p7zip
 polkit-gnome
 polkit-qt
@@ -53,9 +51,10 @@ xscreensaver
 xterm
 
 ## Applications
->x86_64 brasero
+brasero
+catfish
 evince
-#epdfview
+galculator
 gparted
 hardinfo
 leafpad
@@ -75,6 +74,9 @@ gstreamer0.10-plugins
 
 ## Office
 libreoffice-installer
+
+## Wallpapers
+manjaro-artwork-openbox
 
 ## Printing
 
