@@ -1127,8 +1127,7 @@ dogrub_mkconfig() {
     fi
 
     # generate resume string for suspend to disk
-    # and add resume hook to mkinitcpio.conf
-    [ -z "${swap_partition}" -o "${swap_partition}" = "NONE" ] || sed -i -e "s,GRUB_CMDLINE_LINUX_DEFAULT=.*,GRUB_CMDLINE_LINUX_DEFAULT=\"`cat $DESTDIR/etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT | cut -d'"' -f2` resume=/dev/disk/by-uuid/`blkid -s UUID -o value -p ${swap_partition}`\",g" $DESTDIR/etc/default/grub | sed -i -e "s,filesystem,resume filesystem,g" $DESTDIR/etc/mkinitcpio.conf
+    [ -z "${swap_partition}" -o "${swap_partition}" = "NONE" ] || sed -i -e "s,GRUB_CMDLINE_LINUX_DEFAULT=.*,GRUB_CMDLINE_LINUX_DEFAULT=\"`cat $DESTDIR/etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT | cut -d'"' -f2` resume=/dev/disk/by-uuid/`blkid -s UUID -o value -p ${swap_partition}`\",g" $DESTDIR/etc/default/grub
 
     # create grub.cfg
     chroot ${DESTDIR} grub-mkconfig -o "/${GRUB_PREFIX_DIR}/grub.cfg" >> /tmp/grub.log 2>&1
@@ -1250,8 +1249,25 @@ _post_process()
     sleep 3
     chroot ${DESTDIR} pacman -Syy &> /dev/null
 
+    sleep 3
+    # add resume hook for suspend to disk
+    [ -z "${swap_partition}" -o "${swap_partition}" = "NONE" ] || if [ "x$(cat $DESTDIR/etc/mkinitcpio.conf | grep '^HOOKS=' | grep -v '^#' | grep resume)" == "x" ]; then
+       hooks=""
+       for hook in $(cat $DESTDIR/etc/mkinitcpio.conf | grep '^HOOKS=' | grep -v '^#' | cut -d'"' -f2) ; do
+           if [ "$hook" == "filesystems" ] && [ "$replaced" == "" ]; then
+              hook="resume filesystems"
+              replaced="1"
+           fi
+           hooks="${hooks} ${hook}"		
+       done
+       hooks=$(echo "${hooks}" | sed 's/^ *//;s/ *$//;s/ \{1,\}/ /g')
+       if [ "x$(echo \"${hooks}\" | grep resume)" == "x" ]; then
+          hooks="${hooks} resume"
+       fi
+       sed -i -e "s/^HOOKS=.*/HOOKS=\"${hooks}\"/g" $DESTDIR/etc/mkinitcpio.conf
+    fi
+
     # create kernel images
-    sleep 3  
     run_mkinitcpio
     sleep 3
 
