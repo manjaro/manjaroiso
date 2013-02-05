@@ -145,10 +145,8 @@
     <message xml:lang="zh_CN">下要授权来挂载文件系统</message>
     <defaults>
 
-# FIX ISSUE
-#
-	<allow_any>no</allow_any>
-#      <allow_any>yes</allow_any>
+      <allow_any>yes</allow_any>
+      <allow_any>yes</allow_any>
       <allow_inactive>yes</allow_inactive>
       <allow_active>yes_keep</allow_active>
     </defaults>
@@ -600,7 +598,6 @@
     <defaults>
       <allow_any>yes</allow_any>
       <allow_inactive>yes</allow_inactive>
-      
       <allow_active>yes</allow_active>
     </defaults>
   </action>
@@ -813,7 +810,7 @@
     <message xml:lang="sv">Autentisering krävs för att mata ut media</message>
     <message xml:lang="uk">Щоб отримати доступ до від’єднання носія даних, слід пройти розпізнавання</message>
     <defaults>
-      <allow_any>no</allow_any>
+      <allow_any>yes</allow_any>
       <allow_inactive>yes</allow_inactive>
       <allow_active>yes_keep</allow_active>
     </defaults>
