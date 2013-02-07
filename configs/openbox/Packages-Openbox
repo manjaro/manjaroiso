@@ -60,9 +60,12 @@ hardinfo
 leafpad
 midori
 pamac
+xnoise
 transmission-gtk
 viewnior
 vlc
+>x86_64 rhythmbox
+>i686 xnoise
 
 ## Fonts
 #ttf-source-sans-pro
