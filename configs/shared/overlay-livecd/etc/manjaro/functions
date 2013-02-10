@@ -124,6 +124,52 @@ getpartlabel()
     echo "$(${_BLKID} -p -i -s PART_ENTRY_NAME -o value ${1})"
 }
 
+# returns: the country of the user, if set as kernel parameter
+get_country() {
+  local COUNTRY=$(kernel_cmdline lang)
+  echo $COUNTRY
+}
+
+get_keyboard() {
+  local KEYBOARD=$(kernel_cmdline keytable)
+  echo $KEYBOARD
+}
+
+get_layout() {
+  local LAYOUT=$(kernel_cmdline layout)
+  echo $LAYOUT
+}
+
+# sets the locale as well the keymap
+set_locale() {
+  # hack to be able to set the locale on bootup
+  local LOCALE=$(get_country)
+  local KEYMAP=$(get_keyboard)
+  local KBLAYOUT=$(get_layout)
+		
+  # set a default value, in case something goes wrong, or a language doesn't have
+  # good defult settings
+  [ -n "$LOCALE" ] || LOCALE="en_US"
+  [ -n "$KEYMAP" ] || KEYMAP="us"
+  [ -n "$KBLAYOUT" ] || KBLAYOUT="us"
+
+  # set kblayout and keymap
+  sed -i "s#Identifier \"evdev keyboard catchall\".*#&\n        Option \"XkbLayout\" \"${KBLAYOUT}\"#"       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
+  sed -i -e "s/^.*KEYMAP=.*/KEYMAP=${KEYMAP}/" ${DESTDIR}/etc/vconsole.conf
+
+  # set systemwide language
+  echo "LANG=${LOCALE}.UTF-8" > /etc/locale.conf
+  echo "LC_MESSAGES=${LOCALE}.UTF-8" >> /etc/locale.conf
+  echo "LANG=${LOCALE}.UTF-8" >> /etc/environment
+
+  # generate LOCALE
+  local TLANG=${LOCALE%.*} # remove everything after the ., including the dot from LOCALE
+  sed -i -r "s/#(.*${TLANG}.*UTF-8)/\1/g" /etc/locale.gen
+  # add also American English as safe default
+  sed -i -r "s/#(en_US.*UTF-8)/\1/g" /etc/locale.gen
+  locale-gen
+}
+
 set_alsa ()
 {
 #set_alsa

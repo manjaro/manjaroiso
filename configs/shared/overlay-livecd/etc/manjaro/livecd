@@ -2,12 +2,6 @@
 
 source /etc/manjaro/functions
 
-MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
-LOCALE="$(echo "$MISOVAR" | cut -d, -f1 | cut -d: -f2)"
-KEYMAP="$(echo "$MISOVAR" | cut -d, -f2 | cut -d: -f2)"
-TIMEZONE="$(echo "$MISOVAR" | cut -d, -f3 | cut -d: -f2)"
-VIDEO="$(echo "$MISOVAR" | cut -d, -f4 | cut -d: -f2)"
-COMPOSITE="$(echo "$MISOVAR" | cut -d, -f5 | cut -d: -f2)"
 CONSOLEFONT="$(kernel_cmdline vconsole.font)"
 CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
 USENONFREE="$(kernel_cmdline nonfree no)"
@@ -24,22 +18,8 @@ if [ -e "${swapdev}" ]; then
 	echo "${swapdev} swap swap defaults 0 0 #configured by manjaroiso" >>/etc/fstab
 fi
 
-# edit /etc/locale.conf & /etc/environment
-echo "LANG=${LOCALE}.UTF-8" > /etc/locale.conf
-echo "LC_COLLATE=C" >> /etc/locale.conf
-echo "LANG=${LOCALE}.UTF-8" >> /etc/environment
-
-# prepare_locale_gen
-for i in $(grep "^LANG" /etc/locale.conf | sed -e 's/.*=//g' -e's/\..*//g'); do
-	sed -i -e "s/^#$i/$i/g" /etc/locale.gen
-done
-if [ "$LOCALE" != "en_US.UTF-8" ]; then
-        sed -i -e "s/^#en_US/en_US/g" /etc/locale.gen
-fi
-locale-gen > /dev/null
-
-# set_timezone
-ln -sf "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime  
+# set_locale
+set_locale
 
 # configure alsa
 set_alsa
@@ -175,10 +155,6 @@ fi
 # fix_ping_installation
 setcap cap_net_raw=ep /usr/bin/ping &> /dev/null
 setcap cap_net_raw=ep /usr/bin/ping6 &> /dev/null
-
-# do_lang_settings
-# setup locales
-_do_locales
 
 # installing localization packages
 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
