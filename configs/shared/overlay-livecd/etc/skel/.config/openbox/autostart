@@ -21,14 +21,14 @@ compton &
 
 # Startup
 # Thunar is run in daemon-mode to enable auto-mounting of removable media
-pnmixer &
-xscreensaver -no-splash &
-xfce4-power-manager &
-thunar --daemon &
-synapse -s &
+(sleep 1s && pnmixer) &
+(sleep 1s && xscreensaver -no-splash) &
+(sleep 1s && xfce4-power-manager) &
+(sleep 1s && thunar --daemon) &
+(sleep 1s && synapse -s) &
 
 # Panel
-tint2 &
+(sleep 1s && tint2) &
 (sleep 1s && tint2 -c ~/.config/tint2/tint2-workspaces) &
 
 # Optional pre-configured application launcher (remove hash to enable)
