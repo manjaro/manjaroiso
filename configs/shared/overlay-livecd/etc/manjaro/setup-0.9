@@ -4060,18 +4060,8 @@ configure_system()
            sed -i -e "s/^HOOKS=.*/HOOKS=\"${HOOKS} plymouth\"/g" ${DESTDIR}/etc/mkinitcpio.conf
         fi
 
-        #prepare_locale_gen
-        for i in $(grep "^LANG" ${DESTDIR}/etc/locale.conf | sed -e 's/.*=//g' -e's/\..*//g'); do
-	    sed -i -e "s/^#$i/$i/g" ${DESTDIR}/etc/locale.gen
-        done
-
-	#enable en_US always
-        if [ "${LOCALE}.UTF-8" != "en_US.UTF-8" ]; then
-        	sed -i -e "s/^#en_US/en_US/g" ${DESTDIR}/etc/locale.gen
-        fi
-
  	# Determind which language we are using
-	_do_locales
+	set_locale
     fi
 
     S_PRECONFIG=1
@@ -4196,12 +4186,6 @@ export LANG=en_US.UTF-8
 export LC_MESSAGES=en_US.UTF-8
 
 # kernel_cmdline
-MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
-LOCALE="$(echo "$MISOVAR" | cut -d, -f1 | cut -d: -f2)"
-KEYMAP="$(echo "$MISOVAR" | cut -d, -f2 | cut -d: -f2)"
-TIMEZONE="$(echo "$MISOVAR" | cut -d, -f3 | cut -d: -f2)"
-VIDEO="$(echo "$MISOVAR" | cut -d, -f4 | cut -d: -f2)"
-COMPOSITE="$(echo "$MISOVAR" | cut -d, -f5 | cut -d: -f2)"
 CONSOLEFONT="$(kernel_cmdline vconsole.font)"
 CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
 USENONFREE="$(kernel_cmdline nonfree no)"

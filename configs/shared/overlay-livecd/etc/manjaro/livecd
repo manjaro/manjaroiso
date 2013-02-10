@@ -20,6 +20,7 @@ fi
 
 # set_locale
 set_locale
+locale-gen
 
 # configure alsa
 set_alsa

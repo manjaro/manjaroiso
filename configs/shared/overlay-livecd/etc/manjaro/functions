@@ -158,16 +158,15 @@ set_locale() {
   sed -i -e "s/^.*KEYMAP=.*/KEYMAP=${KEYMAP}/" ${DESTDIR}/etc/vconsole.conf
 
   # set systemwide language
-  echo "LANG=${LOCALE}.UTF-8" > /etc/locale.conf
-  echo "LC_MESSAGES=${LOCALE}.UTF-8" >> /etc/locale.conf
-  echo "LANG=${LOCALE}.UTF-8" >> /etc/environment
+  echo "LANG=${LOCALE}.UTF-8" > ${DESTDIR}/etc/locale.conf
+  echo "LC_MESSAGES=${LOCALE}.UTF-8" >> ${DESTDIR}/etc/locale.conf
+  echo "LANG=${LOCALE}.UTF-8" >> ${DESTDIR}/etc/environment
 
   # generate LOCALE
   local TLANG=${LOCALE%.*} # remove everything after the ., including the dot from LOCALE
-  sed -i -r "s/#(.*${TLANG}.*UTF-8)/\1/g" /etc/locale.gen
+  sed -i -r "s/#(.*${TLANG}.*UTF-8)/\1/g" ${DESTDIR}/etc/locale.gen
   # add also American English as safe default
-  sed -i -r "s/#(en_US.*UTF-8)/\1/g" /etc/locale.gen
-  locale-gen
+  sed -i -r "s/#(en_US.*UTF-8)/\1/g" ${DESTDIR}/etc/locale.gen
 }
 
 set_alsa ()
@@ -318,137 +317,6 @@ _configure_translation_pkgs()
                            PACMAN_LNG_INST_KDE="kde-l10n-uk"
                            ;;
     esac
-}
-
-_do_locales ()
-{
-    # see: http://bazaar.launchpad.net/~ubuntu-core-dev/console-setup/ubuntu/view/head:/debian/keyboard-configuration.config
-    #      https://wiki.archlinux.org/index.php/KEYMAP & http://cgit.freedesktop.org/systemd/systemd/tree/src/locale/kbd-model-map
-
-    XKEYMAP=""
-    XVARIANT=""
-    CKEYMAP=""
-    case "${KEYMAP}" in
-                     en_US)
-                           #Amerikan English
-                           XKEYMAP="us"
-                           CKEYMAP="us"
-                           ;;
-                     en_GB)
-                           #British English
-                           XKEYMAP="gb"
-                           CKEYMAP="uk"
-                           ;;
-                     be_BY)
-                           #Belarusian
-                           XKEYMAP="be"
-                           CKEYMAP="be-latin1"
-                           ;;
-                     pt_BR)
-                           #Brazilian Portuguese
-                           XKEYMAP="br"
-                           XVARIANT="abnt2"
-                           CKEYMAP="br-abnt2"
-                           ;;
-                     bg_BG)
-                           #Bulgarian
-                           XKEYMAP="bg,us"
-                           CKEYMAP="bg_pho-utf8"
-                           ;;
-                     da_DK)
-                           #Danish
-                           XKEYMAP="dk"
-                           CKEYMAP="dk-latin1"
-                           ;;
-                     fr_BE)
-                           #Belgian
-                           XKEYMAP="be"
-                           CKEYMAP="be-latin1"
-                           ;;
-                     fr_FR)
-                           #French
-                           XKEYMAP="fr"
-                           CKEYMAP="fr-latin1"
-                           ;;
-                     fr_CA)
-                           #Canadian
-                           XKEYMAP="ca"
-                           XVARIANT="fr"
-                           CKEYMAP="cf"
-                           ;;
-                     de_DE)
-                           #German
-                           XKEYMAP="de"
-                           XVARIANT="nodeadkeys"
-                           CKEYMAP="de"
-                           ;;
-                     is_IS)
-                           #Icelandic
-                           XKEYMAP="is"
-                           CKEYMAP="is-latin1"
-                           ;;
-                     it_IT)
-                           #Italian
-                           XKEYMAP="it"
-                           CKEYMAP="it"
-                           ;;
-                     nn_NO)
-                           #Nynorsk
-                           XKEYMAP="no"
-                           CKEYMAP="no-latin1"
-                           ;;
-                     pl_PL)
-                           #Polish
-                           XKEYMAP="pl"
-                           CKEYMAP="pl"
-                           ;;
-                     pt_PT)
-                           #Portuguese
-                           XKEYMAP="pt"
-                           CKEYMAP="pt-latin9"
-                           ;;
-                     ro_RO)
-                           #Romanian
-                           XKEYMAP="ro"
-                           CKEYMAP="ro_win"
-                           ;;
-                     ru_RU)
-                           #Russian
-                           XKEYMAP="ru,us"
-                           CKEYMAP="ru"
-                           ;;
-                     es_AR)
-                           #Argentinian
-                           XKEYMAP="latam"
-                           CKEYMAP="la-latin1"
-                           ;;
-                     es_ES)
-                           #Spanish
-                           XKEYMAP="es"
-                           CKEYMAP="es"
-                           ;;
-                     sv_SE)
-                           #Swedish
-                           XKEYMAP="se"
-                           CKEYMAP="sv-latin1"
-                           ;;
-                     tr_TR)
-                           #Turkish
-                           XKEYMAP="tr"
-                           CKEYMAP="tr_q-latin5"
-                           ;;
-                     uk_UA)
-                           #Ukrainian
-                           XKEYMAP="ua,us"
-                           CKEYMAP="ua"
-                           ;;
-    esac
-    if [ "${XVARIANT}" != "" ] ; then 
-       sed -i "s#Identifier \"evdev keyboard catchall\".*#&\n        Option \"XkbLayout\" \"${XKEYMAP}\"\n        Option \"XkbVariant\" \"${XVARIANT}\"#"       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
-    else
-       sed -i "s#Identifier \"evdev keyboard catchall\".*#&\n        Option \"XkbLayout\" \"${XKEYMAP}\"#"       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
-    fi
-    sed -i -e "s/^.*KEYMAP=.*/KEYMAP=${CKEYMAP}/" ${DESTDIR}/etc/vconsole.conf
 }
 
 hd_config()
