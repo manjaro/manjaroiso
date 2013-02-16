@@ -67,9 +67,9 @@ xscreensaver
 ## Applications
 blueman
 catfish
+chromium
 evince
 file-roller
-chromium
 galculator
 gedit
 gimp
@@ -80,6 +80,7 @@ mlocate
 pidgin
 sylpheed
 viewnior
+vlc
 xchat
 xfburn
 xnoise
@@ -94,8 +95,12 @@ pnmixer-xfce4
 pavucontrol
 
 ## Package management
-pamac
 kalu
+pamac
+
+## Games
+steam
+>x86_64 lib32-steam
 
 ## Fonts
 ttf-source-sans-pro
