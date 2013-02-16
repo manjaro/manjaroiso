@@ -67,9 +67,9 @@ xscreensaver
 ## Applications
 blueman
 catfish
-epdfview
+evince
 file-roller
-midori
+chromium
 galculator
 gedit
 gimp
@@ -89,11 +89,12 @@ yelp
 gstreamer0.10-bad-plugins
 gstreamer0.10-ffmpeg
 gstreamer0.10-ugly-plugins
+manjaro-pulse
 pnmixer-xfce4
-xfce4-mixer
+pavucontrol
 
 ## Package management
-pacman-gui
+pamac
 kalu
 
 ## Fonts
@@ -106,4 +107,5 @@ icedtea-web-java7
 manjaro-printer
 
 ## Office
-libreoffice-installer
+abiword
+gnumeric

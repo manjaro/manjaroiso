@@ -105,7 +105,7 @@ firefox
 thunderbird
 
 ## Package management
-pacman-gui
+pamac
 kalu
 
 ## Packages for Sound and Audio

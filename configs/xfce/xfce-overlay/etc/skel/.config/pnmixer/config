@@ -7,7 +7,7 @@ MiddleClickAction=0
 CustomCommand=
 AlsaCard=(default)
 IconTheme=Faenza-Green
-VolumeControlCommand=xfce4-mixer
+VolumeControlCommand=pavucontrol
 
 [(default)]
 Channel=Master
