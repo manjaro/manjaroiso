@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<mateconf>
+	<entry name="minimized" mtime="1360796948" type="bool" value="false"/>
+	<entry name="sticky" mtime="1360796948" type="bool" value="false"/>
+	<entry name="icon" mtime="1360796948" type="string">
+		<stringvalue>preferences-system</stringvalue>
+	</entry>
+	<entry name="hide_separator" mtime="1360796948" type="bool" value="false"/>
+	<entry name="show_quit" mtime="1360796948" type="bool" value="true"/>
+	<entry name="show_logout" mtime="1360796948" type="bool" value="true"/>
+	<entry name="show_lock_screen" mtime="1360796948" type="bool" value="true"/>
+	<entry name="show_terminal" mtime="1360796948" type="bool" value="true"/>
+	<entry name="show_control_center" mtime="1360796948" type="bool" value="true"/>
+	<entry name="show_package_manager" mtime="1360796948" type="bool" value="true"/>
+	<entry name="show_root_terminal" mtime="1360796948" type="bool" value="true"/>
+	<entry name="icon_size" mtime="1360796948" type="int" value="16"/>
+	<entry name="height" mtime="1360796948" type="int" value="180"/>
+	<entry name="allowScrollbar" mtime="1360796948" type="bool" value="false"/>
+	<entry name="width" mtime="1360796948" type="int" value="200"/>
+</mateconf>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<mateconf>
+	<entry name="color" mtime="1360796528" schema="/schemas/apps/panel/toplevels/background/color"/>
+	<entry name="type" mtime="1360796528" schema="/schemas/apps/panel/toplevels/background/type"/>
+	<entry name="rotate" mtime="1360796528" schema="/schemas/apps/panel/toplevels/background/rotate"/>
+	<entry name="stretch" mtime="1360796528" schema="/schemas/apps/panel/toplevels/background/stretch"/>
+	<entry name="opacity" mtime="1360796528" schema="/schemas/apps/panel/toplevels/background/opacity"/>
+	<entry name="fit" mtime="1360796528" schema="/schemas/apps/panel/toplevels/background/fit"/>
+	<entry name="image" mtime="1360796528" schema="/schemas/apps/panel/toplevels/background/image"/>
+</mateconf>

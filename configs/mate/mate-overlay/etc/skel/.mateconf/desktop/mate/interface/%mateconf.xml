@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<mateconf>
+	<entry name="icon_theme" mtime="1360843873" type="string">
+		<stringvalue>Faenza-Green</stringvalue>
+	</entry>
+	<entry name="gtk_theme" mtime="1360843873" type="string">
+		<stringvalue>Greenbird</stringvalue>
+	</entry>
+</mateconf>

@@ -1,6 +1,7 @@
 ### Manjaro Packages
 
 ## MATE Main Packages
+consolekit-git
 faenza-green-icon-theme
 ffmpegthumbnailer-caja
 gksu
@@ -19,10 +20,12 @@ mate-image-viewer
 mate-media
 mate-menu-editor
 mate-power-manager
+mate-screensaver
 mate-system-monitor
 mate-terminal
 mate-text-editor
 mate-utils
+mintmenu
 network-manager-applet
 python-caja
 python-corba
@@ -34,31 +37,32 @@ xcursor-vanilla-dmz-aa
 ## Applications
 blueman
 brasero
-epdfview
 midori
-gimp
 gparted
-#manjaro-installer
 pidgin
 sylpheed
+transmission-gtk
+vlc
 xchat
 xnoise
-yelp
 
-## Packages for Sound and Audio
-gstreamer0.10-bad-plugins
-gstreamer0.10-ffmpeg
-gstreamer0.10-ugly-plugins
+## Multimedia Support
+gstreamer0.10-plugins
 
 ## Package management
-pacman-gui
-kalu
+pamac
 
 ## Java
 icedtea-web-java7
 
-## Printing
-manjaro-printer
+## Wallpapers
 
 ## Office
 libreoffice-installer
+
+## AUR Access
+base-devel
+yaourt
+
+## Printing
+#manjaro-printer

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<mateconf>
+	<entry name="virtual_root" mtime="1360853897" type="string">
+		<stringvalue>file:///home/daddy/.mateconf/apps/mate-settings/pluma</stringvalue>
+	</entry>
+	<entry name="root" mtime="1360853897" type="string">
+		<stringvalue>file:///</stringvalue>
+	</entry>
+	<entry name="tree_view" mtime="1360853897" type="bool" value="true"/>
+</mateconf>

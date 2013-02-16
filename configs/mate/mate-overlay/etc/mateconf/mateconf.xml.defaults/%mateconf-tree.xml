@@ -89,6 +89,24 @@
 		</dir>
 	</dir>
 	<dir name="apps">
+		<dir name="mate-screensaver">
+			<entry name="status_message_enabled" mtime="1360796748" schema="/schemas/apps/mate-screensaver/status_message_enabled"/>
+			<entry name="lock_dialog_theme" mtime="1360796748" schema="/schemas/apps/mate-screensaver/lock_dialog_theme"/>
+			<entry name="user_switch_enabled" mtime="1360796748" schema="/schemas/apps/mate-screensaver/user_switch_enabled"/>
+			<entry name="logout_command" mtime="1360796748" schema="/schemas/apps/mate-screensaver/logout_command"/>
+			<entry name="logout_delay" mtime="1360796748" schema="/schemas/apps/mate-screensaver/logout_delay"/>
+			<entry name="logout_enabled" mtime="1360796748" schema="/schemas/apps/mate-screensaver/logout_enabled"/>
+			<entry name="embedded_keyboard_command" mtime="1360796748" schema="/schemas/apps/mate-screensaver/embedded_keyboard_command"/>
+			<entry name="embedded_keyboard_enabled" mtime="1360796748" schema="/schemas/apps/mate-screensaver/embedded_keyboard_enabled"/>
+			<entry name="lock_delay" mtime="1360796748" schema="/schemas/apps/mate-screensaver/lock_delay"/>
+			<entry name="cycle_delay" mtime="1360796748" schema="/schemas/apps/mate-screensaver/cycle_delay"/>
+			<entry name="power_management_delay" mtime="1360796748" schema="/schemas/apps/mate-screensaver/power_management_delay"/>
+			<entry name="idle_delay" mtime="1360796748" schema="/schemas/apps/mate-screensaver/idle_delay"/>
+			<entry name="themes" mtime="1360796748" schema="/schemas/apps/mate-screensaver/themes"/>
+			<entry name="mode" mtime="1360796748" schema="/schemas/apps/mate-screensaver/mode"/>
+			<entry name="lock_enabled" mtime="1360796748" schema="/schemas/apps/mate-screensaver/lock_enabled"/>
+			<entry name="idle_activation_enabled" mtime="1360796748" schema="/schemas/apps/mate-screensaver/idle_activation_enabled"/>
+		</dir>
 		<dir name="pluma">
 			<dir name="preferences">
 				<dir name="syntax_highlighting">
@@ -1820,10 +1838,176 @@
 			</dir>
 		</dir>
 		<dir name="apps">
+			<dir name="mate-screensaver">
+				<entry name="status_message_enabled" mtime="1360796748" type="schema" stype="bool" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Allow the session status message to be displayed">
+						<default type="bool" value="true"/>
+						<longdesc>
+        Allow the session status message to be displayed when the screen is locked.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="lock_dialog_theme" mtime="1360796748" type="schema" stype="string" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Theme for lock dialogue">
+						<default type="string">
+							<stringvalue>default</stringvalue>
+						</default>
+						<longdesc>
+          Theme to use for the lock dialog.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="user_switch_enabled" mtime="1360796748" type="schema" stype="bool" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Allow user switching">
+						<default type="bool" value="true"/>
+						<longdesc>
+          Set this to TRUE to offer an option in the unlock dialog to
+          switch to a different user account.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="logout_command" mtime="1360796748" type="schema" stype="string" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Logout command">
+						<default type="string">
+							<stringvalue></stringvalue>
+						</default>
+						<longdesc>
+          The command to invoke when the logout button is clicked.  This
+          command should simply log the user out without any interaction.
+          This key has effect only if the &quot;logout_enable&quot; key is set to TRUE.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="logout_delay" mtime="1360796748" type="schema" stype="int" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Time before logout option">
+						<default type="int" value="120"/>
+						<longdesc>
+          The number of minutes after the screensaver activation
+          before a logout option will appear in unlock dialog. This
+          key has effect only if the &quot;logout_enable&quot; key is set to TRUE.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="logout_enabled" mtime="1360796748" type="schema" stype="bool" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Allow logout">
+						<default type="bool" value="false"/>
+						<longdesc>
+          Set this to TRUE to offer an option in unlock dialog to
+          logging out after a delay.  The Delay is specified in the
+          &quot;logout_delay&quot; key.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="embedded_keyboard_command" mtime="1360796748" type="schema" stype="string" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Embedded keyboard command">
+						<default type="string">
+							<stringvalue></stringvalue>
+						</default>
+						<longdesc>
+          The command that will be run, if the &quot;embedded_keyboard_enabled&quot; key
+          is set to TRUE, to embed a keyboard widget into the window.
+          This command should implement an XEMBED plug interface and
+          output a window XID on the standard output.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="embedded_keyboard_enabled" mtime="1360796748" type="schema" stype="bool" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Allow embedding a keyboard into the window">
+						<default type="bool" value="false"/>
+						<longdesc>
+          Set this to TRUE to allow embedding a keyboard into the
+          window when trying to unlock.  The &quot;keyboard_command&quot; key
+          must be set with the appropriate command.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="lock_delay" mtime="1360796748" type="schema" stype="int" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Time before locking">
+						<default type="int" value="0"/>
+						<longdesc>
+          The number of minutes after screensaver activation
+          before locking the screen.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="cycle_delay" mtime="1360796748" type="schema" stype="int" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Time before theme change">
+						<default type="int" value="10"/>
+						<longdesc>
+          The number of minutes to run before changing the
+          screensaver theme.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="power_management_delay" mtime="1360796748" type="schema" stype="int" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Time before power management baseline">
+						<default type="int" value="30"/>
+						<longdesc>
+          The number of seconds of inactivity before signalling
+          to power-management.  This key is set and maintained
+          by the session power-management agent.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="idle_delay" mtime="1360796748" type="schema" stype="int" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Time before session is considered idle">
+						<default type="int" value="10"/>
+						<longdesc>
+          The number of minutes of inactivity before the
+          session is considered idle.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="themes" mtime="1360796748" type="schema" stype="list" owner="mate-screensaver" gettext_domain="mate-screensaver" list_type="string">
+					<local_schema locale="C" short_desc="Screensaver themes">
+						<default type="list" ltype="string">
+						</default>
+						<longdesc>
+	  This key specifies the list of themes to be used by the
+          screensaver. It&apos;s ignored when &quot;mode&quot; key is 
+          &quot;blank-only&quot;, should provide the theme name when &quot;mode&quot; is
+          &quot;single&quot;, and should provide a list of themes when &quot;mode&quot; is
+          &quot;random&quot;.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="mode" mtime="1360796748" type="schema" stype="string" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Screensaver theme selection mode">
+						<default type="string">
+							<stringvalue>blank-only</stringvalue>
+						</default>
+						<longdesc>
+	  The selection mode used by screensaver.  May be &quot;blank-only&quot;
+          to enable the screensaver without using any theme on activation,
+          &quot;single&quot; to enable screensaver using only one theme on activation
+          (specified in &quot;themes&quot; key), and &quot;random&quot; to enable the
+          screensaver using a random theme on activation.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="lock_enabled" mtime="1360796748" type="schema" stype="bool" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Lock on activation">
+						<default type="bool" value="false"/>
+						<longdesc>
+          Set this to TRUE to lock the screen when the screensaver
+          goes active.
+        </longdesc>
+					</local_schema>
+				</entry>
+				<entry name="idle_activation_enabled" mtime="1360796748" type="schema" stype="bool" owner="mate-screensaver" gettext_domain="mate-screensaver">
+					<local_schema locale="C" short_desc="Activate when idle">
+						<default type="bool" value="true"/>
+						<longdesc>
+          Set this to TRUE to activate the screensaver
+          when the session is idle.
+        </longdesc>
+					</local_schema>
+				</entry>
+			</dir>
 			<dir name="pluma">
 				<dir name="preferences">
 					<dir name="syntax_highlighting">
-						<entry name="enable" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+						<entry name="enable" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 							<local_schema locale="C" short_desc="Enable Syntax Highlighting">
 								<default type="bool" value="true"/>
 								<longdesc>Whether pluma should enable syntax highlighting.</longdesc>
@@ -1831,7 +2015,7 @@
 						</entry>
 					</dir>
 					<dir name="encodings">
-						<entry name="shown_in_menu" mtime="1356255760" type="schema" stype="list" owner="pluma" gettext_domain="mate-text-editor" list_type="string">
+						<entry name="shown_in_menu" mtime="1356255760" type="schema" stype="list" owner="pluma" list_type="string">
 							<local_schema locale="C" short_desc="Encodings shown in menu">
 								<default type="list" ltype="string">
 									<li type="string">
@@ -1842,7 +2026,7 @@
 	Only recognized encodings are used.</longdesc>
 							</local_schema>
 						</entry>
-						<entry name="auto_detected" mtime="1356255760" type="schema" stype="list" owner="pluma" gettext_domain="mate-text-editor" list_type="string">
+						<entry name="auto_detected" mtime="1356255760" type="schema" stype="list" owner="pluma" list_type="string">
 							<local_schema locale="C" short_desc="Automatically Detected Encodings">
 								<default type="list" ltype="string">
 									<li type="string">
@@ -1865,7 +2049,7 @@
 					</dir>
 					<dir name="print">
 						<dir name="fonts">
-							<entry name="print_font_numbers_pango" mtime="1356255760" type="schema" stype="string" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="print_font_numbers_pango" mtime="1356255760" type="schema" stype="string" owner="pluma">
 								<local_schema locale="C" short_desc="Line Number Font for Printing">
 									<default type="string">
 										<stringvalue>Sans 8</stringvalue>
@@ -1875,7 +2059,7 @@
 	Numbers&quot; option is non-zero.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="print_font_header_pango" mtime="1356255760" type="schema" stype="string" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="print_font_header_pango" mtime="1356255760" type="schema" stype="string" owner="pluma">
 								<local_schema locale="C" short_desc="Header Font for Printing">
 									<default type="string">
 										<stringvalue>Sans 11</stringvalue>
@@ -1885,7 +2069,7 @@
 	option is turned on.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="print_font_body_pango" mtime="1356255760" type="schema" stype="string" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="print_font_body_pango" mtime="1356255760" type="schema" stype="string" owner="pluma">
 								<local_schema locale="C" short_desc="Body Font for Printing">
 									<default type="string">
 										<stringvalue>Monospace 9</stringvalue>
@@ -1896,7 +2080,7 @@
 							</entry>
 						</dir>
 						<dir name="page">
-							<entry name="print_line_numbers" mtime="1356255760" type="schema" stype="int" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="print_line_numbers" mtime="1356255760" type="schema" stype="int" owner="pluma">
 								<local_schema locale="C" short_desc="Print Line Numbers">
 									<default type="int" value="0"/>
 									<longdesc>If this value is 0, then no line numbers will be
@@ -1904,7 +2088,7 @@
 	print line numbers every such number of lines.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="print_wrap_mode" mtime="1356255760" type="schema" stype="string" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="print_wrap_mode" mtime="1356255760" type="schema" stype="string" owner="pluma">
 								<local_schema locale="C" short_desc="Printing Line Wrapping Mode">
 									<default type="string">
 										<stringvalue>GTK_WRAP_WORD</stringvalue>
@@ -1917,14 +2101,14 @@
 	here.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="print_header" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="print_header" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Print Header">
 									<default type="bool" value="true"/>
 									<longdesc>Whether pluma should include a document header when
 	printing documents.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="print_syntax_highlighting" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="print_syntax_highlighting" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Print Syntax Highlighting">
 									<default type="bool" value="true"/>
 									<longdesc>Whether pluma should print syntax highlighting when
@@ -1935,7 +2119,7 @@
 					</dir>
 					<dir name="ui">
 						<dir name="recents">
-							<entry name="max_recents" mtime="1356255760" type="schema" stype="int" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="max_recents" mtime="1356255760" type="schema" stype="int" owner="pluma">
 								<local_schema locale="C" short_desc="Maximum Recent Files">
 									<default type="int" value="5"/>
 									<longdesc>Specifies the maximum number of recently opened files
@@ -1944,7 +2128,7 @@
 							</entry>
 						</dir>
 						<dir name="bottom_panel">
-							<entry name="bottom_panel_visible" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="bottom_panel_visible" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Bottom Panel is Visible">
 									<default type="bool" value="false"/>
 									<longdesc>Whether the bottom panel at the bottom of editing windows
@@ -1953,7 +2137,7 @@
 							</entry>
 						</dir>
 						<dir name="side_pane">
-							<entry name="side_pane_visible" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="side_pane_visible" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Side Pane is Visible">
 									<default type="bool" value="false"/>
 									<longdesc>Whether the side pane at the left of editing windows
@@ -1962,7 +2146,7 @@
 							</entry>
 						</dir>
 						<dir name="statusbar">
-							<entry name="statusbar_visible" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="statusbar_visible" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Status Bar is Visible">
 									<default type="bool" value="true"/>
 									<longdesc>Whether the status bar at the bottom of editing windows
@@ -1971,7 +2155,7 @@
 							</entry>
 						</dir>
 						<dir name="toolbar">
-							<entry name="toolbar_buttons_style" mtime="1356255760" type="schema" stype="string" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="toolbar_buttons_style" mtime="1356255760" type="schema" stype="string" owner="pluma">
 								<local_schema locale="C" short_desc="Toolbar Buttons Style">
 									<default type="string">
 										<stringvalue>PLUMA_TOOLBAR_SYSTEM</stringvalue>
@@ -1985,7 +2169,7 @@
 	appear exactly as mentioned here.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="toolbar_visible" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="toolbar_visible" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Toolbar is Visible">
 									<default type="bool" value="true"/>
 									<longdesc>Whether the toolbar should be visible in editing windows.</longdesc>
@@ -1995,7 +2179,7 @@
 					</dir>
 					<dir name="editor">
 						<dir name="search_highlighting">
-							<entry name="enable" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="enable" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Enable Search Highlighting">
 									<default type="bool" value="true"/>
 									<longdesc>Whether pluma should highlight all the occurrences of the searched text.</longdesc>
@@ -2003,7 +2187,7 @@
 							</entry>
 						</dir>
 						<dir name="cursor_position">
-							<entry name="restore_cursor_position" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="restore_cursor_position" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Restore Previous Cursor Position">
 									<default type="bool" value="true"/>
 									<longdesc>Whether pluma should restore the previous cursor position when a file is loaded.</longdesc>
@@ -2011,7 +2195,7 @@
 							</entry>
 						</dir>
 						<dir name="smart_home_end">
-							<entry name="smart_home_end" mtime="1356255760" type="schema" stype="string" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="smart_home_end" mtime="1356255760" type="schema" stype="string" owner="pluma">
 								<local_schema locale="C" short_desc="Smart Home End">
 									<default type="string">
 										<stringvalue>after</stringvalue>
@@ -2028,13 +2212,13 @@
 							</entry>
 						</dir>
 						<dir name="right_margin">
-							<entry name="right_margin_position" mtime="1356255760" type="schema" stype="int" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="right_margin_position" mtime="1356255760" type="schema" stype="int" owner="pluma">
 								<local_schema locale="C" short_desc="Right Margin Position">
 									<default type="int" value="80"/>
 									<longdesc>Specifies the position of the right margin.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="display_right_margin" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="display_right_margin" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Display Right Margin">
 									<default type="bool" value="false"/>
 									<longdesc>Whether pluma should display the right margin in the editing
@@ -2043,7 +2227,7 @@
 							</entry>
 						</dir>
 						<dir name="bracket_matching">
-							<entry name="bracket_matching" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="bracket_matching" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Highlight Matching Bracket">
 									<default type="bool" value="false"/>
 									<longdesc>Whether pluma should highlight the bracket matching the selected one.</longdesc>
@@ -2051,7 +2235,7 @@
 							</entry>
 						</dir>
 						<dir name="current_line">
-							<entry name="highlight_current_line" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="highlight_current_line" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Highlight Current Line">
 									<default type="bool" value="false"/>
 									<longdesc>Whether pluma should highlight the current line.</longdesc>
@@ -2059,7 +2243,7 @@
 							</entry>
 						</dir>
 						<dir name="line_numbers">
-							<entry name="display_line_numbers" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="display_line_numbers" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Display Line Numbers">
 									<default type="bool" value="false"/>
 									<longdesc>Whether pluma should display line numbers in the editing
@@ -2068,7 +2252,7 @@
 							</entry>
 						</dir>
 						<dir name="auto_indent">
-							<entry name="auto_indent" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="auto_indent" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Automatic indent">
 									<default type="bool" value="false"/>
 									<longdesc>Whether pluma should enable automatic indentation.</longdesc>
@@ -2076,13 +2260,13 @@
 							</entry>
 						</dir>
 						<dir name="tabs">
-							<entry name="insert_spaces" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="insert_spaces" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Insert spaces">
 									<default type="bool" value="false"/>
 									<longdesc>Whether pluma should insert spaces instead of tabs.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="tabs_size" mtime="1356255760" type="schema" stype="int" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="tabs_size" mtime="1356255760" type="schema" stype="int" owner="pluma">
 								<local_schema locale="C" short_desc="Tab Size">
 									<default type="int" value="4"/>
 									<longdesc>Specifies the number of spaces that should be displayed
@@ -2091,7 +2275,7 @@
 							</entry>
 						</dir>
 						<dir name="wrap_mode">
-							<entry name="wrap_mode" mtime="1356255760" type="schema" stype="string" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="wrap_mode" mtime="1356255760" type="schema" stype="string" owner="pluma">
 								<local_schema locale="C" short_desc="Line Wrapping Mode">
 									<default type="string">
 										<stringvalue>GTK_WRAP_WORD</stringvalue>
@@ -2106,14 +2290,14 @@
 							</entry>
 						</dir>
 						<dir name="undo">
-							<entry name="max_undo_actions" mtime="1356255760" type="schema" stype="int" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="max_undo_actions" mtime="1356255760" type="schema" stype="int" owner="pluma">
 								<local_schema locale="C" short_desc="Maximum Number of Undo Actions">
 									<default type="int" value="2000"/>
 									<longdesc>Maximum number of actions that pluma will be able to
 	undo or redo. Use &quot;-1&quot; for unlimited number of actions.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="undo_actions_limit" mtime="1356255760" type="schema" stype="int" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="undo_actions_limit" mtime="1356255760" type="schema" stype="int" owner="pluma">
 								<local_schema locale="C" short_desc="Undo Actions Limit (DEPRECATED)">
 									<default type="int" value="25"/>
 									<longdesc>Maximum number of actions that pluma will be able to
@@ -2123,7 +2307,7 @@
 							</entry>
 						</dir>
 						<dir name="save">
-							<entry name="writable_vfs_schemes" mtime="1356255760" type="schema" stype="list" owner="pluma" gettext_domain="mate-text-editor" list_type="string">
+							<entry name="writable_vfs_schemes" mtime="1356255760" type="schema" stype="list" owner="pluma" list_type="string">
 								<local_schema locale="C" short_desc="Writable VFS schemes">
 									<default type="list" ltype="string">
 										<li type="string">
@@ -2149,7 +2333,7 @@
 	is writable by default.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="auto_save_interval" mtime="1356255760" type="schema" stype="int" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="auto_save_interval" mtime="1356255760" type="schema" stype="int" owner="pluma">
 								<local_schema locale="C" short_desc="Autosave Interval">
 									<default type="int" value="10"/>
 									<longdesc>Number of minutes after which pluma will automatically
@@ -2157,7 +2341,7 @@
 	option is turned on.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="auto_save" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="auto_save" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Autosave">
 									<default type="bool" value="false"/>
 									<longdesc>Whether pluma should automatically save modified files
@@ -2165,7 +2349,7 @@
 	&quot;Autosave Interval&quot; option.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="create_backup_copy" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="create_backup_copy" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Create Backup Copies">
 									<default type="bool" value="false"/>
 									<longdesc>Whether pluma should create backup copies for the files
@@ -2175,7 +2359,7 @@
 							</entry>
 						</dir>
 						<dir name="colors">
-							<entry name="scheme" mtime="1356255760" type="schema" stype="string" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="scheme" mtime="1356255760" type="schema" stype="string" owner="pluma">
 								<local_schema locale="C" short_desc="Style Scheme">
 									<default type="string">
 										<stringvalue>tango</stringvalue>
@@ -2186,7 +2370,7 @@
 							</entry>
 						</dir>
 						<dir name="font">
-							<entry name="editor_font" mtime="1356255760" type="schema" stype="string" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="editor_font" mtime="1356255760" type="schema" stype="string" owner="pluma">
 								<local_schema locale="C" short_desc="Editor Font">
 									<default type="string">
 										<stringvalue>Monospace 12</stringvalue>
@@ -2196,7 +2380,7 @@
 	turned off.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="use_default_font" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="use_default_font" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Use Default Font">
 									<default type="bool" value="true"/>
 									<longdesc>Whether to use the system&apos;s default fixed width font for editing
@@ -2209,7 +2393,7 @@
 					</dir>
 				</dir>
 				<dir name="plugins">
-					<entry name="active-plugins" mtime="1356255760" type="schema" stype="list" owner="pluma" gettext_domain="mate-text-editor" list_type="string">
+					<entry name="active-plugins" mtime="1356255760" type="schema" stype="list" owner="pluma" list_type="string">
 						<local_schema locale="C" short_desc="Active plugins">
 							<default type="list" ltype="string">
 								<li type="string">
@@ -2233,7 +2417,7 @@
 						</local_schema>
 					</entry>
 					<dir name="filebrowser">
-						<entry name="filter_pattern" mtime="1356255760" type="schema" stype="string" owner="pluma" gettext_domain="mate-text-editor">
+						<entry name="filter_pattern" mtime="1356255760" type="schema" stype="string" owner="pluma">
 							<local_schema locale="C" short_desc="File Browser Filter Pattern">
 								<default type="string">
 									<stringvalue></stringvalue>
@@ -2242,7 +2426,7 @@
 	works on top of the filter_mode.</longdesc>
 							</local_schema>
 						</entry>
-						<entry name="filter_mode" mtime="1356255760" type="schema" stype="string" owner="pluma" gettext_domain="mate-text-editor">
+						<entry name="filter_mode" mtime="1356255760" type="schema" stype="string" owner="pluma">
 							<local_schema locale="C" short_desc="File Browser Filter Mode">
 								<default type="string">
 									<stringvalue>hidden_and_binary</stringvalue>
@@ -2253,7 +2437,7 @@
 	hidden_and_binary (filter both hidden and binary files).</longdesc>
 							</local_schema>
 						</entry>
-						<entry name="open_at_first_doc" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+						<entry name="open_at_first_doc" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 							<local_schema locale="C" short_desc="Set Location to First Document">
 								<default type="bool" value="true"/>
 								<longdesc>If TRUE the file browser plugin will view the directory of
@@ -2263,13 +2447,13 @@
 							</local_schema>
 						</entry>
 						<dir name="on_load">
-							<entry name="enable_remote" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="enable_remote" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Enable Restore of Remote Locations">
 									<default type="bool" value="false"/>
 									<longdesc>Sets whether to enable restoring of remote locations.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="virtual_root" mtime="1356255760" type="schema" stype="string" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="virtual_root" mtime="1356255760" type="schema" stype="string" owner="pluma">
 								<local_schema locale="C" short_desc="File Browser Virtual Root Directory">
 									<default type="string">
 										<stringvalue></stringvalue>
@@ -2279,7 +2463,7 @@
 	must always be below the actual root.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="root" mtime="1356255760" type="schema" stype="string" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="root" mtime="1356255760" type="schema" stype="string" owner="pluma">
 								<local_schema locale="C" short_desc="File Browser Root Directory">
 									<default type="string">
 										<stringvalue></stringvalue>
@@ -2288,7 +2472,7 @@
 	browser plugin and onload/tree_view is TRUE.</longdesc>
 								</local_schema>
 							</entry>
-							<entry name="tree_view" mtime="1356255760" type="schema" stype="bool" owner="pluma" gettext_domain="mate-text-editor">
+							<entry name="tree_view" mtime="1356255760" type="schema" stype="bool" owner="pluma">
 								<local_schema locale="C" short_desc="Open With Tree View">
 									<default type="bool" value="true"/>
 									<longdesc>Open the tree view when the file browser plugin gets loaded instead of the bookmarks view</longdesc>

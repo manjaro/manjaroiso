@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<mateconf>
+	<entry name="caja-icon-view-layout-timestamp" mtime="1360865409" type="string">
+		<stringvalue>1360865409</stringvalue>
+	</entry>
+	<entry name="caja-icon-view-keep-aligned" mtime="1360865408" type="string">
+		<stringvalue>true</stringvalue>
+	</entry>
+</mateconf>

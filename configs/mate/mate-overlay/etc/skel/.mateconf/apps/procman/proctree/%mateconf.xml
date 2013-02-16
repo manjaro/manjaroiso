@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<mateconf>
+	<entry name="columns_order" mtime="1360843559" type="list" ltype="int">
+		<li type="int" value="0"/>
+		<li type="int" value="1"/>
+		<li type="int" value="2"/>
+		<li type="int" value="3"/>
+		<li type="int" value="4"/>
+		<li type="int" value="5"/>
+		<li type="int" value="6"/>
+		<li type="int" value="7"/>
+		<li type="int" value="8"/>
+		<li type="int" value="9"/>
+		<li type="int" value="10"/>
+		<li type="int" value="11"/>
+		<li type="int" value="12"/>
+		<li type="int" value="13"/>
+		<li type="int" value="14"/>
+		<li type="int" value="15"/>
+		<li type="int" value="16"/>
+	</entry>
+	<entry name="col_16_visible" mtime="1360843559" type="bool" value="true"/>
+	<entry name="col_16_width" mtime="1360843559" type="int" value="126"/>
+	<entry name="col_15_visible" mtime="1360843559" type="bool" value="true"/>
+	<entry name="col_15_width" mtime="1360843559" type="int" value="77"/>
+	<entry name="col_14_visible" mtime="1360843559" type="bool" value="false"/>
+	<entry name="col_14_width" mtime="1360843559" type="int" value="0"/>
+	<entry name="col_13_visible" mtime="1360843559" type="bool" value="false"/>
+	<entry name="col_13_width" mtime="1360843559" type="int" value="0"/>
+	<entry name="col_12_visible" mtime="1360843559" type="bool" value="true"/>
+	<entry name="col_12_width" mtime="1360843559" type="int" value="38"/>
+	<entry name="col_11_visible" mtime="1360843559" type="bool" value="true"/>
+	<entry name="col_11_width" mtime="1360843559" type="int" value="53"/>
+	<entry name="col_10_visible" mtime="1360843559" type="bool" value="false"/>
+	<entry name="col_10_width" mtime="1360843559" type="int" value="0"/>
+	<entry name="col_9_visible" mtime="1360843559" type="bool" value="false"/>
+	<entry name="col_9_width" mtime="1360843559" type="int" value="0"/>
+	<entry name="col_8_visible" mtime="1360843559" type="bool" value="true"/>
+	<entry name="col_8_width" mtime="1360843559" type="int" value="68"/>
+	<entry name="col_7_visible" mtime="1360843559" type="bool" value="false"/>
+	<entry name="col_7_width" mtime="1360843559" type="int" value="0"/>
+	<entry name="col_6_visible" mtime="1360843559" type="bool" value="false"/>
+	<entry name="col_6_width" mtime="1360843559" type="int" value="0"/>
+	<entry name="col_5_visible" mtime="1360843559" type="bool" value="false"/>
+	<entry name="col_5_width" mtime="1360843559" type="int" value="0"/>
+	<entry name="col_4_visible" mtime="1360843559" type="bool" value="false"/>
+	<entry name="col_4_width" mtime="1360843559" type="int" value="0"/>
+	<entry name="col_3_visible" mtime="1360843559" type="bool" value="false"/>
+	<entry name="col_3_width" mtime="1360843559" type="int" value="0"/>
+	<entry name="col_2_visible" mtime="1360843559" type="bool" value="true"/>
+	<entry name="col_2_width" mtime="1360843559" type="int" value="67"/>
+	<entry name="col_1_visible" mtime="1360843559" type="bool" value="false"/>
+	<entry name="col_1_width" mtime="1360843559" type="int" value="0"/>
+	<entry name="col_0_visible" mtime="1360843559" type="bool" value="true"/>
+	<entry name="col_0_width" mtime="1360843559" type="int" value="198"/>
+	<entry name="sort_order" mtime="1360843559" type="int" value="0"/>
+	<entry name="sort_col" mtime="1360843559" type="int" value="0"/>
+</mateconf>
