@@ -1,7 +1,7 @@
 ### Manjaro Packages
 
 ## LXDE Main Packages
-faenza-icon-theme
+faenza-green-icon-theme
 gamin
 gksu
 gnome-keyring
@@ -15,7 +15,6 @@ network-manager-applet
 polkit-gnome
 polkit-qt
 python2-xdg
-shiki-nouveau-fall-colors
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xscreensaver
