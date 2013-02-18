@@ -35,6 +35,7 @@ obconf
 pidgin
 smplayer
 simple-scan
+sylpheed
 
 ## Package management
 pamac
@@ -57,4 +58,4 @@ abiword
 gnumeric
 
 ## Printing
-#manjaro-printer
+manjaro-printer
