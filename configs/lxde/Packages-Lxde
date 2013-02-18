@@ -6,74 +6,54 @@ gamin
 gksu
 gnome-keyring
 gvfs
+gvfs-afc
+gvfs-gphoto2
+gvfs-smb
 libgnome
 lxde
 network-manager-applet
 polkit-gnome
+polkit-qt
+python2-xdg
 shiki-nouveau-fall-colors
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xscreensaver
 
 ## Applications
-#audacity
-#avidemux-gtk
 catfish
-epdfview
+evince
 file-roller
-#filezilla
-firefox
+midori
 fwbuilder
 galculator
 gedit
-gimp
 gparted
-#manjaro-installer
-#manjaro-welcome
 lxmed
 mlocate
-#openshot
 pidgin
-#playonlinux
-q4wine
 smplayer
 simple-scan
-thunderbird
-#transmission-gtk
-xchat
-xfburn
 
 ## Package management
-pacman-gui
-kalu
+pamac
 
 ## Fonts
 ttf-source-sans-pro
 
 ## Extra Applications
-bluez
 blueman
 icedtea-web-java7
 notification-daemon
-openjdk7
-#soundconverter
 vinagre
 
 ## Packages for Sound and Audio
-manjaro-pulse
-pavucontrol
+xfce4-mixer
 pnmixer
 
 ## Office
-libreoffice-en-US
-#libreoffice-base
-libreoffice-calc
-#libreoffice-draw
-libreoffice-gnome
-#libreoffice-impress
-#libreoffice-math
-#libreoffice-postgresql-connector
-libreoffice-writer
+abiword
+gnumeric
 
 ## Printing
-manjaro-printer
+#manjaro-printer
