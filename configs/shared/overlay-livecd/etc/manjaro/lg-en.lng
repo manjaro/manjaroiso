@@ -1,4 +1,7 @@
 #Translation
+_yes="Yes"
+_no="No"
+_cancel="Cancel"
 _title="Manjaro Language Setting"
 _return="Return to Main Menu"
 _exit="Exit"

@@ -1,5 +1,7 @@
 #Translation
-
+_yes="Evet"
+_no="Hayir"
+_cancel="Iptal"
 _title="Manjaro Tus Haritasi Ayarlari"
 
 _return="Ana Menu ye Don"
@@ -16,7 +18,7 @@ _select="Bir Tus Haritasi Secin"
 
 _load="Tus Haritasi Yukleniyor:"
 
-_menu" ANA MENU "
+_menu=" ANA MENU "
 
 _desc=" ↓ ve ↑ ile menuler arasinda gezinin.\nUse TAB ile sekmeler arasinda gezin ve ENTER ile secin."
 

@@ -1,5 +1,7 @@
-Translation
-
+#Translation
+_yes="Evet"
+_no="Hayir"
+_cancel="Iptal"
 _title="Manjaro Dil Ayarlari"
 
 _return="Ana Menuye Don"
