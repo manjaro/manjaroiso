@@ -22,13 +22,13 @@ kdeadmin-kcron
 kdeadmin-ksystemlog
 kdemultimedia-kmix
 kdesdk-kate
-kdeadmin-system-config-printer-kde
 kdegraphics-kgamma
 kdegraphics-gwenview
 kdegraphics-ksnapshot
 kdegraphics-okular
 kdeutils-ark
 kdeutils-kgpg
+kdeutils-print-manager
 kdeutils-sweeper
 kdeplasma-addons-applets-icontasks
 kdeplasma-applets-networkmanagement
