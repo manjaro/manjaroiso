@@ -112,35 +112,42 @@ run_hook() {
 
 miso_mount_handler() {
     local newroot="${1}"
-
-    msg ":: Waiting for boot device..."
-    while ! poll_device ${misodevice} 30; do
-        echo "ERROR: boot device didn't show up after 30 seconds..."
-        echo "   Falling back to interactive prompt"
-        echo "   You can try to fix the problem manually, log out when you are finished"
-        launch_interactive_shell
+    local dev_list dev_type dev f found
+    
+    # Sleep to wait for the device to show up
+    if [ -n "${miso_wait}" ];then
+        while [ "${miso_wait}" -gt "1" ];do
+            msg "Waiting ${miso_wait}s for devices to show up     \r"
+            sleep 1
+            let miso_wait-="1"
+        done
+    fi
+    
+    # Add all removable devices (USB/CD/DVD/whatever)
+    for f in /sys/block/*;do
+        if [ "$(cat ${f}/removable)" = "1" ];then
+            dev_list="${dev_list} /dev/$(basename ${f})"
+        fi
     done
 
-    FSTYPE=$(blkid -o value -s TYPE -p ${misodevice} 2> /dev/null)
-    if [ -n "${FSTYPE}" ]; then
-        if mount -r -t "${FSTYPE}" ${misodevice} /bootmnt > /dev/null 2>&1; then
-            if [ -e "${isomounts}" ]; then
-                echo "SUCCESS: Mounted miso volume successfully."
-                fserror="0"
-            else
-                echo "ERROR: Mounting was successful, but the ${isomounts} file does not exist."
-                fserror="1"
-            fi
+    # Probe all devices from the list
+    msg "Looking for the boot device"
+    for dev in ${misodevice} ${dev_list};do
+        dev_type="$(blkid -o value -s TYPE -p ${dev})"
+        
+        mount -o ro,loop -t "${dev_type}" "${dev}" "/bootmnt" || warn "Failed to mount device: ${dev}"
+           
+        if [ -f "/bootmnt/.miso" ] && [ -f "${isomounts}" ];then
+            found="yes"
+            echo "SUCCESS: Mounted miso volume successfully."
+            break
         else
-            echo "ERROR; Failed to mount ${misodevice} (FS is ${FSTYPE})"
-            fserror="1"
+            umount -fl "${dev}" 2> /dev/null
         fi
-    else
-        echo "ERROR: ${misodevice} found, but the filesystem type is unknown."
-        fserror="1"
-    fi
-
-    if [ "${fserror}" = "1" ]; then
+    done
+    
+    if [ -z "${found}" ]; then
+        echo "ERROR: unable to find boot device"
         echo "   Falling back to interactive prompt"
         echo "   You can try to fix the problem manually, log out when you are finished"
         launch_interactive_shell
