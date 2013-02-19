@@ -40,8 +40,18 @@ gstreamer0.10-ugly-plugins
 manjaro-pulse
 
 ## Devel Packages
-base-devel
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+gcc
 git
+libtool
+m4
+make
+patch
 patchutils
 svn
 yaourt
@@ -59,10 +69,7 @@ partitionmanager-svn
 gimp
 
 ## Package management
-#pacman-gui
-#kalu
-pkgbrowser
-yapan
+pamac
 
 ## GTK
 firefox
