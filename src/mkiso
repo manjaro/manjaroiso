@@ -133,7 +133,7 @@ command_create () {
     mkdir -p "${work_dir}/iso/${INSTALL_DIR}/${ARCH}"
     mkdir -p "${work_dir}/${IMAGE_FOLDER}/"
 
-    if [ "${PKGLIST}" != "" ]; then
+    if [ ! -z "${PKGLIST}" ]; then
         echo "====> Installing packages to '${work_dir}/${IMAGE_FOLDER}/'"
         _pacman "${PKGLIST}"
 
@@ -178,7 +178,7 @@ _mksquash () {
         dirhaschanged=$(find ${1} -newer ${sqimg})
         echo ">> Possible changes for ${1}..." >> /tmp/mkiso.debug
         echo "${dirhaschanged}" >> /tmp/mkiso.debug
-        if [ "${dirhaschanged}" != "" ]; then
+        if [ ! -z "${dirhaschanged}" ]; then
             echo "SquashFS image '${sqimg}' is not up to date, rebuilding..."
             rm "${sqimg}"
         else

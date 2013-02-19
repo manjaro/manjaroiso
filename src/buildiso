@@ -201,12 +201,12 @@ if [ -e Packages-Xorg ] ; then
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
               echo -e -n "$_r >$_W Prepare pkgs-image \n $_n"
               mkdir -p ${work_dir}/pkgs-image/opt/manjaro/pkgs
-              if [ "`mount -l | grep pkgs-image`" != "" ]; then
+              if [ ! -z "`mount -l | grep pkgs-image`" ]; then
                  umount -l ${work_dir}/pkgs-image
               fi
               mount -t aufs -o br=${work_dir}/pkgs-image:${work_dir}/root-image=ro none ${work_dir}/pkgs-image
               pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/manjaro/pkgs -Syw ${xorg_packages} --noconfirm
-              if [ "${xorg_packages_cleanup}" != "" ]; then
+              if [ ! -z "${xorg_packages_cleanup}" ]; then
                  for xorg_clean in ${xorg_packages_cleanup};
                     do  rm ${work_dir}/pkgs-image/opt/manjaro/pkgs/${xorg_clean}
                     done
@@ -219,7 +219,7 @@ if [ -e Packages-Xorg ] ; then
               if [ "${xorg_overlays}" = "yes" ] ; then
                  echo -e -n "$_r >$_W Prepare pkgs-free-overlay \n $_n"
                  mkdir -p ${work_dir}/pkgs-free-overlay
-                 if [ "`mount -l | grep pkgs-free-overlay`" != "" ]; then
+                 if [ ! -z "`mount -l | grep pkgs-free-overlay`" ]; then
                     umount -l ${work_dir}/pkgs-free-overlay
                  fi
                  mount -t aufs -o br=${work_dir}/pkgs-free-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-free-overlay
@@ -231,7 +231,7 @@ if [ -e Packages-Xorg ] ; then
                  rm -R ${work_dir}/pkgs-free-overlay/.wh*
                  echo -e -n "$_r >$_W Prepare pkgs-nonfree-overlay \n $_n"
                  mkdir -p ${work_dir}/pkgs-nonfree-overlay
-                 if [ "`mount -l | grep pkgs-nonfree-overlay`" != "" ]; then
+                 if [ ! -z "`mount -l | grep pkgs-nonfree-overlay`" ]; then
                     umount -l ${work_dir}/pkgs-nonfree-overlay
                  fi
                  mount -t aufs -o br=${work_dir}/pkgs-nonfree-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-nonfree-overlay
@@ -254,7 +254,7 @@ if [ -e Packages-Lng ] ; then
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
               echo -e -n "$_r >$_W Prepare lng-image \n $_n"
               mkdir -p ${work_dir}/lng-image/opt/manjaro/lng
-              if [ "`mount -l | grep lng-image`" != "" ]; then
+              if [ ! -z "`mount -l | grep lng-image`" ]; then
                  umount -l ${work_dir}/lng-image
               fi
               mount -t aufs -o br=${work_dir}/lng-image:${work_dir}/root-image=ro none ${work_dir}/lng-image
@@ -263,7 +263,7 @@ if [ -e Packages-Lng ] ; then
               else
                  pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/manjaro/lng -Syw ${lng_packages} --noconfirm
               fi
-              if [ "${lng_packages_cleanup}" != "" ]; then
+              if [ ! -z "${lng_packages_cleanup}" ]; then
                  for lng_clean in ${lng_packages_cleanup};
                     do  rm ${work_dir}/lng-image/opt/manjaro/lng/${lng_clean}
                     done
@@ -286,7 +286,7 @@ if [ -e Packages-Xfce ] ; then
               de="-xfce"
               echo -e -n "$_r >$_W XFCE installation (xfce-image) \n $_n"
               mkdir -p ${work_dir}/xfce-image
-              if [ "`mount -l | grep xfce-image`" != "" ]; then
+              if [ ! -z "`mount -l | grep xfce-image`" ]; then
                  umount -l ${work_dir}/xfce-image
               fi
               mount -t aufs -o br=${work_dir}/xfce-image:${work_dir}/root-image=ro none ${work_dir}/xfce-image
@@ -313,7 +313,7 @@ if [ -e Packages-Kde ] ; then
               de="-kde"
               echo -e -n "$_r >$_W KDE installation (kde-image) \n $_n"
               mkdir -p ${work_dir}/kde-image
-              if [ "`mount -l | grep kde-image`" != "" ]; then
+              if [ ! -z "`mount -l | grep kde-image`" ]; then
                  umount -l ${work_dir}/kde-image
               fi
               mount -t aufs -o br=${work_dir}/kde-image:${work_dir}/root-image=ro none ${work_dir}/kde-image
@@ -340,7 +340,7 @@ if [ -e Packages-Cinnamon ] ; then
               de="-cinnamon"
               echo -e -n "$_r >$_W Cinnamon installation (cinnamon-image) \n $_n"
               mkdir -p ${work_dir}/cinnamon-image
-              if [ "`mount -l | grep cinnamon-image`" != "" ]; then
+              if [ ! -z "`mount -l | grep cinnamon-image`" ]; then
                  umount -l ${work_dir}/cinnamon-image
               fi
               mount -t aufs -o br=${work_dir}/cinnamon-image:${work_dir}/root-image=ro none ${work_dir}/cinnamon-image
@@ -367,7 +367,7 @@ if [ -e Packages-Openbox ] ; then
               de="-openbox"
               echo -e -n "$_r >$_W Openbox installation (openbox-image) \n $_n"
               mkdir -p ${work_dir}/openbox-image
-              if [ "`mount -l | grep openbox-image`" != "" ]; then
+              if [ ! -z "`mount -l | grep openbox-image`" ]; then
                  umount -l ${work_dir}/openbox-image
               fi
               mount -t aufs -o br=${work_dir}/openbox-image:${work_dir}/root-image=ro none ${work_dir}/openbox-image
@@ -394,7 +394,7 @@ if [ -e Packages-Lxde ] ; then
               de="-lxde"
               echo -e -n "$_r >$_W LXDE installation (lxde-image) \n $_n"
               mkdir -p ${work_dir}/lxde-image
-              if [ "`mount -l | grep lxde-image`" != "" ]; then
+              if [ ! -z "`mount -l | grep lxde-image`" ]; then
                  umount -l ${work_dir}/lxde-image
               fi
               mount -t aufs -o br=${work_dir}/lxde-image:${work_dir}/root-image=ro none ${work_dir}/lxde-image
@@ -421,7 +421,7 @@ if [ -e Packages-Mate ] ; then
               de="-mate"
               echo -e -n "$_r >$_W MATE installation (mate-image) \n $_n"
               mkdir -p ${work_dir}/mate-image
-              if [ "`mount -l | grep mate-image`" != "" ]; then
+              if [ ! -z "`mount -l | grep mate-image`" ]; then
                  umount -l ${work_dir}/mate-image
               fi
               mount -t aufs -o br=${work_dir}/mate-image:${work_dir}/root-image=ro none ${work_dir}/mate-image
@@ -454,7 +454,7 @@ if [ -e Packages-E17 ] ; then
               de="-e17"
               echo -e -n "$_r >$_W E17 installation (e17-image) \n $_n"
               mkdir -p ${work_dir}/e17-image
-              if [ "`mount -l | grep e17-image`" != "" ]; then
+              if [ ! -z "`mount -l | grep e17-image`" ]; then
                  umount -l ${work_dir}/e17-image
               fi
               mount -t aufs -o br=${work_dir}/e17-image:${work_dir}/root-image=ro none ${work_dir}/e17-image
@@ -482,7 +482,7 @@ make_boot() {
         cp ${work_dir}/root-image/boot/memtest86+/memtest.bin ${work_dir}/iso/${install_dir}/boot/${arch}/memtest
 	cp ${work_dir}/root-image/boot/vmlinuz* ${work_dir}/iso/${install_dir}/boot/${arch}/manjaroiso
         mkdir -p ${work_dir}/boot-image
-        if [ "`mount -l | grep boot-image`" != "" ]; then
+        if [ ! -z "`mount -l | grep boot-image`" ]; then
            umount -l ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
         fi
         mount -t aufs -o br=${work_dir}/boot-image:${work_dir}/root-image=ro none ${work_dir}/boot-image

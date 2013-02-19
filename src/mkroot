@@ -161,7 +161,7 @@ else
     chroot_mount
 
     pacargs="--noconfirm --root=${working_dir} --cachedir=${cache_dir}"
-    if [ "$pac_conf" != "" ]; then
+    if [ ! -z "$pac_conf" ]; then
 	pacargs="$pacargs --config=${pac_conf}"
     fi
 
