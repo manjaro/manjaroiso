@@ -4191,6 +4191,8 @@ CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
 USENONFREE="$(kernel_cmdline nonfree no)"
 
 # Translation
+LOCALE=$(get_country)
+
 # English
 source /etc/manjaro/setup-0.9-en.lng
 # Turkish

@@ -205,8 +205,7 @@ fi
 export LANG=en_US.UTF-8
 export LC_MESSAGES=en_US.UTF-8
 
-MISOVAR="$(kernel_cmdline misovar lang:en_US,keymap:en_US,timezone:Canada/Pacific)"
-LOCALE="$(echo "$MISOVAR" | cut -d, -f1 | cut -d: -f2)"
+LOCALE=$(get_country)
 
 # Translation
 # English
