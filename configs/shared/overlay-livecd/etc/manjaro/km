@@ -103,9 +103,10 @@ fi
 export LANG=en_US.UTF-8
 export LC_MESSAGES=en_US.UTF-8
 
+# Translation
+source /etc/manjaro/functions
 LOCALE=$(get_country)
 
-# Translation
 # English
 source /etc/manjaro/km-en.lng
 # Turkish
