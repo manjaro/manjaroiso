@@ -86,6 +86,15 @@ manjaro-artwork-openbox
 ## Printing
 
 ## AUR Access
-base-devel
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+gcc
+libtool
+m4
+make
+patch
 yaourt
-
