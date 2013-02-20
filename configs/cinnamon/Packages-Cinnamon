@@ -106,7 +106,6 @@ thunderbird
 
 ## Package management
 pamac
-kalu
 
 ## Packages for Sound and Audio
 gstreamer0.10-bad-plugins
