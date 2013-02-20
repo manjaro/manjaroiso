@@ -1,0 +1,1656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+<policyconfig>
+  <vendor>The udisks Project</vendor>
+  <vendor_url>http://udisks.freedesktop.org/</vendor_url>
+  <icon_name>drive-removable-media</icon_name>
+
+  
+  
+
+  <action id="org.freedesktop.udisks2.filesystem-mount">
+    <description>Mount a filesystem</description>
+    <description xml:lang="cs">Připojit souborový systém</description>
+    <description xml:lang="en_GB">Mount a filesystem</description>
+    <description xml:lang="es">Montar un sistema de archivos</description>
+    <description xml:lang="fi">Liitä tiedostojärjestelmä</description>
+    <description xml:lang="gl">Modificar un sistema de ficheiros</description>
+    <description xml:lang="hr">Montiraj datotečni sustav</description>
+    <description xml:lang="hu">Fájlrendszer csatolása</description>
+    <description xml:lang="id">Kaitkan suatu sistem berkas</description>
+    <description xml:lang="it">Monta un file system</description>
+    <description xml:lang="ja">ファイルシステムをマウントします。</description>
+    <description xml:lang="nl">Koppel een bestandssysteem aan</description>
+    <description xml:lang="pa">ਫਾਇਲ ਸਿਸਟਮ ਮਾਊਂਟ ਕਰੋ</description>
+    <description xml:lang="pl">Zamontowanie systemu plików</description>
+    <description xml:lang="pt_BR">Montar um sistema de arquivos</description>
+    <description xml:lang="sl">Priklopi datotečni sistem</description>
+    <description xml:lang="sv">Montera ett filsystem</description>
+    <description xml:lang="tr">Bir dosya sistemi bağla</description>
+    <description xml:lang="uk">Змонтувати файлову систему</description>
+    <description xml:lang="zh_CN">挂在文件系统</description>
+    <message>Authentication is required to mount the filesystem</message>
+    <message xml:lang="cs">Pro připojení souborového systému je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to mount the filesystem</message>
+    <message xml:lang="es">Se requiere autenticación para montar el sistema de archivos</message>
+    <message xml:lang="fi">Tunnistautuminen vaaditaan tiedostojärjestelmän liittämistä varten</message>
+    <message xml:lang="gl">Debe autenticarse para montar o sistema de ficheiros</message>
+    <message xml:lang="hr">Potrebna je provjera za montiranje datotečnog sustava</message>
+    <message xml:lang="hu">Hitelesítés szükséges a fájlrendszer csatolásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengait sistem berkas</message>
+    <message xml:lang="it">È richiesto autenticarsi per montare il file system</message>
+    <message xml:lang="ja">ファイルシステムをマウントするには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om het bestandssysteem aan te koppelen</message>
+    <message xml:lang="pa">ਫਾਇਲ ਸਿਸਟਮ ਮਾਊਂਟ ਕਰਨ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zamontować systemu plików</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para montar um sistema de arquivos</message>
+    <message xml:lang="sl">Za priklop datotečnega sistema je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att montera filsystemet</message>
+    <message xml:lang="uk">Щоб змонтувати файлову систему, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">下要授权来挂载文件系统</message>
+    <defaults>
+
+# FIX MOUNT ISSUE
+
+	<allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.filesystem-mount-system">
+    <description>Mount a filesystem on a system device</description>
+    <description xml:lang="cs">Připojit souborový systém na systémovém zařízení</description>
+    <description xml:lang="en_GB">Mount a filesystem on a system device</description>
+    <description xml:lang="es">Montar un sistema de archivos en un dispositivo del sistema</description>
+    <description xml:lang="gl">Modificar un sistema de ficheiros nun dispositivo do sistema</description>
+    <description xml:lang="hr">Montiraj datotečni sustav na sustavski uređaj</description>
+    <description xml:lang="hu">Fájlrendszer csatolása rendszereszközön</description>
+    <description xml:lang="id">Kaitkan suatu sistem berkas pada suatu perangkat sistem</description>
+    <description xml:lang="it">Monta un file system su un dispositivo di sistema</description>
+    <description xml:lang="ja">システムデバイスのファイルシステムをマウントします。</description>
+    <description xml:lang="nl">Koppel een bestandssysteem aan op een systeemapparaat</description>
+    <description xml:lang="pa">ਸਿਸਟਮ ਜੰਤਰ ਉੱਤੇ ਫਾਇਲ ਸਿਸਟਮ ਮਾਊਂਟ ਕਰੋ</description>
+    <description xml:lang="pl">Zamontowanie systemu plików na urządzeniu systemowym</description>
+    <description xml:lang="pt_BR">Montar um sistema de arquivos em um dispositivo de sistemas</description>
+    <description xml:lang="sl">Priklopi datotečni sistem na sistemski napravi</description>
+    <description xml:lang="sv">Montera ett filsystem på en systemenhet</description>
+    <description xml:lang="tr">Bir sistem aygıtı üzerinde bir dosya sistemi bağla</description>
+    <description xml:lang="uk">Змонтувати файлову систему на пристрої зберігання системи</description>
+    <description xml:lang="zh_CN">在系统设备上挂载文件系统</description>
+    <message>Authentication is required to mount the filesystem</message>
+    <message xml:lang="cs">Pro připojení souborového systému je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to mount the filesystem</message>
+    <message xml:lang="es">Se requiere autenticación para montar el sistema de archivos</message>
+    <message xml:lang="fi">Tunnistautuminen vaaditaan tiedostojärjestelmän liittämistä varten</message>
+    <message xml:lang="gl">Debe autenticarse para montar o sistema de ficheiros</message>
+    <message xml:lang="hr">Potrebna je provjera za montiranje datotečnog sustava</message>
+    <message xml:lang="hu">Hitelesítés szükséges a fájlrendszer csatolásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengait sistem berkas</message>
+    <message xml:lang="it">È richiesto autenticarsi per montare il file system</message>
+    <message xml:lang="ja">ファイルシステムをマウントするには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om het bestandssysteem aan te koppelen</message>
+    <message xml:lang="pa">ਫਾਇਲ ਸਿਸਟਮ ਮਾਊਂਟ ਕਰਨ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zamontować systemu plików</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para montar um sistema de arquivos</message>
+    <message xml:lang="sl">Za priklop datotečnega sistema je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att montera filsystemet</message>
+    <message xml:lang="uk">Щоб змонтувати файлову систему, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">下要授权来挂载文件系统</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.filesystem-mount-other-seat">
+    <description>Mount a filesystem from a device plugged into another seat</description>
+    <description xml:lang="cs">Pro připojení souborového systému ze zařízení zapojeného do jiného terminálu je vyžadována autentizace</description>
+    <description xml:lang="en_GB">Mount a filesystem from a device plugged into another seat</description>
+    <description xml:lang="es">Montar un sistema de archivos de un dispositivo conectado en otra ubicación</description>
+    <description xml:lang="gl">Montar un sistema de ficheiros desde un dispositivo conectado noutro posto</description>
+    <description xml:lang="hr">Montiraj datotečni sustav s uređaja priključenog na drugo mjesto</description>
+    <description xml:lang="hu">Másik ülésbe csatlakoztatott eszköz fájlrendszerének csatolása</description>
+    <description xml:lang="id">Kaitkan sistem berkas dari perangkat yang ditancapkan ke seat lain</description>
+    <description xml:lang="it">Monta un file system da un dispositivo collegato in un'altra posizione</description>
+    <description xml:lang="ja">他のところに差し込んだデバイスからファイルシステムをマウントします。</description>
+    <description xml:lang="nl">Koppel een bestandssysteem aan van een apparaat dat is aangesloten bij een andere seat</description>
+    <description xml:lang="pl">Zamontowanie systemu plików z urządzenia podłączonego do innego stanowiska</description>
+    <description xml:lang="pt_BR">Montar um sistema de arquivos do dispositivo conectado a outro ponto</description>
+    <description xml:lang="sl">Priklopi datotečni sistem z naprave, vtaknjene v drugo režo</description>
+    <description xml:lang="uk">Змонтувати файлову систему на пристрої, з’єднаному з іншого місця</description>
+    <message>Authentication is required to mount the filesystem</message>
+    <message xml:lang="cs">Pro připojení souborového systému je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to mount the filesystem</message>
+    <message xml:lang="es">Se requiere autenticación para montar el sistema de archivos</message>
+    <message xml:lang="fi">Tunnistautuminen vaaditaan tiedostojärjestelmän liittämistä varten</message>
+    <message xml:lang="gl">Debe autenticarse para montar o sistema de ficheiros</message>
+    <message xml:lang="hr">Potrebna je provjera za montiranje datotečnog sustava</message>
+    <message xml:lang="hu">Hitelesítés szükséges a fájlrendszer csatolásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengait sistem berkas</message>
+    <message xml:lang="it">È richiesto autenticarsi per montare il file system</message>
+    <message xml:lang="ja">ファイルシステムをマウントするには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om het bestandssysteem aan te koppelen</message>
+    <message xml:lang="pa">ਫਾਇਲ ਸਿਸਟਮ ਮਾਊਂਟ ਕਰਨ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zamontować systemu plików</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para montar um sistema de arquivos</message>
+    <message xml:lang="sl">Za priklop datotečnega sistema je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att montera filsystemet</message>
+    <message xml:lang="uk">Щоб змонтувати файлову систему, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">下要授权来挂载文件系统</message>
+    <defaults>
+
+      <allow_any>yes</allow_any>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.filesystem-fstab">
+    <description>Mount/unmount filesystems defined in the fstab file with the x-udisks-auth option</description>
+    <description xml:lang="cs">Připojit/odpojit souborový systém definovaný v souboru fstab s volbou x-udisks-auth</description>
+    <description xml:lang="en_GB">Mount/unmount filesystems defined in the fstab file with the x-udisks-auth option</description>
+    <description xml:lang="es">Montar/desmontar sistemas de archivos definidos en el archivo fstab con la opción x-udisks-auth</description>
+    <description xml:lang="gl">Montar/desmontar un sistema de ficheiros definido no ficheiro fstab coa opción x-udisks-auth</description>
+    <description xml:lang="hr">Montiraj/demontiraj datotečne sustave definirane u datoteci fstab s opcijom x-udisk-auth</description>
+    <description xml:lang="hu">Az fstab fájlban az x-udisks-auth beállítással definiált fájlrendszerek csatolása/leválasztása</description>
+    <description xml:lang="id">Kait/lepaskan sistem berkas yang didefinisikan dalam berkas fstab dengan opsi x-udisks-auth</description>
+    <description xml:lang="it">Monta/Smonta file system definiti con l'opzione x-udisks-auth nel file fstab</description>
+    <description xml:lang="ja">fstab ファイルにおいて x-udisks-auth オプションとともに定義されたファイルシステムをマウント・アンマウントします。</description>
+    <description xml:lang="nl">Koppel bestandssystemen, die in het fstab-bestand zijn gedefinieerd, aan/af met de 'x-udisk-auth'-optie </description>
+    <description xml:lang="pl">Zamontowanie/odmontowanie systemów plików określonych w pliku fstab za pomocą opcji x-udisks-auth</description>
+    <description xml:lang="pt_BR">Montar/desmontar sistemas de arquivos definido no arquivo fstab com a opção x-udisks-auth</description>
+    <description xml:lang="sl">Priklopi/odklopi datotečne sisteme, določene v datoteki fstab z možnostjo x-udisks-auth</description>
+    <description xml:lang="sv">Montera/avmontera filsystem som angivits i filen fstab med flaggan x-udisks-auth</description>
+    <description xml:lang="uk">Змонтувати або демонтувати файлові системи, визначені у файлі fstab за допомогою параметра x-udisks-auth</description>
+    <message>Authentication is required to mount/unmount the filesystem</message>
+    <message xml:lang="cs">Pro připojení/odpojení souborového systému je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to mount/unmount the filesystem</message>
+    <message xml:lang="es">Se requiere autenticación para para montar/desmontar el sistema de archivos</message>
+    <message xml:lang="fi">Tunnistautuminen vaaditaan tiedostojärjestelmän liittämiseksi tai poistamiseksi</message>
+    <message xml:lang="gl">Debe autenticarse para montar/desmontar o sistema de ficheiros</message>
+    <message xml:lang="hr">Potrebna je provjera za montiranje/demontiranje datotečnog sustava</message>
+    <message xml:lang="hu">Hitelesítés szükséges a fájlrendszer csatolásához/leválasztásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengait/melepas kait sistem berkas</message>
+    <message xml:lang="it">È richiesto autenticarsi per montare/smontare il file system</message>
+    <message xml:lang="ja">ファイルシステムをマウント・アンマウントするには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om het bestandssysteem aan of af te koppelen</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zamontować/odmontować system plików</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para montar/desmontar o sistema de arquivos</message>
+    <message xml:lang="sl">Za priklop ali odklop datotečnega sistema je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att montera/avmontera filsystemet</message>
+    <message xml:lang="uk">Щоб отримати доступ до монтування та демонтування файлових систем, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来挂载/卸载文件系统</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  
+  <action id="org.freedesktop.udisks2.filesystem-unmount-others">
+    <description>Unmount a device mounted by another user</description>
+    <description xml:lang="cs">Odpojit zařízení připojené jiným uživatelem</description>
+    <description xml:lang="en_GB">Unmount a device mounted by another user</description>
+    <description xml:lang="es">Desmontar un dispositivo montado por otro usuario</description>
+    <description xml:lang="gl">Desbloquear un dispositivo montado por outro usuario</description>
+    <description xml:lang="hr">Demontiraj uređaj koji je montirao drugi korisnik</description>
+    <description xml:lang="hu">Másik felhasználó által csatolt eszköz leválasztása</description>
+    <description xml:lang="id">Lepas kait suatu perangkat yang dikait oleh pengguna lain</description>
+    <description xml:lang="it">Smonta un dispositivo montato da un altro utente</description>
+    <description xml:lang="ja">他のユーザーによりマウントされたデバイスをアンマウントします。</description>
+    <description xml:lang="nl">Koppel een apparaat af dat door een andere gebruiker werd gekoppeld</description>
+    <description xml:lang="pa">ਹੋਰ ਯੂਜ਼ਰ ਵਲੋਂ ਮਾਊਂਟ ਕੀਤੇ ਜੰਤਰ ਨੂੰ ਅਣ-ਮਾਊਂਟ ਕਰੋ</description>
+    <description xml:lang="pl">Odmontowanie urządzenia zamontowanego przez innego użytkownika</description>
+    <description xml:lang="pt_BR">Desmontar um dispositivo montado por outro usuário</description>
+    <description xml:lang="sl">Odklopi napravo, ki jo je priklopil drug uporabnik</description>
+    <description xml:lang="sv">Avmontera en enhet som monterats av en annan användare</description>
+    <description xml:lang="uk">Демонтувати пристрій, змонтований іншим користувачем</description>
+    <description xml:lang="zh_CN">卸载由其他用户挂载的设备</description>
+    <message>Authentication is required to unmount a filesystem mounted by another user</message>
+    <message xml:lang="cs">Pro odpojení souborového systému připojeného jiným uživatelem je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to unmount a filesystem mounted by another user</message>
+    <message xml:lang="es">Se requiere autenticación para desmontar un sistema de archivos montado por otro usuario</message>
+    <message xml:lang="fi">Tunnistautuminen vaaditaan toisen käyttäjän liittämän tiedostojärjestelmän irrottamista varten</message>
+    <message xml:lang="gl">Debe autenticarse para desmontar un sistema de ficheiros montado por outro usuario</message>
+    <message xml:lang="hr">Potrebna je provjera za demontiranje datotečnog sustava koji je montirao drugi korisnik</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy másik felhasználó által csatolt fájlrendszer leválasztásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk melepas kait sistem berkas yang dikait oleh pengguna lain</message>
+    <message xml:lang="it">È richiesto autenticarsi per smontare un file system montato da un altro utente</message>
+    <message xml:lang="ja">他のユーザーによりマウントされたファイルシステムをアンマウントするには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een bestandssysteem dat door een andere gebruiker is gekoppeld te ontkoppelen</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby odmontować system plików zamontowany przez innego użytkownika</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para desmontar um sistema de arquivos montado para outro usuário</message>
+    <message xml:lang="sl">Za odklop datotečnega sistema, ki ga je priklopil drug uporabnik, je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att avmontera ett filsystem som monterats av en annan användare</message>
+    <message xml:lang="uk">Щоб отримати доступ до демонтування файлової системи, змонтованої іншим користувачем, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来卸载由其他用户挂载的文件系统</message>
+    <defaults>
+
+# THIS MAY BE IT
+	<allow_any>no</allow_any>
+#      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  <action id="org.freedesktop.udisks2.encrypted-unlock">
+    <description>Unlock an encrypted device</description>
+    <description xml:lang="cs">Odemknout šifrované zařízení</description>
+    <description xml:lang="en_GB">Unlock an encrypted device</description>
+    <description xml:lang="es">Desbloquear un dispositivo cifrado</description>
+    <description xml:lang="gl">Desbloquear un dispositivo cifrado</description>
+    <description xml:lang="hr">Otključaj kriptirani uređaj</description>
+    <description xml:lang="hu">Titkosított eszköz feloldása</description>
+    <description xml:lang="id">Buka kunci suatu perangkat terenkripsi</description>
+    <description xml:lang="it">Sblocca un dispositivo cifrato</description>
+    <description xml:lang="ja">暗号化されたデバイスをロック解除します。</description>
+    <description xml:lang="nl">Ontsluit een geëncrypt apparaat</description>
+    <description xml:lang="pa">ਇੰਕ੍ਰਿਪਟ ਕੀਤੇ ਜੰਤਰ ਨੂੰ ਅਣ-ਲਾਕ ਕਰੋ</description>
+    <description xml:lang="pl">Odblokowanie zaszyfrowanego urządzenia</description>
+    <description xml:lang="pt_BR">Destravar um dispositivo criptografado</description>
+    <description xml:lang="sl">Odkleni šifrirano napravo</description>
+    <description xml:lang="sv">Lås upp en krypterad enhet</description>
+    <description xml:lang="uk">Розблокувати зашифрований пристрій</description>
+    <description xml:lang="zh_CN">解锁加密设备</description>
+    <message>Authentication is required to unlock an encrypted device</message>
+    <message xml:lang="cs">Pro odemknutí šifrovaného zařízení je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to unlock an encrypted device</message>
+    <message xml:lang="es">Se requiere autenticación para desbloquear un dispositivo cifrado</message>
+    <message xml:lang="gl">Debe autenticarse para desbloquear un dispositivo cifrado</message>
+    <message xml:lang="hr">Potrebna je provjera za otključavanje kriptiranog uređaja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy titkosított eszköz feloldásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk membuka kunci perangkat yang terenkripsi</message>
+    <message xml:lang="it">È richiesto autenticarsi per sbloccare un dispositivo cifrato</message>
+    <message xml:lang="ja">暗号化されたデバイスをロック解除するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een geëncrypt apparaat te ontsluiten</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby odblokować zaszyfrowane urządzenie</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para destravar um dispositivo criptografado</message>
+    <message xml:lang="sl">Za odklep šifrirane naprave je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att låsa upp en krypterad enhet</message>
+    <message xml:lang="uk">Щоб отримати доступ до розблокування зашифрованого пристрою, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来解锁加密设备</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.encrypted-unlock-system">
+    <description>Unlock an encrypted system device</description>
+    <description xml:lang="cs">Odemknout šifrované systémové zařízení</description>
+    <description xml:lang="en_GB">Unlock an encrypted system device</description>
+    <description xml:lang="es">Desbloquear un dispositivo del sistema cifrado</description>
+    <description xml:lang="gl">Desbloquear un dispositivo cifrado do sistema</description>
+    <description xml:lang="hr">Otključaj kriptirani sustavski uređaj</description>
+    <description xml:lang="hu">Titkosított rendszereszköz feloldása</description>
+    <description xml:lang="id">Buka kunci perangkat sistem yang terenkripsi</description>
+    <description xml:lang="it">Sblocca un dispositivo di sistema cifrato</description>
+    <description xml:lang="ja">暗号化されたシステムデバイスをロック解除します。</description>
+    <description xml:lang="nl">Ontsluit een geëncrypt systeemapparaat</description>
+    <description xml:lang="pa">ਇੱਕ ਇੰਕ੍ਰਿਪਟ ਕੀਤੇ ਸਿਸਟਮ ਜੰਤਰ ਨੂੰ ਅਣ-ਲਾਕ ਕਰੋ</description>
+    <description xml:lang="pl">Odblokowanie zaszyfrowanego urządzenia systemowego</description>
+    <description xml:lang="pt_BR">Destravar um dispositivo de sistema critografado</description>
+    <description xml:lang="sl">Odkleni šifrirano sistemsko napravo</description>
+    <description xml:lang="sv">Lås upp en krypterad systemenhet</description>
+    <description xml:lang="uk">Розблокувати зашифрований пристрій системи</description>
+    <description xml:lang="zh_CN">解锁加密系统设备</description>
+    <message>Authentication is required to unlock an encrypted device</message>
+    <message xml:lang="cs">Pro odemknutí šifrovaného zařízení je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to unlock an encrypted device</message>
+    <message xml:lang="es">Se requiere autenticación para desbloquear un dispositivo cifrado</message>
+    <message xml:lang="gl">Debe autenticarse para desbloquear un dispositivo cifrado</message>
+    <message xml:lang="hr">Potrebna je provjera za otključavanje kriptiranog uređaja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy titkosított eszköz feloldásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk membuka kunci perangkat yang terenkripsi</message>
+    <message xml:lang="it">È richiesto autenticarsi per sbloccare un dispositivo cifrato</message>
+    <message xml:lang="ja">暗号化されたデバイスをロック解除するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een geëncrypt apparaat te ontsluiten</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby odblokować zaszyfrowane urządzenie</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para destravar um dispositivo criptografado</message>
+    <message xml:lang="sl">Za odklep šifrirane naprave je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att låsa upp en krypterad enhet</message>
+    <message xml:lang="uk">Щоб отримати доступ до розблокування зашифрованого пристрою, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来解锁加密设备</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.encrypted-unlock-other-seat">
+    <description>Unlock an encrypted device plugged into another seat</description>
+    <description xml:lang="cs">Pro odemknutí šifrovaného zařízení zapojeného do jiného terminálu je vyžadována autentizace</description>
+    <description xml:lang="en_GB">Unlock an encrypted device plugged into another seat</description>
+    <description xml:lang="es">Desbloquear un dispositivo cifrado conectado en otra ubicación</description>
+    <description xml:lang="gl">Desbloquear un sistema de ficheiros cifrado conectado noutro posto</description>
+    <description xml:lang="hr">Otključaj kriptirani uređaj priključen na drugo mjesto</description>
+    <description xml:lang="hu">Másik ülésbe csatlakoztatott titkosított eszköz feloldása</description>
+    <description xml:lang="id">Buka kunci perangkat terenkripsi yang ditancapkan ke seat lain</description>
+    <description xml:lang="it">Sblocca un dispositivo cifrato collegato in un'altra posizione</description>
+    <description xml:lang="ja">他のところに差し込んだ暗号化デバイスをロック解除します。</description>
+    <description xml:lang="nl">Ontsluit een gedeeld apparaat dat is aangesloten bij een andere seat</description>
+    <description xml:lang="pl">Odblokowanie zaszyfrowanego urządzenia podłączonego do innego stanowiska</description>
+    <description xml:lang="pt_BR">Destravar um dispositivo criptografado conectado em outro ponto</description>
+    <description xml:lang="sl">Odkleni šifrirano napravo, vtaknjeno v drugo režo</description>
+    <description xml:lang="uk">Розблокувати зашифрований пристрій, з’єднаний з іншого місця</description>
+    <message>Authentication is required to unlock an encrypted device</message>
+    <message xml:lang="cs">Pro odemknutí šifrovaného zařízení je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to unlock an encrypted device</message>
+    <message xml:lang="es">Se requiere autenticación para desbloquear un dispositivo cifrado</message>
+    <message xml:lang="gl">Debe autenticarse para desbloquear un dispositivo cifrado</message>
+    <message xml:lang="hr">Potrebna je provjera za otključavanje kriptiranog uređaja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy titkosított eszköz feloldásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk membuka kunci perangkat yang terenkripsi</message>
+    <message xml:lang="it">È richiesto autenticarsi per sbloccare un dispositivo cifrato</message>
+    <message xml:lang="ja">暗号化されたデバイスをロック解除するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een geëncrypt apparaat te ontsluiten</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby odblokować zaszyfrowane urządzenie</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para destravar um dispositivo criptografado</message>
+    <message xml:lang="sl">Za odklep šifrirane naprave je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att låsa upp en krypterad enhet</message>
+    <message xml:lang="uk">Щоб отримати доступ до розблокування зашифрованого пристрою, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来解锁加密设备</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.encrypted-unlock-crypttab">
+    <description>Unlock an encrypted device specified in the crypttab file with the x-udisks-auth option</description>
+    <description xml:lang="cs">Odemknout šifrované zařízení definované v souboru crypttab s volbou x-udisks-auth</description>
+    <description xml:lang="en_GB">Unlock an encrypted device specified in the crypttab file with the x-udisks-auth option</description>
+    <description xml:lang="es">Desbloquear un dispositivo cifrado especificado en el archivo crypttab con la opción x-udisks-auth</description>
+    <description xml:lang="gl">Desbloquear un dispositivo cifrado especificado polo ficheiro crypttab coa opción «x-udisks-auth»</description>
+    <description xml:lang="hr">Otključaj kriptirani uređaj naveden u datoteci crypttab s opcijom x-udisks-auth</description>
+    <description xml:lang="hu">A crypttab fájlban az x-udisks-auth beállítással megadott titkosított eszköz feloldása</description>
+    <description xml:lang="id">Buka kunci dari perangkat terenkripsi yang dinyatakan dalam berkas crypttab dengan opsi x-udisks-auth</description>
+    <description xml:lang="it">Sblocca un dispositivo cifrato specificato con l'opzione x-udisks-auth nel file crypttab</description>
+    <description xml:lang="ja">crypttab ファイルにおいて x-udisks-auth オプションとともに指定された暗号化デバイスをロック解除します。</description>
+    <description xml:lang="nl">Ontsluit een geëncrypt apparaat genoemd in crypttab met de 'x-udisks-auth'-optie</description>
+    <description xml:lang="pl">Odblokowanie zaszyfrowanego urządzenia określonego w pliku crypttab za pomocą opcji x-udisks-auth</description>
+    <description xml:lang="pt_BR">Destravar um dispositivo criptografado especificado no arquivo crypttab com a opção x-udisks-auth</description>
+    <description xml:lang="sl">Odkleni šifrirano napravo, navedeno v datoteki crypttab, z možnostjo x-udisks-auth</description>
+    <description xml:lang="sv">Lås upp en krypterad enhet som angivits i filen crypttab med flaggan x-udisks-auth</description>
+    <description xml:lang="uk">Розблокувати зашифрований пристрій, вказаний у файлі crypttab з параметром x-udisks-auth</description>
+    <message>Authentication is required to unlock an encrypted device</message>
+    <message xml:lang="cs">Pro odemknutí šifrovaného zařízení je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to unlock an encrypted device</message>
+    <message xml:lang="es">Se requiere autenticación para desbloquear un dispositivo cifrado</message>
+    <message xml:lang="gl">Debe autenticarse para desbloquear un dispositivo cifrado</message>
+    <message xml:lang="hr">Potrebna je provjera za otključavanje kriptiranog uređaja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy titkosított eszköz feloldásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk membuka kunci perangkat yang terenkripsi</message>
+    <message xml:lang="it">È richiesto autenticarsi per sbloccare un dispositivo cifrato</message>
+    <message xml:lang="ja">暗号化されたデバイスをロック解除するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een geëncrypt apparaat te ontsluiten</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby odblokować zaszyfrowane urządzenie</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para destravar um dispositivo criptografado</message>
+    <message xml:lang="sl">Za odklep šifrirane naprave je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att låsa upp en krypterad enhet</message>
+    <message xml:lang="uk">Щоб отримати доступ до розблокування зашифрованого пристрою, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来解锁加密设备</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  
+  <action id="org.freedesktop.udisks2.encrypted-lock-others">
+    <description>Lock an encrypted device unlocked by another user</description>
+    <description xml:lang="cs">Zamknout šifrované zařízení odemknuté jiným uživatelem</description>
+    <description xml:lang="en_GB">Lock an encrypted device unlocked by another user</description>
+    <description xml:lang="es">Bloquear un dispositivo cifrado desbloqueado por otro usuario</description>
+    <description xml:lang="gl">Bloquear un dispositivo cifrado desbloqueado por outro usuario</description>
+    <description xml:lang="hr">Zaključaj kriptirani uređaj koji je otključao drugi korisnik</description>
+    <description xml:lang="hu">Másik felhasználó által feloldott titkosított eszköz zárolása</description>
+    <description xml:lang="id">Kunci perangkat terenkripsi yang dibuka kuncinya oleh pengguna lain</description>
+    <description xml:lang="it">Blocca un dispositivo cifrato sbloccato da un altro utente</description>
+    <description xml:lang="ja">他のユーザーによりロック解除された暗号化デバイスロックします。</description>
+    <description xml:lang="nl">Vergrendel een geëncrypt apparaat dat ontsloten werd door een andere gebruiker</description>
+    <description xml:lang="pa">ਹੋਰ ਯੂਜ਼ਰ ਵਲੋਂ ਅਣ-ਲਾਕ ਕੀਤੇ ਇੰਕ੍ਰਿਪਟ ਜੰਤਰ ਨੂੰ ਲਾਕ ਕਰੋ</description>
+    <description xml:lang="pl">Zablokowanie zaszyfrowanego urządzenia odblokowanego przez innego użytkownika</description>
+    <description xml:lang="pt_BR">Travar um dispositivo criptografado destravado por outro usuário</description>
+    <description xml:lang="sl">Zakleni šifrirano napravo, ki jo je odklenil drug uporabnik</description>
+    <description xml:lang="sv">Lås en krypterad enhet som låsts upp av en annan användare</description>
+    <description xml:lang="uk">Заблокувати зашифрований пристрій, розблокований іншим користувачем</description>
+    <description xml:lang="zh_CN">锁定由其他用户解锁的加密设备</description>
+    <message>Authentication is required to lock an encrypted device unlocked by another user</message>
+    <message xml:lang="cs">Pro uzamknutí šifrovaného zařízení odemknutého jiným uživatelem je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to lock an encrypted device unlocked by another user</message>
+    <message xml:lang="es">Se requiere autenticación para bloquear un dispositivo cifrado desbloqueado por otro usuario</message>
+    <message xml:lang="gl">Debe autenticarse para bloquear un dispositivo cifrado desbloqueado por outro usuario</message>
+    <message xml:lang="hr">Potrebna je provjera za zaključavanje kriptiranog uređaja koji je otključao drugi korisnik</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy másik felhasználó által feloldott titkosított eszköz zárolásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengunci perangkat terenkripsi yang dibuka kuncinya oleh pengguna lain</message>
+    <message xml:lang="it">È richiesto autenticarsi per bloccare un dispositivo cifrato sbloccato da un altro utente</message>
+    <message xml:lang="ja">他のユーザーによりロック解除された暗号化されたデバイスをロックするには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een geëncrypt apparaat dat door een andere gebruiker ontsloten werd te vergrendelen</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zablokować zaszyfrowane urządzenie odblokowane przez innego użytkownika</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para travar um dispositivo criptografado destravado por outro usuário</message>
+    <message xml:lang="sl">Za zaklepanje šifrirane naprave, ki jo je odklenil drug uporabnik, je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att låsa en krypterad enhet som låsts upp av en annan användare</message>
+    <message xml:lang="uk">Щоб заблокувати зашифрований пристрій, розблокований іншим користувачем, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来锁定由其他用户解锁的加密设备</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  <action id="org.freedesktop.udisks2.encrypted-change-passphrase">
+    <description>Change passphrase for an encrypted device</description>
+    <description xml:lang="cs">Změnit heslo pro šifrované zařízení</description>
+    <description xml:lang="en_GB">Change passphrase for an encrypted device</description>
+    <description xml:lang="es">Cambiar la contraseña de un dispositivo cifrado</description>
+    <description xml:lang="gl">Cambiar a frase de paso para un dispositivo cifrado</description>
+    <description xml:lang="hr">Promijeni lozinku kriptiranog uređaja</description>
+    <description xml:lang="hu">Titkosított eszköz jelmondatának módosítása</description>
+    <description xml:lang="id">Ubah frasa sandi bagi perangkat terenkripsi</description>
+    <description xml:lang="it">Modifica la passphrase di un dispositivo cifrato</description>
+    <description xml:lang="ja">暗号化されたデバイスのパスフレーズを変更します。</description>
+    <description xml:lang="nl">Verander wachtzin voor een geëncrypt apparaat</description>
+    <description xml:lang="pa">ਇੰਕ੍ਰਿਪਟ ਕੀਤੇ ਜੰਤਰ ਲਈ ਵਾਕ ਬਦਲੋ</description>
+    <description xml:lang="pl">Zmiana hasła dla zaszyfrowanego urządzenia</description>
+    <description xml:lang="pt_BR">Alterar a senha de um dispositivo criptografado</description>
+    <description xml:lang="sl">Spremeni geslo za šifrirano napravo</description>
+    <description xml:lang="sv">Byt lösenfras för en krypterad enhet</description>
+    <description xml:lang="uk">Змінити пароль до зашифрованого пристрою</description>
+    <description xml:lang="zh_CN">更改加密设备的密钥</description>
+    <message>Authentication is required to change the passphrase for an encrypted device</message>
+    <message xml:lang="cs">Pro změnu hesla pro šifrované zařízení je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to change the passphrase for an encrypted device</message>
+    <message xml:lang="es">Se requiere autenticación para cambiar la contraseña de un dispositivo cifrado</message>
+    <message xml:lang="gl">Debe autenticarse para cambiar a frase de paso dun dispositivo cifrado</message>
+    <message xml:lang="hr">Potrebna je provjera za promjenu lozinke kriptiranog uređaja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy titkosított eszköz jelmondatának módosításához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengubah frasa sandi bagi perangkat terenkripsi</message>
+    <message xml:lang="it">È richiesto autenticarsi per modificare la passphrase di un dispositivo cifrato</message>
+    <message xml:lang="ja">暗号化されたデバイスのパスフレーズを変更するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om wachtzin van een geëncrypt apparaat te veranderen</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zmienić hasło zaszyfrowanego urządzenia</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para alterar a senha para um dispositivo criptografado</message>
+    <message xml:lang="sl">Za spreminjanje šifrirnega gesla šifrirane naprave je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att ändra lösenfrasen för en krypterad enhet</message>
+    <message xml:lang="uk">Щоб внести зміни до пароля зашифрованого пристрою, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来更改加密设备的密钥</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.encrypted-change-passphrase-system">
+    <description>Change passphrase for an encrypted device</description>
+    <description xml:lang="cs">Změnit heslo pro šifrované zařízení</description>
+    <description xml:lang="en_GB">Change passphrase for an encrypted device</description>
+    <description xml:lang="es">Cambiar la contraseña de un dispositivo cifrado</description>
+    <description xml:lang="gl">Cambiar a frase de paso para un dispositivo cifrado</description>
+    <description xml:lang="hr">Promijeni lozinku kriptiranog uređaja</description>
+    <description xml:lang="hu">Titkosított eszköz jelmondatának módosítása</description>
+    <description xml:lang="id">Ubah frasa sandi bagi perangkat terenkripsi</description>
+    <description xml:lang="it">Modifica la passphrase di un dispositivo cifrato</description>
+    <description xml:lang="ja">暗号化されたデバイスのパスフレーズを変更します。</description>
+    <description xml:lang="nl">Verander wachtzin voor een geëncrypt apparaat</description>
+    <description xml:lang="pa">ਇੰਕ੍ਰਿਪਟ ਕੀਤੇ ਜੰਤਰ ਲਈ ਵਾਕ ਬਦਲੋ</description>
+    <description xml:lang="pl">Zmiana hasła dla zaszyfrowanego urządzenia</description>
+    <description xml:lang="pt_BR">Alterar a senha de um dispositivo criptografado</description>
+    <description xml:lang="sl">Spremeni geslo za šifrirano napravo</description>
+    <description xml:lang="sv">Byt lösenfras för en krypterad enhet</description>
+    <description xml:lang="uk">Змінити пароль до зашифрованого пристрою</description>
+    <description xml:lang="zh_CN">更改加密设备的密钥</description>
+    <message>Authentication is required to change the passphrase for an encrypted device</message>
+    <message xml:lang="cs">Pro změnu hesla pro šifrované zařízení je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to change the passphrase for an encrypted device</message>
+    <message xml:lang="es">Se requiere autenticación para cambiar la contraseña de un dispositivo cifrado</message>
+    <message xml:lang="gl">Debe autenticarse para cambiar a frase de paso dun dispositivo cifrado</message>
+    <message xml:lang="hr">Potrebna je provjera za promjenu lozinke kriptiranog uređaja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy titkosított eszköz jelmondatának módosításához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengubah frasa sandi bagi perangkat terenkripsi</message>
+    <message xml:lang="it">È richiesto autenticarsi per modificare la passphrase di un dispositivo cifrato</message>
+    <message xml:lang="ja">暗号化されたデバイスのパスフレーズを変更するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om wachtzin van een geëncrypt apparaat te veranderen</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zmienić hasło zaszyfrowanego urządzenia</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para alterar a senha para um dispositivo criptografado</message>
+    <message xml:lang="sl">Za spreminjanje šifrirnega gesla šifrirane naprave je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att ändra lösenfrasen för en krypterad enhet</message>
+    <message xml:lang="uk">Щоб внести зміни до пароля зашифрованого пристрою, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来更改加密设备的密钥</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  <action id="org.freedesktop.udisks2.loop-setup">
+    <description>Manage loop devices</description>
+    <description xml:lang="cs">Spravovat zařízení místních smyček</description>
+    <description xml:lang="en_GB">Manage loop devices</description>
+    <description xml:lang="es">Gestiona sus dispositivos de «loop»</description>
+    <description xml:lang="gl">Xestionar os dispositivos loop</description>
+    <description xml:lang="hr">Upravljanje virtualnim uređajima</description>
+    <description xml:lang="hu">Hurokeszközök kezelése</description>
+    <description xml:lang="id">Kelola perangkat loop</description>
+    <description xml:lang="it">Gestisce device di loop</description>
+    <description xml:lang="ja">ループデバイスを管理します。</description>
+    <description xml:lang="nl">Manage loop devices</description>
+    <description xml:lang="pa">ਲੂਪ ਜੰਤਰ ਪਰਬੰਧ</description>
+    <description xml:lang="pl">Zarządzanie urządzeniami zwrotnymi</description>
+    <description xml:lang="pt_BR">Gerenciar dispositivos de loop</description>
+    <description xml:lang="sl">Upravljaj z zančnimi napravami</description>
+    <description xml:lang="sv">Hantera loop-enheter</description>
+    <description xml:lang="uk">Керування петльовими пристроями</description>
+    <description xml:lang="zh_CN">管理回环设备</description>
+    <message>Authentication is required to set up a loop device</message>
+    <message xml:lang="cs">Pro nastavení zařízení místní smyčky je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to set up a loop device</message>
+    <message xml:lang="es">Se requiere autenticación para configurar un dispositivo de «loop»</message>
+    <message xml:lang="gl">Debe autenticarse para configurar un dispositivo loop</message>
+    <message xml:lang="hr">Potrebna je provjera za postavljanje virtualnog uređaja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy hurokeszköz beállításához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk menyiapkan suatu perangkat loop</message>
+    <message xml:lang="it">È richiesto autenticarsi per impostare il device di loop</message>
+    <message xml:lang="ja">ループデバイスをセットアップするには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een loop-device op te zetten</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby ustawić urządzenie zwrotne</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para criar um dispositivo de loop</message>
+    <message xml:lang="sl">Za vzpostavitev zančne naprave je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att konfigurera en loop-enhet</message>
+    <message xml:lang="uk">Щоб отримати доступ до визначення петльового пристрою, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来设定回环设备</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  <action id="org.freedesktop.udisks2.loop-delete-others">
+    <description>Delete loop devices</description>
+    <description xml:lang="en_GB">Delete loop devices</description>
+    <description xml:lang="es">Eliminar dispositivos de «loop»</description>
+    <description xml:lang="gl">Eliminar dispositivos de «loop»</description>
+    <description xml:lang="hr">Ukloni virtualne uređaje</description>
+    <description xml:lang="hu">Hurokeszközök törlése</description>
+    <description xml:lang="id">Hapus perangkat loop</description>
+    <description xml:lang="it">Elimina device di loop</description>
+    <description xml:lang="ja">loop デバイスを削除します。</description>
+    <description xml:lang="nl">Verwijderen loop-devices</description>
+    <description xml:lang="pl">Usunięcie urządzeń zwrotnych</description>
+    <description xml:lang="pt_BR">Excluir dispositivos de loop</description>
+    <description xml:lang="sl">Izbriši zančne naprave</description>
+    <description xml:lang="uk">Вилучити петльові (loop) пристрої</description>
+    <message>Authentication is required to delete a loop device set up by another user</message>
+    <message xml:lang="cs">Pro smazání zařízení místní smyčky nastavené jiným uživatelem je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to delete a loop device set up by another user</message>
+    <message xml:lang="es">Se requiere autenticación para eliminar un dispositivo de «loop» configurado por otro usuario</message>
+    <message xml:lang="gl">Debe autenticarse para eliminar un dispositivo loop configurado por outro usuario</message>
+    <message xml:lang="hr">Potrebna je provjera za uklanjanje virtualnog uređaja koji je postavio drugi korisnik</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy másik felhasználó által beállított hurokeszköz törléséhez</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk menghapus perangkat loop yang ditata oleh pengguna lain</message>
+    <message xml:lang="it">È richiesto autenticarsi per eliminare un dispositivo di loop impostato da un altro utente</message>
+    <message xml:lang="ja">他のユーザーによりセットアップされたループデバイスを削除するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een loop-device van een andere gebruiker te verwijderen</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby usunąć urządzenie zwrotne ustawione przez innego użytkownika</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para excluir um dispositivo de loop definido por outro usuário</message>
+    <message xml:lang="sl">Za izbris zančne naprave, ki jo je vzpostavil drug uporabnik, je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att ta bort en loop-enhet som konfigurerats av en annan användare</message>
+    <message xml:lang="uk">Щоб вилучити петльовий пристрій, визначений іншим користувачем, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来删除由其他用户创建的回环设备</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.freedesktop.udisks2.loop-modify-others">
+    <description>Modify loop devices</description>
+    <description xml:lang="en_GB">Modify loop devices</description>
+    <description xml:lang="es">Modificar dispositivos de «loop»</description>
+    <description xml:lang="gl">Modificar dispositivos de «loop»</description>
+    <description xml:lang="hr">Uredi virtualne uređaje</description>
+    <description xml:lang="hu">Hurokeszközök módosítása</description>
+    <description xml:lang="id">Ubah perangkat loop</description>
+    <description xml:lang="it">Modifica dispositivi di loop</description>
+    <description xml:lang="ja">loop デバイスを変更します。</description>
+    <description xml:lang="nl">Bewerken loop-devices</description>
+    <description xml:lang="pl">Modyfikacja urządzeń zwrotnych</description>
+    <description xml:lang="pt_BR">Modificar dispositivos de loop</description>
+    <description xml:lang="sl">Spremeni zančne naprave</description>
+    <description xml:lang="uk">Внести зміни до петльових (loop) пристроїв</description>
+    <message>Authentication is required to modify a loop device set up by another user</message>
+    <message xml:lang="en_GB">Authentication is required to modify a loop device set up by another user</message>
+    <message xml:lang="es">Se requiere autenticación para modificar un dispositivo de «loop» configurado por otro usuario</message>
+    <message xml:lang="gl">Requírese autenticación para modificar un dispositivo de «loop» configurado por outro usuario</message>
+    <message xml:lang="hr">Potrebna je provjera za uređivanje virtualnog uređaja koji je postavio drugi korisnik</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy másik felhasználó által beállított hurokeszköz módosításához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengubah perangkat loop yang disiapkan oleh pengguna lain</message>
+    <message xml:lang="it">È richiesto autenticarsi per modificare un dispositivo di loop impostato da un altro utente</message>
+    <message xml:lang="ja">他のユーザーにより設定された loop デバイスを変更するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een loop-device door een andere gebruiker opgezet te bewerken</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zmodyfikować urządzenie zwrotne ustawione przez innego użytkownika</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para modificar um dispositivo de loop configurado por outro usuário</message>
+    <message xml:lang="sl">Za spreminjanje zančne naprave, ki jo je nastavil drug uporabnik, je zahtevana overitev.</message>
+    <message xml:lang="uk">Щоб внести зміни до параметрів петльового пристрою, визначеного іншим користувачем, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  <action id="org.freedesktop.udisks2.manage-swapspace">
+    <description>Manage swapspace</description>
+    <description xml:lang="cs">Spravovat odkládací oddíl</description>
+    <description xml:lang="en_GB">Manage swapspace</description>
+    <description xml:lang="es">Gestionar espacio de intercambio</description>
+    <description xml:lang="gl">Xestionar o espazo de intercambio</description>
+    <description xml:lang="hr">Upravljanje virtualnim prostorom</description>
+    <description xml:lang="hu">Cserehely kezelése</description>
+    <description xml:lang="id">Kelola ruang swap</description>
+    <description xml:lang="it">Gestisce lo spazio di swap</description>
+    <description xml:lang="ja">スワップ空間を管理します。</description>
+    <description xml:lang="nl">Manage swapspace</description>
+    <description xml:lang="pa">ਸਵੈਪ-ਥਾਂ ਪਰਬੰਧ</description>
+    <description xml:lang="pl">Zarządzanie przestrzenią wymiany</description>
+    <description xml:lang="pt_BR">Gerenciar espaço de swap</description>
+    <description xml:lang="sl">Upravljaj z izmenjalnim prostorom</description>
+    <description xml:lang="sv">Hantera växlingsutrymme</description>
+    <description xml:lang="uk">Керування резервним об’ємом пам’яті (свопінґом)</description>
+    <description xml:lang="zh_CN">管理交换空间</description>
+    <message>Authentication is required to manage swapspace</message>
+    <message xml:lang="cs">Pro správu odkládacího oddílu je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to manage swapspace</message>
+    <message xml:lang="es">Se requiere autenticación para gestionar el espacio de intercambio</message>
+    <message xml:lang="fi">Järjestelmä</message>
+    <message xml:lang="gl">Debe autenticarse para xestionar o espazo de intercambio</message>
+    <message xml:lang="hr">Potrebna je provjera za upravljanje virtualnim prostorom</message>
+    <message xml:lang="hu">Hitelesítés szükséges a cserehely kezeléséhez</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengelola ruang swap</message>
+    <message xml:lang="it">È richiesto autenticarsi per gestire lo spazio di swap</message>
+    <message xml:lang="ja">スワップ空間を管理するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om swapspace te beheren</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zarządzać przestrzenią wymiany</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para gerenciar o espaço de swap</message>
+    <message xml:lang="sl">Za upravljanje z izmenjalnim prostorom je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att hantera växlingsutrymme</message>
+    <message xml:lang="uk">Щоб отримати доступ до керування розділами резервної пам’яті (свопінґу), слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来管理交换空间</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  <action id="org.freedesktop.udisks2.eject-media">
+    <description>Eject media</description>
+    <description xml:lang="cs">Vysunout médium</description>
+    <description xml:lang="en_GB">Eject media</description>
+    <description xml:lang="es">Expulsar soporte</description>
+    <description xml:lang="gl">Expulsar soporte</description>
+    <description xml:lang="hr">Izbaci medij</description>
+    <description xml:lang="hu">Adathordozó kiadása</description>
+    <description xml:lang="id">Keluarkan media</description>
+    <description xml:lang="it">Espelle un supporto</description>
+    <description xml:lang="ja">メディアを取り出します</description>
+    <description xml:lang="nl">Werp media uit</description>
+    <description xml:lang="pa">ਮੀਡਿਆ ਬਾਹਰ ਕੱਢੋ</description>
+    <description xml:lang="pl">Wysunięcie nośnika</description>
+    <description xml:lang="pt_BR">Ejetar mídia</description>
+    <description xml:lang="sl">Izvrzi nosilec</description>
+    <description xml:lang="sv">Mata ut media</description>
+    <description xml:lang="tr">Aygıtı çıkar</description>
+    <description xml:lang="uk">Від’єднати носій даних</description>
+    <message>Authentication is required to eject media</message>
+    <message xml:lang="cs">Pro vysunutí média je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to eject media</message>
+    <message xml:lang="es">Se requiere autenticación para expulsar el medio</message>
+    <message xml:lang="gl">Debe autenticarse para expulsar o soporte</message>
+    <message xml:lang="hr">Potrebna je provjera za izbacivanje medija</message>
+    <message xml:lang="hu">Hitelesítés szükséges az adathordozó kiadásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengeluarkan media</message>
+    <message xml:lang="it">È richiesto autenticarsi per espellere il supporto</message>
+    <message xml:lang="ja">メディアを取り出すには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om media uit te werpen</message>
+    <message xml:lang="pa">ਮੀਡਿਆ ਬਾਹਰ ਕੱਢਣ ਲਈ ਪਰਮਾਣਕਿਤਾ ਚਾਹੀਦੀ ਹੈ</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby wysunąć nośnik</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para ejetar mídia</message>
+    <message xml:lang="sl">Za izmet nosilca je potrebna overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att mata ut media</message>
+    <message xml:lang="uk">Щоб отримати доступ до від’єднання носія даних, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.eject-media-system">
+    <description>Eject media from a system drive</description>
+    <description xml:lang="cs">Vysunout médium ze systémové mechaniky</description>
+    <description xml:lang="en_GB">Eject media from a system drive</description>
+    <description xml:lang="es">Expulsar medio de una unidad del sistema</description>
+    <description xml:lang="gl">Expulsar o soporte desde a unidade do sistema</description>
+    <description xml:lang="hr">Izbaci medij iz sustavskog uređaja</description>
+    <description xml:lang="hu">Adathordozó kiadása rendszermeghajtóból</description>
+    <description xml:lang="id">Keluarkan media dari drive sistem</description>
+    <description xml:lang="it">Espelle un supporto da un'unità di sistema</description>
+    <description xml:lang="ja">システムドライブからメディアを取り出します。</description>
+    <description xml:lang="nl">Werp media uit een systeemstation</description>
+    <description xml:lang="pa">ਸਿਸਟਮ ਡਰਾਇਵ ਤੋਂ ਮੀਡਿਆ ਬਾਹਰ ਕੱਢੋ</description>
+    <description xml:lang="pl">Wysunięcie nośnika z napędu systemowego</description>
+    <description xml:lang="pt_BR">Ejetar mídia de um drive de sistema</description>
+    <description xml:lang="sl">Izvrzi nosilec iz sistemskega pogona</description>
+    <description xml:lang="sv">Mata ut media från en systemenhet</description>
+    <description xml:lang="uk">Від’єднати носій даних від системного диска</description>
+    <message>Authentication is required to eject media</message>
+    <message xml:lang="cs">Pro vysunutí média je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to eject media</message>
+    <message xml:lang="es">Se requiere autenticación para expulsar el medio</message>
+    <message xml:lang="gl">Debe autenticarse para expulsar o soporte</message>
+    <message xml:lang="hr">Potrebna je provjera za izbacivanje medija</message>
+    <message xml:lang="hu">Hitelesítés szükséges az adathordozó kiadásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengeluarkan media</message>
+    <message xml:lang="it">È richiesto autenticarsi per espellere il supporto</message>
+    <message xml:lang="ja">メディアを取り出すには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om media uit te werpen</message>
+    <message xml:lang="pa">ਮੀਡਿਆ ਬਾਹਰ ਕੱਢਣ ਲਈ ਪਰਮਾਣਕਿਤਾ ਚਾਹੀਦੀ ਹੈ</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby wysunąć nośnik</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para ejetar mídia</message>
+    <message xml:lang="sl">Za izmet nosilca je potrebna overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att mata ut media</message>
+    <message xml:lang="uk">Щоб отримати доступ до від’єднання носія даних, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.eject-media-other-seat">
+    <description>Eject media from a drive attached to another seat</description>
+    <description xml:lang="cs">Vysunout médium z mechaniky zapojené do jiného terminálu</description>
+    <description xml:lang="en_GB">Eject media from a drive attached to another seat</description>
+    <description xml:lang="es">Expulsar medio de una unidad conectada en otra ubicación</description>
+    <description xml:lang="gl">Expultar soporte desde unha unidade conectada noutro posto</description>
+    <description xml:lang="hr">Izbaci medij iz uređaja priključenog na drugo mjesto</description>
+    <description xml:lang="hu">Adathordozó kiadása másik üléshez csatlakoztatott meghajtóból</description>
+    <description xml:lang="id">Keluarkan media dari drive yang tersambung ke seat lain</description>
+    <description xml:lang="it">Espelle un supporto da un'unità collegata in un'altra posizione</description>
+    <description xml:lang="ja">他のところに接続したドライブからメディアを取り出します。</description>
+    <description xml:lang="nl">Werp media uit een station dat is aangesloten bij een andere seat</description>
+    <description xml:lang="pl">Wysunięcie nośnika z napędu podłączonego do innego stanowiska</description>
+    <description xml:lang="pt_BR">Ejetar mídia de um drive anexado em outro ponto</description>
+    <description xml:lang="sl">Izvrzi medij iz pogona, vtaknjenega v drugo režo</description>
+    <description xml:lang="uk">Від’єднати носій даних від диска, з’єднаного з іншого місця</description>
+    <message>Authentication is required to eject media from a drive plugged into another seat</message>
+    <message xml:lang="cs">Pro vysunutí média z mechaniky zapojené do jiného terminálu je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to eject media from a drive plugged into another seat</message>
+    <message xml:lang="es">Se requiere autenticación para expulsar el medio desde un dispositivo conectado en otra ubicación</message>
+    <message xml:lang="gl">Debe autenticarse para expulsar un soporte conectado noutro posto</message>
+    <message xml:lang="hr">Potrebna je provjera za izbacivanje medija iz uređaja priključenog na drugo mjesto</message>
+    <message xml:lang="hu">Hitelesítés szükséges az adathordozó kiadásához egy másik üléshez csatlakoztatott meghajtóból</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengeluarkan media dari drive yang ditancapkan ke seat lain</message>
+    <message xml:lang="it">È richiesto autenticarsi per espellere un supporto da un'unità collegata in un'altra posizione</message>
+    <message xml:lang="ja">他のところに差し込まれたドライブからメディアを取り出すには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om media uit te werpen van een schijf, die is aangesloten bij een andere seat</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby wysunąć nośnik z urządzenia podłączonego do innego stanowiska</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para ejetar mídia de um drive conectado em outro ponto</message>
+    <message xml:lang="sl">Za izmet medija iz pogona, vtaknjenega v drugo režo, je potrebno overjanje</message>
+    <message xml:lang="uk">Щоб отримати доступ до від’єднання носія даних від диска, з’єднаного з іншого місця, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  <action id="org.freedesktop.udisks2.modify-device">
+    <description>Modify a device</description>
+    <description xml:lang="cs">Změnit zařízení</description>
+    <description xml:lang="en_GB">Modify a device</description>
+    <description xml:lang="es">Modificar un dispositivo</description>
+    <description xml:lang="fi">Muokkaa laitetta</description>
+    <description xml:lang="gl">Modificar un dispositivo</description>
+    <description xml:lang="hr">Uredi uređaj</description>
+    <description xml:lang="hu">Eszköz módosítása</description>
+    <description xml:lang="id">Ubah suatu perangkat</description>
+    <description xml:lang="it">Modifica un dispositivo</description>
+    <description xml:lang="ja">デバイスを変更します。</description>
+    <description xml:lang="nl">Pas een apparaat aan</description>
+    <description xml:lang="pa">ਜੰਤਰ ਸੋਧੋ</description>
+    <description xml:lang="pl">Modyfikacja urządzenia</description>
+    <description xml:lang="pt_BR">Modificar um dispositivo</description>
+    <description xml:lang="sl">Spremeni napravo</description>
+    <description xml:lang="sv">Ändra en enhet</description>
+    <description xml:lang="uk">Внести зміни до параметрів пристрою</description>
+    <description xml:lang="zh_CN">修改设备</description>
+    <message>Authentication is required to modify a device</message>
+    <message xml:lang="cs">Pro změnu zařízení je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to modify a device</message>
+    <message xml:lang="es">Se requiere autenticación para modificar un dispositivo</message>
+    <message xml:lang="fi">Tunnistautuminen vaaditaan laitteen muokkausta varten</message>
+    <message xml:lang="gl">Debe autenticarse para modificar un dispositivo</message>
+    <message xml:lang="hr">Potrebna je provjera za uređivanje uređaja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy eszköz módosításához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengubah suatu perangkat</message>
+    <message xml:lang="it">È richiesto autenticarsi per modificare un dispositivo</message>
+    <message xml:lang="ja">デバイスを変更するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een apparaat aan te passen</message>
+    <message xml:lang="pa">ਜੰਤਰ ਸੋਧਣ ਲਈ ਪਰਮਾਣਿਤ ਹੋਣ ਦੀ ਲੋੜ ਹੈ</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zmodyfikować urządzenie</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para modificar um dispositivo</message>
+    <message xml:lang="sl">Za spreminjanje naprave je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att ändra en enhet</message>
+    <message xml:lang="uk">Для внесення змін до параметрів пристрою слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来修改设备</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.modify-device-system">
+    <description>Modify a system device</description>
+    <description xml:lang="cs">Změnit systémové zařízení</description>
+    <description xml:lang="en_GB">Modify a system device</description>
+    <description xml:lang="es">Modificar un dispositivo del sistema</description>
+    <description xml:lang="fi">Muokkaa järjestelmälaitetta</description>
+    <description xml:lang="gl">Modificar un dispositivo do sistema</description>
+    <description xml:lang="hr">Uredi sustavski uređaj</description>
+    <description xml:lang="hu">Rendszereszköz módosítása</description>
+    <description xml:lang="id">Ubah suatu perangkat sistem</description>
+    <description xml:lang="it">Modifica un dispositivo di sistema</description>
+    <description xml:lang="ja">システムデバイスを変更します。</description>
+    <description xml:lang="nl">Pas een systeemapparaat aan</description>
+    <description xml:lang="pa">ਸਿਸਟਮ ਜੰਤਰ ਸੋਧੋ</description>
+    <description xml:lang="pl">Modyfikacja urządzenia systemowego</description>
+    <description xml:lang="pt_BR">Modificar um dispositivo de sistema</description>
+    <description xml:lang="sl">Spremeni sistemsko napravo</description>
+    <description xml:lang="sv">Ändra en systemenhet</description>
+    <description xml:lang="uk">Внести зміни до параметрів системного пристрою</description>
+    <description xml:lang="zh_CN">修改系统设备</description>
+    <message>Authentication is required to modify a device</message>
+    <message xml:lang="cs">Pro změnu zařízení je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to modify a device</message>
+    <message xml:lang="es">Se requiere autenticación para modificar un dispositivo</message>
+    <message xml:lang="fi">Tunnistautuminen vaaditaan laitteen muokkausta varten</message>
+    <message xml:lang="gl">Debe autenticarse para modificar un dispositivo</message>
+    <message xml:lang="hr">Potrebna je provjera za uređivanje uređaja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy eszköz módosításához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengubah suatu perangkat</message>
+    <message xml:lang="it">È richiesto autenticarsi per modificare un dispositivo</message>
+    <message xml:lang="ja">デバイスを変更するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een apparaat aan te passen</message>
+    <message xml:lang="pa">ਜੰਤਰ ਸੋਧਣ ਲਈ ਪਰਮਾਣਿਤ ਹੋਣ ਦੀ ਲੋੜ ਹੈ</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zmodyfikować urządzenie</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para modificar um dispositivo</message>
+    <message xml:lang="sl">Za spreminjanje naprave je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att ändra en enhet</message>
+    <message xml:lang="uk">Для внесення змін до параметрів пристрою слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来修改设备</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.modify-device-other-seat">
+    <description>Modify a device</description>
+    <description xml:lang="cs">Změnit zařízení</description>
+    <description xml:lang="en_GB">Modify a device</description>
+    <description xml:lang="es">Modificar un dispositivo</description>
+    <description xml:lang="fi">Muokkaa laitetta</description>
+    <description xml:lang="gl">Modificar un dispositivo</description>
+    <description xml:lang="hr">Uredi uređaj</description>
+    <description xml:lang="hu">Eszköz módosítása</description>
+    <description xml:lang="id">Ubah suatu perangkat</description>
+    <description xml:lang="it">Modifica un dispositivo</description>
+    <description xml:lang="ja">デバイスを変更します。</description>
+    <description xml:lang="nl">Pas een apparaat aan</description>
+    <description xml:lang="pa">ਜੰਤਰ ਸੋਧੋ</description>
+    <description xml:lang="pl">Modyfikacja urządzenia</description>
+    <description xml:lang="pt_BR">Modificar um dispositivo</description>
+    <description xml:lang="sl">Spremeni napravo</description>
+    <description xml:lang="sv">Ändra en enhet</description>
+    <description xml:lang="uk">Внести зміни до параметрів пристрою</description>
+    <description xml:lang="zh_CN">修改设备</description>
+    <message>Authentication is required to modify a device plugged into another seat</message>
+    <message xml:lang="cs">Pro změnu zařízení zapojeného do jiného terminálu je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to modify a device plugged into another seat</message>
+    <message xml:lang="es">Se requiere autenticación para modificar un dispositivo conectado en otra ubicación</message>
+    <message xml:lang="gl">Debe autenticarse para modificar un dispositivo conectado noutro posto</message>
+    <message xml:lang="hr">Potrebna je provjera za uređivanje uređaja priključenog na drugo mjesto</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy másik ülésbe csatlakoztatott eszköz módosításához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengubah perangkat yang ditancapkan ke seat lain</message>
+    <message xml:lang="it">È richiesto autenticarsi per modificare un dispositivo collegato in un'altra posizione</message>
+    <message xml:lang="ja">他のところに差し込まれたデバイスを変更するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een apparaat, dat bij een andere seat is aangesloten, aan te passen</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zmodyfikować urządzenie podłączone do innego stanowiska</message>
+    <message xml:lang="pt_BR">Autenticação é necessparia para modificar um dispositivo conectado em outro ponto</message>
+    <message xml:lang="sl">Za spremembo naprave, vtaknjene v drugo režo, je potrebno overjanje</message>
+    <message xml:lang="uk">Щоб отримати доступ до внесення змін до пристрою, з’єднаного з іншого місця, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.rescan">
+    <description>Rescan a device</description>
+    <description xml:lang="en_GB">Rescan a device</description>
+    <description xml:lang="es">Reanalizar un dispositivo</description>
+    <description xml:lang="gl">Reanalizar un dispositivo</description>
+    <description xml:lang="hr">Ponovo pregledaj uređaj</description>
+    <description xml:lang="hu">Eszköz ismételt vizsgálata</description>
+    <description xml:lang="id">Memindai ulang perangkat</description>
+    <description xml:lang="it">Rianalizza un dispositivo</description>
+    <description xml:lang="ja">デバイスを再スキャンします。</description>
+    <description xml:lang="nl">Apparaat herscannen</description>
+    <description xml:lang="pl">Ponowne skanowanie urządzenia</description>
+    <description xml:lang="pt_BR">Reescanear um dispositivo</description>
+    <description xml:lang="sl">Ponovno preišči napravo</description>
+    <description xml:lang="uk">Повторне сканування пристрою</description>
+    <message>Authentication is to rescan a device</message>
+    <message xml:lang="en_GB">Authentication is to rescan a device</message>
+    <message xml:lang="es">Se requiere autenticación para volver a analizar un dispositivo</message>
+    <message xml:lang="gl">Requírese autenticación para reanalizar un dispositivo</message>
+    <message xml:lang="hr">Potrebna je provjera za ponovno pregledavanje uređaja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy eszköz ismételt vizsgálatához</message>
+    <message xml:lang="id">Perlu otentikasi untuk memindai ulang perangkat</message>
+    <message xml:lang="it">È richiesto autenticarsi per rianalizzare un dispositivo</message>
+    <message xml:lang="ja">デバイスを再スキャンするには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een apparaat te herscannen</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby ponownie przeskanować urządzenie</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para reescanear um dispositivo</message>
+    <message xml:lang="sl">Overjanje za ponovno preiskovanje naprave</message>
+    <message xml:lang="uk">Для виконання повторного сканування пристрою слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  <action id="org.freedesktop.udisks2.open-device">
+    <description>Open a device</description>
+    <description xml:lang="cs">Otevřít zařízení</description>
+    <description xml:lang="en_GB">Open a device</description>
+    <description xml:lang="es">Abrir un dispositivo</description>
+    <description xml:lang="fi">Avaa laite</description>
+    <description xml:lang="gl">Abrir un dispositivo</description>
+    <description xml:lang="hr">Otvori uređaj</description>
+    <description xml:lang="hu">Eszköz megnyitása</description>
+    <description xml:lang="id">Buka suatu perangkat</description>
+    <description xml:lang="it">Apre un dispositivo</description>
+    <description xml:lang="ja">デバイスを開きます。</description>
+    <description xml:lang="nl">Open een apparaat</description>
+    <description xml:lang="pa">ਜੰਤਰ ਖੋਲ੍ਹੋ</description>
+    <description xml:lang="pl">Otwarcie urządzenia</description>
+    <description xml:lang="pt_BR">Abrir um dispositivo</description>
+    <description xml:lang="sl">Odpri napravo</description>
+    <description xml:lang="sv">Öppna en enhet</description>
+    <description xml:lang="tr">Bir aygıt aç</description>
+    <description xml:lang="uk">Відкрити пристрій</description>
+    <description xml:lang="zh_CN">打开设备</description>
+    <message>Authentication is required to open a device</message>
+    <message xml:lang="cs">Pro otevření zařízení je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to open a device</message>
+    <message xml:lang="es">Se requiere autenticación para abrir un dispositivo</message>
+    <message xml:lang="fi">Tunnistautuminen vaaditaan laitteen avaamiseksi</message>
+    <message xml:lang="gl">Debe autenticarse para abrir un dispositivo</message>
+    <message xml:lang="hr">Potrebna je provjera za otvaranje uređaja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy eszköz megnyitásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk membuka suatu perangkat</message>
+    <message xml:lang="it">È richiesto autenticarsi per aprire un dispositivo</message>
+    <message xml:lang="ja">デバイスを開くには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een apparaat te openen</message>
+    <message xml:lang="pa">ਜੰਤਰ ਖੋਲ੍ਹਣ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby otworzyć urządzenie</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para abrir um dispositivo</message>
+    <message xml:lang="sl">Za odpiranje naprave je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att öppna en enhet</message>
+    <message xml:lang="uk">Щоб відкрити пристрій, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来打开设备</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.freedesktop.udisks2.open-device-system">
+    <description>Open a system device</description>
+    <description xml:lang="cs">Otevřít systémové zařízení</description>
+    <description xml:lang="en_GB">Open a system device</description>
+    <description xml:lang="es">Abrir un dispositivo del sistema</description>
+    <description xml:lang="fi">Avaa järjestelmälaite</description>
+    <description xml:lang="gl">Abrir un dispositivo do sistema</description>
+    <description xml:lang="hr">Otvori sustavski uređaj</description>
+    <description xml:lang="hu">Rendszereszköz megnyitása</description>
+    <description xml:lang="id">Buka suatu perangkat sistem</description>
+    <description xml:lang="it">Apre un dispositivo di sistema</description>
+    <description xml:lang="ja">システムデバイスを開きます。</description>
+    <description xml:lang="nl">Open een systeemapparaat</description>
+    <description xml:lang="pl">Otwarcie urządzenia systemowego</description>
+    <description xml:lang="pt_BR">Abrir um dispositivo de sistema</description>
+    <description xml:lang="sl">Odpri sistemsko napravo</description>
+    <description xml:lang="sv">Öppna en systemenhet</description>
+    <description xml:lang="tr">Bir sistem aygıtı aç</description>
+    <description xml:lang="uk">Відкрити пристрій системи</description>
+    <description xml:lang="zh_CN">打开系统设备</description>
+    <message>Authentication is required to open a device</message>
+    <message xml:lang="cs">Pro otevření zařízení je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to open a device</message>
+    <message xml:lang="es">Se requiere autenticación para abrir un dispositivo</message>
+    <message xml:lang="fi">Tunnistautuminen vaaditaan laitteen avaamiseksi</message>
+    <message xml:lang="gl">Debe autenticarse para abrir un dispositivo</message>
+    <message xml:lang="hr">Potrebna je provjera za otvaranje uređaja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy eszköz megnyitásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk membuka suatu perangkat</message>
+    <message xml:lang="it">È richiesto autenticarsi per aprire un dispositivo</message>
+    <message xml:lang="ja">デバイスを開くには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een apparaat te openen</message>
+    <message xml:lang="pa">ਜੰਤਰ ਖੋਲ੍ਹਣ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby otworzyć urządzenie</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para abrir um dispositivo</message>
+    <message xml:lang="sl">Za odpiranje naprave je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att öppna en enhet</message>
+    <message xml:lang="uk">Щоб відкрити пристрій, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来打开设备</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  <action id="org.freedesktop.udisks2.modify-system-configuration">
+    <description>Modify system-wide configuration</description>
+    <description xml:lang="cs">Změnit celosystémové nastavení</description>
+    <description xml:lang="en_GB">Modify system-wide configuration</description>
+    <description xml:lang="es">Modificar la configuración del sistema</description>
+    <description xml:lang="gl">Modificar a configuración global do sistema</description>
+    <description xml:lang="hr">Uredi postavke sustava</description>
+    <description xml:lang="hu">Rendszerszintű beállítások módosítása</description>
+    <description xml:lang="id">Ubah konfigurasi seluruh sistem</description>
+    <description xml:lang="it">Modifica configurazione di sistema</description>
+    <description xml:lang="ja">システム全体の設定を変更します。</description>
+    <description xml:lang="nl">Pas systeemwijde configuratie aan</description>
+    <description xml:lang="pa">ਪੂਰੇ ਸਿਸਟਮ ਦੀ ਸੰਰਚਨਾ ਸੋਧੋ</description>
+    <description xml:lang="pl">Modyfikacja konfiguracji systemu</description>
+    <description xml:lang="pt_BR">Modificar configurações globais do sistema</description>
+    <description xml:lang="sl">Spremeni sistemsko prilagoditev</description>
+    <description xml:lang="sv">Ändra systemkonfigurationen</description>
+    <description xml:lang="uk">Внести зміни до загальносистемних налаштувань</description>
+    <description xml:lang="zh_CN">修改系统全局配置</description>
+    <message>Authentication is required to modify system-wide configuration</message>
+    <message xml:lang="cs">Pro změnu celosystémového nastavení je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to modify system-wide configuration</message>
+    <message xml:lang="es">Se requiere autenticación para modificar la configuración del sistema</message>
+    <message xml:lang="gl">Debe autenticarse para modificar a configuración global do sistema</message>
+    <message xml:lang="hr">Potrebna je provjera za uređivanje postavki sustava</message>
+    <message xml:lang="hu">Hitelesítés szükséges a rendszerszintű beállítások módosításához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengubah konfigurasi seluruh sistem</message>
+    <message xml:lang="it">È richiesto autenticarsi per modifica la configurazione di sistema</message>
+    <message xml:lang="ja">システム全体の設定を変更するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om systeemwijde configuratie aan te passen</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zmodyfikować konfigurację systemu</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para modificar uma configuração global do sistema</message>
+    <message xml:lang="sl">Za spreminjanje sistemskih overitev je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att ändra systemkonfigurationen</message>
+    <message xml:lang="uk">Щоб отримати доступ до внесення змін до загальносистемних налаштувань, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来修改系统范围配置</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.read-system-configuration-secrets">
+    <description>Modify system-wide configuration</description>
+    <description xml:lang="cs">Změnit celosystémové nastavení</description>
+    <description xml:lang="en_GB">Modify system-wide configuration</description>
+    <description xml:lang="es">Modificar la configuración del sistema</description>
+    <description xml:lang="gl">Modificar a configuración global do sistema</description>
+    <description xml:lang="hr">Uredi postavke sustava</description>
+    <description xml:lang="hu">Rendszerszintű beállítások módosítása</description>
+    <description xml:lang="id">Ubah konfigurasi seluruh sistem</description>
+    <description xml:lang="it">Modifica configurazione di sistema</description>
+    <description xml:lang="ja">システム全体の設定を変更します。</description>
+    <description xml:lang="nl">Pas systeemwijde configuratie aan</description>
+    <description xml:lang="pa">ਪੂਰੇ ਸਿਸਟਮ ਦੀ ਸੰਰਚਨਾ ਸੋਧੋ</description>
+    <description xml:lang="pl">Modyfikacja konfiguracji systemu</description>
+    <description xml:lang="pt_BR">Modificar configurações globais do sistema</description>
+    <description xml:lang="sl">Spremeni sistemsko prilagoditev</description>
+    <description xml:lang="sv">Ändra systemkonfigurationen</description>
+    <description xml:lang="uk">Внести зміни до загальносистемних налаштувань</description>
+    <description xml:lang="zh_CN">修改系统全局配置</description>
+    <message>Authentication is required to retrieve secrets from system-wide configuration</message>
+    <message xml:lang="cs">Pro získání utajených informací z celosystémového nastavení je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to retrieve secrets from system-wide configuration</message>
+    <message xml:lang="es">Se requiere autenticación para obtener los secretos de la configuración del sistema</message>
+    <message xml:lang="gl">Debe autenticarse para obter os sergredos da configuración global do sistema</message>
+    <message xml:lang="hr">Potrebna je provjera za preuzimanje tajni iz postavki sustava</message>
+    <message xml:lang="hu">Hitelesítés szükséges titkos információk lekéréséhez a rendszerszintű beállításokból</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengambil rahasia dari konfigurasi seluruh sistem</message>
+    <message xml:lang="it">È richiesto autenticarsi per recuperare segreti dalla configurazione di sistema</message>
+    <message xml:lang="ja">システム全体の設定からシークレットを取得するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om 'secrets' -geheimen- van systeemwijde configuratie op te halen</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby pobrać hasła z konfiguracji systemu</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para restaurar segredos das configurações global do sistema</message>
+    <message xml:lang="sl">Za pridobitev skrivnosti s sistemske prilagoditve je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att hämta hemligheter från systemkonfigurationen</message>
+    <message xml:lang="uk">Щоб отримати реєстраційні дані з загальносистемних налаштувань, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  <action id="org.freedesktop.udisks2.modify-drive-settings">
+    <description>Modify drive settings</description>
+    <description xml:lang="en_GB">Modify drive settings</description>
+    <description xml:lang="es">Modificar configuración del soporte</description>
+    <description xml:lang="gl">Modificar configuración do soporte</description>
+    <description xml:lang="hr">Uredi postavke uređaja</description>
+    <description xml:lang="hu">Meghajtóbeállítások módosítása</description>
+    <description xml:lang="id">Ubah pengaturan drive</description>
+    <description xml:lang="it">Modica le impostazioni di un'unità</description>
+    <description xml:lang="ja">ドライブ設定を変更します。</description>
+    <description xml:lang="nl">Bewerken stationinstellingen</description>
+    <description xml:lang="pl">Modyfikacja ustawień napędu</description>
+    <description xml:lang="pt_BR">Modificar configurações de driver</description>
+    <description xml:lang="sl">Spremeni nastavitve pogona</description>
+    <description xml:lang="uk">Внести зміни до параметрів диска</description>
+    <message>Authentication is required to modify drive settings</message>
+    <message xml:lang="en_GB">Authentication is required to modify drive settings</message>
+    <message xml:lang="es">Para modificar la configuración del soporte necesita autenticarse</message>
+    <message xml:lang="gl">Para modificar a configuración do soporte precisa autenticarse</message>
+    <message xml:lang="hr">Potrebna je provjera za uređivanje postavki uređaja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy meghajtó beállításainak módosításához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengubah pengaturan drive</message>
+    <message xml:lang="it">È richiesto autenticarsi per modificare le impostazioni di un'unità</message>
+    <message xml:lang="ja">ドライブ設定を変更するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om stationsinstellingen te bewerken</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zmodyfikować ustawienia napędu</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para modificar configurações de driver</message>
+    <message xml:lang="sl">Za spremembo nastavitev pogona je potrebna overitev.</message>
+    <message xml:lang="uk">Щоб отримати доступ до внесення змін до параметрів диска, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  
+  <action id="org.freedesktop.udisks2.ata-smart-update">
+    <description>Update SMART data</description>
+    <description xml:lang="cs">Aktualizovat data SMART</description>
+    <description xml:lang="en_GB">Update SMART data</description>
+    <description xml:lang="es">Actualizar datos SMART</description>
+    <description xml:lang="fi">Päivitä SMART-tiedot</description>
+    <description xml:lang="gl">Actualizar os datos SMART</description>
+    <description xml:lang="hr">Ažuriraj SMART podatke</description>
+    <description xml:lang="hu">SMART adatok frissítése</description>
+    <description xml:lang="id">Mutakhirkan data SMART</description>
+    <description xml:lang="it">Aggiorna dati SMART</description>
+    <description xml:lang="ja">SMART データを更新します。</description>
+    <description xml:lang="nl">Update SMART-data</description>
+    <description xml:lang="pa">ਸਮਾਰਟ ਡਾਟਾ ਅੱਪਡੇਟ ਕਰੋ</description>
+    <description xml:lang="pl">Aktualizacja danych SMART</description>
+    <description xml:lang="pt_BR">Atualizar dados SMART</description>
+    <description xml:lang="sl">Posodobi podatke SMART</description>
+    <description xml:lang="sv">Uppdatera SMART-data</description>
+    <description xml:lang="uk">Оновити дані SMART</description>
+    <description xml:lang="zh_CN">更新 SMART 数据</description>
+    <message>Authentication is required to update SMART data</message>
+    <message xml:lang="cs">Pro aktualizaci dat SMART je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to update SMART data</message>
+    <message xml:lang="es">Se requiere autenticación para actualizar los datos SMART</message>
+    <message xml:lang="fi">Tunnistautuminen vaaditaan SMART-tietojen päivittämistä varten</message>
+    <message xml:lang="gl">Debe autenticarse para actualizar os datos SMART</message>
+    <message xml:lang="hr">Potrebna je provjera za ažuriranje SMART podataka</message>
+    <message xml:lang="hu">Hitelesítés szükséges a SMART adatok frissítéséhez</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk memutakhirkan data SMART</message>
+    <message xml:lang="it">È richiesto autenticarsi per aggiornare i dati SMART</message>
+    <message xml:lang="ja">SMART データを更新するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om SMART-data te updaten</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby zaktualizować dane SMART</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para atualizar dados SMART</message>
+    <message xml:lang="sl">Za posodobitev podatkov SMART je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att uppdatera SMART-data</message>
+    <message xml:lang="uk">Щоб отримати доступ до оновлення даних SMART, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来更新 SMART 数据</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.ata-smart-simulate">
+    <description>Set SMART data from blob</description>
+    <description xml:lang="en_GB">Set SMART data from blob</description>
+    <description xml:lang="es">Establecer datos SMART desde «blob»</description>
+    <description xml:lang="gl">Estabelecer datos SMART desde «blob»</description>
+    <description xml:lang="hu">SMART adatok beállítása adatcsomagból</description>
+    <description xml:lang="id">Atur data SMART dari blob</description>
+    <description xml:lang="it">Impostazioni dati SMART da oggetto binario</description>
+    <description xml:lang="ja">ブロブから SMART データを設定します。</description>
+    <description xml:lang="nl">Instellen SMART-data van blob - 'Beware of the blob!'</description>
+    <description xml:lang="pl">Ustawienie danych SMART z danych binarnych</description>
+    <description xml:lang="pt_BR">Definir dados SMART do blob</description>
+    <description xml:lang="sl">Določi podatke SMART iz zbirke dvojiških podatkov</description>
+    <description xml:lang="uk">Встановити дані SMART на основі бінарних кодів</description>
+    <message>Authentication is required to set SMART data from blob</message>
+    <message xml:lang="en_GB">Authentication is required to set SMART data from blob</message>
+    <message xml:lang="es">Se requiere autenticación para establecer datos SMART desde «blob»</message>
+    <message xml:lang="gl">Requírese autenticación para estabelecer datos SMART desde «blob»</message>
+    <message xml:lang="hu">Hitelesítés szükséges a SMART adatok beállításához adatcsomagból</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengatur data SMART dari blob</message>
+    <message xml:lang="it">È richiesto autenticarsi per impostare i dati SMART da un oggetto binario</message>
+    <message xml:lang="ja">ブロブから SMART データを設定するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om SMART-data van blob in te stellen</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby ustawić dane SMART z danych binarnych</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para definir dados SMART do blob</message>
+    <message xml:lang="sl">Za določitev podatkov SMART iz zbirke dvojiških podatkov je potrebna ovetitev.</message>
+    <message xml:lang="uk">Щоб отримати доступ до встановлення даних SMART на основі бінарних кодів, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.ata-smart-selftest">
+    <description>Run SMART self-test</description>
+    <description xml:lang="cs">Spustit autokontrolu SMART</description>
+    <description xml:lang="en_GB">Run SMART self-test</description>
+    <description xml:lang="es">Ejecutar autocomprobación SMART</description>
+    <description xml:lang="fi">Suorita SMART-itsetesti</description>
+    <description xml:lang="gl">Executar a autoproba SMART</description>
+    <description xml:lang="hr">Pokreni SMART provjeru</description>
+    <description xml:lang="hu">SMART önteszt futtatása</description>
+    <description xml:lang="id">Jalankan uji-sendiri SMART</description>
+    <description xml:lang="it">Esegue test automatici SMART</description>
+    <description xml:lang="ja">SMART 自己テストを実行します。</description>
+    <description xml:lang="nl">Voer SMART self-test uit</description>
+    <description xml:lang="pa">SMART ਖੁਦ-ਜਾਂਚ ਚਲਾਉ</description>
+    <description xml:lang="pl">Wykonanie testu SMART</description>
+    <description xml:lang="pt_BR">Executar um auto-teste de SMART</description>
+    <description xml:lang="sl">Izvedi samopreizkus SMART</description>
+    <description xml:lang="sv">Kör SMART-självtest</description>
+    <description xml:lang="uk">Виконати самоперевірку SMART</description>
+    <description xml:lang="zh_CN">运行 SMART 自检</description>
+    <message>Authentication is required to run a SMART self-test</message>
+    <message xml:lang="cs">Pro spuštění autokontroly SMART je vyžadována autentizace</message>
+    <message xml:lang="en_GB">Authentication is required to run a SMART self-test</message>
+    <message xml:lang="es">Se requiere autenticación para ejecutar una autocomprobación SMART</message>
+    <message xml:lang="fi">Tunnistautuminen vaaditaan SMART-itsetestien suorittamista varten</message>
+    <message xml:lang="gl">Debe autenticarse para executar a autoproba SMART</message>
+    <message xml:lang="hr">Potrebna je provjera za pokretanje SMART provjere</message>
+    <message xml:lang="hu">Hitelesítés szükséges a SMART önteszt futtatásához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk menjalankan uji-sendiri SMART</message>
+    <message xml:lang="it">È richiesto autenticarsi per eseguire i test automatici SMART</message>
+    <message xml:lang="ja">SMART 自己テストを実行するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een SMART self-test uit te voeren</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby wykonać test SMART</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para executar um auto-teste SMART.</message>
+    <message xml:lang="sl">Za izvedbo samopreizkusa SMART je zahtevana overitev.</message>
+    <message xml:lang="sv">Autentisering krävs för att köra en SMART-självtest</message>
+    <message xml:lang="uk">Щоб отримати доступ до запуску самоперевірки SMART, слід пройти розпізнавання</message>
+    <message xml:lang="zh_CN">需要授权来运行 SMART 自检</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  
+  <action id="org.freedesktop.udisks2.ata-check-power">
+    <description>Check power state</description>
+    <description xml:lang="en_GB">Check power state</description>
+    <description xml:lang="es">Comprobar el estado de energía</description>
+    <description xml:lang="gl">Comprobar o estado da enerxía</description>
+    <description xml:lang="hr">Provjeri stanje napajanja</description>
+    <description xml:lang="hu">Bekapcsoltság ellenőrzése</description>
+    <description xml:lang="id">Periksa keadaan daya</description>
+    <description xml:lang="it">Controllo stato alimentazione elettrica</description>
+    <description xml:lang="ja">電源状態を確認します。</description>
+    <description xml:lang="nl">Controleer stroomstatus</description>
+    <description xml:lang="pl">Sprawdzenie stanu zasilania</description>
+    <description xml:lang="pt_BR">Verificar estado da energia</description>
+    <description xml:lang="sl">Preveri stanje napajanja</description>
+    <description xml:lang="uk">Перевірити стан живлення</description>
+    <message>Authentication is required to check the power state</message>
+    <message xml:lang="en_GB">Authentication is required to check the power state</message>
+    <message xml:lang="es">Para comprobar el estado de energía necesita autenticarse</message>
+    <message xml:lang="gl">Para comprobar o estado de enerxía precisa autenticarse</message>
+    <message xml:lang="hr">Potrebna je provjera za provjeru stanja napajanja</message>
+    <message xml:lang="hu">Hitelesítés szükséges a bekapcsoltság ellenőrzéséhez</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk memeriksa keadaan daya</message>
+    <message xml:lang="it">È richiesto autenticarsi per controllare lo stato dell'alimentazione elettrica</message>
+    <message xml:lang="ja">電源状態を確認するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om stroomstatus te controleren</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby sprawdzić stan zasilania</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para verificar estado da energia</message>
+    <message xml:lang="sl">Za preverjanje stanja napajanja je potrebna overitev.</message>
+    <message xml:lang="uk">Щоб отримати доступ до перевірки стану живлення, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.ata-standby">
+    <description>Send standby command</description>
+    <description xml:lang="en_GB">Send standby command</description>
+    <description xml:lang="es">Enviar comando de modo en espera</description>
+    <description xml:lang="gl">Enviar orde de modo de espera</description>
+    <description xml:lang="hr">Pošalji naredbu za stanje čekanja</description>
+    <description xml:lang="hu">Készenlét parancs küldése</description>
+    <description xml:lang="id">Kirim perintah siap sedia</description>
+    <description xml:lang="it">Invia comando di standby</description>
+    <description xml:lang="ja">スタンバイコマンドを送信します。</description>
+    <description xml:lang="nl">Stuur standby-commando</description>
+    <description xml:lang="pl">Wysłanie polecenia uśpienia</description>
+    <description xml:lang="pt_BR">Enviar comando de espera</description>
+    <description xml:lang="sl">Pošlji ukaz za vstop v stanje pripravljenosti</description>
+    <description xml:lang="uk">Надіслати команду переходу до стану очікування</description>
+    <message>Authentication is required to put a drive into standby mode</message>
+    <message xml:lang="en_GB">Authentication is required to put a drive into standby mode</message>
+    <message xml:lang="es">Se requiere autenticación para poner una unidad en espera</message>
+    <message xml:lang="gl">Requírese autenticación para poñer unha unidade en espera</message>
+    <message xml:lang="hr">Potrebna je provjera za postavljanje uređaja u stanje čekanja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy meghajtó készenléti állapotba helyezéséhez</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengatur drive ke dalam mode siap sedia</message>
+    <message xml:lang="it">È richiesto autenticarsi per impostare la modalità di standby di un'unità</message>
+    <message xml:lang="ja">ドライブをスタンバイモードにするには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een station in standby-modus te zetten</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby ustawić napęd w tryb uśpienia</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para colocar um drive em modo de espera</message>
+    <message xml:lang="sl">Za postavitev pogona v stanje pripravljenosti je potrebna overitev.</message>
+    <message xml:lang="uk">Щоб перевести диск у стан очікування, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.ata-standby-system">
+    <description>Send standby command to a system drive</description>
+    <description xml:lang="en_GB">Send standby command to a system drive</description>
+    <description xml:lang="es">Enviar comando de modo en espera a una unidad del sistema</description>
+    <description xml:lang="gl">Enviar orde de modo en espera a unha unidade do sistema</description>
+    <description xml:lang="hr">Pošalji naredbu za stanje čekanja sustavskom uređaju</description>
+    <description xml:lang="hu">Készenlét parancs küldése rendszermeghajtónak</description>
+    <description xml:lang="id">Kirim perintah siap sedia ke suatu drive sistem</description>
+    <description xml:lang="it">Invia comando di standby a un'unità di sistema</description>
+    <description xml:lang="ja">システムドライブにスタンバイコマンドを送信します。</description>
+    <description xml:lang="nl">Stuur standby-commando naar een systeemstation</description>
+    <description xml:lang="pl">Wysłanie polecenia uśpienia do napędu systemowego</description>
+    <description xml:lang="pt_BR">Enviar comando de espera para um drive do sistema</description>
+    <description xml:lang="sl">Pošlji ukaz zha vstop v stanje pripravljenosti sistemskemu pogonu</description>
+    <description xml:lang="uk">Надіслати команду переходу у стан очікування диску з операційною системою</description>
+    <message>Authentication is required to put a drive into standby mode</message>
+    <message xml:lang="en_GB">Authentication is required to put a drive into standby mode</message>
+    <message xml:lang="es">Se requiere autenticación para poner una unidad en espera</message>
+    <message xml:lang="gl">Requírese autenticación para poñer unha unidade en espera</message>
+    <message xml:lang="hr">Potrebna je provjera za postavljanje uređaja u stanje čekanja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy meghajtó készenléti állapotba helyezéséhez</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengatur drive ke dalam mode siap sedia</message>
+    <message xml:lang="it">È richiesto autenticarsi per impostare la modalità di standby di un'unità</message>
+    <message xml:lang="ja">ドライブをスタンバイモードにするには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een station in standby-modus te zetten</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby ustawić napęd w tryb uśpienia</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para colocar um drive em modo de espera</message>
+    <message xml:lang="sl">Za postavitev pogona v stanje pripravljenosti je potrebna overitev.</message>
+    <message xml:lang="uk">Щоб перевести диск у стан очікування, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.ata-standby-other-seat">
+    <description>Send standby command to drive on other seat</description>
+    <description xml:lang="en_GB">Send standby command to drive on other seat</description>
+    <description xml:lang="es">Enviar comando de modo en espera a una unidad en otra ubicación</description>
+    <description xml:lang="gl">Enviar orde de modo en espera a unha unidade noutra localización</description>
+    <description xml:lang="hr">Pošalji naredbu za stanje čekanja uređaju na drugom mjestu</description>
+    <description xml:lang="hu">Készenlét parancs küldése másik helyen lévő meghajtónak</description>
+    <description xml:lang="id">Kirim perintah siap sedia ke drive pada seat lain</description>
+    <description xml:lang="it">Invia comando di standby a un'unità collegato in un'altra posizione</description>
+    <description xml:lang="ja">他のシートにあるドライブにスタンバイコマンドを送信します。</description>
+    <description xml:lang="nl">Stuur standby-commando naar een station van een andere seat.</description>
+    <description xml:lang="pl">Wysłanie polecenia uśpienia do napędu na innym stanowisku</description>
+    <description xml:lang="pt_BR">Enviar comando de espera para o drive em outra posição</description>
+    <description xml:lang="sl">Pošlji ukaz za vstop v stanje pripravljenosti pogonu na drugi postaji</description>
+    <description xml:lang="uk">Надіслати команду переходу у стан очікування диску на іншому терміналі</description>
+    <message>Authentication is required to put a drive into standby mode</message>
+    <message xml:lang="en_GB">Authentication is required to put a drive into standby mode</message>
+    <message xml:lang="es">Se requiere autenticación para poner una unidad en espera</message>
+    <message xml:lang="gl">Requírese autenticación para poñer unha unidade en espera</message>
+    <message xml:lang="hr">Potrebna je provjera za postavljanje uređaja u stanje čekanja</message>
+    <message xml:lang="hu">Hitelesítés szükséges egy meghajtó készenléti állapotba helyezéséhez</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk mengatur drive ke dalam mode siap sedia</message>
+    <message xml:lang="it">È richiesto autenticarsi per impostare la modalità di standby di un'unità</message>
+    <message xml:lang="ja">ドライブをスタンバイモードにするには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een station in standby-modus te zetten</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby ustawić napęd w tryb uśpienia</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para colocar um drive em modo de espera</message>
+    <message xml:lang="sl">Za postavitev pogona v stanje pripravljenosti je potrebna overitev.</message>
+    <message xml:lang="uk">Щоб перевести диск у стан очікування, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  
+  <action id="org.freedesktop.udisks2.ata-secure-erase">
+    <description>Securely erase a hard disk</description>
+    <description xml:lang="en_GB">Securely erase a hard disk</description>
+    <description xml:lang="es">Borrar un disco duro de forma segura</description>
+    <description xml:lang="gl">Borrar un disco duro de forma segura</description>
+    <description xml:lang="hr">Pouzdano izbriši podatke s čvrstog diska</description>
+    <description xml:lang="hu">Merevlemez biztonságos törlése</description>
+    <description xml:lang="id">Hapus hard disk secara aman</description>
+    <description xml:lang="it">Cancella in sicurezza un disco fisso</description>
+    <description xml:lang="ja">ハードディスクを安全に消去します。</description>
+    <description xml:lang="nl">Veilig wissen van harde schijf</description>
+    <description xml:lang="pl">Bezpieczne usunięcie zawartości dysku twardego</description>
+    <description xml:lang="pt_BR">Executar secure erase em um disco rígido</description>
+    <description xml:lang="sl">Varno pobriši trdi disk</description>
+    <description xml:lang="uk">Безпечно витерти жорсткий диск</description>
+    <message>Authentication is required to securely erase a hard disk</message>
+    <message xml:lang="en_GB">Authentication is required to securely erase a hard disk</message>
+    <message xml:lang="es">Para borrar un disco duro de forma segura necesita autenticarse</message>
+    <message xml:lang="gl">Para borrar un disco duro de forma segura precisa autenticarse</message>
+    <message xml:lang="hr">Potrebna je provjera za pouzdano brisanje podataka s čvrstog diska</message>
+    <message xml:lang="hu">Hitelesítés szükséges a merevlemez biztonságos törléséhez</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk menghapus hard disk secara aman</message>
+    <message xml:lang="it">È richiesto autenticarsi per cancellare in sicurezza un disco fisso</message>
+    <message xml:lang="ja">ハードディスクを安全に消去するには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een harddisk veilig te wissen</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby bezpiecznie usunąć zawartość dysku twardego</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para executar secure erase no disco rígido</message>
+    <message xml:lang="sl">Za varno brisanje trdega diska je potrebna overitev.</message>
+    <message xml:lang="uk">Щоб отримати доступ до безпечного витирання жорсткого диска, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+  
+  
+
+  
+  <action id="org.freedesktop.udisks2.cancel-job">
+    <description>Cancel job</description>
+    <description xml:lang="en_GB">Cancel job</description>
+    <description xml:lang="es">Cancelar trabajo</description>
+    <description xml:lang="gl">Cancelar traballo</description>
+    <description xml:lang="hr">Otkaži posao</description>
+    <description xml:lang="hu">Feladat megszakítása</description>
+    <description xml:lang="id">Batalkan tugas</description>
+    <description xml:lang="it">Annulla un lavoro</description>
+    <description xml:lang="ja">ジョブを取り消します。</description>
+    <description xml:lang="nl">Afbreken taak</description>
+    <description xml:lang="pl">Anulowanie zadania</description>
+    <description xml:lang="pt_BR">Cancelar trabalho</description>
+    <description xml:lang="sl">Prekliči opravilo</description>
+    <description xml:lang="uk">Скасувати завдання</description>
+    <message>Authentication is required to cancel a job</message>
+    <message xml:lang="en_GB">Authentication is required to cancel a job</message>
+    <message xml:lang="es">Para cancelar un trabajo necesita autenticarse</message>
+    <message xml:lang="gl">Para cancelar un traballo precisa autenticarse</message>
+    <message xml:lang="hr">Potrebna je provjera za otkazivanje posla</message>
+    <message xml:lang="hu">Hitelesítés szükséges a feladat megszakításához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk membatalkan suatu tugas</message>
+    <message xml:lang="it">È richiesto autenticarsi per annullare un lavoro</message>
+    <message xml:lang="ja">ジョブを取り消すには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een taak af te breken</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby anulować zadanie</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para cancelar um trabalho</message>
+    <message xml:lang="sl">Za preklic opravila je potrebna overitev.</message>
+    <message xml:lang="uk">Щоб скасувати завдання, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  
+  <action id="org.freedesktop.udisks2.cancel-job-other-user">
+    <description>Cancel job started by another user</description>
+    <description xml:lang="en_GB">Cancel job started by another user</description>
+    <description xml:lang="es">Cancelar trabajo iniciado por otro usuario</description>
+    <description xml:lang="gl">Cancelar traballo iniciado por outro usuario</description>
+    <description xml:lang="hr">Otkaži posao koji je pokrenuo drugi korisnik</description>
+    <description xml:lang="hu">Másik felhasználó által indított feladat megszakítása</description>
+    <description xml:lang="id">Batalkan tugas yang dimulai oleh pengguna lain</description>
+    <description xml:lang="it">Annulla un lavoro iniziato da un altro utente</description>
+    <description xml:lang="ja">他のユーザーにより開始されたジョブを取り消します。</description>
+    <description xml:lang="nl">Afbreken taak gestart door een andere gebruiker</description>
+    <description xml:lang="pl">Anulowanie zadania rozpoczętego przez innego użytkownika</description>
+    <description xml:lang="pt_BR">Cancelar um trabalho iniciado por outro usuário</description>
+    <description xml:lang="sl">Prekliči opravilo, ki ga je zagnal drug uporabnik</description>
+    <description xml:lang="uk">Скасувати завдання, розпочате іншим користувачем</description>
+    <message>Authentication is required to cancel a job started by another user</message>
+    <message xml:lang="en_GB">Authentication is required to cancel a job started by another user</message>
+    <message xml:lang="es">Para cancelar un trabajo iniciado por otro usuario necesita autenticarse</message>
+    <message xml:lang="gl">Para cancelar un traballo iniciado por outro usuario precisa autenticarse</message>
+    <message xml:lang="hr">Potrebna je provjera za otkazivanje posla koji je pokrenuo drugi korisnik</message>
+    <message xml:lang="hu">Hitelesítés szükséges a másik felhasználó által indított feladat megszakításához</message>
+    <message xml:lang="id">Otentikasi diperlukan untuk membatalkan tugas yang dimulai oleh pengguna lain</message>
+    <message xml:lang="it">È richiesto autenticarsi per annullare un lavoro iniziato da un altro utente</message>
+    <message xml:lang="ja">他のユーザーにより開始されたジョブを取り消すには、認証が必要です。</message>
+    <message xml:lang="nl">Authenticatie is vereist om een door een andere gebruiker gestarte taak af te breken</message>
+    <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby anulować zadanie rozpoczęte przez innego użytkownika</message>
+    <message xml:lang="pt_BR">Autenticação é necessária para cancelar um trabalho iniciado por outro usuário</message>
+    <message xml:lang="sl">Za preklic opravila, ki ga je zagnal drug uporabnik, je potrebna overitev.</message>
+    <message xml:lang="uk">Щоб скасувати завдання, розпочате іншим користувачем, слід пройти розпізнавання</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes_keep</allow_active>
+    </defaults>
+  </action>
+
+</policyconfig>
