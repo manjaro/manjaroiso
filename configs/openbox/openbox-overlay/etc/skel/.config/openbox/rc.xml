@@ -378,6 +378,14 @@
         </startupnotify>
       </action>
     </keybind>
+    <keybind key="Print">
+      <action name="Execute">
+        <command>gnome-screenshot --interactive</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+        </startupnotify>
+      </action>
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
