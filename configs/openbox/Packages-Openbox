@@ -61,7 +61,7 @@ gparted
 >x86_64 gimp
 hardinfo
 leafpad
-midori
+qupzilla
 pamac
 transmission-gtk
 ufw
@@ -69,6 +69,7 @@ viewnior
 vlc
 >x86_64 rhythmbox
 >i686 xnoise
+xfce4-xkb-plugin
 
 ## Fonts
 #ttf-source-sans-pro
