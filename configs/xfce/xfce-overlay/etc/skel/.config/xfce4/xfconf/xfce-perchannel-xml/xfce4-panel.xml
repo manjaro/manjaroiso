@@ -3,7 +3,7 @@
 <channel name="xfce4-panel" version="1.0">
   <property name="panels" type="uint" value="1">
     <property name="panel-0" type="empty">
-      <property name="position" type="string" value="p=8;x=720;y=884"/>
+      <property name="position" type="string" value="p=6;x=800;y=15"/>
       <property name="length" type="uint" value="100"/>
       <property name="position-locked" type="bool" value="true"/>
       <property name="plugin-ids" type="array">
@@ -51,8 +51,11 @@
       <property name="names-visible" type="array">
         <value type="string" value="pnmixer"/>
         <value type="string" value="networkmanager applet"/>
-        <value type="string" value="clipman"/>
         <value type="string" value="xfce4-power-manager"/>
+        <value type="string" value="orage"/>
+        <value type="string" value="blueman-applet"/>
+        <value type="string" value="clipman"/>
+        <value type="string" value="xnoise"/>
       </property>
     </property>
     <property name="plugin-3" type="string" value="tasklist">

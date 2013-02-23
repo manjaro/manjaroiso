@@ -15,5 +15,6 @@
     <property name="file-icons" type="empty">
       <property name="show-removable" type="bool" value="true"/>
     </property>
+    <property name="icon-size" type="uint" value="32"/>
   </property>
 </channel>
