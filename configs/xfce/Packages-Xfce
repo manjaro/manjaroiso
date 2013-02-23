@@ -16,6 +16,7 @@ libgnome
 lxdm
 network-manager-applet
 orage
+plank
 system-tools
 thunar
 thunar-archive-plugin
@@ -69,6 +70,7 @@ blueman
 catfish
 chromium
 evince
+evolution
 file-roller
 galculator
 gedit
@@ -78,7 +80,6 @@ gparted
 lxmed
 mlocate
 pidgin
-sylpheed
 viewnior
 vlc
 xchat
@@ -95,7 +96,6 @@ pnmixer-xfce4
 pavucontrol
 
 ## Package management
-kalu
 pamac
 
 ## Games
@@ -113,3 +113,18 @@ manjaro-printer
 ## Office
 abiword
 gnumeric
+
+## AUR Access
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+gcc
+libtool
+m4
+make
+patch
+texinfo
+yaourt

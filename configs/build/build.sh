@@ -8,9 +8,9 @@ fi
 
 xfce="Y"
 mate="Y"
-e17="Y"
+e17="N"
 cinnamon="Y"
-kde="Y"
+kde="N"
 net="Y"
 
 if [ "$xfce" == "Y" ] ; then
