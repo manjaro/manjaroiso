@@ -502,11 +502,6 @@ hd_config()
     chroot ${DESTDIR} setcap cap_net_raw=ep /usr/bin/ping &>/dev/null
     chroot ${DESTDIR} setcap cap_net_raw=ep /usr/bin/ping6 &>/dev/null
 
-    # fix policy-quirk in openbox
-    if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
-       chroot ${DESTDIR} mv -f /usr/share/polkit-1/actions/org.freedesktop.udisks2.policy.orig /usr/share/polkit-1/actions/org.freedesktop.udisks2.policy &>/dev/null
-    fi
-
     # remove .manjaro-chroot
     chroot ${DESTDIR} rm /.manjaro-chroot &>/dev/null
 

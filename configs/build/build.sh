@@ -75,6 +75,7 @@ if [ "$e17" == "Y" ] ; then
 fi
 if [ "$cinnamon" == "Y" ] ; then
    echo ">> build cinnamon image"
+   ln -sfv ../shared/Packages-Lng Packages-Lng
    ln -sfv ../cinnamon/options.conf options.conf
    ln -sfv ../cinnamon/isomounts isomounts
    ln -sfv ../cinnamon/Packages-Cinnamon Packages-Cinnamon
