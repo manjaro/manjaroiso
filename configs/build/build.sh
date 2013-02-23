@@ -7,7 +7,7 @@ if [ "$EUID" != "0" ]; then
 fi
 
 xfce="Y"
-mate="Y"
+mate="N"
 e17="N"
 cinnamon="Y"
 kde="N"
