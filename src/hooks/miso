@@ -134,6 +134,11 @@ miso_mount_handler() {
     msg "Looking for the boot device"
     for dev in ${misodevice} ${dev_list};do
         dev_type="$(blkid -o value -s TYPE -p ${dev})"
+
+        # skip devices without a filesystem
+        if [ -z "${dev_type}" ];then
+            continue
+        fi
         
         mount -o ro,loop -t "${dev_type}" "${dev}" "/bootmnt" || warn "Failed to mount device: ${dev}"
            
