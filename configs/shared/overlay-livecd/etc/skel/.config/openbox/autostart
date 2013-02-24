@@ -25,7 +25,7 @@ compton ~/.config/compton.conf &
 
 # Startup
 # udiskie is used in live-cd mode for auto-mounting
-# thunar is used (daemon mode) for or auto-mounting after installation
+# thunar is used (daemon mode) for auto-mounting after installation
 (sleep 1s && pnmixer) &
 (sleep 1s && xscreensaver -no-splash) &
 (sleep 1s && xfce4-power-manager) &
