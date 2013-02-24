@@ -103,10 +103,6 @@ run_hook() {
         isomounts="/bootmnt/${misobasedir}/isomounts"
     fi
 
-    if [ "x${misodevice}" = "x" ]; then
-        misodevice="/dev/disk/by-label/${misolabel}"
-    fi
-
     # set mount handler for miso
     mount_handler="miso_mount_handler"
 }
@@ -139,22 +135,26 @@ probedevice() {
     waitcount=0
     while [ ${waittime} -ne ${waitcount} ]; do
 
-        if [ "x${misolabel}" != "x" ]; then
-            [ ${waitcount} -eq 0 ] && msg ":: Looking for LABEL ${misolabel}"
-            MDEV=$( blkid -L ${misolabel} )
-            if [ "x${MDEV}" != "x" ]; then
-                testdevice
-            fi
-
-        elif [ "x${root}" != "x" ]; then
-            [ ${waitcount} -eq 0 ] && msg ": Looking for ${root}"
+        if [ "x${root}" != "x" ]; then
+            [ ${waitcount} -eq 0 ] && msg ":: Looking for ${root}"
             # Set MDEV directly, e.g. /dev/sda1
             if [ -e ${root} ]; then
                 MDEV=${root}
                 testdevice
             fi
+        fi
 
-        else
+        if [ "x${misolabel}" != "x" ]; then
+            [ ${waitcount} -eq 0 ] && msg ":: Looking for LABEL ${misolabel}"
+            MDEV=$( blkid -L ${misolabel} )
+            if [ "x${MDEV}" != "x" ]; then
+                testdevice
+            else
+                misolabel=""
+            fi
+        fi
+
+        if [ -z "${found}" ]; then
             [ ${waitcount} -eq 0 ] && msg ":: Looking for boot device"
             if [ "x${nocd}" = "x" ]; then
                 # Look for CD

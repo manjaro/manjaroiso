@@ -79,7 +79,7 @@ miso_pxe_nbd_mount_handler () {
         nbd-client ${nbdserver} -N miso /dev/nbd0 -persist
     fi
 
-    misodevice=/dev/nbd0
+    root=/dev/nbd0
 
     miso_mount_handler ${newroot}
 
