@@ -6,10 +6,10 @@ if [ "$EUID" != "0" ]; then
     exit 1
 fi
 
-xfce="Y"
+xfce="N"
 mate="N"
 e17="N"
-cinnamon="Y"
+cinnamon="N"
 kde="N"
 net="Y"
 

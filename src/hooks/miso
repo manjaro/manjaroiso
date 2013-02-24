@@ -132,7 +132,7 @@ miso_mount_handler() {
         dev_type="$(blkid -o value -s TYPE -p ${dev})"
 
         # skip devices without a medium
-        if [ -z "$(blkid -o value -s TYPE -p ${dev} | grep ${dev})" ];then
+        if [ ! -z "$(blkid -o value -s TYPE -p ${dev} | grep ${dev})" ];then
             dev_type=""
         fi
 
