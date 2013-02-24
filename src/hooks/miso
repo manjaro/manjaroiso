@@ -131,6 +131,11 @@ miso_mount_handler() {
     for dev in ${dev_list};do
         dev_type="$(blkid -o value -s TYPE -p ${dev})"
 
+        # skip devices without a medium
+        if [ -z "$(blkid -o value -s TYPE -p ${dev} | grep ${dev})" ];then
+            dev_type=""
+        fi
+
         # skip devices without a filesystem
         if [ -z "${dev_type}" ];then
             continue
