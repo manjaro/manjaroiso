@@ -58,7 +58,7 @@ _mnt_squashfs() {
         msg -n ":: Copying squashfs image to RAM..."
         /bin/cp "${img}" "/copytoram/${img_fullname}"
         if [ $? -ne 0 ]; then
-            echo "ERROR: while copy ${img} to /copytoram/${img_fullname}"
+            echo ">> ERROR: while copy ${img} to /copytoram/${img_fullname}"
             launch_interactive_shell
         fi
         img="/copytoram/${img_fullname}"
@@ -68,7 +68,7 @@ _mnt_squashfs() {
     mkdir -p "${tmp_mnt}"
     /bin/mount -r -t squashfs "${img}" "${tmp_mnt}"
     if [ $? -ne 0 ]; then
-        echo "ERROR: while mounting ${img} to ${tmp_mnt}"
+        echo ">> ERROR: while mounting ${img} to ${tmp_mnt}"
         launch_interactive_shell
     fi
 
@@ -223,7 +223,7 @@ miso_mount_handler() {
     msg ":: Mounting root (aufs) filesystem"
     /bin/mount -t aufs -o dirs=/rw_branch=rw union "${newroot}"
     if [ $? -ne 0 ]; then
-        echo "ERROR: while mounting root (aufs) filesystem."
+        echo ">> ERROR: while mounting root (aufs) filesystem."
         launch_interactive_shell
     fi
 
