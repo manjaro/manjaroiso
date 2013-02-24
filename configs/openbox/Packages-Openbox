@@ -41,6 +41,7 @@ thunar-archive-plugin
 tint2
 tintwizard
 tumbler
+udiskie # to fix installation mounting quirk
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xcursor-themes
