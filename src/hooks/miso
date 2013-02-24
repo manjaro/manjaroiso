@@ -109,18 +109,18 @@ run_hook() {
 
 testdevice() {
     fstype=$( blkid -s TYPE -o value ${MDEV} )
-    mount -o ro,loop -t "${fstype}" "${MDEV}" "/bootmnt" >/dev/null 2>/dev/null
+    mount -r -t ${fstype} -o noatime "${MDEV}" "/bootmnt" >/dev/null 2>/dev/null
     if [ $? -eq 0 ]; then
         if [ -f "/bootmnt/.miso" ]; then
-            msg ":: INFO: miso system at ${MDEV}"
+            msg "::: INFO: miso system at ${MDEV}"
             found="yes"
         else
             /bin/umount "/bootmnt/" 2>/dev/null
-            msg  ":: INFO: No miso system at ${MDEV}"
+            msg  "::: INFO: No miso system at ${MDEV}"
             MDEV=""
         fi
     else
-        msg ":: ERROR: Couldn't mount ${MDEV}"
+        msg ">> ERROR: Couldn't mount ${MDEV}"
         MDEV=""
     fi
 }
@@ -130,30 +130,32 @@ probedevice() {
     if [ "x${usbdelay}" != "x" ]; then
         waittime=${usbdelay}
     else
-        waittime=12
+        waittime=35
     fi
     waitcount=0
     while [ ${waittime} -ne ${waitcount} ]; do
-
+        # first we look for root, e.g. /dev/sda1 to see if .miso will be found
         if [ "x${root}" != "x" ]; then
             [ ${waitcount} -eq 0 ] && msg ":: Looking for ${root}"
-            # Set MDEV directly, e.g. /dev/sda1
             if [ -e ${root} ]; then
                 MDEV=${root}
                 testdevice
             fi
         fi
 
+        # if still not found, we will look for misolabel
         if [ "x${misolabel}" != "x" ]; then
             [ ${waitcount} -eq 0 ] && msg ":: Looking for LABEL ${misolabel}"
             MDEV=$( blkid -L ${misolabel} )
             if [ "x${MDEV}" != "x" ]; then
                 testdevice
             else
+                msg "::: INFO: LABEL ${misolabel} is not valid!"
                 misolabel=""
             fi
         fi
 
+        # still nothing found, we will look for boot device
         if [ -z "${found}" ]; then
             [ ${waitcount} -eq 0 ] && msg ":: Looking for boot device"
             if [ "x${nocd}" = "x" ]; then
@@ -167,17 +169,6 @@ probedevice() {
                 } )
                 for i in ${cdroms}; do
                     MDEV=/dev/${i}
-                    testdevice
-                    if [ "x${MDEV}" != "x" ]; then
-                        break
-                    fi
-                done
-            fi
-
-            if [ "x${MDEV}" = "x" ]; then
-                # Look for USB-Sticks
-                for d in /dev/sd[a-z]*; do
-                    MDEV=${d}
                     testdevice
                     if [ "x${MDEV}" != "x" ]; then
                         break
@@ -213,7 +204,7 @@ miso_mount_handler() {
     probedevice
     
     if [ -z "${found}" ]; then
-        echo ":: ERROR: unable to find boot device"
+        echo ">> ERROR: unable to find boot device"
         echo "   Falling back to interactive prompt"
         echo "   You can try to fix the problem manually, log out when you are finished"
         launch_interactive_shell
