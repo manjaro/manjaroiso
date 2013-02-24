@@ -24,11 +24,12 @@ compton ~/.config/compton.conf &
 (sleep 1s && tint2 -c ~/.config/tint2/tint2-workspaces) &
 
 # Startup
-# Thunar is run in daemon-mode to enable auto-mounting of removable media
+# udiskie is used in live-cd mode for auto-mounting
+# thunar is used (daemon mode) for auto-mounting after installation
 (sleep 1s && pnmixer) &
 (sleep 1s && xscreensaver -no-splash) &
 (sleep 1s && xfce4-power-manager) &
-(sleep 1s && thunar --daemon) &
+(sleep 1s && udiskie) &
 (sleep 1s && synapse -s) &
 
 
