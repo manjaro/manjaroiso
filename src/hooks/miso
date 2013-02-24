@@ -4,6 +4,7 @@
 # returns: 0 if param was found. Also prints its value if it was a K=V param.
 #          1 if it was not. Also prints value passed as <default>
 #
+
 kernel_cmdline ()
 {
     for param in $(/bin/cat /proc/cmdline); do
@@ -102,58 +103,117 @@ run_hook() {
         isomounts="/bootmnt/${misobasedir}/isomounts"
     fi
 
+    if [ "x${misodevice}" = "x" ]; then
+        misodevice="/dev/disk/by-label/${misolabel}"
+    fi
+
     # set mount handler for miso
     mount_handler="miso_mount_handler"
 }
 
+testdevice() {
+    fstype=$( blkid -s TYPE -o value ${MDEV} )
+    mount -o ro,loop -t "${fstype}" "${MDEV}" "/bootmnt" >/dev/null 2>/dev/null
+    if [ $? -eq 0 ]; then
+        if [ -f "/bootmnt/.miso" ]; then
+            msg ":: miso system at ${MDEV}"
+            found="yes"
+        else
+            /bin/umount "/bootmnt/" 2>/dev/null
+            msg  ":: INFO: No miso system at ${MDEV}"
+            MDEV=""
+        fi
+    else
+        msg ":: ERROR: Couldn't mount ${MDEV}"
+        MDEV=""
+    fi
+}
+
+probedevice() {
+# Loop device test every second up to some limit
+    if [ "x${usbdelay}" != "x" ]; then
+        waittime=${usbdelay}
+    else
+        waittime=12
+    fi
+    waitcount=0
+    while [ ${waittime} -ne ${waitcount} ]; do
+
+        if [ "x${misolabel}" != "x" ]; then
+            [ ${waitcount} -eq 0 ] && msg ":: Looking for LABEL ${misolabel}"
+            MDEV=$( blkid -L ${misolabel} )
+            if [ "x${MDEV}" != "x" ]; then
+                testdevice
+            fi
+
+        elif [ "x${root}" != "x" ]; then
+            [ ${waitcount} -eq 0 ] && msg ": Looking for ${root}"
+            # Set MDEV directly, e.g. /dev/sda1
+            if [ -e ${root} ]; then
+                MDEV=${root}
+                testdevice
+            fi
+
+        else
+            [ ${waitcount} -eq 0 ] && msg ":: Looking for boot device"
+            if [ "x${nocd}" = "x" ]; then
+                # Look for CD
+                cdroms=$( /bin/cat /proc/sys/dev/cdrom/info | { while read a b c; do
+                        if [ "${a}" = "drive" -a "${b}" = "name:" ]; then
+                            echo "${c}"
+                            break
+                        fi
+                    done
+                } )
+                for i in ${cdroms}; do
+                    MDEV=/dev/${i}
+                    testdevice
+                    if [ "x${MDEV}" != "x" ]; then
+                        break
+                    fi
+                done
+            fi
+
+            if [ "x${MDEV}" = "x" ]; then
+                # Look for USB-Sticks
+                for d in /dev/sd[a-z]*; do
+                    MDEV=${d}
+                    testdevice
+                    if [ "x${MDEV}" != "x" ]; then
+                        break
+                    fi
+                done
+            fi
+
+            # Test partitions
+            if [ "x${MDEV}" = "x" ]; then
+                for d in /dev/sd[a-z][0-9]*; do
+                    MDEV=${d}
+                    testdevice
+                    if [ "x${MDEV}" != "x" ]; then
+                        break
+                    fi
+                done
+            fi
+
+        fi
+
+        [ "x${MDEV}" != "x" ] && break
+
+        /bin/sleep 1
+        waitcount=$(( ${waitcount} + 1 ))
+    done
+}
+
 miso_mount_handler() {
     local newroot="${1}"
-    local dev_list dev_type dev f found
-    
-    # Sleep to wait for the device to show up
-    if [ -n "${miso_wait}" ];then
-        while [ "${miso_wait}" -gt "1" ];do
-            msg "Waiting ${miso_wait}s for devices to show up     \r"
-            sleep 1
-            let miso_wait-="1"
-        done
-    fi
-    
-    # Add all removable devices (USB/CD/DVD/whatever)
-    for f in /sys/block/*;do
-        if [ "$(cat ${f}/removable)" = "1" ];then
-            dev_list="${dev_list} /dev/$(basename ${f})"
-        fi
-    done
+    local found
 
-    # Probe all devices from the list
-    msg "Looking for the boot device"
-    for dev in ${dev_list};do
-        dev_type="$(blkid -o value -s TYPE -p ${dev})"
-
-        # skip devices without a medium
-        if [ ! -z "$(blkid -o value -s TYPE -p ${dev} | grep ${dev})" ];then
-            dev_type=""
-        fi
-
-        # skip devices without a filesystem
-        if [ -z "${dev_type}" ];then
-            continue
-        fi
-        
-        mount -o ro,loop -t "${dev_type}" "${dev}" "/bootmnt" || warn "Failed to mount device: ${dev}"
-           
-        if [ -f "/bootmnt/.miso" ] && [ -f "${isomounts}" ];then
-            found="yes"
-            echo "SUCCESS: Mounted miso volume successfully."
-            break
-        else
-            umount -fl "${dev}" 2> /dev/null
-        fi
-    done
+    # Probe all devices
+    probedevice
     
     if [ -z "${found}" ]; then
-        echo "ERROR: unable to find boot device"
+        echo ":: ERROR: unable to find boot device"
         echo "   Falling back to interactive prompt"
         echo "   You can try to fix the problem manually, log out when you are finished"
         launch_interactive_shell
