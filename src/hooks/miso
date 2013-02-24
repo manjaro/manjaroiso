@@ -102,10 +102,6 @@ run_hook() {
         isomounts="/bootmnt/${misobasedir}/isomounts"
     fi
 
-    if [ "x${misodevice}" = "x" ]; then
-        misodevice="/dev/disk/by-label/${misolabel}"
-    fi
-
     # set mount handler for miso
     mount_handler="miso_mount_handler"
 }
@@ -132,7 +128,7 @@ miso_mount_handler() {
 
     # Probe all devices from the list
     msg "Looking for the boot device"
-    for dev in ${misodevice} ${dev_list};do
+    for dev in ${dev_list};do
         dev_type="$(blkid -o value -s TYPE -p ${dev})"
 
         # skip devices without a filesystem
