@@ -5,6 +5,7 @@ source /etc/manjaro/functions
 CONSOLEFONT="$(kernel_cmdline vconsole.font)"
 CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
 USENONFREE="$(kernel_cmdline nonfree no)"
+VIDEO="$(kernel_cmdline xdriver no)"
 PACMAN_LNG="pacman --config /opt/manjaro/pacman-lng.conf --noconfirm --noprogressbar"
 arch=$(uname -m)
 _kernver=$(uname -r)
