@@ -1,7 +1,7 @@
 ### Manjaro Packages
 
 ## Openbox Main Packages
-arandr
+lxrandr
 compton-git
 faenza-green-icon-theme
 file-roller
@@ -30,7 +30,6 @@ openssh
 p7zip
 polkit-gnome
 polkit-qt
-pnmixer
 poppler-glib
 python2-xdg
 synapse
@@ -49,7 +48,6 @@ xfce-theme-greenbird
 xfce4-appfinder
 xfce4-notifyd
 xfce4-power-manager
-xfce4-mixer
 xscreensaver
 xterm
 
@@ -86,6 +84,10 @@ libreoffice-installer
 
 ## Wallpapers
 manjaro-artwork-openbox
+
+## Sound
+pnmixer
+xfce4-mixer
 
 ## Printing
 

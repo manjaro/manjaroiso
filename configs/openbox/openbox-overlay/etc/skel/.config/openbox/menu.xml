@@ -14,7 +14,7 @@
 		<menu id="1" label="Configuration">
 			<item label="Screen Display &amp; Resolution">
 				<action name="Execute">
-					<execute>arandr</execute>
+					<execute>lxrandr</execute>
 				</action>
 			</item>
 			<item label="Environment &amp; Workspaces">
