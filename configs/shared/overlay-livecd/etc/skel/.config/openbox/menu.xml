@@ -20,7 +20,7 @@
 		<menu id="1" label="Configuration">
 			<item label="Screen Display &amp; Resolution">
 				<action name="Execute">
-					<execute>lxrandr</execute>
+					<execute>arandr</execute>
 				</action>
 			</item>
 			<item label="Environment &amp; Workspaces">

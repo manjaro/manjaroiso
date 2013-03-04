@@ -1,7 +1,7 @@
 ### Manjaro Packages
 
 ## Openbox Main Packages
-lxrandr
+arandr
 compton-git
 faenza-green-icon-theme
 file-roller
@@ -88,7 +88,7 @@ manjaro-artwork-openbox
 
 ## Sound
 pnmixer
-xfce4-mixer
+gnome-alsamixer
 
 ## Printing
 
