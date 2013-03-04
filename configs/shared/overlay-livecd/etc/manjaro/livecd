@@ -1,5 +1,6 @@
 #!/bin/sh
 
+source /etc/manjaro/options.conf
 source /etc/manjaro/functions
 
 CONSOLEFONT="$(kernel_cmdline vconsole.font)"
@@ -177,4 +178,42 @@ depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 DESTDIR="/"
 if [ -e "/usr/bin/kalu" ] ; then
    _rm_kalu
+fi
+
+# update /etc/live-installer/install.conf
+if [ -e "/etc/live-installer/install.conf" ] ; then
+   sed -i 's|_root-image_|/bootmnt/manjaro/_ARCH_/root-image.sqfs|g' /etc/live-installer/install.conf
+   sed -i "s|_kernel_|$manjaro_kernel|g" /etc/live-installer/install.conf
+   release=$(cat /etc/lsb-release | grep DISTRIB_RELEASE | cut -d= -f2)
+   sed -i "s|_version_|$release|g" /etc/live-installer/install.conf
+
+   if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/xfce-image.sqfs|g' /etc/live-installer/install.conf
+   fi
+   if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
+      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/xfce-image.sqfs|g' /etc/live-installer/install.conf
+   fi
+   if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
+      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/openbox-image.sqfs|g' /etc/live-installer/install.conf
+   fi
+   if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/mate-image.sqfs|g' /etc/live-installer/install.conf
+   fi
+   if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
+      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/kde-image.sqfs|g' /etc/live-installer/install.conf
+   fi
+   if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
+      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/lxde-image.sqfs|g' /etc/live-installer/install.conf
+   fi
+   if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/e17-image.sqfs|g' /etc/live-installer/install.conf
+   fi
+   if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/e17-image.sqfs|g' /etc/live-installer/install.conf
+   fi
+   if [ "${arch}" == "i686" ] ; then
+      sed -i 's|_ARCH_|i686|g' /etc/live-installer/install.conf
+   else
+      sed -i 's|_ARCH_|x86_64|g' /etc/live-installer/install.conf
+   fi
 fi

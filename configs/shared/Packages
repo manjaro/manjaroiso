@@ -40,7 +40,7 @@ os-prober
 parted
 pkg-config
 pv
-qt
+qt4
 refind-efi
 rp-pppoe
 rsync

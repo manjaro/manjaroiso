@@ -15,6 +15,7 @@ gvfs-afc
 gvfs-gphoto2
 gvfs-smb
 libgnomeui # for qt to find gtk themes
+live-installer
 lxappearance-obconf
 lxdm
 lxterminal

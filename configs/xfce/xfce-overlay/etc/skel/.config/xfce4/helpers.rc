@@ -1,4 +1,4 @@
 FileManager=Thunar
-WebBrowser=chromium
-MailReader=evolution
+WebBrowser=firefox
+MailReader=thunderbird
 

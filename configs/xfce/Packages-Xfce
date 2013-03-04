@@ -13,6 +13,7 @@ gtk3-xfce-engine
 gvfs
 gvfs-smb
 libgnome
+live-installer
 lxdm
 network-manager-applet
 orage
@@ -68,10 +69,11 @@ xscreensaver
 ## Applications
 blueman
 catfish
-chromium
+#chromium
 evince
-evolution
+#evolution
 file-roller
+firefox
 galculator
 gedit
 gimp
@@ -80,6 +82,7 @@ gparted
 lxmed
 mlocate
 pidgin
+thunderbird
 viewnior
 vlc
 xchat
@@ -111,8 +114,15 @@ icedtea-web-java7
 manjaro-printer
 
 ## Office
-abiword
-gnumeric
+libreoffice-en-US
+#libreoffice-base
+libreoffice-calc
+#libreoffice-draw
+libreoffice-gnome
+#libreoffice-impress
+#libreoffice-math
+#libreoffice-postgresql-connector
+libreoffice-writer
 
 ## AUR Access
 autoconf
@@ -126,5 +136,4 @@ libtool
 m4
 make
 patch
-texinfo
 yaourt

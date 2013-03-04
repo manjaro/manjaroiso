@@ -10,6 +10,7 @@ gvfs-afc
 gvfs-gphoto2
 gvfs-smb
 libgnome
+live-installer
 lxde
 network-manager-applet
 polkit-gnome

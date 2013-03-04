@@ -3469,7 +3469,6 @@ if [ "\${grub_platform}" == "pc" ]; then
     #    insmod ntfs
     #    insmod search_fs_uuid
     #    insmod ntldr
-    #    search --fs-uuid --no-floppy --set=root 69B235F6749E84CE
     #    ntldr /bootmgr
     #}
     
@@ -4189,6 +4188,7 @@ export LC_MESSAGES=en_US.UTF-8
 CONSOLEFONT="$(kernel_cmdline vconsole.font)"
 CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
 USENONFREE="$(kernel_cmdline nonfree no)"
+VIDEO="$(kernel_cmdline xdriver no)"
 
 # Translation
 LOCALE=$(get_country)
