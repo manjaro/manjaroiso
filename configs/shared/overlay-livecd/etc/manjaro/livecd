@@ -189,27 +189,31 @@ if [ -e "/etc/live-installer/install.conf" ] ; then
 
    if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
       sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/xfce-image.sqfs|g' /etc/live-installer/install.conf
+      sed -i 's|_title_|Manjaro XFCE Edition|g' /etc/live-installer/install.conf
    fi
    if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
-      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/xfce-image.sqfs|g' /etc/live-installer/install.conf
+      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/cinnamon-image.sqfs|g' /etc/live-installer/install.conf
+      sed -i 's|_title_|Manjaro Cinnamon Edition|g' /etc/live-installer/install.conf
    fi
    if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
       sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/openbox-image.sqfs|g' /etc/live-installer/install.conf
+      sed -i 's|_title_|Manjaro Openbox Edition|g' /etc/live-installer/install.conf
    fi
    if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
       sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/mate-image.sqfs|g' /etc/live-installer/install.conf
+      sed -i 's|_title_|Manjaro MATE Edition|g' /etc/live-installer/install.conf
    fi
    if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
       sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/kde-image.sqfs|g' /etc/live-installer/install.conf
+      sed -i 's|_title_|Manjaro KDE Edition|g' /etc/live-installer/install.conf
    fi
    if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
       sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/lxde-image.sqfs|g' /etc/live-installer/install.conf
+      sed -i 's|_title_|Manjaro LXDE Edition|g' /etc/live-installer/install.conf
    fi
    if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
       sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/e17-image.sqfs|g' /etc/live-installer/install.conf
-   fi
-   if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
-      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/e17-image.sqfs|g' /etc/live-installer/install.conf
+      sed -i 's|_title_|Manjaro E17 Edition|g' /etc/live-installer/install.conf
    fi
    if [ "${arch}" == "i686" ] ; then
       sed -i 's|_ARCH_|i686|g' /etc/live-installer/install.conf

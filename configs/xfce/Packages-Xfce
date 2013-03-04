@@ -34,12 +34,12 @@ xfce4-cpufreq-plugin
 xfce4-cpugraph-plugin
 xfce4-datetime-plugin
 xfce4-dict
-xfce4-diskperf-plugin
-xfce4-fsguard-plugin
-xfce4-genmon-plugin
-xfce4-mailwatch-plugin
+#xfce4-diskperf-plugin
+#xfce4-fsguard-plugin
+#xfce4-genmon-plugin
+#xfce4-mailwatch-plugin
 xfce4-mount-plugin
-xfce4-mpc-plugin
+#xfce4-mpc-plugin
 xfce4-netload-plugin
 xfce4-notes-plugin
 xfce4-notifyd
@@ -50,15 +50,15 @@ xfce4-screenshooter
 xfce4-sensors-plugin
 xfce4-session
 xfce4-settings
-xfce4-smartbookmark-plugin
+#xfce4-smartbookmark-plugin
 xfce4-systemload-plugin
 xfce4-taskmanager
 xfce4-terminal
-xfce4-time-out-plugin
-xfce4-timer-plugin
-xfce4-verve-plugin
-xfce4-wavelan-plugin
-xfce4-weather-plugin
+#xfce4-time-out-plugin
+#xfce4-timer-plugin
+#xfce4-verve-plugin
+#xfce4-wavelan-plugin
+#xfce4-weather-plugin
 xfce4-xkb-plugin
 xfce4-volumed
 xfconf
@@ -76,18 +76,17 @@ file-roller
 firefox
 galculator
 gedit
-gimp
-gparted
-#manjaro-installer
+#gimp
 lxmed
 mlocate
-pidgin
+#pidgin
 thunderbird
 viewnior
 vlc
 xchat
-xfburn
-xnoise
+#xfburn
+#xnoise
+xfmedia
 yelp
 
 ## Packages for Sound and Audio
@@ -111,7 +110,7 @@ ttf-source-sans-pro
 icedtea-web-java7
 
 ## Printing
-manjaro-printer
+#manjaro-printer
 
 ## Office
 libreoffice-en-US
