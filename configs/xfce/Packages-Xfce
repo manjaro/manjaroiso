@@ -1,6 +1,7 @@
 ### Manjaro Packages
 
 ## XFCE Main Packages
+adwaita-manjaro-themes
 exo
 faenza-green-icon-theme
 garcon
@@ -14,7 +15,7 @@ gvfs
 gvfs-smb
 libgnome
 live-installer
-lxdm
+mdm-themes
 network-manager-applet
 orage
 plank

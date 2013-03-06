@@ -117,6 +117,33 @@ if [ -e "/usr/sbin/gdm" ] ; then
   chown -R gdm:gdm /var/lib/gdm &> /dev/null
 fi
 
+# do_setupmdm
+if [ -e "/usr/sbin/mdm" ] ; then
+  getent group mdm >/dev/null 2>&1 || groupadd -g 128 mdm
+  getent passwd mdm >/dev/null 2>&1 || usr/sbin/useradd -c 'Linux Mint Display Manager' -u 128 -g mdm -d /var/lib/mdm -s /sbin/nologin mdm
+  passwd -l mdm > /dev/null
+  chown root:mdm /var/lib/mdm > /dev/null
+  chmod 1770 /var/lib/mdm > /dev/null
+  if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+      sed -i 's|default.desktop|xfce.desktop|g' /etc/mdm/custom.conf
+  fi
+  if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
+      sed -i 's|default.desktop|cinnamon.desktop|g' /etc/mdm/custom.conf
+  fi
+  if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
+      sed -i 's|default.desktop|openbox.desktop|g' /etc/mdm/custom.conf
+  fi
+  if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+      sed -i 's|default.desktop|mate.desktop|g' /etc/mdm/custom.conf
+  fi
+  if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
+      sed -i 's|default.desktop|LXDE.desktop|g' /etc/mdm/custom.conf
+  fi
+  if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+      sed -i 's|default.desktop|enlightenment.desktop|g' /etc/mdm/custom.conf
+  fi
+fi
+
 # do_setuplxdm
 if [ -e "/usr/sbin/lxdm" ] ; then
    if [ -z "`getent group "lxdm" 2> /dev/null`" ]; then

@@ -436,8 +436,15 @@ hd_config()
        chroot ${DESTDIR} getent passwd gdm > /dev/null 2>&1 || usr/sbin/useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /sbin/nologin gdm
        chroot ${DESTDIR} passwd -l gdm > /dev/null
        chroot ${DESTDIR} chown -R gdm:gdm /var/lib/gdm  &>/dev/null
-       sed -i '/AutomaticLoginEnable=true/ d' ${DESTDIR}/etc/gdm/custom.conf
-       sed -i '/AutomaticLogin=manjaro/ d' ${DESTDIR}/etc/gdm/custom.conf
+    fi
+
+    # setup mdm
+    if [ -e "/usr/sbin/mdm" ] ; then
+       chroot ${DESTDIR} getent group mdm >/dev/null 2>&1 || groupadd -g 128 mdm
+       chroot ${DESTDIR} getent passwd mdm >/dev/null 2>&1 || usr/sbin/useradd -c 'Linux Mint Display Manager' -u 128 -g mdm -d /var/lib/mdm -s /sbin/nologin mdm
+       chroot ${DESTDIR} passwd -l mdm > /dev/null
+       chroot ${DESTDIR} chown root:mdm /var/lib/mdm > /dev/null
+       chroot ${DESTDIR} chmod 1770 /var/lib/mdm > /dev/null
     fi
 
     # setup lxdm
