@@ -30,6 +30,7 @@ grub-efi-x86_64
 gummiboot-efi
 hdparm
 incron
+keyboardctl
 linux-firmware
 manjaro-firmware
 memtest86+

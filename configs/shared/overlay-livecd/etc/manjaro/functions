@@ -153,9 +153,11 @@ set_locale() {
   [ -n "$KEYMAP" ] || KEYMAP="us"
   [ -n "$KBLAYOUT" ] || KBLAYOUT="us"
 
-  # set kblayout and keymap
-  sed -i "s#Identifier \"evdev keyboard catchall\".*#&\n        Option \"XkbLayout\" \"${KBLAYOUT}\"#"       ${DESTDIR}/etc/X11/xorg.conf.d/10-evdev.conf
-  sed -i -e "s/^.*KEYMAP=.*/KEYMAP=${KEYMAP}/" ${DESTDIR}/etc/vconsole.conf
+  # set kblayout
+  keyboardctl --set-layout "$KBLAYOUT" ""
+  if [ ! -z ${DESTDIR} ]; then
+     cp /etc/keyboard.conf ${DESTDIR}/etc/keyboard.conf
+  fi
 
   # set systemwide language
   echo "LANG=${LOCALE}.UTF-8" > ${DESTDIR}/etc/locale.conf
@@ -1108,7 +1110,7 @@ _config_system()
             "/etc/environment"           "${_environmenttext}" \
             "/etc/pacman.d/mirrorlist"  "${_mirrorlisttext}" \
             "/etc/X11/xorg.conf.d/10-evdev.conf"  "${_xorgevdevconftext}" \
-            "/etc/vconsole.conf"        "${_vconsoletext}" \
+            "/etc/keyboard.conf"        "${_vconsoletext}" \
             "${_return_label}"        "${_return_label}" 2>${ANSWER} || NEXTITEM="${_return_label}"
         NEXTITEM="$(cat ${ANSWER})"
 

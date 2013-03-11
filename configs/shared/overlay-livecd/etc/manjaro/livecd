@@ -196,7 +196,7 @@ if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
 fi
 
 # load keys
-loadkeys $(cat /etc/vconsole.conf | grep "KEYMAP=" | cut -d= -f2)
+keyboardctl --setup
 
 # depmod extramodules
 depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
