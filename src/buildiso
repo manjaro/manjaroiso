@@ -188,6 +188,9 @@ make_root_image() {
             ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/root-image/etc/systemd/system/multi-user.target.wants/cups.service"
          fi
          cp -LPr overlay/* ${work_dir}/root-image
+         # mv getty@tty1.service to tty9
+         mv ${work_dir}/root-image/etc/systemd/system/getty.target.wants/getty@tty1.service ${work_dir}/root-image/etc/systemd/system/getty.target.wants/getty@tty9.service
+
          # Enable followed line if you want to use the pacman.conf used to build this image
          #cp pacman-${arch}.conf ${work_dir}/root-image/etc/pacman.conf
          : > ${work_dir}/build.${FUNCNAME}
