@@ -34,14 +34,7 @@ alsactl -f /etc/asound.state store &>/dev/null
 cp -f /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 sed -i -e 's~^.*mirror.dacentec.com.*~Server = http://mirror.dacentec.com/manjaro/$repo/$arch~' /etc/pacman.d/mirrorlist
 
-# update_pacman_databases
-pacman -Syy &> /dev/null
-
 # hwdetect_graphics
-
-# TODO: fix in mhwd
-mkdir -p /var/lib/mhwd/local/{pci,usb}
-
 if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
    if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
    	if  [ "${VIDEO}" == "vesa" ]; then

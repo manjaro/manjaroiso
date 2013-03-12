@@ -104,7 +104,7 @@ mobile-broadband-provider-info
 modemmanager
 nbd
 networkmanager
-#networkmanager-dispatcher-ntpd-systemd
+networkmanager-dispatcher-ntpd-systemd
 openresolv
 usb_modeswitch
 wpa_actiond
@@ -118,9 +118,6 @@ cpupower
 ## ucode for new cpus
 amd-ucode
 intel-ucode
-
-## CLI tools
-mc
 
 ## Xorg Packages
 inxi
