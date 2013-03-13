@@ -87,9 +87,15 @@ wpa_supplicant
 wireless_tools
 zd1211-firmware
 
-## Laptop management
+## Laptop power management
+acpid
 cpupower
+ethtool
+sdparm
+hdparm
 laptop-mode-tools
+wireless_tools
+xorg-xset
 
 ## ucode for new cpus
 amd-ucode
