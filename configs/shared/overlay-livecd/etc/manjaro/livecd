@@ -188,6 +188,9 @@ if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
    ${PACMAN_LNG} -Sy ${PACMAN_LNG_INST} ${PACMAN_LNG_INST_KDE} &> /dev/null
 fi
 
+# load keys
+keyboardctl --setup
+
 # depmod extramodules
 depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 
