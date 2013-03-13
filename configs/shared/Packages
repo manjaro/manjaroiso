@@ -1,60 +1,50 @@
 ## Base Packages
 base
+keyboardctl
+linux-firmware
 lsb-release
+manjaro-firmware
 manjaro-release
+memtest86+
+mhwd
+mhwd-db
 syslog-ng
 
 ## Kernel
 KERNEL
 
 ## Extra Base Packages
-acpid
-crda
-curl
-dbus
-ddrescue
-dhclient
-dialog
-dmidecode
-dnsmasq
-dnsutils
-expac
-efilinux-efi
-eject
-gamin
-gptfdisk
-gnu-netcat
 grub-bios
-grub-efi-i386
-grub-efi-x86_64
-gummiboot-efi
-hdparm
-incron
-keyboardctl
-linux-firmware
-manjaro-firmware
-memtest86+
-mhwd
-mhwd-db
 mkinitcpio-nfs-utils
 os-prober
-parted
 pkg-config
-pv
-qt4
-refind-efi
-rp-pppoe
-rsync
-sdparm
-speedtouch
 squashfs-tools
 sudo
 syslinux
-tcpdump
-v86d
-wget
 xdg-utils
 xdg-user-dirs
+
+## GUI tookits
+gtk2 # needed at least
+gtk3
+qt4
+
+## needed by cli-installer
+dialog
+dmidecode
+gptfdisk
+parted
+pv
+rsync
+tcpdump
+wget
+
+## efi support
+efilinux-efi
+grub-efi-i386
+grub-efi-x86_64
+gummiboot-efi
+refind-efi
 
 ## Filesystem Packages
 btrfs-progs
@@ -80,21 +70,6 @@ ttf-liberation
 ## Artwork
 manjaro-artwork
 
-## Compression Codecs
-arj
-lzop
-unrar
-unzip
-xz
-zip
-
-## Codecs
-flashplugin
-gstreamer0.10-bad
-gstreamer0.10-base-plugins
-gstreamer0.10-good-plugins
-libdvdcss
-
 ## Network
 b43-fwcutter
 iptables
@@ -114,6 +89,7 @@ zd1211-firmware
 
 ## Laptop management
 cpupower
+laptop-mode-tools
 
 ## ucode for new cpus
 amd-ucode
