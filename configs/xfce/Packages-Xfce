@@ -5,7 +5,8 @@ adwaita-manjaro-themes
 faenza-green-icon-theme
 libgnome # to fix qt-themes
 live-installer
-mdm-themes
+lightdm-webkit-manjaro-themes
+manjaro-system-settings
 network-manager-applet
 orage
 plank

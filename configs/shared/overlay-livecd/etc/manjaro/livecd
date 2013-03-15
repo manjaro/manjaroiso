@@ -71,6 +71,7 @@ fi
 addgroups="video,audio,power,disk,storage,optical,network,lp,scanner"
 useradd -m -p "" -g users -G $addgroups manjaro
 sed -i "s#manjaro.*#manjaro:\$1\$uYIrxnwJ\$a5wTa84YxxYmD.sKX/Lll1:14942:0:99999:7:::#" /etc/shadow
+echo "Icon=/var/lib/AccountsService/icons/manjaro.png" >> /var/lib/AccountsService/users/manjaro
 
 # do_configsforroot
 cp -a /etc/skel/. /root/
@@ -82,7 +83,9 @@ if [ -e "/usr/sbin/lightdm" ] ; then
    getent passwd lightdm > /dev/null 2>&1 || useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /sbin/nologin lightdm
    passwd -l lightdm > /dev/null
    chown -R lightdm:lightdm /var/run/lightdm > /dev/null
-   #sed -i -e 's/^.*user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
+   if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
+   fi
    sed -i -e 's/^.*autologin-user=.*/autologin-user=manjaro/' /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*pam-service=.*/pam-service=lightdm-autologin/' /etc/lightdm/lightdm.conf

@@ -428,7 +428,9 @@ hd_config()
        chroot ${DESTDIR} getent passwd lightdm > /dev/null 2>&1 || useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /sbin/nologin lightdm
        chroot ${DESTDIR} passwd -l lightdm > /dev/null
        chown -R lightdm:lightdm ${DESTDIR}/run/lightdm  &>/dev/null
-       sed -i -e 's/^.*user-session=.*/user-session=xfce/' ${DESTDIR}/etc/lightdm/lightdm.conf
+       if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+            sed -i -e 's/^.*user-session=.*/user-session=xfce/' ${DESTDIR}/etc/lightdm/lightdm.conf
+       fi
        chmod +r ${DESTDIR}/etc/lightdm/lightdm.conf &>/dev/null
     fi
 

@@ -56,6 +56,10 @@ dokeymap() {
     fi
     keymap=$(cat ${ANSWER})
     echo ${keymap} > /tmp/.keymap
+    # backward fix since filesystem 2013.03-1 don't ships vconsole.conf anymore
+    echo "KEYMAP=us" > ${DESTDIR}/etc/vconsole.conf
+    echo "FONT=" >> ${DESTDIR}/etc/vconsole.conf
+    echo "FONT_MAP=" >> ${DESTDIR}/etc/vconsole.conf
     sed -i -e "s/^KEYMAP=.*/KEYMAP=\"$(cat /tmp/.keymap | sed -e 's/\..*//g')\"/g"  ${DESTDIR}/etc/vconsole.conf
     if [[ "${keymap}" ]]; then
         DIALOG --infobox "{$_load} ${keymap}" 0 0
