@@ -6,7 +6,7 @@ if [ "$EUID" != "0" ]; then
     exit 1
 fi
 
-xfce="N"
+xfce="Y"
 mate="N"
 e17="N"
 cinnamon="N"
