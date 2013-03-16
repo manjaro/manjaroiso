@@ -85,13 +85,15 @@ if [ -e "/usr/sbin/lightdm" ] ; then
    chown -R lightdm:lightdm /var/run/lightdm > /dev/null
    if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
         sed -i -e 's/^.*user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
+        ln -s /usr/lib/lightdm/lightdm/gdmflexiserver /usr/bin/gdmflexiserver
    fi
    sed -i -e 's/^.*autologin-user=.*/autologin-user=manjaro/' /etc/lightdm/lightdm.conf
-   sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0\npam-service=lightdm-autologin/' /etc/lightdm/lightdm.conf
+   sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
+   groupadd autologin
+   gpasswd -a manjaro autologin
    chmod +r /etc/lightdm/lightdm.conf
    # livecd fix
-   echo "d /run/lightdm 0775 lightdm lightdm" > /usr/lib/tmpfiles.d/lightdm.conf
-   echo "f /run/lightdm/.pam_environment 0644 lightdm lightdm - GDK_CORE_DEVICE_EVENTS=true" > /usr/lib/tmpfiles.d/lightdm.conf
+   systemd-tmpfiles --create /usr/lib/tmpfiles.d/lightdm.conf
    /usr/bin/systemd-tmpfiles --create --remove
 fi
 

@@ -430,6 +430,7 @@ hd_config()
        chown -R lightdm:lightdm ${DESTDIR}/run/lightdm  &>/dev/null
        if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
             sed -i -e 's/^.*user-session=.*/user-session=xfce/' ${DESTDIR}/etc/lightdm/lightdm.conf
+            ln -s /usr/lib/lightdm/lightdm/gdmflexiserver ${DESTDIR}/usr/bin/gdmflexiserver
        fi
        chmod +r ${DESTDIR}/etc/lightdm/lightdm.conf &>/dev/null
     fi
