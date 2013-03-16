@@ -1,6 +1,5 @@
 ## Base Packages
 base
-keyboardctl
 linux-firmware
 lsb-release
 manjaro-firmware
@@ -53,7 +52,6 @@ dosfstools
 testdisk
 nilfs-utils
 nfs-utils
-ntfs-3g
 ntfsprogs
 
 ## Packages for Sound and Audio
@@ -84,7 +82,6 @@ openresolv
 usb_modeswitch
 wpa_actiond
 wpa_supplicant
-wireless_tools
 zd1211-firmware
 
 ## Laptop power management
