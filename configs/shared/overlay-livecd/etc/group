@@ -42,3 +42,4 @@ nbd:x:44:
 ntp:x:87:
 usbmux:x:140:
 mysql:x:89:
+systemd-journal:x:190:

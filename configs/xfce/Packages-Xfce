@@ -1,6 +1,7 @@
 ### Manjaro Packages
 
 ## XFCE Main Packages
+accountsservice
 adwaita-manjaro-themes
 faenza-green-icon-theme
 libgnome # to fix qt-themes

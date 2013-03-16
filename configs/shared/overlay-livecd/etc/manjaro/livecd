@@ -91,7 +91,9 @@ if [ -e "/usr/sbin/lightdm" ] ; then
    sed -i -e 's/^.*pam-service=.*/pam-service=lightdm-autologin/' /etc/lightdm/lightdm.conf
    chmod +r /etc/lightdm/lightdm.conf
    # livecd fix
-   echo "d /run/lightdm 0770 lightdm lightdm -" > /usr/lib/tmpfiles.d/lightdm.conf
+   echo "d /run/lightdm 0775 lightdm lightdm" > /usr/lib/tmpfiles.d/lightdm.conf
+   echo "f /run/lightdm/.pam_environment 0644 lightdm lightdm - GDK_CORE_DEVICE_EVENTS=true" > /usr/lib/tmpfiles.d/lightdm.conf
+   /usr/bin/systemd-tmpfiles --create --remove
 fi
 
 # do_setupkdm
