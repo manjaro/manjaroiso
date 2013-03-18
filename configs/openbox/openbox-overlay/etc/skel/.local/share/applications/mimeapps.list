@@ -1,0 +1,13 @@
+[Default Applications]
+application/x-executable=geany.desktop
+application/pdf=evince.desktop
+text/plain=leafpad.desktop
+application/xml=geany.desktop
+application/x-shellscript=geany.desktop
+
+[Added Associations]
+application/x-executable=geany.desktop;
+application/pdf=evince.desktop;
+text/plain=leafpad.desktop;
+application/xml=geany.desktop;
+application/x-shellscript=geany.desktop;
