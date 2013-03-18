@@ -2,36 +2,29 @@
 # Placed in /home/[user account]/.config/openbox/autostart as local user template
 # Otherwise, can be placed in /etc/xdg/openbox/autostart as a global template
 # Note: applications such as the network manager (nm-app) have been placed
-# in /etc/xdg/openbox/autostart as global items
+# in /etc/xdg/autostart as global items
 #
 # Written by the Manjaro Team
 #
 
-# Check if if the standard Home directories exist (Documents, Downloads, etc.), and
-# if not, then create them
-if [ -x /usr/bin/xdg-user-dirs-update ] ; then
-    /usr/bin/xdg-user-dirs-update
-fi
-
-# Background
+## Background
 nitrogen --restore &
 
-# Compositing
+## Compositing
 compton ~/.config/compton.conf &
 
-# Panel
+## Panel
 (sleep 1s && tint2) &
-(sleep 1s && tint2 -c ~/.config/tint2/tint2-workspaces) &
 
-# Startup
-# udiskie is used in live-cd mode for auto-mounting
-# thunar is used (daemon mode) for auto-mounting after installation
+## Startup
+# Udiskie is run for mounting in place of thunar-daemon to fix installer quirk
 (sleep 1s && pnmixer) &
 (sleep 1s && xscreensaver -no-splash) &
-(sleep 1s && xfce4-power-manager) &
 (sleep 1s && udiskie) &
-(sleep 1s && synapse -s) &
+(sleep 1s && numlockx) &
+(sleep 4s && conky) &
 
 
-# Optional pre-configured application launcher (remove hash to enable)
-# xfce4-panel &
+## Optional: enable clipboard and/or disable touchpad
+#(sleep 1s && parcellite) &
+#/usr/bin/synclient TouchpadOff=1 &

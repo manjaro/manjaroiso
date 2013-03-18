@@ -325,15 +325,6 @@
         <command>lxterminal</command>
       </action>
     </keybind>
-    <keybind key="W-s">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>synapse</name>
-        </startupnotify>
-        <command>synapse</command>
-      </action>
-    </keybind>
     <keybind key="W-f">
       <action name="Execute">
         <startupnotify>
@@ -341,15 +332,6 @@
           <name>thunar</name>
         </startupnotify>
         <command>thunar</command>
-      </action>
-    </keybind>
-    <keybind key="W-a">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>xfce4-appfinder</name>
-        </startupnotify>
-        <command>xfce4-appfinder</command>
       </action>
     </keybind>
     <keybind key="W-x">
@@ -361,62 +343,52 @@
         <command>oblogout</command>
       </action>
     </keybind>
-    <keybind key="W-u">
-      <action name="Execute">
-        <command>pamac-updater</command>
-        <startupnotify>
-          <enabled>yes</enabled>
-          <name>pamac-updater</name>
-        </startupnotify>
-      </action>
-    </keybind>
-    <keybind key="W-m">
-      <action name="Execute">
-        <command>pamac-manager</command>
-        <startupnotify>
-          <enabled>yes</enabled>
-        </startupnotify>
-      </action>
-    </keybind>
     <keybind key="Print">
       <action name="Execute">
-        <command>gnome-screenshot --interactive</command>
         <startupnotify>
-          <enabled>yes</enabled>
+          <enabled>true</enabled>
+          <name>oblogout</name>
         </startupnotify>
+        <command>gnome-screenshot --interactive</command>
+      </action>
+    </keybind>
+<keybind key="XF86MonBrightnessUp">
+      <action name="Execute">
+        <command>xbacklight +10</command>
       </action>
     </keybind>
     <keybind key="XF86MonBrightnessDown">
-      <action name="Execute">
+      <action name="Execute"> 
         <command>xbacklight -10</command>
-        <startupnotify>
-          <enabled>yes</enabled>
-        </startupnotify>
       </action>
     </keybind>
-    <keybind key="XF86MonBrightnessUp">
-      <action name="Execute">
-        <command>xbacklight +10</command>
-        <startupnotify>
-          <enabled>yes</enabled>
-        </startupnotify>
-      </action>
-    </keybind>
-    <keybind key="XF86AudioRaiseVolume">
-      <action name="Execute"> 
-        <command>amixer set Master 10%+</command>
-      </action>
+<!-- Where installing pulse-audio instead, change 'amixer set' to 'amixer -D pulse set' -->
+<keybind key="XF86AudioRaiseVolume">
+     <action name="Execute"> 
+       <command>amixer set Master 10%+</command>
+     </action>
+  </keybind>
+<!-- Where installing pulse-audio instead, change 'amixer set' to 'amixer -D pulse set' -->
+   <keybind key="XF86AudioLowerVolume">
+     <action name="Execute">
+       <command>amixer set Master 10%-</command>
+     </action>
    </keybind>
-    <keybind key="XF86AudioLowerVolume">
+<!-- Where installing pulse-audio instead, nothing needs to be changed -->
+   <keybind key="XF86AudioMute">
+     <action name="Execute"> 
+       <command>amixer set Master toggle</command>
+     </action>
+  </keybind>
+<keybind key="W-m">
       <action name="Execute">
-        <command>amixer set Master 10%-</command>
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>dmenu</name>
+        </startupnotify>
+        <command>dmenu_run -b -i</command>
       </action>
     </keybind>
-    <keybind key="XF86AudioMute">
-      <action name="Execute"> 
-        <command>amixer set Master toggle</command>
-      </action>
-   </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
@@ -438,7 +410,7 @@
       <mousebind button="A-Left" action="Click">
         <action name="Unshade"/>
       </mousebind>
-      <mousebind button="A-Left" action="Drag">
+      <mousebind button="W-Left" action="Drag">
         <action name="Move"/>
       </mousebind>
       <mousebind button="A-Right" action="Press">

@@ -1,107 +1,118 @@
 ### Manjaro Packages
+#live-installer
 
-## Openbox Main Packages
+## Openbox Core Packages
+obconf
+openbox
+oblogout
+obmenu-generator
+slim
+
+## Openbox Supplementary Packages
 arandr
 compton-git
-faenza-green-icon-theme
-file-roller
+conky
 gksu
 gnome-keyring
-gnome-screenshot
-gnome-system-monitor
-gsimplecal
-gvfs
-gvfs-afc
-gvfs-gphoto2
-gvfs-smb
 libgnomeui # for qt to find gtk themes
-live-installer
 lxappearance-obconf
-lxdm
+lxinput
 lxterminal
+#manjaro-system-settings
 network-manager-applet
 nitrogen
-obconf
-oblogout
-obmenu
-openbox
-openbox-themes
-obkey
-openssh
-p7zip
+numlockx
+parcellite
 polkit-gnome
 polkit-qt
-poppler-glib
-python2-xdg
-synapse
-shiki-nouveau-fall-colors
-thunar
-thunar-volman
-thunar-archive-plugin
+python2-xdg # Necessary to enable use of .desktop files in /etc/xdg
 tint2
 tintwizard
-tumbler
 udiskie # to fix installation mounting quirk
-xcursor-simpleandsoft
-xcursor-vanilla-dmz-aa
-xcursor-themes
-xfce-theme-greenbird
-xfce4-appfinder
 xfce4-notifyd
-xfce4-power-manager
 xscreensaver
 xterm
 
-## Applications
-brasero
-catfish
-evince
-galculator
-gparted
->x86_64 gimp
-hardinfo
-leafpad
-midori
-pamac
-transmission-gtk
-ufw
-viewnior
-vlc
->x86_64 rhythmbox
->i686 xnoise
-xfce4-xkb-plugin
-
-## Fonts
-#ttf-source-sans-pro
-
-## Multimedia Support
-gstreamer0.10-plugins
-
-## Java
->x86_64 icedtea-web-java7
-
-## Office
-libreoffice-installer
-
-## Wallpapers
-manjaro-artwork-openbox
 
 ## Sound
 pnmixer
 gnome-alsamixer
 
-## Printing
+## File Manager and Support Packages
+thunar
+thunar-archive-plugin
+thunar-volman
+catfish      # File-search support
+file-roller  # Archive support
+gvfs         # Access file system
+gvfs-afc     # Removable media support
+gvfs-smb     # Samba support
+p7zip        # Zip file support
+tumbler      # Thumbnailing support (images)
+poppler-glib # Thumbnailing support (pdf files)
+
+## Icon, Mouse, and Desktop Themes
+#adwaita-manjaro-themes
+faenza-green-icon-theme
+gnome-icon-theme
+#openbox-themes
+shiki-nouveau-fall-colors
+xfce-theme-greenbird
+xcursor-simpleandsoft
+xcursor-themes
+
+## Wallpapers
+manjaro-artwork-openbox
+
+## Multimedia Support
+#gst-plugins-bad
+#gst-plugins-good
+#gst-plugins-ugly
+#gstreamer0.10-bad-plugins
+#gstreamer0.10-good-plugins
+#gstreamer0.10-ugly-plugins
+#flashplugin
+libdvdcss
+#gstreamer0.10-plugins
+
+## Applications
+catfish
+dmenu
+geany
+evince
+galculator
+gnome-screenshot
+gparted
+hardinfo
+htop
+leafpad
+openssh
+ufw
+viewnior
+
+
+## Office
+#libreoffice-installer
 
 ## AUR Access
-autoconf
-automake
-binutils
-bison
-fakeroot
-flex
-gcc
-libtool
-m4
-make
-patch
-yaourt
+#autoconf
+#automake
+#binutils
+#bison
+#fakeroot
+#flex
+#gcc
+#libtool
+#m4
+#make
+#patch
+#yaourt
+
+
+## Fonts
+#ttf-source-sans-pro
+
+## Java
+
+## Printing
+

@@ -8,7 +8,7 @@
 # ID 1
 rounded = 2
 border_width = 1
-background_color = #525252 60
+background_color = #1F1F1F 60
 border_color = #656565 100
 
 # ID 2
@@ -25,8 +25,8 @@ border_color = #FFFFFF 60
 
 # Panel
 panel_monitor = all
-panel_position = top left horizontal
-panel_size = 93% 25
+panel_position = top center horizontal
+panel_size = 99% 25
 panel_margin = 5 2
 panel_padding = 0 0 5
 panel_dock = 0
@@ -52,7 +52,7 @@ urgent_nb_of_blink = 8
 task_icon = 1
 task_text = 1
 task_centered = 1
-task_maximum_size = 200 25
+task_maximum_size = 170 25
 task_padding = 0 1
 task_background_id = 3
 task_active_background_id = 2
@@ -76,7 +76,7 @@ font_shadow = 0
 # System Tray
 systray = 1
 systray_padding = 5 1 5
-systray_sort = ascending
+systray_sort = left2right
 systray_background_id = 1
 systray_icon_size = 16
 systray_icon_asb = 70 0 0
@@ -86,7 +86,7 @@ time1_format = %l:%M %P
 time1_font = Sans 8
 time2_format = %d %b %Y
 time2_font = Sans 8
-clock_font_color = #FFFFFF 65
+clock_font_color = #FFFFFF 64
 clock_padding = 3 0
 clock_background_id = 1
 clock_lclick_command = gsimplecal
@@ -113,7 +113,7 @@ battery_low_cmd = notify-send "battery low"
 battery_hide = 0
 bat1_font = Sans 6
 bat2_font = sans 6
-battery_font_color = #FFFFFF 65
+battery_font_color = #FFFFFF 64
 battery_padding = 3 1
 battery_background_id = 1
 
