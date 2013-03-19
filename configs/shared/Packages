@@ -25,8 +25,6 @@ xdg-user-dirs
 
 ## GUI tookits
 gtk2 # needed at least
-gtk3
-qt4
 
 ## needed by cli-installer
 dialog
