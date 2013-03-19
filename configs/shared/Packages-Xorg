@@ -15,15 +15,15 @@ KERNEL-bbswitch
 >x86_64 lib32-virtualgl
 
 ## Proprietary Drivers
->nonfree_uni catalyst-utils
->nonfree_uni KERNEL-catalyst
+#>nonfree_uni catalyst-utils
+#>nonfree_uni KERNEL-catalyst
 #>nonfree_uni catalyst-legacy-utils
 #>nonfree_uni KERNEL-catalyst-legacy
 >nonfree_uni nvidia-utils
 >nonfree_uni KERNEL-nvidia
 >nonfree_uni nvidia-legacy-utils
 >nonfree_uni KERNEL-nvidia-legacy
->nonfree_x64 lib32-catalyst-utils
+#>nonfree_x64 lib32-catalyst-utils
 #>nonfree_x64 lib32-catalyst-legacy-utils
 >nonfree_x64 lib32-nvidia-utils
 >nonfree_x64 lib32-nvidia-legacy-utils
