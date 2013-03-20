@@ -88,8 +88,8 @@ our $SCHEMA = [
    {item => ['geany -m ~/.config/tint2/tint2rc','Tint2 Panel','geany']},
    {item => ['geany -m ~/.config/compton.conf','Compton Compositor','geany']},
    {item => ['geany -m ~/.conkyrc','Conky RC','geany']},
-   {item => ['gksu geany -m /etc/pacman.conf','Pacman Config','geany']},
-   {item => ['gksu geany -m /etc/pacman.d/mirrorlist','Pacman Mirrorlist','geany']},
+   {item => ['gksu geany /etc/pacman.conf','Pacman Config','geany']},
+   {item => ['gksu geany /etc/pacman.d/mirrorlist','Pacman Mirrorlist','geany']},
    {end_cat   => undef},
 
 ## Back to standard pipe-menu
