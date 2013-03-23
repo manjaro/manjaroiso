@@ -1,17 +1,18 @@
 ### Manjaro Packages
 
 ## XFCE Main Packages
-accountsservice
+#accountsservice
 adwaita-manjaro-themes
 faenza-green-icon-theme
 libgnome # to fix qt-themes
 live-installer
-lightdm-webkit-manjaro-themes
+#lightdm-webkit-manjaro-themes
 manjaro-system-settings
 network-manager-applet
 numlockx
 orage
 plank
+sddm
 system-tools
 thunar-archive-plugin
 thunar-media-tags-plugin

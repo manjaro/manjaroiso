@@ -3,7 +3,7 @@
 ## GNOME (core)
 gnome-applets
 #gnome-backgrounds
-gnome-control-center
+#gnome-control-center
 gnome-desktop
 gnome-icon-theme
 #gnome-icon-theme-extras
@@ -45,7 +45,7 @@ gcalctool
 #gconf-editor
 gimp
 dconf
-#gdm
+gdm
 #gdm3setup
 gedit
 gnome-color-manager
@@ -63,7 +63,7 @@ gnome-system-log
 gnome-system-monitor
 gnome-tweak-tool
 gparted
-lxdm
+#lxdm
 live-installer
 mousetweaks
 network-manager-applet
@@ -84,7 +84,17 @@ icedtea-web-java7
 simple-scan
 
 ## Devel Packages
-base-devel
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+gcc
+libtool
+m4
+make
+patch
 git
 patchutils
 svn
@@ -104,6 +114,7 @@ nemo
 ## Other Applications
 firefox
 thunderbird
+manjaro-settings-manager
 
 ## Package management
 pamac

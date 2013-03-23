@@ -1,4 +1,4 @@
-root:x:0:root
+root:x:0:root,manjaro
 bin:x:1:root,bin,daemon
 daemon:x:2:root,bin,daemon
 sys:x:3:root,bin

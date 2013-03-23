@@ -156,7 +156,7 @@ set_locale() {
   # set kblayout
   keyboardctl --set-layout "$KBLAYOUT" ""
   if [ ! -z ${DESTDIR} ]; then
-     cp /etc/keyboard.conf ${DESTDIR}/etc/keyboard.conf
+     cp -f /etc/keyboard.conf ${DESTDIR}/etc/keyboard.conf
   fi
 
   # set systemwide language
