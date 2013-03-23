@@ -145,25 +145,25 @@ fi
 
 # do_setupsddm
 if [ -e "/usr/bin/sddm" ] ; then
-  sed -i 's|^.*LastUser=.*|LastUser=manjaro|g' /etc/sddm.conf
-  sed -i 's|^.*AutoUser=.*|AutoUser=manjaro|g' /etc/sddm.conf
+  sed -i -e 's|^.*LastUser=.*|LastUser=manjaro|' /etc/sddm.conf
+  sed -i -e 's|^.*AutoUser=.*|AutoUser=manjaro|' /etc/sddm.conf
   if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
-      sed -i 's|^.*LastSession=.*|LastSession=xfce.desktop|g' /etc/sddm.conf
+      sed -i -e 's|^.*LastSession=.*|LastSession=xfce.desktop|' /etc/sddm.conf
   fi
   if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
-      sed -i 's|^.*LastSession=.*|LastSession=cinnamon.desktop|g' /etc/sddm.conf
+      sed -i -e 's|^.*LastSession=.*|LastSession=cinnamon.desktop|' /etc/sddm.conf
   fi
   if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
-      sed -i 's|^.*LastSession=.*|LastSession=openbox.desktop|g' /etc/sddm.conf
+      sed -i -e 's|^.*LastSession=.*|LastSession=openbox.desktop|' /etc/sddm.conf
   fi
   if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
-      sed -i 's|^.*LastSession=.*|LastSession=mate.desktop|g' /etc/sddm.conf
+      sed -i -e 's|^.*LastSession=.*|LastSession=mate.desktop|' /etc/sddm.conf
   fi
   if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
-      sed -i 's|^.*LastSession=.*|LastSession=LXDE.desktop|g' /etc/sddm.conf
+      sed -i -e 's|^.*LastSession=.*|LastSession=LXDE.desktop|' /etc/sddm.conf
   fi
   if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
-      sed -i 's|^.*LastSession=.*|LastSession=enlightenment.desktop|g' /etc/sddm.conf
+      sed -i -e 's|^.*LastSession=.*|LastSession=enlightenment.desktop|' /etc/sddm.conf
   fi
 fi
 
