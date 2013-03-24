@@ -30,7 +30,7 @@ storage:x:95:
 scanner:x:96:
 power:x:98:
 nobody:x:99:
-users:x:100:
+users:x:100:manjaro
 dbus:x:81:
 git:x:999:
 dnsmasq:x:998:

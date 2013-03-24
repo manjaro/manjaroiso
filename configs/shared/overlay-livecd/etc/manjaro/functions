@@ -1063,7 +1063,7 @@ dogrub_mkconfig() {
 
 _setup_user()
 {
-    addgroups="video,audio,power,disk,storage,optical,network,lp,scanner"
+    addgroups="video,audio,power,disk,storage,optical,network,lp,scanner,users"
     DIALOG --inputbox "${_enterusername}" 10 65 "manjaro" 2>${ANSWER} || return 1
     REPLY="$(cat ${ANSWER})"
     while [ -z "$(echo $REPLY |grep -E '^[a-z_][a-z0-9_-]*[$]?$')" ];do
