@@ -9,7 +9,7 @@ fi
 xfce="Y"
 mate="N"
 e17="N"
-cinnamon="N"
+cinnamon="Y"
 kde="N"
 net="Y"
 
@@ -75,7 +75,11 @@ if [ "$e17" == "Y" ] ; then
 fi
 if [ "$cinnamon" == "Y" ] ; then
    echo ">> build cinnamon image"
-   ln -sfv ../shared/Packages-Lng Packages-Lng
+   if [ -e Packages-Lng ] ; then
+      rm Packages-Lng
+      rm -R work*/*lng*
+      rm work*/iso/manjaro/*/lng-image.sqfs
+   fi
    ln -sfv ../cinnamon/options.conf options.conf
    ln -sfv ../cinnamon/isomounts isomounts
    ln -sfv ../cinnamon/Packages-Cinnamon Packages-Cinnamon
@@ -90,8 +94,11 @@ if [ "$cinnamon" == "Y" ] ; then
 fi
 if [ "$kde" == "Y" ] ; then
    echo ">> build kde image"
-   rm -R work*/*lng*
-   rm work*/iso/manjaro/*/lng-image.sqfs
+   if [ -e Packages-Lng ] ; then
+      rm Packages-Lng
+      rm -R work*/*lng*
+      rm work*/iso/manjaro/*/lng-image.sqfs
+   fi
    ln -sfv ../kde/options.conf options.conf
    ln -sfv ../kde/isomounts isomounts
    ln -sfv ../kde/Packages-Kde Packages-Kde

@@ -517,6 +517,9 @@ hd_config()
     # remove .manjaro-chroot
     chroot ${DESTDIR} rm /.manjaro-chroot &>/dev/null
 
+    # add bumblebee group
+    chroot ${DESTDIR} getent group "bumblebee" &>/dev/null || groupadd -r bumblebee
+
     chroot_umount
 }
 
@@ -1063,7 +1066,7 @@ dogrub_mkconfig() {
 
 _setup_user()
 {
-    addgroups="video,audio,power,disk,storage,optical,network,lp,scanner,users"
+    addgroups="video,audio,power,disk,storage,optical,network,lp,scanner,users,bumblebee"
     DIALOG --inputbox "${_enterusername}" 10 65 "manjaro" 2>${ANSWER} || return 1
     REPLY="$(cat ${ANSWER})"
     while [ -z "$(echo $REPLY |grep -E '^[a-z_][a-z0-9_-]*[$]?$')" ];do

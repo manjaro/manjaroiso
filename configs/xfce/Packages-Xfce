@@ -10,7 +10,7 @@ network-manager-applet
 numlockx
 orage
 plank
-sddm
+sddm-manjaro-theme
 system-tools
 thunar-archive-plugin
 thunar-media-tags-plugin
@@ -96,7 +96,7 @@ ttf-source-sans-pro
 icedtea-web-java7
 
 ## Printing
-#manjaro-printer
+manjaro-printer
 
 ## Office
 #abiword
@@ -106,7 +106,7 @@ libreoffice-en-US
 #libreoffice-base
 libreoffice-calc
 #libreoffice-draw
-#libreoffice-gnome
+libreoffice-gnome
 #libreoffice-impress
 #libreoffice-math
 #libreoffice-postgresql-connector

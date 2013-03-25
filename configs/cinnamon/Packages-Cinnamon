@@ -45,7 +45,7 @@ gcalctool
 #gconf-editor
 gimp
 dconf
-gdm
+#gdm
 #gdm3setup
 gedit
 gnome-color-manager
@@ -69,6 +69,7 @@ mousetweaks
 network-manager-applet
 orca
 #parole
+sddm-manjaro-theme
 seahorse
 simple-scan
 sound-juicer
