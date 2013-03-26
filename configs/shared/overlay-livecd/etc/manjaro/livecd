@@ -68,8 +68,7 @@ if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
 fi
 
 # do_makeuser
-getent group "bumblebee" &>/dev/null || groupadd -r bumblebee
-addgroups="video,audio,power,disk,storage,optical,network,lp,scanner,users,bumblebee"
+addgroups="video,audio,power,disk,storage,optical,network,lp,scanner"
 useradd -m -p "" -g users -G $addgroups manjaro
 sed -i "s#manjaro.*#manjaro:\$1\$uYIrxnwJ\$a5wTa84YxxYmD.sKX/Lll1:14942:0:99999:7:::#" /etc/shadow
 echo "Icon=/var/lib/AccountsService/icons/manjaro.png" >> /var/lib/AccountsService/users/manjaro

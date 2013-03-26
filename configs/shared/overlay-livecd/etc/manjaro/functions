@@ -517,9 +517,6 @@ hd_config()
     # remove .manjaro-chroot
     chroot ${DESTDIR} rm /.manjaro-chroot &>/dev/null
 
-    # add bumblebee group
-    chroot ${DESTDIR} getent group "bumblebee" &>/dev/null || groupadd -r bumblebee
-
     if [ -e "/usr/bin/live-installer" ] ; then
        chroot ${DESTDIR} pacman -R --noconfirm live-installer &>/dev/null
     fi
@@ -1070,7 +1067,7 @@ dogrub_mkconfig() {
 
 _setup_user()
 {
-    addgroups="video,audio,power,disk,storage,optical,network,lp,scanner,users,bumblebee"
+    addgroups="video,audio,power,disk,storage,optical,network,lp,scanner"
     DIALOG --inputbox "${_enterusername}" 10 65 "manjaro" 2>${ANSWER} || return 1
     REPLY="$(cat ${ANSWER})"
     while [ -z "$(echo $REPLY |grep -E '^[a-z_][a-z0-9_-]*[$]?$')" ];do
