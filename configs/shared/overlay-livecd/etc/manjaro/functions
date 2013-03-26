@@ -520,6 +520,10 @@ hd_config()
     # add bumblebee group
     chroot ${DESTDIR} getent group "bumblebee" &>/dev/null || groupadd -r bumblebee
 
+    if [ -e "/usr/bin/live-installer" ] ; then
+       chroot ${DESTDIR} pacman -R --noconfirm live-installer &>/dev/null
+    fi
+
     chroot_umount
 }
 
