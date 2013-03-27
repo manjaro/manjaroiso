@@ -53,15 +53,14 @@ require '/home/manjaro/.config/obmenu-generator/config.pl';
 
 our $SCHEMA = [
 #             COMMAND                 	LABEL          		ICON
-   {item => ['lxterminal -e sudo setup',      'Install Manjaro',      	'/usr/share/icons/Faenza/actions/48/system-run.png']},
-   {item => ['thunar ~/Manjaro',  'User-Guide',      	'/usr/share/icons/hicolor/48x48/apps/Thunar.png']},
+   {item => ['lxterminal -e sudo setup',      'Install Manjaro',      	'system-run']},
+   {item => ['thunar ~/Manjaro',  'User-Guide','/usr/share/icons/logo5.png']},
    {sep => undef},
 
-   {item => ['thunar',      		'Thunar FM',      	'/usr/share/icons/hicolor/48x48/apps/Thunar.png']},
-   {item => ['lxterminal',   	 	'Terminal',          	'lxterminal']},
-   {item => ['catfish --path=/',   	'Catfish',          	'/usr/share/icons/Faenza/apps/48/catfish.png']},
-   {item => ['nitrogen',     		'Nitrogen',  		'nitrogen']},
-   {item => ['gnome-screenshot --interactive', 'Screenshot',    '/usr/share/icons/Faenza/apps/48/gnome-screenshot.png']},
+   {item => ['thunar',      		'Thunar FM','Thunar']},
+   {item => ['lxterminal',   	 	'Terminal','lxterminal']},
+   {item => ['nitrogen',     		'Nitrogen','nitrogen']},
+   {item => ['gnome-screenshot --interactive', 'Screenshot','gnome-screenshot']},
 
     {sep => undef},
 
