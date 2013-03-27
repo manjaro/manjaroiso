@@ -6,4 +6,4 @@
 # Executed by startx (run your window manager from here)
 #
 
-exec ck-launch-session gnome-session-cinnamon
+exec gnome-session-cinnamon

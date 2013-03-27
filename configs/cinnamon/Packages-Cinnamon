@@ -44,6 +44,7 @@ file-roller
 gcalctool
 #gconf-editor
 gimp
+gksu
 dconf
 #gdm
 #gdm3setup
