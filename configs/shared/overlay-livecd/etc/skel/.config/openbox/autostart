@@ -22,7 +22,6 @@ compton ~/.config/compton.conf &
 (sleep 1s && xscreensaver -no-splash) &
 (sleep 1s && udiskie) &
 (sleep 1s && numlockx) &
-(sleep 1s && pytyle3) &
 (sleep 4s && conky) &
 
 

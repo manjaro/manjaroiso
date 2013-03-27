@@ -24,7 +24,6 @@ nitrogen
 numlockx
 parcellite
 python2-xdg # Necessary to enable use of .desktop files in /etc/xdg
-pytyle3
 synapse
 tint2
 tintwizard
