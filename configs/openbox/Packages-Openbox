@@ -18,12 +18,14 @@ libgnomeui # for qt to find gtk themes
 lxappearance-obconf
 lxinput
 lxterminal
-#manjaro-system-settings
+manjaro-system-settings
 network-manager-applet
 nitrogen
 numlockx
 parcellite
 python2-xdg # Necessary to enable use of .desktop files in /etc/xdg
+pytyle3
+synapse
 tint2
 tintwizard
 udiskie # to fix installation mounting quirk
@@ -45,7 +47,7 @@ file-roller  # Archive support
 gvfs         # Access file system
 gvfs-afc     # Removable media support
 gvfs-smb     # Samba support
-p7zip        # Zip file support
+unzip        # Zip file support
 tumbler      # Thumbnailing support (images)
 poppler-glib # Thumbnailing support (pdf files)
 
@@ -53,7 +55,7 @@ poppler-glib # Thumbnailing support (pdf files)
 #adwaita-manjaro-themes
 faenza-green-icon-theme
 gnome-icon-theme
-#openbox-themes
+openbox-themes
 shiki-nouveau-fall-colors
 xfce-theme-greenbird
 xcursor-simpleandsoft
@@ -63,15 +65,14 @@ xcursor-themes
 manjaro-artwork-openbox
 
 ## Multimedia Support
-#gst-plugins-bad
-#gst-plugins-good
-#gst-plugins-ugly
-#gstreamer0.10-bad-plugins
-#gstreamer0.10-good-plugins
-#gstreamer0.10-ugly-plugins
-#flashplugin
+gst-plugins-bad
+gst-plugins-good
+gst-plugins-ugly
+gstreamer0.10-bad-plugins
+gstreamer0.10-good-plugins
+gstreamer0.10-ugly-plugins
+flashplugin
 libdvdcss
-#gstreamer0.10-plugins
 
 ## Applications
 catfish
@@ -84,27 +85,27 @@ gparted
 hardinfo
 htop
 leafpad
+libreoffice-installer
+pamac
 openssh
+qupzilla
 ufw
 viewnior
 
 
-## Office
-#libreoffice-installer
-
 ## AUR Access
-#autoconf
-#automake
-#binutils
-#bison
-#fakeroot
-#flex
-#gcc
-#libtool
-#m4
-#make
-#patch
-#yaourt
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+gcc
+libtool
+m4
+make
+patch
+yaourt
 
 
 ## Fonts

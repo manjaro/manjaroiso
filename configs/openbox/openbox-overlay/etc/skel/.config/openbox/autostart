@@ -22,6 +22,7 @@ compton ~/.config/compton.conf &
 (sleep 1s && xscreensaver -no-splash) &
 (sleep 1s && thunar --daemon) &
 (sleep 1s && numlockx) &
+(sleep 1s && pytyle3) &
 (sleep 4s && conky) &
 
 

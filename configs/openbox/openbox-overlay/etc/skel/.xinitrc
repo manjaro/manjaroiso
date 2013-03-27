@@ -32,7 +32,6 @@ fi
 
 sed 's/_user_/'$(whoami)'/' ~/.config/obmenu-generator/schema.pl -i
 sed 's/_user_/'$(whoami)'/' ~/.config/obmenu-generator/config.pl -i
-sed 's/sed/#sed/' ~/.xinitrc -i
 
 
 DEFAULTSESSION=openbox-session

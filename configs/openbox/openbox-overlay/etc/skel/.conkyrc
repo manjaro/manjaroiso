@@ -19,18 +19,18 @@ own_window_transparent yes
 own_window_type override #desktop
 own_window_hints below,sticky,skip_taskbar,skip_pager
 double_buffer yes
-minimum_size 300 1
-maximum_width 350
+minimum_size 450 1
+maximum_width 600
 draw_shades no
 draw_outline no
 draw_borders no
 draw_graph_borders no
-default_color d8d8d8
+default_color Black
 default_shade_color 000000
 default_outline_color d9d7d6
 alignment tr
 gap_x 5
-gap_y 30
+gap_y 20
 no_buffers yes
 uppercase no
 cpu_avg_samples 2
@@ -39,33 +39,33 @@ override_utf8_locale yes
 # Fancy Conky display
 
 TEXT
-${font sans:size=25}${alignr}${time %l:%M %P}${font}
-${voffset 5}${font sans:size=20}${alignr}${time %a %d}${color #32CD32} ${time %b} ${time %Y}${font}${voffset -5}
-${color #d8d8d8}${hr 1}
-${font sans-serif:bold:size=14}$alignr $machine - $alignr${color #32CD32}$kernel${voffset -6}
-${color d8d8d8}${hr 1}
-${font sans:bold:size=11}${alignr}${color #32CD32}CPU: ${color #d8d8d8}${cpu cpu0}% - ${color #32CD32}RAM: ${color #d8d8d8}$mem / $memmax
-${font sans:bold:size=11}${alignr}${color #32CD32}Hard-Disk: ${color #d8d8d8}$fs_used / $fs_size
-#($fs_used_perc%)
-${font sans-serif:bold:size=11}$alignr${color #32CD32} Battery: ${color #d8d8d8}$battery
+${font sans:size=70}${alignr}${color #696969}${time %H:%M}${voffset -27}${voffset -45}
+${font sans:size=25}${alignr}${time %a %d %B %Y}${voffset -15}
+${font sans:bold:size=9}${alignr}${color #006400}CPU ${color #696969}${cpu cpu0}% - ${color #006400}RAM ${color #696969}$mem - ${color #006400}HD ${color #696969}$fs_used - ${color #006400}BAT ${color #696969}$battery_percent% - ${color #006400}UP ${color #696969}$uptime_short
+${hr 1}${voffset 5}
+${font sans:bold:size=9}${alignr}${color #B22222}Alt + a
+${alignr}${color #696969}Enable Tiling
 
-${font sans:bold:size=10}${alignr}${color #32CD32}Super + d
-${font sans:bold:size=11}${alignr}${color #d8d8d8}Toggle Desktop${voffset -10}
+${font sans:bold:size=9}${alignr}${color #B22222}Alt + u
+${alignr}${color #696969}Disable Tiling
 
-${font sans:bold:size=10}${alignr}${color #32CD32}Super + f
-${font sans:bold:size=11}${alignr}${color #d8d8d8}File Manager${voffset -10}
+${font sans:bold:size=9}${alignr}${color #006400}Super + d
+${alignr}${color #696969}Toggle Desktop${voffset -5}
 
-${font sans:bold:size=10}${alignr}${color #32CD32}Super + Left-Mouse
-${font sans:bold:size=11}${alignr}${color #d8d8d8}Move Window${voffset -10}
+${font sans:bold:size=9}${alignr}${color #006400}Super + f
+${alignr}${color #696969}File Manager${voffset -5}
 
-${font sans:bold:size=10}${alignr}${color #32CD32}Super + m
-${font sans:bold:size=11}${alignr}${color #d8d8d8}DMenu${voffset -10}
+${font sans:bold:size=9}${alignr}${color #006400}Super + m
+${alignr}${color #696969}DMenu${voffset -5}
 
-${font sans:bold:size=10}${alignr}${color #32CD32}Print Screen
-${font sans:bold:size=11}${alignr}${color #d8d8d8}Screenshot${voffset -10}
+${font sans:bold:size=9}${alignr}${color #006400}Super + p / u
+${alignr}${color #696969}Pamac Manager / Updater${voffset -5}
 
-${font sans:bold:size=10}${alignr}${color #32CD32}Super + t
-${font sans:bold:size=11}${alignr}${color #d8d8d8}Terminal${voffset -10}
+${font sans:bold:size=9}${alignr}${color #006400}Super + s
+${alignr}${color #696969}Synapse${voffset -5}
 
-${font sans:bold:size=10}${alignr}${color #32CD32}Super + x
-${font sans:bold:size=11}${alignr}${color #d8d8d8}Logout...
+${font sans:bold:size=9}${alignr}${color #006400}Super + t
+${alignr}${color #696969}Terminal${voffset -5}
+
+${font sans:bold:size=9}${alignr}${color #006400}Super + x
+${alignr}${color #696969}Logout...
