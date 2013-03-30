@@ -14,7 +14,7 @@ gnome-screensaver
 gnome-session
 gnome-settings-daemon
 #gnome-shell
-#gnome-shell-extensions
+gnome-shell-extensions
 gnome-terminal
 gnome-themes-standard
 gnome-user-docs
@@ -46,8 +46,8 @@ gcalctool
 gimp
 gksu
 dconf
-#gdm
-#gdm3setup
+gdm
+gdm3setup
 gedit
 gnome-color-manager
 gnome-contacts
@@ -64,13 +64,12 @@ gnome-system-log
 gnome-system-monitor
 gnome-tweak-tool
 gparted
-#lxdm
 live-installer
+#lxdm
 mousetweaks
 network-manager-applet
 orca
 #parole
-sddm-manjaro-theme
 seahorse
 simple-scan
 sound-juicer

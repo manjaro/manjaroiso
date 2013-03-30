@@ -3,15 +3,16 @@
 ## XFCE Main Packages
 adwaita-manjaro-themes
 faenza-green-icon-theme
+#gdm
+gnome-keyring
 libgnome # to fix qt-themes
 live-installer
+lxdm
 manjaro-system-settings
 network-manager-applet
 numlockx
 orage
 plank
-sddm-manjaro-theme
-system-tools
 thunar-archive-plugin
 thunar-media-tags-plugin
 xcursor-simpleandsoft
