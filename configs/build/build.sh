@@ -129,7 +129,10 @@ if [ "$net" == "Y" ] ; then
    ln -sfv ../net/isomounts isomounts
    buildiso
    echo ">> done build net image"
+   rm Packages-Net
+   rm -R work*/*net*
    rm -R work*/*isomounts*
+   rm work*/iso/manjaro/*/net-image.sqfs
    #rm -R work*/*pkgs*
    ln -sfv ../shared/Packages-Lng Packages-Lng
 fi
