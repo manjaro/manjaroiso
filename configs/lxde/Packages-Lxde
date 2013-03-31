@@ -29,9 +29,6 @@ xorg-twm
 xorg-utils
 xorg-xinit
 
-## Packages for Sound and Audio
-manjaro-alsa
-
 ## Artwork
 manjaro-artwork
 
@@ -85,6 +82,7 @@ notification-daemon
 vinagre
 
 ## Packages for Sound and Audio
+manjaro-alsa
 xfce4-mixer
 pnmixer
 

@@ -29,9 +29,6 @@ xorg-twm
 xorg-utils
 xorg-xinit
 
-## Packages for Sound and Audio
-manjaro-alsa
-
 ## Artwork
 manjaro-artwork
 
@@ -90,6 +87,7 @@ xfburn
 gstreamer0.10-bad-plugins
 gstreamer0.10-ffmpeg
 gstreamer0.10-ugly-plugins
+manjaro-alsa
 
 ## Printing
 #manjaro-printer

@@ -29,9 +29,6 @@ xorg-twm
 xorg-utils
 xorg-xinit
 
-## Packages for Sound and Audio
-manjaro-alsa
-
 ## Artwork
 manjaro-artwork
 
@@ -81,7 +78,8 @@ vlc
 xchat
 xnoise
 
-## Multimedia Support
+## Packages for Sound and Audio
+manjaro-alsa
 gstreamer0.10-plugins
 
 ## Package management
