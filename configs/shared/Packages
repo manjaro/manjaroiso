@@ -5,9 +5,6 @@ lsb-release
 manjaro-firmware
 manjaro-release
 memtest86+
-mhwd
-mhwd-db
-mhwd-db-catalyst
 syslog-ng
 
 ## Kernel
@@ -23,9 +20,6 @@ sudo
 syslinux
 xdg-utils
 xdg-user-dirs
-
-## GUI tookits
-gtk2 # needed at least
 
 ## needed by cli-installer
 dialog
@@ -53,9 +47,6 @@ nilfs-utils
 nfs-utils
 ntfsprogs
 
-## Packages for Sound and Audio
-manjaro-alsa
-
 ## Fonts
 terminus-font
 ttf-bitstream-vera
@@ -63,9 +54,6 @@ ttf-dejavu
 ttf-inconsolata
 ttf-indic-otf
 ttf-liberation
-
-## Artwork
-manjaro-artwork
 
 ## Network
 b43-fwcutter
@@ -96,27 +84,3 @@ xorg-xset
 ## ucode for new cpus
 amd-ucode
 intel-ucode
-
-## Xorg Packages
-inxi
-libdnet
-mesa
-mesa-demos
->x86_64 lib32-mesa-demos
-netkit-bsd-finger
-uriparser
-xf86-input-acecad
-xf86-input-aiptek
-xf86-input-evdev
-xf86-input-joystick
-xf86-input-keyboard
-xf86-input-mouse
-xf86-input-synaptics
-xf86-input-void
-xf86-input-wacom
-xinetd
-xorg-server
-xorg-server-utils
-xorg-twm
-xorg-utils
-xorg-xinit

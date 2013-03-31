@@ -144,6 +144,14 @@ if [ -e Packages-E17 ] ; then
      fi
 fi
 
+if [ -e Packages-Net ] ; then
+     if [ "${arch}" == "i686" ]; then
+     	net_packages=$(sed "s|#.*||g" Packages-Net | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     elif [ "${arch}" == "x86_64" ]; then
+     	net_packages=$(sed "s|#.*||g" Packages-Net | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     fi
+fi
+
 # Create trustdb.gpg
 create_trustdb() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
@@ -199,90 +207,6 @@ make_root_image() {
          echo -e "$_g >$_W done $_n"
     fi
 }
-
-if [ -e Packages-Xorg ] ; then
-     # Prepare pkgs-image
-     make_pkgs_image() {
-         if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
-              echo -e -n "$_r >$_W Prepare pkgs-image \n $_n"
-              mkdir -p ${work_dir}/pkgs-image/opt/manjaro/pkgs
-              if [ ! -z "`mount -l | grep pkgs-image`" ]; then
-                 umount -l ${work_dir}/pkgs-image
-              fi
-              mount -t aufs -o br=${work_dir}/pkgs-image:${work_dir}/root-image=ro none ${work_dir}/pkgs-image
-              pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/manjaro/pkgs -Syw ${xorg_packages} --noconfirm
-              if [ ! -z "${xorg_packages_cleanup}" ]; then
-                 for xorg_clean in ${xorg_packages_cleanup};
-                    do  rm ${work_dir}/pkgs-image/opt/manjaro/pkgs/${xorg_clean}
-                    done
-              fi
-              cp pacman-gfx.conf ${work_dir}/pkgs-image/opt/manjaro
-              rm -r ${work_dir}/pkgs-image/var
-              repo-add ${work_dir}/pkgs-image/opt/manjaro/pkgs/manjaro-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/manjaro/pkgs/*pkg*z
-              umount -l ${work_dir}/pkgs-image
-              rm -R ${work_dir}/pkgs-image/.wh*
-              if [ "${xorg_overlays}" = "yes" ] ; then
-                 echo -e -n "$_r >$_W Prepare pkgs-free-overlay \n $_n"
-                 mkdir -p ${work_dir}/pkgs-free-overlay
-                 if [ ! -z "`mount -l | grep pkgs-free-overlay`" ]; then
-                    umount -l ${work_dir}/pkgs-free-overlay
-                 fi
-                 mount -t aufs -o br=${work_dir}/pkgs-free-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-free-overlay
-                 mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-free-overlay" -p "${xorg_free_overlay}" create "${work_dir}"
-                 umount -l ${work_dir}/pkgs-free-overlay
-                 if [ -e ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf ] ; then
-                    rm ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf
-                 fi
-                 rm -R ${work_dir}/pkgs-free-overlay/.wh*
-                 echo -e -n "$_r >$_W Prepare pkgs-nonfree-overlay \n $_n"
-                 mkdir -p ${work_dir}/pkgs-nonfree-overlay
-                 if [ ! -z "`mount -l | grep pkgs-nonfree-overlay`" ]; then
-                    umount -l ${work_dir}/pkgs-nonfree-overlay
-                 fi
-                 mount -t aufs -o br=${work_dir}/pkgs-nonfree-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-nonfree-overlay
-                 mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-nonfree-overlay" -p "${xorg_nonfree_overlay}" create "${work_dir}"
-                 umount -l ${work_dir}/pkgs-nonfree-overlay
-                 if [ -e ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf ] ; then
-                    rm ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf
-                 fi
-                 rm -R ${work_dir}/pkgs-nonfree-overlay/.wh*
-              fi
-              : > ${work_dir}/build.${FUNCNAME}
-              echo -e "$_g >$_W done $_n"
-         fi
-     }
-fi
-
-if [ -e Packages-Lng ] ; then
-     # Prepare lng-image
-     make_lng_image() {
-         if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
-              echo -e -n "$_r >$_W Prepare lng-image \n $_n"
-              mkdir -p ${work_dir}/lng-image/opt/manjaro/lng
-              if [ ! -z "`mount -l | grep lng-image`" ]; then
-                 umount -l ${work_dir}/lng-image
-              fi
-              mount -t aufs -o br=${work_dir}/lng-image:${work_dir}/root-image=ro none ${work_dir}/lng-image
-              if [ "${kde_lng_packages}" = "yes" ] ; then
-                 pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/manjaro/lng -Syw ${lng_packages} ${lng_packages_kde} --noconfirm
-              else
-                 pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/manjaro/lng -Syw ${lng_packages} --noconfirm
-              fi
-              if [ ! -z "${lng_packages_cleanup}" ]; then
-                 for lng_clean in ${lng_packages_cleanup};
-                    do  rm ${work_dir}/lng-image/opt/manjaro/lng/${lng_clean}
-                    done
-              fi
-              cp pacman-lng.conf ${work_dir}/lng-image/opt/manjaro
-              rm -r ${work_dir}/lng-image/var
-              repo-add ${work_dir}/lng-image/opt/manjaro/lng/manjaro-lng.db.tar.gz ${work_dir}/lng-image/opt/manjaro/lng/*pkg*z
-              umount -l ${work_dir}/lng-image
-              rm -R ${work_dir}/lng-image/.wh*
-              : > ${work_dir}/build.${FUNCNAME}
-              echo -e "$_g >$_W done $_n"
-         fi
-     }
-fi
 
 if [ -e Packages-Xfce ] ; then
      # XFCE installation (xfce-image)
@@ -453,7 +377,7 @@ if [ -e Packages-Mate ] ; then
 fi
 
 if [ -e Packages-E17 ] ; then
-     # MATE installation (e17-image)
+     # E17 installation (e17-image)
      make_e17_image() {
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
               de="-e17"
@@ -473,6 +397,122 @@ if [ -e Packages-E17 ] ; then
               fi
               umount -l ${work_dir}/e17-image
               rm -R ${work_dir}/e17-image/.wh*
+              : > ${work_dir}/build.${FUNCNAME}
+              echo -e "$_g >$_W done $_n"
+         fi
+     }
+fi
+
+if [ -e Packages-Net ] ; then
+     # NET installation (net-image)
+     make_net_image() {
+         if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
+              de="-net"
+              echo -e -n "$_r >$_W NET installation (net-image) \n $_n"
+              mkdir -p ${work_dir}/net-image
+              if [ ! -z "`mount -l | grep net-image`" ]; then
+                 umount -l ${work_dir}/net-image
+              fi
+              mount -t aufs -o br=${work_dir}/net-image:${work_dir}/root-image=ro none ${work_dir}/net-image
+              mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "net-image" -p "${net_packages}" create "${work_dir}"
+              pacman -Qr "${work_dir}/net-image" > "${work_dir}/net-image/net-image-pkgs.txt"
+              cp "${work_dir}/net-image/net-image-pkgs.txt" ${name}${de}-${version}-${arch}-pkgs.txt
+              if [ -e ${work_dir}/net-image/usr/sbin/cupsd ] ; then
+                 mkdir -p "${work_dir}/net-image/etc/systemd/system/multi-user.target.wants"
+                 ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/net-image/etc/systemd/system/multi-user.target.wants/cups.service"
+              fi
+              umount -l ${work_dir}/net-image
+              rm -R ${work_dir}/net-image/.wh*
+              : > ${work_dir}/build.${FUNCNAME}
+              echo -e "$_g >$_W done $_n"
+         fi
+     }
+fi
+
+if [ -z "${de}" ] ; then
+   mntimg="root"
+else
+   mntimg=${de/-/}
+fi
+
+if [ -e Packages-Xorg ] ; then
+     # Prepare pkgs-image
+     make_pkgs_image() {
+         if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
+              echo -e -n "$_r >$_W Prepare pkgs-image \n $_n"
+              mkdir -p ${work_dir}/pkgs-image/opt/manjaro/pkgs
+              if [ ! -z "`mount -l | grep pkgs-image`" ]; then
+                 umount -l ${work_dir}/pkgs-image
+              fi
+              mount -t aufs -o br=${work_dir}/pkgs-image:${work_dir}/${mntimg}-image=ro none ${work_dir}/pkgs-image
+              pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/manjaro/pkgs -Syw ${xorg_packages} --noconfirm
+              if [ ! -z "${xorg_packages_cleanup}" ]; then
+                 for xorg_clean in ${xorg_packages_cleanup};
+                    do  rm ${work_dir}/pkgs-image/opt/manjaro/pkgs/${xorg_clean}
+                    done
+              fi
+              cp pacman-gfx.conf ${work_dir}/pkgs-image/opt/manjaro
+              rm -r ${work_dir}/pkgs-image/var
+              repo-add ${work_dir}/pkgs-image/opt/manjaro/pkgs/manjaro-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/manjaro/pkgs/*pkg*z
+              umount -l ${work_dir}/pkgs-image
+              rm -R ${work_dir}/pkgs-image/.wh*
+              if [ "${xorg_overlays}" = "yes" ] ; then
+                 echo -e -n "$_r >$_W Prepare pkgs-free-overlay \n $_n"
+                 mkdir -p ${work_dir}/pkgs-free-overlay
+                 if [ ! -z "`mount -l | grep pkgs-free-overlay`" ]; then
+                    umount -l ${work_dir}/pkgs-free-overlay
+                 fi
+                 mount -t aufs -o br=${work_dir}/pkgs-free-overlay:${work_dir}/${mntimg}-image=ro none ${work_dir}/pkgs-free-overlay
+                 mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-free-overlay" -p "${xorg_free_overlay}" create "${work_dir}"
+                 umount -l ${work_dir}/pkgs-free-overlay
+                 if [ -e ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf ] ; then
+                    rm ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf
+                 fi
+                 rm -R ${work_dir}/pkgs-free-overlay/.wh*
+                 echo -e -n "$_r >$_W Prepare pkgs-nonfree-overlay \n $_n"
+                 mkdir -p ${work_dir}/pkgs-nonfree-overlay
+                 if [ ! -z "`mount -l | grep pkgs-nonfree-overlay`" ]; then
+                    umount -l ${work_dir}/pkgs-nonfree-overlay
+                 fi
+                 mount -t aufs -o br=${work_dir}/pkgs-nonfree-overlay:${work_dir}/${mntimg}-image=ro none ${work_dir}/pkgs-nonfree-overlay
+                 mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-nonfree-overlay" -p "${xorg_nonfree_overlay}" create "${work_dir}"
+                 umount -l ${work_dir}/pkgs-nonfree-overlay
+                 if [ -e ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf ] ; then
+                    rm ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf
+                 fi
+                 rm -R ${work_dir}/pkgs-nonfree-overlay/.wh*
+              fi
+              : > ${work_dir}/build.${FUNCNAME}
+              echo -e "$_g >$_W done $_n"
+         fi
+     }
+fi
+
+if [ -e Packages-Lng ] ; then
+     # Prepare lng-image
+     make_lng_image() {
+         if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
+              echo -e -n "$_r >$_W Prepare lng-image \n $_n"
+              mkdir -p ${work_dir}/lng-image/opt/manjaro/lng
+              if [ ! -z "`mount -l | grep lng-image`" ]; then
+                 umount -l ${work_dir}/lng-image
+              fi
+              mount -t aufs -o br=${work_dir}/lng-image:${work_dir}/${mntimg}-image=ro none ${work_dir}/lng-image
+              if [ "${kde_lng_packages}" = "yes" ] ; then
+                 pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/manjaro/lng -Syw ${lng_packages} ${lng_packages_kde} --noconfirm
+              else
+                 pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/manjaro/lng -Syw ${lng_packages} --noconfirm
+              fi
+              if [ ! -z "${lng_packages_cleanup}" ]; then
+                 for lng_clean in ${lng_packages_cleanup};
+                    do  rm ${work_dir}/lng-image/opt/manjaro/lng/${lng_clean}
+                    done
+              fi
+              cp pacman-lng.conf ${work_dir}/lng-image/opt/manjaro
+              rm -r ${work_dir}/lng-image/var
+              repo-add ${work_dir}/lng-image/opt/manjaro/lng/manjaro-lng.db.tar.gz ${work_dir}/lng-image/opt/manjaro/lng/*pkg*z
+              umount -l ${work_dir}/lng-image
+              rm -R ${work_dir}/lng-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi
@@ -783,14 +823,6 @@ fi
 create_trustdb
 # install basic
 make_root_image
-# install xorg-drivers
-if [ -e Packages-Xorg ] ; then
-    make_pkgs_image
-fi
-# install translations
-if [ -e Packages-Lng ] ; then
-    make_lng_image
-fi
 # install DE(s)
 if [ -e Packages-Xfce ] ; then
     make_xfce_image
@@ -812,6 +844,17 @@ if [ -e Packages-Mate ] ; then
 fi
 if [ -e Packages-E17 ] ; then
     make_e17_image
+fi
+if [ -e Packages-Net ] ; then
+    make_net_image
+fi
+# install xorg-drivers
+if [ -e Packages-Xorg ] ; then
+    make_pkgs_image
+fi
+# install translations
+if [ -e Packages-Lng ] ; then
+    make_lng_image
 fi
 # install common
 make_boot

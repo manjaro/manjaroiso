@@ -1,5 +1,40 @@
 ### Manjaro Packages
 
+## Xorg
+mhwd
+mhwd-db
+mhwd-db-catalyst
+
+## Xorg Packages
+inxi
+libdnet
+mesa
+mesa-demos
+>x86_64 lib32-mesa-demos
+netkit-bsd-finger
+uriparser
+xf86-input-acecad
+xf86-input-aiptek
+xf86-input-evdev
+xf86-input-joystick
+xf86-input-keyboard
+xf86-input-mouse
+xf86-input-synaptics
+xf86-input-void
+xf86-input-wacom
+xinetd
+xorg-server
+xorg-server-utils
+xorg-twm
+xorg-utils
+xorg-xinit
+
+## Packages for Sound and Audio
+manjaro-alsa
+
+## Artwork
+manjaro-artwork
+
 ## E17 Main Packages
 #connman
 adwaita-manjaro-themes

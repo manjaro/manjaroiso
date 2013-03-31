@@ -1,6 +1,37 @@
 ### Manjaro Packages
 #live-installer
 
+## Xorg Packages
+inxi
+libdnet
+mesa
+mesa-demos
+>x86_64 lib32-mesa-demos
+netkit-bsd-finger
+uriparser
+xf86-input-acecad
+xf86-input-aiptek
+xf86-input-evdev
+xf86-input-joystick
+xf86-input-keyboard
+xf86-input-mouse
+xf86-input-synaptics
+xf86-input-void
+xf86-input-wacom
+xf86-video-ati
+xf86-video-nouveau
+xf86-video-intel
+xf86-video-vesa
+xinetd
+xorg-server
+xorg-server-utils
+xorg-twm
+xorg-utils
+xorg-xinit
+
+## Artwork
+manjaro-artwork
+
 ## Openbox Core Packages
 obconf
 openbox
@@ -32,8 +63,8 @@ xfce4-notifyd
 xscreensaver
 xterm
 
-
-## Sound
+## Packages for Sound and Audio
+manjaro-alsa
 pnmixer
 gnome-alsamixer
 
@@ -93,7 +124,6 @@ viewnior
 vlc
 xnoise
 
-
 ## AUR Access
 autoconf
 automake
@@ -107,7 +137,6 @@ m4
 make
 patch
 yaourt
-
 
 ## Fonts
 #ttf-source-sans-pro
