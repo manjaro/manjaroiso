@@ -122,6 +122,7 @@ if [ "$net" == "Y" ] ; then
    #rm -R work*/pkgs-nonfree-overlay
    #rm work*/iso/manjaro/*/pkgs-free-overlay.sqfs
    #rm work*/iso/manjaro/*/pkgs-nonfree-overlay.sqfs
+   ln -sfv ../net/Packages-Net Packages-Net
    ln -sfv ../net/pacman-i686.conf pacman-i686.conf
    ln -sfv ../net/pacman-x86_64.conf pacman-x86_64.conf
    ln -sfv ../net/options.conf options.conf
