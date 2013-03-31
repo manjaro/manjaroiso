@@ -32,3 +32,6 @@ manjaro-alsa
 
 ## Artwork
 manjaro-artwork
+
+## Base Packages
+gtk2

@@ -429,9 +429,7 @@ if [ -e Packages-Net ] ; then
      }
 fi
 
-if [ -z "${de}" ] ; then
-   mntimg="root"
-else
+if [ ! -z "${de}" ] ; then
    mntimg=${de/-/}
 fi
 
@@ -444,7 +442,10 @@ if [ -e Packages-Xorg ] ; then
               if [ ! -z "`mount -l | grep pkgs-image`" ]; then
                  umount -l ${work_dir}/pkgs-image
               fi
-              mount -t aufs -o br=${work_dir}/pkgs-image:${work_dir}/${mntimg}-image=ro none ${work_dir}/pkgs-image
+              mount -t aufs -o br=${work_dir}/pkgs-image:${work_dir}/root-image=ro none ${work_dir}/pkgs-image
+              if [ ! -z "${de}" ] ; then
+                 mount -t aufs -o br=${work_dir}/pkgs-image:${work_dir}/${mntimg}-image=ro none ${work_dir}/pkgs-image
+              fi
               pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/manjaro/pkgs -Syw ${xorg_packages} --noconfirm
               if [ ! -z "${xorg_packages_cleanup}" ]; then
                  for xorg_clean in ${xorg_packages_cleanup};
@@ -454,6 +455,9 @@ if [ -e Packages-Xorg ] ; then
               cp pacman-gfx.conf ${work_dir}/pkgs-image/opt/manjaro
               rm -r ${work_dir}/pkgs-image/var
               repo-add ${work_dir}/pkgs-image/opt/manjaro/pkgs/manjaro-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/manjaro/pkgs/*pkg*z
+              if [ ! -z "${de}" ] ; then
+                 umount -l ${work_dir}/${mntimg}-image
+              fi
               umount -l ${work_dir}/pkgs-image
               rm -R ${work_dir}/pkgs-image/.wh*
               if [ "${xorg_overlays}" = "yes" ] ; then
@@ -462,8 +466,14 @@ if [ -e Packages-Xorg ] ; then
                  if [ ! -z "`mount -l | grep pkgs-free-overlay`" ]; then
                     umount -l ${work_dir}/pkgs-free-overlay
                  fi
-                 mount -t aufs -o br=${work_dir}/pkgs-free-overlay:${work_dir}/${mntimg}-image=ro none ${work_dir}/pkgs-free-overlay
+                 mount -t aufs -o br=${work_dir}/pkgs-free-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-free-overlay
+                 if [ ! -z "${de}" ] ; then
+                    mount -t aufs -o br=${work_dir}/pkgs-free-overlay:${work_dir}/${mntimg}-image=ro none ${work_dir}/pkgs-free-overlay
+                 fi
                  mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-free-overlay" -p "${xorg_free_overlay}" create "${work_dir}"
+                 if [ ! -z "${de}" ] ; then
+                    umount -l ${work_dir}/${mntimg}-image
+                 fi
                  umount -l ${work_dir}/pkgs-free-overlay
                  if [ -e ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf ] ; then
                     rm ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf
@@ -475,7 +485,13 @@ if [ -e Packages-Xorg ] ; then
                     umount -l ${work_dir}/pkgs-nonfree-overlay
                  fi
                  mount -t aufs -o br=${work_dir}/pkgs-nonfree-overlay:${work_dir}/${mntimg}-image=ro none ${work_dir}/pkgs-nonfree-overlay
+                 if [ ! -z "${de}" ] ; then
+                    mount -t aufs -o br=${work_dir}/pkgs-nonfree-overlay:${work_dir}/${mntimg}-image=ro none ${work_dir}/pkgs-nonfree-overlay
+                 fi
                  mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-nonfree-overlay" -p "${xorg_nonfree_overlay}" create "${work_dir}"
+                 if [ ! -z "${de}" ] ; then
+                    umount -l ${work_dir}/${mntimg}-image
+                 fi
                  umount -l ${work_dir}/pkgs-nonfree-overlay
                  if [ -e ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf ] ; then
                     rm ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf
@@ -497,7 +513,10 @@ if [ -e Packages-Lng ] ; then
               if [ ! -z "`mount -l | grep lng-image`" ]; then
                  umount -l ${work_dir}/lng-image
               fi
-              mount -t aufs -o br=${work_dir}/lng-image:${work_dir}/${mntimg}-image=ro none ${work_dir}/lng-image
+              mount -t aufs -o br=${work_dir}/lng-image:${work_dir}/root-image=ro none ${work_dir}/lng-image
+              if [ ! -z "${de}" ] ; then
+                 mount -t aufs -o br=${work_dir}/lng-image:${work_dir}/${mntimg}-image=ro none ${work_dir}/lng-image
+              fi
               if [ "${kde_lng_packages}" = "yes" ] ; then
                  pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/manjaro/lng -Syw ${lng_packages} ${lng_packages_kde} --noconfirm
               else
@@ -511,6 +530,9 @@ if [ -e Packages-Lng ] ; then
               cp pacman-lng.conf ${work_dir}/lng-image/opt/manjaro
               rm -r ${work_dir}/lng-image/var
               repo-add ${work_dir}/lng-image/opt/manjaro/lng/manjaro-lng.db.tar.gz ${work_dir}/lng-image/opt/manjaro/lng/*pkg*z
+              if [ ! -z "${de}" ] ; then
+                 umount -l ${work_dir}/${mntimg}-image
+              fi
               umount -l ${work_dir}/lng-image
               rm -R ${work_dir}/lng-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
