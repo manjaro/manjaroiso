@@ -37,11 +37,6 @@ KERNEL-bbswitch
 >free_uni virtualbox-guest-utils
 >free_uni KERNEL-virtualbox-guest-modules
 
-## Xorg Packages
-libxaw
-libxvmc
-pangox-compat
-
 ## Xorg x86_64 Packages
 >x86_64 lib32-libxvmc
 >x86_64 lib32-libgl
