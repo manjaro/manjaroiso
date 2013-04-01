@@ -6,6 +6,8 @@ inxi
 libdnet
 mesa
 mesa-demos
+mhwd
+mhwd-db-catalyst
 >x86_64 lib32-mesa-demos
 netkit-bsd-finger
 uriparser
@@ -79,7 +81,6 @@ file-roller  # Archive support
 gvfs         # Access file system
 gvfs-afc     # Removable media support
 gvfs-smb     # Samba support
-unzip        # Zip file support
 tumbler      # Thumbnailing support (images)
 poppler-glib # Thumbnailing support (pdf files)
 
@@ -127,18 +128,18 @@ vlc
 xnoise
 
 ## AUR Access
-autoconf
-automake
-binutils
-bison
-fakeroot
-flex
-gcc
-libtool
-m4
-make
-patch
-yaourt
+>i686 autoconf
+>i686 automake
+>i686 binutils
+>i686 bison
+>i686 fakeroot
+>i686 flex
+>i686 gcc
+>i686 libtool
+>i686 m4
+>i686 make
+>i686 patch
+>i686 yaourt
 
 ## Fonts
 #ttf-source-sans-pro
