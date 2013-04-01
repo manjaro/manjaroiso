@@ -6,13 +6,10 @@ mhwd-db-catalyst
 ## Xorg Packages
 inxi
 libdnet
-libxaw
-libxvmc
 mesa
 mesa-demos
 >x86_64 lib32-mesa-demos
 netkit-bsd-finger
-pangox-compat
 uriparser
 xf86-input-acecad
 xf86-input-aiptek
