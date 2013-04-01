@@ -21,6 +21,14 @@ syslinux
 xdg-utils
 xdg-user-dirs
 
+## Compression Codecs
+arj
+lzop
+unrar
+unzip
+xz
+zip
+
 ## needed by cli-installer
 dialog
 dmidecode
