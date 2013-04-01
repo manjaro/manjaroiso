@@ -90,65 +90,65 @@ fi
 
 if [ -e Packages-Xfce ] ; then
      if [ "${arch}" == "i686" ]; then
-     	xfce_packages=$(sed "s|#.*||g" Packages-Xfce | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	xfce_packages=$(sed "s|#.*||g" Packages-Xfce | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      elif [ "${arch}" == "x86_64" ]; then
-     	xfce_packages=$(sed "s|#.*||g" Packages-Xfce | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	xfce_packages=$(sed "s|#.*||g" Packages-Xfce | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      fi
 fi
 
 if [ -e Packages-Kde ] ; then
      if [ "${arch}" == "i686" ]; then
-     	kde_packages=$(sed "s|#.*||g" Packages-Kde | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	kde_packages=$(sed "s|#.*||g" Packages-Kde | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      elif [ "${arch}" == "x86_64" ]; then
-     	kde_packages=$(sed "s|#.*||g" Packages-Kde | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	kde_packages=$(sed "s|#.*||g" Packages-Kde | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      fi
 fi
 
 if [ -e Packages-Cinnamon ] ; then
      if [ "${arch}" == "i686" ]; then
-     	cinnamon_packages=$(sed "s|#.*||g" Packages-Cinnamon | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	cinnamon_packages=$(sed "s|#.*||g" Packages-Cinnamon | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      elif [ "${arch}" == "x86_64" ]; then
-     	cinnamon_packages=$(sed "s|#.*||g" Packages-Cinnamon | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	cinnamon_packages=$(sed "s|#.*||g" Packages-Cinnamon | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      fi
 fi
 
 if [ -e Packages-Openbox ] ; then
      if [ "${arch}" == "i686" ]; then
-     	openbox_packages=$(sed "s|#.*||g" Packages-Openbox | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	openbox_packages=$(sed "s|#.*||g" Packages-Openbox | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      elif [ "${arch}" == "x86_64" ]; then
-     	openbox_packages=$(sed "s|#.*||g" Packages-Openbox | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	openbox_packages=$(sed "s|#.*||g" Packages-Openbox | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      fi
 fi
 
 if [ -e Packages-Lxde ] ; then
      if [ "${arch}" == "i686" ]; then
-     	lxde_packages=$(sed "s|#.*||g" Packages-Lxde | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	lxde_packages=$(sed "s|#.*||g" Packages-Lxde | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      elif [ "${arch}" == "x86_64" ]; then
-     	lxde_packages=$(sed "s|#.*||g" Packages-Lxde | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	lxde_packages=$(sed "s|#.*||g" Packages-Lxde | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      fi
 fi
 
 if [ -e Packages-Mate ] ; then
      if [ "${arch}" == "i686" ]; then
-     	mate_packages=$(sed "s|#.*||g" Packages-Mate | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	mate_packages=$(sed "s|#.*||g" Packages-Mate | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      elif [ "${arch}" == "x86_64" ]; then
-     	mate_packages=$(sed "s|#.*||g" Packages-Mate | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	mate_packages=$(sed "s|#.*||g" Packages-Mate | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      fi
 fi
 
 if [ -e Packages-E17 ] ; then
      if [ "${arch}" == "i686" ]; then
-     	e17_packages=$(sed "s|#.*||g" Packages-E17 | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	e17_packages=$(sed "s|#.*||g" Packages-E17 | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      elif [ "${arch}" == "x86_64" ]; then
-     	e17_packages=$(sed "s|#.*||g" Packages-E17 | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	e17_packages=$(sed "s|#.*||g" Packages-E17 | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      fi
 fi
 
 if [ -e Packages-Net ] ; then
      if [ "${arch}" == "i686" ]; then
-     	net_packages=$(sed "s|#.*||g" Packages-Net | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	net_packages=$(sed "s|#.*||g" Packages-Net | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>x86_64.*||g" | sed "s|>i686||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      elif [ "${arch}" == "x86_64" ]; then
-     	net_packages=$(sed "s|#.*||g" Packages-Net | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed ':a;N;$!ba;s/\n/ /g')
+     	net_packages=$(sed "s|#.*||g" Packages-Net | sed "s| ||g" | sed "s|>dvd.*||g"  | sed "s|>blacklist.*||g" | sed "s|>i686.*||g" | sed "s|>x86_64||g" | sed "s|KERNEL|$manjaro_kernel|g" | sed ':a;N;$!ba;s/\n/ /g')
      fi
 fi
 

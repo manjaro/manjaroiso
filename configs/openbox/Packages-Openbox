@@ -22,6 +22,8 @@ xf86-video-ati
 xf86-video-nouveau
 xf86-video-intel
 xf86-video-vesa
+virtualbox-guest-utils
+KERNEL-virtualbox-guest-modules
 xinetd
 xorg-server
 xorg-server-utils
