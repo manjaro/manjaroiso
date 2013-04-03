@@ -107,5 +107,5 @@ libreoffice-uk
 >cleanup mime-types*
 >cleanup libnotify*
 >cleanup hunspell-1*
->cleanup firefox-1*
+>cleanup firefox-2*
 >cleanup startup-notification*
