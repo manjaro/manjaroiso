@@ -119,7 +119,7 @@ if [ -e "/usr/sbin/gdm" ] ; then
      if [ -e "/usr/bin/startxfce4" ] ; then
         echo "XSession=xfce" >> /var/lib/AccountsService/users/gdm
      fi
-     if [ -e "/usr/bin/cinnamon-session" ] ; then
+     if [ -e "/usr/bin/cinnamon" ] ; then
         echo "XSession=cinnamon" >> /var/lib/AccountsService/users/gdm
      fi
      if [ -e "/usr/bin/mate-session" ] ; then
@@ -221,6 +221,7 @@ fi
 
 # do_fix_perms
 chown root:root /etc/sudoers
+sed -i -e 's|# %wheel ALL=(ALL) ALL|%wheel ALL=(ALL) ALL|g' /etc/sudoers
 chmod 440 /etc/sudoers
 
 # fix_gnome_apps

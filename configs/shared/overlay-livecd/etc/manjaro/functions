@@ -446,7 +446,7 @@ hd_config()
           if [ -e "/usr/bin/startxfce4" ] ; then
              echo "XSession=xfce" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
           fi
-          if [ -e "/usr/bin/cinnamon-session" ] ; then
+          if [ -e "/usr/bin/cinnamon" ] ; then
              echo "XSession=cinnamon" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
           fi
           if [ -e "/usr/bin/mate-session" ] ; then
@@ -483,7 +483,7 @@ hd_config()
          sed -i -e 's|^.*session=.*|session=/usr/bin/startxfce4|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
        if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
-         sed -i -e 's|^.*session=.*|session=/usr/bin/cinnamon-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
+         sed -i -e 's|^.*session=.*|session=/usr/bin/cinnamon|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
        if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/mate-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
@@ -1109,7 +1109,7 @@ _setup_user()
        if [ -e "/usr/bin/startxfce4" ] ; then
           echo "XSession=xfce" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
        fi
-       if [ -e "/usr/bin/cinnamon-session" ] ; then
+       if [ -e "/usr/bin/cinnamon" ] ; then
           echo "XSession=cinnamon" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
        fi
        if [ -e "/usr/bin/mate-session" ] ; then
@@ -1129,8 +1129,9 @@ _setup_user()
 
     if DIALOG --yesno "${_addsudouserdl1}${REPLY}${_addsudouserdl2}" 6 40;then
        echo "${PASSWDUSER}     ALL=(ALL) ALL" >> ${DESTDIR}/etc/sudoers
-       chmod 0440 ${DESTDIR}/etc/sudoers
     fi
+    sed -i -e 's|# %wheel ALL=(ALL) ALL|%wheel ALL=(ALL) ALL|g' ${DESTDIR}/etc/sudoers
+    chmod 0440 ${DESTDIR}/etc/sudoers
     set_passwd
     echo "$PASSWDUSER:$PASSWD" | chroot ${DESTDIR} chpasswd
     NEXTITEM="Setup-User"

@@ -7,7 +7,6 @@ libdnet
 mesa
 mesa-demos
 mhwd
-mhwd-db-catalyst
 >x86_64 lib32-mesa-demos
 netkit-bsd-finger
 uriparser
