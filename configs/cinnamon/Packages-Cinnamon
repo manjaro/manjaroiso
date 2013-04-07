@@ -93,6 +93,7 @@ gnome-system-log
 gnome-system-monitor
 gnome-tweak-tool
 gparted
+libgnome-data # to fix qt
 live-installer
 #lxdm
 mousetweaks
