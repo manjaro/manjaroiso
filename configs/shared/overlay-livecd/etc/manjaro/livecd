@@ -114,6 +114,29 @@ if [ -e "/usr/sbin/gdm" ] ; then
   getent passwd gdm > /dev/null 2>&1 || usr/sbin/useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /sbin/nologin gdm
   passwd -l gdm > /dev/null
   chown -R gdm:gdm /var/lib/gdm &> /dev/null
+  if [ -d "/var/lib/AccountsService/users" ] ; then
+     echo "[User]" > /var/lib/AccountsService/users/gdm
+     if [ -e "/usr/bin/startxfce4" ] ; then
+        echo "XSession=xfce" >> /var/lib/AccountsService/users/gdm
+     fi
+     if [ -e "/usr/bin/cinnamon-session" ] ; then
+        echo "XSession=cinnamon" >> /var/lib/AccountsService/users/gdm
+     fi
+     if [ -e "/usr/bin/mate-session" ] ; then
+        echo "XSession=mate" >> /var/lib/AccountsService/users/gdm
+     fi
+     if [ -e "/usr/bin/enlightenment_start" ] ; then
+        echo "XSession=enlightenment" >> /var/lib/AccountsService/users/gdm
+     fi
+     if [ -e "/usr/bin/openbox-session" ] ; then
+        echo "XSession=openbox" >> /var/lib/AccountsService/users/gdm
+     fi
+     if [ -e "/usr/bin/lxsession" ] ; then
+        echo "XSession=LXDE" >> /var/lib/AccountsService/users/gdm
+     fi
+        echo "Icon=" >> /var/lib/AccountsService/users/gdm
+     fi
+  fi
 fi
 
 # do_setupmdm
@@ -187,6 +210,9 @@ if [ -e "/usr/sbin/lxdm" ] ; then
    fi
    if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/openbox-session|' /etc/lxdm/lxdm.conf
+   fi
+   if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
+      sed -i -e 's|^.*session=.*|session=/usr/bin/lxsession|' /etc/lxdm/lxdm.conf
    fi
    chgrp -R lxdm /var/lib/lxdm > /dev/null
    chgrp lxdm /etc/lxdm/lxdm.conf > /dev/null

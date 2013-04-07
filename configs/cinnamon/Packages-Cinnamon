@@ -88,7 +88,6 @@ gnome-disk-utility
 gnome-font-viewer
 gnome-games
 gnome-games-extra-data
-gnome-media
 #gnome-nettool
 gnome-power-manager
 gnome-screenshot
@@ -114,7 +113,6 @@ vino
 
 ## Extra
 icedtea-web-java7
-simple-scan
 
 ## Devel Packages
 autoconf

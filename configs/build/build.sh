@@ -9,9 +9,9 @@ fi
 xfce="N"
 mate="N"
 e17="N"
-cinnamon="N"
+cinnamon="Y"
 kde="N"
-net="Y"
+net="N"
 
 if [ "$xfce" == "Y" ] ; then
    echo ">> build xfce image"

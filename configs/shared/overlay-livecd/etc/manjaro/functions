@@ -441,6 +441,28 @@ hd_config()
        chroot ${DESTDIR} getent passwd gdm > /dev/null 2>&1 || usr/sbin/useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /sbin/nologin gdm
        chroot ${DESTDIR} passwd -l gdm > /dev/null
        chroot ${DESTDIR} chown -R gdm:gdm /var/lib/gdm  &>/dev/null
+       if [ -d "${DESTDIR}/var/lib/AccountsService/users" ] ; then
+          echo "[User]" > ${DESTDIR}/var/lib/AccountsService/users/gdm
+          if [ -e "/usr/bin/startxfce4" ] ; then
+             echo "XSession=xfce" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
+          fi
+          if [ -e "/usr/bin/cinnamon-session" ] ; then
+             echo "XSession=cinnamon" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
+          fi
+          if [ -e "/usr/bin/mate-session" ] ; then
+             echo "XSession=mate" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
+          fi
+          if [ -e "/usr/bin/enlightenment_start" ] ; then
+             echo "XSession=enlightenment" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
+          fi
+          if [ -e "/usr/bin/openbox-session" ] ; then
+             echo "XSession=openbox" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
+          fi
+          if [ -e "/usr/bin/lxsession" ] ; then
+             echo "XSession=LXDE" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
+          fi
+          echo "Icon=" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
+       fi
     fi
 
     # setup mdm
@@ -471,6 +493,9 @@ hd_config()
        fi
        if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/openbox-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
+       fi
+       if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
+         sed -i -e 's|^.*session=.*|session=/usr/bin/lxsession|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
        chgrp -R lxdm ${DESTDIR}/var/lib/lxdm  &>/dev/null
        chgrp lxdm ${DESTDIR}/etc/lxdm/lxdm.conf  &>/dev/null
@@ -1079,9 +1104,27 @@ _setup_user()
 
     PASSWDUSER="$REPLY"
 
-    if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
-       cp /var/lib/AccountsService/users/manjaro ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
-       cp -f /var/lib/AccountsService/users/manjaro ${DESTDIR}/var/lib/AccountsService/users/gdm
+    if [ -d "${DESTDIR}/var/lib/AccountsService/users" ] ; then
+       echo "[User]" > ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
+       if [ -e "/usr/bin/startxfce4" ] ; then
+          echo "XSession=xfce" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
+       fi
+       if [ -e "/usr/bin/cinnamon-session" ] ; then
+          echo "XSession=cinnamon" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
+       fi
+       if [ -e "/usr/bin/mate-session" ] ; then
+          echo "XSession=mate" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
+       fi
+       if [ -e "/usr/bin/enlightenment_start" ] ; then
+          echo "XSession=enlightenment" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
+       fi
+       if [ -e "/usr/bin/openbox-session" ] ; then
+          echo "XSession=openbox" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
+       fi
+       if [ -e "/usr/bin/lxsession" ] ; then
+          echo "XSession=LXDE" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
+       fi
+       echo "Icon=" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
     fi
 
     if DIALOG --yesno "${_addsudouserdl1}${REPLY}${_addsudouserdl2}" 6 40;then
