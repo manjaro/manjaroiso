@@ -40,7 +40,7 @@ gnome-icon-theme
 gnome-icon-theme-symbolic
 gnome-keyring
 gnome-panel
-gnome-screensaver
+#gnome-screensaver
 gnome-session
 gnome-settings-daemon
 #gnome-shell
@@ -138,6 +138,7 @@ xfce-theme-greenbird
 
 ## Cinnamon
 cinnamon-control-center
+cinnamon-screensaver
 muffin
 nemo
 
