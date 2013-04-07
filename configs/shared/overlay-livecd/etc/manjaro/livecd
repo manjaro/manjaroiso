@@ -134,8 +134,7 @@ if [ -e "/usr/sbin/gdm" ] ; then
      if [ -e "/usr/bin/lxsession" ] ; then
         echo "XSession=LXDE" >> /var/lib/AccountsService/users/gdm
      fi
-        echo "Icon=" >> /var/lib/AccountsService/users/gdm
-     fi
+     echo "Icon=" >> /var/lib/AccountsService/users/gdm
   fi
 fi
 
