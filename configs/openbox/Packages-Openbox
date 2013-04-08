@@ -52,7 +52,7 @@ libgnomeui # for qt to find gtk themes
 lxappearance-obconf
 lxinput
 lxterminal
-manjaro-system-settings
+manjaro-settings-manager
 network-manager-applet
 nitrogen
 numlockx

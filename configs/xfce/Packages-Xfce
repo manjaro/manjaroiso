@@ -8,7 +8,7 @@ gnome-keyring
 libgnome # to fix qt-themes
 live-installer
 lxdm
-manjaro-system-settings
+manjaro-settings-manager
 network-manager-applet
 numlockx
 orage
