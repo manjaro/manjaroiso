@@ -105,13 +105,14 @@ simple-scan
 sound-juicer
 sushi
 #tomboy
-totem
+#totem
 tracker
 vinagre
 vino
 
 ## Extra
 icedtea-web-java7
+vlc
 
 ## Devel Packages
 autoconf
