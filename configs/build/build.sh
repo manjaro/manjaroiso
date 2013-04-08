@@ -161,6 +161,7 @@ if [ "$openbox" == "Y" ] ; then
       rm -R Packages-Xorg
       rm -R pacman-gfx.conf
       rm -R work*/*pkgs*
+      rm work*/iso/manjaro/*/pkgs-image.sqfs
    fi
    #rm -R work*/pkgs-free-overlay
    #rm -R work*/pkgs-nonfree-overlay
