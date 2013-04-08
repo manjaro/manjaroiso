@@ -166,11 +166,11 @@ if [ "$openbox" == "Y" ] ; then
    #rm -R work*/pkgs-nonfree-overlay
    #rm work*/iso/manjaro/*/pkgs-free-overlay.sqfs
    #rm work*/iso/manjaro/*/pkgs-nonfree-overlay.sqfs
-   ln -sfv ../net/Packages-Openbox Packages-Openbox
-   ln -sfv ../net/pacman-i686.conf pacman-i686.conf
-   ln -sfv ../net/pacman-x86_64.conf pacman-x86_64.conf
-   ln -sfv ../net/options.conf options.conf
-   ln -sfv ../net/isomounts isomounts
+   ln -sfv ../openbox/Packages-Openbox Packages-Openbox
+   ln -sfv ../openbox/pacman-i686.conf pacman-i686.conf
+   ln -sfv ../openbox/pacman-x86_64.conf pacman-x86_64.conf
+   ln -sfv ../openbox/options.conf options.conf
+   ln -sfv ../openbox/isomounts isomounts
    buildiso
    echo ">> done build Openbox image"
    rm Packages-Openbox
