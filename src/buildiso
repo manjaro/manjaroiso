@@ -286,9 +286,9 @@ if [ -e Packages-Cinnamon ] ; then
                  mkdir -p "${work_dir}/cinnamon-image/etc/systemd/system/multi-user.target.wants"
                  ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/cinnamon-image/etc/systemd/system/multi-user.target.wants/cups.service"
               fi
-              if [ -e ${work_dir}/usr/share/themes/Faience/gnome-shell ] && [ -e ${work_dir}/usr/share/gnome-shell/theme/ ] ; then
-                 mv ${work_dir}/usr/share/gnome-shell/theme ${work_dir}/usr/share/gnome-shell/theme.original
-		 cp -a ${work_dir}/usr/share/themes/Faience/gnome-shell ${work_dir}/usr/share/gnome-shell/theme
+              if [ -e ${work_dir}/cinnamon-image/usr/share/themes/Faience/gnome-shell ] && [ -e ${work_dir}/cinnamon-image/usr/share/gnome-shell/theme/ ] ; then
+                 mv ${work_dir}/cinnamon-image/usr/share/gnome-shell/theme ${work_dir}/cinnamon-image/usr/share/gnome-shell/theme.original
+		 cp -a ${work_dir}/cinnamon-image/usr/share/themes/Faience/gnome-shell ${work_dir}/cinnamon-image/usr/share/gnome-shell/theme
               fi
               umount -l ${work_dir}/cinnamon-image
               rm -R ${work_dir}/cinnamon-image/.wh*
