@@ -61,6 +61,7 @@ kdeutils-sweeper
 kdeplasma-addons-applets-icontasks
 kdeplasma-applets-networkmanagement
 live-installer
+manjaro-settings-manager
 
 ## Packages for Sound and Audio
 gstreamer0.10-bad-plugins
