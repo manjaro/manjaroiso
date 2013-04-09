@@ -238,85 +238,139 @@ _configure_translation_pkgs()
     case "$LNG_INST" in
                      be_BY)
                            #Belarusian
-                           PACMAN_LNG_INST="firefox-i18n-be thunderbird-i18n-be libreoffice-be"
+                           FIREFOX_LNG_INST="firefox-i18n-be"
+                           THUNDER_LNG_INST="thunderbird-i18n-be"
+                           LIBRE_LNG_INST="libreoffice-be"
+                           HUNSPELL_LNG_INST=""
+                           KDE_LNG_INST=""
                            ;;
                      bg_BG)
                            #Bulgarian
-                           PACMAN_LNG_INST="firefox-i18n-bg thunderbird-i18n-bg libreoffice-bg"
-                           PACMAN_LNG_INST_KDE="kde-l10n-bg"
+                           FIREFOX_LNG_INST="firefox-i18n-bg"
+                           THUNDER_LNG_INST="thunderbird-i18n-bg"
+                           LIBRE_LNG_INST="libreoffice-bg"
+                           HUNSPELL_LNG_INST=""
+                           KDE_LNG_INST="kde-l10n-bg"
                            ;;
                      de*)
                            #German
-                           PACMAN_LNG_INST="firefox-i18n-de thunderbird-i18n-de hunspell-de libreoffice-de"
-                           PACMAN_LNG_INST_KDE="kde-l10n-de"
+                           FIREFOX_LNG_INST="firefox-i18n-de"
+                           THUNDER_LNG_INST="thunderbird-i18n-de"
+                           LIBRE_LNG_INST="libreoffice-de"
+                           HUNSPELL_LNG_INST="hunspell-de"
+                           KDE_LNG_INST="kde-l10n-de"
                            ;;
                      en*)
                            #English (disabled libreoffice-en-US)
-                           PACMAN_LNG_INST="hunspell-en"
+                           FIREFOX_LNG_INST=""
+                           THUNDER_LNG_INST=""
+                           LIBRE_LNG_INST=""
+                           HUNSPELL_LNG_INST="hunspell-en"
+                           KDE_LNG_INST=""
                            ;;
                      en_GB)
                            #British English
-           PACMAN_LNG_INST="firefox-i18n-en-gb thunderbird-i18n-en-gb libreoffice-en-GB hunspell-en"
+                           FIREFOX_LNG_INST="firefox-i18n-en-gb"
+                           THUNDER_LNG_INST="thunderbird-i18n-en-gb"
+                           LIBRE_LNG_INST="libreoffice-en-GB"
+                           HUNSPELL_LNG_INST="hunspell-en"
+                           KDE_LNG_INST=""
                            ;;
                      es*)
                            #Espanol
-                           PACMAN_LNG_INST="firefox-i18n-es-es thunderbird-i18n-es-es hunspell-es libreoffice-es"
-                           PACMAN_LNG_INST_KDE="kde-l10n-es"
+                           FIREFOX_LNG_INST="firefox-i18n-es-es"
+                           THUNDER_LNG_INST="thunderbird-i18n-es-es"
+                           LIBRE_LNG_INST="libreoffice-es"
+                           HUNSPELL_LNG_INST="hunspell-es"
+                           KDE_LNG_INST="kde-l10n-es"
                            ;;
                      es_AR)
                            #Espanol (Argentina)
-                           PACMAN_LNG_INST="firefox-i18n-es-ar thunderbird-i18n-es-ar hunspell-es libreoffice-es"
-                           PACMAN_LNG_INST_KDE="kde-l10n-es"
+                           FIREFOX_LNG_INST="firefox-i18n-es-ar"
+                           THUNDER_LNG_INST="thunderbird-i18n-es-ar"
+                           LIBRE_LNG_INST="libreoffice-es"
+                           HUNSPELL_LNG_INST="hunspell-es"
+                           KDE_LNG_INST="kde-l10n-es"
                            ;;
                      fr*)
                            #Francais
-                           PACMAN_LNG_INST="firefox-i18n-fr thunderbird-i18n-fr hunspell-fr libreoffice-fr"
-                           PACMAN_LNG_INST_KDE="kde-l10n-fr"
+                           FIREFOX_LNG_INST="firefox-i18n-fr"
+                           THUNDER_LNG_INST="thunderbird-i18n-fr"
+                           LIBRE_LNG_INST="libreoffice-fr"
+                           HUNSPELL_LNG_INST="hunspell-fr"
+                           KDE_LNG_INST="kde-l10n-fr"
                            ;;
                      it*)
                            #Italian
-                           PACMAN_LNG_INST="firefox-i18n-it thunderbird-i18n-it hunspell-it libreoffice-it"
-                           PACMAN_LNG_INST_KDE="kde-l10n-it"
+                           FIREFOX_LNG_INST="firefox-i18n-it"
+                           THUNDER_LNG_INST="thunderbird-i18n-it"
+                           LIBRE_LNG_INST="libreoffice-it"
+                           HUNSPELL_LNG_INST="hunspell-it"
+                           KDE_LNG_INST="kde-l10n-it"
                            ;;
                      pl_PL)
                            #Polish
-                           PACMAN_LNG_INST="firefox-i18n-pl thunderbird-i18n-pl hunspell-pl libreoffice-pl"
-                           PACMAN_LNG_INST_KDE="kde-l10n-pl"
+                           FIREFOX_LNG_INST="firefox-i18n-pl"
+                           THUNDER_LNG_INST="thunderbird-i18n-pl"
+                           LIBRE_LNG_INST="libreoffice-pl"
+                           HUNSPELL_LNG_INST="hunspell-pl"
+                           KDE_LNG_INST="kde-l10n-pl"
                            ;;
                      pt_BR)
                            #Brazilian Portuguese
-                           PACMAN_LNG_INST="firefox-i18n-pt-br thunderbird-i18n-pt-br libreoffice-pt-BR"
-                           PACMAN_LNG_INST_KDE="kde-l10n-pt_br"
+                           FIREFOX_LNG_INST="firefox-i18n-pt-br"
+                           THUNDER_LNG_INST="thunderbird-i18n-pt-br"
+                           LIBRE_LNG_INST="libreoffice-pt-BR"
+                           HUNSPELL_LNG_INST=""
+                           KDE_LNG_INST="kde-l10n-pt_br"
                            ;;
                      pt_PT)
                            #Portuguese
-                           PACMAN_LNG_INST="firefox-i18n-pt-pt thunderbird-i18n-pt-pt libreoffice-pt"
-                           PACMAN_LNG_INST_KDE="kde-l10n-pt"
+                           FIREFOX_LNG_INST="firefox-i18n-pt-pt"
+                           THUNDER_LNG_INST="thunderbird-i18n-pt-pt"
+                           LIBRE_LNG_INST="libreoffice-pt"
+                           HUNSPELL_LNG_INST=""
+                           KDE_LNG_INST="kde-l10n-pt"
                            ;;
                      ro_RO)
                            #Romanian
-                           PACMAN_LNG_INST="firefox-i18n-ro thunderbird-i18n-ro hunspell-ro libreoffice-ro"
-                           PACMAN_LNG_INST_KDE="kde-l10n-ro"
+                           FIREFOX_LNG_INST="firefox-i18n-ro"
+                           THUNDER_LNG_INST="thunderbird-i18n-ro"
+                           LIBRE_LNG_INST="libreoffice-ro"
+                           HUNSPELL_LNG_INST="hunspell-ro"
+                           KDE_LNG_INST="kde-l10n-ro"
                            ;;
                      ru*)
                            #Russian
-                           PACMAN_LNG_INST="firefox-i18n-ru thunderbird-i18n-ru libreoffice-ru"
-                           PACMAN_LNG_INST_KDE="kde-l10n-ru"
+                           FIREFOX_LNG_INST="firefox-i18n-ru"
+                           THUNDER_LNG_INST="thunderbird-i18n-ru"
+                           LIBRE_LNG_INST="libreoffice-ru"
+                           HUNSPELL_LNG_INST=""
+                           KDE_LNG_INST="kde-l10n-ru"
                            ;;
                      sv*)
                            #Swedish
-                           PACMAN_LNG_INST="firefox-i18n-sv-se thunderbird-i18n-sv-se libreoffice-sv"
-                           PACMAN_LNG_INST_KDE="kde-l10n-sv"
+                           FIREFOX_LNG_INST="firefox-i18n-sv-se"
+                           THUNDER_LNG_INST="thunderbird-i18n-sv-se"
+                           LIBRE_LNG_INST="libreoffice-sv"
+                           HUNSPELL_LNG_INST=""
+                           KDE_LNG_INST="kde-l10n-sv"
                            ;;
                      tr*)
                            #Turkish
-                           PACMAN_LNG_INST="firefox-i18n-tr thunderbird-i18n-tr libreoffice-tr"
-                           PACMAN_LNG_INST_KDE="kde-l10n-tr"
+                           FIREFOX_LNG_INST="firefox-i18n-tr"
+                           THUNDER_LNG_INST="thunderbird-i18n-tr"
+                           LIBRE_LNG_INST="libreoffice-tr"
+                           HUNSPELL_LNG_INST=""
+                           KDE_LNG_INST="kde-l10n-tr"
                            ;;
                      uk_UA)
                            #Ukrainian
-                           PACMAN_LNG_INST="firefox-i18n-uk thunderbird-i18n-uk libreoffice-uk"
-                           PACMAN_LNG_INST_KDE="kde-l10n-uk"
+                           FIREFOX_LNG_INST="firefox-i18n-uk"
+                           THUNDER_LNG_INST="thunderbird-i18n-uk"
+                           LIBRE_LNG_INST="libreoffice-uk"
+                           HUNSPELL_LNG_INST=""
+                           KDE_LNG_INST="kde-l10n-uk"
                            ;;
     esac
 }
@@ -1201,10 +1255,21 @@ _post_process()
     # installing localization packages
     if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
        _configure_translation_pkgs
-       if [ ! -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
-          PACMAN_LNG_INST_KDE=""
+       if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
+          ${PACMAN_LNG} -S ${KDE_LNG_INST} &> /dev/null
        fi
-       ${PACMAN_LNG} -Sy ${PACMAN_LNG_INST} ${PACMAN_LNG_INST_KDE} &> /dev/null
+       if [ -e "/usr/bin/firefox" ] ; then
+          ${PACMAN_LNG} -S ${FIREFOX_LNG_INST} &> /dev/null
+       fi
+       if [ -e "/usr/bin/thunderbird" ] ; then
+          ${PACMAN_LNG} -S ${THUNDER_LNG_INST} &> /dev/null
+       fi
+       if [ -e "/usr/bin/libreoffice" ] ; then
+          ${PACMAN_LNG} -S ${LIBRE_LNG_INST} &> /dev/null
+       fi
+       if [ -e "/usr/bin/hunspell" ] ; then
+          ${PACMAN_LNG} -S ${HUNSPELL_LNG_INST} &> /dev/null
+       fi
     fi
 
     # check if we are running inside a virtual machine and unistall kalu

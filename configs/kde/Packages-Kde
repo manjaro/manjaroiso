@@ -47,10 +47,8 @@ kdebase-workspace
 oxygen-icons
 
 ## KDE (everything else)
-kdeadmin-kuser
-kdeadmin-kcron
-kdeadmin-ksystemlog
-kdemultimedia-kmix
+kdeadmin
+kdemultimedia
 kdesdk-kate
 kdegraphics-kgamma
 kdegraphics-gwenview
@@ -62,6 +60,7 @@ kdeutils-print-manager
 kdeutils-sweeper
 kdeplasma-addons-applets-icontasks
 kdeplasma-applets-networkmanagement
+live-installer
 
 ## Packages for Sound and Audio
 gstreamer0.10-bad-plugins
@@ -90,36 +89,34 @@ yaourt
 
 ## Applications
 #rekonq
-#kdepim-kontact
+kdepim
 k3b
 digikam
 #smplayer
-kdemultimedia-dragonplayer
 simple-scan
 amarok
-partitionmanager-svn
+#partitionmanager-svn
+gparted
 gimp
 vlc
 imagewriter
-kde-telepathy
-telepathy
-kmymoney
-krename
-kdenetwork-kget
+kdenetwork
 ktorrent
 kvirc
-live-installer
-manjaro-settings-manager
-#skype
+skype
 steam
+wine
+q4wine
+wine_gecko
+winetricks
 
 ## Package management
 pamac
-#octopi
+octopi
 
 ## GTK
 firefox
-thunderbird
+#thunderbird
 oxygen-gtk2
 oxygen-gtk3
 kde-gtk-config
