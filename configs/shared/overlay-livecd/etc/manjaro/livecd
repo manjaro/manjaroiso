@@ -238,10 +238,21 @@ setcap cap_net_raw=ep /usr/bin/ping6 &> /dev/null
 # installing localization packages
 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
    _configure_translation_pkgs
-   if [ ! -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
-      PACMAN_LNG_INST_KDE=""
+   if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
+      ${PACMAN_LNG} -S ${KDE_LNG_INST} &> /dev/null
    fi
-   ${PACMAN_LNG} -Sy ${PACMAN_LNG_INST} ${PACMAN_LNG_INST_KDE} &> /dev/null
+   if [ -e "/usr/bin/firefox" ] ; then
+      ${PACMAN_LNG} -S ${FIREFOX_LNG_INST} &> /dev/null
+   fi
+   if [ -e "/usr/bin/thunderbird" ] ; then
+      ${PACMAN_LNG} -S ${THUNDER_LNG_INST} &> /dev/null
+   fi
+   if [ -e "/usr/bin/libreoffice" ] ; then
+      ${PACMAN_LNG} -S ${LIBRE_LNG_INST} &> /dev/null
+   fi
+   if [ -e "/usr/bin/hunspell" ] ; then
+      ${PACMAN_LNG} -S ${HUNSPELL_LNG_INST} &> /dev/null
+   fi
 fi
 
 # load keys
