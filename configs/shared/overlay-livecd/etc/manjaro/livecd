@@ -238,6 +238,7 @@ setcap cap_net_raw=ep /usr/bin/ping6 &> /dev/null
 # installing localization packages
 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
    _configure_translation_pkgs
+   ${PACMAN_LNG} -Sy
    if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
       ${PACMAN_LNG} -S ${KDE_LNG_INST} &> /dev/null
    fi
