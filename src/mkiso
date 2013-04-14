@@ -112,12 +112,17 @@ echo "               image name:   ${imgname}"
 _pacman ()
 {
     local ret
-    if [ "${QUIET}" = "y" ]; then
-        mkroot -n -C "$PACCONFIG" -f "${work_dir}/${IMAGE_FOLDER}" $* 2>&1 >/dev/null || exit
+
+    if [[ "${quiet}" = "y" ]]; then
+        pacman -Sy -r "${work_dir}/${IMAGE_FOLDER}" --config "$PACCONFIG" --needed --noconfirm $* &> /dev/null
         ret=$?
     else
-        mkroot -n -C "$PACCONFIG" -f "${work_dir}/${IMAGE_FOLDER}" $* || exit
+        pacman -Sy -r "${work_dir}/${IMAGE_FOLDER}" --config "$PACCONFIG" --needed --noconfirm $*
         ret=$?
+    fi
+
+    if [ -e "${work_dir}/root-image/etc/locale.gen" ]; then
+        cp ${work_dir}/root-image/etc/locale.gen ${work_dir}/root-image/etc/locale.gen.bak
     fi
 
     # Cleanup

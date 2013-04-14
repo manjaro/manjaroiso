@@ -3,7 +3,6 @@ all:
 install: all
 	# install to sbin since script only usable by root
 	install -D -m 755 mkiso $(DESTDIR)/usr/sbin/mkiso
-	install -D -m 755 mkroot $(DESTDIR)/usr/sbin/mkroot
 	install -D -m 755 buildiso $(DESTDIR)/usr/sbin/buildiso
 	# testiso can be used by anyone
 	install -D -m 755 testiso $(DESTDIR)/usr/bin/testiso
@@ -21,7 +20,6 @@ install: all
 
 uninstall:
 	rm -f $(DESTDIR)/usr/sbin/mkiso
-	rm -f $(DESTDIR)/usr/sbin/mkroot
 	rm -f $(DESTDIR)/usr/sbin/buildiso
 	rm -f $(DESTDIR)/usr/bin/testiso
 	rm -f $(DESTDIR)/usr/lib/initcpio/hooks/miso
