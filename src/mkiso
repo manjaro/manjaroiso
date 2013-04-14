@@ -113,7 +113,7 @@ _pacman ()
 {
     local ret
 
-    if [[ "${quiet}" = "y" ]]; then
+    if [ "${QUIET}" = "y" ]; then
         pacman -Sy -r "${work_dir}/${IMAGE_FOLDER}" --config "$PACCONFIG" --needed --noconfirm $* &> /dev/null
         ret=$?
     else
