@@ -12,6 +12,8 @@ arch=$(uname -m)
 _kernver=$(uname -r)
 EXTRAMODULES=extramodules-${_kernver%.*}-MANJARO
 
+echo "update fstab for swap" > /tmp/livecd.log
+
 ## Systemd should do it
 # scan_swap
 swapdev="$(fdisk -l 2>/dev/null | grep swap | cut -d' ' -f1)"
@@ -20,9 +22,13 @@ if [ -e "${swapdev}" ]; then
 	echo "${swapdev} swap swap defaults 0 0 #configured by manjaroiso" >>/etc/fstab
 fi
 
+echo "set locale" >> /tmp/livecd.log
+
 # set_locale
 set_locale
 locale-gen
+
+echo "configure alsa" >> /tmp/livecd.log
 
 # configure alsa
 set_alsa
@@ -30,26 +36,13 @@ set_alsa
 # save settings
 alsactl -f /etc/asound.state store &>/dev/null
 
+echo "enable default mirror" >> /tmp/livecd.log
+
 # enable default mirror
 cp -f /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 sed -i -e 's~^.*mirror.dacentec.com.*~Server = http://mirror.dacentec.com/manjaro/$repo/$arch~' /etc/pacman.d/mirrorlist
 
-# hwdetect_graphics
-if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
-   if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
-   	if  [ "${VIDEO}" == "vesa" ]; then
-		mhwd --install pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf"
-	else
-		mhwd --auto pci nonfree 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
-	fi
-   else
-   	if  [ "${VIDEO}" == "vesa" ]; then
-		mhwd --install pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf"
-	else
-		mhwd --auto pci free 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
-	fi
-   fi
-fi
+echo "configure system" >> /tmp/livecd.log
 
 # add BROWSER var
 echo "BROWSER=/usr/bin/xdg-open" >> /etc/environment
@@ -67,6 +60,8 @@ if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
    sed -i -e "s~^.*Terminal=.*~Terminal=false~" "/etc/skel/Desktop/Manjaro CLI Installer.desktop"
 fi
 
+echo "configure user" >> /tmp/livecd.log
+
 # do_makeuser
 addgroups="video,audio,power,disk,storage,optical,network,lp,scanner"
 useradd -m -p "" -g users -G $addgroups manjaro
@@ -75,6 +70,8 @@ echo "Icon=/var/lib/AccountsService/icons/manjaro.png" >> /var/lib/AccountsServi
 
 # do_configsforroot
 cp -a /etc/skel/. /root/
+
+echo "configure display managers" >> /tmp/livecd.log
 
 # do_setuplightdm
 if [ -e "/usr/sbin/lightdm" ] ; then
@@ -218,10 +215,14 @@ if [ -e "/usr/sbin/lxdm" ] ; then
    chmod +r /etc/lxdm/lxdm.conf > /dev/null
 fi
 
+echo "configure sudoers" >> /tmp/livecd.log
+
 # do_fix_perms
 chown root:root /etc/sudoers
 sed -i -e 's|# %wheel ALL=(ALL) ALL|%wheel ALL=(ALL) ALL|g' /etc/sudoers
 chmod 440 /etc/sudoers
+
+echo "configure applications" >> /tmp/livecd.log
 
 # fix_gnome_apps
 glib-compile-schemas /usr/share/glib-2.0/schemas
@@ -237,6 +238,7 @@ setcap cap_net_raw=ep /usr/bin/ping6 &> /dev/null
 
 # installing localization packages
 if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+   echo "install translation packages" >> /tmp/livecd.log
    _configure_translation_pkgs
    ${PACMAN_LNG} -Sy
    if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
@@ -256,6 +258,8 @@ if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
    fi
 fi
 
+echo "configure keyboard" >> /tmp/livecd.log
+
 # load keys
 keyboardctl --setup
 
@@ -270,6 +274,7 @@ fi
 
 # update /etc/live-installer/install.conf
 if [ -e "/etc/live-installer/install.conf" ] ; then
+   echo "configure live-installer" >> /tmp/livecd.log
    sed -i 's|_root-image_|/bootmnt/manjaro/_ARCH_/root-image.sqfs|g' /etc/live-installer/install.conf
    sed -i "s|_kernel_|$manjaro_kernel|g" /etc/live-installer/install.conf
    release=$(cat /etc/lsb-release | grep DISTRIB_RELEASE | cut -d= -f2)
@@ -307,5 +312,23 @@ if [ -e "/etc/live-installer/install.conf" ] ; then
       sed -i 's|_ARCH_|i686|g' /etc/live-installer/install.conf
    else
       sed -i 's|_ARCH_|x86_64|g' /etc/live-installer/install.conf
+   fi
+fi
+
+# hwdetect_graphics
+if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
+   echo "run mhwd" >> /tmp/livecd.log
+   if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
+   	if  [ "${VIDEO}" == "vesa" ]; then
+		mhwd --install pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf"
+	else
+		mhwd --auto pci nonfree 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
+	fi
+   else
+   	if  [ "${VIDEO}" == "vesa" ]; then
+		mhwd --install pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf"
+	else
+		mhwd --auto pci free 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf"
+	fi
    fi
 fi
