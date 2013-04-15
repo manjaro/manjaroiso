@@ -112,7 +112,7 @@ echo "               image name:   ${imgname}"
 _pacman ()
 {
     local ret
-
+    mkdir -p "${work_dir}/${IMAGE_FOLDER}/var/lib/pacman"
     if [ "${QUIET}" = "y" ]; then
         pacman -Sy -r "${work_dir}/${IMAGE_FOLDER}" --config "$PACCONFIG" --needed --noconfirm $* &> /dev/null
         ret=$?
