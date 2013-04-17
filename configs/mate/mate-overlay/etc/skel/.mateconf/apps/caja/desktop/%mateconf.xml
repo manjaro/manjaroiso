@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<mateconf>
-	<entry name="volumes_visible" mtime="1360797161" type="bool" value="false"/>
-	<entry name="trash_icon_visible" mtime="1360797160" type="bool" value="false"/>
-	<entry name="home_icon_visible" mtime="1360797159" type="bool" value="false"/>
-	<entry name="computer_icon_visible" mtime="1360797158" type="bool" value="false"/>
-</mateconf>
