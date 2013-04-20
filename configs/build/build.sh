@@ -8,7 +8,7 @@ fi
 
 # Manjaro Editions
 xfce="Y"
-cinnamon="Y"
+cinnamon="N"
 openbox="Y"
 net="Y"
 
