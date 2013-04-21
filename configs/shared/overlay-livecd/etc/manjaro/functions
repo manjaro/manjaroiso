@@ -434,7 +434,10 @@ hd_config()
     sed -i -e 's~^.*mirror.dacentec.com.*~Server = http://mirror.dacentec.com/manjaro/$repo/$arch~' ${DESTDIR}/etc/pacman.d/mirrorlist
 
     # copy random generated keys by pacman-init to target
-    cp -a /etc/pacman.d/gnupg ${DESTDIR}/etc/pacman.d/gnupg
+    if [ -e "${DESTDIR}/etc/pacman.d/gnupg" ] ; then
+       rm -rf ${DESTDIR}/etc/pacman.d/gnupg &>/dev/null
+    fi
+    cp -a /etc/pacman.d/gnupg ${DESTDIR}/etc/pacman.d/
 
     # sync pacman databases
     DIALOG --infobox "${_syncpacmandb}" 0 0
