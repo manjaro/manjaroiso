@@ -433,8 +433,8 @@ hd_config()
     cp ${DESTDIR}/etc/pacman.d/mirrorlist ${DESTDIR}/etc/pacman.d/mirrorlist.backup
     sed -i -e 's~^.*mirror.dacentec.com.*~Server = http://mirror.dacentec.com/manjaro/$repo/$arch~' ${DESTDIR}/etc/pacman.d/mirrorlist
 
-    mkdir -p ${DESTDIR}/etc/pacman.d/gnupg
-    mount -o bind /etc/pacman.d/gnupg ${DESTDIR}/etc/pacman.d/gnupg
+    # copy random generated keys by pacman-init to target
+    cp -a /etc/pacman.d/gnupg ${DESTDIR}/etc/pacman.d/gnupg
 
     # sync pacman databases
     DIALOG --infobox "${_syncpacmandb}" 0 0
@@ -606,8 +606,6 @@ hd_config()
        chroot ${DESTDIR} pacman -R --noconfirm live-installer &>/dev/null
     fi
 
-    umount ${DESTDIR}/etc/pacman.d/gnupg
-    rmdir ${DESTDIR}/etc/pacman.d/gnupg
     chroot_umount
 }
 
@@ -1260,9 +1258,6 @@ _post_process()
     DIALOG --infobox "${_localegen}" 0 0
     chroot ${DESTDIR} locale-gen &> /dev/null
 
-    mkdir -p ${DESTDIR}/etc/pacman.d/gnupg
-    mount -o bind /etc/pacman.d/gnupg ${DESTDIR}/etc/pacman.d/gnupg
-
     # installing localization packages
     if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
        _configure_translation_pkgs
@@ -1316,9 +1311,6 @@ _post_process()
     # create kernel images
     run_mkinitcpio
     sleep 3
-
-    umount ${DESTDIR}/etc/pacman.d/gnupg
-    rmdir ${DESTDIR}/etc/pacman.d/gnupg
 
     ## END POSTPROCESSING ##
     # TODO add end cleaning
