@@ -40,7 +40,9 @@ echo "enable default mirror" >> /tmp/livecd.log
 
 # enable default mirror
 cp -f /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-sed -i -e 's~^.*mirror.dacentec.com.*~Server = http://mirror.dacentec.com/manjaro/$repo/$arch~' /etc/pacman.d/mirrorlist
+if [ ! -z "$ping_check" ] ; then
+   pacman-mirrors -g &>/dev/null
+fi
 
 echo "configure system" >> /tmp/livecd.log
 

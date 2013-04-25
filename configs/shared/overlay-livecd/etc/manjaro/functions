@@ -2,6 +2,9 @@
 
 # Common functions for Manjaro Install Framework
 
+# check if we have a internet connection
+ping_check=$(LC_ALL=C ping -c 1 www.manjaro.org | grep "1 received")
+
 # kernel_cmdline <param> <default>
 # Looks for a parameter on the kernel's boot-time command line.
 #
@@ -430,8 +433,10 @@ hd_config()
     chroot ${DESTDIR} alsactl -f /etc/asound.state store &>/dev/null
 
     # enable default mirror
-    cp ${DESTDIR}/etc/pacman.d/mirrorlist ${DESTDIR}/etc/pacman.d/mirrorlist.backup
-    sed -i -e 's~^.*mirror.dacentec.com.*~Server = http://mirror.dacentec.com/manjaro/$repo/$arch~' ${DESTDIR}/etc/pacman.d/mirrorlist
+    cp -f ${DESTDIR}/etc/pacman.d/mirrorlist ${DESTDIR}/etc/pacman.d/mirrorlist.backup
+    if [ ! -z "$ping_check" ] ; then
+       chroot ${DESTDIR} pacman-mirrors -g &>/dev/null
+    fi
 
     # copy random generated keys by pacman-init to target
     if [ -e "${DESTDIR}/etc/pacman.d/gnupg" ] ; then

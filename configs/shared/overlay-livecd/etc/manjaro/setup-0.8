@@ -42,9 +42,6 @@ PART_ROOT=
 # <mountpoint>:<partsize>:<fstype>[:+]
 DEFAULTFS="/boot:512:ext2:+ swap:256:swap /:6400:reiserfs /home:*:reiserfs"
 
-# check if we have a internet connection
-ping_check=$(LC_ALL=C ping -c 1 www.manjaro.org | grep "1 received")
-
 # install stages
 S_SRC=0         # choose install medium
 S_NET=0         # network configuration

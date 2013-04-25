@@ -1,0 +1,40 @@
+##
+## Manjaro Linux repository mirrorlist
+## Generated on 25 April 2013
+## Use pacman-mirrors to modify
+##
+
+## Location: United_States
+Server = http://mirror.dacentec.com/manjaro/stable/$repo/$arch
+
+## Location: France
+Server = http://manjarolinux.polymorf.fr/stable/$repo/$arch
+
+## Location: Germany
+Server = http://ftp.halifax.rwth-aachen.de/manjaro/stable/$repo/$arch
+
+## Location: Germany
+Server = http://ftp.tu-chemnitz.de/pub/linux/manjaro/stable/$repo/$arch
+
+## Location: Germany
+Server = http://mirror-europe1.vinzv.de/manjaro/repo/stable/$repo/$arch
+
+## Location: Greece
+Server = http://ftp.cc.uoc.gr/mirrors/linux/manjaro/stable/$repo/$arch
+
+## Location: Ireland
+Server = ftp://ftp.heanet.ie/mirrors/manjaro/stable/$repo/$arch
+
+## Location: Ireland
+Server = http://ftp.heanet.ie/mirrors/manjaro/stable/$repo/$arch
+
+## Location: Netherlands
+Server = ftp://ftp.nluug.nl/pub/os/Linux/distr/manjaro/stable/$repo/$arch
+
+## Location: Netherlands
+Server = http://ftp.nluug.nl/pub/os/Linux/distr/manjaro/stable/$repo/$arch
+
+## Location: United_Kingdom
+Server = http://repo.manjaro.org.uk/stable/$repo/$arch
+
+
