@@ -92,7 +92,6 @@ our $SCHEMA = [
    {begin_cat => ['Pacman / Servers', '/usr/share/icons/Faenza/apps/48/package-manager-icon.png']},
 		{item => ['gksu geany /etc/pacman.conf','Pacman Config','geany']},
 		{item => ['gksu geany /etc/pacman.d/mirrorlist','Pacman Mirrorlist','geany']},
-		{item => ['lxterminal -e sudo /home/carl/fastestservers.sh','Find Fastest Server','lxterminal']},
    {end_cat   => undef},
    {end_cat   => undef},
 
