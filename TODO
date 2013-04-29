@@ -1,5 +1,6 @@
-add shared config
-add configs
-adjust (shared) config(s)
-remove double pkgs
+29.04.2013
+---------------
+* fix pacmac/mhwd conflict (pacman.db/online)
+* find a better way for pacman-mirrors (default mirror)
+  - workaround: shared/overlay/etc/pacman.d/mirrorlist
 

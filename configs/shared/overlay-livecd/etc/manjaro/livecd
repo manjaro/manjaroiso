@@ -39,10 +39,10 @@ alsactl -f /etc/asound.state store &>/dev/null
 echo "enable default mirror" >> /tmp/livecd.log
 
 # enable default mirror
-cp -f /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-if [ ! -z "$ping_check" ] ; then
-   pacman-mirrors -g &>/dev/null
-fi
+#cp -f /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+#if [ ! -z "$ping_check" ] ; then
+#   pacman-mirrors -g &>/dev/null
+#fi
 
 echo "configure system" >> /tmp/livecd.log
 

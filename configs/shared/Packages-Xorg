@@ -10,9 +10,9 @@ intel-dri
 
 ## Bumblebee Support
 bumblebee
-virtualgl
+primus
 KERNEL-bbswitch
->x86_64 lib32-virtualgl
+>x86_64 lib32-primus
 
 ## Proprietary Drivers
 >nonfree_uni catalyst-input
