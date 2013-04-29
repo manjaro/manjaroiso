@@ -3,4 +3,5 @@
 * fix pacmac/mhwd conflict (pacman.db/online)
 * find a better way for pacman-mirrors (default mirror)
   - workaround: shared/overlay/etc/pacman.d/mirrorlist
+* fix qt config for root account
 
