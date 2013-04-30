@@ -1,0 +1,10 @@
+[Unit]
+Description=LiveMedia MHWD Script
+After=livecd.service
+
+[Service]
+Type=oneshot
+ExecStart=/etc/manjaro/mhwd
+
+[Install]
+WantedBy=multi-user.target

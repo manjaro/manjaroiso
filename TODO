@@ -1,3 +1,8 @@
+30.04.2013
+---------------
+* test if new services will fix livecd/mhwd issues
+* qt config issues might be due qt changes by Arch
+
 29.04.2013
 ---------------
 * fix pacmac/mhwd conflict (pacman.db/online)
