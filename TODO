@@ -1,3 +1,9 @@
+01.05.2013
+---------------
+* qt config issues can be fixed with:
+  gconftool-2 --set --type string /desktop/gnome/interface/gtk_theme [name of theme]
+  created gconf folder needs to be copied to etc/skel/.config/gconf
+
 30.04.2013
 ---------------
 * test if new services will fix livecd/mhwd issues

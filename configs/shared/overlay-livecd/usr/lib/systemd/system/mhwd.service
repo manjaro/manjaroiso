@@ -1,5 +1,6 @@
 [Unit]
 Description=LiveMedia MHWD Script
+Before=systemd-user-sessions.service
 After=livecd.service
 
 [Service]
