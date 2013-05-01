@@ -72,7 +72,7 @@ mobile-broadband-provider-info
 modemmanager
 nbd
 networkmanager
-networkmanager-dispatcher-ntpd-systemd
+networkmanager-dispatcher-ntpd
 openresolv
 usb_modeswitch
 wpa_actiond
