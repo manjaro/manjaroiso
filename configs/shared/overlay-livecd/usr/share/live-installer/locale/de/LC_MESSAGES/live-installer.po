@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: manjaro-live-installer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-04-17 01:29+0200\n"
-"PO-Revision-Date: 2013-05-02 20:59+0100\n"
+"PO-Revision-Date: 2013-05-02 21:24+0100\n"
 "Last-Translator: Philip Müller <philm@manjaro.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manjaro-live-"
 "installer/language/de/)\n"
@@ -165,7 +165,7 @@ msgstr "%s Installer"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:223
 msgid "Language"
-msgstr "Sprache"
+msgstr "Language / Sprache"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:224
 msgid "Timezone"
@@ -508,7 +508,7 @@ msgstr "Passwörter stimmen überein"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1520
 msgid "Forward"
-msgstr "Vor"
+msgstr "Vorwärts"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1566
 msgid "Please provide your full name"
