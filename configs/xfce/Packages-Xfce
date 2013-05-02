@@ -5,14 +5,14 @@ adwaita-manjaro-themes
 faenza-green-icon-theme
 #gdm
 gnome-keyring
-gconf # fix qt-theme
+libgnome # to fix qt-themes
 live-installer
 lxdm
 manjaro-settings-manager
 network-manager-applet
 numlockx
 orage
-#plank
+plank
 thunar-archive-plugin
 thunar-media-tags-plugin
 xcursor-simpleandsoft
@@ -25,10 +25,10 @@ xscreensaver
 #xfce4-artwork
 xfce4-battery-plugin
 xfce4-clipman-plugin
-#xfce4-cpufreq-plugin
-#xfce4-cpugraph-plugin
-#xfce4-datetime-plugin
-#xfce4-dict
+xfce4-cpufreq-plugin
+xfce4-cpugraph-plugin
+xfce4-datetime-plugin
+xfce4-dict
 #xfce4-diskperf-plugin
 #xfce4-fsguard-plugin
 #xfce4-genmon-plugin
@@ -36,7 +36,7 @@ xfce4-clipman-plugin
 xfce4-mount-plugin
 #xfce4-mpc-plugin
 xfce4-netload-plugin
-#xfce4-notes-plugin
+xfce4-notes-plugin
 xfce4-notifyd
 xfce4-quicklauncher-plugin
 xfce4-screenshooter
@@ -52,25 +52,24 @@ xfce4-taskmanager
 xfce4-xkb-plugin
 
 ## Applications
-#blueman
+blueman
 catfish # needed for desktop search
 evince
 file-roller
 firefox
 galculator
 gedit
-#gimp
+gimp
 lxmed
 mlocate
-parole
-#pidgin
+pidgin
 thunderbird
 viewnior
-#vlc
-#xchat
-#xfburn
-#xnoise
-#yelp
+vlc
+xchat
+xfburn
+xnoise
+yelp
 
 ## Xorg
 mhwd
@@ -103,17 +102,17 @@ xorg-xinit
 manjaro-artwork
 
 ## Packages for Sound and Audio
-#gst-plugins-bad
-#gst-plugins-good
-#gst-plugins-ugly
-#gstreamer0.10-bad-plugins
-#gstreamer0.10-good-plugins
-#gstreamer0.10-ugly-plugins
-#flashplugin
-#libdvdcss
+gst-plugins-bad
+gst-plugins-good
+gst-plugins-ugly
+gstreamer0.10-bad-plugins
+gstreamer0.10-good-plugins
+gstreamer0.10-ugly-plugins
+flashplugin
+libdvdcss
 manjaro-alsa
 manjaro-pulse
-pnmixer
+pnmixer-xfce4
 pavucontrol
 
 ## Package management
@@ -121,41 +120,41 @@ pamac
 #octopi
 
 ## Games
-#steam
+steam
 
 ## Fonts
 ttf-source-sans-pro
 
 ## Java
-#icedtea-web-java7
+icedtea-web-java7
 
 ## Printing
-#manjaro-printer
+manjaro-printer
 
 ## Office
-abiword
-gnumeric
+#abiword
+#gnumeric
 #libreoffice-installer
-#libreoffice-en-US
+libreoffice-en-US
 #libreoffice-base
-#libreoffice-calc
+libreoffice-calc
 #libreoffice-draw
-#libreoffice-gnome
+libreoffice-gnome
 #libreoffice-impress
 #libreoffice-math
 #libreoffice-postgresql-connector
-#libreoffice-writer
+libreoffice-writer
 
 ## AUR Access
-#autoconf
-#automake
-#binutils
-#bison
-#fakeroot
-#flex
-#gcc 
-#libtool
-#m4
-#make
-#patch  
-#yaourt
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+gcc 
+libtool
+m4
+make
+patch  
+yaourt
