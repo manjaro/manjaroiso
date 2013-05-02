@@ -5,7 +5,7 @@ adwaita-manjaro-themes
 faenza-green-icon-theme
 #gdm
 gnome-keyring
-libgnome # to fix qt-themes
+gconf # fix qt-theme
 live-installer
 lxdm
 manjaro-settings-manager
@@ -112,7 +112,7 @@ flashplugin
 libdvdcss
 manjaro-alsa
 manjaro-pulse
-pnmixer-xfce4
+pnmixer
 pavucontrol
 
 ## Package management
