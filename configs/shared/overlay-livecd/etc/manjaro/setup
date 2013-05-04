@@ -162,7 +162,6 @@ mainmenu()
         --menu "${_mainmenuhelp}" 16 55 8 \
         "1" "${_stableinstaller}" \
         "2" "${_testinginstaller}" \
-#        "3" "${_networktext}" \
         "3" "${_quittext}" 2>$ANSWER
     CURRENT_SELECTION="$(cat $ANSWER)"
     case $(cat $ANSWER) in
@@ -177,9 +176,6 @@ mainmenu()
             exit 0
         ;;
         "3")
-            donetwork
-        ;;
-        "4")
             if DIALOG --yesno "${_exitwrapper}" 6 40;then
              exit 0
             fi
