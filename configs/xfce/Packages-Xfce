@@ -60,6 +60,8 @@ firefox
 galculator
 gedit
 gimp
+gnome-vfs
+gvfs
 lxmed
 mlocate
 pidgin
@@ -156,5 +158,6 @@ gcc
 libtool
 m4
 make
-patch  
+patch
+subversion 
 yaourt
