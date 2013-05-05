@@ -14,6 +14,7 @@ network-manager-applet
 numlockx
 orage
 plank
+poppler-glib
 thunar-archive-plugin
 thunar-media-tags-plugin
 tumbler
@@ -67,6 +68,7 @@ gvfs
 gvfs-afc
 gvfs-afp
 gvfs-gphoto2
+gvfs-smb
 lxmed
 mlocate
 pidgin
