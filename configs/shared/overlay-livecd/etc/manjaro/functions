@@ -496,7 +496,7 @@ hd_config()
        chroot ${DESTDIR} getent passwd lightdm > /dev/null 2>&1 || useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /sbin/nologin lightdm
        chroot ${DESTDIR} passwd -l lightdm > /dev/null
        chown -R lightdm:lightdm ${DESTDIR}/run/lightdm  &>/dev/null
-       if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+       if [ -e "/usr/bin/startxfce4" ] ; then
             sed -i -e 's/^.*user-session=.*/user-session=xfce/' ${DESTDIR}/etc/lightdm/lightdm.conf
             ln -s /usr/lib/lightdm/lightdm/gdmflexiserver ${DESTDIR}/usr/bin/gdmflexiserver
        fi
@@ -547,22 +547,22 @@ hd_config()
        if [ -z "`chroot ${DESTDIR} getent group "lxdm" 2> /dev/null`" ]; then
          chroot ${DESTDIR} groupadd --system lxdm  &>/dev/null
        fi
-       if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+       if [ -e "/usr/bin/startxfce4" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/startxfce4|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
-       if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
+       if [ -e "/usr/bin/cinnamon" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/cinnamon|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
-       if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+       if [ -e "/usr/bin/mate-session" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/mate-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
-       if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+       if [ -e "/usr/bin/enlightenment_start" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/enlightenment_start|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
-       if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
+       if [ -e "/usr/bin/openbox-session" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/openbox-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
-       if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
+       if [ -e "/usr/bin/lxsession" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/lxsession|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
        chgrp -R lxdm ${DESTDIR}/var/lib/lxdm  &>/dev/null
@@ -923,6 +923,21 @@ installsystem_cp() {
        echo $? > /tmp/.install-retcode
        if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
        else echo -e "\n => XFCE-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
+       fi
+    fi
+
+    if [ -e "/bootmnt/manjaro/${arch}/net-image.sqfs" ] ; then
+       #rsync -av --progress /source/net-image ${DESTDIR}
+       CP_SOURCE=/source/net-image
+       mkdir -p ${CP_SOURCE}
+       CP_TARGET=${DESTDIR}
+       SQF_FILE=net-image.sqfs
+       run_mount_sqf
+       run_cp
+       run_umount_sqf
+       echo $? > /tmp/.install-retcode
+       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
+       else echo -e "\n => Net-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
        fi
     fi
 
