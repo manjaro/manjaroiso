@@ -3,412 +3,401 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Veraendert <kleine@kanzlei-endingen.de>, 2013
-# manjarolinux <philm@manjaro.org>, 2013
-# Veraendert <kleine@kanzlei-endingen.de>, 2013
+# reis33 <bahadiroglu33@gmail.com>, 2013
+# Ekrem KRC <biodiscover@gmail.com>, 2013
+# yfdogan <yfdogan@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: manjaro-live-installer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-04-17 01:29+0200\n"
-"PO-Revision-Date: 2013-05-20 01:24+0100\n"
+"PO-Revision-Date: 2013-05-20 01:26+0100\n"
 "Last-Translator: Philip Müller <philm@manjaro.org>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/manjaro-live-"
-"installer/language/de/)\n"
+"Language-Team: Turkish (http://www.transifex.com/projects/p/manjaro-live-"
+"installer/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.5.5\n"
 
 #: usr/lib/live-installer/installer.py:50
 #, python-format
 msgid "Formatting %(partition)s as %(format)s..."
-msgstr "Formatiere %(partition)s als %(format)s..."
+msgstr "%(partition)s bölümü, %(format)s olarak biçimlendiriliyor..."
 
 #: usr/lib/live-installer/installer.py:86
 #: usr/lib/live-installer/installer.py:89
 #: usr/lib/live-installer/installer.py:100
 #, python-format
 msgid "Mounting %(partition)s on %(mountpoint)s"
-msgstr "Hänge %(partition)s ein bei %(mountpoint)s"
+msgstr "%(partition)s bölümü %(mountpoint)s üzerine bağlanıyor"
 
 #: usr/lib/live-installer/installer.py:118
 msgid ""
 "ERROR: You must first manually mount your target filesystem(s) at /target to "
 "do a custom install!"
 msgstr ""
-"FEHLER: Sie müssen selbst Ihr(e) Zielsystem(e) einhängen bei /Ziel um eine "
-"benutzerdefinierte Installation machen zu können !"
+"HATA: Özel kurulum için önce hedef dosya sistem(ler)ini /target \"\n"
+"altına bağlamanız gerekiyor !"
 
 #: usr/lib/live-installer/installer.py:157
 #: usr/lib/live-installer/installer.py:224
 msgid "Indexing files to be copied.."
-msgstr "Zu kopierende Dateien festlegen..."
+msgstr "Kopyalanacak dosyalar listeleniyor..."
 
 #: usr/lib/live-installer/installer.py:177
 #: usr/lib/live-installer/installer.py:244
 #, python-format
 msgid "Copying %s"
-msgstr "Kopiere %s"
+msgstr "%s Kopyalanıyor"
 
 #: usr/lib/live-installer/installer.py:286
 #, python-format
 msgid "Restoring meta-information on %s"
-msgstr "Stelle die Meta-Informationen bei %s wieder her"
+msgstr "%s üzerinde meta bilgisi yenileniyor"
 
 #: usr/lib/live-installer/installer.py:323
 msgid "Entering new system.."
-msgstr "Betrete das neue System"
+msgstr "Yeni sisteme giriliyor..."
 
 #: usr/lib/live-installer/installer.py:335
 msgid "Configuring hardware.."
-msgstr "Konfiguriere die Hardware..."
+msgstr "Donanımlar ayarlanıyor..."
 
 #: usr/lib/live-installer/installer.py:394
 msgid "Setup graphic card.."
-msgstr "Grafikkarte wirde eingerichtet..."
+msgstr "Ekran kartı yapılandırılıyor..."
 
 #: usr/lib/live-installer/installer.py:422
 msgid "Configure display manager.."
-msgstr "Konfiguriere den Displaymanager"
+msgstr "Oturum Açma Yöneticisi yapılandırılıyor..."
 
 #: usr/lib/live-installer/installer.py:500
 msgid "Configure System.."
-msgstr "Konfiguriere das System..."
+msgstr "Sistem yapılandırılıyor..."
 
 #: usr/lib/live-installer/installer.py:530
 msgid "Removing live configuration (packages)"
-msgstr "Die Pakete des Live-Systems werden entfernt "
+msgstr "Canli sistem yapılandırılması (paketler) kaldırılıyor"
 
 #: usr/lib/live-installer/installer.py:536
 msgid "Adding user to system"
-msgstr "Benutzer wird zum System hinzugefügt"
+msgstr "Sisteme kullanıcı ekleniyor"
 
 #: usr/lib/live-installer/installer.py:585
 msgid "Writing filesystem mount information"
-msgstr "Schreibe die Einhängeinformationen des Dateisystems"
+msgstr "Dosya sistemi bağlama bilgileri yazılıyor"
 
 #: usr/lib/live-installer/installer.py:642
 msgid "Setting hostname"
-msgstr "Hostname wird eingestellt"
+msgstr "Bilgisayar adı ayarlanıyor"
 
 #: usr/lib/live-installer/installer.py:685
 msgid "Configure package manager.."
-msgstr "Konfiguriere den Paketmanager"
+msgstr "Paket yöneticisi yapılandırılıyor"
 
 #: usr/lib/live-installer/installer.py:694
 msgid "Setting locale"
-msgstr "Sprache wird eingestellt"
+msgstr "Yerel ayarlar yapılıyor"
 
 #: usr/lib/live-installer/installer.py:712
 msgid "Localizing packages"
-msgstr "Pakete werden lokalisiert"
+msgstr "Paketler yerelleştiriliyor"
 
 #: usr/lib/live-installer/installer.py:726
 msgid "Localizing KDE"
-msgstr "KDE wird lokalisiert"
+msgstr "KDE yerelleştiriliyor"
 
 #: usr/lib/live-installer/installer.py:738
 msgid "Localizing LibreOffice"
-msgstr "LibreOffice wird lokalisiert"
+msgstr "LibreOffice yerelleştiriliyor"
 
 #: usr/lib/live-installer/installer.py:753
 msgid "Localizing Firefox"
-msgstr "Firefox wird lokalisiert"
+msgstr "Firefox yerelleştiriliyor"
 
 #: usr/lib/live-installer/installer.py:766
 msgid "Localizing Thunderbird"
-msgstr "Thunderbird wird lokalisiert"
+msgstr "Thunderbird yerelleştiriliyor"
 
 #: usr/lib/live-installer/installer.py:779
 msgid "Setting keyboard options"
-msgstr "Tastaturoptionen werden eingestellt"
+msgstr "Tuş takımı seçenekleri ayarlanıyor"
 
 #: usr/lib/live-installer/installer.py:800
 msgid "Configuring Initramfs"
-msgstr "Initramfs wird konfiguriert"
+msgstr "Initramfs ayarlanıyor"
 
 #: usr/lib/live-installer/installer.py:807
 msgid "Installing bootloader"
-msgstr "Der Bootloader wird installiert"
+msgstr "Önyükleyici kuruluyor"
 
 #: usr/lib/live-installer/installer.py:816
 msgid ""
 "WARNING: The grub bootloader was not configured properly! You need to "
 "configure it manually."
 msgstr ""
-"ACHTUNG: Der GRUB-Bootloader wurde nicht richtigt konfiguriert ! Sie müssen "
-"ihn selbst einrichten."
+"DİKKAT: Grub önyükleyici düzgün yapılandırılmamış! \"\n"
+"Kendiniz yapılandırmalısınız."
 
 #: usr/lib/live-installer/installer.py:840
 #: usr/lib/live-installer/frontend/gtk_interface.py:1789
 msgid "Installation finished"
-msgstr "Installationstool"
+msgstr "Kurulum tamamlandı"
 
 #: usr/lib/live-installer/installer.py:854
 msgid "Configuring bootloader"
-msgstr "Bootloder wird konfiguriert"
+msgstr "Önyükleyici yapılandırılıyor"
 
 #: usr/lib/live-installer/installer.py:871
 msgid "Checking bootloader"
-msgstr "Bootloader wird überprüft"
+msgstr "Önyükleyici kontrol ediliyor"
 
 #: usr/lib/live-installer/installer.py:1029
 msgid "unallocated"
-msgstr "Noch frei"
+msgstr "Yerelleştirilemedi"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:215
 #: usr/lib/live-installer/frontend/gtk_interface.py:217
 #, python-format
 msgid "%s Installer"
-msgstr "%s Installer"
+msgstr "%s Kurulum Aracı"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:223
 msgid "Language"
-msgstr "Language / Sprache"
+msgstr "Dil"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:224
 msgid "Timezone"
-msgstr "Zeitzone"
+msgstr "Zaman Dilimi"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:225
 msgid "Keyboard layout"
-msgstr "Tastaturlayout"
+msgstr "Tuş Takımı Düzeni"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:226
 msgid "User info"
-msgstr "Benutzerinformationen"
+msgstr "Kullanıcı Bilgisi"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:227
 #: usr/lib/live-installer/frontend/gtk_interface.py:579
 msgid "Hard drive"
-msgstr "Festplatte"
+msgstr "Sabit Disk"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:228
 msgid "Partitioning"
-msgstr "Partitionierung"
+msgstr "Bölümlendiriliyor"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:229
 msgid "Please make sure you wish to manually manage partitions"
-msgstr ""
-"Sind Sie sicher, dass sie selbst die Partitionierung vornehmen wollen ?"
+msgstr "Lütfen bölümlerin yönetimini kendiniz yapmak istediğinizden emin olun"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:230
 msgid "Advanced options"
-msgstr "Einstellungen für Fortgeschrittene"
+msgstr "Gelişmiş Seçenekler"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:231
 msgid "Summary"
-msgstr "Zusammenfassung"
+msgstr "Özet"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:232
 msgid "Installing Manjaro Linux..."
-msgstr "Installiere Manjaro Linux..."
+msgstr "Manjaro Linux Kuruluyor..."
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:233
 msgid "Installation is Paused: Please finish the custom installation"
-msgstr ""
-"Installation wurde unterbrochen. Bitte beenden Sie die benutzerdefinierte "
-"Installation"
+msgstr "Kurulum durduruldu: Lütfen geçerli kurulumu bitirin"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:269
 msgid "Click this button to take a new picture of yourself with the webcam"
-msgstr ""
-"Drücken Sie hier, um ein neues Bild von sich mit der Webcam aufzunehmen"
+msgstr "Webcam ile resim almak için bu düğmeye tıklayın"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:272
 msgid "The installer did not detect any webcam"
-msgstr "Der Installer hat keine Webcam erkannt"
+msgstr "Kurulum aracı bir webcam algılayamadı"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:302
 #: usr/lib/live-installer/frontend/gtk_interface.py:581
 msgid "Device"
-msgstr "Gerät"
+msgstr "Aygıt"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:307
 #: usr/lib/live-installer/frontend/gtk_interface.py:582
 msgid "Type"
-msgstr "Typ"
+msgstr "Tip"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:312
 #: usr/lib/live-installer/frontend/gtk_interface.py:583
 msgid "Operating system"
-msgstr "Betriebssystem"
+msgstr "İşletim Sistemi"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:317
 #: usr/lib/live-installer/frontend/gtk_interface.py:584
 msgid "Mount point"
-msgstr "Einhängepunkt/mount point"
+msgstr "Bağlama Noktası"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:322
 #: usr/lib/live-installer/frontend/gtk_interface.py:585
 msgid "Format?"
-msgstr "Formatieren ?"
+msgstr "Biçim?"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:327
 #: usr/lib/live-installer/frontend/gtk_interface.py:586
 msgid "Size"
-msgstr "Größe"
+msgstr "Boyut"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:332
 #: usr/lib/live-installer/frontend/gtk_interface.py:587
 msgid "Free space"
-msgstr "Freier Speicherplatz"
+msgstr "Boş Alan"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:362
 #: usr/lib/live-installer/frontend/gtk_interface.py:588
 msgid "Layout"
-msgstr "Layout"
+msgstr "Düzen"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:368
 #: usr/lib/live-installer/frontend/gtk_interface.py:589
 msgid "Variant"
-msgstr "Variante"
+msgstr "Değişken"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:377
 #: usr/lib/live-installer/frontend/gtk_interface.py:590
 msgid "Overview"
-msgstr "Überblick"
+msgstr "Ön İzleme"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:381
 msgid "Calculating file indexes..."
-msgstr "Dateiindexe werden festgelegt"
+msgstr "Dosya indexleri hesaplanıyor"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:463
 msgid "Images"
-msgstr "Bilder"
+msgstr "Resimler"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:531
 msgid "Your full name"
-msgstr "Vor- und Nachname"
+msgstr "Tam adınız"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:532
 msgid "This will be shown in the About Me application"
-msgstr "Dies wird unter \"Über mich /About me\" gezeigt"
+msgstr "Bu, Hakkımda uygulamasında görüntülenecektir."
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:533
 msgid "Your username"
-msgstr "Ihr Benutzername"
+msgstr "Kullanıcı Adınız"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:534
 msgid "This is the name you will use to login to your computer"
-msgstr "Mit diesem Namen melden Sie sich an Ihrem Computer an."
+msgstr "Bu, bilgisayarınıza giriş yapmak için kullanacağınız adınızdır"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:535
 msgid "Your password"
-msgstr "Ihr Passwort"
+msgstr "Parolanız"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:536
 msgid "Please enter your password twice to ensure it is correct"
-msgstr ""
-"Bitte geben Sie Ihr Passwort zweimal ein, um sicherzustellen, dass es "
-"korrekt ist"
+msgstr "Lütfen Ddoğru olduğundan emin olmak için parolanızı iki defa girin"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:537
 msgid "Hostname"
-msgstr "Hostname"
+msgstr "Bilgisayar adı"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:538
 msgid "This hostname will be the computers name on the network"
-msgstr "Dieser Name wird als Name des Computers im Netzwerk benutzt"
+msgstr "Bilgisayar adı, bilgisayarınızın üzerindeki adı olacaktır"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:540
 msgid "Your picture"
-msgstr "Ihr Foto"
+msgstr "Resminiz"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:541
 msgid ""
 "This picture represents your user account. It is used in the login screen "
 "and a few other places."
 msgstr ""
-"Dieses Foto repräsentiert Ihren Benutzeraccount. Es wird beim Login und an "
-"einigen anderen Stellen verwandt."
+"Bu resim kullanıcı hesabınızı görüntüler. Giriş ekranınız ve bazı "
+"uygulamalarda kullanılır."
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:542
 msgid "Take a photo"
-msgstr "Machen Sie ein Foto"
+msgstr "Bir resim çekin"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:544
 msgid "Select a picture"
-msgstr "Bild auswählen"
+msgstr "Bir resim seçin"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:545
 msgid "Click this button to choose a picture for your account"
-msgstr "Klicken Sie hier, um ein Bild für Ihren Account auszuwählen"
+msgstr "Hesabınıza bir resim seçmek için bu düğmeye tıklayın"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:548
 msgid "Selected timezone:"
-msgstr "Ausgewählte Zeitzone:"
+msgstr "Seçilen zaman dilimi:"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:551
 msgid "Bootloader"
-msgstr "Bootloader"
+msgstr "Önyükleyici"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:552
 msgid "Install GRUB"
-msgstr "GRUB installieren"
+msgstr "GRUB Kurulumu"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:553
 msgid "GRUB is a bootloader used to load the Linux kernel"
-msgstr "GRUB ist ein bootloader, der zum laden des Linuxkernels benutzt wird."
+msgstr "GRUB, Linux çekirdeğinin yüklenmesinde kullanılan bir önyükleyicidir"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:556
 msgid "Use this box to test your keyboard layout"
-msgstr "Sie können dieses Feld benutzen, um Ihr Tastaturlayout zu testen"
+msgstr "Tuş takımını düzenini sınamak için bu kutucuğu kullanın"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:557
 msgid "Model"
-msgstr "Modell"
+msgstr "Model"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:560
 msgid ""
 "You have selected to manage your partitions manually, this feature is for "
 "ADVANCED USERS ONLY."
 msgstr ""
-"Sie haben sich dazu entschieden, selbst Ihre Partitionen festzulegen. Diese "
-"Möglichkeit ist nur für FORTGESCHRITTENE BENUTZER gedacht."
+"Manuel bölümlendirmeyi seçtiniz. Bu özellik, SADECE TECRÜBELİ KULLANICILAR "
+"içindir."
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:561
 msgid "Before continuing, please mount your target filesystem(s) at /target."
 msgstr ""
-"Bevor Sie fortfahren, hängen Sie bitte Ihr(e) Dateisystem(e) bei /Ziel ein"
+"Lütfen devam etmeden önce hedef dosya sistem(ler)inizi /target altına "
+"bağlayın."
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:562
 msgid ""
 "Do NOT mount virtual devices such as /dev, /proc, /sys, etc on /target/."
-msgstr ""
-"Hängen Sie KEINE virtuellen Laufwerke wie /dev, /proc, /sys, etc als /Ziel "
-"ein."
+msgstr "/dev, /proc, /sys gibi sanal aygıtları /target altına bağlaMAyın."
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:563
 msgid ""
 "During the install, you will be given time to chroot into /target and "
 "install any pacakges that will be needed to boot your new system."
 msgstr ""
-"Während des Installationsvorgangs haben Sie Zeit, nach /Ziel zu chrooten und "
-"die Pakete zu installieren, die für das booten des Systems benötigt werden"
+"Kurulum sırasında sisteminizi başlatmak için gerekli paketleri kurmak ve "
+"chroot olarak /target erişmek için size zaman verilecektir."
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:564
 msgid "During the install, you will be required to write your own /etc/fstab."
-msgstr ""
-"Während des Installationvorganges müssen Sie Ihre eigene /etc/fstab-Datei "
-"schreiben."
+msgstr "Kurulum sırasında kendi /etc/fstab dosyanızı yapılandırabilirsiniz."
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:565
 msgid ""
 "If you arent sure what any of this means, please go back and deselect manual "
 "partition management."
 msgstr ""
-"Wenn Sie nicht sicher sind, was das heißt, gehen Sie bitte zurück und wählen "
-"Sie die Option der benutzerdefinierten Installation ab."
+"Bunların ne olduğundan emin değilseniz lütfen geri gidin ve manuel "
+"bölümlendirmeyi iptal edin."
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:568
 msgid "Please do the following and then click Forward to finish Installation:"
-msgstr ""
-"Machen Sie bitte Folgendes uns klicken Sie dann auf \"Vorwärts\" um die "
-"Installation abzuschließen:"
+msgstr "Yönergeleri takip edin ve kurulumu tamamlamak için devam edin."
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:569
 msgid ""
@@ -416,10 +405,8 @@ msgid ""
 "new system, matching those currently mounted at /target (without using the /"
 "target prefix in the mount paths themselves)."
 msgstr ""
-"Erstellen Sie die /Ziel/etc/fstab-Datei für die Dateisysteme so wie sie in "
-"Ihrem neuen System eingehängt werden sollen, passend zu denen, die derzeit "
-"unter /Ziel eingehängt sind (natürlich ohne den Zusatz /Ziel in den "
-"eigentlichen Einhängepfaden)."
+"Yeni sisteminizde bağlanması gerektiği gibi /target/etc/fstab ı /target "
+"altında bağlı olanla eşleştirerek oluşturun. (/target ön ekini kullanmayın)"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:570
 msgid ""
@@ -427,9 +414,8 @@ msgid ""
 "dmraid, etc) by calling \"sudo chroot /target\" followed by the relevant apt-"
 "get/aptitude installations."
 msgstr ""
-"Installieren Sie diejenigen Pakete, die für den ersten Bootvorgang benötigt "
-"werden (mdadm, cryptsetup, dmraid, etc) indem Sie \"sudo chroot /Ziel\" "
-"eingeben, gefolgt von den relevanten Installationen mittels pacman."
+"İlk boot işlemi için gerekli paketleri (mdadm, cryptsetup, dmraid gibi) , "
+"\"sudo chroot /target\" komutu ile yükleyin."
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:571
 msgid ""
@@ -437,10 +423,8 @@ msgid ""
 "as dm-crypt), you may need to have drives currently mounted using the same "
 "block device name as they appear in /target/etc/fstab."
 msgstr ""
-"Beachten Sie, dass es für das Funktionieren von update-initramfs in einigen "
-"Fällen (bspw. dm-crypt) erforderlich ist, dass die derzeit eingehängten "
-"Dateisysteme den gleichen block device-Namen haben, wie er in /Ziel/etc/"
-"fstab enthalten ist."
+"initramfs güncellenmesinin düzgün olabilmesi için (dm-crypt gibi), "
+"sürücülerin /target/etc/fstab ta olduğu gibi bağlandığına dikkat edin."
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:572
 msgid ""
@@ -448,43 +432,42 @@ msgid ""
 "system will have at first boot, and matches what is currently mounted at /"
 "target."
 msgstr ""
-"Stellen Sie noch einmal sicher, dass Ihre /Ziel/etc/fstab-Datei korrekt ist "
-"und dem entspricht, was Ihr System für den ersten Bootvorgang benötigt und "
-"dem, was momentan unter /Ziel eingehängt ist."
+"/target/etc/fstab ayarını tekrar gözden geçirin, yeni sisteminizdeki "
+"değerler ile halen /target altında bağlı olduğu değerleri karşılaştırın."
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:575
 msgid "Install Manjaro Linux on the selected drive:"
-msgstr "Installiere Manjaro Linux auf dem ausgewählten Gerät:"
+msgstr "Seçilen sürücüye Manjaro Linux u yükle"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:576
 msgid "Manually mount partitions (ADVANCED USERS ONLY)."
-msgstr "Selbst Partitionen erstellen (NUR FÜR FORTGESCHRITTENE BENUTZER)."
+msgstr "Bölümleri manuel bağlama ( SADECE TECRÜBELİ KULLANICILAR)"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:580
 msgid "Description"
-msgstr "Beschreibung"
+msgstr "Açıklama"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:593
 msgid "Edit partitions"
-msgstr "Partitionen editieren"
+msgstr "Bölümleri düzenle"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:636
 msgid "Edit"
-msgstr "Editieren"
+msgstr "Düzenle"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:641
 msgid "Assign to /"
-msgstr "Festlegen als /"
+msgstr "/ için işaretle"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:644
 msgid "Assign to /home"
-msgstr "Festlegen als /home-Verzeichnis"
+msgstr "/home için işaretle"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1043
 #: usr/lib/live-installer/frontend/gtk_interface.py:1599
 #: usr/lib/live-installer/frontend/gtk_interface.py:1619
 msgid "Installation Tool"
-msgstr "Installationstool"
+msgstr "Kurulum Aracı"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1043
 msgid ""
@@ -492,184 +475,178 @@ msgid ""
 "create a set of partitions for you? Note: This will erase any data present "
 "on the disk."
 msgstr ""
-"Auf der Festplatte wurde keine Partitionstabelle gefunden. Wollen Sie, dass "
-"der Installer Partitionen für Sie erstellt ? ACHTUNG: Dadurch werden alle "
-"auf der Festplatte vorhandenen Dateien gelöscht."
+"Sabit diskinizde bölüm bulunamadı. Kurulum aracının bölümlendirmeyi "
+"yapmasını istiyor musunuz? Uyarı: Bu, sabit diskinizdeki tüm verileri siler."
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1174
 msgid "Extended"
-msgstr "Extended"
+msgstr "Genişletilmiş"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1505
 msgid "Passwords do not match"
-msgstr "Die Passwörter stimmen nicht überein"
+msgstr "Parola Eşleşmedi"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1508
 msgid "Passwords match"
-msgstr "Passwörter stimmen überein"
+msgstr "Parola Eşleşti"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1520
 msgid "Forward"
-msgstr "Vorwärts"
+msgstr "İleri"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1566
 msgid "Please provide your full name"
-msgstr "Bitte geben Sie Vor- und Nachname ein"
+msgstr "Lütfen tam Adınızı Girin"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1569
 msgid "Please provide a username"
-msgstr "Bitte geben Sie einen Benutzernamen ein"
+msgstr "Lütfen Kullanıcı Adınızı girin"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1572
 msgid "Please provide a password for your user account"
-msgstr "Bitte geben Sie ein Passwort für Ihren Benutzer ein"
+msgstr "Lütfen Kullanıcı Adınız İçin Bir Parola Belirleyin"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1575
 msgid "Your passwords do not match"
-msgstr "Ihre Passwörter stimmen nicht überein"
+msgstr "Parolanız Eşleşmedi"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1578
 msgid "Please provide a hostname"
-msgstr "Bitte geben Sie einen Hostnamen ein"
+msgstr "Bir Host Adı Belirleyin"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1583
 msgid "Your username must be lower case"
-msgstr "Ihr Benutzername muss klein geschrieben werden."
+msgstr "Kullanıcı Adınız Küçük Harflerden Oluşmalıdır"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1587
 msgid "Your username may not contain whitespace"
-msgstr "Ihr Benutzername darf keine Leerzeichen enthalten"
+msgstr "Kullanıcı Adınız Boşluk İçermemelidir"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1592
 msgid "Your hostname must be lower case"
-msgstr "Ihr Hostname muss klein geschrieben sein"
+msgstr "Host Adı Küçük Harflerden Oluşmalıdır"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1596
 msgid "Your hostname may not contain whitespace"
-msgstr "Ihr Hostname darf keine Leerzeichen enthalten"
+msgstr "Host Adı Boşluk İçermemelidir"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1611
 msgid "Please select a root (/) partition before proceeding"
-msgstr ""
-"Bitte wählen Sie ein Wurzelverzeichnis (Root-Partition, /) aus, bevor Sie "
-"fortfahren."
+msgstr "Lütfen Devam Etmeden Önce (/) Kök Bölümü Seçin"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1617
 msgid ""
 "Please indicate a filesystem to format the root (/) partition before "
 "proceeding"
-msgstr ""
-"Bitte geben Sie ein Dateisystem an, dass das Wurzelverzeichnis (Root-"
-"Partition, /) formatieren soll, bevor sie fortfahren"
+msgstr "Lütfen Devam Etmeden Önce (/) Kök Bölümü İçin dosya Sistemini Belirtin"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1630
 msgid "Install"
-msgstr "Installiere"
+msgstr "Kur"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1669
 msgid "Localization"
-msgstr "Firefox wird lokalisiert"
+msgstr "Yerelleştirme"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1671
 msgid "Language: "
-msgstr "Language / Sprache:"
+msgstr "Dil"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1673
 msgid "Timezone: "
-msgstr "Zeitzone:"
+msgstr "Zaman Dilimi"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1676
 #: usr/lib/live-installer/frontend/gtk_interface.py:1678
 msgid "Keyboard layout: "
-msgstr "Tastaturlayout:"
+msgstr "Tuş Takımı Arayüzü"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1680
 msgid "User settings"
-msgstr "Benutzereinstellungen"
+msgstr "Kullanıcı Ayarları"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1682
 msgid "Real name: "
-msgstr "Ihr Name:"
+msgstr "Gerçek Adınız"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1684
 msgid "Username: "
-msgstr "Benutzername:"
+msgstr "Kullanıcı Adınız"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1686
 msgid "System settings"
-msgstr "Systemeinstellungen"
+msgstr "Sistem Ayarları"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1688
 msgid "Hostname: "
-msgstr "Hostname:"
+msgstr "Host Adı"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1691
 #, python-format
 msgid "Install bootloader in %s"
-msgstr "Bootloader hier installieren: %s"
+msgstr "Önyükleyiciyi %s e Kur"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1693
 msgid "Do not install bootloader"
-msgstr "Bootloader nicht installieren"
+msgstr "Önyükleyici Kurma"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1695
 msgid "Filesystem operations"
-msgstr "Dateisystem-Einstellungen"
+msgstr "Dosya Sistemi İşlemleri"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1704
 #, python-format
 msgid "Format %(partition)s as %(format)s"
-msgstr "Formatiere %(partition)s als %(format)s"
+msgstr "Biçimlendir %(partition)s  %(format)s şeklinde"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1709
 #, python-format
 msgid "Mount %(partition)s as %(mountpoint)s"
-msgstr "Hänge %(partition)s ein als %(mountpoint)s"
+msgstr "%(partition)s  %(mountpoint)s şeklinde bağla"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1745
 #: usr/lib/live-installer/frontend/gtk_interface.py:1752
 #: usr/lib/live-installer/frontend/gtk_interface.py:1774
 #: usr/lib/live-installer/frontend/gtk_interface.py:1785
 msgid "Installation error"
-msgstr "Fehler bei der Installation"
+msgstr "Kurulum Hatası"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1762
 msgid "Installation Paused"
-msgstr "Installation unterbrochen"
+msgstr "Kurulum Durduruldu"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1762
 msgid ""
 "Installation is now paused. Please read the instructions on the page "
 "carefully and click Forward to finish installation."
 msgstr ""
-"Die Installation wurde unterbrochen. Bitte lesen Sie die Anleitung auf diese "
-"Seite genau durch und klicken Sie Vorwärts um die Installation abzuschließen."
+"Kurulum Durduruldu. Lütfen Yönergeleri Dikkatle Okuyun Ve Kurulumu Bitirmek "
+"İçin İleri yi Tıklayın"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1789
 msgid ""
 "Installation is now complete. Do you want to restart your computer to use "
 "the new system?"
 msgstr ""
-"Der Installationsvorgang ist beendet. Wollen Sie Ihren Computer neu starten, "
-"um das neue System zu benutzen ?"
+"Kurulum tamamlandı. Yeni Sisteminizi Kullanmaya Başlamak için "
+"Bilgisayarınızı yeniden başlatmak İstiyor musunuz?"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1866
 msgid "Edit partition"
-msgstr "Partitionen ändern"
+msgstr "Bölümlendir"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1881
 msgid "Could not build supported filesystems list!"
-msgstr ""
-"Die Liste der unterstützten Dateisysteme konnte nicht erstellt werden !"
+msgstr "Desteklenen Dosya Sistemleri İnşa Edilemiyor"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1894
 msgid "Device:"
-msgstr "Gerät:"
+msgstr "Aygıt:"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1897
 msgid "Format as:"
-msgstr "Formatieren als:"
+msgstr "Şeklinde Biçimlendir:"
 
 #: usr/lib/live-installer/frontend/gtk_interface.py:1906
 msgid "Mount point:"
-msgstr "Einhängepunkt"
+msgstr "Bağlama Noktası"
