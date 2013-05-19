@@ -187,7 +187,7 @@ if [ -e "/usr/bin/sddm" ] ; then
 fi
 
 # do_setuplxdm
-if [ -e "/usr/sbin/lxdm" ] ; then
+if [ -e "/usr/bin/lxdm" ] ; then
    if [ -z "`getent group "lxdm" 2> /dev/null`" ]; then
         groupadd --system lxdm > /dev/null
    fi

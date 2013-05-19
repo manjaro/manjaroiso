@@ -543,7 +543,7 @@ hd_config()
     fi
 
     # setup lxdm
-    if [ -e "/usr/sbin/lxdm" ] ; then
+    if [ -e "/usr/bin/lxdm" ] ; then
        if [ -z "`chroot ${DESTDIR} getent group "lxdm" 2> /dev/null`" ]; then
          chroot ${DESTDIR} groupadd --system lxdm  &>/dev/null
        fi
