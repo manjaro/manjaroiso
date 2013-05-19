@@ -49,13 +49,13 @@ echo "BROWSER=/usr/bin/xdg-open" >> /etc/environment
 echo "BROWSER=/usr/bin/xdg-open" >> /etc/skel/.bashrc
 echo "BROWSER=/usr/bin/xdg-open" >> /etc/profile
 # add TERM var
-if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+if [ -e "/usr/bin/mate-session" ] ; then
    echo "TERM=mate-terminal" >> /etc/environment
    echo "TERM=mate-terminal" >> /etc/profile
 fi	
 
 ## FIXME - Workaround to launch mate-terminal
-if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+if [ -e "/usr/bin/mate-session" ] ; then
    sed -i -e "s~^.*Exec=.*~Exec=mate-terminal -e 'sudo setup'~" "/etc/skel/Desktop/Manjaro CLI Installer.desktop"
    sed -i -e "s~^.*Terminal=.*~Terminal=false~" "/etc/skel/Desktop/Manjaro CLI Installer.desktop"
 fi
@@ -80,7 +80,7 @@ if [ -e "/usr/sbin/lightdm" ] ; then
    getent passwd lightdm > /dev/null 2>&1 || useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /sbin/nologin lightdm
    passwd -l lightdm > /dev/null
    chown -R lightdm:lightdm /var/run/lightdm > /dev/null
-   if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+   if [ -e "/usr/bin/startxfce4" ] ; then
         sed -i -e 's/^.*user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
         ln -s /usr/lib/lightdm/lightdm/gdmflexiserver /usr/bin/gdmflexiserver
    fi
@@ -142,22 +142,22 @@ if [ -e "/usr/sbin/mdm" ] ; then
   passwd -l mdm > /dev/null
   chown root:mdm /var/lib/mdm > /dev/null
   chmod 1770 /var/lib/mdm > /dev/null
-  if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+  if [ -e "/usr/bin/startxfce4" ] ; then
       sed -i 's|default.desktop|xfce.desktop|g' /etc/mdm/custom.conf
   fi
-  if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
+  if [ -e "/usr/bin/gnome-session-cinnamon" ] ; then
       sed -i 's|default.desktop|cinnamon.desktop|g' /etc/mdm/custom.conf
   fi
-  if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
+  if [ -e "/usr/bin/openbox-session" ] ; then
       sed -i 's|default.desktop|openbox.desktop|g' /etc/mdm/custom.conf
   fi
-  if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+  if [ -e "/usr/bin/mate-session" ] ; then
       sed -i 's|default.desktop|mate.desktop|g' /etc/mdm/custom.conf
   fi
-  if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
+  if [ -e "/usr/bin/lxsession" ] ; then
       sed -i 's|default.desktop|LXDE.desktop|g' /etc/mdm/custom.conf
   fi
-  if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+  if [ -e "/usr/bin/enlightenment_start" ] ; then
       sed -i 's|default.desktop|enlightenment.desktop|g' /etc/mdm/custom.conf
   fi
 fi
@@ -166,22 +166,22 @@ fi
 if [ -e "/usr/bin/sddm" ] ; then
   sed -i -e 's|^.*LastUser=.*|LastUser=manjaro|' /etc/sddm.conf
   sed -i -e 's|^.*AutoUser=.*|AutoUser=manjaro|' /etc/sddm.conf
-  if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+  if [ -e "/usr/bin/startxfce4" ] ; then
       sed -i -e 's|^.*LastSession=.*|LastSession=xfce.desktop|' /etc/sddm.conf
   fi
-  if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
+  if [ -e "/usr/bin/gnome-session-cinnamon" ] ; then
       sed -i -e 's|^.*LastSession=.*|LastSession=cinnamon.desktop|' /etc/sddm.conf
   fi
-  if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
+  if [ -e "/usr/bin/openbox-session" ] ; then
       sed -i -e 's|^.*LastSession=.*|LastSession=openbox.desktop|' /etc/sddm.conf
   fi
-  if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+  if [ -e "/usr/bin/mate-session" ] ; then
       sed -i -e 's|^.*LastSession=.*|LastSession=mate.desktop|' /etc/sddm.conf
   fi
-  if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
+  if [ -e "/usr/bin/lxsession" ] ; then
       sed -i -e 's|^.*LastSession=.*|LastSession=LXDE.desktop|' /etc/sddm.conf
   fi
-  if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+  if [ -e "/usr/bin/enlightenment_start" ] ; then
       sed -i -e 's|^.*LastSession=.*|LastSession=enlightenment.desktop|' /etc/sddm.conf
   fi
 fi
@@ -192,22 +192,22 @@ if [ -e "/usr/sbin/lxdm" ] ; then
         groupadd --system lxdm > /dev/null
    fi
    sed -i -e 's/^.*autologin=.*/autologin=manjaro/' /etc/lxdm/lxdm.conf
-   if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+   if [ -e "/usr/bin/startxfce4" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/startxfce4|' /etc/lxdm/lxdm.conf
    fi
-   if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
+   if [ -e "/usr/bin/gnome-session-cinnamon" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/gnome-session-cinnamon|' /etc/lxdm/lxdm.conf
    fi
-   if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+   if [ -e "/usr/bin/mate-session" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/mate-session|' /etc/lxdm/lxdm.conf
    fi
-   if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+   if [ -e "/usr/bin/enlightenment_start" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/enlightenment_start|' /etc/lxdm/lxdm.conf
    fi
-   if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
+   if [ -e "/usr/bin/openbox-session" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/openbox-session|' /etc/lxdm/lxdm.conf
    fi
-   if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
+   if [ -e "/usr/bin/lxsession" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/lxsession|' /etc/lxdm/lxdm.conf
    fi
    chgrp -R lxdm /var/lib/lxdm > /dev/null
@@ -280,19 +280,19 @@ if [ -e "/etc/live-installer/install.conf" ] ; then
    release=$(cat /etc/lsb-release | grep DISTRIB_RELEASE | cut -d= -f2)
    sed -i "s|_version_|$release|g" /etc/live-installer/install.conf
 
-   if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+   if [ -e "/usr/bin/startxfce4" ] ; then
       sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/xfce-image.sqfs|g' /etc/live-installer/install.conf
       sed -i 's|_title_|Manjaro XFCE Edition|g' /etc/live-installer/install.conf
    fi
-   if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
+   if [ -e "/usr/bin/gnome-session-cinnamon" ] ; then
       sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/cinnamon-image.sqfs|g' /etc/live-installer/install.conf
       sed -i 's|_title_|Manjaro Cinnamon Edition|g' /etc/live-installer/install.conf
    fi
-   if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
+   if [ -e "/usr/bin/openbox-session" ] ; then
       sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/openbox-image.sqfs|g' /etc/live-installer/install.conf
       sed -i 's|_title_|Manjaro Openbox Edition|g' /etc/live-installer/install.conf
    fi
-   if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+   if [ -e "/usr/bin/mate-session" ] ; then
       sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/mate-image.sqfs|g' /etc/live-installer/install.conf
       sed -i 's|_title_|Manjaro MATE Edition|g' /etc/live-installer/install.conf
    fi
@@ -300,11 +300,11 @@ if [ -e "/etc/live-installer/install.conf" ] ; then
       sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/kde-image.sqfs|g' /etc/live-installer/install.conf
       sed -i 's|_title_|Manjaro KDE Edition|g' /etc/live-installer/install.conf
    fi
-   if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
+   if [ -e "/usr/bin/lxsession" ] ; then
       sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/lxde-image.sqfs|g' /etc/live-installer/install.conf
       sed -i 's|_title_|Manjaro LXDE Edition|g' /etc/live-installer/install.conf
    fi
-   if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+   if [ -e "/usr/bin/enlightenment_start" ] ; then
       sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/e17-image.sqfs|g' /etc/live-installer/install.conf
       sed -i 's|_title_|Manjaro E17 Edition|g' /etc/live-installer/install.conf
    fi
