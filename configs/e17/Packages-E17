@@ -1,8 +1,5 @@
 ### Manjaro Packages
 
-## Xorg
-mhwd
-
 ## Xorg Packages
 inxi
 libdnet
@@ -42,8 +39,8 @@ forecasts
 gksu
 libgnomeui
 live-installer
+lxdm
 manjaro-settings-manager
-mdm-themes
 network-manager-applet
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
