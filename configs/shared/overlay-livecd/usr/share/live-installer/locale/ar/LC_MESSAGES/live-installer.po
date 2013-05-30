@@ -1,0 +1,637 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Karim Oulad Chalha <herr.linux88@gmail.com>, 2013
+# ArchLord <phoewass@yahoo.fr>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: manjaro-live-installer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-17 01:29+0200\n"
+"PO-Revision-Date: 2013-05-30 13:20+0100\n"
+"Last-Translator: Philip Müller <philm@manjaro.org>\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/manjaro-live-"
+"installer/language/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Poedit 1.5.5\n"
+
+#: usr/lib/live-installer/installer.py:50
+#, python-format
+msgid "Formatting %(partition)s as %(format)s..."
+msgstr "تهيئة %(partition)s كـ %(format)s..."
+
+#: usr/lib/live-installer/installer.py:86
+#: usr/lib/live-installer/installer.py:89
+#: usr/lib/live-installer/installer.py:100
+#, python-format
+msgid "Mounting %(partition)s on %(mountpoint)s"
+msgstr "وصل %(partition)s في %(mountpoint)s"
+
+#: usr/lib/live-installer/installer.py:118
+msgid ""
+"ERROR: You must first manually mount your target filesystem(s) at /target to "
+"do a custom install!"
+msgstr ""
+"خطأ: يجب أولا وصل نظام الملفات الهدف يدويا في target/ للقيام بتثبيت مخصص!"
+
+#: usr/lib/live-installer/installer.py:157
+#: usr/lib/live-installer/installer.py:224
+msgid "Indexing files to be copied.."
+msgstr "فهرسة الملفات ليتم نسخها.."
+
+#: usr/lib/live-installer/installer.py:177
+#: usr/lib/live-installer/installer.py:244
+#, python-format
+msgid "Copying %s"
+msgstr "نسخ %s"
+
+#: usr/lib/live-installer/installer.py:286
+#, python-format
+msgid "Restoring meta-information on %s"
+msgstr "إستعادة المعلومات في %s"
+
+#: usr/lib/live-installer/installer.py:323
+msgid "Entering new system.."
+msgstr "ولوج النظام الجديد.."
+
+#: usr/lib/live-installer/installer.py:335
+msgid "Configuring hardware.."
+msgstr "إعداد الأجهزة.."
+
+#: usr/lib/live-installer/installer.py:394
+msgid "Setup graphic card.."
+msgstr "إعداد بطاقة الرسومية"
+
+#: usr/lib/live-installer/installer.py:422
+msgid "Configure display manager.."
+msgstr "إعداد مدير العرض.."
+
+#: usr/lib/live-installer/installer.py:500
+msgid "Configure System.."
+msgstr "إعداد النظام.."
+
+#: usr/lib/live-installer/installer.py:530
+msgid "Removing live configuration (packages)"
+msgstr "حذف الإعدادت القرص الحي (packages)"
+
+#: usr/lib/live-installer/installer.py:536
+msgid "Adding user to system"
+msgstr "إضافة مستخدم إلى النظام"
+
+#: usr/lib/live-installer/installer.py:585
+msgid "Writing filesystem mount information"
+msgstr "كتابة معلومات وصل نظام الملفات"
+
+#: usr/lib/live-installer/installer.py:642
+msgid "Setting hostname"
+msgstr "إعداد إسم المضيف"
+
+#: usr/lib/live-installer/installer.py:685
+msgid "Configure package manager.."
+msgstr "إعداد كدير الحزم.."
+
+#: usr/lib/live-installer/installer.py:694
+msgid "Setting locale"
+msgstr "إعداد المحليات"
+
+#: usr/lib/live-installer/installer.py:712
+msgid "Localizing packages"
+msgstr "حزم التوطين"
+
+#: usr/lib/live-installer/installer.py:726
+msgid "Localizing KDE"
+msgstr "توطين كدي"
+
+#: usr/lib/live-installer/installer.py:738
+msgid "Localizing LibreOffice"
+msgstr "توطين المكتب الحر"
+
+#: usr/lib/live-installer/installer.py:753
+msgid "Localizing Firefox"
+msgstr "نوطين فيرفوكس"
+
+#: usr/lib/live-installer/installer.py:766
+msgid "Localizing Thunderbird"
+msgstr "توطين تندربيرد"
+
+#: usr/lib/live-installer/installer.py:779
+msgid "Setting keyboard options"
+msgstr "إعداد خيارات لوحة المفاتيح"
+
+#: usr/lib/live-installer/installer.py:800
+msgid "Configuring Initramfs"
+msgstr "إعداد Initramfs"
+
+#: usr/lib/live-installer/installer.py:807
+msgid "Installing bootloader"
+msgstr "تثبيت محمل الإقلاع"
+
+#: usr/lib/live-installer/installer.py:816
+msgid ""
+"WARNING: The grub bootloader was not configured properly! You need to "
+"configure it manually."
+msgstr "تحذير: لم بتم إعداد محمل الإقلاع بشكل صحيح؛ تحتاج إلى إعداده يدويا."
+
+#: usr/lib/live-installer/installer.py:840
+#: usr/lib/live-installer/frontend/gtk_interface.py:1789
+msgid "Installation finished"
+msgstr "تم إنهاء التثبيت"
+
+#: usr/lib/live-installer/installer.py:854
+msgid "Configuring bootloader"
+msgstr "إعداد محمل الإقلاع"
+
+#: usr/lib/live-installer/installer.py:871
+msgid "Checking bootloader"
+msgstr "فحص محمل الإقلاع"
+
+#: usr/lib/live-installer/installer.py:1029
+msgid "unallocated"
+msgstr "غير مخصص"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:215
+#: usr/lib/live-installer/frontend/gtk_interface.py:217
+#, python-format
+msgid "%s Installer"
+msgstr "%s مثبت"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:223
+msgid "Language"
+msgstr "اللغة"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:224
+msgid "Timezone"
+msgstr "المنطقة الزمنية"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:225
+msgid "Keyboard layout"
+msgstr "مخطط لوحة المفاتيح"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:226
+msgid "User info"
+msgstr "معلومات المستخدم"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:227
+#: usr/lib/live-installer/frontend/gtk_interface.py:579
+msgid "Hard drive"
+msgstr "المشغلات الأجهزة"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:228
+msgid "Partitioning"
+msgstr "تجزيء"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:229
+msgid "Please make sure you wish to manually manage partitions"
+msgstr "المرجوا التأكد أنك تود إدارة الأجزاء يدويا"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:230
+msgid "Advanced options"
+msgstr "خيارات متقدمة"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:231
+msgid "Summary"
+msgstr "ملخص"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:232
+msgid "Installing Manjaro Linux..."
+msgstr "تثبيت منجارو لينكس..."
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:233
+msgid "Installation is Paused: Please finish the custom installation"
+msgstr "تم إيقاف التثبيت مؤقتا: المرجوا إنهاء التثبيت المخصص"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:269
+msgid "Click this button to take a new picture of yourself with the webcam"
+msgstr "أضغط على هذا الزر لأخذ صورة جديدة لنفسك بالـ webcam"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:272
+msgid "The installer did not detect any webcam"
+msgstr "المثبت لم يعثر على أي webcam"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:302
+#: usr/lib/live-installer/frontend/gtk_interface.py:581
+msgid "Device"
+msgstr "جهاز"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:307
+#: usr/lib/live-installer/frontend/gtk_interface.py:582
+msgid "Type"
+msgstr "نوع"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:312
+#: usr/lib/live-installer/frontend/gtk_interface.py:583
+msgid "Operating system"
+msgstr "نظام التشغيل"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:317
+#: usr/lib/live-installer/frontend/gtk_interface.py:584
+msgid "Mount point"
+msgstr "نقطة الوصل"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:322
+#: usr/lib/live-installer/frontend/gtk_interface.py:585
+msgid "Format?"
+msgstr "تهئية؟"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:327
+#: usr/lib/live-installer/frontend/gtk_interface.py:586
+msgid "Size"
+msgstr "حجم"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:332
+#: usr/lib/live-installer/frontend/gtk_interface.py:587
+msgid "Free space"
+msgstr "مساحة الخالية"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:362
+#: usr/lib/live-installer/frontend/gtk_interface.py:588
+msgid "Layout"
+msgstr "تخطبط"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:368
+#: usr/lib/live-installer/frontend/gtk_interface.py:589
+msgid "Variant"
+msgstr "متغيير"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:377
+#: usr/lib/live-installer/frontend/gtk_interface.py:590
+msgid "Overview"
+msgstr "نظرة عامة"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:381
+msgid "Calculating file indexes..."
+msgstr "حساب فهرسة الملفات..."
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:463
+msgid "Images"
+msgstr "صور"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:531
+msgid "Your full name"
+msgstr "إسمك الكامل"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:532
+msgid "This will be shown in the About Me application"
+msgstr "سيتم عرض هذا في تطبيق عني"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:533
+msgid "Your username"
+msgstr "إسم المستخدم"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:534
+msgid "This is the name you will use to login to your computer"
+msgstr "هذا الإسم سيستخدم في ولوج إلى حاسوبك"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:535
+msgid "Your password"
+msgstr "كلمة السر"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:536
+msgid "Please enter your password twice to ensure it is correct"
+msgstr "المرجوا إدخال كلمة السر مرتين للتأكد من أنها صحيحة"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:537
+msgid "Hostname"
+msgstr "إسم المضيف"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:538
+msgid "This hostname will be the computers name on the network"
+msgstr "إسم المضيف سيكون إسم الحاسوب في الشبكة"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:540
+msgid "Your picture"
+msgstr "صورتك"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:541
+msgid ""
+"This picture represents your user account. It is used in the login screen "
+"and a few other places."
+msgstr ""
+"هذه الصورة تمثل حسابك, سيتم إستعمالها في شاشة الولوج و بضع الأماكن الأخرة."
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:542
+msgid "Take a photo"
+msgstr "خذ صورة"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:544
+msgid "Select a picture"
+msgstr "حدد صورة"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:545
+msgid "Click this button to choose a picture for your account"
+msgstr "إضغط على هذا الزر لتحديد صورة لحسابك"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:548
+msgid "Selected timezone:"
+msgstr "حدد المنطقة الزمنية:"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:551
+msgid "Bootloader"
+msgstr "محمل الإقلاع"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:552
+msgid "Install GRUB"
+msgstr "تثبيت محمل الإقلاع"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:553
+msgid "GRUB is a bootloader used to load the Linux kernel"
+msgstr "GRUB هو محمل إقلاع يستعمل لتحميل نواة لينكس"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:556
+msgid "Use this box to test your keyboard layout"
+msgstr "أستعمل هذا الصندوق لإختبار تخطيط لوحة مفاتيح"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:557
+msgid "Model"
+msgstr "نموذج"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:560
+msgid ""
+"You have selected to manage your partitions manually, this feature is for "
+"ADVANCED USERS ONLY."
+msgstr ""
+"لقد قمت لإختيار إدارة الأجزاء يدويا, هذه الميزة للمستخدمين المتقدمين فقط."
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:561
+msgid "Before continuing, please mount your target filesystem(s) at /target."
+msgstr "قبل الإستمرار, المرجوا وصل نظام ملفات الهدف كـ /هدف."
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:562
+msgid ""
+"Do NOT mount virtual devices such as /dev, /proc, /sys, etc on /target/."
+msgstr "لا تقم بوصل الأجهزة الإفتراصية كـ /dev, /proc, /sys, etc في /هدف/."
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:563
+msgid ""
+"During the install, you will be given time to chroot into /target and "
+"install any pacakges that will be needed to boot your new system."
+msgstr ""
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:564
+msgid "During the install, you will be required to write your own /etc/fstab."
+msgstr "خلال الثبيت, سيطلب منك كتابة /etc/fstab الخاص بك."
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:565
+msgid ""
+"If you arent sure what any of this means, please go back and deselect manual "
+"partition management."
+msgstr ""
+"إذا كنت غير متأكد من معنى اي شيء من هذا, المرجوا الرجوع إلى الوراء و إلغاء "
+"تحديد الإدارة اليدوية للأجزاء."
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:568
+msgid "Please do the following and then click Forward to finish Installation:"
+msgstr "المرجوا القيام بالتالي تم ضغط الأمام لإنهاء التثبيت:"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:569
+msgid ""
+"Create /target/etc/fstab for the filesystems as they will be mounted in your "
+"new system, matching those currently mounted at /target (without using the /"
+"target prefix in the mount paths themselves)."
+msgstr ""
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:570
+msgid ""
+"Install any packages that may be needed for first boot (mdadm, cryptsetup, "
+"dmraid, etc) by calling \"sudo chroot /target\" followed by the relevant apt-"
+"get/aptitude installations."
+msgstr ""
+"تثبيت كل حزم التي سيتم إحتياجها في الإقلاع الاول (mdadm, cryptsetup, dmraid, "
+"etc) بإستدعاء \"sudo chroot /هدف\" متبوعا بي relevant apt-get/aptitude."
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:571
+msgid ""
+"Note that in order for update-initramfs to work properly in some cases (such "
+"as dm-crypt), you may need to have drives currently mounted using the same "
+"block device name as they appear in /target/etc/fstab."
+msgstr ""
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:572
+msgid ""
+"Double-check that your /target/etc/fstab is correct, matches what your new "
+"system will have at first boot, and matches what is currently mounted at /"
+"target."
+msgstr ""
+"تأكد من أن target/etc/fstab/ سليم و أن النظام الجديد الذي سيعمل في الإقلاع "
+"الأول مطابق  لما هو موصول حاليا في target/."
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:575
+msgid "Install Manjaro Linux on the selected drive:"
+msgstr "تثبيت منجارو لينكس في القرص المحدد:"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:576
+msgid "Manually mount partitions (ADVANCED USERS ONLY)."
+msgstr "وصل الأجزاء يدويا (للمستخدمين المتقدمين فقط)."
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:580
+msgid "Description"
+msgstr "وصف"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:593
+msgid "Edit partitions"
+msgstr "تحرير الأقسام"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:636
+msgid "Edit"
+msgstr "تحرير"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:641
+msgid "Assign to /"
+msgstr "تعيين كـ /"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:644
+msgid "Assign to /home"
+msgstr "تعيين كـ /home"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1043
+#: usr/lib/live-installer/frontend/gtk_interface.py:1599
+#: usr/lib/live-installer/frontend/gtk_interface.py:1619
+msgid "Installation Tool"
+msgstr "أداة التثبيت"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1043
+msgid ""
+"No partition table was found on the hard drive. Do you want the installer to "
+"create a set of partitions for you? Note: This will erase any data present "
+"on the disk."
+msgstr ""
+"لم يتم العثور على أي جدول الأجزاء في القرضص الصلب, هل ترغب بأن يقوم المثبت "
+"بإنشاء جوء من أجلك؟ ملاحظة: هذا الخيار سيحذف كل البيانات الموجودة في القرص."
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1174
+msgid "Extended"
+msgstr "موسع"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1505
+msgid "Passwords do not match"
+msgstr "كلمات السر غير متطابقة"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1508
+msgid "Passwords match"
+msgstr "كلمات السر متطابقة"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1520
+msgid "Forward"
+msgstr "أمام"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1566
+msgid "Please provide your full name"
+msgstr "امرجوا إدخال إسمك الكامل"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1569
+msgid "Please provide a username"
+msgstr "المرجوا إدخال إسم المستخدم"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1572
+msgid "Please provide a password for your user account"
+msgstr "المرجوا إدخال كلمة السر للحسابك"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1575
+msgid "Your passwords do not match"
+msgstr "كلمات السر التي أدخلة غبر متطابقة"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1578
+msgid "Please provide a hostname"
+msgstr "المرجوا إدخال إسم المضيف"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1583
+msgid "Your username must be lower case"
+msgstr "إسم المستخدم يجب ان يكون بحروف صغيرة"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1587
+msgid "Your username may not contain whitespace"
+msgstr "إسم المستخدم يجب ان لا يحتوي على فراغ"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1592
+msgid "Your hostname must be lower case"
+msgstr "إسم المضيف يجب ان يكون بحروف صغيرة"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1596
+msgid "Your hostname may not contain whitespace"
+msgstr "إسم المضيف يجب ان لا يحتوي على فراغ"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1611
+msgid "Please select a root (/) partition before proceeding"
+msgstr "المرجوا تحديد جزء الجذر (/) فبل البدء"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1617
+msgid ""
+"Please indicate a filesystem to format the root (/) partition before "
+"proceeding"
+msgstr "المرجوا الإشارة إلى نظام ملفات لتهئة الجزء الجذر (/) قبل البدء"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1630
+msgid "Install"
+msgstr "تثبيت"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1669
+msgid "Localization"
+msgstr "توطين"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1671
+msgid "Language: "
+msgstr "لغة:"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1673
+msgid "Timezone: "
+msgstr "منطقة الزمنية:"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1676
+#: usr/lib/live-installer/frontend/gtk_interface.py:1678
+msgid "Keyboard layout: "
+msgstr "مخطط لوحة المفاتيح:"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1680
+msgid "User settings"
+msgstr "إعدادات المستخدم"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1682
+msgid "Real name: "
+msgstr "الإسم الحقيقي:"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1684
+msgid "Username: "
+msgstr "أسم المستخدم:"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1686
+msgid "System settings"
+msgstr "إعدادات النظام"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1688
+msgid "Hostname: "
+msgstr "إسم المستضيف"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1691
+#, python-format
+msgid "Install bootloader in %s"
+msgstr "تثبيت محمل الإقلاع في %s"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1693
+msgid "Do not install bootloader"
+msgstr "عدم تثبيت محمل الإقلاع"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1695
+msgid "Filesystem operations"
+msgstr "عمليات نظام المفات"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1704
+#, python-format
+msgid "Format %(partition)s as %(format)s"
+msgstr "تهيئة %(partition)s كـ %(format)s"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1709
+#, python-format
+msgid "Mount %(partition)s as %(mountpoint)s"
+msgstr "وصل %(partition)s في %(mountpoint)s"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1745
+#: usr/lib/live-installer/frontend/gtk_interface.py:1752
+#: usr/lib/live-installer/frontend/gtk_interface.py:1774
+#: usr/lib/live-installer/frontend/gtk_interface.py:1785
+msgid "Installation error"
+msgstr "خطأ أثتاء التثبيت"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1762
+msgid "Installation Paused"
+msgstr "تم إقاف التثبيت مؤقتا"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1762
+msgid ""
+"Installation is now paused. Please read the instructions on the page "
+"carefully and click Forward to finish installation."
+msgstr ""
+"تم إيقاف التثبيت مؤقتا, المرجوا مراجعة التعليمات في الصفحة بحذر و الضغط على "
+"الامام لإنهاء التثبيت."
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1789
+msgid ""
+"Installation is now complete. Do you want to restart your computer to use "
+"the new system?"
+msgstr "تم إنهاء التثبيت, هل ترغب بإعادة تشغيل جهازك لغستعمال النظام الجديد؟"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1866
+msgid "Edit partition"
+msgstr "تحرير القسم"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1881
+msgid "Could not build supported filesystems list!"
+msgstr "لا يمكن بناء قائمة نظام ملفات مدعومة!"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1894
+msgid "Device:"
+msgstr "جهار"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1897
+msgid "Format as:"
+msgstr "تهيئة كـ:"
+
+#: usr/lib/live-installer/frontend/gtk_interface.py:1906
+msgid "Mount point:"
+msgstr "نقطة الوصل:"
