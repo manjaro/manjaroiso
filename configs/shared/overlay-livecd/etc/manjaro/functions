@@ -5,6 +5,14 @@ if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
    DESKTOP="XFCE"
    DESKTOP_IMG="xfce-image"
 fi
+if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
+   DESKTOP="OPENBOX"
+   DESKTOP_IMG="openbox-image"
+fi
+if [ -e "/bootmnt/manjaro/${arch}/net-image.sqfs" ] ; then
+   DESKTOP="NET"
+   DESKTOP_IMG="net-image"
+fi
 if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
    DESKTOP="GNOME"
    DESKTOP_IMG="gnome-image"
@@ -12,10 +20,6 @@ fi
 if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
    DESKTOP="CINNAMON"
    DESKTOP_IMG="cinnamon-image"
-fi
-if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
-   DESKTOP="OPENBOX"
-   DESKTOP_IMG="openbox-image"
 fi
 if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
    DESKTOP="MATE"
