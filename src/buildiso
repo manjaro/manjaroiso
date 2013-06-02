@@ -22,8 +22,56 @@ fi
 . options.conf
 get_colors
 
-de=""
-
+if [ -e Packages-Xfce ] ; then
+    de="-xfce"
+    desktop="xfce"
+    pkgsfile="Packages-Xfce"
+fi
+if [ -e Packages-Kde ] ; then
+    de="-kde"
+    desktop="kde"
+    pkgsfile="Packages-Kde"
+fi
+if [ -e Packages-Gnome ] ; then
+    de="-gnome"
+    desktop="gnome"
+    pkgsfile="Packages-Gnome"
+fi
+if [ -e Packages-Cinnamon ] ; then
+    de="-cinnamon"
+    desktop="cinnamon"
+    pkgsfile="Packages-Cinnamon"
+fi
+if [ -e Packages-Openbox ] ; then
+    de="-openbox"
+    desktop="openbox"
+    pkgsfile="Packages-Openbox"
+fi
+if [ -e Packages-Lxde ] ; then
+    de="-lxde"
+    desktop="lxde"
+    pkgsfile="Packages-Lxde"
+fi
+if [ -e Packages-Mate ] ; then
+    de="-mate"
+    desktop="mate"
+    pkgsfile="Packages-Mate"
+fi
+if [ -e Packages-E17 ] ; then
+    de="-e17"
+    desktop="e17"
+    pkgsfile="Packages-E17"
+fi
+if [ -e Packages-Net ] ; then
+    de="-net"
+    desktop="net"
+    pkgsfile="Packages-Net"
+fi
+if [ -e Packages-Custom ] ; then
+    de="-custom"
+    desktop="custom"
+    pkgsfile="Packages-Custom"
+fi
 
 # do UID checking here so someone can at least get usage instructions
 if [ "$EUID" != "0" ]; then
@@ -561,66 +609,7 @@ fi
 # install basic
 make_root_image
 # install DE(s)
-if [ -e Packages-Xfce ] ; then
-    de="-xfce"
-    desktop="xfce"
-    pkgsfile="Packages-Xfce"
-    make_de_image
-fi
-if [ -e Packages-Kde ] ; then
-    de="-kde"
-    desktop="kde"
-    pkgsfile="Packages-Kde"
-    make_de_image
-fi
-if [ -e Packages-Gnome ] ; then
-    de="-gnome"
-    desktop="gnome"
-    pkgsfile="Packages-Gnome"
-    make_de_image
-fi
-if [ -e Packages-Cinnamon ] ; then
-    de="-cinnamon"
-    desktop="cinnamon"
-    pkgsfile="Packages-Cinnamon"
-    make_de_image
-fi
-if [ -e Packages-Openbox ] ; then
-    de="-openbox"
-    desktop="openbox"
-    pkgsfile="Packages-Openbox"
-    make_de_image
-fi
-if [ -e Packages-Lxde ] ; then
-    de="-lxde"
-    desktop="lxde"
-    pkgsfile="Packages-Lxde"
-    make_de_image
-fi
-if [ -e Packages-Mate ] ; then
-    de="-mate"
-    desktop="mate"
-    pkgsfile="Packages-Mate"
-    make_de_image
-fi
-if [ -e Packages-E17 ] ; then
-    de="-e17"
-    desktop="e17"
-    pkgsfile="Packages-E17"
-    make_de_image
-fi
-if [ -e Packages-Net ] ; then
-    de="-net"
-    desktop="net"
-    pkgsfile="Packages-Net"
-    make_de_image
-fi
-if [ -e Packages-Custom ] ; then
-    de="-custom"
-    desktop="custom"
-    pkgsfile="Packages-Custom"
-    make_de_image
-fi
+make_de_image
 # install xorg-drivers
 if [ -e Packages-Xorg ] ; then
     make_pkgs_image

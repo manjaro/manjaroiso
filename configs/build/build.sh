@@ -7,9 +7,9 @@ if [ "$EUID" != "0" ]; then
 fi
 
 # Manjaro Editions
-xfce="Y"
+xfce="N"
 cinnamon="N"
-openbox="Y"
+openbox="N"
 net="Y"
 
 # Manjaro Community Editions
