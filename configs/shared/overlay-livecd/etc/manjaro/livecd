@@ -285,7 +285,7 @@ if [ -e "/etc/live-installer/install.conf" ] ; then
       sed -i 's|_title_|Manjaro XFCE Edition|g' /etc/live-installer/install.conf
    fi
    if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
-      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/cinnamon-image.sqfs|g' /etc/live-installer/install.conf
+      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/gnome-image.sqfs|g' /etc/live-installer/install.conf
       sed -i 's|_title_|Manjaro Gnome Edition|g' /etc/live-installer/install.conf
    fi
    if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
