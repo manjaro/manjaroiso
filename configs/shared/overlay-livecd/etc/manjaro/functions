@@ -1,5 +1,43 @@
 #!/bin/bash
 
+# Configure Desktop image
+if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+   DESKTOP="XFCE"
+   DESKTOP_IMG="xfce-image"
+fi
+if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
+   DESKTOP="GNOME"
+   DESKTOP_IMG="gnome-image"
+fi
+if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
+   DESKTOP="CINNAMON"
+   DESKTOP_IMG="cinnamon-image"
+fi
+if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
+   DESKTOP="OPENBOX"
+   DESKTOP_IMG="openbox-image"
+fi
+if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+   DESKTOP="MATE"
+   DESKTOP_IMG="mate-image"
+fi
+if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
+   DESKTOP="KDE"
+   DESKTOP_IMG="kde-image"
+fi
+if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
+   DESKTOP="LXDE"
+   DESKTOP_IMG="lxde-image"
+fi
+if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+   DESKTOP="E17"
+   DESKTOP_IMG="e17-image"
+fi
+if [ -e "/bootmnt/manjaro/${arch}/custom-image.sqfs" ] ; then
+   DESKTOP="CUSTOM"
+   DESKTOP_IMG="custom-image"
+fi
+
 # Common functions for Manjaro Install Framework
 
 # check if we have a internet connection
@@ -763,101 +801,15 @@ installsystem_unsquash() {
     fi
     sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
 
-    if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
-       #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/xfce-image.sqfs
-       UNSQUASH_TARGET=${DESTDIR}
-       SQF_FILE=xfce-image.sqfs
-       run_unsquashfs
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
-       else echo -e "\n => XFCE-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
-       fi
-       sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
+    #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/de-image.sqfs
+    UNSQUASH_TARGET=${DESTDIR}
+    SQF_FILE=${DESKTOP_IMG}.sqfs
+    run_unsquashfs
+    echo $? > /tmp/.install-retcode
+    if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
+    else echo -e "\n => ${DESKTOP}-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
     fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/net-image.sqfs" ] ; then
-       #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/net-image.sqfs
-       UNSQUASH_TARGET=${DESTDIR}
-       SQF_FILE=net-image.sqfs
-       run_unsquashfs
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
-       else echo -e "\n => Net-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
-       fi
-       sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
-    fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
-       #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/mate-image.sqfs
-       UNSQUASH_TARGET=${DESTDIR}
-       SQF_FILE=mate-image.sqfs
-       run_unsquashfs
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
-       else echo -e "\n => MATE-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
-       fi
-       sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
-    fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
-       #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/kde-image.sqfs
-       UNSQUASH_TARGET=${DESTDIR}
-       SQF_FILE=kde-image.sqfs
-       run_unsquashfs
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
-       else echo -e "\n => KDE-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
-       fi
-       sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
-    fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
-       #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/cinnamon-image.sqfs
-       UNSQUASH_TARGET=${DESTDIR}
-       SQF_FILE=cinnamon-image.sqfs
-       run_unsquashfs
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
-       else echo -e "\n => cinnamon-image: ${_installationsuccess}" >>/tmp/unsquasherror.log
-       fi
-       sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
-    fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
-       #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/openbox-image.sqfs
-       UNSQUASH_TARGET=${DESTDIR}
-       SQF_FILE=openbox-image.sqfs
-       run_unsquashfs
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
-       else echo -e "\n => Openbox-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
-       fi
-       sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
-    fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
-       #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/lxde-image.sqfs
-       UNSQUASH_TARGET=${DESTDIR}
-       SQF_FILE=lxde-image.sqfs
-       run_unsquashfs
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
-       else echo -e "\n => LXDE-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
-       fi
-       sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
-    fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
-       #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/e17-image.sqfs
-       UNSQUASH_TARGET=${DESTDIR}
-       SQF_FILE=e17-image.sqfs
-       run_unsquashfs
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/unsquasherror.log
-       else echo -e "\n => E17-Image: ${_installationsuccess}" >>/tmp/unsquasherror.log
-       fi
-       sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
-    fi
+    sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
 
     # finished, display scrollable output
     local _result=''
@@ -911,124 +863,17 @@ installsystem_cp() {
     else echo -e "\n => Root-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
     fi
 
-    if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
-       #rsync -av --progress /source/xfce-image ${DESTDIR}
-       CP_SOURCE=/source/xfce-image
-       mkdir -p ${CP_SOURCE}
-       CP_TARGET=${DESTDIR}
-       SQF_FILE=xfce-image.sqfs
-       run_mount_sqf
-       run_cp
-       run_umount_sqf
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
-       else echo -e "\n => XFCE-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
-       fi
-    fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/net-image.sqfs" ] ; then
-       #rsync -av --progress /source/net-image ${DESTDIR}
-       CP_SOURCE=/source/net-image
-       mkdir -p ${CP_SOURCE}
-       CP_TARGET=${DESTDIR}
-       SQF_FILE=net-image.sqfs
-       run_mount_sqf
-       run_cp
-       run_umount_sqf
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
-       else echo -e "\n => Net-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
-       fi
-    fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
-       #rsync -av --progress /source/mate-image ${DESTDIR}
-       CP_SOURCE=/source/mate-image
-       mkdir -p ${CP_SOURCE}
-       CP_TARGET=${DESTDIR}
-       SQF_FILE=mate-image.sqfs
-       run_mount_sqf
-       run_cp
-       run_umount_sqf
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
-       else echo -e "\n => MATE-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
-       fi
-    fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
-       #rsync -av --progress /source/kde-image ${DESTDIR}
-       CP_SOURCE=/source/kde-image
-       mkdir -p ${CP_SOURCE}
-       CP_TARGET=${DESTDIR}
-       SQF_FILE=kde-image.sqfs
-       run_mount_sqf
-       run_cp
-       run_umount_sqf
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
-       else echo -e "\n => KDE-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
-       fi
-    fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
-       #rsync -av --progress /source/cinnamon-image ${DESTDIR}
-       CP_SOURCE=/source/cinnamon-image
-       mkdir -p ${CP_SOURCE}
-       CP_TARGET=${DESTDIR}
-       SQF_FILE=cinnamon-image.sqfs
-       run_mount_sqf
-       run_cp
-       run_umount_sqf
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
-       else echo -e "\n => Cinnamon-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
-       fi
-    fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
-       #rsync -av --progress /source/openbox-image ${DESTDIR}
-       CP_SOURCE=/source/openbox-image
-       mkdir -p ${CP_SOURCE}
-       CP_TARGET=${DESTDIR}
-       SQF_FILE=openbox-image.sqfs
-       run_mount_sqf
-       run_cp
-       run_umount_sqf
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
-       else echo -e "\n => Openbox-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
-       fi
-    fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
-       #rsync -av --progress /source/lxde-image ${DESTDIR}
-       CP_SOURCE=/source/lxde-image
-       mkdir -p ${CP_SOURCE}
-       CP_TARGET=${DESTDIR}
-       SQF_FILE=lxde-image.sqfs
-       run_mount_sqf
-       run_cp
-       run_umount_sqf
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
-       else echo -e "\n => LXDE-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
-       fi
-    fi
-
-    if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
-       #rsync -av --progress /source/e17-image ${DESTDIR}
-       CP_SOURCE=/source/e17-image
-       mkdir -p ${CP_SOURCE}
-       CP_TARGET=${DESTDIR}
-       SQF_FILE=e17-image.sqfs
-       run_mount_sqf
-       run_cp
-       run_umount_sqf
-       echo $? > /tmp/.install-retcode
-       if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
-       else echo -e "\n => E17-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
-       fi
+    #rsync -av --progress /source/de-image ${DESTDIR}
+    CP_SOURCE=/source/${DESKTOP_IMG}
+    mkdir -p ${CP_SOURCE}
+    CP_TARGET=${DESTDIR}
+    SQF_FILE=${DESKTOP_IMG}.sqfs
+    run_mount_sqf
+    run_cp
+    run_umount_sqf
+    echo $? > /tmp/.install-retcode
+    if [ $(cat /tmp/.install-retcode) -ne 0 ]; then echo -e "\n${_installationfail}" >>/tmp/rsyncerror.log
+    else echo -e "\n => ${DESKTOP}-Image: ${_installationsuccess}" >>/tmp/rsyncerror.log
     fi
 
     # finished, display scrollable output
