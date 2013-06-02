@@ -189,7 +189,9 @@ if [ -e "${pkgsfile}" ] ; then
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "${desktop}-image" -p "${de_packages}" create "${work_dir}"
               pacman -Qr "${work_dir}/${desktop}-image" > "${work_dir}/${desktop}-image/${desktop}-image-pkgs.txt"
               cp "${work_dir}/${desktop}-image/${desktop}-image-pkgs.txt" ${name}${de}-${version}-${arch}-pkgs.txt
-              cp -LPr ${desktop}-overlay/* ${work_dir}/${desktop}-image
+              if [ -e ${desktop}-overlay ] ; then
+                 cp -LPr ${desktop}-overlay/* ${work_dir}/${desktop}-image
+              fi
               if [ -e ${work_dir}/${desktop}-image/usr/sbin/cupsd ] ; then
                  mkdir -p "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants"
                  ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants/cups.service"
