@@ -474,6 +474,7 @@ hd_config()
     # save settings
     chroot ${DESTDIR} alsactl -f /etc/asound.state store &>/dev/null
 
+    DIALOG --infobox "${_syncpacmandb}" 0 0
     # enable default mirror
     cp -f ${DESTDIR}/etc/pacman.d/mirrorlist ${DESTDIR}/etc/pacman.d/mirrorlist.backup
     if [ ! -z "$ping_check" ] ; then
@@ -487,7 +488,6 @@ hd_config()
     cp -a /etc/pacman.d/gnupg ${DESTDIR}/etc/pacman.d/
 
     # sync pacman databases
-    DIALOG --infobox "${_syncpacmandb}" 0 0
     sleep 3
     chroot ${DESTDIR} pacman -Syy &> /dev/null
 
