@@ -2,8 +2,8 @@ all:
 
 install: all
 	# install to sbin since script only usable by root
-	install -D -m 755 mkiso $(DESTDIR)/usr/sbin/mkiso
-	install -D -m 755 buildiso $(DESTDIR)/usr/sbin/buildiso
+	install -D -m 755 mkiso $(DESTDIR)/usr/bin/mkiso
+	install -D -m 755 buildiso $(DESTDIR)/usr/bin/buildiso
 	# testiso can be used by anyone
 	install -D -m 755 testiso $(DESTDIR)/usr/bin/testiso
 	# hooks/install are needed by mkinitcpio
@@ -19,8 +19,8 @@ install: all
 	install -D -m 644 ../README $(DESTDIR)/usr/share/doc/manjaroiso/README
 
 uninstall:
-	rm -f $(DESTDIR)/usr/sbin/mkiso
-	rm -f $(DESTDIR)/usr/sbin/buildiso
+	rm -f $(DESTDIR)/usr/bin/mkiso
+	rm -f $(DESTDIR)/usr/bin/buildiso
 	rm -f $(DESTDIR)/usr/bin/testiso
 	rm -f $(DESTDIR)/usr/lib/initcpio/hooks/miso
 	rm -f $(DESTDIR)/usr/lib/initcpio/install/miso
