@@ -2,6 +2,7 @@
 base
 linux-firmware
 lsb-release
+haveged # needed for pacman-init
 manjaro-firmware
 manjaro-release
 memtest86+
