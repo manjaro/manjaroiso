@@ -1,0 +1,9 @@
+button-icon=/usr/share/icons/manjaro.png
+launcher-show-name=true
+launcher-show-description=true
+favorites=exo-terminal-emulator.desktop,exo-file-manager.desktop,exo-mail-reader.desktop,exo-web-browser.desktop
+recent=exo-terminal-emulator.desktop
+menu-width=400
+menu-height=519
+
+
