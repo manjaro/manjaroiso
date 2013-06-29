@@ -12,7 +12,7 @@ syslog-ng
 KERNEL
 
 ## Extra Base Packages
-grub-bios
+grub
 mkinitcpio-nfs-utils
 os-prober
 pkg-config
@@ -42,8 +42,6 @@ wget
 
 ## efi support
 efilinux-efi
-grub-efi-i386
-grub-efi-x86_64
 gummiboot-efi
 refind-efi
 
