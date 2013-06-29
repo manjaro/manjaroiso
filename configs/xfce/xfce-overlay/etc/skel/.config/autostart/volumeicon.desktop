@@ -4,10 +4,9 @@ Encoding=UTF-8
 Version=0.9.4
 Type=Application
 Name=Mixer Applet
-Comment=PNMixer Applet for Pulseaudio
-Exec=pnmixer
+Comment=Icon to change the Volume
+Exec=volumeicon
 StartupNotify=false
 Terminal=false
 Hidden=false
 
-GenericName=

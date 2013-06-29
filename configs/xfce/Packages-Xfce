@@ -21,7 +21,7 @@ tumbler
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xfce4
-xfce4-volumed
+xfce4-volumed-pulse
 xscreensaver
 
 ## XFCE Extra Packages
@@ -122,8 +122,8 @@ flashplugin
 libdvdcss
 manjaro-alsa
 manjaro-pulse
-pnmixer
 pavucontrol
+volumeicon
 
 ## Package management
 pamac
