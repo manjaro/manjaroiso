@@ -53,7 +53,8 @@ require '/home/manjaro/.config/obmenu-generator/config.pl';
 
 our $SCHEMA = [
 #             COMMAND                 	LABEL          		ICON
-   {item => ['lxterminal -e sudo setup',      'Install Manjaro',      	'system-run']},
+   {item => ['sudo live-installer',      'Install Manjaro (graphical)',      	'/usr/share/icons/live-installer.png']},
+   {item => ['lxterminal -e sudo setup',      'Install Manjaro (cli)',      	'system-run']},
    {item => ['thunar ~/Manjaro',  'User-Guide','/usr/share/icons/logo5.png']},
    {sep => undef},
 

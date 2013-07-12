@@ -66,6 +66,9 @@ xfce4-notifyd
 xscreensaver
 xterm
 
+## Graphical installer
+live-installer
+
 ## Packages for Sound and Audio
 manjaro-alsa
 pnmixer

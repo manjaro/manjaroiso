@@ -74,10 +74,10 @@ cp -a /etc/skel/. /root/
 echo "configure display managers" >> /tmp/livecd.log
 
 # do_setuplightdm
-if [ -e "/usr/sbin/lightdm" ] ; then
+if [ -e "/usr/bin/lightdm" ] ; then
    mkdir -p /run/lightdm > /dev/null
    getent group lightdm > /dev/null 2>&1 || groupadd -g 620 lightdm
-   getent passwd lightdm > /dev/null 2>&1 || useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /sbin/nologin lightdm
+   getent passwd lightdm > /dev/null 2>&1 || useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /usr/bin/nologin lightdm
    passwd -l lightdm > /dev/null
    chown -R lightdm:lightdm /var/run/lightdm > /dev/null
    if [ -e "/usr/bin/startxfce4" ] ; then
@@ -106,9 +106,9 @@ if [ -e "/usr/share/config/kdm/kdmrc" ] ; then
 fi
 
 # do_setupgdm
-if [ -e "/usr/sbin/gdm" ] ; then
+if [ -e "/usr/bin/gdm" ] ; then
   getent group gdm >/dev/null 2>&1 || groupadd -g 120 gdm
-  getent passwd gdm > /dev/null 2>&1 || usr/sbin/useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /sbin/nologin gdm
+  getent passwd gdm > /dev/null 2>&1 || usr/usr/bin/useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /usr/bin/nologin gdm
   passwd -l gdm > /dev/null
   chown -R gdm:gdm /var/lib/gdm &> /dev/null
   if [ -d "/var/lib/AccountsService/users" ] ; then
@@ -136,9 +136,9 @@ if [ -e "/usr/sbin/gdm" ] ; then
 fi
 
 # do_setupmdm
-if [ -e "/usr/sbin/mdm" ] ; then
+if [ -e "/usr/bin/mdm" ] ; then
   getent group mdm >/dev/null 2>&1 || groupadd -g 128 mdm
-  getent passwd mdm >/dev/null 2>&1 || usr/sbin/useradd -c 'Linux Mint Display Manager' -u 128 -g mdm -d /var/lib/mdm -s /sbin/nologin mdm
+  getent passwd mdm >/dev/null 2>&1 || usr/usr/bin/useradd -c 'Linux Mint Display Manager' -u 128 -g mdm -d /var/lib/mdm -s /usr/bin/nologin mdm
   passwd -l mdm > /dev/null
   chown root:mdm /var/lib/mdm > /dev/null
   chmod 1770 /var/lib/mdm > /dev/null

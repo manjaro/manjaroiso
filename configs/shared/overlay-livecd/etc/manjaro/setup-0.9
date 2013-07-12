@@ -69,9 +69,9 @@ source /etc/manjaro/functions
 # activate dmraid devices
 activate_dmraid()
 {
-    if [[ -e /sbin/dmraid ]]; then
+    if [[ -e /usr/bin/dmraid ]]; then
         DIALOG --infobox "${_activate_dmraid}" 0 0
-        /sbin/dmraid -ay -I -Z >/dev/null 2>&1
+        /usr/bin/dmraid -ay -I -Z >/dev/null 2>&1
     fi
 }
 
@@ -80,13 +80,13 @@ activate_dmraid()
 activate_lvm2()
 {
     ACTIVATE_LVM2=""
-    if [[ -e /sbin/lvm ]]; then
+    if [[ -e /usr/bin/lvm ]]; then
         OLD_LVM2_GROUPS=${LVM2_GROUPS}
         OLD_LVM2_VOLUMES=${LVM2_VOLUMES}
         DIALOG --infobox "${_scanning_lvm2}" 0 0
-        /sbin/lvm vgscan --ignorelockingfailure >/dev/null 2>&1
+        /usr/bin/lvm vgscan --ignorelockingfailure >/dev/null 2>&1
         DIALOG --infobox "${_activate_lvm2}" 0 0
-        /sbin/lvm vgchange --ignorelockingfailure --ignoremonitoring -ay >/dev/null 2>&1
+        /usr/bin/lvm vgchange --ignorelockingfailure --ignoremonitoring -ay >/dev/null 2>&1
         LVM2_GROUPS="$(vgs -o vg_name --noheading 2>/dev/null)"
         LVM2_VOLUMES="$(lvs -o vg_name,lv_name --noheading --separator - 2>/dev/null)"
         [[ "${OLD_LVM2_GROUPS}" = "${LVM2_GROUPS}" && "${OLD_LVM2_GROUPS}" = "${LVM2_GROUPS}" ]] && ACTIVATE_LVM2="no"
@@ -100,9 +100,9 @@ activate_lvm2()
 activate_raid()
 {
     ACTIVATE_RAID=""
-    if [[ -e /sbin/mdadm ]]; then
+    if [[ -e /usr/bin/mdadm ]]; then
         DIALOG --infobox "${_activate_raid}" 0 0
-        /sbin/mdadm --assemble --scan >/dev/null 2>&1 || ACTIVATE_RAID="no"
+        /usr/bin/mdadm --assemble --scan >/dev/null 2>&1 || ACTIVATE_RAID="no"
     else
         ACTIVATE_RAID="no"
     fi
@@ -113,7 +113,7 @@ activate_raid()
 activate_luks()
 {
     ACTIVATE_LUKS=""
-    if [[ -e /sbin/cryptsetup ]]; then
+    if [[ -e /usr/bin/cryptsetup ]]; then
         DIALOG --infobox "${_scanning_luks}" 0 0
         if [[ "$(${_BLKID} | grep "TYPE=\"crypto_LUKS\"")" ]]; then
             for PART in $(${_BLKID} | grep "TYPE=\"crypto_LUKS\"" | sed -e 's#:.*##g'); do
@@ -468,14 +468,14 @@ find_gpt() {
 # freeze and unfreeze xfs, as hack for grub(2) installing
 freeze_xfs() {
     sync
-    if [[ -x /usr/sbin/xfs_freeze ]]; then
+    if [[ -x /usr/bin/xfs_freeze ]]; then
         if [[ "$(cat /proc/mounts | grep "${DESTDIR}/boot " | grep " xfs ")" ]]; then
-            /usr/sbin/xfs_freeze -f ${DESTDIR}/boot >/dev/null 2>&1
-            /usr/sbin/xfs_freeze -u ${DESTDIR}/boot >/dev/null 2>&1
+            /usr/bin/xfs_freeze -f ${DESTDIR}/boot >/dev/null 2>&1
+            /usr/bin/xfs_freeze -u ${DESTDIR}/boot >/dev/null 2>&1
         fi
         if [[ "$(cat /proc/mounts | grep "${DESTDIR} " | grep " xfs ")" ]]; then
-            /usr/sbin/xfs_freeze -f ${DESTDIR} >/dev/null 2>&1
-            /usr/sbin/xfs_freeze -u ${DESTDIR} >/dev/null 2>&1
+            /usr/bin/xfs_freeze -f ${DESTDIR} >/dev/null 2>&1
+            /usr/bin/xfs_freeze -u ${DESTDIR} >/dev/null 2>&1
         fi
     fi
 }
@@ -3188,42 +3188,42 @@ dogrub_config() {
 
     ########
     
-    BOOT_PART_FS_UUID="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="fs_uuid" "${DESTDIR}/boot" 2>/dev/null)"
-    BOOT_PART_FS="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="fs" "${DESTDIR}/boot" 2>/dev/null)"
+    BOOT_PART_FS_UUID="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="fs_uuid" "${DESTDIR}/boot" 2>/dev/null)"
+    BOOT_PART_FS="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="fs" "${DESTDIR}/boot" 2>/dev/null)"
     
-    BOOT_PART_FS_LABEL="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="fs_label" "${DESTDIR}/boot" 2>/dev/null)"
-    BOOT_PART_DRIVE="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="drive" "${DESTDIR}/boot" 2>/dev/null)"
+    BOOT_PART_FS_LABEL="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="fs_label" "${DESTDIR}/boot" 2>/dev/null)"
+    BOOT_PART_DRIVE="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="drive" "${DESTDIR}/boot" 2>/dev/null)"
     
-    BOOT_PART_HINTS_STRING="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="hints_string" "${DESTDIR}/boot" 2>/dev/null)"
-    
-    ########
-    
-    ROOT_PART_FS_UUID="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="fs_uuid" "${DESTDIR}/" 2>/dev/null)"
-    ROOT_PART_FS="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="fs" "${DESTDIR}/" 2>/dev/null)"
-    
-    ROOT_PART_FS_LABEL="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="fs_label" "${DESTDIR}/" 2>/dev/null)"
-    ROOT_PART_DEVICE="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="device" "${DESTDIR}/" 2>/dev/null)"
-    
-    ROOT_PART_HINTS_STRING="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="hints_string" "${DESTDIR}/" 2>/dev/null)"
+    BOOT_PART_HINTS_STRING="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="hints_string" "${DESTDIR}/boot" 2>/dev/null)"
     
     ########
     
-    USR_PART_FS_UUID="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="fs_uuid" "${DESTDIR}/usr" 2>/dev/null)"
-    USR_PART_FS="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="fs" "${DESTDIR}/usr" 2>/dev/null)"
+    ROOT_PART_FS_UUID="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="fs_uuid" "${DESTDIR}/" 2>/dev/null)"
+    ROOT_PART_FS="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="fs" "${DESTDIR}/" 2>/dev/null)"
     
-    USR_PART_FS_LABEL="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="fs_label" "${DESTDIR}/usr" 2>/dev/null)"
+    ROOT_PART_FS_LABEL="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="fs_label" "${DESTDIR}/" 2>/dev/null)"
+    ROOT_PART_DEVICE="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="device" "${DESTDIR}/" 2>/dev/null)"
     
-    USR_PART_HINTS_STRING="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="hints_string" "${DESTDIR}/usr" 2>/dev/null)"
+    ROOT_PART_HINTS_STRING="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="hints_string" "${DESTDIR}/" 2>/dev/null)"
+    
+    ########
+    
+    USR_PART_FS_UUID="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="fs_uuid" "${DESTDIR}/usr" 2>/dev/null)"
+    USR_PART_FS="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="fs" "${DESTDIR}/usr" 2>/dev/null)"
+    
+    USR_PART_FS_LABEL="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="fs_label" "${DESTDIR}/usr" 2>/dev/null)"
+    
+    USR_PART_HINTS_STRING="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="hints_string" "${DESTDIR}/usr" 2>/dev/null)"
     
     ########
     
     if [[ "${GRUB_UEFI}" == "1" ]]; then
-        UEFISYS_PART_FS_UUID="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="fs_uuid" "${DESTDIR}/boot/efi" 2>/dev/null)"
+        UEFISYS_PART_FS_UUID="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="fs_uuid" "${DESTDIR}/boot/efi" 2>/dev/null)"
         
-        UEFISYS_PART_FS_LABEL="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="fs_label" "${DESTDIR}/boot/efi" 2>/dev/null)"
-        UEFISYS_PART_DRIVE="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="drive" "${DESTDIR}/boot/efi" 2>/dev/null)"
+        UEFISYS_PART_FS_LABEL="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="fs_label" "${DESTDIR}/boot/efi" 2>/dev/null)"
+        UEFISYS_PART_DRIVE="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="drive" "${DESTDIR}/boot/efi" 2>/dev/null)"
         
-        UEFISYS_PART_HINTS_STRING="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="hints_string" "${DESTDIR}/boot/efi" 2>/dev/null)"
+        UEFISYS_PART_HINTS_STRING="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="hints_string" "${DESTDIR}/boot/efi" 2>/dev/null)"
     fi
     
     ########
@@ -3600,7 +3600,7 @@ dogrub_bios() {
     freeze_xfs
     chroot_mount
     
-    chroot "${DESTDIR}" "/usr/sbin/grub-install" \
+    chroot "${DESTDIR}" "/usr/bin/grub-install" \
         --directory="/usr/lib/grub/i386-pc" \
         --target="i386-pc" \
         --boot-directory="/boot" \
@@ -3634,7 +3634,7 @@ dogrub_uefi_common() {
     
     chroot_mount
     
-    chroot "${DESTDIR}" "/usr/sbin/grub-install" \
+    chroot "${DESTDIR}" "/usr/bin/grub-install" \
         --directory="/usr/lib/grub/${_UEFI_ARCH}-efi" \
         --target="${_UEFI_ARCH}-efi" \
         --efi-directory="/boot/efi" \
@@ -3648,10 +3648,10 @@ dogrub_uefi_common() {
     mkdir -p "${DESTDIR}/boot/grub/locale"
     cp -f "${DESTDIR}/usr/share/locale/en@quot/LC_MESSAGES/grub.mo" "${DESTDIR}/boot/grub/locale/en.mo"
     
-    BOOT_PART_FS_UUID="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="fs_uuid" "${DESTDIR}/boot" 2>/dev/null)"
-    BOOT_PART_FS="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="fs" "${DESTDIR}/boot" 2>/dev/null)"
+    BOOT_PART_FS_UUID="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="fs_uuid" "${DESTDIR}/boot" 2>/dev/null)"
+    BOOT_PART_FS="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="fs" "${DESTDIR}/boot" 2>/dev/null)"
     
-    BOOT_PART_HINTS_STRING="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/sbin/grub-probe" --target="hints_string" "${DESTDIR}/boot" 2>/dev/null)"
+    BOOT_PART_HINTS_STRING="$(LD_LIBRARY_PATH="${DESTDIR}/usr/lib:${DESTDIR}/lib" "${DESTDIR}/usr/bin/grub-probe" --target="hints_string" "${DESTDIR}/boot" 2>/dev/null)"
     
     [[ -e "${DESTDIR}/boot/grub/grub.cfg" ]] && mv "${DESTDIR}/boot/grub/grub.cfg" "${DESTDIR}/boot/grub/grub.cfg.save"
     

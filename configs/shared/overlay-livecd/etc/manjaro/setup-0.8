@@ -578,7 +578,7 @@ auto_fstab()
 dogrub() {
     GRUB_SET=""
     local grubmenu="/boot/grub/grub.cfg"
-    if [ ! -f /usr/sbin/grub-install ]; then
+    if [ ! -f /usr/bin/grub-install ]; then
         DIALOG --msgbox "${_isgrubinst} $grubmenu" 0 0
         return 1
     fi
@@ -609,13 +609,13 @@ dogrub() {
     targetpart=$(echo ${bootpart} | cut -b1-8)
 
     # freeze xfs filesystems if any, to enable grub installation on xfs filesystems
-    if [ -x /usr/sbin/xfs_freeze ]; then
+    if [ -x /usr/bin/xfs_freeze ]; then
      if [ "$(blkid -o value -s TYPE -p $(findmnt -o source -n $DESTDIR/boot))" == "xfs" ];then
-      /usr/sbin/xfs_freeze -f $DESTDIR/boot > /dev/null 2>&1
+      /usr/bin/xfs_freeze -f $DESTDIR/boot > /dev/null 2>&1
       unfreezeboot=y
      fi
      if [ "$(blkid -o value -s TYPE -p $(findmnt -o source -n $DESTDIR))" == "xfs" ];then
-      /usr/sbin/xfs_freeze -f $DESTDIR/ > /dev/null 2>&1
+      /usr/bin/xfs_freeze -f $DESTDIR/ > /dev/null 2>&1
       unfreezeroot=y
      fi
     fi
@@ -640,9 +640,9 @@ dogrub() {
     dogrub_mkconfig
 
     # unfreeze xfs filesystems if any
-    if [ -x /usr/sbin/xfs_freeze ]; then
-     [ -z "$unfreezeboot" ] && /usr/sbin/xfs_freeze -u $DESTDIR/boot > /dev/null 2>&1
-     [ -z "$unfreezeroot" ] && /usr/sbin/xfs_freeze -u $DESTDIR/ > /dev/null 2>&1
+    if [ -x /usr/bin/xfs_freeze ]; then
+     [ -z "$unfreezeboot" ] && /usr/bin/xfs_freeze -u $DESTDIR/boot > /dev/null 2>&1
+     [ -z "$unfreezeroot" ] && /usr/bin/xfs_freeze -u $DESTDIR/ > /dev/null 2>&1
     fi
 
     cat /tmp/grub.log >$LOG

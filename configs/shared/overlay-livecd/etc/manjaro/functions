@@ -532,10 +532,10 @@ hd_config()
     sleep 3
 
     # setup lightdm
-    if [ -e "/usr/sbin/lightdm" ] ; then
+    if [ -e "/usr/bin/lightdm" ] ; then
        mkdir -p ${DESTDIR}/run/lightdm  &>/dev/null
        chroot ${DESTDIR} getent group lightdm > /dev/null 2>&1 || groupadd -g 620 lightdm
-       chroot ${DESTDIR} getent passwd lightdm > /dev/null 2>&1 || useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /sbin/nologin lightdm
+       chroot ${DESTDIR} getent passwd lightdm > /dev/null 2>&1 || useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /usr/bin/nologin lightdm
        chroot ${DESTDIR} passwd -l lightdm > /dev/null
        chown -R lightdm:lightdm ${DESTDIR}/run/lightdm  &>/dev/null
        if [ -e "/usr/bin/startxfce4" ] ; then
@@ -546,9 +546,9 @@ hd_config()
     fi
 
     # setup gdm
-    if [ -e "/usr/sbin/gdm" ] ; then
+    if [ -e "/usr/bin/gdm" ] ; then
        chroot ${DESTDIR} getent group gdm >/dev/null 2>&1 || groupadd -g 120 gdm
-       chroot ${DESTDIR} getent passwd gdm > /dev/null 2>&1 || usr/sbin/useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /sbin/nologin gdm
+       chroot ${DESTDIR} getent passwd gdm > /dev/null 2>&1 || usr/usr/bin/useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /usr/bin/nologin gdm
        chroot ${DESTDIR} passwd -l gdm > /dev/null
        chroot ${DESTDIR} chown -R gdm:gdm /var/lib/gdm  &>/dev/null
        if [ -d "${DESTDIR}/var/lib/AccountsService/users" ] ; then
@@ -576,9 +576,9 @@ hd_config()
     fi
 
     # setup mdm
-    if [ -e "/usr/sbin/mdm" ] ; then
+    if [ -e "/usr/bin/mdm" ] ; then
        chroot ${DESTDIR} getent group mdm >/dev/null 2>&1 || groupadd -g 128 mdm
-       chroot ${DESTDIR} getent passwd mdm >/dev/null 2>&1 || usr/sbin/useradd -c 'Linux Mint Display Manager' -u 128 -g mdm -d /var/lib/mdm -s /sbin/nologin mdm
+       chroot ${DESTDIR} getent passwd mdm >/dev/null 2>&1 || usr/usr/bin/useradd -c 'Linux Mint Display Manager' -u 128 -g mdm -d /var/lib/mdm -s /usr/bin/nologin mdm
        chroot ${DESTDIR} passwd -l mdm > /dev/null
        chroot ${DESTDIR} chown root:mdm /var/lib/mdm > /dev/null
        chroot ${DESTDIR} chmod 1770 /var/lib/mdm > /dev/null
@@ -756,10 +756,10 @@ run_cp()
 run_mkinitcpio() {
     chroot_mount
     # fix fsck.btrfs issue
-    chroot "$DESTDIR" ln -sf /bin/true /sbin/fsck.btrfs &> /dev/null
+    chroot "$DESTDIR" ln -sf /bin/true /usr/bin/fsck.btrfs &> /dev/null
 
     # fix fsck.nilfs2 issue
-    chroot "$DESTDIR" ln -sf /bin/true /sbin/fsck.nilfs2 &> /dev/null
+    chroot "$DESTDIR" ln -sf /bin/true /usr/bin/fsck.nilfs2 &> /dev/null
 
     # all mkinitcpio output goes to /tmp/mkinitcpio.log, which we tail
     # into a dialog
@@ -993,7 +993,7 @@ set_clock()
         /bin/rm -f /etc/localtime
         /bin/cp "/usr/share/zoneinfo/$TIMEZONE" /etc/localtime
     fi
-    /sbin/hwclock --hctosys $HWCLOCK_PARAMS --noadjfile
+    /usr/bin/hwclock --hctosys $HWCLOCK_PARAMS --noadjfile
 
     # display and ask to set date/time
     DIALOG --calendar "${_choosedatetime}" 0 0 0 0 0 2> ${ANSWER} || return 1
@@ -1007,7 +1007,7 @@ set_clock()
     local _datetime="$(echo "$_date" "$_time" | sed 's#\(..\)/\(..\)/\(....\) \(..\):\(..\):\(..\)#\3-\2-\1 \4:\5:\6#g')"
     echo "setting date to: $_datetime" >$LOG
     date -s "$_datetime" 2>&1 >$LOG
-    /sbin/hwclock --systohc $HWCLOCK_PARAMS --noadjfile
+    /usr/bin/hwclock --systohc $HWCLOCK_PARAMS --noadjfile
 
     S_CLOCK=1
     NEXTITEM="2"
