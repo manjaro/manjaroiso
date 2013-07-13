@@ -486,6 +486,7 @@ hd_config()
        rm -rf ${DESTDIR}/etc/pacman.d/gnupg &>/dev/null
     fi
     cp -a /etc/pacman.d/gnupg ${DESTDIR}/etc/pacman.d/
+    pacman-key --populate archlinux manjaro
 
     # sync pacman databases
     sleep 3
@@ -582,6 +583,24 @@ hd_config()
        chroot ${DESTDIR} passwd -l mdm > /dev/null
        chroot ${DESTDIR} chown root:mdm /var/lib/mdm > /dev/null
        chroot ${DESTDIR} chmod 1770 /var/lib/mdm > /dev/null
+       if [ -e "/usr/bin/startxfce4" ] ; then
+             sed -i 's|default.desktop|xfce.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
+       fi
+       if [ -e "/usr/bin/gnome-session-cinnamon" ] ; then
+             sed -i 's|default.desktop|cinnamon.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
+       fi
+       if [ -e "/usr/bin/openbox-session" ] ; then
+             sed -i 's|default.desktop|openbox.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
+       fi
+       if [ -e "/usr/bin/mate-session" ] ; then
+             sed -i 's|default.desktop|mate.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
+       fi
+       if [ -e "/usr/bin/lxsession" ] ; then
+             sed -i 's|default.desktop|LXDE.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
+       fi
+       if [ -e "/usr/bin/enlightenment_start" ] ; then
+             sed -i 's|default.desktop|enlightenment.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
+       fi
     fi
 
     # setup lxdm
