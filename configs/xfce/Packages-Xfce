@@ -4,12 +4,11 @@
 adwaita-manjaro-themes
 faenza-green-icon-theme
 ffmpegthumbnailer
-#gdm
 gnome-keyring
 gconf # fix qt-theme
 live-installer
-lxdm
 manjaro-settings-manager
+mdm-themes
 network-manager-applet
 numlockx
 orage
