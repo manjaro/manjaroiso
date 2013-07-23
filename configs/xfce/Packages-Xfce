@@ -4,15 +4,15 @@
 adwaita-manjaro-themes
 faenza-green-icon-theme
 ffmpegthumbnailer
-gnome-keyring
 gconf # fix qt-theme
+gnome-keyring # fix wlan segfault
 live-installer
 manjaro-settings-manager
 mdm-themes
 network-manager-applet
 numlockx
 orage
-plank
+#plank
 poppler-glib
 thunar-archive-plugin
 thunar-media-tags-plugin
@@ -68,14 +68,15 @@ gvfs
 gvfs-afc
 gvfs-afp
 gvfs-gphoto2
+gvfs-mtp
 gvfs-smb
+hexchat
 lxmed
 mlocate
 pidgin
 thunderbird
 viewnior
 vlc
-xchat
 xfburn
 xnoise
 yelp
@@ -111,6 +112,7 @@ xorg-xinit
 manjaro-artwork
 
 ## Packages for Sound and Audio
+gst-libav
 gst-plugins-bad
 gst-plugins-good
 gst-plugins-ugly
@@ -125,8 +127,7 @@ pavucontrol
 volumeicon
 
 ## Package management
-pamac
-#octopi
+octopi
 
 ## Games
 steam
@@ -149,8 +150,8 @@ libreoffice-en-US
 libreoffice-calc
 #libreoffice-draw
 libreoffice-gnome
-#libreoffice-impress
-#libreoffice-math
+libreoffice-impress
+libreoffice-math
 #libreoffice-postgresql-connector
 libreoffice-writer
 

@@ -114,6 +114,7 @@ catfish
 dmenu
 geany
 evince
+firefox
 galculator
 gnome-screenshot
 gparted
@@ -121,9 +122,8 @@ hardinfo
 htop
 leafpad
 libreoffice-installer
-pamac
+octopi
 openssh
-qupzilla
 ufw
 viewnior
 vlc

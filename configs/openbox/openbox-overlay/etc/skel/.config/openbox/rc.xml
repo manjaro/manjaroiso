@@ -347,18 +347,18 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>pamac-manager</name>
+          <name>octopi</name>
         </startupnotify>
-        <command>pamac-manager</command>
+        <command>octopi</command>
       </action>
     </keybind>
      <keybind key="W-u">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>pamac-updater</name>
+          <name>octopi</name>
         </startupnotify>
-        <command>pamac-updater</command>
+        <command>octopi</command>
       </action>
     </keybind>
     <keybind key="W-m">

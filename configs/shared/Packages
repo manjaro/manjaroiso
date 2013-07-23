@@ -64,6 +64,8 @@ ttf-liberation
 
 ## Network
 b43-fwcutter
+dhclient
+dnsmasq
 iptables
 ipw2100-fw
 ipw2200-fw
