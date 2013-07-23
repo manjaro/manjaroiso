@@ -56,7 +56,7 @@ ${font sans:bold:size=9}${alignr}${color #006400}Super + m
 ${alignr}${color #696969}DMenu${voffset -5}
 
 ${font sans:bold:size=9}${alignr}${color #006400}Super + p
-${alignr}${color #696969}Pamac${voffset -5}
+${alignr}${color #696969}Package Manager${voffset -5}
 
 ${font sans:bold:size=9}${alignr}${color #006400}Super + s
 ${alignr}${color #696969}Synapse${voffset -5}
