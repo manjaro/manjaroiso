@@ -36,6 +36,7 @@ if [ "$xfce" == "Y" ] ; then
    rm Packages-Xfce
    rm -R work*/*xfce*
    rm -R work*/*isomounts*
+   rm -R work*/build.make_de_image
    rm work*/iso/manjaro/*/xfce-image.sqfs
    ln -sfv ../shared/Packages-Lng Packages-Lng
 fi
@@ -58,6 +59,7 @@ if [ "$mate" == "Y" ] ; then
    rm Packages-Mate
    rm -R work*/*mate*
    rm -R work*/*isomounts*
+   rm -R work*/build.make_de_image
    rm work*/iso/manjaro/*/mate-image.sqfs
    ln -sfv ../shared/Packages-Lng Packages-Lng
 fi
@@ -80,6 +82,7 @@ if [ "$e17" == "Y" ] ; then
    rm Packages-E17
    rm -R work*/*e17*
    rm -R work*/*isomounts*
+   rm -R work*/build.make_de_image
    rm work*/iso/manjaro/*/e17-image.sqfs
    ln -sfv ../shared/Packages-Lng Packages-Lng
 fi
@@ -102,6 +105,7 @@ if [ "$cinnamon" == "Y" ] ; then
    rm Packages-Cinnamon
    rm -R work*/*cinnamon*
    rm -R work*/*isomounts*
+   rm -R work*/build.make_de_image
    rm work*/iso/manjaro/*/cinnamon-image.sqfs
 fi
 if [ "$kde" == "Y" ] ; then
@@ -123,6 +127,7 @@ if [ "$kde" == "Y" ] ; then
    rm Packages-Kde
    rm -R work*/*kde*
    rm -R work*/*isomounts*
+   rm -R work*/build.make_de_image
    rm work*/iso/manjaro/*/kde-image.sqfs
 fi
 if [ "$net" == "Y" ] ; then
@@ -148,6 +153,7 @@ if [ "$net" == "Y" ] ; then
    rm Packages-Net
    rm -R work*/*net*
    rm -R work*/*isomounts*
+   rm -R work*/build.make_de_image
    rm work*/iso/manjaro/*/net-image.sqfs
 fi
 if [ "$openbox" == "Y" ] ; then
@@ -177,5 +183,6 @@ if [ "$openbox" == "Y" ] ; then
    rm Packages-Openbox
    rm -R work*/*openbox*
    rm -R work*/*isomounts*
+   rm -R work*/build.make_de_image
    rm work*/iso/manjaro/*/openbox-image.sqfs
 fi

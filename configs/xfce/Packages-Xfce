@@ -14,6 +14,7 @@ numlockx
 orage
 #plank
 poppler-glib
+polkit-gnome
 thunar-archive-plugin
 thunar-media-tags-plugin
 tumbler
@@ -127,7 +128,7 @@ pavucontrol
 volumeicon
 
 ## Package management
-octopi
+octopi-notifier
 
 ## Games
 steam

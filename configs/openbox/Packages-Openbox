@@ -57,6 +57,7 @@ network-manager-applet
 nitrogen
 numlockx
 parcellite
+polkit-gnome
 python2-xdg # Necessary to enable use of .desktop files in /etc/xdg
 synapse
 tint2
@@ -122,7 +123,7 @@ hardinfo
 htop
 leafpad
 libreoffice-installer
-octopi
+octopi-notifier
 openssh
 ufw
 viewnior

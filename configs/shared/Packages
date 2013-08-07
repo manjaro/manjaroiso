@@ -72,6 +72,9 @@ ipw2200-fw
 mobile-broadband-provider-info
 modemmanager
 nbd
+KERNEL-ndiswrapper
+ndiswrapper-utils
+netctl
 networkmanager
 networkmanager-dispatcher-ntpd
 openresolv
@@ -91,5 +94,4 @@ wireless_tools
 xorg-xset
 
 ## ucode for new cpus
-amd-ucode
 intel-ucode

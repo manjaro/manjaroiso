@@ -232,6 +232,10 @@ if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
    setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &> /dev/null
 fi
 
+# configurate pacman
+pacman-key --init
+pacman-key --populate archlinux manjaro
+
 # fix_ping_installation
 setcap cap_net_raw=ep /usr/bin/ping &> /dev/null
 setcap cap_net_raw=ep /usr/bin/ping6 &> /dev/null

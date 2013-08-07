@@ -40,7 +40,6 @@
       </property>
     </property>
     <property name="plugin-4" type="string" value="pager"/>
-    <property name="plugin-5" type="string" value="clock"/>
     <property name="plugin-6" type="string" value="systray">
       <property name="names-visible" type="array">
         <value type="string" value="pnmixer"/>
@@ -61,6 +60,7 @@
       <property name="expand" type="bool" value="true"/>
     </property>
     <property name="plugin-8" type="string" value="whiskermenu"/>
+    <property name="plugin-5" type="string" value="datetime"/>
   </property>
   <property name="configver" type="int" value="2"/>
 </channel>
