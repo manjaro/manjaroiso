@@ -15,6 +15,7 @@ orage
 #plank
 poppler-glib
 polkit-gnome
+python2-configobj # dep of manjaro-welcome
 thunar-archive-plugin
 thunar-media-tags-plugin
 tumbler
@@ -72,7 +73,7 @@ gvfs-gphoto2
 gvfs-mtp
 gvfs-smb
 hexchat
-lxmed
+#lxmed
 mlocate
 pidgin
 thunderbird
@@ -128,7 +129,8 @@ pavucontrol
 volumeicon
 
 ## Package management
-octopi-notifier
+octopi
+pamac
 
 ## Games
 steam

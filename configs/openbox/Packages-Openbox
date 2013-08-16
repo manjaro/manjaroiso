@@ -69,6 +69,7 @@ xterm
 
 ## Graphical installer
 live-installer
+python2-configobj # dep of manjaro-welcome
 
 ## Packages for Sound and Audio
 manjaro-alsa
