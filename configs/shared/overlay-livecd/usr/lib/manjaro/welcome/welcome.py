@@ -31,23 +31,41 @@ class welcome():
         config = ConfigObj("/etc/lsb-release")
         codename = config['DISTRIB_CODENAME']
         release = config['DISTRIB_RELEASE']
-        if os.path.exists("/bootmnt/manjaro/i686/xfce-image.sqfs") or os.path.exists("/bootmnt/manjaro/x86_64/xfce-image.sqfs"):
-           edition = "XFCE"
-        elif os.path.exists("/bootmnt/manjaro/i686/gnome-image.sqfs") or os.path.exists("/bootmnt/manjaro/x86_64/gnome-image.sqfs"):
-           edition = "Gnome"
-        elif os.path.exists("/bootmnt/manjaro/i686/cinnamon-image.sqfs") or os.path.exists("/bootmnt/manjaro/x86_64/cinnamon-image.sqfs"):
-           edition = "Cinnamon"
-        elif os.path.exists("/bootmnt/manjaro/i686/openbox-image.sqfs") or os.path.exists("/bootmnt/manjaro/x86_64/openbox-image.sqfs"):
-           edition = "Openbox"
-        elif os.path.exists("/bootmnt/manjaro/i686/mate-image.sqfs") or os.path.exists("/bootmnt/manjaro/x86_64/mate-image.sqfs"):
-           edition = "MATE"
-        elif os.path.exists("/bootmnt/manjaro/i686/kde-image.sqfs") or os.path.exists("/bootmnt/manjaro/x86_64/kde-image.sqfs"):
-           edition = "KDE"
-        elif os.path.exists("/bootmnt/manjaro/i686/lxde-image.sqfs") or os.path.exists("/bootmnt/manjaro/x86_64/lxde-image.sqfs"):
-           edition = "LXDE"
-        elif os.path.exists("/bootmnt/manjaro/i686/e17-image.sqfs") or os.path.exists("/bootmnt/manjaro/x86_64/e17-image.sqfs"):
-           edition = "E17"
-        elif os.path.exists("/bootmnt/manjaro/i686/custom-image.sqfs") or os.path.exists("/bootmnt/manjaro/x86_64/custom-image.sqfs"):
+        if os.path.exists("/bootmnt/manjaro/i686/xfce-image.sqfs"):
+           edition = "XFCE (32bit)"
+        elif os.path.exists("/bootmnt/manjaro/i686/gnome-image.sqfs"):
+           edition = "Gnome (32bit)"
+        elif os.path.exists("/bootmnt/manjaro/i686/cinnamon-image.sqfs"):
+           edition = "Cinnamon (32bit)"
+        elif os.path.exists("/bootmnt/manjaro/i686/openbox-image.sqfs"):
+           edition = "Openbox (32bit)"
+        elif os.path.exists("/bootmnt/manjaro/i686/mate-image.sqfs"):
+           edition = "MATE (32bit)"
+        elif os.path.exists("/bootmnt/manjaro/i686/kde-image.sqfs"):
+           edition = "KDE (32bit)"
+        elif os.path.exists("/bootmnt/manjaro/i686/lxde-image.sqfs"):
+           edition = "LXDE (32bit)"
+        elif os.path.exists("/bootmnt/manjaro/i686/e17-image.sqfs"):
+           edition = "E17 (32bit)"
+        elif os.path.exists("/bootmnt/manjaro/i686/custom-image.sqfs"):
+           edition = "Custom (32bit)"
+        elif os.path.exists("/bootmnt/manjaro/x86_64/xfce-image.sqfs"):
+           edition = "XFCE (64bit)"
+        elif os.path.exists("/bootmnt/manjaro/x86_64/gnome-image.sqfs"):
+           edition = "Gnome (64bit)"
+        elif os.path.exists("/bootmnt/manjaro/x86_64/cinnamon-image.sqfs"):
+           edition = "Cinnamon (64bit)"
+        elif os.path.exists("/bootmnt/manjaro/x86_64/openbox-image.sqfs"):
+           edition = "Openbox (64bit)"
+        elif os.path.exists("/bootmnt/manjaro/x86_64/mate-image.sqfs"):
+           edition = "MATE (64bit)"
+        elif os.path.exists("/bootmnt/manjaro/x86_64/kde-image.sqfs"):
+           edition = "KDE (64bit)"
+        elif os.path.exists("/bootmnt/manjaro/x86_64/lxde-image.sqfs"):
+           edition = "LXDE (64bit)"
+        elif os.path.exists("/bootmnt/manjaro/x86_64/e17-image.sqfs"):
+           edition = "E17 (64bit)"
+        elif os.path.exists("/bootmnt/manjaro/x86_64/custom-image.sqfs"):
            edition = "Custom"
         else:
            edition = "Unknown"
