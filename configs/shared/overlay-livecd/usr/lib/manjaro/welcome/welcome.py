@@ -66,7 +66,7 @@ class welcome():
         elif os.path.exists("/bootmnt/manjaro/x86_64/e17-image.sqfs"):
            edition = "E17 (64bit)"
         elif os.path.exists("/bootmnt/manjaro/x86_64/custom-image.sqfs"):
-           edition = "Custom"
+           edition = "Custom (64bit)"
         else:
            edition = "Unknown"
 
