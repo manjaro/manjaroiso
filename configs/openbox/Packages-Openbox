@@ -73,8 +73,9 @@ python2-configobj # dep of manjaro-welcome
 
 ## Packages for Sound and Audio
 manjaro-alsa
-pnmixer
-gnome-alsamixer
+manjaro-pulse
+pavucontrol
+pa-applet
 
 ## File Manager and Support Packages
 thunar
@@ -102,6 +103,7 @@ xcursor-themes
 manjaro-artwork-openbox
 
 ## Multimedia Support
+gst-libav
 gst-plugins-bad
 gst-plugins-good
 gst-plugins-ugly

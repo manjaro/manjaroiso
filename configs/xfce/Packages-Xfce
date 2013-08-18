@@ -127,7 +127,7 @@ libdvdcss
 manjaro-alsa
 manjaro-pulse
 pavucontrol
-volumeicon
+pa-applet
 
 ## Package management
 octopi
