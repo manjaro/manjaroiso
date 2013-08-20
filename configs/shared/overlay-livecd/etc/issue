@@ -4,8 +4,5 @@ Manjaro Live ISO (\l) - \s-\r \m.
 Default login "manjaro" with password "manjaro".
 "root" login has password "manjaro".
 
-You can change your keymap with "sudo km".
-You can change your locales with "sudo lg".
-
 You can start the installation with "sudo setup".
 

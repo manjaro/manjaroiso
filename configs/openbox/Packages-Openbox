@@ -53,9 +53,9 @@ lxappearance-obconf
 lxinput
 lxterminal
 manjaro-settings-manager
+manjaro-welcome
 network-manager-applet
 nitrogen
-numlockx
 parcellite
 polkit-gnome
 python2-xdg # Necessary to enable use of .desktop files in /etc/xdg

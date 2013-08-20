@@ -10,7 +10,6 @@ live-installer
 manjaro-settings-manager
 mdm-themes
 network-manager-applet
-numlockx
 orage
 #plank
 poppler-glib
@@ -75,6 +74,7 @@ gvfs-mtp
 gvfs-smb
 hexchat
 #lxmed
+manjaro-welcome
 mlocate
 pidgin
 thunderbird
@@ -130,7 +130,7 @@ pavucontrol
 pa-applet
 
 ## Package management
-octopi
+#octopi
 pamac
 
 ## Games
