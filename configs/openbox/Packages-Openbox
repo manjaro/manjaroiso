@@ -55,6 +55,10 @@ lxterminal
 manjaro-settings-manager
 manjaro-welcome
 network-manager-applet
+networkmanager-openconnect
+networkmanager-openvpn
+networkmanager-pptp
+networkmanager-vpnc
 nitrogen
 parcellite
 polkit-gnome
@@ -69,7 +73,6 @@ xterm
 
 ## Graphical installer
 live-installer
-python2-configobj # dep of manjaro-welcome
 
 ## Packages for Sound and Audio
 manjaro-alsa

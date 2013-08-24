@@ -10,11 +10,14 @@ live-installer
 manjaro-settings-manager
 mdm-themes
 network-manager-applet
+networkmanager-openconnect
+networkmanager-openvpn
+networkmanager-pptp
+networkmanager-vpnc
 orage
 #plank
 poppler-glib
 polkit-gnome
-python2-configobj # dep of manjaro-welcome
 thunar-archive-plugin
 thunar-media-tags-plugin
 tumbler
