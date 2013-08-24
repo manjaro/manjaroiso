@@ -6,6 +6,7 @@ faenza-green-icon-theme
 ffmpegthumbnailer
 gconf # fix qt-theme
 gnome-keyring # fix wlan segfault
+gufw # firewall
 live-installer
 manjaro-settings-manager
 mdm-themes
