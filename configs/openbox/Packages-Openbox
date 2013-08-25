@@ -6,7 +6,6 @@ inxi
 libdnet
 mesa
 mesa-demos
-mhwd
 >x86_64 lib32-mesa-demos
 netkit-bsd-finger
 uriparser
@@ -108,16 +107,17 @@ manjaro-artwork-openbox
 ## Multimedia Support
 gst-libav
 gst-plugins-bad
+gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
 gstreamer0.10-bad-plugins
+gstreamer0.10-base-plugins
 gstreamer0.10-good-plugins
 gstreamer0.10-ugly-plugins
 flashplugin
 libdvdcss
 
 ## Applications
-catfish
 dmenu
 geany
 evince
@@ -132,8 +132,9 @@ leafpad
 libreoffice-installer
 octopi-notifier
 openssh
+>x86_64 parole # to fit 700 MB
 viewnior
-vlc
+>i686 vlc
 xnoise
 
 ## AUR Access
