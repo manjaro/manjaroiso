@@ -15,6 +15,7 @@ networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
+opencv # webcam support for live-installer
 orage
 #plank
 poppler-glib
@@ -117,6 +118,7 @@ xorg-xinit
 
 ## Artwork
 manjaro-artwork
+plymouth-theme-manjaro
 
 ## Packages for Sound and Audio
 gst-libav
