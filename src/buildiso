@@ -186,7 +186,17 @@ if [ -e "${pkgsfile}" ] ; then
                  umount -l ${work_dir}/${desktop}-image
               fi
               mount -t aufs -o br=${work_dir}/${desktop}-image:${work_dir}/root-image=ro none ${work_dir}/${desktop}-image
+
+              # machine-id install workaround
+              mkdir -p ${work_dir}/${desktop}-image/{etc,var/lib/dbus}
+              dbus-uuidgen --ensure=${work_dir}/${desktop}-image/etc/machine-id
+              dbus-uuidgen --ensure=${work_dir}/${desktop}-image/var/lib/dbus/machine-id
+
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "${desktop}-image" -p "${de_packages}" create "${work_dir}"
+
+              # clean-up machine-id
+              touch ${work_dir}/${desktop}-image/etc/machine-id ${work_dir}/${desktop}-image/var/lib/dbus/machine-id
+
               pacman -Qr "${work_dir}/${desktop}-image" > "${work_dir}/${desktop}-image/${desktop}-image-pkgs.txt"
               cp "${work_dir}/${desktop}-image/${desktop}-image-pkgs.txt" ${name}${de}-${version}-${arch}-pkgs.txt
               if [ -e ${desktop}-overlay ] ; then

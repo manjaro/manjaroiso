@@ -680,6 +680,10 @@ hd_config()
        chroot ${DESTDIR} pacman -Rsc --noconfirm $(pacman -Qq | grep virtualbox-guest-modules) &>/dev/null
     fi
 
+    # set unique machine-id
+    chroot ${DESTDIR} dbus-uuidgen --ensure=/etc/machine-id
+    chroot ${DESTDIR} dbus-uuidgen --ensure=/var/lib/dbus/machine-id
+
     chroot_umount
 }
 
