@@ -114,10 +114,10 @@ _pacman ()
     local ret
     mkdir -p "${work_dir}/${IMAGE_FOLDER}/var/lib/pacman"
     if [ "${QUIET}" = "y" ]; then
-        pacman -Sy -r "${work_dir}/${IMAGE_FOLDER}" --config "$PACCONFIG" --needed --noconfirm $* &> /dev/null
+        pacstrap -GMcd "${work_dir}/${IMAGE_FOLDER}" --config "$PACCONFIG" $* &> /dev/null
         ret=$?
     else
-        pacman -Sy -r "${work_dir}/${IMAGE_FOLDER}" --config "$PACCONFIG" --needed --noconfirm $*
+        pacstrap -GMcd "${work_dir}/${IMAGE_FOLDER}" --config "$PACCONFIG" $*
         ret=$?
     fi
 
@@ -156,17 +156,17 @@ command_create () {
         fi
 
         # Delete pacman database sync cache files (*.tar.gz)
-        find "${work_dir}/${IMAGE_FOLDER}/var/lib/pacman" -maxdepth 1 -type f -delete
+        find "${work_dir}/${IMAGE_FOLDER}/var/lib/pacman" -maxdepth 1 -type f -delete >/dev/null
         # Delete pacman database sync cache
-        find "${work_dir}/${IMAGE_FOLDER}/var/lib/pacman/sync" -delete
+        find "${work_dir}/${IMAGE_FOLDER}/var/lib/pacman/sync" -delete >/dev/null
         # Delete pacman package cache
-        find "${work_dir}/${IMAGE_FOLDER}/var/cache/pacman/pkg" -type f -delete
+        find "${work_dir}/${IMAGE_FOLDER}/var/cache/pacman/pkg" -type f -delete >/dev/null
         # Delete all log files, keeps empty dirs.
-        find "${work_dir}/${IMAGE_FOLDER}/var/log" -type f -delete
+        find "${work_dir}/${IMAGE_FOLDER}/var/log" -type f -delete >/dev/null
         # Delete all temporary files and dirs
-        find "${work_dir}/${IMAGE_FOLDER}/var/tmp" -mindepth 1 -delete
+        find "${work_dir}/${IMAGE_FOLDER}/var/tmp" -mindepth 1 -delete >/dev/null
         # Delete all temporary files and dirs
-        find "${work_dir}/${IMAGE_FOLDER}/tmp" -mindepth 1 -delete
+        find "${work_dir}/${IMAGE_FOLDER}/tmp" -mindepth 1 -delete >/dev/null
     fi
 }
 
