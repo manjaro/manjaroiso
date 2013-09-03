@@ -25,7 +25,7 @@ package_manjaroiso-git() {
   provides=('manjaroiso')
   cd ${srcdir}/${pkgbase}/src
   make DESTDIR="$pkgdir" install
-  sed -i 's|VERSION|${pkgver}|g' $pkgdir/usr/share/manjaroiso/functions/messages
+  sed -i "s|VERSION|${pkgver}|g" $pkgdir/usr/share/manjaroiso/functions/messages
 }
 
 package_manjaroiso-git-profiles() {
