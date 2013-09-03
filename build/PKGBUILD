@@ -3,7 +3,7 @@
 
 pkgbase=manjaroiso
 pkgname=('manjaroiso-git' 'manjaroiso-git-profiles')
-pkgver=0.8.7
+pkgver=0.8.7.5.g1105089
 pkgrel=1
 arch=('any')
 url="http://git.manjaro.org/core/manjaroiso"
@@ -25,7 +25,7 @@ package_manjaroiso-git() {
   provides=('manjaroiso')
   cd ${srcdir}/${pkgbase}/src
   make DESTDIR="$pkgdir" install
-  sed -i 's|VERSION|${pkgver}|g' $pkgdir/usr/share/manjaroiso/functions/messages
+  sed -i "s|VERSION|${pkgver}|g" $pkgdir/usr/share/manjaroiso/functions/messages
 }
 
 package_manjaroiso-git-profiles() {
