@@ -15,6 +15,7 @@ networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
+opencv # webcam support for live-installer
 orage
 #plank
 poppler-glib
@@ -88,9 +89,6 @@ xfburn
 xnoise
 yelp
 
-## Xorg
-mhwd
-
 ## Xorg Packages
 inxi
 libdnet
@@ -117,6 +115,7 @@ xorg-xinit
 
 ## Artwork
 manjaro-artwork
+plymouth-theme-manjaro
 
 ## Packages for Sound and Audio
 gst-libav
@@ -137,6 +136,7 @@ pa-applet
 
 ## Package management
 #octopi
+lxpolkit
 pamac
 
 ## Games

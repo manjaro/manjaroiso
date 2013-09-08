@@ -220,7 +220,7 @@ set_alsa ()
 {
 #set_alsa
     # amixer binary
-    local alsa_amixer="/usr/bin/amixer"
+    local alsa_amixer="chroot ${DESTDIR} /usr/bin/amixer"
 
     # enable all known (tm) outputs
     $alsa_amixer -c 0 sset "Master" 70% unmute &>/dev/null

@@ -50,6 +50,7 @@ gnome-keyring
 libgnomeui # for qt to find gtk themes
 lxappearance-obconf
 lxinput
+lxpolkit
 lxterminal
 manjaro-settings-manager
 manjaro-welcome
