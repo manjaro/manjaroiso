@@ -19,7 +19,7 @@ pkgver() {
 
 package_manjaroiso-git() {
   pkgdesc="Manjaro Linux livecd/liveusb generation scripts"
-  depends=('devtools' 'mkinitcpio' 'mkinitcpio-nfs-utils' 'nbd' 'libisoburn' 'squashfs-tools' 'syslinux' 'haveged' 'pacstrap' 'pacman>=4.1')
+  depends=('devtools' 'mkinitcpio' 'mkinitcpio-nfs-utils' 'nbd' 'libisoburn' 'squashfs-tools' 'syslinux' 'haveged' 'arch-install-scripts' 'pacman>=4.1')
   optdepends=('qemu: quickly test isos' 'manjaroiso-profiles: Manjaro Linux ISO-Image profiles')
   conflicts=('manjaroiso')
   provides=('manjaroiso')
