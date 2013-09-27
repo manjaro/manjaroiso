@@ -198,6 +198,10 @@ if [ -e "${pkgsfile}" ] ; then
                  mkdir -p "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants"
                  ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants/cups.service"
               fi
+              # Copy pacman.conf from profile if it is mate
+              if [ "${desktop}" == "mate" ] ; then
+                 cp pacman-${arch}.conf ${work_dir}/root-image/etc/pacman.conf
+              fi
               umount -l ${work_dir}/${desktop}-image
               rm -R ${work_dir}/${desktop}-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
