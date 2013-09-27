@@ -200,7 +200,8 @@ if [ -e "${pkgsfile}" ] ; then
               fi
               # Copy pacman.conf from profile if it is mate
               if [ "${desktop}" == "mate" ] ; then
-                 cp pacman-${arch}.conf ${work_dir}/root-image/etc/pacman.conf
+                 mkdir -p ${work_dir}/${desktop}-image/etc
+                 cp pacman-${arch}.conf ${work_dir}/${desktop}-image/etc/pacman.conf
               fi
               umount -l ${work_dir}/${desktop}-image
               rm -R ${work_dir}/${desktop}-image/.wh*
