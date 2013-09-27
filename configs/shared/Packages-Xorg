@@ -50,5 +50,14 @@ pangox-compat
 >x86_64 lib32-intel-dri
 >free_x64 lib32-nouveau-dri
 
+## VMWare Support
+KERNEL-open-vm-tools-modules
+open-vm-tools
+
 ## Cleanup Xorg packages
->cleanup xf86-input*
+>cleanup xf86-input-evdev
+>cleanup xf86-input-joystick
+>cleanup xf86-input-keyboard
+>cleanup xf86-input-mouse
+>cleanup xf86-input-synaptics
+>cleanup xf86-input-void
