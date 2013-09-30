@@ -3,11 +3,10 @@
 ## XFCE Main Packages
 adwaita-manjaro-themes
 faenza-green-icon-theme
-ffmpegthumbnailer
+#ffmpegthumbnailer
 gconf # fix qt-theme
 gnome-keyring # fix wlan segfault
 gufw # firewall
-live-installer
 manjaro-settings-manager
 mdm-themes
 network-manager-applet
@@ -15,14 +14,13 @@ networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
-opencv # webcam support for live-installer
 orage
 #plank
 poppler-glib
 polkit-gnome
 thunar-archive-plugin
 thunar-media-tags-plugin
-tumbler
+thus
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xfce4
@@ -30,7 +28,7 @@ xfce4-volumed-pulse
 xscreensaver
 
 ## XFCE Extra Packages
-xfce4-artwork
+#xfce4-artwork
 xfce4-battery-plugin
 xfce4-clipman-plugin
 xfce4-cpufreq-plugin
@@ -40,53 +38,56 @@ xfce4-dict
 xfce4-diskperf-plugin
 xfce4-fsguard-plugin
 xfce4-genmon-plugin
-xfce4-mailwatch-plugin
+#xfce4-mailwatch-plugin
 xfce4-mount-plugin
-xfce4-mpc-plugin
+#xfce4-mpc-plugin
 xfce4-netload-plugin
-xfce4-notes-plugin
+#xfce4-notes-plugin
 xfce4-notifyd
 xfce4-quicklauncher-plugin
 xfce4-screenshooter
 xfce4-sensors-plugin
-xfce4-smartbookmark-plugin
+#xfce4-smartbookmark-plugin
 xfce4-systemload-plugin
 xfce4-taskmanager
-xfce4-time-out-plugin
-xfce4-timer-plugin
-xfce4-verve-plugin
-xfce4-wavelan-plugin
-xfce4-weather-plugin
+#xfce4-time-out-plugin
+#xfce4-timer-plugin
+#xfce4-verve-plugin
+#xfce4-wavelan-plugin
+#xfce4-weather-plugin
 xfce4-whiskermenu-plugin
 xfce4-xkb-plugin
 
 ## Applications
-blueman
+#blueman
 catfish # needed for desktop search
 evince
 file-roller
-firefox
+#firefox
 galculator
 gedit
-gimp
-gksu # for octopi
+#gimp
+gksu
 gnome-vfs
+gparted
 gvfs
-gvfs-afc
-gvfs-afp
-gvfs-gphoto2
-gvfs-mtp
-gvfs-smb
-hexchat
+#gvfs-afc
+#gvfs-afp
+#gvfs-gphoto2
+#gvfs-mtp
+#gvfs-smb
+#hexchat
 #lxmed
 manjaro-welcome
+midori
 mlocate
-pidgin
-thunderbird
+parole
+#pidgin
+#thunderbird
 viewnior
-vlc
-xfburn
-xnoise
+#vlc
+#xfburn
+#xnoise
 yelp
 
 ## Xorg Packages
@@ -115,18 +116,18 @@ xorg-xinit
 
 ## Artwork
 manjaro-artwork
-plymouth-theme-manjaro
+#plymouth-theme-manjaro
 
 ## Packages for Sound and Audio
-gst-libav
-gst-plugins-bad
-gst-plugins-base
-gst-plugins-good
-gst-plugins-ugly
-gstreamer0.10-bad-plugins
-gstreamer0.10-base-plugins
-gstreamer0.10-good-plugins
-gstreamer0.10-ugly-plugins
+#gst-libav
+#gst-plugins-bad
+#gst-plugins-base
+#gst-plugins-good
+#gst-plugins-ugly
+#gstreamer0.10-bad-plugins
+#gstreamer0.10-base-plugins
+#gstreamer0.10-good-plugins
+#gstreamer0.10-ugly-plugins
 flashplugin
 libdvdcss
 manjaro-alsa
@@ -140,42 +141,42 @@ lxpolkit
 pamac
 
 ## Games
-steam
+#steam
 
 ## Fonts
 ttf-source-sans-pro
 
 ## Java
-icedtea-web-java7
+#icedtea-web-java7
 
 ## Printing
-manjaro-printer
+#manjaro-printer
 
 ## Office
 #abiword
 #gnumeric
-#libreoffice-installer
-libreoffice-en-US
+libreoffice-installer
+#libreoffice-dummy
 #libreoffice-base
-libreoffice-calc
+#libreoffice-calc
 #libreoffice-draw
-libreoffice-gnome
-libreoffice-impress
-libreoffice-math
+#libreoffice-gnome
+#libreoffice-impress
+#libreoffice-math
 #libreoffice-postgresql-connector
-libreoffice-writer
+#libreoffice-writer
 
 ## AUR Access
-autoconf
-automake
-binutils
-bison
-fakeroot
-flex
-gcc 
-libtool
-m4
-make
-patch
-subversion 
-yaourt
+#autoconf
+#automake
+#binutils
+#bison
+#fakeroot
+#flex
+#gcc 
+#libtool
+#m4
+#make
+#patch
+#subversion 
+#yaourt

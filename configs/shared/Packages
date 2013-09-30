@@ -41,8 +41,7 @@ tcpdump
 wget
 
 ## efi support
-efilinux-efi
-gummiboot-efi
+gummiboot
 refind-efi
 
 ## Filesystem Packages
@@ -53,6 +52,7 @@ testdisk
 nilfs-utils
 nfs-utils
 ntfsprogs
+ecryptfs-utils
 
 ## Fonts
 terminus-font

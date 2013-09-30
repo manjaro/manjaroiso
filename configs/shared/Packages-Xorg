@@ -55,9 +55,9 @@ KERNEL-open-vm-tools-modules
 open-vm-tools
 
 ## Cleanup Xorg packages
->cleanup xf86-input-evdev
->cleanup xf86-input-joystick
->cleanup xf86-input-keyboard
->cleanup xf86-input-mouse
->cleanup xf86-input-synaptics
->cleanup xf86-input-void
+>cleanup xf86-input-evdev*
+>cleanup xf86-input-joystick*
+>cleanup xf86-input-keyboard*
+>cleanup xf86-input-mouse*
+>cleanup xf86-input-synaptics*
+>cleanup xf86-input-void*
