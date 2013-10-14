@@ -1,5 +1,4 @@
 ### Manjaro Packages
-#live-installer
 
 ## Xorg Packages
 inxi
@@ -72,7 +71,7 @@ xscreensaver
 xterm
 
 ## Graphical installer
-live-installer
+thus
 
 ## Packages for Sound and Audio
 manjaro-alsa
