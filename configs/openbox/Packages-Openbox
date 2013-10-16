@@ -60,7 +60,6 @@ networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
 nitrogen
-numlockx
 parcellite
 polkit-gnome
 python2-xdg # Necessary to enable use of .desktop files in /etc/xdg
