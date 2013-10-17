@@ -43,7 +43,7 @@ ${font sans:size=70}${alignr}${color #696969}${time %H:%M}${voffset -27}${voffse
 ${font sans:size=25}${alignr}${time %a %d %B %Y}${voffset -15}
 ${font sans:bold:size=9}${alignr}${color #006400}CPU ${color #696969}${cpu cpu0}% - ${color #006400}RAM ${color #696969}$mem - ${color #006400}HD ${color #696969}$fs_used - ${color #006400}BAT ${color #696969}$battery_percent% - ${color #006400}UP ${color #696969}$uptime_short
 ${hr 1}${voffset 5}
-${font sans:bold:size=9}${alignr}${color #B22222}Shift + Left-Mouse
+${font sans:bold:size=9}${alignr}${color #B22222}Super + Left-Mouse
 ${alignr}${color #696969}Drag Window${voffset -5}
 
 ${font sans:bold:size=9}${alignr}${color #B22222}Super + d
