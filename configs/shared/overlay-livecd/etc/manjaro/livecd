@@ -116,7 +116,7 @@ if [ -e "/usr/bin/gdm" ] ; then
      if [ -e "/usr/bin/startxfce4" ] ; then
         echo "XSession=xfce" >> /var/lib/AccountsService/users/gdm
      fi
-     if [ -e "/usr/bin/cinnamon" ] ; then
+     if [ -e "/usr/bin/cinnamon-session" ] ; then
         echo "XSession=cinnamon" >> /var/lib/AccountsService/users/gdm
      fi
      if [ -e "/usr/bin/mate-session" ] ; then
@@ -145,7 +145,7 @@ if [ -e "/usr/bin/mdm" ] ; then
   if [ -e "/usr/bin/startxfce4" ] ; then
       sed -i 's|default.desktop|xfce.desktop|g' /etc/mdm/custom.conf
   fi
-  if [ -e "/usr/bin/gnome-session-cinnamon" ] ; then
+  if [ -e "/usr/bin/cinnamon-session" ] ; then
       sed -i 's|default.desktop|cinnamon.desktop|g' /etc/mdm/custom.conf
   fi
   if [ -e "/usr/bin/openbox-session" ] ; then
@@ -169,7 +169,7 @@ if [ -e "/usr/bin/sddm" ] ; then
   if [ -e "/usr/bin/startxfce4" ] ; then
       sed -i -e 's|^.*LastSession=.*|LastSession=xfce.desktop|' /etc/sddm.conf
   fi
-  if [ -e "/usr/bin/gnome-session-cinnamon" ] ; then
+  if [ -e "/usr/bin/cinnamon-session" ] ; then
       sed -i -e 's|^.*LastSession=.*|LastSession=cinnamon.desktop|' /etc/sddm.conf
   fi
   if [ -e "/usr/bin/openbox-session" ] ; then
@@ -195,8 +195,8 @@ if [ -e "/usr/bin/lxdm" ] ; then
    if [ -e "/usr/bin/startxfce4" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/startxfce4|' /etc/lxdm/lxdm.conf
    fi
-   if [ -e "/usr/bin/gnome-session-cinnamon" ] ; then
-      sed -i -e 's|^.*session=.*|session=/usr/bin/gnome-session-cinnamon|' /etc/lxdm/lxdm.conf
+   if [ -e "/usr/bin/cinnamon-session" ] ; then
+      sed -i -e 's|^.*session=.*|session=/usr/bin/cinnamon-session|' /etc/lxdm/lxdm.conf
    fi
    if [ -e "/usr/bin/mate-session" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/mate-session|' /etc/lxdm/lxdm.conf
