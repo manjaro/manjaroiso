@@ -103,7 +103,7 @@ xcursor-themes
 
 ## Artwork
 manjaro-artwork-openbox
-plymouth-theme-manjaro
+#plymouth-theme-manjaro
 
 ## Multimedia Support
 gst-libav
