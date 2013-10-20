@@ -348,10 +348,10 @@ make_efi() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
         echo -e -n "$_r >$_W Prepare ${install_dir}/boot/EFI \n $_n"
         mkdir -p ${work_dir}/iso/EFI/boot
-        cp ${work_dir}/x86_64/root-image/usr/lib/prebootloader/PreLoader.efi ${work_dir}/iso/EFI/boot/bootx64.efi
-        cp ${work_dir}/x86_64/root-image/usr/lib/prebootloader/HashTool.efi ${work_dir}/iso/EFI/boot/
+        cp ${work_dir}/root-image/usr/lib/prebootloader/PreLoader.efi ${work_dir}/iso/EFI/boot/bootx64.efi
+        cp ${work_dir}/root-image/usr/lib/prebootloader/HashTool.efi ${work_dir}/iso/EFI/boot/
 
-        cp ${work_dir}/x86_64/root-image/usr/lib/gummiboot/gummibootx64.efi ${work_dir}/iso/EFI/boot/loader.efi
+        cp ${work_dir}/root-image/usr/lib/gummiboot/gummibootx64.efi ${work_dir}/iso/EFI/boot/loader.efi
 
         mkdir -p ${work_dir}/iso/loader/entries
         cp efiboot/loader/loader.conf ${work_dir}/iso/loader/
@@ -390,10 +390,10 @@ make_efiboot() {
         cp ${work_dir}/iso/${install_dir}/boot/x86_64/manjaro.img ${work_dir}/efiboot/EFI/miso/manjaro.img
 
         mkdir -p ${work_dir}/efiboot/EFI/boot
-        cp ${work_dir}/x86_64/root-image/usr/lib/prebootloader/PreLoader.efi ${work_dir}/efiboot/EFI/boot/bootx64.efi
-        cp ${work_dir}/x86_64/root-image/usr/lib/prebootloader/HashTool.efi ${work_dir}/efiboot/EFI/boot/
+        cp ${work_dir}/root-image/usr/lib/prebootloader/PreLoader.efi ${work_dir}/efiboot/EFI/boot/bootx64.efi
+        cp ${work_dir}/root-image/usr/lib/prebootloader/HashTool.efi ${work_dir}/efiboot/EFI/boot/
 
-        cp ${work_dir}/x86_64/root-image/usr/lib/gummiboot/gummibootx64.efi ${work_dir}/efiboot/EFI/boot/loader.efi
+        cp ${work_dir}/root-image/usr/lib/gummiboot/gummibootx64.efi ${work_dir}/efiboot/EFI/boot/loader.efi
 
         mkdir -p ${work_dir}/efiboot/loader/entries
         cp efiboot/loader/loader.conf ${work_dir}/efiboot/loader/
@@ -498,8 +498,8 @@ fi
 # install common
 make_boot
 if [ "${arch}" == "x86_64" ]; then
-   make_efi
-   make_efiboot
+    make_efi
+    make_efiboot
 fi
 make_isolinux
 make_overlay
