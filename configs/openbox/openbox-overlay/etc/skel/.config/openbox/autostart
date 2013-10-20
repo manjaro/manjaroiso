@@ -20,6 +20,7 @@ compton ~/.config/compton.conf &
 # Thunar is run in daemon-mode to enable auto-mounting of removable media
 (sleep 1s && xscreensaver -no-splash) &
 (sleep 1s && thunar --daemon) &
+(sleep 1s && numlockx) &
 (sleep 4s && conky) &
 
 

@@ -20,6 +20,7 @@ compton ~/.config/compton.conf &
 # Udiskie is run for mounting in place of thunar-daemon to fix installer quirk
 (sleep 1s && xscreensaver -no-splash) &
 (sleep 1s && udiskie) &
+(sleep 1s && numlockx) &
 (sleep 4s && conky) &
 
 

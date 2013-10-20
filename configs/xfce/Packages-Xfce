@@ -7,7 +7,6 @@ ffmpegthumbnailer
 gconf # fix qt-theme
 gnome-keyring # fix wlan segfault
 gufw # firewall
-live-installer
 manjaro-settings-manager
 mdm-themes
 network-manager-applet
@@ -15,14 +14,13 @@ networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
-opencv # webcam support for live-installer
 orage
 #plank
 poppler-glib
 polkit-gnome
 thunar-archive-plugin
 thunar-media-tags-plugin
-tumbler
+thus
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xfce4
@@ -69,8 +67,9 @@ firefox
 galculator
 gedit
 gimp
-gksu # for octopi
+gksu
 gnome-vfs
+gparted
 gvfs
 gvfs-afc
 gvfs-afp
@@ -78,9 +77,11 @@ gvfs-gphoto2
 gvfs-mtp
 gvfs-smb
 hexchat
-#lxmed
+lxmed
 manjaro-welcome
+#midori
 mlocate
+parole
 pidgin
 thunderbird
 viewnior
@@ -115,7 +116,7 @@ xorg-xinit
 
 ## Artwork
 manjaro-artwork
-plymouth-theme-manjaro
+#plymouth-theme-manjaro
 
 ## Packages for Sound and Audio
 gst-libav
@@ -172,10 +173,10 @@ binutils
 bison
 fakeroot
 flex
-gcc 
+gcc
 libtool
 m4
 make
 patch
-subversion 
+subversion
 yaourt

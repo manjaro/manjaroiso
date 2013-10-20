@@ -116,7 +116,7 @@ if [ -e "/usr/bin/gdm" ] ; then
      if [ -e "/usr/bin/startxfce4" ] ; then
         echo "XSession=xfce" >> /var/lib/AccountsService/users/gdm
      fi
-     if [ -e "/usr/bin/cinnamon" ] ; then
+     if [ -e "/usr/bin/cinnamon-session" ] ; then
         echo "XSession=cinnamon" >> /var/lib/AccountsService/users/gdm
      fi
      if [ -e "/usr/bin/mate-session" ] ; then
@@ -145,7 +145,7 @@ if [ -e "/usr/bin/mdm" ] ; then
   if [ -e "/usr/bin/startxfce4" ] ; then
       sed -i 's|default.desktop|xfce.desktop|g' /etc/mdm/custom.conf
   fi
-  if [ -e "/usr/bin/gnome-session-cinnamon" ] ; then
+  if [ -e "/usr/bin/cinnamon-session" ] ; then
       sed -i 's|default.desktop|cinnamon.desktop|g' /etc/mdm/custom.conf
   fi
   if [ -e "/usr/bin/openbox-session" ] ; then
@@ -169,7 +169,7 @@ if [ -e "/usr/bin/sddm" ] ; then
   if [ -e "/usr/bin/startxfce4" ] ; then
       sed -i -e 's|^.*LastSession=.*|LastSession=xfce.desktop|' /etc/sddm.conf
   fi
-  if [ -e "/usr/bin/gnome-session-cinnamon" ] ; then
+  if [ -e "/usr/bin/cinnamon-session" ] ; then
       sed -i -e 's|^.*LastSession=.*|LastSession=cinnamon.desktop|' /etc/sddm.conf
   fi
   if [ -e "/usr/bin/openbox-session" ] ; then
@@ -195,8 +195,8 @@ if [ -e "/usr/bin/lxdm" ] ; then
    if [ -e "/usr/bin/startxfce4" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/startxfce4|' /etc/lxdm/lxdm.conf
    fi
-   if [ -e "/usr/bin/gnome-session-cinnamon" ] ; then
-      sed -i -e 's|^.*session=.*|session=/usr/bin/gnome-session-cinnamon|' /etc/lxdm/lxdm.conf
+   if [ -e "/usr/bin/cinnamon-session" ] ; then
+      sed -i -e 's|^.*session=.*|session=/usr/bin/cinnamon-session|' /etc/lxdm/lxdm.conf
    fi
    if [ -e "/usr/bin/mate-session" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/mate-session|' /etc/lxdm/lxdm.conf
@@ -280,53 +280,58 @@ if [ -e "/usr/bin/kalu" ] ; then
    _rm_kalu
 fi
 
-# update /etc/live-installer/install.conf
 if [ -e "/etc/live-installer/install.conf" ] ; then
    echo "configure live-installer" >> /tmp/livecd.log
-   sed -i 's|_root-image_|/bootmnt/manjaro/_ARCH_/root-image.sqfs|g' /etc/live-installer/install.conf
-   sed -i "s|_kernel_|$manjaro_kernel|g" /etc/live-installer/install.conf
-   release=$(cat /etc/lsb-release | grep DISTRIB_RELEASE | cut -d= -f2)
-   sed -i "s|_version_|$release|g" /etc/live-installer/install.conf
+   _conf_file="/etc/live-installer/install.conf"
+fi
+if [ -e "/etc/thus.conf" ] ; then
+   echo "configure thus" >> /tmp/livecd.log
+   _conf_file="/etc/thus.conf"
+fi
 
-   if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
-      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/xfce-image.sqfs|g' /etc/live-installer/install.conf
-      sed -i 's|_title_|Manjaro XFCE Edition|g' /etc/live-installer/install.conf
-   fi
-   if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
-      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/gnome-image.sqfs|g' /etc/live-installer/install.conf
-      sed -i 's|_title_|Manjaro Gnome Edition|g' /etc/live-installer/install.conf
-   fi
-   if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
-      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/cinnamon-image.sqfs|g' /etc/live-installer/install.conf
-      sed -i 's|_title_|Manjaro Cinnamon Edition|g' /etc/live-installer/install.conf
-   fi
-   if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
-      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/openbox-image.sqfs|g' /etc/live-installer/install.conf
-      sed -i 's|_title_|Manjaro Openbox Edition|g' /etc/live-installer/install.conf
-   fi
-   if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
-      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/mate-image.sqfs|g' /etc/live-installer/install.conf
-      sed -i 's|_title_|Manjaro MATE Edition|g' /etc/live-installer/install.conf
-   fi
-   if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
-      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/kde-image.sqfs|g' /etc/live-installer/install.conf
-      sed -i 's|_title_|Manjaro KDE Edition|g' /etc/live-installer/install.conf
-   fi
-   if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
-      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/lxde-image.sqfs|g' /etc/live-installer/install.conf
-      sed -i 's|_title_|Manjaro LXDE Edition|g' /etc/live-installer/install.conf
-   fi
-   if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
-      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/e17-image.sqfs|g' /etc/live-installer/install.conf
-      sed -i 's|_title_|Manjaro E17 Edition|g' /etc/live-installer/install.conf
-   fi
-   if [ -e "/bootmnt/manjaro/${arch}/custom-image.sqfs" ] ; then
-      sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/custom-image.sqfs|g' /etc/live-installer/install.conf
-      sed -i 's|_title_|Manjaro Custom Edition|g' /etc/live-installer/install.conf
-   fi
-   if [ "${arch}" == "i686" ] ; then
-      sed -i 's|_ARCH_|i686|g' /etc/live-installer/install.conf
-   else
-      sed -i 's|_ARCH_|x86_64|g' /etc/live-installer/install.conf
-   fi
+sed -i 's|_root-image_|/bootmnt/manjaro/_ARCH_/root-image.sqfs|g' $_conf_file
+sed -i "s|_kernel_|$manjaro_kernel|g" $_conf_file
+release=$(cat /etc/lsb-release | grep DISTRIB_RELEASE | cut -d= -f2)
+sed -i "s|_version_|$release|g" $_conf_file
+
+if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+   sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/xfce-image.sqfs|g' $_conf_file
+   sed -i 's|_title_|Manjaro XFCE Edition|g' $_conf_file
+fi
+if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
+   sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/gnome-image.sqfs|g' $_conf_file
+   sed -i 's|_title_|Manjaro Gnome Edition|g' $_conf_file
+fi
+if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
+   sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/cinnamon-image.sqfs|g' $_conf_file
+   sed -i 's|_title_|Manjaro Cinnamon Edition|g' $_conf_file
+fi
+if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
+   sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/openbox-image.sqfs|g' $_conf_file
+   sed -i 's|_title_|Manjaro Openbox Edition|g' $_conf_file
+fi
+if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+   sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/mate-image.sqfs|g' $_conf_file
+   sed -i 's|_title_|Manjaro MATE Edition|g' $_conf_file
+fi
+if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
+   sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/kde-image.sqfs|g' $_conf_file
+   sed -i 's|_title_|Manjaro KDE Edition|g' $_conf_file
+fi
+if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
+   sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/lxde-image.sqfs|g' $_conf_file
+   sed -i 's|_title_|Manjaro LXDE Edition|g' $_conf_file
+fi
+if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+   sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/e17-image.sqfs|g' $_conf_file
+   sed -i 's|_title_|Manjaro E17 Edition|g' $_conf_file
+fi
+if [ -e "/bootmnt/manjaro/${arch}/custom-image.sqfs" ] ; then
+   sed -i 's|_desktop_|/bootmnt/manjaro/_ARCH_/custom-image.sqfs|g' $_conf_file
+   sed -i 's|_title_|Manjaro Custom Edition|g' $_conf_file
+fi
+if [ "${arch}" == "i686" ] ; then
+   sed -i 's|_ARCH_|i686|g' $_conf_file
+else
+   sed -i 's|_ARCH_|x86_64|g' $_conf_file
 fi
