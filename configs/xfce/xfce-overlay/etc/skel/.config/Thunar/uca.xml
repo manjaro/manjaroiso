@@ -27,13 +27,4 @@
 	<patterns>*</patterns>
 	<directories/>
 </action>
-<action>
-	<icon>system-software-installer</icon>
-	<name>Pamac - install local package</name>
-	<unique-id>1381597648312569-4</unique-id>
-	<command>pamac-install %F</command>
-	<description>Install local package</description>
-	<patterns>*pkg.tar.*z</patterns>
-	<other-files/>
-</action>
 </actions>

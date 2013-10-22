@@ -1,7 +1,7 @@
 button-icon=/usr/share/icons/manjaro.png
 launcher-show-name=true
 launcher-show-description=true
-favorites=exo-terminal-emulator.desktop,exo-file-manager.desktop,exo-web-browser.desktop,parole.desktop,pamac-manager.desktop,thus.desktop,installer-launcher-cli.desktop
+favorites=exo-terminal-emulator.desktop,exo-file-manager.desktop,exo-web-browser.desktop,exo-mail-reader.desktop,pamac-manager.desktop,thus.desktop,installer-launcher-cli.desktop
 recent=exo-terminal-emulator.desktop
 menu-width=400
 menu-height=519
