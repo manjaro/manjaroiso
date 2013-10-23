@@ -8,84 +8,152 @@
 ## Location  : United_States
 ## Time      : 0.560
 ## Last Sync : 0:19
+<<<<<<< HEAD
 Server = http://mirror.dacentec.com/manjaro/stable/$repo/$arch
+=======
+Server = http://mirror.dacentec.com/manjaro/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : Germany
 ## Time      : 0.119
 ## Last Sync : 1:59
+<<<<<<< HEAD
 Server = http://ftp.tu-chemnitz.de/pub/linux/manjaro/stable/$repo/$arch
+=======
+Server = http://ftp.tu-chemnitz.de/pub/linux/manjaro/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : Germany
 ## Time      : 0.120
 ## Last Sync : 3:39
+<<<<<<< HEAD
 Server = http://ftp.rz.tu-bs.de/pub/mirror/manjaro.org/repos/stable/$repo/$arch
+=======
+Server = http://ftp.rz.tu-bs.de/pub/mirror/manjaro.org/repos/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : Belgium
 ## Time      : 0.139
 ## Last Sync : 1:19
+<<<<<<< HEAD
 Server = http://ftp.belnet.be/manjaro/stable/$repo/$arch
+=======
+Server = http://ftp.belnet.be/manjaro/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : Romania
 ## Time      : 0.146
 ## Last Sync : 3:19
+<<<<<<< HEAD
 Server = http://ftp.lug.ro/manjaro/stable/$repo/$arch
+=======
+Server = http://ftp.lug.ro/manjaro/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : United_Kingdom
 ## Time      : 0.153
 ## Last Sync : 2:39
+<<<<<<< HEAD
 Server = http://www.mirrorservice.org/sites/repo.manjaro.org/repos/stable/$repo/$arch
+=======
+Server = http://www.mirrorservice.org/sites/repo.manjaro.org/repos/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : France
 ## Time      : 0.162
 ## Last Sync : 0:29
+<<<<<<< HEAD
 Server = http://manjarolinux.polymorf.fr/stable/$repo/$arch
+=======
+Server = http://manjarolinux.polymorf.fr/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : Russia
 ## Time      : 0.203
 ## Last Sync : 0:39
+<<<<<<< HEAD
 Server = http://mirror.yandex.ru/mirrors/manjaro/stable/$repo/$arch
+=======
+Server = http://mirror.yandex.ru/mirrors/manjaro/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : Sweden
 ## Time      : 0.246
 ## Last Sync : 3:39
+<<<<<<< HEAD
 Server = http://mirror.zetup.net/manjaro/stable/$repo/$arch
+=======
+Server = http://mirror.zetup.net/manjaro/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : United_Kingdom
 ## Time      : 0.255
 ## Last Sync : 0:39
+<<<<<<< HEAD
 Server = http://repo.manjaro.org.uk/stable/$repo/$arch
+=======
+Server = http://repo.manjaro.org.uk/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : Sweden
 ## Time      : 0.259
 ## Last Sync : 1:39
+<<<<<<< HEAD
 Server = http://ftp.lysator.liu.se/pub/manjaro/stable/$repo/$arch
+=======
+Server = http://ftp.lysator.liu.se/pub/manjaro/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : Ireland
 ## Time      : 0.274
 ## Last Sync : 1:59
+<<<<<<< HEAD
 Server = http://ftp.heanet.ie/mirrors/manjaro/stable/$repo/$arch
+=======
+Server = http://ftp.heanet.ie/mirrors/manjaro/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : Denmark
 ## Time      : 0.349
 ## Last Sync : 1:09
+<<<<<<< HEAD
 Server = http://mirrors.dotsrc.org/manjaro/stable/$repo/$arch
+=======
+Server = http://mirrors.dotsrc.org/manjaro/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : United_Kingdom
 ## Time      : 0.436
 ## Last Sync : 0:49
+<<<<<<< HEAD
 Server = http://manjaro.mirrors.uk2.net/stable/$repo/$arch
+=======
+Server = http://manjaro.mirrors.uk2.net/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : Brasil
 ## Time      : 1.208
 ## Last Sync : 3:39
+<<<<<<< HEAD
 Server = http://www.las.ic.unicamp.br/pub/manjarolinux/stable/$repo/$arch
+=======
+Server = http://www.las.ic.unicamp.br/pub/manjarolinux/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : Netherlands
 ## Time      : 1.628
 ## Last Sync : 1:39
+<<<<<<< HEAD
 Server = http://ftp.nluug.nl/pub/os/Linux/distr/manjaro/stable/$repo/$arch
+=======
+Server = http://ftp.nluug.nl/pub/os/Linux/distr/manjaro/unstable/$repo/$arch
+>>>>>>> origin/development
 
 ## Location  : Brasil
 ## Time      : 2.082
 ## Last Sync : 1:49
+<<<<<<< HEAD
 Server = http://manjaro.fis.unb.br/stable/$repo/$arch
+=======
+Server = http://manjaro.fis.unb.br/unstable/$repo/$arch
+>>>>>>> origin/development
