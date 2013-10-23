@@ -198,6 +198,11 @@ if [ -e "${pkgsfile}" ] ; then
                  mkdir -p "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants"
                  ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants/cups.service"
               fi
+              # Copy pacman.conf from profile if it is mate
+              if [ "${desktop}" == "mate" ] ; then
+                 mkdir -p ${work_dir}/${desktop}-image/etc
+                 cp pacman-${arch}.conf ${work_dir}/${desktop}-image/etc/pacman.conf
+              fi
               umount -l ${work_dir}/${desktop}-image
               rm -R ${work_dir}/${desktop}-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
@@ -338,208 +343,78 @@ make_boot() {
     fi
 }
 
-# Prepare ${install_dir}/boot/EFI
+# Prepare /EFI
 make_efi() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
-        if [[ ${arch} == "x86_64" ]]; then
-            echo -e -n "$_r >$_W Prepare ${install_dir}/boot/EFI \n $_n"
-            mkdir -p ${work_dir}/iso/EFI/boot
-            cp ${work_dir}/root-image/usr/share/refind/refind_x64.efi ${work_dir}/iso/EFI/boot/bootx64.efi
+        echo -e -n "$_r >$_W Prepare ${install_dir}/boot/EFI \n $_n"
+        mkdir -p ${work_dir}/iso/EFI/boot
+        cp ${work_dir}/root-image/usr/lib/prebootloader/PreLoader.efi ${work_dir}/iso/EFI/boot/bootx64.efi
+        cp ${work_dir}/root-image/usr/lib/prebootloader/HashTool.efi ${work_dir}/iso/EFI/boot/
 
-            cp -rf ${work_dir}/root-image/usr/share/refind/icons ${work_dir}/iso/EFI/boot
-	
-            mkdir -p ${work_dir}/iso/EFI/tools
-            cp -rf ${work_dir}/root-image/usr/share/refind/drivers_x64 ${work_dir}/iso/EFI/tools
+        cp ${work_dir}/root-image/usr/lib/gummiboot/gummibootx64.efi ${work_dir}/iso/EFI/boot/loader.efi
 
-cat << EOF > "${work_dir}/iso/EFI/boot/refind.conf"
-timeout 5
+        mkdir -p ${work_dir}/iso/loader/entries
+        cp efiboot/loader/loader.conf ${work_dir}/iso/loader/
+        cp efiboot/loader/entries/uefi-shell-v2-x86_64.conf ${work_dir}/iso/loader/entries/
+        cp efiboot/loader/entries/uefi-shell-v1-x86_64.conf ${work_dir}/iso/loader/entries/
 
-hideui singleuser
+        sed "s|%MISO_LABEL%|${iso_label}|g;
+             s|%INSTALL_DIR%|${install_dir}|g" \
+            efiboot/loader/entries/manjaroiso-x86_64-usb.conf > ${work_dir}/iso/loader/entries/manjaroiso-x86_64.conf
 
-textonly
-#resolution 1024 768
+        sed "s|%MISO_LABEL%|${iso_label}|g;
+             s|%INSTALL_DIR%|${install_dir}|g" \
+            efiboot/loader/entries/manjaroiso-x86_64-nonfree-usb.conf > ${work_dir}/iso/loader/entries/manjaroiso-x86_64-nonfree.conf
 
-use_graphics_for osx
-
-showtools about,reboot,shutdown,exit
-
-scan_driver_dirs EFI/tools/drivers_x64
-
-scanfor manual,internal,external,optical
-
-scan_delay 1
-
-#also_scan_dirs boot
-
-dont_scan_dirs EFI/boot
-
-#scan_all_linux_kernels
-
-max_tags 0
-
-default_selection "Manjaro Linux x86_64 UEFI USB (default)"
-
-menuentry "Manjaro Linux x86_64 UEFI USB (default)" {
-	icon /EFI/boot/icons/os_linux.icns
-	loader /${install_dir}/boot/x86_64/manjaroiso
-	initrd /${install_dir}/boot/x86_64/manjaro.img
-	ostype Linux
-	graphics off
-	options "gpt loglevel=7 pci=nocrs add_efi_memmap none=UEFI_ARCH_x64 misobasedir=${install_dir} misolabel=${iso_label} nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 logo.nologo overlay=free"
-}
-
-menuentry "Manjaro Linux x86_64 UEFI USB (nonfree)" {
-	icon /EFI/boot/icons/os_linux.icns
-	loader /${install_dir}/boot/x86_64/manjaroiso
-	initrd /${install_dir}/boot/x86_64/manjaro.img
-	ostype Linux
-	graphics off
-	options "gpt loglevel=7 pci=nocrs add_efi_memmap none=UEFI_ARCH_x64 misobasedir=${install_dir} misolabel=${iso_label} nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 logo.nologo overlay=nonfree nonfree=yes"
-}
-
-menuentry "Manjaro Linux x86_64 UEFI USB (textmode)" {
-	icon /EFI/boot/icons/os_linux.icns
-	loader /${install_dir}/boot/x86_64/manjaroiso
-	initrd /${install_dir}/boot/x86_64/manjaro.img
-	ostype Linux
-	graphics off
-	options "gpt loglevel=7 pci=nocrs add_efi_memmap none=UEFI_ARCH_x64 misobasedir=${install_dir} misolabel=${iso_label} nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 logo.nologo overlay=free 3"
-}
-
-menuentry "UEFI x64 Shell v2" {
-	icon /EFI/boot/icons/tool_shell.icns
-	loader /EFI/tools/shellx64_v2.efi
-	graphics off
-}
-
-menuentry "UEFI x64 Shell v1" {
-	icon /EFI/boot/icons/tool_shell.icns
-	loader /EFI/tools/shellx64_v1.efi
-	graphics off
-}
-EOF
-
-            if [[ -e ${work_dir}/iso/EFI/tools/shellx64_v2.efi ]]; then
-               rm ${work_dir}/iso/EFI/tools/shellx64_v2.efi
-            fi
-
-            if [[ -e ${work_dir}/iso/EFI/tools/shellx64_v1.efi ]]; then
-               rm ${work_dir}/iso/EFI/tools/shellx64_v1.efi
-            fi
-
-            ## Download Tianocore UDK/EDK2 ShellBinPkg UEFI "Full Shell" - For UEFI Spec. >=2.3 systems
-            curl --verbose -f -C - --ftp-pasv --retry 3 --retry-delay 3 -o ${work_dir}/iso/EFI/tools/shellx64_v2.efi https://edk2.svn.sourceforge.net/svnroot/edk2/trunk/edk2/ShellBinPkg/UefiShell/X64/Shell.efi
-	
-            ## Download Tianocore UDK/EDK2 EdkShellBinPkg UEFI "Full Shell" - For UEFI Spec. <2.3 systems
-            curl --verbose -f -C - --ftp-pasv --retry 3 --retry-delay 3 -o ${work_dir}/iso/EFI/tools/shellx64_v1.efi https://edk2.svn.sourceforge.net/svnroot/edk2/trunk/edk2/EdkShellBinPkg/FullShell/X64/Shell_Full.efi
-	
-
-        fi
+        # EFI Shell 2.0 for UEFI 2.3+ ( http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=UEFI_Shell )
+        curl -o ${work_dir}/iso/EFI/shellx64_v2.efi https://svn.code.sf.net/p/edk2/code/trunk/edk2/ShellBinPkg/UefiShell/X64/Shell.efi
+        # EFI Shell 1.0 for non UEFI 2.3+ ( http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=Efi-shell )
+        curl -o ${work_dir}/iso/EFI/shellx64_v1.efi https://svn.code.sf.net/p/edk2/code/trunk/edk2/EdkShellBinPkg/FullShell/X64/Shell_Full.efi
         : > ${work_dir}/build.${FUNCNAME}
+        echo -e "$_g >$_W done $_n"
     fi
 }
 
-# Prepare ${install_dir}/iso/EFI
+# Prepare manjaro.img::/EFI for "El Torito" EFI boot mode
 make_efiboot() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
-        if [[ ${arch} == "x86_64" ]]; then
-            echo -e -n "$_r >$_W Prepare ${install_dir}/iso/EFI \n $_n"
-            mkdir -p ${work_dir}/iso/EFI/miso
-            truncate -s 31M ${work_dir}/iso/EFI/miso/manjaro.img
-            mkfs.vfat -n MISO_EFI ${work_dir}/iso/EFI/miso/manjaro.img
+        echo -e -n "$_r >$_W Prepare ${install_dir}/iso/EFI \n $_n"
+        mkdir -p ${work_dir}/iso/EFI/miso
+        truncate -s 31M ${work_dir}/iso/EFI/miso/manjaro.img
+        mkfs.vfat -n MISO_EFI ${work_dir}/iso/EFI/miso/manjaro.img
 
-            mkdir -p ${work_dir}/efiboot
-            mount ${work_dir}/iso/EFI/miso/manjaro.img ${work_dir}/efiboot
+        mkdir -p ${work_dir}/efiboot
+        mount ${work_dir}/iso/EFI/miso/manjaro.img ${work_dir}/efiboot
 
-            mkdir -p ${work_dir}/efiboot/EFI/miso
-            cp ${work_dir}/iso/${install_dir}/boot/x86_64/manjaroiso ${work_dir}/efiboot/EFI/miso/manjaroiso.efi
-            cp ${work_dir}/iso/${install_dir}/boot/x86_64/manjaro.img ${work_dir}/efiboot/EFI/miso/manjaro.img
+        mkdir -p ${work_dir}/efiboot/EFI/miso
+        cp ${work_dir}/iso/${install_dir}/boot/x86_64/manjaroiso ${work_dir}/efiboot/EFI/miso/manjaroiso.efi
+        cp ${work_dir}/iso/${install_dir}/boot/x86_64/manjaro.img ${work_dir}/efiboot/EFI/miso/manjaro.img
 
-            mkdir -p ${work_dir}/efiboot/EFI/boot
-            cp ${work_dir}/root-image/usr/share/refind/refind_x64.efi ${work_dir}/efiboot/EFI/boot/bootx64.efi
+        mkdir -p ${work_dir}/efiboot/EFI/boot
+        cp ${work_dir}/root-image/usr/lib/prebootloader/PreLoader.efi ${work_dir}/efiboot/EFI/boot/bootx64.efi
+        cp ${work_dir}/root-image/usr/lib/prebootloader/HashTool.efi ${work_dir}/efiboot/EFI/boot/
 
-            cp -rf ${work_dir}/root-image/usr/share/refind/icons ${work_dir}/efiboot/EFI/boot
-	
-            mkdir -p ${work_dir}/efiboot/EFI/tools
-            cp -rf ${work_dir}/root-image/usr/share/refind/drivers_x64 ${work_dir}/efiboot/EFI/tools
+        cp ${work_dir}/root-image/usr/lib/gummiboot/gummibootx64.efi ${work_dir}/efiboot/EFI/boot/loader.efi
 
-cat << EOF > "${work_dir}/efiboot/EFI/boot/refind.conf"
-timeout 5
+        mkdir -p ${work_dir}/efiboot/loader/entries
+        cp efiboot/loader/loader.conf ${work_dir}/efiboot/loader/
+        cp efiboot/loader/entries/uefi-shell-v2-x86_64.conf ${work_dir}/efiboot/loader/entries/
+        cp efiboot/loader/entries/uefi-shell-v1-x86_64.conf ${work_dir}/efiboot/loader/entries/
 
-hideui singleuser
+        sed "s|%MISO_LABEL%|${iso_label}|g;
+             s|%INSTALL_DIR%|${install_dir}|g" \
+            efiboot/loader/entries/manjaroiso-x86_64-dvd.conf > ${work_dir}/efiboot/loader/entries/manjaroiso-x86_64.conf
 
-textonly
-#resolution 1024 768
+        sed "s|%MISO_LABEL%|${iso_label}|g;
+             s|%INSTALL_DIR%|${install_dir}|g" \
+            efiboot/loader/entries/manjaroiso-x86_64-nonfree-dvd.conf > ${work_dir}/efiboot/loader/entries/manjaroiso-x86_64-nonfree.conf
 
-use_graphics_for osx
+        cp ${work_dir}/iso/EFI/shellx64_v2.efi ${work_dir}/efiboot/EFI/
+        cp ${work_dir}/iso/EFI/shellx64_v1.efi ${work_dir}/efiboot/EFI/
 
-showtools about,reboot,shutdown,exit
-
-scan_driver_dirs EFI/tools/drivers_x64
-
-scanfor manual,internal,external,optical
-
-scan_delay 1
-
-#also_scan_dirs boot
-
-dont_scan_dirs EFI/boot
-
-#scan_all_linux_kernels
-
-max_tags 0
-
-default_selection "Manjaro Linux x86_64 UEFI CD (default)"
-
-menuentry "Manjaro Linux x86_64 UEFI CD (default)" {
-	icon /EFI/boot/icons/os_linux.icns
-	loader /EFI/miso/manjaroiso.efi
-	initrd /EFI/miso/manjaro.img
-	ostype Linux
-	graphics off
-	options "gpt loglevel=7 pci=nocrs add_efi_memmap none=UEFI_ARCH_x64 misobasedir=${install_dir} misolabel=${iso_label} nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 logo.nologo overlay=free"
-}
-
-menuentry "Manjaro Linux x86_64 UEFI CD (nonfree)" {
-	icon /EFI/boot/icons/os_linux.icns
-	loader /EFI/miso/manjaroiso.efi
-	initrd /EFI/miso/manjaro.img
-	ostype Linux
-	graphics off
-	options "gpt loglevel=7 pci=nocrs add_efi_memmap none=UEFI_ARCH_x64 misobasedir=${install_dir} misolabel=${iso_label} nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 logo.nologo overlay=nonfree nonfree=yes"
-}
-
-menuentry "Manjaro Linux x86_64 UEFI CD (textmode)" {
-	icon /EFI/boot/icons/os_linux.icns
-	loader /EFI/miso/manjaroiso.efi
-	initrd /EFI/miso/manjaro.img
-	ostype Linux
-	graphics off
-	options "gpt loglevel=7 pci=nocrs add_efi_memmap none=UEFI_ARCH_x64 misobasedir=${install_dir} misolabel=${iso_label} nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 logo.nologo overlay=free 3"
-}
-
-menuentry "UEFI x64 Shell v2" {
-	icon /EFI/boot/icons/tool_shell.icns
-	loader /EFI/tools/shellx64_v2.efi
-	graphics off
-}
-
-menuentry "UEFI x64 Shell v1" {
-	icon /EFI/boot/icons/tool_shell.icns
-	loader /EFI/tools/shellx64_v1.efi
-	graphics off
-}
-EOF
-
-            cp -R ${work_dir}/iso/EFI/tools ${work_dir}/efiboot/EFI
-
-            # DEBUG
-            #cp -rf ${work_dir}/efiboot ${work_dir}/../efiboot-folder
-
-            umount ${work_dir}/efiboot
-
-        fi
+        umount ${work_dir}/efiboot
         : > ${work_dir}/build.${FUNCNAME}
+        echo -e "$_g >$_W done $_n"
     fi
 }
 
@@ -548,12 +423,23 @@ make_isolinux() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
         echo -e -n "$_r >$_W Prepare ${install_dir}/iso/isolinux \n $_n"
         cp -Lr isolinux ${work_dir}/iso
-        cp ${work_dir}/root-image/usr/lib/syslinux/isolinux.bin ${work_dir}/iso/isolinux/
-        cp ${work_dir}/root-image/usr/lib/syslinux/isohdpfx.bin ${work_dir}/iso/isolinux/
+        cp ${work_dir}/root-image/usr/lib/syslinux/bios/isolinux.bin ${work_dir}/iso/isolinux/
+        cp ${work_dir}/root-image/usr/lib/syslinux/bios/isohdpfx.bin ${work_dir}/iso/isolinux/
+        cp ${work_dir}/root-image/usr/lib/syslinux/bios/ldlinux.c32 ${work_dir}/iso/isolinux/
+        cp ${work_dir}/root-image/usr/lib/syslinux/bios/gfxboot.c32 ${work_dir}/iso/isolinux/
+        cp ${work_dir}/root-image/usr/lib/syslinux/bios/whichsys.c32 ${work_dir}/iso/isolinux/
+        cp ${work_dir}/root-image/usr/lib/syslinux/bios/mboot.c32 ${work_dir}/iso/isolinux/
+        cp ${work_dir}/root-image/usr/lib/syslinux/bios/hdt.c32 ${work_dir}/iso/isolinux/
+        cp ${work_dir}/root-image/usr/lib/syslinux/bios/chain.c32 ${work_dir}/iso/isolinux/
+        cp ${work_dir}/root-image/usr/lib/syslinux/bios/libcom32.c32 ${work_dir}/iso/isolinux/
+        cp ${work_dir}/root-image/usr/lib/syslinux/bios/libmenu.c32 ${work_dir}/iso/isolinux/
+        cp ${work_dir}/root-image/usr/lib/syslinux/bios/libutil.c32 ${work_dir}/iso/isolinux/
+        cp ${work_dir}/root-image/usr/lib/syslinux/bios/libgpl.c32 ${work_dir}/iso/isolinux/
         sed "s|%MISO_LABEL%|${iso_label}|g;
                 s|%INSTALL_DIR%|${install_dir}|g;
                 s|%ARCH%|${arch}|g" isolinux/isolinux.cfg > ${work_dir}/iso/isolinux/isolinux.cfg
         : > ${work_dir}/build.${FUNCNAME}
+        echo -e "$_g >$_W done $_n"
     fi
 }
 
@@ -624,8 +510,10 @@ if [ -e Packages-Lng ] ; then
 fi
 # install common
 make_boot
-make_efi
-make_efiboot
+if [ "${arch}" == "x86_64" ]; then
+    make_efi
+    make_efiboot
+fi
 make_isolinux
 make_overlay
 make_isomounts

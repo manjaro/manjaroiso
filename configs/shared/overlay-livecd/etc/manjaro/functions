@@ -557,7 +557,7 @@ hd_config()
           if [ -e "/usr/bin/startxfce4" ] ; then
              echo "XSession=xfce" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
           fi
-          if [ -e "/usr/bin/cinnamon" ] ; then
+          if [ -e "/usr/bin/cinnamon-session" ] ; then
              echo "XSession=cinnamon" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
           fi
           if [ -e "/usr/bin/mate-session" ] ; then
@@ -586,7 +586,7 @@ hd_config()
        if [ -e "/usr/bin/startxfce4" ] ; then
              sed -i 's|default.desktop|xfce.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
        fi
-       if [ -e "/usr/bin/gnome-session-cinnamon" ] ; then
+       if [ -e "/usr/bin/cinnamon-session" ] ; then
              sed -i 's|default.desktop|cinnamon.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
        fi
        if [ -e "/usr/bin/openbox-session" ] ; then
@@ -611,8 +611,8 @@ hd_config()
        if [ -e "/usr/bin/startxfce4" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/startxfce4|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
-       if [ -e "/usr/bin/cinnamon" ] ; then
-         sed -i -e 's|^.*session=.*|session=/usr/bin/cinnamon|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
+       if [ -e "/usr/bin/cinnamon-session" ] ; then
+         sed -i -e 's|^.*session=.*|session=/usr/bin/cinnamon-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
        if [ -e "/usr/bin/mate-session" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/mate-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
@@ -673,6 +673,10 @@ hd_config()
 
     if [ -e "/usr/bin/live-installer" ] ; then
        chroot ${DESTDIR} pacman -R --noconfirm live-installer &>/dev/null
+    fi
+
+    if [ -e "/usr/bin/thus" ] ; then
+       chroot ${DESTDIR} pacman -R --noconfirm thus &>/dev/null
     fi
 
     # remove virtualbox driver on real hardware
@@ -1081,7 +1085,7 @@ _setup_user()
        if [ -e "/usr/bin/startxfce4" ] ; then
           echo "XSession=xfce" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
        fi
-       if [ -e "/usr/bin/cinnamon" ] ; then
+       if [ -e "/usr/bin/cinnamon-session" ] ; then
           echo "XSession=cinnamon" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
        fi
        if [ -e "/usr/bin/mate-session" ] ; then

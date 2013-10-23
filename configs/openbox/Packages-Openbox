@@ -1,5 +1,4 @@
 ### Manjaro Packages
-#live-installer
 
 ## Xorg Packages
 inxi
@@ -72,7 +71,7 @@ xscreensaver
 xterm
 
 ## Graphical installer
-live-installer
+thus
 
 ## Packages for Sound and Audio
 manjaro-alsa
@@ -102,19 +101,20 @@ xfce-theme-greenbird
 xcursor-simpleandsoft
 xcursor-themes
 
-## Wallpapers
+## Artwork
 manjaro-artwork-openbox
+#plymouth-theme-manjaro
 
 ## Multimedia Support
 gst-libav
-gst-plugins-bad
+>i686 gst-plugins-bad
 gst-plugins-base
 gst-plugins-good
-gst-plugins-ugly
-gstreamer0.10-bad-plugins
+>i686 gst-plugins-ugly
+>i686 gstreamer0.10-bad-plugins
 gstreamer0.10-base-plugins
 gstreamer0.10-good-plugins
-gstreamer0.10-ugly-plugins
+>i686 gstreamer0.10-ugly-plugins
 flashplugin
 libdvdcss
 
@@ -136,7 +136,7 @@ openssh
 >x86_64 parole # to fit 700 MB
 viewnior
 >i686 vlc
-xnoise
+>i686 xnoise
 
 ## AUR Access
 >i686 autoconf

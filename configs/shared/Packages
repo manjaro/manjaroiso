@@ -40,10 +40,10 @@ rsync
 tcpdump
 wget
 
-## efi support
-efilinux-efi
-gummiboot-efi
-refind-efi
+## efi support (only x86_64)
+>x86_64 gummiboot
+>x86_64 prebootloader
+>x86_64 refind-efi
 
 ## Filesystem Packages
 btrfs-progs
@@ -53,6 +53,7 @@ testdisk
 nilfs-utils
 nfs-utils
 ntfsprogs
+ecryptfs-utils
 
 ## Fonts
 terminus-font
