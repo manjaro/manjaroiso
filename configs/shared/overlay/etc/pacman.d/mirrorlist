@@ -70,11 +70,6 @@ Server = http://mirror3.layerjet.com/manjaro/stable/$repo/$arch
 ## Last Sync : 0:33
 Server = http://repo.manjaro.org.uk/stable/$repo/$arch
 
-## Location  : ManjaroServer
-## Time      : 0.367
-## Last Sync : 0:03
-Server = ftp://repo:PyAzA6c79KxBEw@repo.manjaro.org/stable/$repo/$arch
-
 ## Location  : United_States
 ## Time      : 0.480
 ## Last Sync : 3:23
