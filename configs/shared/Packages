@@ -30,13 +30,17 @@ unzip
 xz
 zip
 
+## encrypt support
+ecryptfs-utils
+rsync
+lsof
+
 ## needed by cli-installer
 dialog
 dmidecode
 gptfdisk
 parted
 pv
-rsync
 tcpdump
 wget
 
