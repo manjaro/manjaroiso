@@ -471,6 +471,8 @@ hd_config()
     sleep 3
     # configure alsa
     set_alsa
+    # configure pulse
+    chroot ${DESTDIR} pulseaudio-ctl normal
     # save settings
     chroot ${DESTDIR} alsactl -f /etc/asound.state store &>/dev/null
 

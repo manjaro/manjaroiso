@@ -78,6 +78,7 @@ manjaro-alsa
 manjaro-pulse
 pavucontrol
 pa-applet
+pulseaudio-ctl
 
 ## File Manager and Support Packages
 thunar
