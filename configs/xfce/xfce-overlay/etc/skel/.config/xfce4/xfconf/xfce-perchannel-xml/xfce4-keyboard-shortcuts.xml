@@ -21,12 +21,13 @@
       <property name="&lt;Alt&gt;F2" type="string" value="xfrun4"/>
       <property name="&lt;Control&gt;&lt;Alt&gt;Delete" type="string" value="xflock4"/>
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
-      <property name="&lt;Super&gt;p" type="string" value="xfce4-display-settings --minimal"/>
       <property name="&lt;Control&gt;Escape" type="string" value="xfdesktop --menu"/>
       <property name="override" type="bool" value="true"/>
-      <property name="Print" type="string" value="xfce4-screenshooter"/>
       <property name="Super_L" type="string" value="xfce4-popup-whiskermenu"/>
       <property name="&lt;Primary&gt;t" type="string" value="xfce4-terminal --drop-down"/>
+      <property name="Print" type="string" value="xfce4-screenshooter -f"/>
+      <property name="&lt;Alt&gt;p" type="string" value="xfce4-display-settings --minimal"/>
+      <property name="&lt;Shift&gt;Print" type="string" value="xfce4-screenshooter -w"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
