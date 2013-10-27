@@ -32,7 +32,7 @@ echo "configure alsa" >> /tmp/livecd.log
 set_alsa
 
 # configure pulse
-pulseaudio-ctl full
+pulseaudio-ctl normal
 
 # save settings
 alsactl -f /etc/asound.state store &>/dev/null
