@@ -134,6 +134,7 @@ manjaro-alsa
 manjaro-pulse
 pavucontrol
 pa-applet
+pulseaudio-ctl
 
 ## Package management
 #octopi
