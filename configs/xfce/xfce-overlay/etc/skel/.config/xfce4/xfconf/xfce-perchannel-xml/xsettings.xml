@@ -4,7 +4,7 @@
   <property name="Net" type="empty">
     <property name="ThemeName" type="string" value="Adwaita-Manjaro-light"/>
     <property name="IconThemeName" type="string" value="Faenza-Green"/>
-    <property name="DoubleClickTime" type="int" value="300"/>
+    <property name="DoubleClickTime" type="int" value="301"/>
     <property name="DoubleClickDistance" type="int" value="5"/>
     <property name="DndDragThreshold" type="int" value="8"/>
     <property name="CursorBlink" type="bool" value="true"/>
@@ -17,8 +17,8 @@
     <property name="DPI" type="int" value="96"/>
     <property name="Antialias" type="int" value="1"/>
     <property name="Hinting" type="int" value="-1"/>
-    <property name="HintStyle" type="string" value="hintfull"/>
-    <property name="RGBA" type="string" value="none"/>
+    <property name="HintStyle" type="string" value="hintslight"/>
+    <property name="RGBA" type="string" value="rgb"/>
   </property>
   <property name="Gtk" type="empty">
     <property name="CanChangeAccels" type="bool" value="false"/>
@@ -28,13 +28,13 @@
     <property name="KeyThemeName" type="string" value=""/>
     <property name="ToolbarStyle" type="string" value="icons"/>
     <property name="ToolbarIconSize" type="int" value="3"/>
-    <property name="IMPreeditStyle" type="string" value=""/>
-    <property name="IMStatusStyle" type="string" value=""/>
     <property name="MenuImages" type="bool" value="true"/>
     <property name="ButtonImages" type="bool" value="true"/>
     <property name="MenuBarAccel" type="string" value="F10"/>
     <property name="CursorThemeName" type="string" value=""/>
     <property name="CursorThemeSize" type="int" value="0"/>
+    <property name="IMPreeditStyle" type="string" value=""/>
+    <property name="IMStatusStyle" type="string" value=""/>
     <property name="IMModule" type="string" value=""/>
   </property>
   <property name="Xfce" type="empty">
