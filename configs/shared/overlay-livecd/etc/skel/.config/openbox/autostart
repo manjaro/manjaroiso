@@ -1,29 +1,31 @@
-#
-# Placed in /home/[user account]/.config/openbox/autostart as local user template
-# Otherwise, can be placed in /etc/xdg/openbox/autostart as a global template
-# Note: applications such as the network manager (nm-app) have been placed
-# in /etc/xdg/autostart as global items
-#
-# Written by the Manjaro Team
-#
+## ManjaroBang Autostart File
+##
+## Written by Carl Duff
+##
+## Note that global autostart .desktop files will also be in 
+## /etc/xdg/openbox/autostart. These will include applications
+## such as the Network Manager and Parcellite
+##
 
 ## Background
-nitrogen --restore &
-
-## Compositing
-compton ~/.config/compton.conf &
+feh --bg-scale /usr/share/backgrounds/Manjarobang-black.png &
 
 ## Panel
 (sleep 1s && tint2) &
 
+## Optionally enable compositing effects
+#compton -cGb &
+
 ## Startup
-# Udiskie is run for mounting in place of thunar-daemon to fix installer quirk
-(sleep 1s && xscreensaver -no-splash) &
-(sleep 1s && udiskie) &
+(sleep 1s && pnmixer) &
 (sleep 4s && conky) &
-(sleep 15s && pulseaudio-ctl normal) &
 
+## Optionally enable Thunar in daemon mode for automounting
+## DO NOT ENABLE WHILE INSTALLING IN LIVE-CD MODE
+# (sleep 1s && thunar --daemon) &
 
-## Optional: enable clipboard and/or disable touchpad
-#(sleep 1s && parcellite) &
+## Optionally enable screensaver
+#(sleep 1s && xautolock -time 15 -locker 'xlock -mode blank') &
+
+## Optionally disable touchpad
 #/usr/bin/synclient TouchpadOff=1 &

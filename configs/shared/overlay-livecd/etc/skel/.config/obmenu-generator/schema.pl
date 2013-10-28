@@ -3,7 +3,7 @@
 # SCHEMA supports the following keys: item, cat, begin_cat, end_cat,
 #                                     exit, raw, sep, obgenmenu
 
-# Modified by the Manjaro Team, 16th March 2013.
+# Modified by Carl Duff, 25th October 2013.
 # Note: ~/.xinitrc commands will have been used to update the absolute paths
 # used in this schema.
 
@@ -53,15 +53,15 @@ require '/home/manjaro/.config/obmenu-generator/config.pl';
 
 our $SCHEMA = [
 #             COMMAND                 	LABEL          		ICON
-   {item => ['sudo thus',      'Install Manjaro (graphical)',      	'/usr/share/thus/data/manjaro-icon.png']},
-   {item => ['lxterminal -e sudo setup',      'Install Manjaro (cli)',      	'system-run']},
+   {item => ['lxterminal -e sudo setup',      'Install - CLI', 'system-run']},
+   {item => ['sudo thus',  'Install - Graphical', '/usr/share/thus/data/manjaro-icon.png']},
    {item => ['thunar ~/Manjaro',  'User-Guide','/usr/share/icons/logo5.png']},
    {sep => undef},
 
-   {item => ['thunar',      		'Thunar FM','Thunar']},
-   {item => ['lxterminal',   	 	'Terminal','lxterminal']},
-   {item => ['nitrogen',     		'Nitrogen','nitrogen']},
+   {item => ['thunar',      		'Thunar','thunar']},
+   {item => ['gksu thunar',      	'Thunar Root','thunar']},
    {item => ['gnome-screenshot --interactive', 'Screenshot','gnome-screenshot']},
+   {item => ['lxterminal',   	 	'Terminal','lxterminal']},
 
     {sep => undef},
 
@@ -79,12 +79,17 @@ our $SCHEMA = [
 ## Custom "Advanced Menu"
 
    {begin_cat => ['Advanced Settings',  'gnome-settings']},
-   {item => ['geany -m ~/.config/compton.conf','Compton Compositor','geany']},
+   {begin_cat => ['Desktop and Login',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
    {item => ['geany -m ~/.conkyrc','Conky RC','geany']},
    {item => ['geany -m ~/.config/tint2/tint2rc','Tint2 Panel','geany']},
+   {item => ['gksu geany /etc/sddm.conf','SDDM Configuration','geany']},
+   {item => ['geany -m ~/.xinitrc','.xinitrc','geany']},
+   {item => ['geany -m ~/.xprofile','.xprofile','geany']},
+   {end_cat   => undef},
    {begin_cat => ['Obmenu-Generator', '/usr/share/icons/Faenza/apps/48/menu-editor.png']},
 		{item => ['geany -m ~/.config/obmenu-generator/schema.pl','Pipe Menu Schema','geany']},
 		{item => ['geany -m ~/.config/obmenu-generator/config.pl','Pipe Menu Config','geany']},
+		{item => ['obmenu-generator -d','Refresh Icon Set','/usr/share/icons/logo5.png']},
    {end_cat   => undef},
    {begin_cat => ['Openbox',  'openbox']},
 		{item => ['openbox --reconfigure','Reconfigure Openbox','openbox']},
@@ -101,13 +106,14 @@ our $SCHEMA = [
 
 ## Back to standard pipe-menu
 
+
    {cat => ['system',      'System',      'applications-system']},
    {sep => undef},
 
 
 ## Use Oblogout script instead of simple exit command
 
-   {item => ['xscreensaver-command -lock', 'Lock Screen', 'lock']},
+  {item => ['xlock -mode blank', 'Lock Screen', 'lock']},
    {item => ['oblogout',        'Logout',      'exit']},
 
     #{cat => ['qt',          'QT Applications',    'qtlogo']},
