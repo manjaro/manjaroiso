@@ -316,15 +316,6 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
-        <keybind key="W-s">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>synapse</name>
-        </startupnotify>
-        <command>synapse</command>
-      </action>
-    </keybind>
     <keybind key="W-t">
       <action name="Execute">
         <startupnotify>
@@ -343,31 +334,13 @@
         <command>thunar</command>
       </action>
     </keybind>
-        <keybind key="W-p">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>octopi</name>
-        </startupnotify>
-        <command>octopi</command>
-      </action>
-    </keybind>
-     <keybind key="W-u">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>octopi</name>
-        </startupnotify>
-        <command>octopi</command>
-      </action>
-    </keybind>
     <keybind key="W-m">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
           <name>dmenu</name>
         </startupnotify>
-        <command>dmenu_run -fn -misc-fixed-*-*-*-*-20-200-*-*-*-*-*-*  -i -b -nf 'gray' -sb 'dark green' -nb 'black'</command>
+        <command>dmenu_run -fn -misc-fixed-*-*-*-*-20-200-*-*-*-*-*-*  -i -nf 'gray' -sb 'dark green' -nb 'dim gray'</command>
       </action>
     </keybind>
     <keybind key="W-x">
@@ -388,34 +361,34 @@
         <command>gnome-screenshot</command>
       </action>
     </keybind>
-<keybind key="XF86MonBrightnessUp">
+    <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
         <command>xbacklight +10</command>
       </action>
     </keybind>
     <keybind key="XF86MonBrightnessDown">
-      <action name="Execute"> 
+      <action name="Execute">
         <command>xbacklight -10</command>
       </action>
     </keybind>
-<!-- Where installing pulse-audio instead, change 'amixer set' to 'amixer -D pulse set' -->
-<keybind key="XF86AudioRaiseVolume">
-     <action name="Execute"> 
-       <command>amixer set Master 10%+</command>
-     </action>
-  </keybind>
-<!-- Where installing pulse-audio instead, change 'amixer set' to 'amixer -D pulse set' -->
-   <keybind key="XF86AudioLowerVolume">
-     <action name="Execute">
-       <command>amixer set Master 10%-</command>
-     </action>
-   </keybind>
-<!-- Where installing pulse-audio instead, nothing needs to be changed -->
-   <keybind key="XF86AudioMute">
-     <action name="Execute"> 
-       <command>amixer set Master toggle</command>
-     </action>
-  </keybind>
+    <!-- Where installing pulse-audio instead, change 'amixer set' to 'amixer -D pulse set' -->
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>amixer set Master 10%+</command>
+      </action>
+    </keybind>
+    <!-- Where installing pulse-audio instead, change 'amixer set' to 'amixer -D pulse set' -->
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>amixer set Master 10%-</command>
+      </action>
+    </keybind>
+    <!-- Where installing pulse-audio instead, nothing needs to be changed -->
+    <keybind key="XF86AudioMute">
+      <action name="Execute">
+        <command>amixer set Master toggle</command>
+      </action>
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>

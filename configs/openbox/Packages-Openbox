@@ -30,128 +30,125 @@ xorg-twm
 xorg-utils
 xorg-xinit
 
-## Artwork
-manjaro-artwork
 
-## Openbox Core Packages
-obconf
-openbox
-oblogout
-obmenu-generator
-slim
-
-## Openbox Supplementary Packages
-arandr
-compton-git
-conky
-gksu
-gnome-keyring
-libgnomeui # for qt to find gtk themes
-lxappearance-obconf
-lxinput
-lxpolkit
-lxterminal
-manjaro-settings-manager
-manjaro-welcome
-network-manager-applet
-networkmanager-openconnect
-networkmanager-openvpn
-networkmanager-pptp
-networkmanager-vpnc
-nitrogen
-parcellite
-polkit-gnome
-python2-xdg # Necessary to enable use of .desktop files in /etc/xdg
-synapse
-tint2
-tintwizard
-udiskie # to fix installation mounting quirk
-xfce4-notifyd
-xscreensaver
-xterm
-
-## Graphical installer
-thus
-
-## Packages for Sound and Audio
+## Sound and Audio
 manjaro-alsa
-manjaro-pulse
-pavucontrol
-pa-applet
-pulseaudio-ctl
+pnmixer
+gnome-alsamixer
 
-## File Manager and Support Packages
+
+## File Management
 thunar
 thunar-archive-plugin
 thunar-volman
-catfish      # File-search support
 file-roller  # Archive support
 gvfs         # Access file system
 gvfs-afc     # Removable media support
 gvfs-smb     # Samba support
 tumbler      # Thumbnailing support (images)
-poppler-glib # Thumbnailing support (pdf files)
 
-## Icon, Mouse, and Desktop Themes
-#adwaita-manjaro-themes
-faenza-green-icon-theme
-gnome-icon-theme
-openbox-themes
-shiki-nouveau-fall-colors
-xfce-theme-greenbird
-xcursor-simpleandsoft
-xcursor-themes
 
-## Artwork
-manjaro-artwork-openbox
-#plymouth-theme-manjaro
+## Graphical Installer
+thus
+
+## Network Management
+network-manager-applet
+networkmanager-openconnect
+networkmanager-openvpn
+networkmanager-pptp
+networkmanager-vpnc
+
 
 ## Multimedia Support
 gst-libav
->i686 gst-plugins-bad
+gst-plugins-bad
 gst-plugins-base
 gst-plugins-good
->i686 gst-plugins-ugly
->i686 gstreamer0.10-bad-plugins
+gst-plugins-ugly
+gstreamer0.10-bad-plugins
 gstreamer0.10-base-plugins
 gstreamer0.10-good-plugins
->i686 gstreamer0.10-ugly-plugins
+gstreamer0.10-ugly-plugins
 flashplugin
 libdvdcss
 
-## Applications
+
+## Polkit
+gksu
+gnome-keyring
+lxpolkit
+polkit-gnome
+
+
+## AUR Access
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+gcc
+libtool
+m4
+make
+patch
+yaourt
+
+
+## Display Manager
+sddm
+
+
+## Desktop Display
+compton-git
+conky
+xfce4-notifyd
+
+
+## Openbox Core Packages
 dmenu
+feh
+gnome-screenshot
+libgnomeui 			# for qt to find gtk themes
+lxterminal
+openbox
+oblogout
+obmenu-generator
+parcellite
+python2-xdg 		# Enable use of .desktop files in /etc/xdg
+tint2
+xlockmore
+xautolock
+xterm
+
+
+## Desktop Configuration
+lxappearance-obconf
+lxinput
+lxrandr
+obconf
+tintwizard
+
+
+## Artwork, Icon, Mouse, and Desktop Themes
+faenza-green-icon-theme
+gnome-icon-theme
+shiki-nouveau-fall-colors
+xfce-theme-greenbird
+
+
+## Applications
 geany
 evince
-firefox
-galculator
-gnome-screenshot
 gparted
-gufw # firewall
+gufw
 hardinfo
 htop
 leafpad
 libreoffice-installer
-octopi-notifier
 openssh
->x86_64 parole # to fit 700 MB
 viewnior
->i686 vlc
->i686 xnoise
 
-## AUR Access
->i686 autoconf
->i686 automake
->i686 binutils
->i686 bison
->i686 fakeroot
->i686 flex
->i686 gcc
->i686 libtool
->i686 m4
->i686 make
->i686 patch
->i686 yaourt
 
 ## Fonts
 #ttf-source-sans-pro

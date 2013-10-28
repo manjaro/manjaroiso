@@ -53,12 +53,11 @@ require '/home/_user_/.config/obmenu-generator/config.pl';
 
 our $SCHEMA = [
 #             COMMAND                 	LABEL          		ICON
-   {item => ['thunar',      		'Thunar FM','Thunar']},
-   {item => ['lxterminal',   	 	'Terminal','lxterminal']},
-   {item => ['nitrogen',     		'Nitrogen','nitrogen']},
+   {item => ['thunar',      		'Thunar','thunar']},
+   {item => ['gksu Thunar',      	'Thunar Root','thunar']},
    {item => ['gnome-screenshot --interactive', 'Screenshot','gnome-screenshot']},
-
-    {sep => undef},
+   {item => ['lxterminal',   	 	'Terminal','lxterminal']},
+   {sep => undef},
 
     #          NAME            LABEL                ICON
     {cat => ['utility',     'Accessories', 'applications-utilities']},
@@ -74,9 +73,13 @@ our $SCHEMA = [
 ## Custom "Advanced Menu"
 
    {begin_cat => ['Advanced Settings',  'gnome-settings']},
-   {item => ['geany -m ~/.config/compton.conf','Compton Compositor','geany']},
+   {begin_cat => ['Desktop and Login',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
    {item => ['geany -m ~/.conkyrc','Conky RC','geany']},
    {item => ['geany -m ~/.config/tint2/tint2rc','Tint2 Panel','geany']},
+   {item => ['gksu geany /etc/sddm.conf','SDDM Configuration','geany']},
+   {item => ['geany -m ~/.xinitrc','.xinitrc','geany']},
+   {item => ['geany -m ~/.xprofile','.xprofile','geany']},
+   {end_cat   => undef},
    {begin_cat => ['Obmenu-Generator', '/usr/share/icons/Faenza/apps/48/menu-editor.png']},
 		{item => ['geany -m ~/.config/obmenu-generator/schema.pl','Pipe Menu Schema','geany']},
 		{item => ['geany -m ~/.config/obmenu-generator/config.pl','Pipe Menu Config','geany']},
@@ -103,7 +106,7 @@ our $SCHEMA = [
 
 ## Use Oblogout script instead of simple exit command
 
-   {item => ['xscreensaver-command -lock', 'Lock Screen', 'lock']},
+   {item => ['xlock -mode blank', 'Lock Screen', 'lock']},
    {item => ['oblogout',        'Logout',      'exit']},
 
     #{cat => ['qt',          'QT Applications',    'qtlogo']},
