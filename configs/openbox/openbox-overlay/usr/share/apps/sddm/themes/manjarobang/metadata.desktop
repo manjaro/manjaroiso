@@ -1,0 +1,14 @@
+[SddmGreeterTheme]
+Name=manjarobang
+Description=Manjarobang Theme
+Author=Abdurrahman AVCI (modded by Carl Duff and Korrode)
+Copyright=(c) 2013, Abdurrahman AVCI
+License=CC-BY-SA
+Type=sddm-theme
+Version=0.1
+Website=https://github.com/sddm/sddm
+MainScript=Main.qml
+ConfigFile=theme.conf
+Email=abdurrahmanavci@gmail.com
+Theme-Id=manjarobang
+Theme-API=1.1
