@@ -71,6 +71,7 @@ read option
 case "$option" in
 
   "1")
+  pacman -Syy
   mhwd -a pci free 0300 -f
   echo
   echo "Process Complete. Press <enter> to continue and reboot your system."
@@ -79,6 +80,7 @@ case "$option" in
   ;;
 
   "2")
+  pacman -Syy
   mhwd -a pci nonfree 0300 -f
   echo
   echo "Process Complete. Press <enter> to continue"
