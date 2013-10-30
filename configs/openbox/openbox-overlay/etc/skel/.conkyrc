@@ -43,9 +43,7 @@ override_utf8_locale yes
 TEXT
 ${font sans:bold:size=14}${alignr}${color #228B22}Kernel ${color #BEBEBE}$kernel ${color #228B22}(${color #BEBEBE}$machine${color #228B22})${voffset 2}
 ${font sans:bold:size=9}${alignr}${color #228B22}CPU ${color #BEBEBE}${cpu cpu0}%  -  ${color #228B22}RAM ${color #BEBEBE}$mem ${color #B22222} / ${color #BEBEBE}$memmax  -  ${color #228B22}HD ${color #BEBEBE}$fs_used ${color #B22222} / ${color #BEBEBE} $fs_size${voffset 2}
-${font sans:bold:size=9}${alignr}${color #228B22}Battery ${color #BEBEBE}$battery_percent%  -  ${color #228B22}Uptime ${color #BEBEBE}$uptime_short  -  ${color #228B22}Desktop ${color #BEBEBE}$desktop${voffset 10}
-#${hr 1}${voffset 2}
-${font sans:bold:size=9}${alignr}${color #228B22}Wireless ${color #B22222}Up ${color #BEBEBE}${upspeed wlo1}${#B22222} Dn ${color #BEBEBE}${downspeed wlo1}  -  ${color #228B22} Ethernet ${color #B22222}Up ${color #BEBEBE}${upspeed eno1}${#B22222} Dn ${color #BEBEBE}${downspeed eno1}${voffset 7}
+${font sans:bold:size=9}${alignr}${color #228B22}Battery ${color #BEBEBE}$battery_percent%  -  ${color #228B22}Uptime ${color #BEBEBE}$uptime_short  -  ${color #228B22}Desktop ${color #BEBEBE}$desktop${voffset 5}
 ${hr 1}${voffset 10}
 ${font sans:bold:size=9}${alignr}${color #228B22}Shift + Left-Mouse
 ${alignr}${color #BEBEBE}Drag Window${voffset -5}
