@@ -41,6 +41,7 @@ gnome-alsamixer
 thunar
 thunar-archive-plugin
 thunar-volman
+catfish
 file-roller  # Archive support
 gvfs         # Access file system
 gvfs-afc     # Removable media support
@@ -60,17 +61,17 @@ networkmanager-vpnc
 
 
 ## Multimedia Support
-gst-libav
-gst-plugins-bad
-gst-plugins-base
-gst-plugins-good
-gst-plugins-ugly
-gstreamer0.10-bad-plugins
-gstreamer0.10-base-plugins
-gstreamer0.10-good-plugins
-gstreamer0.10-ugly-plugins
-flashplugin
-libdvdcss
+#gst-libav
+#gst-plugins-bad
+#gst-plugins-base
+#gst-plugins-good
+#gst-plugins-ugly
+#gstreamer0.10-bad-plugins
+#gstreamer0.10-base-plugins
+#gstreamer0.10-good-plugins
+#gstreamer0.10-ugly-plugins
+#flashplugin
+#libdvdcss
 
 
 ## Polkit
@@ -81,18 +82,18 @@ polkit-gnome
 
 
 ## AUR Access
-autoconf
-automake
-binutils
-bison
-fakeroot
-flex
-gcc
-libtool
-m4
-make
-patch
-yaourt
+#autoconf
+#automake
+#binutils
+#bison
+#fakeroot
+#flex
+#gcc
+#libtool
+#m4
+#make
+#patch
+#yaourt
 
 
 ## Display Manager

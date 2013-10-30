@@ -189,7 +189,7 @@ Rectangle {
                     Button {
                         id: loginButton
                         text: qsTr("Login")
-			color: "light slate gray"
+			color: "forest green"
                         onClicked: sddm.login(name.text, password.text, session.index)
 
                         KeyNavigation.backtab: session; KeyNavigation.tab: shutdownButton
@@ -198,7 +198,7 @@ Rectangle {
                     Button {
                         id: shutdownButton
                         text: qsTr("Shutdown")
-			color: "light slate gray"
+			color: "forest green"
                         onClicked: sddm.powerOff()
 
                         KeyNavigation.backtab: loginButton; KeyNavigation.tab: rebootButton
@@ -207,7 +207,7 @@ Rectangle {
                     Button {
                         id: rebootButton
                         text: qsTr("Reboot")
-			color: "light slate gray"
+			color: "forest green"
                         onClicked: sddm.reboot()
 
                         KeyNavigation.backtab: shutdownButton; KeyNavigation.tab: name

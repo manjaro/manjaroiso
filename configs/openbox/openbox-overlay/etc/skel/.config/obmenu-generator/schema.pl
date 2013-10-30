@@ -1,11 +1,9 @@
-#!/usr/bin/perl
-
-# SCHEMA supports the following keys: item, cat, begin_cat, end_cat,
-#                                     exit, raw, sep, obgenmenu
-
-# Modified by the Manjaro Team, 16th March 2013.
-# Note: ~/.xinitrc commands will have been used to update the absolute paths
-# used in this schema.
+##!/usr/bin/perl
+##
+## SCHEMA supports the following keys: item, cat, begin_cat, end_cat,
+##                                     exit, raw, sep, obgenmenu
+##
+## Modified by Carl Duff.
 
 =for comment
 
@@ -54,14 +52,20 @@ require '/home/_user_/.config/obmenu-generator/config.pl';
 our $SCHEMA = [
 #             COMMAND                 	LABEL          		ICON
    {item => ['thunar',      		'Thunar','thunar']},
-   {item => ['gksu Thunar',      	'Thunar Root','thunar']},
-   {item => ['gnome-screenshot --interactive', 'Screenshot','gnome-screenshot']},
    {item => ['lxterminal',   	 	'Terminal','lxterminal']},
+   {item => ['gnome-screenshot --interactive', 'Screenshot','gnome-screenshot']},
    {sep => undef},
 
     #          NAME            LABEL                ICON
     {cat => ['utility',     'Accessories', 'applications-utilities']},
     {cat => ['development', 'Development', 'applications-development']},
+	{begin_cat => ['Drivers and Support',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
+		{item => ['lxterminal -e sudo ~/.config/executables/updatedriver.sh','Detect and install graphics drivers','lxterminal']},
+		{item => ['lxterminal -e sudo ~/.config/executables/multimedia.sh','Install full multimedia support','lxterminal']},
+		{item => ['lxterminal -e sudo ~/.config/executables/aur.sh','Install full Arch User Repository support','lxterminal']},
+		{item => ['lxterminal -e sudo ~/.config/executables/printing.sh','Install full printing support','lxterminal']},
+		{item => ['lxterminal -e sudo ~/.config/executables/install-octopi.sh','Install graphical software manager','lxterminal']},
+	{end_cat   => undef},
     {cat => ['education',   'Education',   'applications-science']},
     {cat => ['game',        'Games',       'applications-games']},
     {cat => ['graphics',    'Graphics',    'applications-graphics']},
@@ -93,6 +97,7 @@ our $SCHEMA = [
 		{item => ['gksu geany /etc/oblogout.conf','Openbox Logout','geany']},
    {end_cat   => undef},
    {begin_cat => ['Pacman / Servers', '/usr/share/icons/Faenza/apps/48/package-manager-icon.png']},
+		{item => ['lxterminal -e sudo ~/.config/executables/change-repo.sh','Switch stable, testing and unstable repos','lxterminal']},
 		{item => ['gksu geany /etc/pacman.conf','Pacman Config','geany']},
 		{item => ['gksu geany /etc/pacman.d/mirrorlist','Pacman Mirrorlist','geany']},
    {end_cat   => undef},

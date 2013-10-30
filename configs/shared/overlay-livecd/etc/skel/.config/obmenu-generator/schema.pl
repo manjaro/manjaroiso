@@ -1,11 +1,10 @@
-#!/usr/bin/perl
+##!/usr/bin/perl
+##
+## SCHEMA supports the following keys: item, cat, begin_cat, end_cat,
+##                                     exit, raw, sep, obgenmenu
+##
+## Modified by Carl Duff.
 
-# SCHEMA supports the following keys: item, cat, begin_cat, end_cat,
-#                                     exit, raw, sep, obgenmenu
-
-# Modified by Carl Duff, 25th October 2013.
-# Note: ~/.xinitrc commands will have been used to update the absolute paths
-# used in this schema.
 
 =for comment
 
@@ -59,15 +58,20 @@ our $SCHEMA = [
    {sep => undef},
 
    {item => ['thunar',      		'Thunar','thunar']},
-   {item => ['gksu thunar',      	'Thunar Root','thunar']},
-   {item => ['gnome-screenshot --interactive', 'Screenshot','gnome-screenshot']},
    {item => ['lxterminal',   	 	'Terminal','lxterminal']},
-
-    {sep => undef},
+   {item => ['gnome-screenshot --interactive', 'Screenshot','gnome-screenshot']},
+   {sep => undef},
 
     #          NAME            LABEL                ICON
     {cat => ['utility',     'Accessories', 'applications-utilities']},
     {cat => ['development', 'Development', 'applications-development']},
+	{begin_cat => ['Drivers and Support',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
+		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install graphics drivers (live-CD Disabled)','lxterminal']},
+		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install multimedia support (live-CD Disabled)','lxterminal']},
+		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install AUR support (live-CD Disabled)','lxterminal']},
+		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install Printing support (live-CD Disabled)','lxterminal']},
+		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install Software manager (live-CD Disabled)','lxterminal']},
+	{end_cat   => undef},
     {cat => ['education',   'Education',   'applications-science']},
     {cat => ['game',        'Games',       'applications-games']},
     {cat => ['graphics',    'Graphics',    'applications-graphics']},
@@ -99,6 +103,7 @@ our $SCHEMA = [
 		{item => ['gksu geany /etc/oblogout.conf','Openbox Logout','geany']},
    {end_cat   => undef},
    {begin_cat => ['Pacman / Servers', '/usr/share/icons/Faenza/apps/48/package-manager-icon.png']},
+		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Switch repos (live-CD disabled)','lxterminal']},
 		{item => ['gksu geany /etc/pacman.conf','Pacman Config','geany']},
 		{item => ['gksu geany /etc/pacman.d/mirrorlist','Pacman Mirrorlist','geany']},
    {end_cat   => undef},
