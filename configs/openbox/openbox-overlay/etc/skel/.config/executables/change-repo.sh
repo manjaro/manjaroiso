@@ -51,7 +51,8 @@ echo "$(tput sgr0)A day or two behind the Arch repositories, this is also used t
 echo "software packages that have known or suspected issues."
 echo
 echo "Enter the number of your choice ($(tput setaf 2)$(tput bold)1$(tput sgr0), $(tput setaf 3)$(tput bold)2 $(tput sgr0)or $(tput setaf 1)$(tput bold)3$(tput sgr0)), or just press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to cancel."
-echo "Your system will NOT be automatically updated. Enter 'pacman -Syu' to do this."
+echo "Your system will NOT be automatically updated. Enter 'pacman -Syu' to do so"
+echo "after this process has completed."
 read option
 case "$option" in
 

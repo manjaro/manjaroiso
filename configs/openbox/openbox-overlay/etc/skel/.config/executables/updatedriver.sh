@@ -74,7 +74,7 @@ case "$option" in
   pacman -Syy
   mhwd -a pci free 0300 -f
   echo
-  echo "Process Complete. Press $(tput bold)<enter> $(tput sgr0)to continue. Now reboot your system."
+  echo "Process Complete. Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to continue. Now reboot your system."
   read pause
   echo
   ;;
@@ -83,7 +83,7 @@ case "$option" in
   pacman -Syy
   mhwd -a pci nonfree 0300 -f
   echo
-  echo "Process Complete. Press $(tput bold)<enter> $(tput sgr0)to continue. Now reboot your system."
+  echo "Process Complete. Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to continue. Now reboot your system."
   read pause
   echo
   ;;
