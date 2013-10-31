@@ -14,7 +14,7 @@ feh --bg-scale /usr/share/backgrounds/Manjarobang-black.png &
 (sleep 1s && tint2) &
 
 ## Optionally enable compositing effects
-#compton -cGb &
+#compton -CGb &
 
 ## Startup
 (sleep 1s && pnmixer) &
