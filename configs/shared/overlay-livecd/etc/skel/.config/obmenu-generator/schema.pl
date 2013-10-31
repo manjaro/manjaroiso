@@ -71,6 +71,7 @@ our $SCHEMA = [
 		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install AUR support (live-CD Disabled)','lxterminal']},
 		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install Printing support (live-CD Disabled)','lxterminal']},
 		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install Software manager (live-CD Disabled)','lxterminal']},
+		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install Settings manager (live-CD Disabled)','lxterminal']},
 	{end_cat   => undef},
     {cat => ['education',   'Education',   'applications-science']},
     {cat => ['game',        'Games',       'applications-games']},
