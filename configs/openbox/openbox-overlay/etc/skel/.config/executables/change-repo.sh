@@ -33,24 +33,24 @@ fi
 clear
 
 echo
-echo "Change Manjaro Repos"
+echo "$(tput sgr 0 1)$(tput setaf 2)$(tput bold)Change Manjaro Repos"
 echo
-echo "Manjaro uses three types of repository:"
+echo "$(tput sgr0)Manjaro uses three types of repository:"
 echo  
-echo "1. Stable (recommended)"
-echo "This is the default repository used by Manjaro systems to provide updates and" 
+echo "$(tput setaf 2)$(tput bold)1. Stable (recommended)"
+echo "$(tput sgr0)This is the default repository used by Manjaro systems to provide updates and" 
 echo "downloads to general users. About two weeks behind Arch."
 echo  
-echo "2. Testing"
-echo "This is used to store patched software packages from the unstable"
+echo "$(tput setaf 3)$(tput bold)2. Testing"
+echo "$(tput sgr0)This is used to store patched software packages from the unstable"
 echo "repositories, and other new software releases deemed at least sufficiently" 
 echo "stable. About a week behind Arch, software needs further checks / patching."
 echo 
-echo "3. Unstable"
-echo "A day or two behind the Arch repositories, this is also used to store" 
+echo "$(tput setaf 1)$(tput bold)3. Unstable"
+echo "$(tput sgr0)A day or two behind the Arch repositories, this is also used to store" 
 echo "software packages that have known or suspected issues."
 echo
-echo "Enter the number of your choice (1, 2 or 3), or just press <enter> to cancel."
+echo "Enter the number of your choice ($(tput setaf 2)$(tput bold)1$(tput sgr0), $(tput setaf 3)$(tput bold)2 $(tput sgr0)or $(tput setaf 1)$(tput bold)3$(tput sgr0)), or just press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to cancel."
 echo "Your system will NOT be automatically updated. Enter 'pacman -Syu' to do this."
 read option
 case "$option" in
@@ -58,7 +58,7 @@ case "$option" in
   "1")
   pacman-mirrors -g -b stable && pacman -Syy
   echo
-  echo "Process Complete. Press <enter> to continue"
+  echo "Process Complete. Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to continue"
   read pause
   echo
   ;;
@@ -66,7 +66,7 @@ case "$option" in
   "2")
   pacman-mirrors -g -b testing && pacman -Syy
   echo
-  echo "Process Complete. Press <enter> to continue"
+  echo "Process Complete. Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to continue"
   read pause
   echo
   ;;
@@ -74,7 +74,7 @@ case "$option" in
   "3")
   pacman-mirrors -g -b unstable && pacman -Syy
   echo
-  echo "Process Complete. Press <enter> to continue"
+  echo "Process Complete. Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to continue"
   read pause
   echo
   ;;

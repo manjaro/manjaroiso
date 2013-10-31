@@ -34,22 +34,20 @@ fi
 clear
 
 echo
-echo "Install Full Multimedia Support"
+echo "$(tput sgr 0 1)$(tput setaf 2)$(tput bold)Install Full Multimedia Support"
 echo
-echo "Running this option will update your system with full multimedia support,"
+echo "$(tput sgr0)Running this option will update your system with full multimedia support,"
 echo "including flash, codecs, and DVD-player capabilties." 
 echo  
 echo "Note that this process may be interrupted by an essential system upgrade. If"
 echo "this happens, perform the upgrade and then run this process again."
 echo 
-echo "Press <enter> to proceed. You may still cancel the process when prompted."
+echo "Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to proceed. You may still cancel the process when prompted."
 read pause
 
   pacman -Syy gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly gstreamer0.10-bad-plugins gstreamer0.10-base-plugins gstreamer0.10-good-plugins gstreamer0.10-ugly-plugins flashplugin libdvdcss
   echo
-  echo "Process Complete. Press <enter> to continue."
+  echo "Process Complete. Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to continue"
   read pause
-
-esac
 
 exit 0

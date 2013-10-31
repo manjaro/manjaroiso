@@ -34,10 +34,10 @@ fi
 
 clear
 echo
-echo "Install Octopi, the Graphical Software Manager"
+echo "$(tput sgr 0 1)$(tput setaf 2)$(tput bold)Install Octopi, the Graphical Software Manager"
 echo
-echo "The preferred graphical application to manage software in ManjaroBang" 
-echo "is Octopi."
+echo "$(tput sgr0)The preferred graphical application to manage software in ManjaroBang" 
+echo "is $(tput setaf 2)Octopi$(tput sgr0)."
 echo  
 echo "Octopi allows for easy software searches, installation, and removal at" 
 echo "the click of a button, including from the Arch User Repository (AUR)." 
@@ -47,13 +47,13 @@ echo
 echo "Note that this process may be interrupted by an essential system upgrade. If"
 echo "this happens, perform the upgrade and then run this process again."
 echo
-echo "Press <enter> to proceed. You may still cancel the process when prompted."
+echo "Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to proceed. You may still cancel the process when prompted."
 read pause
 
 
   pacman -Syy octopi-notifier
   echo
-  echo "Process Complete. Press <enter> to continue. Reboot to activate Octopi"
+  echo "Process Complete. Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to continue"
   read pause
 
 exit 0

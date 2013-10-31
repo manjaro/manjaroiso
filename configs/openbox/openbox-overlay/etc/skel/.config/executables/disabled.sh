@@ -9,7 +9,7 @@ clear
 echo
 echo "This function is not available until the system has been installed!"
 echo
-echo "Press <enter> to close this window."
+echo "Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to close this window."
 read pause
 
 exit 0

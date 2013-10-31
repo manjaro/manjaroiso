@@ -33,9 +33,9 @@ fi
 
 clear
 echo
-echo "Install the Manjaro Settings Manager"
+echo "$(tput sgr 0 1)$(tput setaf 2)$(tput bold)Install the Manjaro Settings Manager"
 echo
-echo "The Manajro Settings Manager is a user-friendly application to very easily" 
+echo "$(tput sgr0)The $(tput setaf 2)Manajro Settings Manager $(tput sgr0)is a user-friendly application to very easily" 
 echo "change your user account, keyboard layout, and preferred language. It"
 echo "will also also automatically notify you of any updates available for" 
 echo "installed language packs." 
@@ -43,13 +43,13 @@ echo
 echo "Note that this process may be interrupted by an essential system upgrade. If"
 echo "this happens, perform the upgrade and then run this process again."
 echo
-echo "Press <enter> to proceed. You may still cancel the process when prompted."
+echo "Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to proceed. You may still cancel the process when prompted."
 read pause
 
 
   pacman -Syy manjaro-settings-manager
   echo
-  echo "Process Complete. Press <enter> to continue."
+  echo "Process Complete. Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to continue"
   read pause
 
 exit 0

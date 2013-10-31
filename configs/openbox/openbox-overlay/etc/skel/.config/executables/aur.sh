@@ -34,9 +34,9 @@ fi
 
 clear
 echo
-echo "Install full Arch User Repository (AUR) support"
+echo "$(tput sgr 0 1)$(tput setaf 2)$(tput bold)Install full Arch User Repository (AUR) support"
 echo
-echo "The AUR is a community-maintained repository that may contain extra software" 
+echo "$(tput sgr0)The AUR is a community-maintained repository that may contain extra software" 
 echo "packages not otherwise available from the official Manjaro repositories."
 echo  
 echo "Manjaro is not responsible for AUR packages. Our user guide and wiki" 
@@ -46,13 +46,13 @@ echo
 echo "Note that this process may be interrupted by an essential system upgrade. If"
 echo "this happens, perform the upgrade and then run this process again."
 echo
-echo "Press <enter> to proceed. You may still cancel the process when prompted."
+echo "Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to proceed. You may still cancel the process when prompted."
 read pause
 
 
   pacman -Syy autoconf automake binutils bison fakeroot flex gcc libtool m4 make patch yaourt
   echo
-  echo "Process Complete. Press <enter> to continue"
+  echo "Process Complete. Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to continue"
   read pause
 
 exit 0
