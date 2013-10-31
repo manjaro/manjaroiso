@@ -67,7 +67,6 @@ our $SCHEMA = [
 		{item => ['lxterminal -e sudo ~/.config/executables/install-octopi.sh','Install graphical software manager','lxterminal']},
 		{item => ['lxterminal -e sudo ~/.config/executables/install-msm.sh','Install Manjaro Settings Manager','lxterminal']},
 	{end_cat   => undef},
-	{end_cat   => undef},
     {cat => ['education',   'Education',   'applications-science']},
     {cat => ['game',        'Games',       'applications-games']},
     {cat => ['graphics',    'Graphics',    'applications-graphics']},
