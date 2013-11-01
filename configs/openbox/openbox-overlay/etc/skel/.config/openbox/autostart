@@ -8,7 +8,7 @@
 ##
 
 ## Background
-hsetroot -fill /usr/share/backgrounds/ManjaroBox.png &
+nitrogen --restore &
 
 ## Basic compositing effects
 compton &
