@@ -108,10 +108,10 @@ xfce4-notifyd
 
 ## Openbox Core Packages
 dmenu
-hsetroot
 gnome-screenshot
 libgnomeui 			# for qt to find gtk themes
 lxterminal
+nitrogen
 openbox
 oblogout
 obmenu-generator

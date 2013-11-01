@@ -52,8 +52,8 @@ require '/home/_user_/.config/obmenu-generator/config.pl';
 our $SCHEMA = [
 #             COMMAND                 	LABEL          		ICON
    {item => ['thunar',      		'Thunar','thunar']},
-   {item => ['gksu thunar',      	'Thunar Root','thunar']},
    {item => ['lxterminal',   	 	'Terminal','lxterminal']},
+   {item => ['nitrogen',   	 	'Nitrogen','nitrogen']},
    {item => ['gnome-screenshot --interactive', 'Screenshot','gnome-screenshot']},
    {sep => undef},
 
@@ -89,7 +89,7 @@ our $SCHEMA = [
    {begin_cat => ['Obmenu-Generator', '/usr/share/icons/Faenza/apps/48/menu-editor.png']},
 		{item => ['geany -m ~/.config/obmenu-generator/schema.pl','Pipe Menu Schema','geany']},
 		{item => ['geany -m ~/.config/obmenu-generator/config.pl','Pipe Menu Config','geany']},
-		{item => ['obmenu-generator -d','Refresh Icon Set','/usr/share/icons/logo5.png']},
+		{item => ['obmenu-generator -d','Refresh Icon Set','/usr/share/icons/Faenza/apps/48/application-default-icon.png']},
    {end_cat   => undef},
    {begin_cat => ['Openbox',  'openbox']},
 		{item => ['openbox --reconfigure','Reconfigure Openbox','openbox']},
@@ -114,7 +114,7 @@ our $SCHEMA = [
 ## Use Oblogout script instead of simple exit command
 
    {item => ['xlock -mode blank', 'Lock Screen', 'lock']},
-   {item => ['oblogout',        'Logout',      'exit']},
+   {item => ['oblogout',        'Logout...',      'exit']},
 
     #{cat => ['qt',          'QT Applications',    'qtlogo']},
     #{cat => ['gtk',         'GTK Applications',   'gnome-applications']},
