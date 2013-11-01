@@ -1,4 +1,4 @@
-## ManjaroBang Autostart File
+## ManjaroBox Autostart File
 ##
 ## Written by Carl Duff
 ##
@@ -8,17 +8,17 @@
 ##
 
 ## Background
-feh --bg-scale /usr/share/backgrounds/Manjarobang-black.png &
+hsetroot -fill /usr/share/backgrounds/ManjaroBox.png &
+
+## Basic compositing effects
+compton &
 
 ## Panel
 (sleep 1s && tint2) &
 
-## Optionally enable compositing effects
-#compton -CGb &
-
 ## Startup
 (sleep 1s && pnmixer) &
-(sleep 3s && conky) &
+(sleep 2s && conky) &
 
 ## Optionally enable Thunar in daemon mode for automounting
 # (sleep 1s && thunar --daemon) &

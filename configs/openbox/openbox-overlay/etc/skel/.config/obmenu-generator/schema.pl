@@ -52,6 +52,7 @@ require '/home/_user_/.config/obmenu-generator/config.pl';
 our $SCHEMA = [
 #             COMMAND                 	LABEL          		ICON
    {item => ['thunar',      		'Thunar','thunar']},
+   {item => ['gksu thunar',      	'Thunar Root','thunar']},
    {item => ['lxterminal',   	 	'Terminal','lxterminal']},
    {item => ['gnome-screenshot --interactive', 'Screenshot','gnome-screenshot']},
    {sep => undef},

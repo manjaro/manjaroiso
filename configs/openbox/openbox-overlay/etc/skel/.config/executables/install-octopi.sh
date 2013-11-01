@@ -12,8 +12,8 @@ echo
 
 if  [[ `whoami` != "root" ]]; 
 then
-  echo "You must run this script with root privilages (sudo or gksu commands)."
-  echo "press <enter> to close the terminal."
+  echo "This script must be run with root privilages (i.e. the 'sudo' command)."
+  echo "press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to close the terminal."
   read pause
   exit
 fi
@@ -23,8 +23,8 @@ fi
 if ! [ "`ping -c 1 google.com`" ]; 
 then
   echo 
-  echo "Connection test failed. You must run this script with an active internet"
-  echo "connection. Press <enter> to close this terminal."
+  echo "$(tput setaf 1)$(tput bold)Connection test failed$(tput sgr0). You must run this script with an active internet"
+  echo "connection. Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to close this terminal."
   read pause
   exit
 fi
@@ -36,8 +36,8 @@ clear
 echo
 echo "$(tput sgr 0 1)$(tput setaf 2)$(tput bold)Install Octopi, the Graphical Software Manager"
 echo
-echo "$(tput sgr0)The preferred graphical application to manage software in ManjaroBang" 
-echo "is $(tput setaf 2)Octopi$(tput sgr0)."
+echo "$(tput sgr0)The preferred graphical application to manage software in $(tput setaf 2)Manjaro$(tput setaf 2)Box" 
+echo "$(tput sgr0)is $(tput setaf 2)Octopi$(tput sgr0)."
 echo  
 echo "Octopi allows for easy software searches, installation, and removal at" 
 echo "the click of a button, including from the Arch User Repository (AUR)." 

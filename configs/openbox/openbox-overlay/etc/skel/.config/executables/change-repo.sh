@@ -11,8 +11,8 @@ echo
 
 if  [[ `whoami` != "root" ]]; 
 then
-  echo "You must run this script with root privilages (sudo or gksu commands)."
-  echo "press <enter> to close the terminal."
+  echo "This script must be run with root privilages (i.e. the 'sudo' command)."
+  echo "press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to close the terminal."
   read pause
   exit
 fi
@@ -22,8 +22,8 @@ fi
 if ! [ "`ping -c 1 google.com`" ]; 
 then
   echo 
-  echo "Connection test failed. You must run this script with an active internet"
-  echo "connection. Press <enter> to close this terminal."
+  echo "$(tput setaf 1)$(tput bold)Connection test failed$(tput sgr0). You must run this script with an active internet"
+  echo "connection. Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to close this terminal."
   read pause
   exit
 fi
