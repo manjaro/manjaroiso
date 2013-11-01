@@ -62,9 +62,9 @@ clear
 
 echo
 echo
-echo "$(tput setaf 4)$(tput bold)1. Detect and Install open Source (non-proprietary) Drivers"
+echo "$(tput setaf 4)$(tput bold)1. Detect and Install Open Source (non-proprietary) Drivers"
 echo  
-echo "$(tput setaf 3)$(tput bold)2. Detect and install Proprietary Drivers."
+echo "$(tput setaf 3)$(tput bold)2. Detect and Install Proprietary Drivers (Recommended)."
 echo
 echo "$(tput sgr0)Enter the number of your choice ($(tput setaf 4)$(tput bold)1$(tput sgr0) or $(tput setaf 3)$(tput bold)2$(tput sgr0)), or just press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to cancel."
 read option
