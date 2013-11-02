@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Reboot
+Comment=
+Exec=xfce4-session-logout --reboot
+Icon=
+Path=
+Terminal=false
+StartupNotify=false

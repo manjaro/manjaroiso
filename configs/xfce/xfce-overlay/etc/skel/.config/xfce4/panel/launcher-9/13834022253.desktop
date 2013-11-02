@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Shut Down
+Comment=
+Exec=xfce4-session-logout --halt
+Icon=
+Path=
+Terminal=false
+StartupNotify=false

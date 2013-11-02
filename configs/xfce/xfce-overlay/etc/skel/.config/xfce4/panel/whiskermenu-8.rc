@@ -1,9 +1,22 @@
 button-icon=/usr/share/icons/manjaro.png
 launcher-show-name=true
 launcher-show-description=true
-favorites=exo-terminal-emulator.desktop,exo-file-manager.desktop,exo-web-browser.desktop,exo-mail-reader.desktop,pamac-manager.desktop
-recent=exo-terminal-emulator.desktop
+favorites=exo-terminal-emulator.desktop,exo-file-manager.desktop,exo-web-browser.desktop,parole.desktop,pamac-manager.desktop
+recent=
 menu-width=400
 menu-height=519
-
+button-title=Applications Menu
+show-button-title=false
+show-button-icon=true
+hover-switch-category=false
+category-icon-size=1
+item-icon-size=2
+load-hierarchy=false
+favorites-in-recent=true
+display-recent-default=false
+position-search-alternate=false
+position-commands-alternate=false
+command-settings=xfce4-settings-manager
+command-lockscreen=xflock4
+command-logout=xfce4-session-logout --logout
 
