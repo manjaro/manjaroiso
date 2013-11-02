@@ -57,6 +57,9 @@ ${alignr}${color #BEBEBE}File Manager${voffset -5}
 ${font sans:bold:size=9}${alignr}${color #228B22}Super + m
 ${alignr}${color #BEBEBE}DMenu${voffset -5}
 
+${font sans:bold:size=9}${alignr}${color #228B22}Super + s
+${alignr}${color #BEBEBE}Search Files${voffset -5}
+
 ${font sans:bold:size=9}${alignr}${color #228B22}Super + t
 ${alignr}${color #BEBEBE}Terminal${voffset -5}
 

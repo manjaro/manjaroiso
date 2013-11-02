@@ -51,10 +51,10 @@ require '/home/_user_/.config/obmenu-generator/config.pl';
 
 our $SCHEMA = [
 #             COMMAND                 	LABEL          		ICON
-   {item => ['thunar',      		'Thunar','thunar']},
+   {item => ['spacefm',      		'SpaceFM','spacefm']},
+   {item => ['spacefm -f',      	'Search Files','spacefm']},
    {item => ['lxterminal',   	 	'Terminal','lxterminal']},
    {item => ['nitrogen',   	 	'Nitrogen','nitrogen']},
-   {item => ['gnome-screenshot --interactive', 'Screenshot','gnome-screenshot']},
    {sep => undef},
 
     #          NAME            LABEL                ICON

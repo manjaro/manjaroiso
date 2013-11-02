@@ -38,10 +38,11 @@ gnome-alsamixer
 
 
 ## File Management
-thunar
-thunar-archive-plugin
-thunar-volman
-catfish
+spacefm
+#thunar
+#thunar-archive-plugin
+#thunar-volman
+#catfish
 file-roller  # Archive support
 gvfs         # Access file system
 gvfs-afc     # Removable media support
@@ -116,6 +117,7 @@ openbox
 oblogout
 obmenu-generator
 parcellite
+pm-utils
 python2-xdg 		# Enable use of .desktop files in /etc/xdg
 tint2
 xlockmore
