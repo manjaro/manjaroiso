@@ -1,10 +1,9 @@
-# Manjaro Openbox-Lite Conky Configuration Script
-#
-# Written by Carl Duff of the Manjaro Team
-# Email: carl[at]manjaro[dot]org - Website: www.manjaro.org - Forum: http://forum.manjaro.org/
-#
-# Feel free to alter, distribute, etc., this config file as you wish.
-#
+
+## ManjaroBang Conky Configuration Script
+##
+## Written by Carl Duff 25th October 2013
+## Website: www.manjaro.org - Forum: http://forum.manjaro.org/
+##
 
 #  Basic Settings
 
@@ -30,42 +29,39 @@ default_shade_color 000000
 default_outline_color d9d7d6
 alignment tr
 gap_x 5
-gap_y 20
+gap_y 25
 no_buffers yes
 uppercase no
 cpu_avg_samples 2
 override_utf8_locale yes
 
-# Fancy Conky display
-
+## ManjaroBang Conky Display
+##
+## Note - if internet connection speeds do not show, then enter 'ip addr' into the terminal
+## to identify your correct Wireless and Ethernet connection names (e.g. wlo1, eno1)
+##
 TEXT
-${font sans:size=70}${alignr}${color #696969}${time %H:%M}${voffset -27}${voffset -45}
-${font sans:size=25}${alignr}${time %a %d %B %Y}${voffset -15}
-${font sans:bold:size=9}${alignr}${color #006400}CPU ${color #696969}${cpu cpu0}% - ${color #006400}RAM ${color #696969}$mem - ${color #006400}HD ${color #696969}$fs_used - ${color #006400}BAT ${color #696969}$battery_percent% - ${color #006400}UP ${color #696969}$uptime_short
-${hr 1}${voffset 5}
-${font sans:bold:size=9}${alignr}${color #B22222}Shift + Left-Mouse
-${alignr}${color #696969}Drag Window${voffset -5}
+${font sans:bold:size=14}${alignr}${color #228B22}Kernel ${color #BEBEBE}$kernel ${color #228B22}(${color #BEBEBE}$machine${color #228B22})${voffset 2}
+${font sans:bold:size=9}${alignr}${color #228B22}CPU ${color #BEBEBE}${cpu cpu0}%  -  ${color #228B22}RAM ${color #BEBEBE}$mem ${color #B22222} / ${color #BEBEBE}$memmax  -  ${color #228B22}HD ${color #BEBEBE}$fs_used ${color #B22222} / ${color #BEBEBE} $fs_size${voffset 2}
+${font sans:bold:size=9}${alignr}${color #228B22}Battery ${color #BEBEBE}$battery_percent%  -  ${color #228B22}Uptime ${color #BEBEBE}$uptime_short  -  ${color #228B22}Desktop ${color #BEBEBE}$desktop${voffset 5}
+${hr 1}${voffset 10}
+${font sans:bold:size=9}${alignr}${color #228B22}Shift + Left-Mouse
+${alignr}${color #BEBEBE}Drag Window${voffset -5}
 
-${font sans:bold:size=9}${alignr}${color #B22222}Super + d
-${alignr}${color #696969}Toggle Desktop${voffset -5}
+${font sans:bold:size=9}${alignr}${color #228B22}Super + d
+${alignr}${color #BEBEBE}Toggle Desktop${voffset -5}
 
-${font sans:bold:size=9}${alignr}${color #006400}Super + f
-${alignr}${color #696969}File Manager${voffset -5}
+${font sans:bold:size=9}${alignr}${color #228B22}Super + f
+${alignr}${color #BEBEBE}File Manager${voffset -5}
 
-${font sans:bold:size=9}${alignr}${color #006400}Super + m
-${alignr}${color #696969}DMenu${voffset -5}
+${font sans:bold:size=9}${alignr}${color #228B22}Super + m
+${alignr}${color #BEBEBE}DMenu${voffset -5}
 
-${font sans:bold:size=9}${alignr}${color #006400}Super + p
-${alignr}${color #696969}Package Manager${voffset -5}
+${font sans:bold:size=9}${alignr}${color #228B22}Super + s
+${alignr}${color #BEBEBE}Search Files${voffset -5}
 
-${font sans:bold:size=9}${alignr}${color #006400}Super + s
-${alignr}${color #696969}Synapse${voffset -5}
+${font sans:bold:size=9}${alignr}${color #228B22}Super + t
+${alignr}${color #BEBEBE}Terminal${voffset -5}
 
-${font sans:bold:size=9}${alignr}${color #006400}Super + t
-${alignr}${color #696969}Terminal${voffset -5}
-
-${font sans:bold:size=9}${alignr}${color #006400}Super + u
-${alignr}${color #696969}Update${voffset -5}
-
-${font sans:bold:size=9}${alignr}${color #006400}Super + x
-${alignr}${color #696969}Logout...
+${font sans:bold:size=9}${alignr}${color #228B22}Super + x
+${alignr}${color #BEBEBE}Logout...

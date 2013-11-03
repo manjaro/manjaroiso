@@ -1,11 +1,10 @@
-#!/usr/bin/perl
+##!/usr/bin/perl
+##
+## SCHEMA supports the following keys: item, cat, begin_cat, end_cat,
+##                                     exit, raw, sep, obgenmenu
+##
+## Modified by Carl Duff.
 
-# SCHEMA supports the following keys: item, cat, begin_cat, end_cat,
-#                                     exit, raw, sep, obgenmenu
-
-# Modified by the Manjaro Team, 16th March 2013.
-# Note: ~/.xinitrc commands will have been used to update the absolute paths
-# used in this schema.
 
 =for comment
 
@@ -53,21 +52,28 @@ require '/home/manjaro/.config/obmenu-generator/config.pl';
 
 our $SCHEMA = [
 #             COMMAND                 	LABEL          		ICON
-   {item => ['sudo thus',      'Install Manjaro (graphical)',      	'/usr/share/thus/data/manjaro-icon.png']},
-   {item => ['lxterminal -e sudo setup',      'Install Manjaro (cli)',      	'system-run']},
-   {item => ['thunar ~/Manjaro',  'User-Guide','/usr/share/icons/logo5.png']},
+   {item => ['lxterminal -e sudo setup',      'Install - CLI', 'system-run']},
+   {item => ['sudo thus',  'Install - Graphical', '/usr/share/thus/data/manjaro-icon.png']},
+   {item => ['spacefm ~/Manjaro',  'User-Guide','/usr/share/icons/logo5.png']},
    {sep => undef},
 
-   {item => ['thunar',      		'Thunar FM','Thunar']},
+   {item => ['spacefm',      		'SpaceFM','spacefm']},
+   {item => ['spacefm -f',      	'Search Files','spacefm']},
    {item => ['lxterminal',   	 	'Terminal','lxterminal']},
-   {item => ['nitrogen',     		'Nitrogen','nitrogen']},
-   {item => ['gnome-screenshot --interactive', 'Screenshot','gnome-screenshot']},
-
-    {sep => undef},
+   {item => ['nitrogen',   	 	'Nitrogen','nitrogen']},
+   {sep => undef},
 
     #          NAME            LABEL                ICON
     {cat => ['utility',     'Accessories', 'applications-utilities']},
     {cat => ['development', 'Development', 'applications-development']},
+	{begin_cat => ['Drivers and Support',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
+		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install graphics drivers (live-CD Disabled)','lxterminal']},
+		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install multimedia support (live-CD Disabled)','lxterminal']},
+		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install AUR support (live-CD Disabled)','lxterminal']},
+		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install Printing support (live-CD Disabled)','lxterminal']},
+		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install Software manager (live-CD Disabled)','lxterminal']},
+		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install Settings manager (live-CD Disabled)','lxterminal']},
+	{end_cat   => undef},
     {cat => ['education',   'Education',   'applications-science']},
     {cat => ['game',        'Games',       'applications-games']},
     {cat => ['graphics',    'Graphics',    'applications-graphics']},
@@ -79,12 +85,17 @@ our $SCHEMA = [
 ## Custom "Advanced Menu"
 
    {begin_cat => ['Advanced Settings',  'gnome-settings']},
-   {item => ['geany -m ~/.config/compton.conf','Compton Compositor','geany']},
+   {begin_cat => ['Desktop and Login',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
    {item => ['geany -m ~/.conkyrc','Conky RC','geany']},
    {item => ['geany -m ~/.config/tint2/tint2rc','Tint2 Panel','geany']},
+   {item => ['gksu geany /etc/sddm.conf','SDDM Configuration','geany']},
+   {item => ['geany -m ~/.xinitrc','.xinitrc','geany']},
+   {item => ['geany -m ~/.xprofile','.xprofile','geany']},
+   {end_cat   => undef},
    {begin_cat => ['Obmenu-Generator', '/usr/share/icons/Faenza/apps/48/menu-editor.png']},
 		{item => ['geany -m ~/.config/obmenu-generator/schema.pl','Pipe Menu Schema','geany']},
 		{item => ['geany -m ~/.config/obmenu-generator/config.pl','Pipe Menu Config','geany']},
+		{item => ['obmenu-generator -d','Refresh Icon Set','/usr/share/icons/Faenza/apps/48/application-default-icon.png']},
    {end_cat   => undef},
    {begin_cat => ['Openbox',  'openbox']},
 		{item => ['openbox --reconfigure','Reconfigure Openbox','openbox']},
@@ -94,6 +105,7 @@ our $SCHEMA = [
 		{item => ['gksu geany /etc/oblogout.conf','Openbox Logout','geany']},
    {end_cat   => undef},
    {begin_cat => ['Pacman / Servers', '/usr/share/icons/Faenza/apps/48/package-manager-icon.png']},
+		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Switch repos (live-CD disabled)','lxterminal']},
 		{item => ['gksu geany /etc/pacman.conf','Pacman Config','geany']},
 		{item => ['gksu geany /etc/pacman.d/mirrorlist','Pacman Mirrorlist','geany']},
    {end_cat   => undef},
@@ -101,14 +113,15 @@ our $SCHEMA = [
 
 ## Back to standard pipe-menu
 
+
    {cat => ['system',      'System',      'applications-system']},
    {sep => undef},
 
 
 ## Use Oblogout script instead of simple exit command
 
-   {item => ['xscreensaver-command -lock', 'Lock Screen', 'lock']},
-   {item => ['oblogout',        'Logout',      'exit']},
+  {item => ['xlock -mode blank', 'Lock Screen', 'lock']},
+   {item => ['oblogout',        'Logout...',      'exit']},
 
     #{cat => ['qt',          'QT Applications',    'qtlogo']},
     #{cat => ['gtk',         'GTK Applications',   'gnome-applications']},

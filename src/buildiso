@@ -235,6 +235,38 @@ if [ -e Packages-Xorg ] ; then
               cp pacman-gfx.conf ${work_dir}/pkgs-image/opt/manjaro
               rm -r ${work_dir}/pkgs-image/var
               repo-add ${work_dir}/pkgs-image/opt/manjaro/pkgs/manjaro-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/manjaro/pkgs/*pkg*z
+              # Disable Catalyst if not present
+              if  [ -z "`ls ${work_dir}/pkgs-image/opt/manjaro/pkgs/ | grep catalyst-utils 2> /dev/null`" ]; then
+                 echo -e -n "$_r >$_W Disabling Catalyst driver \n $_n"
+                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst/
+                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst/MHWDCONFIG
+                 echo -e "$_g >$_W done $_n"
+              fi
+              if  [ -z "`ls ${work_dir}/pkgs-image/opt/manjaro/pkgs/ | grep catalyst-legacy-utils 2> /dev/null`" ]; then
+                 echo -e -n "$_r >$_W Disabling Catalyst-Legacy driver \n $_n"
+                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst-legacy/
+                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst-legacy/MHWDCONFIG
+                 echo -e "$_g >$_W done $_n"
+              fi
+              # Disable Nvidia if not present
+              if  [ -z "`ls ${work_dir}/pkgs-image/opt/manjaro/pkgs/ | grep nvidia-utils 2> /dev/null`" ]; then
+                 echo -e -n "$_r >$_W Disabling Nvidia driver \n $_n"
+                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia/
+                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia/MHWDCONFIG
+                 echo -e "$_g >$_W done $_n"
+              fi
+              if  [ -z "`ls ${work_dir}/pkgs-image/opt/manjaro/pkgs/ | grep nvidia-utils 2> /dev/null`" ]; then
+                 echo -e -n "$_r >$_W Disabling Nvidia Bumblebee driver \n $_n"
+                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/hybrid-intel-nvidia-bumblebee/
+                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/hybrid-intel-nvidia-bumblebee/MHWDCONFIG
+                 echo -e "$_g >$_W done $_n"
+              fi
+              if  [ -z "`ls ${work_dir}/pkgs-image/opt/manjaro/pkgs/ | grep nvidia-304xx-utils 2> /dev/null`" ]; then
+                 echo -e -n "$_r >$_W Disabling Nvidia-Legacy driver \n $_n"
+                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-legacy/
+                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-legacy/MHWDCONFIG
+                 echo -e "$_g >$_W done $_n"
+              fi
               umount -l ${work_dir}/pkgs-image
               rm -R ${work_dir}/pkgs-image/.wh*
               if [ "${xorg_overlays}" = "yes" ] ; then

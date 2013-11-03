@@ -174,6 +174,8 @@ if [ "$openbox" == "Y" ] ; then
    #rm work*/iso/manjaro/*/pkgs-free-overlay.sqfs
    #rm work*/iso/manjaro/*/pkgs-nonfree-overlay.sqfs
    ln -sfv ../openbox/Packages-Openbox Packages-Openbox
+   ln -sfv ../openbox/Packages-Xorg Packages-Xorg
+   ln -sfv ../openbox/pacman-gfx.conf pacman-gfx.conf
    ln -sfv ../openbox/pacman-i686.conf pacman-i686.conf
    ln -sfv ../openbox/pacman-x86_64.conf pacman-x86_64.conf
    ln -sfv ../openbox/options.conf options.conf
