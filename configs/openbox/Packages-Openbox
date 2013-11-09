@@ -17,12 +17,12 @@ xf86-input-mouse
 xf86-input-synaptics
 xf86-input-void
 xf86-input-wacom
-xf86-video-ati
-xf86-video-nouveau
-xf86-video-intel
-xf86-video-vesa
-virtualbox-guest-utils
-KERNEL-virtualbox-guest-modules
+#xf86-video-ati
+#xf86-video-nouveau
+#xf86-video-intel
+#xf86-video-vesa
+#virtualbox-guest-utils
+#KERNEL-virtualbox-guest-modules
 xinetd
 xorg-server
 xorg-server-utils
@@ -43,11 +43,11 @@ spacefm
 #thunar-archive-plugin
 #thunar-volman
 #catfish
-file-roller  # Archive support
-gvfs         # Access file system
-gvfs-afc     # Removable media support
-gvfs-smb     # Samba support
-tumbler      # Thumbnailing support (images)
+file-roller	 # Archive support
+gvfs		 # Access file system
+gvfs-afc	 # Removable media support
+gvfs-smb	 # Samba support
+tumbler		 # Thumbnailing support (images)
 
 
 ## Graphical Installer
@@ -79,7 +79,7 @@ networkmanager-vpnc
 gksu
 gnome-keyring
 lxpolkit
-polkit-gnome
+#polkit-gnome
 
 
 ## AUR Access
@@ -102,7 +102,7 @@ slim
 
 
 ## Desktop Display
-compton-git
+compton
 conky
 xfce4-notifyd
 
@@ -110,7 +110,7 @@ xfce4-notifyd
 ## Openbox Core Packages
 dmenu
 gnome-screenshot
-libgnomeui 			# for qt to find gtk themes
+libgnomeui 	 # for qt to find gtk themes
 lxterminal
 nitrogen
 openbox
@@ -118,7 +118,7 @@ oblogout
 obmenu-generator
 parcellite
 pm-utils
-python2-xdg 		# Enable use of .desktop files in /etc/xdg
+python2-xdg 	 # Enable use of .desktop files in /etc/xdg
 tint2
 xlockmore
 xautolock

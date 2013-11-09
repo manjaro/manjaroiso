@@ -261,10 +261,8 @@ command_iso () {
 
     # If exists, add an EFI "El Torito" boot image (FAT filesystem) to ISO-9660 image.
     if [ -f "${work_dir}/iso/EFI/miso/manjaro.img" ]; then
-        _iso_efi_boot_args="-eltorito-alt-boot
-                            -e EFI/miso/manjaro.img
-                            -no-emul-boot
-                            -isohybrid-gpt-basdat"
+        _iso_efi_boot_args="-eltorito-alt-boot -e EFI/miso/manjaro.img \
+                            -isohybrid-gpt-basdat -no-emul-boot"
     fi
 
     echo "Creating ISO image..."
@@ -274,8 +272,10 @@ command_iso () {
         _qflag="-quiet"
     fi
     xorriso -as mkisofs ${_qflag} \
-            -iso-level 3 \
-            -full-iso9660-filenames \
+            -iso-level 3 -rock -joliet \
+            -max-iso9660-filenames -omit-period \
+            -omit-version-number \
+            -relaxed-filenames -allow-lowercase \
             -volid "${LABEL}" \
             -appid "${APPLICATION}" \
             -publisher "${PUBLISHER}" \
