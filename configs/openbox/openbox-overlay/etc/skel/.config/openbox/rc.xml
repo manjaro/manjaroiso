@@ -41,7 +41,7 @@
        following: 'Mouse' - where the mouse is, or
                   'Active' - where the active window is -->
   </placement>
- <theme>
+  <theme>
     <name>Numix-Manjaro</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
@@ -334,7 +334,7 @@
         <command>spacefm</command>
       </action>
     </keybind>
-        <keybind key="W-s">
+    <keybind key="W-s">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
