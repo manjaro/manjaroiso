@@ -41,8 +41,8 @@
        following: 'Mouse' - where the mouse is, or
                   'Active' - where the active window is -->
   </placement>
-  <theme>
-    <name>Shiki-Nouveau-Wisedust</name>
+ <theme>
+    <name>Numix-Manjaro</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
