@@ -41,7 +41,7 @@ case "$1" in
      xfce) exec xfce4-session ;;
      gnome3) exec gnome-session ;;
      kde) exec startkde ;;
-     cinnamon) exec gnome-session-cinnamon ;;
+     cinnamon) exec cinnamon-session ;;
      razor-qt) exec razor-session ;;
      lxde) exec lxsession ;;
      mate) exec mate-session ;;
