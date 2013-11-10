@@ -13,9 +13,8 @@ xftalpha 1
 update_interval 1.0
 total_run_times 0
 own_window yes
-own_window_class conky
 own_window_transparent yes
-own_window_type desktop
+own_window_type override #desktop
 own_window_hints below,sticky,skip_taskbar,skip_pager
 double_buffer yes
 minimum_size 450 1
@@ -29,11 +28,14 @@ default_shade_color 000000
 default_outline_color d9d7d6
 alignment tr
 gap_x 5
-gap_y 25
+gap_y 20
 no_buffers yes
 uppercase no
 cpu_avg_samples 2
 override_utf8_locale yes
+
+# Fancy Conky display
+
 
 ## ManjaroBang Conky Display
 ##
@@ -65,5 +67,3 @@ ${alignr}${color #BEBEBE}Terminal${voffset -5}
 
 ${font sans:bold:size=9}${alignr}${color #35BF5C}Super + x
 ${alignr}${color #BEBEBE}Logout...
-
-
