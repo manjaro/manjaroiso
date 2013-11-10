@@ -97,7 +97,7 @@ clock_padding = 1 0
 clock_background_id = 1
 
 # Tooltips
-tooltip = 1
+tooltip = 0
 tooltip_padding = 2 2
 tooltip_show_timeout = 0.7
 tooltip_hide_timeout = 0.3
