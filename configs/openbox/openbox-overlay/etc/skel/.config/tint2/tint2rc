@@ -32,7 +32,7 @@ border_color = #FFFFFF 100
 # Panel
 panel_monitor = all
 panel_position = bottom center horizontal
-panel_size = 100% 28
+panel_size = 100% 25
 panel_margin = 5 0
 panel_padding = 0 0 0
 panel_dock = 0
@@ -56,9 +56,9 @@ taskbar_background_id = 1
 # Tasks
 urgent_nb_of_blink = 8
 task_icon = 1
-task_text = 0
+task_text = 1
 task_centered = 1
-task_maximum_size = 30 25
+task_maximum_size = 170 25
 task_padding = 0 1
 task_background_id = 3
 task_active_background_id = 2
