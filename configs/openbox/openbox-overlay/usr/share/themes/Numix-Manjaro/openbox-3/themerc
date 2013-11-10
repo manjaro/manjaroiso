@@ -1,4 +1,4 @@
-# Zukitwo-Dark tema para openbox, por antry.
+# Manjaro Numix Green - Editado de "Zukitwo-Dark tema para openbox, por antry."
 #
 # 	Geometria
 # 	=========
@@ -30,28 +30,29 @@ menu.items.active.bg:						 	Flat Solid
 menu.items.active.bg.color: 					#35BF5C
 menu.items.active.text.color: 					#ffffff
 menu.border.color: 								#2D2D2D
-menu.separator.color: 							#2D2D2D
+menu.separator.color: 							#BEBEBE
 #
 # 	Ventanas general
 # 	================
 #
 window.*.label.bg:								Parentrelative
 window.*.button.*.bg: 							Parentrelative
-window.*.border.color: 							#2D2D2D
+window.*.border.color: 							#1a1a1a
 window.*.client.color: 							#2D2D2D
 window.*.title.separator.color: 				#2D2D2D
 window.*.title.bg: 								Gradient Vertical Flat
-window.*.title.bg.color: 						#484848
-window.*.title.bg.colorTo: 						#2D2D2D
+window.*.title.bg.color: 						#404040
+window.*.title.bg.colorTo: 						#2D2D2D						
 #
 #	Ventana activa
 # 	==============
 #
-window.active.label.text.color: 				#f3f3f3
-window.active.button.hover.image.color: 		#303030
+window.active.label.text.color: 				#c2c2c2
+window.active.button.*.hover.image.color:			#35BF5C
 window.active.button.pressed.image.color: 		#303030
 window.active.button.unpressed.image.color: 	#c2c2c2
 window.active.button.disabled.image.color:		#2D2D2D
+window.active.button.toggled.unpressed.image.color: #c2c2c2
 #
 #	Ventana inactiva
 #	================
@@ -83,4 +84,4 @@ osd.label.text.color: 							#ffffff
 #	=====
 #
 menu.title.text.justify: 						Center
-window.label.text.justify: 						Center
+window.label.text.justify: 						left
