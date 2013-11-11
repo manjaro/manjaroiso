@@ -40,11 +40,8 @@ override_utf8_locale yes
 ## to identify your correct Wireless and Ethernet connection names (e.g. wlo1, eno1)
 ##
 TEXT
-${font sans:bold:size=20}${alignr}${color #35BF5C}${voffset 12}${time %A}${color #BEBEBE}${font sans:bold:size=25}${voffset -12}${time %l:%M}${font sans:bold:size=15}${time %p}  
-${font sans:bold:size=35}${alignr}${color #BEBEBE}${time %B}${voffset -16}    
-${font sans:bold:size=35}${alignr}${color #35BF5C}${voffset -22}${time %y}${voffset -35}
-${color #BEBEBE}${hr 1}${voffset -38}
-${font sans:bold:size=14}${alignr}${color #35BF5C}Kernel ${color #BEBEBE}$kernel ${color #35BF5C}(${color #BEBEBE}$machine${color #35BF5C})${voffset 2}
+${font sans:bold:size=18}${alignr}${color #35BF5C}${time %e} ${color #BEBEBE}${time %B}${color #35BF5C} ${time %Y}${color #BEBEBE} ${time %l:%M}${font sans:bold:size=15}${time %p}${voffset -8}
+${color #BEBEBE}${hr 1}${voffset -4}
 ${font sans:bold:size=9}${alignr}${color #35BF5C}CPU ${color #BEBEBE}${cpu cpu0}%  -  ${color #35BF5C}RAM ${color #BEBEBE}$mem ${color #B22222} / ${color #BEBEBE}$memmax  -  ${color #35BF5C}HD ${color #BEBEBE}$fs_used ${color #B22222} / ${color #BEBEBE} $fs_size${voffset 2}
 ${font sans:bold:size=9}${alignr}${color #35BF5C}Battery ${color #BEBEBE}$battery_percent%  -  ${color #35BF5C}Uptime ${color #BEBEBE}$uptime_short  -  ${color #35BF5C}Desktop ${color #BEBEBE}$desktop${voffset 3}
 ${hr 1}${voffset 6}
