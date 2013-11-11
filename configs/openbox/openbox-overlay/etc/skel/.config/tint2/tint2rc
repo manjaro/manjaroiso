@@ -84,7 +84,7 @@ systray = 1
 systray_padding = 2 2 5
 systray_sort = ascending
 systray_background_id = 1
-systray_icon_size = 20
+systray_icon_size = 22
 systray_icon_asb = 70 0 0
 
 # Tooltips
