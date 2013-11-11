@@ -117,8 +117,8 @@ openbox
 oblogout
 obmenu-generator
 parcellite
-pm-utils
 python2-xdg 	 # Enable use of .desktop files in /etc/xdg
+synapse
 tint2
 xlockmore
 xautolock

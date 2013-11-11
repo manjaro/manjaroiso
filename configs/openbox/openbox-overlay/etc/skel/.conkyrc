@@ -13,8 +13,9 @@ xftalpha 1
 update_interval 1.0
 total_run_times 0
 own_window yes
+own_window_class conky
 own_window_transparent yes
-own_window_type override #desktop
+own_window_type desktop
 own_window_hints below,sticky,skip_taskbar,skip_pager
 double_buffer yes
 minimum_size 450 1
@@ -28,14 +29,11 @@ default_shade_color 000000
 default_outline_color d9d7d6
 alignment tr
 gap_x 5
-gap_y 20
+gap_y 25
 no_buffers yes
 uppercase no
 cpu_avg_samples 2
 override_utf8_locale yes
-
-# Fancy Conky display
-
 
 ## ManjaroBang Conky Display
 ##
@@ -43,10 +41,14 @@ override_utf8_locale yes
 ## to identify your correct Wireless and Ethernet connection names (e.g. wlo1, eno1)
 ##
 TEXT
+${font sans:bold:size=20}${alignr}${color #35BF5C}${voffset 12}${time %A}${color #BEBEBE}${font sans:bold:size=25}${voffset -12}${time %l:%M}${font sans:bold:size=15}${time %p}  
+${font sans:bold:size=35}${alignr}${color #BEBEBE}${time %B}${voffset -16}    
+${font sans:bold:size=35}${alignr}${color #35BF5C}${voffset -22}${time %y}${voffset -35}
+${color #BEBEBE}${hr 1}${voffset -38}
 ${font sans:bold:size=14}${alignr}${color #35BF5C}Kernel ${color #BEBEBE}$kernel ${color #35BF5C}(${color #BEBEBE}$machine${color #35BF5C})${voffset 2}
 ${font sans:bold:size=9}${alignr}${color #35BF5C}CPU ${color #BEBEBE}${cpu cpu0}%  -  ${color #35BF5C}RAM ${color #BEBEBE}$mem ${color #B22222} / ${color #BEBEBE}$memmax  -  ${color #35BF5C}HD ${color #BEBEBE}$fs_used ${color #B22222} / ${color #BEBEBE} $fs_size${voffset 2}
-${font sans:bold:size=9}${alignr}${color #35BF5C}Battery ${color #BEBEBE}$battery_percent%  -  ${color #35BF5C}Uptime ${color #BEBEBE}$uptime_short  -  ${color #35BF5C}Desktop ${color #BEBEBE}$desktop${voffset 5}
-${hr 1}${voffset 10}
+${font sans:bold:size=9}${alignr}${color #35BF5C}Battery ${color #BEBEBE}$battery_percent%  -  ${color #35BF5C}Uptime ${color #BEBEBE}$uptime_short  -  ${color #35BF5C}Desktop ${color #BEBEBE}$desktop${voffset 3}
+${hr 1}${voffset 6}
 ${font sans:bold:size=9}${alignr}${color #35BF5C}Shift + Left-Mouse
 ${alignr}${color #BEBEBE}Drag Window${voffset -5}
 
@@ -60,7 +62,7 @@ ${font sans:bold:size=9}${alignr}${color #35BF5C}Super + m
 ${alignr}${color #BEBEBE}DMenu${voffset -5}
 
 ${font sans:bold:size=9}${alignr}${color #35BF5C}Super + s
-${alignr}${color #BEBEBE}Search Files${voffset -5}
+${alignr}${color #BEBEBE}Synapse${voffset -5}
 
 ${font sans:bold:size=9}${alignr}${color #35BF5C}Super + t
 ${alignr}${color #BEBEBE}Terminal${voffset -5}
