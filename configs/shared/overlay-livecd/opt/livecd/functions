@@ -673,8 +673,8 @@ hd_config()
     chroot ${DESTDIR} setcap cap_net_raw=ep /usr/bin/ping &>/dev/null
     chroot ${DESTDIR} setcap cap_net_raw=ep /usr/bin/ping6 &>/dev/null
 
-    # remove .miso-chroot
-    chroot ${DESTDIR} rm /.miso-chroot &>/dev/null
+    # remove .manjaro-chroot
+    chroot ${DESTDIR} rm /.manjaro-chroot &>/dev/null
 
     if [ -e "/usr/bin/live-installer" ] ; then
        chroot ${DESTDIR} pacman -R --noconfirm live-installer &>/dev/null
