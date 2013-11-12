@@ -329,9 +329,9 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>spacefm</name>
+          <name>thunar</name>
         </startupnotify>
-        <command>spacefm</command>
+        <command>thunar</command>
       </action>
     </keybind>
     <keybind key="W-s">

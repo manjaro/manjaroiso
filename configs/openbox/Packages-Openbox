@@ -38,11 +38,11 @@ gnome-alsamixer
 
 
 ## File Management
-spacefm
-#thunar
-#thunar-archive-plugin
-#thunar-volman
-#catfish
+#spacefm
+thunar
+thunar-archive-plugin
+thunar-volman
+catfish
 file-roller	 # Archive support
 gvfs		 # Access file system
 gvfs-afc	 # Removable media support

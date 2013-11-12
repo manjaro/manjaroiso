@@ -4,7 +4,7 @@
 	<icon>Terminal</icon>
 	<name>Terminal</name>
 	<unique-id>1367866030392833-1</unique-id>
-	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<command>lxterminal</command>
 	<description></description>
 	<patterns>*</patterns>
 	<directories/>
