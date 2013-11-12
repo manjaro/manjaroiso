@@ -1,0 +1,26 @@
+#!/bin/sh
+
+source /opt/livecd/options.conf
+source /opt/livecd/functions
+
+USENONFREE="$(kernel_cmdline nonfree no)"
+VIDEO="$(kernel_cmdline xdriver no)"
+
+# hwdetect_graphics
+if [ -e "/opt/livecd/pacman-gfx.conf" ] ; then
+   echo "run mhwd" >> /tmp/livecd.log
+   if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
+   	if  [ "${VIDEO}" == "vesa" ]; then
+		mhwd --install pci video-vesa --pmconfig "/opt/livecd/pacman-gfx.conf"
+	else
+		mhwd --auto pci nonfree 0300 --pmconfig "/opt/livecd/pacman-gfx.conf"
+	fi
+   else
+   	if  [ "${VIDEO}" == "vesa" ]; then
+		mhwd --install pci video-vesa --pmconfig "/opt/livecd/pacman-gfx.conf"
+	else
+		mhwd --auto pci free 0300 --pmconfig "/opt/livecd/pacman-gfx.conf"
+	fi
+   fi
+fi
+echo "MHWD DONE" > /tmp/mhwd.task

@@ -11,14 +11,14 @@ if [ ! -e options.conf ] ; then
     exit
 fi
 
-if [ ! -e /usr/share/manjaroiso/functions/messages ] ; then
+if [ ! -e /usr/share/${manjaroiso}/functions/messages ] ; then
     echo " "
-    echo "missing manjaroiso functions file, please run «sudo make install» inside manjaroiso/"
+    echo "missing ${manjaroiso} functions file, please run «sudo make install» inside ${manjaroiso}/"
     echo " "
     exit
 fi
 
-.  /usr/share/manjaroiso/functions/messages
+.  /usr/share/${manjaroiso}/functions/messages
 . options.conf
 get_colors
 
@@ -216,7 +216,7 @@ if [ -e Packages-Xorg ] ; then
      make_pkgs_image() {
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
               echo -e -n "$_r >$_W Prepare pkgs-image \n $_n"
-              mkdir -p ${work_dir}/pkgs-image/opt/manjaro/pkgs
+              mkdir -p ${work_dir}/pkgs-image/opt/livecd/pkgs
               if [ ! -z "`mount -l | grep pkgs-image`" ]; then
                  umount -l ${work_dir}/pkgs-image
               fi
@@ -226,42 +226,42 @@ if [ -e Packages-Xorg ] ; then
                  echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
                  mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/pkgs-image
               fi
-              pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/manjaro/pkgs -Syw ${xorg_packages} --noconfirm
+              pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/livecd/pkgs -Syw ${xorg_packages} --noconfirm
               if [ ! -z "${xorg_packages_cleanup}" ]; then
                  for xorg_clean in ${xorg_packages_cleanup};
-                    do  rm ${work_dir}/pkgs-image/opt/manjaro/pkgs/${xorg_clean}
+                    do  rm ${work_dir}/pkgs-image/opt/livecd/pkgs/${xorg_clean}
                     done
               fi
-              cp pacman-gfx.conf ${work_dir}/pkgs-image/opt/manjaro
+              cp pacman-gfx.conf ${work_dir}/pkgs-image/opt/livecd
               rm -r ${work_dir}/pkgs-image/var
-              repo-add ${work_dir}/pkgs-image/opt/manjaro/pkgs/manjaro-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/manjaro/pkgs/*pkg*z
+              repo-add ${work_dir}/pkgs-image/opt/livecd/pkgs/gfx-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/livecd/pkgs/*pkg*z
               # Disable Catalyst if not present
-              if  [ -z "`ls ${work_dir}/pkgs-image/opt/manjaro/pkgs/ | grep catalyst-utils 2> /dev/null`" ]; then
+              if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep catalyst-utils 2> /dev/null`" ]; then
                  echo -e -n "$_r >$_W Disabling Catalyst driver \n $_n"
                  mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst/
                  touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
-              if  [ -z "`ls ${work_dir}/pkgs-image/opt/manjaro/pkgs/ | grep catalyst-legacy-utils 2> /dev/null`" ]; then
+              if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep catalyst-legacy-utils 2> /dev/null`" ]; then
                  echo -e -n "$_r >$_W Disabling Catalyst-Legacy driver \n $_n"
                  mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst-legacy/
                  touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst-legacy/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
               # Disable Nvidia if not present
-              if  [ -z "`ls ${work_dir}/pkgs-image/opt/manjaro/pkgs/ | grep nvidia-utils 2> /dev/null`" ]; then
+              if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep nvidia-utils 2> /dev/null`" ]; then
                  echo -e -n "$_r >$_W Disabling Nvidia driver \n $_n"
                  mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia/
                  touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
-              if  [ -z "`ls ${work_dir}/pkgs-image/opt/manjaro/pkgs/ | grep nvidia-utils 2> /dev/null`" ]; then
+              if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep nvidia-utils 2> /dev/null`" ]; then
                  echo -e -n "$_r >$_W Disabling Nvidia Bumblebee driver \n $_n"
                  mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/hybrid-intel-nvidia-bumblebee/
                  touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/hybrid-intel-nvidia-bumblebee/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
-              if  [ -z "`ls ${work_dir}/pkgs-image/opt/manjaro/pkgs/ | grep nvidia-304xx-utils 2> /dev/null`" ]; then
+              if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep nvidia-304xx-utils 2> /dev/null`" ]; then
                  echo -e -n "$_r >$_W Disabling Nvidia-Legacy driver \n $_n"
                  mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-legacy/
                  touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-legacy/MHWDCONFIG
@@ -316,7 +316,7 @@ if [ -e Packages-Lng ] ; then
      make_lng_image() {
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
               echo -e -n "$_r >$_W Prepare lng-image \n $_n"
-              mkdir -p ${work_dir}/lng-image/opt/manjaro/lng
+              mkdir -p ${work_dir}/lng-image/opt/livecd/lng
               if [ ! -z "`mount -l | grep lng-image`" ]; then
                  umount -l ${work_dir}/lng-image
               fi
@@ -327,18 +327,18 @@ if [ -e Packages-Lng ] ; then
                  mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/lng-image
               fi
               if [ "${kde_lng_packages}" = "yes" ] ; then
-                 pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/manjaro/lng -Syw ${lng_packages} ${lng_packages_kde} --noconfirm
+                 pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/livecd/lng -Syw ${lng_packages} ${lng_packages_kde} --noconfirm
               else
-                 pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/manjaro/lng -Syw ${lng_packages} --noconfirm
+                 pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/livecd/lng -Syw ${lng_packages} --noconfirm
               fi
               if [ ! -z "${lng_packages_cleanup}" ]; then
                  for lng_clean in ${lng_packages_cleanup};
-                    do  rm ${work_dir}/lng-image/opt/manjaro/lng/${lng_clean}
+                    do  rm ${work_dir}/lng-image/opt/livecd/lng/${lng_clean}
                     done
               fi
-              cp pacman-lng.conf ${work_dir}/lng-image/opt/manjaro
+              cp pacman-lng.conf ${work_dir}/lng-image/opt/livecd
               rm -r ${work_dir}/lng-image/var
-              repo-add ${work_dir}/lng-image/opt/manjaro/lng/manjaro-lng.db.tar.gz ${work_dir}/lng-image/opt/manjaro/lng/*pkg*z
+              repo-add ${work_dir}/lng-image/opt/livecd/lng/lng-pkgs.db.tar.gz ${work_dir}/lng-image/opt/livecd/lng/*pkg*z
               umount -l ${work_dir}/lng-image
               rm -R ${work_dir}/lng-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
@@ -353,7 +353,7 @@ make_boot() {
 	echo -e -n "$_r >$_W Prepare ${install_dir}/boot/ \n $_n"
 	mkdir -p ${work_dir}/iso/${install_dir}/boot/${arch}
         cp ${work_dir}/root-image/boot/memtest86+/memtest.bin ${work_dir}/iso/${install_dir}/boot/${arch}/memtest
-	cp ${work_dir}/root-image/boot/vmlinuz* ${work_dir}/iso/${install_dir}/boot/${arch}/manjaroiso
+	cp ${work_dir}/root-image/boot/vmlinuz* ${work_dir}/iso/${install_dir}/boot/${arch}/${manjaroiso}
         mkdir -p ${work_dir}/boot-image
         if [ ! -z "`mount -l | grep boot-image`" ]; then
            umount -l ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
@@ -364,9 +364,9 @@ make_boot() {
         mount -o bind /dev ${work_dir}/boot-image/dev
         cp /usr/lib/initcpio/hooks/miso* ${work_dir}/boot-image/usr/lib/initcpio/hooks
         cp /usr/lib/initcpio/install/miso* ${work_dir}/boot-image/usr/lib/initcpio/install
-        cp mkinitcpio.conf ${work_dir}/boot-image/etc/mkinitcpio-manjaroiso.conf
+        cp mkinitcpio.conf ${work_dir}/boot-image/etc/mkinitcpio-${manjaroiso}.conf
         _kernver=`cat ${work_dir}/boot-image/usr/lib/modules/*-MANJARO/version`
-        chroot ${work_dir}/boot-image /usr/bin/mkinitcpio -k ${_kernver} -c /etc/mkinitcpio-manjaroiso.conf -g /boot/manjaro.img
+        chroot ${work_dir}/boot-image /usr/bin/mkinitcpio -k ${_kernver} -c /etc/mkinitcpio-${manjaroiso}.conf -g /boot/manjaro.img
         mv ${work_dir}/boot-image/boot/manjaro.img ${work_dir}/iso/${install_dir}/boot/${arch}/manjaro.img
         umount -l ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
         rm -R ${work_dir}/boot-image
@@ -392,11 +392,11 @@ make_efi() {
 
         sed "s|%MISO_LABEL%|${iso_label}|g;
              s|%INSTALL_DIR%|${install_dir}|g" \
-            efiboot/loader/entries/manjaroiso-x86_64-usb.conf > ${work_dir}/iso/loader/entries/manjaroiso-x86_64.conf
+            efiboot/loader/entries/${manjaroiso}-x86_64-usb.conf > ${work_dir}/iso/loader/entries/${manjaroiso}-x86_64.conf
 
         sed "s|%MISO_LABEL%|${iso_label}|g;
              s|%INSTALL_DIR%|${install_dir}|g" \
-            efiboot/loader/entries/manjaroiso-x86_64-nonfree-usb.conf > ${work_dir}/iso/loader/entries/manjaroiso-x86_64-nonfree.conf
+            efiboot/loader/entries/${manjaroiso}-x86_64-nonfree-usb.conf > ${work_dir}/iso/loader/entries/${manjaroiso}-x86_64-nonfree.conf
 
         # EFI Shell 2.0 for UEFI 2.3+ ( http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=UEFI_Shell )
         curl -o ${work_dir}/iso/EFI/shellx64_v2.efi https://svn.code.sf.net/p/edk2/code/trunk/edk2/ShellBinPkg/UefiShell/X64/Shell.efi
@@ -419,7 +419,7 @@ make_efiboot() {
         mount ${work_dir}/iso/EFI/miso/manjaro.img ${work_dir}/efiboot
 
         mkdir -p ${work_dir}/efiboot/EFI/miso
-        cp ${work_dir}/iso/${install_dir}/boot/x86_64/manjaroiso ${work_dir}/efiboot/EFI/miso/manjaroiso.efi
+        cp ${work_dir}/iso/${install_dir}/boot/x86_64/${manjaroiso} ${work_dir}/efiboot/EFI/miso/${manjaroiso}.efi
         cp ${work_dir}/iso/${install_dir}/boot/x86_64/manjaro.img ${work_dir}/efiboot/EFI/miso/manjaro.img
 
         mkdir -p ${work_dir}/efiboot/EFI/boot
@@ -435,11 +435,11 @@ make_efiboot() {
 
         sed "s|%MISO_LABEL%|${iso_label}|g;
              s|%INSTALL_DIR%|${install_dir}|g" \
-            efiboot/loader/entries/manjaroiso-x86_64-dvd.conf > ${work_dir}/efiboot/loader/entries/manjaroiso-x86_64.conf
+            efiboot/loader/entries/${manjaroiso}-x86_64-dvd.conf > ${work_dir}/efiboot/loader/entries/${manjaroiso}-x86_64.conf
 
         sed "s|%MISO_LABEL%|${iso_label}|g;
              s|%INSTALL_DIR%|${install_dir}|g" \
-            efiboot/loader/entries/manjaroiso-x86_64-nonfree-dvd.conf > ${work_dir}/efiboot/loader/entries/manjaroiso-x86_64-nonfree.conf
+            efiboot/loader/entries/${manjaroiso}-x86_64-nonfree-dvd.conf > ${work_dir}/efiboot/loader/entries/${manjaroiso}-x86_64-nonfree.conf
 
         cp ${work_dir}/iso/EFI/shellx64_v2.efi ${work_dir}/efiboot/EFI/
         cp ${work_dir}/iso/EFI/shellx64_v1.efi ${work_dir}/efiboot/EFI/
@@ -491,11 +491,11 @@ make_overlay() {
         echo -e -n "$_r >$_W Prepare overlay-image \n $_n"
         mkdir -p ${work_dir}/overlay/etc/pacman.d
         cp -LPrd overlay-livecd/* ${work_dir}/overlay
-        cp options.conf ${work_dir}/overlay/etc/manjaro/options.conf
+        cp options.conf ${work_dir}/overlay/opt/livecd/options.conf
         #wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist
         cp ${work_dir}/root-image/etc/pacman.d/mirrorlist ${work_dir}/overlay/etc/pacman.d/mirrorlist
         sed -i "s/#Server/Server/g" ${work_dir}/overlay/etc/pacman.d/mirrorlist
-        sed -i "s/^.*TITLE=.*/  TITLE=\"Manjaro Linux Installation Framework (v${version})\"/g" ${work_dir}/overlay/etc/manjaro/setup
+        sed -i "s/^.*TITLE=.*/  TITLE=\"Manjaro Linux Installation Framework (v${version})\"/g" ${work_dir}/overlay/opt/livecd/setup
         #chmod -R 755 ${work_dir}/overlay/home
         : > ${work_dir}/build.${FUNCNAME}
         echo -e "$_g >$_W done $_n"

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-source /etc/manjaro/options.conf
-source /etc/manjaro/functions
+source /opt/livecd/options.conf
+source /opt/livecd/functions
 
 CONSOLEFONT="$(kernel_cmdline vconsole.font)"
 CONSOLEMAP="$(kernel_cmdline vconsole.font.map)"
