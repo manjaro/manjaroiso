@@ -2,9 +2,9 @@
 Encoding=UTF-8
 Version=0.9.4
 Type=Application
-Name=pulseaudio-ctl
-Comment=Set Volume to 70%
-Exec=/etc/manjaro/pulseaudio-ctl-normal
+Name=disable dpms
+Comment=Disable DPMS in Live-Session
+Exec=/etc/manjaro/disable-dpms
 StartupNotify=false
 Terminal=false
 Hidden=false
