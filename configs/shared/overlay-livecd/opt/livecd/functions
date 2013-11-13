@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Source options.conf
-source /opt/${install_dir}/options.conf
+source /opt/livecd/options.conf
 
 # Configure Desktop image
 if [ -e "/bootmnt/${install_dir}/${arch}/xfce-image.sqfs" ] ; then
@@ -499,29 +499,29 @@ hd_config()
 
     # Install xf86-video driver
 
-    if [ -e "/opt/${install_dir}/pacman-gfx.conf" ] ; then
+    if [ -e "/opt/livecd/pacman-gfx.conf" ] ; then
        DIALOG --infobox "${_installvideodriver}"  6 40
     
-       mkdir -p ${DESTDIR}/opt/${install_dir}
-       mount -o bind /opt/${install_dir} ${DESTDIR}/opt/${install_dir} > /tmp/mount.pkgs.log
-       ls ${DESTDIR}/opt/${install_dir} >> /tmp/mount.pkgs.log
+       mkdir -p ${DESTDIR}/opt/livecd
+       mount -o bind /opt/livecd ${DESTDIR}/opt/livecd > /tmp/mount.pkgs.log
+       ls ${DESTDIR}/opt/livecd >> /tmp/mount.pkgs.log
 
        if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
 	   if  [ "${VIDEO}" == "vesa" ]; then
-           	chroot ${DESTDIR} mhwd --install pci video-vesa --pmconfig "/opt/${install_dir}/pacman-gfx.conf" &>/dev/null
+           	chroot ${DESTDIR} mhwd --install pci video-vesa --pmconfig "/opt/livecd/pacman-gfx.conf" &>/dev/null
 	   else
-           	chroot ${DESTDIR} mhwd --auto pci nonfree 0300 --pmconfig "/opt/${install_dir}/pacman-gfx.conf" &>/dev/null
+           	chroot ${DESTDIR} mhwd --auto pci nonfree 0300 --pmconfig "/opt/livecd/pacman-gfx.conf" &>/dev/null
 	   fi
        else
 	   if  [ "${VIDEO}" == "vesa" ]; then
-           	chroot ${DESTDIR} mhwd --install pci video-vesa --pmconfig "/opt/${install_dir}/pacman-gfx.conf" &>/dev/null
+           	chroot ${DESTDIR} mhwd --install pci video-vesa --pmconfig "/opt/livecd/pacman-gfx.conf" &>/dev/null
 	   else
-           	chroot ${DESTDIR} mhwd --auto pci free 0300 --pmconfig "/opt/${install_dir}/pacman-gfx.conf" &>/dev/null
+           	chroot ${DESTDIR} mhwd --auto pci free 0300 --pmconfig "/opt/livecd/pacman-gfx.conf" &>/dev/null
 	   fi
        fi
 
-       umount ${DESTDIR}/opt/${install_dir}
-       rmdir ${DESTDIR}/opt/${install_dir}
+       umount ${DESTDIR}/opt/livecd
+       rmdir ${DESTDIR}/opt/livecd
     fi
 
     # setup systemd
@@ -963,16 +963,16 @@ installsystem() {
 }
 
 set_language() {
-    if [[ -e /opt/${install_dir}/lg ]]; then
-        /opt/${install_dir}/lg --setup
+    if [[ -e /opt/livecd/lg ]]; then
+        /opt/livecd/lg --setup
     else
         DIALOG --msgbox "Error:\nlg script not found, aborting language setting" 0 0
     fi
 }
 
 set_keyboard() {
-    if [[ -e /opt/${install_dir}/km ]]; then
-        /opt/${install_dir}/km --setup
+    if [[ -e /opt/livecd/km ]]; then
+        /opt/livecd/km --setup
     else
         DIALOG --msgbox "Error:\nkm script not found, aborting keyboard and console setting" 0 0
     fi
