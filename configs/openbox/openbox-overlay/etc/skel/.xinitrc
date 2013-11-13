@@ -34,16 +34,4 @@ sed 's/_user_/'$(whoami)'/' ~/.config/obmenu-generator/schema.pl -i
 sed 's/_user_/'$(whoami)'/' ~/.config/obmenu-generator/config.pl -i
 
 
-DEFAULTSESSION=openbox-session
-
-case "$1" in
-     openbox) exec openbox-session ;;
-     xfce) exec xfce4-session ;;
-     gnome3) exec gnome-session ;;
-     kde) exec startkde ;;
-     cinnamon) exec cinnamon-session ;;
-     razor-qt) exec razor-session ;;
-     lxde) exec lxsession ;;
-     mate) exec mate-session ;;
-     *) exec $DEFAULTSESSION ;;
-esac
+exec $1
