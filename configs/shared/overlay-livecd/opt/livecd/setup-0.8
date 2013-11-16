@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Source options.conf
-source /etc/manjaro/options.conf
+source /opt/livecd/options.conf
 
 # Basis settings
 TITLE="Manjaro Linux Installation Framework (stable)"
-PKG_OVERLAY="/opt/manjaro/pkgs"
+PKG_OVERLAY="/opt/livecd/pkgs"
 #DIALOGRC="./setuprc"
 
 # Menu Entries
@@ -24,7 +24,7 @@ EDITOR="nano"
 
 # abstract the common pacman args
 PACMAN="pacman --root ${DESTDIR} --config /etc/pacman.conf --noconfirm --noprogressbar"
-PACMAN_LNG="pacman --root ${DESTDIR} --config /opt/manjaro/pacman-lng.conf --noconfirm --noprogressbar"
+PACMAN_LNG="pacman --root ${DESTDIR} --config /opt/livecd/pacman-lng.conf --noconfirm --noprogressbar"
 
 # sources
 SYNC_URL=
@@ -60,7 +60,7 @@ S_PRECONFIG=0   # pre configuration editing
 # main menu selection tracker
 NEXTITEM=""
 
-source /etc/manjaro/functions
+source /opt/livecd/functions
 
 finddisks() {
     workdir="$PWD"
@@ -833,9 +833,9 @@ mainmenu()
         ;;
         "6")
             DIALOG --infobox "${_installationfinished}" 6 40
-            mkdir -p ${DESTDIR}/var/log/manjaroiso
-            cp /tmp/*.log ${DESTDIR}/var/log/manjaroiso &>/dev/null
-            cp /var/log/pacman.log ${DESTDIR}/var/log/manjaroiso/pacman-live.log &>/dev/null
+            mkdir -p ${DESTDIR}/var/log/${manjaroiso}
+            cp /tmp/*.log ${DESTDIR}/var/log/${manjaroiso} &>/dev/null
+            cp /var/log/pacman.log ${DESTDIR}/var/log/${manjaroiso}/pacman-live.log &>/dev/null
             _umountall &>/dev/null ; sleep 1 ; exit 0
         ;;
         *)
@@ -869,10 +869,10 @@ VIDEO="$(kernel_cmdline xdriver no)"
 LOCALE=$(get_country)
 
 # English
-source /etc/manjaro/setup-0.8-en.lng
+source /opt/livecd/setup-0.8-en.lng
 # Turkish
 if [ "${LOCALE}" = "tr_TR" ]; then
-   source /etc/manjaro/setup-0.8-tr.lng
+   source /opt/livecd/setup-0.8-tr.lng
 fi
 
 DIALOG --msgbox "${_instwelcomemessage}" 12 65

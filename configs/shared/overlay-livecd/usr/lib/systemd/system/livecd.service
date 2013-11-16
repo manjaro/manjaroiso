@@ -4,7 +4,7 @@ Before=systemd-user-sessions.service
 
 [Service]
 Type=oneshot
-ExecStart=/etc/manjaro/livecd
+ExecStart=/opt/livecd/livecd
 
 [Install]
 WantedBy=multi-user.target

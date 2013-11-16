@@ -107,14 +107,14 @@ export LANG=en_US.UTF-8
 export LC_MESSAGES=en_US.UTF-8
 
 # Translation
-source /etc/manjaro/functions
+source /opt/livecd/functions
 LOCALE=$(get_country)
 
 # English
-source /etc/manjaro/lg-en.lng
+source /opt/livecd/lg-en.lng
 # Turkish
 if [ "${LOCALE}" = "tr_TR" ]; then
-   source /etc/manjaro/lg-tr.lng
+   source /opt/livecd/lg-tr.lng
 fi
 
 ANSWER="/tmp/.lg"
