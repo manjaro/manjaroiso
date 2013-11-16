@@ -38,11 +38,11 @@ gnome-alsamixer
 
 
 ## File Management
-spacefm
-#thunar
-#thunar-archive-plugin
-#thunar-volman
-#catfish
+#spacefm
+thunar
+thunar-archive-plugin
+thunar-volman
+catfish
 file-roller	 # Archive support
 gvfs		 # Access file system
 gvfs-afc	 # Removable media support
@@ -117,8 +117,8 @@ openbox
 oblogout
 obmenu-generator
 parcellite
-pm-utils
 python2-xdg 	 # Enable use of .desktop files in /etc/xdg
+synapse
 tint2
 xlockmore
 xautolock
@@ -136,8 +136,9 @@ tintwizard
 ## Artwork, Icon, Mouse, and Desktop Themes
 faenza-green-icon-theme
 gnome-icon-theme
-shiki-nouveau-fall-colors
-xfce-theme-greenbird
+openbox-themes
+numix-manjaro-themes
+manjarobox-artwork
 
 
 ## Applications

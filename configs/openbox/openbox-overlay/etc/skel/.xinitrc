@@ -6,6 +6,8 @@
 #
 # Executed by startx (run your window manager from here)
 #
+# Written by Phil Muller and Carl Duff
+
 
 ## Ensure that the D-Bus Communication System is running properly to fix
 ## File management, authentication, and other essential system processes
@@ -27,23 +29,26 @@ if [ -x /usr/bin/xdg-user-dirs-update ]; then
 fi
 
 ## Ensure that obmenu-generator (a pipe menu) is set to the user.
-## Needs only to be run once, so last sed command hashes the sed
-## commands!
+## Does this for each session (i.e. ease of use for addtional
+## accounts where created.
 
 sed 's/_user_/'$(whoami)'/' ~/.config/obmenu-generator/schema.pl -i
 sed 's/_user_/'$(whoami)'/' ~/.config/obmenu-generator/config.pl -i
 
 
-DEFAULTSESSION=openbox-session
+## Enable SLiM to enable selection of multiple desktop environments, or
+## set a single session. Only one or the other must be unhashed! In either
+## instance, /etc/slim.conf must also be amended accordingly.
 
-case "$1" in
-     openbox) exec openbox-session ;;
-     xfce) exec xfce4-session ;;
-     gnome3) exec gnome-session ;;
-     kde) exec startkde ;;
-     cinnamon) exec gnome-session-cinnamon ;;
-     razor-qt) exec razor-session ;;
-     lxde) exec lxsession ;;
-     mate) exec mate-session ;;
-     *) exec $DEFAULTSESSION ;;
-esac
+## Enable multiple desktop environments
+#exec $1
+
+## Set a single desktop environment
+exec openbox-session
+#exec xfce4-session
+#exec gnome-session
+#exec startkde
+#exec cinnamon-session
+#exec razor-session
+#exec lxsession
+#exec mate-session

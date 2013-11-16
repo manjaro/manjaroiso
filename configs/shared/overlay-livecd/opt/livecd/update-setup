@@ -1,0 +1,35 @@
+#!/bin/bash
+# update setup
+
+# do UID checking here so someone can at least get usage instructions
+if [ "$EUID" != "0" ]; then
+    echo "error: This script must be run as root."
+    exit 1
+fi
+
+# force to use english
+export LANG=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+
+if [ ! -e "/opt/livecd" ] ; then
+   echo "error: This script must be run on livecd."
+fi
+
+wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/overlay-livecd/opt/livecd/update-setup-files -O /opt/livecd/update-setup-files
+
+echo "Cleaning framework..."
+for file in $(cat /opt/livecd/update-setup-files); do
+    rm /opt/livecd/$file
+
+    echo "Downloading new framework..."
+    wget http://git.manjaro.org/core/manjaroiso/blobs/raw/master/configs/shared/overlay-livecd/opt/livecd/$file -O /opt/livecd/$file
+    chmod a+x /opt/livecd/km
+    chmod a+x /opt/livecd/lg
+    chmod a+x /opt/livecd/livecd
+    chmod a+x /opt/livecd/setup
+    chmod a+x /opt/livecd/setup-0.8
+    chmod a+x /opt/livecd/setup-0.9
+done
+
+clear
+echo "Update done. Start with 'sudo setup'"

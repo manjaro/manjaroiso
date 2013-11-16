@@ -54,12 +54,12 @@ our $SCHEMA = [
 #             COMMAND                 	LABEL          		ICON
    {item => ['lxterminal -e sudo setup',      'Install - CLI', 'system-run']},
    {item => ['sudo thus',  'Install - Graphical', '/usr/share/thus/data/manjaro-icon.png']},
-   {item => ['spacefm ~/Manjaro',  'User-Guide','/usr/share/icons/logo5.png']},
+   {item => ['thunar ~/Manjaro',  'User-Guide','/usr/share/icons/logo5.png']},
    {sep => undef},
 
-   {item => ['spacefm',      		'SpaceFM','spacefm']},
-   {item => ['spacefm -f',      	'Search Files','spacefm']},
+   {item => ['thunar',      		'Thunar','thunar']},
    {item => ['lxterminal',   	 	'Terminal','lxterminal']},
+   {item => ['gnome-screenshot --interactive',  'Screenshot','gnome-screenshot']},
    {item => ['nitrogen',   	 	'Nitrogen','nitrogen']},
    {sep => undef},
 

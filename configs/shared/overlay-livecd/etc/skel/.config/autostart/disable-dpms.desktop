@@ -2,10 +2,9 @@
 Encoding=UTF-8
 Version=0.9.4
 Type=Application
-Name=pulseaudio-ctl
-Comment=Set Volume to 70%
-Exec=/opt/livecd/pulseaudio-ctl-normal
-OnlyShowIn=XFCE;
+Name=disable dpms
+Comment=Disable DPMS in Live-Session
+Exec=/opt/livecd/disable-dpms
 StartupNotify=false
 Terminal=false
 Hidden=false

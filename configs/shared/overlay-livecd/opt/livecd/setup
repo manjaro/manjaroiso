@@ -12,7 +12,7 @@ ANSWER="/tmp/.setup"
 # main menu selection tracker
 CURRENT_SELECTION=""
 
-source /etc/manjaro/functions
+source /opt/livecd/functions
 
 # check if we have a internet connection
 ping_check=$(LC_ALL=C ping -c 1 www.manjaro.org | grep "1 received")
@@ -167,12 +167,12 @@ mainmenu()
     case $(cat $ANSWER) in
         "1")
             DIALOG --infobox "${_loadinginstaller}" 6 40
-            /etc/manjaro/setup-0.8
+            /opt/livecd/setup-0.8
             exit 0
         ;;
         "2")
             DIALOG --infobox "${_loadinginstaller}" 6 40
-            /etc/manjaro/setup-0.9
+            /opt/livecd/setup-0.9
             exit 0
         ;;
         "3")
@@ -205,10 +205,10 @@ LOCALE=$(get_country)
 
 # Translation
 # English
-source /etc/manjaro/setup-en.lng
+source /opt/livecd/setup-en.lng
 # Turkish
 if [ "${LOCALE}" = "tr_TR" ]; then
-   source /etc/manjaro/setup-tr.lng
+   source /opt/livecd/setup-tr.lng
 fi
 
 # check for pv

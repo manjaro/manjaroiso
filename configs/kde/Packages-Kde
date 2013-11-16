@@ -29,6 +29,17 @@ xorg-xinit
 
 ## Artwork
 manjaro-artwork
+manjaro-nature-kdm
+manjaro-nature-splash
+
+## Community KDE packages
+udiskie
+udisks
+udisks2
+virtualgl
+kio-mtp
+mtpfs
+#razor-qt
 
 ## KDE (minimal base)
 kde-wallpapers
@@ -54,22 +65,30 @@ kdegraphics-kgamma
 kdegraphics-gwenview
 kdegraphics-ksnapshot
 kdegraphics-okular
+kdeutils-kwallet
+kdeutils-kcalc
 kdeutils-ark
 kdeutils-kgpg
 kdeutils-print-manager
 kdeutils-sweeper
+kdeplasma-addons-applets-showdesktop
 kdeplasma-addons-applets-icontasks
-kdeplasma-applets-networkmanagement
-live-installer
+kdeplasma-applets-plasma-nm
+kdeplasma-addons-applets-lancelot
 manjaro-settings-manager
+
+## Graphical installer
+thus
 
 ## Packages for Sound and Audio
 gstreamer0.10-bad-plugins
 gstreamer0.10-ffmpeg
 gstreamer0.10-ugly-plugins
+gstreamer0.10-good
 manjaro-alsa
 manjaro-pulse
 flashplugin
+pulseaudio-ctl
 
 ## Devel Packages
 autoconf
@@ -89,13 +108,13 @@ svn
 yaourt
 
 ## Applications
-#rekonq
+rekonq
 kdepim
 k3b
 digikam
 #smplayer
 simple-scan
-amarok
+#amarok
 #partitionmanager-svn
 gparted
 gimp
@@ -103,20 +122,24 @@ vlc
 imagewriter
 kdenetwork
 ktorrent
-kvirc
-skype
+#kvirc
+#skype
 steam
 wine
 q4wine
 wine_gecko
 winetricks
+yakuake
+konversation
+clementine
+manjaro-welcome
 
 ## Package management
 pamac
 octopi
 
 ## GTK
-firefox
+#firefox
 #thunderbird
 oxygen-gtk2
 oxygen-gtk3

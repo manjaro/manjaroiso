@@ -42,8 +42,8 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Shiki-Nouveau-Wisedust</name>
-    <titleLayout>NLIMC</titleLayout>
+    <name>Numix-Manjaro</name>
+    <titleLayout>LIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -55,7 +55,7 @@
       D: omnipresent (on all desktops).
   -->
     <keepBorder>yes</keepBorder>
-    <animateIconify>yes</animateIconify>
+    <animateIconify>no</animateIconify>
     <font place="ActiveWindow">
       <name>sans</name>
       <size>8</size>
@@ -329,18 +329,18 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>spacefm</name>
+          <name>thunar</name>
         </startupnotify>
-        <command>spacefm</command>
+        <command>thunar</command>
       </action>
     </keybind>
-        <keybind key="W-s">
+    <keybind key="W-s">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>spacefm-search</name>
+          <name>synapse</name>
         </startupnotify>
-        <command>spacefm -f</command>
+        <command>synapse</command>
       </action>
     </keybind>
     <keybind key="W-m">

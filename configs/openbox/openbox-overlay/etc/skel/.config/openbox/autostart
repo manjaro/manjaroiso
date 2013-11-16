@@ -7,8 +7,14 @@
 ## such as the Network Manager and Parcellite
 ##
 
+## DPMS - Display Power Management Signaling
+## This is disabled by default to prevent auto-actions when
+## the system is idle, such as screen blanking (10 mins) or
+## suspending (1 hour).
+xset -dpms; xset s off &
+
 ## Basic compositing effects
-compton &
+compton -CGb &
 
 ## Background
 nitrogen --restore &
@@ -21,7 +27,7 @@ nitrogen --restore &
 (sleep 2s && conky) &
 
 ## Optionally enable file manager in daemon mode for automounting
-# (sleep 1s && spacefm -d) &
+# (sleep 1s && thunar --daemon) &
 
 ## Optionally enable screensaver
 #(sleep 1s && xautolock -time 15 -locker 'xlock -mode blank') &

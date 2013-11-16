@@ -1,43 +1,46 @@
 #!/bin/bash
 
+# Source options.conf
+source /opt/livecd/options.conf
+
 # Configure Desktop image
-if [ -e "/bootmnt/manjaro/${arch}/xfce-image.sqfs" ] ; then
+if [ -e "/bootmnt/${install_dir}/${arch}/xfce-image.sqfs" ] ; then
    DESKTOP="XFCE"
    DESKTOP_IMG="xfce-image"
 fi
-if [ -e "/bootmnt/manjaro/${arch}/openbox-image.sqfs" ] ; then
+if [ -e "/bootmnt/${install_dir}/${arch}/openbox-image.sqfs" ] ; then
    DESKTOP="OPENBOX"
    DESKTOP_IMG="openbox-image"
 fi
-if [ -e "/bootmnt/manjaro/${arch}/net-image.sqfs" ] ; then
+if [ -e "/bootmnt/${install_dir}/${arch}/net-image.sqfs" ] ; then
    DESKTOP="NET"
    DESKTOP_IMG="net-image"
 fi
-if [ -e "/bootmnt/manjaro/${arch}/gnome-image.sqfs" ] ; then
+if [ -e "/bootmnt/${install_dir}/${arch}/gnome-image.sqfs" ] ; then
    DESKTOP="GNOME"
    DESKTOP_IMG="gnome-image"
 fi
-if [ -e "/bootmnt/manjaro/${arch}/cinnamon-image.sqfs" ] ; then
+if [ -e "/bootmnt/${install_dir}/${arch}/cinnamon-image.sqfs" ] ; then
    DESKTOP="CINNAMON"
    DESKTOP_IMG="cinnamon-image"
 fi
-if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+if [ -e "/bootmnt/${install_dir}/${arch}/mate-image.sqfs" ] ; then
    DESKTOP="MATE"
    DESKTOP_IMG="mate-image"
 fi
-if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
+if [ -e "/bootmnt/${install_dir}/${arch}/kde-image.sqfs" ] ; then
    DESKTOP="KDE"
    DESKTOP_IMG="kde-image"
 fi
-if [ -e "/bootmnt/manjaro/${arch}/lxde-image.sqfs" ] ; then
+if [ -e "/bootmnt/${install_dir}/${arch}/lxde-image.sqfs" ] ; then
    DESKTOP="LXDE"
    DESKTOP_IMG="lxde-image"
 fi
-if [ -e "/bootmnt/manjaro/${arch}/e17-image.sqfs" ] ; then
+if [ -e "/bootmnt/${install_dir}/${arch}/e17-image.sqfs" ] ; then
    DESKTOP="E17"
    DESKTOP_IMG="e17-image"
 fi
-if [ -e "/bootmnt/manjaro/${arch}/custom-image.sqfs" ] ; then
+if [ -e "/bootmnt/${install_dir}/${arch}/custom-image.sqfs" ] ; then
    DESKTOP="CUSTOM"
    DESKTOP_IMG="custom-image"
 fi
@@ -496,29 +499,29 @@ hd_config()
 
     # Install xf86-video driver
 
-    if [ -e "/opt/manjaro/pacman-gfx.conf" ] ; then
+    if [ -e "/opt/livecd/pacman-gfx.conf" ] ; then
        DIALOG --infobox "${_installvideodriver}"  6 40
     
-       mkdir -p ${DESTDIR}/opt/manjaro
-       mount -o bind /opt/manjaro ${DESTDIR}/opt/manjaro > /tmp/mount.pkgs.log
-       ls ${DESTDIR}/opt/manjaro >> /tmp/mount.pkgs.log
+       mkdir -p ${DESTDIR}/opt/livecd
+       mount -o bind /opt/livecd ${DESTDIR}/opt/livecd > /tmp/mount.pkgs.log
+       ls ${DESTDIR}/opt/livecd >> /tmp/mount.pkgs.log
 
        if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
 	   if  [ "${VIDEO}" == "vesa" ]; then
-           	chroot ${DESTDIR} mhwd --install pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf" &>/dev/null
+           	chroot ${DESTDIR} mhwd --install pci video-vesa --pmconfig "/opt/livecd/pacman-gfx.conf" &>/dev/null
 	   else
-           	chroot ${DESTDIR} mhwd --auto pci nonfree 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf" &>/dev/null
+           	chroot ${DESTDIR} mhwd --auto pci nonfree 0300 --pmconfig "/opt/livecd/pacman-gfx.conf" &>/dev/null
 	   fi
        else
 	   if  [ "${VIDEO}" == "vesa" ]; then
-           	chroot ${DESTDIR} mhwd --install pci video-vesa --pmconfig "/opt/manjaro/pacman-gfx.conf" &>/dev/null
+           	chroot ${DESTDIR} mhwd --install pci video-vesa --pmconfig "/opt/livecd/pacman-gfx.conf" &>/dev/null
 	   else
-           	chroot ${DESTDIR} mhwd --auto pci free 0300 --pmconfig "/opt/manjaro/pacman-gfx.conf" &>/dev/null
+           	chroot ${DESTDIR} mhwd --auto pci free 0300 --pmconfig "/opt/livecd/pacman-gfx.conf" &>/dev/null
 	   fi
        fi
 
-       umount ${DESTDIR}/opt/manjaro
-       rmdir ${DESTDIR}/opt/manjaro
+       umount ${DESTDIR}/opt/livecd
+       rmdir ${DESTDIR}/opt/livecd
     fi
 
     # setup systemd
@@ -652,7 +655,7 @@ hd_config()
     echo "BROWSER=/usr/bin/xdg-open" >> ${DESTDIR}/etc/skel/.bashrc
     echo "BROWSER=/usr/bin/xdg-open" >> ${DESTDIR}/etc/profile
     # add TERM var
-    if [ -e "/bootmnt/manjaro/${arch}/mate-image.sqfs" ] ; then
+    if [ -e "/bootmnt/${install_dir}/${arch}/mate-image.sqfs" ] ; then
        echo "TERM=mate-terminal" >> ${DESTDIR}/etc/environment
        echo "TERM=mate-terminal" >> ${DESTDIR}/etc/profile
     fi
@@ -729,7 +732,7 @@ run_unsquashfs()
         touch /tmp/setup-unsquashfs-running
         echo "unsquashing $SQF_FILE..." > /tmp/unsquashfs.log; \
         echo >> /tmp/unsquashfs.log; \
-        unsquashfs -f -da 32 -fr 32 -d $UNSQUASH_TARGET /bootmnt/manjaro/${arch}/$SQF_FILE >> /tmp/unsquashfs.log 2>&1
+        unsquashfs -f -da 32 -fr 32 -d $UNSQUASH_TARGET /bootmnt/${install_dir}/${arch}/$SQF_FILE >> /tmp/unsquashfs.log 2>&1
         rm -f /tmp/setup-unsquashfs-running
     ) &
 
@@ -757,7 +760,7 @@ run_unsquashfs()
 run_mount_sqf()
 {
     # mount SQF_FILE to CP_SOURCE
-    mount /bootmnt/manjaro/${arch}/${SQF_FILE} ${CP_SOURCE} -t squashfs -o loop
+    mount /bootmnt/${install_dir}/${arch}/${SQF_FILE} ${CP_SOURCE} -t squashfs -o loop
 }
 
 # run_umount_sqf()
@@ -774,7 +777,7 @@ run_umount_sqf()
 run_cp()
 {
     # all cp output goes to /tmp/cp.log, which we tail
-    FILES_TOSYNC=$(unsquashfs -l /bootmnt/manjaro/${arch}/${SQF_FILE} | wc -l)
+    FILES_TOSYNC=$(unsquashfs -l /bootmnt/${install_dir}/${arch}/${SQF_FILE} | wc -l)
     (cp -av ${CP_SOURCE}/* ${CP_TARGET} | \
     pv -nls ${FILES_TOSYNC} | \
     grep -v ">" | grep "[0-9]*") 2>&1 | \
@@ -829,7 +832,7 @@ installsystem_unsquash() {
     #DIALOG --msgbox "${_installationwillstart}" 0 0
     #clear
     mkdir -p ${DESTDIR}
-    #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/root-image.sqfs
+    #unsquashfs -f -d ${DESTDIR} /bootmnt/${install_dir}/${arch}/root-image.sqfs
     UNSQUASH_TARGET=${DESTDIR}
     SQF_FILE=root-image.sqfs
     run_unsquashfs
@@ -839,7 +842,7 @@ installsystem_unsquash() {
     fi
     sed -i '/dir_scan: failed to open directory [^ ]*, because File exists/d' /tmp/unsquasherror.log
 
-    #unsquashfs -f -d ${DESTDIR} /bootmnt/manjaro/${arch}/de-image.sqfs
+    #unsquashfs -f -d ${DESTDIR} /bootmnt/${install_dir}/${arch}/de-image.sqfs
     UNSQUASH_TARGET=${DESTDIR}
     SQF_FILE=${DESKTOP_IMG}.sqfs
     run_unsquashfs
@@ -960,16 +963,16 @@ installsystem() {
 }
 
 set_language() {
-    if [[ -e /etc/manjaro/lg ]]; then
-        /etc/manjaro/lg --setup
+    if [[ -e /opt/livecd/lg ]]; then
+        /opt/livecd/lg --setup
     else
         DIALOG --msgbox "Error:\nlg script not found, aborting language setting" 0 0
     fi
 }
 
 set_keyboard() {
-    if [[ -e /etc/manjaro/km ]]; then
-        /etc/manjaro/km --setup
+    if [[ -e /opt/livecd/km ]]; then
+        /opt/livecd/km --setup
     else
         DIALOG --msgbox "Error:\nkm script not found, aborting keyboard and console setting" 0 0
     fi
@@ -1071,10 +1074,10 @@ dogrub_mkconfig() {
 _setup_user()
 {
     addgroups="video,audio,power,disk,storage,optical,network,lp,scanner"
-    DIALOG --inputbox "${_enterusername}" 10 65 "manjaro" 2>${ANSWER} || return 1
+    DIALOG --inputbox "${_enterusername}" 10 65 "${username}" 2>${ANSWER} || return 1
     REPLY="$(cat ${ANSWER})"
     while [ -z "$(echo $REPLY |grep -E '^[a-z_][a-z0-9_-]*[$]?$')" ];do
-       DIALOG --inputbox "${_givecorrectname}" 10 65 "manjaro" 2>${ANSWER} || return 1
+       DIALOG --inputbox "${_givecorrectname}" 10 65 "${username}" 2>${ANSWER} || return 1
        REPLY="$(cat ${ANSWER})"
     done
 
@@ -1177,10 +1180,10 @@ _post_process()
     chroot ${DESTDIR} locale-gen &> /dev/null
 
     # installing localization packages
-    if [ -e "/bootmnt/manjaro/${arch}/lng-image.sqfs" ] ; then
+    if [ -e "/bootmnt/${install_dir}/${arch}/lng-image.sqfs" ] ; then
        _configure_translation_pkgs
        ${PACMAN_LNG} -Sy
-       if [ -e "/bootmnt/manjaro/${arch}/kde-image.sqfs" ] ; then
+       if [ -e "/bootmnt/${install_dir}/${arch}/kde-image.sqfs" ] ; then
           ${PACMAN_LNG} -S ${KDE_LNG_INST} &> /dev/null
        fi
        if [ -e "/usr/bin/firefox" ] ; then
