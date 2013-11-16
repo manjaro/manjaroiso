@@ -9,6 +9,8 @@ if [ ! -e options.conf ] ; then
     echo "the config file options.conf is missing, exiting..."
     echo " "
     exit
+else
+    . options.conf
 fi
 
 if [ ! -e /usr/share/${manjaroiso}/functions/messages ] ; then
@@ -19,7 +21,6 @@ if [ ! -e /usr/share/${manjaroiso}/functions/messages ] ; then
 fi
 
 .  /usr/share/${manjaroiso}/functions/messages
-. options.conf
 get_colors
 
 if [ -e Packages-Xfce ] ; then
