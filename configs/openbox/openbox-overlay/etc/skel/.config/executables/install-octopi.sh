@@ -41,19 +41,38 @@ echo "$(tput sgr0)is $(tput setaf 2)Octopi$(tput sgr0)."
 echo  
 echo "Octopi allows for easy software searches, installation, and removal at" 
 echo "the click of a button, including from the Arch User Repository (AUR)." 
-echo "It will also automatically provide notifications on your desktop when"
+echo "It can also automatically provide notifications on your desktop when"
 echo "new updates are available."
+echo
+echo "$(tput setaf 2)$(tput bold)1. Install Octopi and Octopi Notifier (recommended)"
+echo "$(tput sgr0)Install the complete package for automatic notifications of updates."
+echo
+echo "$(tput setaf 3)$(tput bold)2. Install Octopi Only"
+echo "$(tput sgr0)Install the software manager alone without desktop notifications."
 echo
 echo "Note that this process may be interrupted by an essential system upgrade. If"
 echo "this happens, perform the upgrade and then run this process again."
 echo
-echo "Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to proceed. You may still cancel the process when prompted."
-read pause
+echo "Enter the number of your choice ($(tput setaf 2)$(tput bold)1$(tput sgr0) or $(tput setaf 3)$(tput bold)2$(tput sgr0)), or just press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to cancel."
+read option
+case "$option" in
 
-
+  "1")
   pacman -Syy octopi-notifier
   echo
   echo "Process Complete. Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to continue"
   read pause
+  echo
+  ;;
+
+  "2")
+  pacman -Syy octopi
+  echo
+  echo "Process Complete. Press $(tput setaf 2)$(tput bold)<enter> $(tput sgr0)to continue"
+  read pause
+  echo
+  ;;
+
+esac
 
 exit 0
