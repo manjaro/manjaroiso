@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. options.conf
-
 # switch to basic language
 export LANG=C
 export LC_MESSAGES=C
@@ -11,6 +9,8 @@ if [ ! -e options.conf ] ; then
     echo "the config file options.conf is missing, exiting..."
     echo " "
     exit
+else
+    . options.conf
 fi
 
 if [ ! -e /usr/share/${manjaroiso}/functions/messages ] ; then
