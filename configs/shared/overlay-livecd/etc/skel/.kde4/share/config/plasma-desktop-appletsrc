@@ -226,12 +226,6 @@ zvalue=0
 [Containments][1][Applets][26][LayoutInformation]
 Order=9
 
-[Containments][1][Applets][4]
-geometry=1042,4,30,32
-immutability=1
-plugin=pager
-zvalue=1
-
 [Containments][1][Applets][4][Configuration]
 hideWhenSingleDesktop=true
 

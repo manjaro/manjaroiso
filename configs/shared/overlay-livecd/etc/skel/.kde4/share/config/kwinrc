@@ -15,8 +15,8 @@ UnredirectFullscreen=false
 XRenderSmoothScale=false
 
 [Desktops]
-Number=2
-Rows=2
+Number=1
+Rows=1
 
 [Effect-BoxSwitch]
 TabBox=false
