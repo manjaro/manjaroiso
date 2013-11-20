@@ -1,0 +1,6 @@
+[Desktop Entry]
+Icon=text-plain
+Name=Trolltech.conf
+Type=Link
+URL[$e]=file:///root/.config/Trolltech.conf
+X-KDE-LastOpenedWith=kate

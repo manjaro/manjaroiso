@@ -1,0 +1,11 @@
+[Basic Settings]
+Start Nepomuk=false
+
+[Service-nepomukfileindexer]
+autostart=false
+
+[main Settings]
+GraphMigrationRequired=false
+Port=1113
+Storage Dir[$e]=$HOME/.kde4/share/apps/nepomuk/repository/main/
+Used Soprano Backend=virtuosobackend

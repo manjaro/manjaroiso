@@ -1,0 +1,10 @@
+# created by KDE, Wed Nov 20 16:38:04 2013
+#
+# If you do not want KDE to override your GTK settings, select
+# Appearance -> Colors in the System Settings and disable the checkbox
+# "Apply colors to non-KDE4 applications"
+#
+#
+
+gtk-alternative-button-order = 1
+

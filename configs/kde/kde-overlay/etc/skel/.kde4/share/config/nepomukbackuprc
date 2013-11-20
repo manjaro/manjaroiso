@@ -1,0 +1,5 @@
+[Backup]
+backup day=1
+backup frequency=disabled
+backup time=18:00:00
+max backups=10
