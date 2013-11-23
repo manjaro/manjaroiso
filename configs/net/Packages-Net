@@ -22,6 +22,10 @@ xorg-twm
 xorg-utils
 xorg-xinit
 
+## Basic packages
+dconf
+desktop-file-utils
+
 ## Packages for Sound and Audio
 manjaro-alsa
 

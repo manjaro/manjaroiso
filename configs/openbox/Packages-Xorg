@@ -14,6 +14,9 @@ primus
 KERNEL-bbswitch
 >x86_64 lib32-primus
 
+## Broadcom Support
+KERNEL-broadcom-wl
+
 ## Proprietary Drivers
 >i686 catalyst-input			 # catalyst support now only for i686
 >i686 catalyst-server			 # catalyst support now only for i686

@@ -32,7 +32,9 @@ echo "configure alsa" >> /tmp/livecd.log
 set_alsa
 
 # configure pulse
-pulseaudio-ctl normal
+if [ -e "/usr/bin/pulseaudio-ctl" ] ; then
+    pulseaudio-ctl normal
+fi
 
 # save settings
 alsactl -f /etc/asound.state store &>/dev/null
@@ -103,7 +105,9 @@ if [ -e "/usr/share/config/kdm/kdmrc" ] ; then
    getent passwd kdm >/dev/null 2>&1 || useradd -u 135 -g kdm -d /var/lib/kdm -s /bin/false -r -M kdm &>/dev/null
    chown -R 135:135 var/lib/kdm &>/dev/null
    xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-   update-desktop-database -q
+   if [ -e "/usr/bin/update-desktop-database" ] ; then
+       update-desktop-database -q
+   fi
    sed -i -e "s/^.*AutoLoginUser=.*/AutoLoginUser=${username}/" /usr/share/config/kdm/kdmrc
    sed -i -e "s/^.*AutoLoginPass=.*/AutoLoginPass=${username}/" /usr/share/config/kdm/kdmrc
 fi
@@ -230,7 +234,9 @@ echo "configure applications" >> /tmp/livecd.log
 # fix_gnome_apps
 glib-compile-schemas /usr/share/glib-2.0/schemas
 gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-dconf update
+if [ -e "/usr/bin/dconf" ] ; then
+   dconf update
+fi
 if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
    setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &> /dev/null
 fi
@@ -292,49 +298,51 @@ if [ -e "/etc/thus.conf" ] ; then
    _conf_file="/etc/thus.conf"
 fi
 
-sed -i "s|_root-image_|/bootmnt/${install_dir}/_ARCH_/root-image.sqfs|g" $_conf_file
-sed -i "s|_kernel_|$manjaro_kernel|g" $_conf_file
-release=$(cat /etc/lsb-release | grep DISTRIB_RELEASE | cut -d= -f2)
-sed -i "s|_version_|$release|g" $_conf_file
+if [ -e "$_conf_file" ] ; then
+   sed -i "s|_root-image_|/bootmnt/${install_dir}/_ARCH_/root-image.sqfs|g" $_conf_file
+   sed -i "s|_kernel_|$manjaro_kernel|g" $_conf_file
+   release=$(cat /etc/lsb-release | grep DISTRIB_RELEASE | cut -d= -f2)
+   sed -i "s|_version_|$release|g" $_conf_file
 
-if [ -e "/bootmnt/${install_dir}/${arch}/xfce-image.sqfs" ] ; then
-   sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/xfce-image.sqfs|g" $_conf_file
-   sed -i "s|_title_|Manjaro XFCE Edition|g" $_conf_file
-fi
-if [ -e "/bootmnt/${install_dir}/${arch}/gnome-image.sqfs" ] ; then
-   sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/gnome-image.sqfs|g" $_conf_file
-   sed -i "s|_title_|Manjaro Gnome Edition|g" $_conf_file
-fi
-if [ -e "/bootmnt/${install_dir}/${arch}/cinnamon-image.sqfs" ] ; then
-   sed -i "'s|_desktop_|/bootmnt/${install_dir}/_ARCH_/cinnamon-image.sqfs|g" $_conf_file
-   sed -i "s|_title_|Manjaro Cinnamon Edition|g" $_conf_file
-fi
-if [ -e "/bootmnt/${install_dir}/${arch}/openbox-image.sqfs" ] ; then
-   sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/openbox-image.sqfs|g" $_conf_file
-   sed -i "s|_title_|Manjaro Openbox Edition|g" $_conf_file
-fi
-if [ -e "/bootmnt/${install_dir}/${arch}/mate-image.sqfs" ] ; then
-   sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/mate-image.sqfs|g" $_conf_file
-   sed -i "s|_title_|Manjaro MATE Edition|g" $_conf_file
-fi
-if [ -e "/bootmnt/${install_dir}/${arch}/kde-image.sqfs" ] ; then
-   sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/kde-image.sqfs|g" $_conf_file
-   sed -i "s|_title_|Manjaro KDE Edition|g" $_conf_file
-fi
-if [ -e "/bootmnt/${install_dir}/${arch}/lxde-image.sqfs" ] ; then
-   sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/lxde-image.sqfs|g" $_conf_file
-   sed -i "s|_title_|Manjaro LXDE Edition|g" $_conf_file
-fi
-if [ -e "/bootmnt/${install_dir}/${arch}/e17-image.sqfs" ] ; then
-   sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/e17-image.sqfs|g" $_conf_file
-   sed -i "s|_title_|Manjaro E17 Edition|g" $_conf_file
-fi
-if [ -e "/bootmnt/${install_dir}/${arch}/custom-image.sqfs" ] ; then
-   sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/custom-image.sqfs|g" $_conf_file
-   sed -i "s|_title_|Manjaro Custom Edition|g" $_conf_file
-fi
-if [ "${arch}" == "i686" ] ; then
-   sed -i "s|_ARCH_|i686|g" $_conf_file
-else
-   sed -i "s|_ARCH_|x86_64|g" $_conf_file
+   if [ -e "/bootmnt/${install_dir}/${arch}/xfce-image.sqfs" ] ; then
+      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/xfce-image.sqfs|g" $_conf_file
+      sed -i "s|_title_|Manjaro XFCE Edition|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/gnome-image.sqfs" ] ; then
+      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/gnome-image.sqfs|g" $_conf_file
+      sed -i "s|_title_|Manjaro Gnome Edition|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/cinnamon-image.sqfs" ] ; then
+      sed -i "'s|_desktop_|/bootmnt/${install_dir}/_ARCH_/cinnamon-image.sqfs|g" $_conf_file
+      sed -i "s|_title_|Manjaro Cinnamon Edition|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/openbox-image.sqfs" ] ; then
+      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/openbox-image.sqfs|g" $_conf_file
+      sed -i "s|_title_|Manjaro Openbox Edition|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/mate-image.sqfs" ] ; then
+      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/mate-image.sqfs|g" $_conf_file
+      sed -i "s|_title_|Manjaro MATE Edition|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/kde-image.sqfs" ] ; then
+      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/kde-image.sqfs|g" $_conf_file
+      sed -i "s|_title_|Manjaro KDE Edition|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/lxde-image.sqfs" ] ; then
+      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/lxde-image.sqfs|g" $_conf_file
+      sed -i "s|_title_|Manjaro LXDE Edition|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/e17-image.sqfs" ] ; then
+      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/e17-image.sqfs|g" $_conf_file
+      sed -i "s|_title_|Manjaro E17 Edition|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/custom-image.sqfs" ] ; then
+      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/custom-image.sqfs|g" $_conf_file
+      sed -i "s|_title_|Manjaro Custom Edition|g" $_conf_file
+   fi
+   if [ "${arch}" == "i686" ] ; then
+      sed -i "s|_ARCH_|i686|g" $_conf_file
+   else
+      sed -i "s|_ARCH_|x86_64|g" $_conf_file
+   fi
 fi
