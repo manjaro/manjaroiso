@@ -2,7 +2,7 @@
 update_info=konversation.upd:1.1-rememberline,konversation.upd:1.1-markerlines,konversation.upd:0.20-customfonts,konversation.upd:0.20-quickbuttons,konversation.upd:0.19-notifylists,konversation.upd:0.19-appearance,konversation.upd:0.19-browser,konversation.upd:0.19-flags,konversation.upd:0.19-highlightcolors,konversation.upd:0.19-osdcolors,konversation.upd:0.19-sortorder,konversation.upd:0.19-colors,konversation.upd:0.19-generaloptions,konversation.upd:0.19-cleanup-themes,konversation.upd:0.19-cleanup-notifylist,konversation.upd:0.19-cleanup-dcc,konversation.upd:0.19-cleanup-colors,konversation.upd:0.19-cleanup-hilightlist,konversation.upd:0.19-cleanup-notificationmessages,konversation.upd:0.19-cleanup-ledcolors,konversation.upd:0.19-cleanup-kmditaskbar,konversation.upd:0.19-channelsplitter
 
 [Aliases]
-AliasList=gauge /exec gauge,bug /exec bug,sysinfo /exec sysinfo,kdeversion /exec kdeversion,cmd /exec cmd,mail /exec mail,video /exec media video,audio /exec media audio,media /exec media,sayclip /exec sayclip,tinyurl /exec tinyurl,uptime /exec uptime,fortune /exec fortune
+AliasList=fortune /exec fortune,uptime /exec uptime,tinyurl /exec tinyurl,sayclip /exec sayclip,media /exec media,audio /exec media audio,video /exec media video,mail /exec mail,cmd /exec cmd,kdeversion /exec kdeversion,sysinfo /exec sysinfo,bug /exec bug,gauge /exec gauge
 
 [Appearance]
 ChannelSplitterSizes=1099,264
@@ -71,26 +71,26 @@ AutomaticUnaway=false
 AwayInactivity=10
 AwayMessage=
 AwayNick=
-AwayReason=Gone away for now
+AwayReason=Manjaro user gone away for now
 Bot=
 Codec=UTF-8
-Ident=manjaro
+Ident=manjaro-kde
 InsertRememberLineOnAway=false
 KickReason=User terminated!
 Name=Default Identity
-Nicknames=manjaro,manjaro_,manjaro__
-PartReason=Konversation terminated!
+Nicknames=manjaro_user,manjaro_user_,manjaro_user__
+PartReason=Manjaro-KDE user leaving!
 Password=
 PreShellCommand=
-QuitReason=Konversation terminated!
-Realname=manjaro
+QuitReason=Manjaro-KDE user leaving!
+Realname=manjaro-kde
 ReturnMessage=
 ShowAwayMessage=false
 
 [MainWindow]
 Height 672=673
 Height 768=769
-State=AAAA/wAAAAD9AAAAAAAABVYAAAKbAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABVYAAAKgAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 Width 1366=1367
 
@@ -118,6 +118,7 @@ systemtrayquitKonversation=1
 [OSD]
 OSDBackgroundColor=0,128,0
 OSDUseCustomColors=true
+ShowOwnNick=true
 UseOSD=true
 
 [Server 0]

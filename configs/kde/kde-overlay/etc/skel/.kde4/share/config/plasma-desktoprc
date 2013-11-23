@@ -3,7 +3,7 @@ Height 768=644
 Width 1366=790
 
 [KPropertiesDialog]
-Height 768=330
+Height 768=365
 Width 1366=388
 
 [PlasmaViews][1]
@@ -13,7 +13,7 @@ panelVisibility=0
 lastsize=1366
 
 [Updates]
-performed=/usr/share/apps/plasma-desktop/updates/addShowActivitiesManagerPlasmoid.js,/usr/share/apps/plasma-desktop/updates/systray-to-notifications-widget.js
+performed=/usr/share/apps/plasma-desktop/updates/addShowActivitiesManagerPlasmoid.js,/usr/share/apps/plasma-desktop/updates/systray-to-notifications-widget.js,/usr/share/apps/plasma-desktop/updates/set-hidden-single-vd-pager.js
 
 [ViewIds]
 1=1

@@ -3,8 +3,8 @@ NumberOfWindows=1
 
 [WindowProperties1]
 ClassName=KMixWindow
-Height 768=321
+Height 768=307
 ObjectName=KMixWindow
 State=AAAA/wAAAAD9AAAAAAAAAAAAAAAAAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
-Width 1366=506
+Width 1366=683

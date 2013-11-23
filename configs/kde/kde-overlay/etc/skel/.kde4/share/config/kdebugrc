@@ -88,11 +88,20 @@ InfoOutput=2
 [knotify]
 InfoOutput=4
 
+[konversation]
+InfoOutput=4
+
 [krunner]
 InfoOutput=4
 
 [ksmserver]
 InfoOutput=4
+
+[ksnapshot]
+InfoOutput=4
+
+[kwin]
+InfoOutput=2
 
 [lancelot]
 InfoOutput=4

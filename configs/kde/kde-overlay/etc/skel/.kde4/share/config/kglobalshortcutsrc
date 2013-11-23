@@ -43,6 +43,11 @@ decrease_volume=Volume Down,Volume Down,Decrease Volume
 increase_volume=Volume Up,Volume Up,Increase Volume
 mute=Volume Mute,Volume Mute,Mute
 
+[konversation]
+_k_friendly_name=Konversation
+next_active_tab=none,none,Next Active Tab
+toggle_mainwindow_visibility=none,none,Show/Hide Konversation
+
 [krunner]
 PowerDevil=none,none,Run Command (runner "PowerDevil" only)
 Run Command=Alt+F2,Alt+F2,Run Command

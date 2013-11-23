@@ -31,6 +31,7 @@ xorg-xinit
 manjaro-artwork
 manjaro-nature-kdm
 manjaro-nature-splash
+tulliana-wallpapers
 
 ## Community KDE packages
 udiskie
@@ -39,10 +40,10 @@ udisks2
 virtualgl
 kio-mtp
 mtpfs
-#razor-qt
+razor-qt
 
 ## KDE (minimal base)
-kde-wallpapers
+#kde-wallpapers
 kdelibs
 kdepimlibs
 kdebase-runtime
@@ -108,7 +109,7 @@ svn
 yaourt
 
 ## Applications
-rekonq
+#rekonq
 kdepim
 k3b
 digikam
@@ -123,7 +124,7 @@ imagewriter
 kdenetwork
 ktorrent
 #kvirc
-#skype
+skype
 steam
 wine
 q4wine
@@ -139,8 +140,8 @@ pamac
 octopi
 
 ## GTK
-#firefox
-#thunderbird
+firefox
+thunderbird
 oxygen-gtk2
 oxygen-gtk3
 kde-gtk-config

@@ -122,7 +122,7 @@ show=main
 zvalue=0
 
 [Containments][1][Applets][15][LayoutInformation]
-Order=1
+Order=0
 
 [Containments][1][Applets][16]
 geometry=36,4,32,32
@@ -131,7 +131,7 @@ plugin=showdesktop
 zvalue=0
 
 [Containments][1][Applets][16][LayoutInformation]
-Order=2
+Order=1
 
 [Containments][1][Applets][17]
 geometry=72,4,32,32
@@ -143,7 +143,7 @@ zvalue=0
 Url=file:///usr/share/applications/kde4/systemsettings.desktop
 
 [Containments][1][Applets][17][LayoutInformation]
-Order=3
+Order=2
 
 [Containments][1][Applets][18]
 geometry=108,4,32,32
@@ -155,10 +155,10 @@ zvalue=0
 Url=file:///usr/share/applications/kde4/dolphin.desktop
 
 [Containments][1][Applets][18][LayoutInformation]
-Order=4
+Order=3
 
 [Containments][1][Applets][19]
-geometry=1076,4,32,32
+geometry=1048,4,32,32
 immutability=1
 plugin=icon
 zvalue=0
@@ -179,7 +179,7 @@ zvalue=0
 Url=file:///usr/share/applications/kde4/yakuake.desktop
 
 [Containments][1][Applets][20][LayoutInformation]
-Order=5
+Order=4
 
 [Containments][1][Applets][21]
 geometry=180,4,32,32
@@ -191,7 +191,7 @@ zvalue=0
 Url=file:///usr/share/applications/octopi.desktop
 
 [Containments][1][Applets][21][LayoutInformation]
-Order=6
+Order=5
 
 [Containments][1][Applets][22]
 geometry=216,4,32,32
@@ -203,28 +203,42 @@ zvalue=0
 Url=file:///usr/share/applications/kde4/konversation.desktop
 
 [Containments][1][Applets][22][LayoutInformation]
-Order=7
-
-[Containments][1][Applets][23]
-geometry=252,4,32,32
-immutability=1
-plugin=icon
-zvalue=0
-
-[Containments][1][Applets][23][Configuration]
-Url=file:///usr/share/applications/kde4/rekonq.desktop
-
-[Containments][1][Applets][23][LayoutInformation]
-Order=8
+Order=6
 
 [Containments][1][Applets][26]
-geometry=288,4,750,32
+geometry=288,4,722,32
 immutability=1
 plugin=icontasks
 zvalue=0
 
 [Containments][1][Applets][26][LayoutInformation]
+Order=8
+
+[Containments][1][Applets][27]
+geometry=1014,4,30,32
+immutability=1
+plugin=pager
+zvalue=2
+
+[Containments][1][Applets][27][Configuration]
+currentDesktopSelected=0
+displayedText=2
+showWindowIcons=false
+
+[Containments][1][Applets][27][LayoutInformation]
 Order=9
+
+[Containments][1][Applets][28]
+geometry=252,4,32,32
+immutability=1
+plugin=icon
+zvalue=0
+
+[Containments][1][Applets][28][Configuration]
+Url=file:///usr/share/applications/firefox.desktop
+
+[Containments][1][Applets][28][LayoutInformation]
+Order=7
 
 [Containments][1][Applets][4][Configuration]
 hideWhenSingleDesktop=true
@@ -233,7 +247,7 @@ hideWhenSingleDesktop=true
 Order=0
 
 [Containments][1][Applets][6]
-geometry=1112,4,162,32
+geometry=1084,4,190,32
 immutability=1
 plugin=systemtray
 zvalue=0
@@ -361,7 +375,7 @@ offset=36
 slideTimer=10
 slidepaths=
 userswallpapers=
-wallpaper=/usr/share/wallpapers/skyline-manjaro/
+wallpaper=/usr/share/wallpapers/green-stripe-manjaro/
 wallpapercolor=0,0,0
 wallpaperposition=0
 

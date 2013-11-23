@@ -135,6 +135,7 @@ Size=32
 [General]
 ColorScheme=Oxygen Cold
 XftHintStyle=hintmedium
+dbfile=/home/manjaro/.mozilla/firefox/9shb6xj3.default/places.sqlite
 shadeSortColumn=true
 widgetStyle=oxygen
 
