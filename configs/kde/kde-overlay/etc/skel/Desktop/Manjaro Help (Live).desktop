@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment[tr]=Connect to manjaro support room
+Comment=Connect to manjaro support room
+Exec=konversation -caption "%c" %i
+GenericName[tr]=Manjaro Help IRC Client
+GenericName=Manjaro Help IRC Client
+Icon=konversation
+MimeType=
+Name[tr]=Manjaro Help (Live)
+Name=Manjaro Help (Live)
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
