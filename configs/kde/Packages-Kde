@@ -41,6 +41,7 @@ virtualgl
 kio-mtp
 mtpfs
 razor-qt
+kio-sysinfo-svn
 
 ## KDE (minimal base)
 #kde-wallpapers
@@ -110,6 +111,7 @@ yaourt
 
 ## Applications
 #rekonq
+konqueror
 kdepim
 k3b
 digikam
