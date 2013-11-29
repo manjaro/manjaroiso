@@ -138,8 +138,9 @@ clementine
 manjaro-welcome
 
 ## Package management
-pamac
 octopi
+octopi-notifier
+#pamac
 
 ## GTK
 firefox
