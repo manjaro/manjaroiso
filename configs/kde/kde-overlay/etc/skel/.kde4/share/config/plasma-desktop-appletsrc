@@ -158,7 +158,7 @@ Url=file:///usr/share/applications/kde4/dolphin.desktop
 Order=3
 
 [Containments][1][Applets][19]
-geometry=1048,4,32,32
+geometry=1076,4,32,32
 immutability=1
 plugin=icon
 zvalue=0
@@ -167,7 +167,7 @@ zvalue=0
 Url=file:///usr/share/applications/manjaro-settings-manager.desktop
 
 [Containments][1][Applets][19][LayoutInformation]
-Order=10
+Order=9
 
 [Containments][1][Applets][20]
 geometry=144,4,32,32
@@ -181,20 +181,8 @@ Url=file:///usr/share/applications/kde4/yakuake.desktop
 [Containments][1][Applets][20][LayoutInformation]
 Order=4
 
-[Containments][1][Applets][21]
-geometry=180,4,32,32
-immutability=1
-plugin=icon
-zvalue=0
-
-[Containments][1][Applets][21][Configuration]
-Url=file:///usr/share/applications/octopi.desktop
-
-[Containments][1][Applets][21][LayoutInformation]
-Order=5
-
 [Containments][1][Applets][22]
-geometry=216,4,32,32
+geometry=180,4,32,32
 immutability=1
 plugin=icon
 zvalue=0
@@ -203,19 +191,19 @@ zvalue=0
 Url=file:///usr/share/applications/kde4/konversation.desktop
 
 [Containments][1][Applets][22][LayoutInformation]
-Order=6
+Order=5
 
 [Containments][1][Applets][26]
-geometry=288,4,722,32
+geometry=252,4,757,32
 immutability=1
 plugin=icontasks
 zvalue=0
 
 [Containments][1][Applets][26][LayoutInformation]
-Order=8
+Order=7
 
 [Containments][1][Applets][27]
-geometry=1014,4,30,32
+geometry=1013,4,59,32
 immutability=1
 plugin=pager
 zvalue=2
@@ -226,10 +214,10 @@ displayedText=2
 showWindowIcons=false
 
 [Containments][1][Applets][27][LayoutInformation]
-Order=9
+Order=8
 
 [Containments][1][Applets][28]
-geometry=252,4,32,32
+geometry=216,4,32,32
 immutability=1
 plugin=icon
 zvalue=0
@@ -238,7 +226,7 @@ zvalue=0
 Url=file:///usr/share/applications/firefox.desktop
 
 [Containments][1][Applets][28][LayoutInformation]
-Order=7
+Order=6
 
 [Containments][1][Applets][4][Configuration]
 hideWhenSingleDesktop=true
@@ -247,7 +235,7 @@ hideWhenSingleDesktop=true
 Order=0
 
 [Containments][1][Applets][6]
-geometry=1084,4,190,32
+geometry=1112,4,162,32
 immutability=1
 plugin=systemtray
 zvalue=0
@@ -290,9 +278,12 @@ immutability=1
 plugin=org.kde.notifications
 zvalue=0
 
+[Containments][1][Applets][6][Configuration][Applets][12][Configuration][General]
+CustomPosition=1020,644
+
 [Containments][1][Applets][6][Configuration][Applets][12][PopupApplet]
-DialogHeight=92
-DialogWidth=416
+DialogHeight=95
+DialogWidth=422
 
 [Containments][1][Applets][6][Configuration][Applets][12][Shortcuts]
 global=
@@ -304,8 +295,8 @@ plugin=battery
 zvalue=0
 
 [Containments][1][Applets][6][Configuration][Applets][13][PopupApplet]
-DialogHeight=97
-DialogWidth=304
+DialogHeight=104
+DialogWidth=310
 
 [Containments][1][Applets][6][Configuration][Applets][13][Shortcuts]
 global=
@@ -317,7 +308,7 @@ plugin=notifications
 SystemTray-Klipper-6=Ctrl+Alt+V
 
 [Containments][1][Applets][6][LayoutInformation]
-Order=11
+Order=10
 
 [Containments][1][Applets][7]
 geometry=1278,4,64,32
@@ -326,7 +317,7 @@ plugin=digital-clock
 zvalue=2
 
 [Containments][1][Applets][7][LayoutInformation]
-Order=12
+Order=11
 
 [Containments][1][Configuration]
 maximumSize=1366,36
@@ -357,6 +348,7 @@ location=0
 mimeFilter=
 numTextLines=2
 plugin=folderview
+savedPositions=1,6,Manjaro Help (Live).desktop,10,197,Home.desktop,10,106,Computer.desktop,10,10,thus.desktop,10,298,installer-launcher-cli.desktop,10,394,Beginner User Guide.pdf,10,490
 screen=0
 showPreviews=true
 sortColumn=-1
@@ -366,6 +358,15 @@ url=desktop:/
 wallpaperplugin=image
 wallpaperpluginmode=SingleImage
 zvalue=0
+
+[Containments][25][Applets][29]
+geometry=995,62,304,59
+immutability=1
+plugin=system-monitor_applet
+zvalue=7
+
+[Containments][25][Applets][29][Configuration]
+applets=
 
 [Containments][25][ToolBox]
 corner=4
