@@ -14,6 +14,9 @@ primus
 KERNEL-bbswitch
 >x86_64 lib32-primus
 
+## Broadcom Support
+KERNEL-broadcom-wl
+
 ## Proprietary Drivers
 >nonfree_uni catalyst-input
 >nonfree_uni catalyst-server

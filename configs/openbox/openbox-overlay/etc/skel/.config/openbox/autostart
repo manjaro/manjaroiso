@@ -24,7 +24,7 @@ nitrogen --restore &
 
 ## Startup
 (sleep 1s && pnmixer) &
-(sleep 2s && conky) &
+(sleep 3s && conky) &
 
 ## Optionally enable file manager in daemon mode for automounting
 # (sleep 1s && thunar --daemon) &

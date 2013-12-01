@@ -14,19 +14,22 @@ primus
 KERNEL-bbswitch
 >x86_64 lib32-primus
 
+## Broadcom Support
+KERNEL-broadcom-wl
+
 ## Proprietary Drivers
 >i686 catalyst-input			 # catalyst support now only for i686
 >i686 catalyst-server			 # catalyst support now only for i686
 >i686 catalyst-video			 # catalyst support now only for i686
-catalyst-utils
-KERNEL-catalyst
+>i686 catalyst-utils			 # catalyst support now only for i686
+>i686 KERNEL-catalyst			 # catalyst support now only for i686
 >i686 catalyst-legacy-utils		 # catalyst support now only for i686
 >i686 KERNEL-catalyst-legacy		 # catalyst support now only for i686
 >nonfree_uni nvidia-utils
 >nonfree_uni KERNEL-nvidia
 >nonfree_uni nvidia-304xx-utils
 >nonfree_uni KERNEL-nvidia-304xx
->nonfree_x64 lib32-catalyst-utils
+##           lib32-catalyst-utils 	 # disabled for now on x86_64
 ##           lib32-catalyst-legacy-utils # disabled for now on x86_64
 >nonfree_x64 lib32-nvidia-utils
 >nonfree_x64 lib32-nvidia-legacy-utils
