@@ -27,130 +27,100 @@ xorg-twm
 xorg-utils
 xorg-xinit
 
+## Graphical installer
+thus
+
 ## Artwork
 manjaro-artwork
 
-## GNOME (core)
-gnome-applets
-#gnome-backgrounds
-#gnome-control-center
-gnome-desktop
-gnome-icon-theme
-#gnome-icon-theme-extras
-gnome-icon-theme-symbolic
-gnome-keyring
-gnome-panel
-#gnome-screensaver
-gnome-session
-gnome-settings-daemon
-#gnome-shell
-gnome-shell-extensions
-gnome-terminal
-gnome-themes-standard
-gnome-user-docs
-metacity
-#mutter
-#nautilus
-#nautilus-actions
-#nautilus-open-terminal
-#nautilus-sendto
-notification-daemon
-xdg-user-dirs-gtk
-yelp
-
-## GNOME (extra)
-aisleriot
-baobab
-brasero
-cheese
-dasher
-ekiga
-empathy
-eog
-eog-plugins
-evince
-#evolution
-faience-themes
+## GNOME
+ffmpegthumbnailer
 file-roller
-gcalctool
-#gconf-editor
-gimp
-gksu
-dconf
-gdm
-gdm3setup
 gedit
-gnome-color-manager
-gnome-contacts
+gjs
+glade 
 gnome-disk-utility
-#gnome-documents
-gnome-font-viewer
-gnome-games
-gnome-games-extra-data
-#gnome-nettool
+gnome-keyring
 gnome-power-manager
 gnome-screenshot
-gnome-system-log
+gnome-power-manager
 gnome-system-monitor
-gnome-tweak-tool
-gparted
-libgnome-data # to fix qt
-live-installer
-#lxdm
+gnome-terminal
+gnome-vfs
+gtksourceview3 
+icon-naming-utils
+libgnome
+libgnome-data
+libgnome-keyring
+libgnomecanvas
+libgnomeui
+libgsf
+libnautilus-extension
+libreoffice-gnome
+lxpolkit
 mousetweaks
-network-manager-applet
-orca
-#parole
-seahorse
-simple-scan
-sound-juicer
-sushi
-#tomboy
-#totem
-tracker
-vinagre
-vino
+mutter 
+python2-gnomecanvas
+python2-gnomevfs
+python2-libgnome 
+seahorse   
+xdg-user-dirs-gtk   
+libgnome-media-profiles
+soundconverter
+polkit-gnome
+polkit
+gksu
+
+ 
+## Cinnamon
+cinnamon
+cinnamon-desktop
+cinnamon-session
+cinnamon-settings-daemon
+cinnamon-translations
+cinnamon-control-center
+cinnamon-screensaver
+cinnamon-theme-minty
+cjs
+muffin
+nemo
+nemo-fileroller
+
 
 ## Extra
 icedtea-web-java7
 vlc
 
-## Devel Packages
-autoconf
-automake
-binutils
-bison
-fakeroot
-flex
-gcc
-libtool
-m4
-make
-patch
-git
-patchutils
-svn
-yaourt
-
 ## Theme
 faenza-green-icon-theme
-#zukitwo-themes
-zukitwo-colors
+adwaita-manjaro-themes
 xfce-theme-greenbird
 
-## Cinnamon
-cinnamon-control-center
-cinnamon-screensaver
-muffin
-nemo
 
 ## Other Applications
+
+epdfview
 firefox
-thunderbird
-manjaro-settings-manager
+leafpad
+imagewriter
+ttf-droid
+lxterminal
+mdm
+mdm-themes
+viewnior
+flashplugin
+numlockx
+p7zip
+udiskie
+udisks
+udisks2
 
 ## Package management
-pamac
+
+pamac-aur
+octopi
+manjaro-welcome
+manjaro-settings-manager
 
 ## Packages for Sound and Audio
 gstreamer0.10-bad-plugins
@@ -158,6 +128,7 @@ gstreamer0.10-ffmpeg
 gstreamer0.10-ugly-plugins
 manjaro-alsa
 manjaro-pulse
+pulseaudio-ctl
 
 ## Printing
 manjaro-printer
@@ -169,6 +140,20 @@ libreoffice-calc
 #libreoffice-draw
 libreoffice-gnome
 #libreoffice-impress
-#libreoffice-math
+libreoffice-math
 #libreoffice-postgresql-connector
 libreoffice-writer
+
+## AUR Access
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+gcc
+libtool
+m4
+make
+patch
+subversion
