@@ -95,7 +95,7 @@ vlc
 faenza-green-icon-theme
 adwaita-manjaro-themes
 xfce-theme-greenbird
-
+numix-manjaro-themes
 
 ## Other Applications
 
@@ -114,6 +114,10 @@ p7zip
 udiskie
 udisks
 udisks2
+pavucontrol
+openssh
+polkit
+polkit-gnome
 
 ## Package management
 
