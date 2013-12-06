@@ -28,39 +28,64 @@ xorg-utils
 xorg-xinit
 
 ## Artwork
-manjaro-artwork
 
-## MATE Main Packages
-consolekit-git
-faenza-green-icon-theme
-gksu
-libgnomeui
-live-installer
-lxdm
-manjaro-settings-manager
-mate
-mate-applets
-mate-bluetooth
-mate-calc
-mate-document-viewer
-mate-file-archiver
-mate-file-manager-open-terminal
-mate-file-manager-sendto
-mate-image-viewer
-mate-media
-mate-menu-editor
-mate-power-manager
-mate-screensaver
-mate-system-monitor
-mate-terminal
-mate-text-editor
-mate-utils
-#mintmenu
-network-manager-applet
+manjaro-artwork
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
+faenza-green-icon-theme
+numix-manjaro-themes
+
+## MATE Main Packages
+
+libgnomeui
+libmatekbd 
+libmatekeyring 
+libmateweather
+libmatewnck
+mate-backgrounds
+mate-control-center
+mate-desktop
+mate-dialogs
+mate-file-manager
+mate-icon-theme
+mate-image-viewer
+mate-keyring
+mate-media-pulseaudio
+mate-menus
+mate-notification-daemon
+mate-panel
+mate-polkit 
+mate-power-manager
+mate-screensaver
+mate-session-manager
+mate-settings-daemon-pulseaudio
+mate-system-monitor
+mate-themes
+mate-window-manager
+mate-disk-utility
+mintmenu
+network-manager-applet
+mate-applet-lockkeys
+mate-applet-streamer
+mate-applets
+mate-bluetooth
+mate-text-editor
+mate-calc
+mate-color-manager
+mate-doc-utils
+mate-document-viewer
+mate-file-archiver
+mate-file-manager-image-converter
+mate-file-manager-open-terminal
+mate-menu-editor
+mate-mplayer
+mate-nettool
+mate-terminal
+mate-utils
 
 ## Applications
+
+gksu
 blueman
 brasero
 firefox
@@ -68,9 +93,22 @@ thunderbird
 gparted
 pidgin
 transmission-gtk
-vlc
 xchat
 xnoise
+flashplugin
+imagewriter
+ttf-droid
+viewnior
+manjaro-settings-manager
+thus
+mdm
+mdm-themes
+epdfview
+udiskie
+udisks
+udisks2
+p7zip
+openssh
 
 ## Packages for Sound and Audio
 manjaro-alsa
@@ -82,24 +120,20 @@ gstreamer0.10-good-plugins
 gstreamer0.10-ugly-plugins
 
 ## Package management
-pamac
-
-## Java
-#icedtea-web-java7
-
-## Wallpapers
+pamac-aur
+octopi
+manjaro-welcome
 
 ## Office
 #abiword
-#gnumeric
 #libreoffice-installer
 libreoffice-en-US
 #libreoffice-base
 libreoffice-calc
 #libreoffice-draw
-#libreoffice-gnome
+libreoffice-gnome
 #libreoffice-impress
-#libreoffice-math
+libreoffice-math
 #libreoffice-postgresql-connector
 libreoffice-writer
 
@@ -118,4 +152,4 @@ patch
 yaourt
 
 ## Printing
-#manjaro-printer
+manjaro-printer
