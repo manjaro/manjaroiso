@@ -41,7 +41,7 @@ virtualgl
 kio-mtp
 mtpfs
 razor-qt
-kio-sysinfo-svn
+kio-sysinfo
 
 ## KDE (minimal base)
 #kde-wallpapers

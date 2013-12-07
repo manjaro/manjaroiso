@@ -2,4 +2,5 @@
 
 sudo rm -R configs/*/work*
 find ./ -name '*~' | xargs rm -v
+find ./ -name '.directory' | xargs rm -v
 
