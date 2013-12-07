@@ -1,0 +1,61 @@
+## Base Packages
+base
+linux-firmware
+lsb-release
+haveged # needed for pacman-init
+manjaro-firmware
+manjaro-release
+memtest86+
+syslog-ng
+
+## Kernel
+KERNEL
+
+## Extra Base Packages
+grub-bios
+mkinitcpio-nfs-utils
+os-prober
+pkg-config
+squashfs-tools
+sudo
+syslinux
+xdg-utils
+xdg-user-dirs
+
+## encrypt support
+ecryptfs-utils
+rsync
+lsof
+
+## needed by cli-installer
+dialog
+dmidecode
+gptfdisk
+parted
+pv
+tcpdump
+wget
+
+## efi support (only x86_64)
+>x86_64 gummiboot
+>x86_64 prebootloader
+>x86_64 refind-efi
+
+## Network
+b43-fwcutter
+iptables
+ipw2100-fw
+ipw2200-fw
+mobile-broadband-provider-info
+modemmanager
+nbd
+networkmanager
+networkmanager-dispatcher-ntpd
+openresolv
+usb_modeswitch
+wpa_actiond
+wpa_supplicant
+zd1211-firmware
+
+## ucode for new cpus
+intel-ucode
