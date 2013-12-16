@@ -1,3 +1,6 @@
 [Engine]
-EngineType=qml
-ThemeName=kwin4_decoration_qml_plastik
+ThemeName=cupertino-ish
+
+[cupertino-ish]
+BorderSize=1
+ButtonSize=3
