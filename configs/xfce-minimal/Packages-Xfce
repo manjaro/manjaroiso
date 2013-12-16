@@ -32,15 +32,17 @@ pulseaudio-ctl
 
 ## Applications
 evince
-gedit
+#gedit
 gksu
 gparted
 lxpolkit
 manjaro-settings-manager
 #manjaro-welcome
 midori
-pamac
-parole
+mousepad
+#pamac
+pamac-aur
+#parole
 polkit-gnome
 sylpheed
 
@@ -78,3 +80,4 @@ manjaro-artwork
 
 ## Fonts
 ttf-source-sans-pro
+ttf-indic-otf
