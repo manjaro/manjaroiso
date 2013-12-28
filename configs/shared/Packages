@@ -53,11 +53,11 @@ wget
 btrfs-progs
 dmraid
 dosfstools
+ecryptfs-utils
 testdisk
 nilfs-utils
 nfs-utils
-ntfsprogs
-ecryptfs-utils
+ntfs-3g
 
 ## Fonts
 terminus-font

@@ -2,8 +2,9 @@
 
 ## Minmal XFCE Desktop Packages
 gconf # fix qt-theme
-gnome-vfs
-gvfs
+gnome-keyring # fix wlan segfault
+>i686 gnome-vfs
+gvfs # to fix trash in thunar
 mdm-themes
 network-manager-applet
 numlockx
@@ -35,6 +36,7 @@ evince
 #gedit
 gksu
 gparted
+libreoffice-installer
 lxpolkit
 manjaro-settings-manager
 #manjaro-welcome
@@ -42,19 +44,19 @@ midori
 mousepad
 #pamac
 pamac-aur
-#parole
-polkit-gnome
+parole
+polkit-gnome # for gparted
 sylpheed
+xnoise
 
 ## Installer
 thus
+>i686 python-pyqt4 # support for keyboard layout generator
 
 ## Xorg Packages
 inxi
 libdnet
-mesa
-mesa-demos
->x86_64 lib32-mesa-demos
+#>x86_64 lib32-mesa-demos
 netkit-bsd-finger
 uriparser
 xf86-input-acecad
@@ -80,4 +82,3 @@ manjaro-artwork
 
 ## Fonts
 ttf-source-sans-pro
-ttf-indic-otf

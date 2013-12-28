@@ -6,7 +6,6 @@ haveged # needed for pacman-init
 manjaro-firmware
 manjaro-release
 memtest86+
-syslog-ng
 
 ## Kernel
 KERNEL
@@ -22,12 +21,22 @@ syslinux
 xdg-utils
 xdg-user-dirs
 
-## encrypt support
+## Encrypt support
 ecryptfs-utils
 rsync
 lsof
 
-## needed by cli-installer
+## Filesystem Packages
+btrfs-progs
+dmraid
+dosfstools
+ecryptfs-utils
+testdisk
+nilfs-utils
+nfs-utils
+ntfs-3g
+
+## Needed by cli-installer
 dialog
 dmidecode
 gptfdisk
@@ -36,7 +45,7 @@ pv
 tcpdump
 wget
 
-## efi support (only x86_64)
+## EFI support (only x86_64)
 >x86_64 gummiboot
 >x86_64 prebootloader
 >x86_64 refind-efi
