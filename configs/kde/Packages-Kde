@@ -32,6 +32,9 @@ manjaro-artwork
 manjaro-nature-kdm
 manjaro-nature-splash
 tulliana-wallpapers
+kde-theme-violet-pastel
+kdeplasma-theme-cupertino-ish
+kdeicons-kfaenza
 
 ## Community KDE packages
 udiskie
@@ -122,7 +125,7 @@ simple-scan
 #amarok
 #partitionmanager-svn
 gparted
-gimp
+#gimp
 vlc
 imagewriter
 kdenetwork
@@ -146,7 +149,7 @@ octopi-notifier
 
 ## GTK
 firefox
-thunderbird
+#thunderbird
 oxygen-gtk2
 oxygen-gtk3
 kde-gtk-config
@@ -158,6 +161,7 @@ icedtea-web-java7
 manjaro-printer
 
 ## Office
-libreoffice-en-US
-libreoffice
-libreoffice-kde4
+libreoffice-installer
+#libreoffice-en-US
+#libreoffice
+#libreoffice-kde4
