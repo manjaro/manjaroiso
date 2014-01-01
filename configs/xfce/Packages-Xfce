@@ -9,6 +9,7 @@ gnome-keyring # fix wlan segfault
 gufw # firewall
 manjaro-settings-manager
 mdm-themes
+menulibre
 network-manager-applet
 networkmanager-openconnect
 networkmanager-openvpn
@@ -77,7 +78,6 @@ gvfs-gphoto2
 gvfs-mtp
 gvfs-smb
 hexchat
-lxmed
 manjaro-welcome
 #midori
 mlocate

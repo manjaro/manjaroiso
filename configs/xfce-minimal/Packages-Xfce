@@ -58,6 +58,7 @@ thus
 inxi
 libdnet
 #>x86_64 lib32-mesa-demos
+mesa
 netkit-bsd-finger
 uriparser
 xf86-input-acecad
