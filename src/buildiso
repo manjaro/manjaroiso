@@ -252,6 +252,12 @@ if [ -e Packages-Xorg ] ; then
                  touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst-legacy/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
+              if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep catalyst-13.4-utils 2> /dev/null`" ]; then
+                 echo -e -n "$_r >$_W Disabling Catalyst 13.4 driver \n $_n"
+                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst-13.4/
+                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst-13.4/MHWDCONFIG
+                 echo -e "$_g >$_W done $_n"
+              fi
               # Disable Nvidia if not present
               if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep nvidia-utils 2> /dev/null`" ]; then
                  echo -e -n "$_r >$_W Disabling Nvidia driver \n $_n"
