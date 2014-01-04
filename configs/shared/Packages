@@ -6,7 +6,6 @@ haveged # needed for pacman-init
 manjaro-firmware
 manjaro-release
 memtest86+
-syslog-ng
 
 ## Kernel
 KERNEL
