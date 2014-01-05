@@ -59,7 +59,7 @@ networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
-
+midori
 
 ## Multimedia Support
 #gst-libav
@@ -116,9 +116,9 @@ nitrogen
 openbox
 oblogout
 obmenu-generator
-parcellite
+#parcellite
 python2-xdg 	 # Enable use of .desktop files in /etc/xdg
-synapse
+#synapse
 tint2
 xlockmore
 xautolock
@@ -140,6 +140,8 @@ openbox-themes
 numix-manjaro-themes
 manjarobox-artwork
 xcursor-vanilla-dmz-aa
+manjarobox-legacy-themes
+manjarobox-legacy-postinstall-scripts
 
 
 ## Applications

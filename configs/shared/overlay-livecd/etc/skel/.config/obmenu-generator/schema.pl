@@ -5,7 +5,6 @@
 ##
 ## Modified by Carl Duff.
 
-
 =for comment
 
 item: add an item into the menu
@@ -56,7 +55,7 @@ our $SCHEMA = [
    {item => ['sudo thus',  'Install - Graphical', '/usr/share/thus/data/manjaro-icon.png']},
    {item => ['thunar ~/Manjaro',  'User-Guide','/usr/share/icons/logo5.png']},
    {sep => undef},
-
+   
    {item => ['thunar',      		'Thunar','thunar']},
    {item => ['lxterminal',   	 	'Terminal','lxterminal']},
    {item => ['gnome-screenshot --interactive',  'Screenshot','gnome-screenshot']},
@@ -66,13 +65,9 @@ our $SCHEMA = [
     #          NAME            LABEL                ICON
     {cat => ['utility',     'Accessories', 'applications-utilities']},
     {cat => ['development', 'Development', 'applications-development']},
-	{begin_cat => ['Drivers and Support',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
-		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install graphics drivers (live-CD Disabled)','lxterminal']},
-		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install multimedia support (live-CD Disabled)','lxterminal']},
-		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install AUR support (live-CD Disabled)','lxterminal']},
-		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install Printing support (live-CD Disabled)','lxterminal']},
-		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install Software manager (live-CD Disabled)','lxterminal']},
-		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Install Settings manager (live-CD Disabled)','lxterminal']},
+	{begin_cat => ['Post Install',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
+		{item => ['lxterminal -e sudo disabled.sh','Configure, and add and remove new software.','lxterminal']},
+		{item => ['lxterminal -e sudo disabled.sh','Add Icons to your obmenu','lxterminal']},
 	{end_cat   => undef},
     {cat => ['education',   'Education',   'applications-science']},
     {cat => ['game',        'Games',       'applications-games']},
@@ -105,7 +100,7 @@ our $SCHEMA = [
 		{item => ['gksu geany /etc/oblogout.conf','Openbox Logout','geany']},
    {end_cat   => undef},
    {begin_cat => ['Pacman / Servers', '/usr/share/icons/Faenza/apps/48/package-manager-icon.png']},
-		{item => ['lxterminal -e ~/.config/executables/disabled.sh','Switch repos (live-CD disabled)','lxterminal']},
+		{item => ['lxterminal -e sudo ~/.config/executables/change-repo.sh','Switch stable, testing and unstable repos','lxterminal']},
 		{item => ['gksu geany /etc/pacman.conf','Pacman Config','geany']},
 		{item => ['gksu geany /etc/pacman.d/mirrorlist','Pacman Mirrorlist','geany']},
    {end_cat   => undef},
@@ -113,14 +108,13 @@ our $SCHEMA = [
 
 ## Back to standard pipe-menu
 
-
    {cat => ['system',      'System',      'applications-system']},
    {sep => undef},
 
 
 ## Use Oblogout script instead of simple exit command
 
-  {item => ['xlock -mode blank', 'Lock Screen', 'lock']},
+   {item => ['xlock -mode blank', 'Lock Screen', 'lock']},
    {item => ['oblogout',        'Logout...',      'exit']},
 
     #{cat => ['qt',          'QT Applications',    'qtlogo']},

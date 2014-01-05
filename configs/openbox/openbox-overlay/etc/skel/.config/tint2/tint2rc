@@ -25,13 +25,13 @@ border_color = #FFFFFF 100
 
 # Panel
 panel_monitor = all
-panel_position = center left vertical
+panel_position = top center horizontal
 panel_size = 100% 34
 panel_margin = 0 0
 panel_padding = 0 0 4
 panel_dock = 0
 wm_menu = 1
-panel_layer = top
+panel_layer = bottom
 panel_background_id = 0
 
 # Panel Autohide
