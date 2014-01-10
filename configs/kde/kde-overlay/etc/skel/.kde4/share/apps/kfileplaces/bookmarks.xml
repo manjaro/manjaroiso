@@ -53,6 +53,19 @@
    </metadata>
   </info>
  </bookmark>
+ <separator href="file:///">
+  <info>
+   <metadata owner="http://www.kde.org">
+    <UDI>/org/freedesktop/UDisks2/block_devices/sda1</UDI>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="drive-harddisk"/>
+   </metadata>
+  </info>
+  <title>mjnr</title>
+ </separator>
  <separator href="file:///bootmnt">
   <info>
    <metadata owner="http://www.kde.org">
@@ -64,7 +77,7 @@
     <bookmark:icon name="media-optical-data"/>
    </metadata>
   </info>
-  <title>MJRO_088</title>
+  <title>MJRO_089</title>
  </separator>
  <separator>
   <info>
@@ -130,18 +143,5 @@
    </metadata>
   </info>
   <title>Loop Device</title>
- </separator>
- <separator href="file:///">
-  <info>
-   <metadata owner="http://www.kde.org">
-    <UDI>/org/freedesktop/UDisks2/block_devices/sda1</UDI>
-    <isSystemItem>true</isSystemItem>
-    <IsHidden>false</IsHidden>
-   </metadata>
-   <metadata owner="http://freedesktop.org">
-    <bookmark:icon name="drive-harddisk"/>
-   </metadata>
-  </info>
-  <title>manjaro088</title>
  </separator>
 </xbel>

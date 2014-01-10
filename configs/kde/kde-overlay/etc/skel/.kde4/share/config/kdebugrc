@@ -25,10 +25,16 @@ InfoOutput=4
 [akonadi_archivemail_agent]
 InfoOutput=4
 
+[akonadi_folderarchive_agent]
+InfoOutput=4
+
 [akonadi_maildispatcher_agent]
 InfoOutput=4
 
 [akonadi_mailfilter_agent]
+InfoOutput=4
+
+[akonadi_migration_agent]
 InfoOutput=4
 
 [akonadi_nepomuk_feeder]
@@ -63,6 +69,9 @@ InfoOutput=2
 
 [kded]
 InfoOutput=4
+
+[kdesu (kdelibs)]
+InfoOutput=2
 
 [kdostartupconfig4]
 InfoOutput=4
@@ -107,6 +116,9 @@ InfoOutput=4
 InfoOutput=4
 
 [ksnapshot]
+InfoOutput=4
+
+[kuiserver]
 InfoOutput=4
 
 [kwin]

@@ -392,3 +392,133 @@
 2013-11-20T16:22:06 Checking update-file '/usr/share/apps/kconf_update/plasmarc-to-plasmadesktoprc.upd' for new updates
 2013-11-20T16:22:06 Checking update-file '/usr/share/apps/kconf_update/yakuake.upd' for new updates
 2013-11-30T14:17:17 Checking update-file '/usr/share/apps/kconf_update/adjustlevelstool.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/konsole.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kio_help.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/knode.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kopete-update_icq_ssl.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/plasma-to-plasmadesktop-shortcuts.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kwin_translate_activity_rule.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kopete-update_yahoo_server.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kded.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/notifications-to-orgkdenotifications.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/mailfilteragent.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kalarm.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kscreenlocker_locksession-shortcut.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/devicepreference.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/okular.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/korganizer.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kopete-update_icq_server.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/krdb_libpathwipe.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/plasma-add-shortcut-to-menu.upd' for new updates
+2013-12-30T14:36:13 plasma-add-shortcut-to-menu.upd: Found new update '4.1LauncherShortcut'
+2013-12-30T14:36:13 plasma-add-shortcut-to-menu.upd:2:'Script=plasma-add-shortcut-to-menu-update': Script 'plasma-add-shortcut-to-menu-update' not found
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/adjustlevelstool.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kwin_update_49.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kwin_remove_effects.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kopete-pluginloader.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/newmailnotifier.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kioslave.upd' for new updates
+2013-12-30T14:36:13 kioslave.upd: Found new update 'kde2.2/r1'
+2013-12-30T14:36:13 kioslave.upd: Skipping update 'kde2.2/r1'
+2013-12-30T14:36:13 kioslave.upd: File 'kioslaverc' does not exist or empty, skipping
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kmail.upd' for new updates
+2013-12-30T14:36:13 kmail.upd: Found new update '4.12'
+2013-12-30T14:36:13 kmail.upd: File 'kmail2rc' does not exist or empty, skipping
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kopete-jabberproxytype-kconf_update.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/drkonqi-rename-config-section.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/konversation.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kwin_remove_delay_focus.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/grantleetheme.upd' for new updates
+2013-12-30T14:36:13 grantleetheme.upd: Found new update 'initial-grantlee-theme-migration'
+2013-12-30T14:36:13 grantleetheme.upd: File 'kmail2rc' does not exist or empty, skipping
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/ksmserver_shortcuts.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/klipper-kconfigxt.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/plasmarc-to-plasmadesktoprc.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/ksslcertificatemanager.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kwin_translate_confrequest_rule.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kopete-gaim_to_pidgin_style.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kcalcrc.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/konsole_remove_background_mode.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/yakuake.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kopete-nameTracking.upd' for new updates
+2013-12-30T14:36:13 kopete-nameTracking.upd: Found new update 'kopete0.9/r1'
+2013-12-30T14:36:13 kopete-nameTracking.upd: Skipping update 'kopete0.9/r1'
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kopete-initialstatus.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/mailtransports.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kcookiescfg.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kopete-account-kconf_update.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kopete-pluginloader2.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kwin_update_410.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kget.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kwin_update_tabbox_settings.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/oxygen.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kwin_fsp_workarounds_1.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kwin_update_411.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kate-2.4.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kwin_update_tabbox_qml_settings.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kpgp.upd' for new updates
+2013-12-30T14:36:13 Checking update-file '/usr/share/apps/kconf_update/kuriikwsfilter.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/adjustlevelstool.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/devicepreference.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/drkonqi-rename-config-section.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/grantleetheme.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kalarm.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kate-2.4.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kcalcrc.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kcookiescfg.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kded.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kget.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kio_help.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kioslave.upd' for new updates
+2013-12-30T22:01:46 kioslave.upd: Found new update 'kde2.2/r1'
+2013-12-30T22:01:46 kioslave.upd: Skipping update 'kde2.2/r1'
+2013-12-30T22:01:46 kioslave.upd: File 'kioslaverc' does not exist or empty, skipping
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/klipper-kconfigxt.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kmail.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/knode.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/konsole.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/konsole_remove_background_mode.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/konversation.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kopete-account-kconf_update.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kopete-gaim_to_pidgin_style.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kopete-initialstatus.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kopete-jabberproxytype-kconf_update.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kopete-nameTracking.upd' for new updates
+2013-12-30T22:01:46 kopete-nameTracking.upd: Found new update 'kopete0.9/r1'
+2013-12-30T22:01:46 kopete-nameTracking.upd: Skipping update 'kopete0.9/r1'
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kopete-pluginloader.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kopete-pluginloader2.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kopete-update_icq_server.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kopete-update_icq_ssl.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kopete-update_yahoo_server.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/korganizer.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kpgp.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/krdb_libpathwipe.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kscreenlocker_locksession-shortcut.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/ksmserver_shortcuts.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/ksslcertificatemanager.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kuriikwsfilter.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kwin_fsp_workarounds_1.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kwin_remove_delay_focus.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kwin_remove_effects.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kwin_translate_activity_rule.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kwin_translate_confrequest_rule.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kwin_update_410.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kwin_update_411.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kwin_update_49.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kwin_update_tabbox_qml_settings.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/kwin_update_tabbox_settings.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/mailfilteragent.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/mailtransports.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/newmailnotifier.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/notifications-to-orgkdenotifications.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/okular.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/oxygen.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/plasma-add-shortcut-to-menu.upd' for new updates
+2013-12-30T22:01:46 plasma-add-shortcut-to-menu.upd: Found new update '4.1LauncherShortcut'
+2013-12-30T22:01:46 plasma-add-shortcut-to-menu.upd:2:'Script=plasma-add-shortcut-to-menu-update': Script 'plasma-add-shortcut-to-menu-update' not found
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/plasma-to-plasmadesktop-shortcuts.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/plasmarc-to-plasmadesktoprc.upd' for new updates
+2013-12-30T22:01:46 Checking update-file '/usr/share/apps/kconf_update/yakuake.upd' for new updates

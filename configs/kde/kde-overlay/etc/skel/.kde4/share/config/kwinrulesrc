@@ -2,7 +2,6 @@
 Description=(Default) Disable focus stealing prevention for XV
 fsplevel=0
 fsplevelrule=2
-types=4294967295
 wmclass=^xv .*
 wmclasscomplete=true
 wmclassmatch=3

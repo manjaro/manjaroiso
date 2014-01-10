@@ -106,7 +106,7 @@ zvalue=0
 RightButton;NoModifier=contextmenu
 
 [Containments][1][Applets][15]
-geometry=0,4,32,32
+geometry=0,3,33,33
 immutability=1
 plugin=lancelot_launcher
 zvalue=0
@@ -125,7 +125,7 @@ zvalue=0
 Order=0
 
 [Containments][1][Applets][16]
-geometry=36,4,32,32
+geometry=37,3,33,33
 immutability=1
 plugin=showdesktop
 zvalue=0
@@ -134,7 +134,7 @@ zvalue=0
 Order=1
 
 [Containments][1][Applets][17]
-geometry=72,4,32,32
+geometry=74,3,33,33
 immutability=1
 plugin=icon
 zvalue=0
@@ -146,7 +146,7 @@ Url=file:///usr/share/applications/kde4/systemsettings.desktop
 Order=2
 
 [Containments][1][Applets][18]
-geometry=108,4,32,32
+geometry=111,3,33,33
 immutability=1
 plugin=icon
 zvalue=0
@@ -157,20 +157,8 @@ Url=file:///usr/share/applications/kde4/dolphin.desktop
 [Containments][1][Applets][18][LayoutInformation]
 Order=3
 
-[Containments][1][Applets][19]
-geometry=1076,4,32,32
-immutability=1
-plugin=icon
-zvalue=0
-
-[Containments][1][Applets][19][Configuration]
-Url=file:///usr/share/applications/manjaro-settings-manager.desktop
-
-[Containments][1][Applets][19][LayoutInformation]
-Order=9
-
 [Containments][1][Applets][20]
-geometry=144,4,32,32
+geometry=148,3,33,33
 immutability=1
 plugin=icon
 zvalue=0
@@ -182,7 +170,7 @@ Url=file:///usr/share/applications/kde4/yakuake.desktop
 Order=4
 
 [Containments][1][Applets][22]
-geometry=180,4,32,32
+geometry=185,3,33,33
 immutability=1
 plugin=icon
 zvalue=0
@@ -194,7 +182,7 @@ Url=file:///usr/share/applications/kde4/konversation.desktop
 Order=5
 
 [Containments][1][Applets][26]
-geometry=252,4,757,32
+geometry=259,3,720,33
 immutability=1
 plugin=icontasks
 zvalue=0
@@ -203,7 +191,7 @@ zvalue=0
 Order=7
 
 [Containments][1][Applets][27]
-geometry=1013,4,59,32
+geometry=983,3,58,33
 immutability=1
 plugin=pager
 zvalue=2
@@ -217,7 +205,7 @@ showWindowIcons=false
 Order=8
 
 [Containments][1][Applets][28]
-geometry=216,4,32,32
+geometry=222,3,33,33
 immutability=1
 plugin=icon
 zvalue=0
@@ -228,6 +216,18 @@ Url=file:///usr/share/applications/firefox.desktop
 [Containments][1][Applets][28][LayoutInformation]
 Order=6
 
+[Containments][1][Applets][33]
+geometry=1045,3,33,33
+immutability=1
+plugin=icon
+zvalue=0
+
+[Containments][1][Applets][33][Configuration]
+Url=file:///usr/share/applications/manjaro-settings-manager.desktop
+
+[Containments][1][Applets][33][LayoutInformation]
+Order=9
+
 [Containments][1][Applets][4][Configuration]
 hideWhenSingleDesktop=true
 
@@ -235,7 +235,7 @@ hideWhenSingleDesktop=true
 Order=0
 
 [Containments][1][Applets][6]
-geometry=1112,4,162,32
+geometry=1082,3,190,33
 immutability=1
 plugin=systemtray
 zvalue=0
@@ -278,12 +278,9 @@ immutability=1
 plugin=org.kde.notifications
 zvalue=0
 
-[Containments][1][Applets][6][Configuration][Applets][12][Configuration][General]
-CustomPosition=1020,644
-
 [Containments][1][Applets][6][Configuration][Applets][12][PopupApplet]
-DialogHeight=95
-DialogWidth=422
+DialogHeight=90
+DialogWidth=412
 
 [Containments][1][Applets][6][Configuration][Applets][12][Shortcuts]
 global=
@@ -295,8 +292,8 @@ plugin=battery
 zvalue=0
 
 [Containments][1][Applets][6][Configuration][Applets][13][PopupApplet]
-DialogHeight=104
-DialogWidth=310
+DialogHeight=95
+DialogWidth=300
 
 [Containments][1][Applets][6][Configuration][Applets][13][Shortcuts]
 global=
@@ -311,7 +308,7 @@ SystemTray-Klipper-6=Ctrl+Alt+V
 Order=10
 
 [Containments][1][Applets][7]
-geometry=1278,4,64,32
+geometry=1276,3,66,33
 immutability=1
 plugin=digital-clock
 zvalue=2
@@ -323,7 +320,7 @@ Order=11
 maximumSize=1366,36
 minimumSize=1366,36
 
-[Containments][25]
+[Containments][34]
 ActionPluginsSource=Global
 activity=Desktop
 activityId=403a2297-6aa1-4cf5-9184-de49b317905b
@@ -337,7 +334,7 @@ drawShadows=true
 filter=0
 filterFiles=*
 formfactor=0
-geometry=1372,0,1366,768
+geometry=0,924,1366,768
 iconsLocked=false
 immutability=1
 labelType=0
@@ -348,10 +345,9 @@ location=0
 mimeFilter=
 numTextLines=2
 plugin=folderview
-savedPositions=1,6,Manjaro Help (Live).desktop,10,197,Home.desktop,10,106,Computer.desktop,10,10,thus.desktop,10,298,installer-launcher-cli.desktop,10,394,Beginner User Guide.pdf,10,490
 screen=0
 showPreviews=true
-sortColumn=-1
+sortColumn=0
 sortDirsFirst=true
 sortOrder=ascending
 url=desktop:/
@@ -359,24 +355,24 @@ wallpaperplugin=image
 wallpaperpluginmode=SingleImage
 zvalue=0
 
-[Containments][25][Applets][29]
-geometry=995,62,304,59
+[Containments][34][Applets][29]
+geometry=995,62,334,48
 immutability=1
 plugin=system-monitor_applet
 zvalue=7
 
-[Containments][25][Applets][29][Configuration]
+[Containments][34][Applets][29][Configuration]
 applets=
 
-[Containments][25][ToolBox]
+[Containments][34][ToolBox]
 corner=4
 offset=36
 
-[Containments][25][Wallpaper][image]
+[Containments][34][Wallpaper][image]
 slideTimer=10
 slidepaths=
-userswallpapers=
-wallpaper=/usr/share/wallpapers/green-stripe-manjaro/
+userswallpapers=/usr/share/wallpapers/manjaro-style/contents/images/1920x1400.png
+wallpaper=/usr/share/wallpapers/manjaro-style/
 wallpapercolor=0,0,0
 wallpaperposition=0
 

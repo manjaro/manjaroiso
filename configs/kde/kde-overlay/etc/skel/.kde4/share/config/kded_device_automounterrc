@@ -26,11 +26,11 @@ LastSeenMounted=false
 [Devices][/org/freedesktop/UDisks2/block_devices/sda1]
 EverMounted=true
 Icon=drive-harddisk
-LastNameSeen=manjaro088
+LastNameSeen=mjnr
 LastSeenMounted=false
 
 [Devices][/org/freedesktop/UDisks2/block_devices/sr0]
 EverMounted=true
 Icon=media-optical-data
-LastNameSeen=MJRO_088
+LastNameSeen=MJRO_089
 LastSeenMounted=true

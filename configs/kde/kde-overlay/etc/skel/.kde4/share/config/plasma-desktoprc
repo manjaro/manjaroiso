@@ -17,7 +17,7 @@ performed=/usr/share/apps/plasma-desktop/updates/addShowActivitiesManagerPlasmoi
 
 [ViewIds]
 1=1
-25=2
+34=2
 
 [stopSuppressingScreenPowerManagement]
 __file=
