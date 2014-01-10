@@ -29,11 +29,12 @@ xorg-xinit
 
 ## Artwork
 manjaro-artwork
-manjaro-nature-kdm
-manjaro-nature-splash
-tulliana-wallpapers
+kdm-theme-manjaro
+ksplash-theme-manjaro
+kdeartwork-wallpapers-tr-community
 kde-theme-violet-pastel
-kdeplasma-theme-cupertino-ish
+kde-theme-air-black-remix-green
+kdeartwork-colorschemes-oxygreen
 kdeicons-kfaenza
 
 ## Community KDE packages
