@@ -123,7 +123,7 @@ k3b
 digikam
 #smplayer
 simple-scan
-#amarok
+amarok
 #partitionmanager-svn
 gparted
 #gimp
@@ -140,8 +140,8 @@ ktorrent
 #winetricks
 yakuake
 konversation
-clementine
-manjaro-welcome
+#clementine
+#manjaro-welcome
 turbulence
 
 ## Package management
