@@ -1,91 +1,106 @@
 ##
 ## Manjaro Linux repository mirrorlist
-## Generated on 13 September 2013 07:41
+## Generated on 11 January 2014 12:46
 ##
 ## Use pacman-mirrors to modify
 ##
 
 ## Location  : United_States
-## Time      : 0.560
-## Last Sync : 0:19
-Server = http://mirror.dacentec.com/manjaro/unstable/$repo/$arch
-
-## Location  : Germany
-## Time      : 0.119
-## Last Sync : 1:59
-Server = http://ftp.tu-chemnitz.de/pub/linux/manjaro/unstable/$repo/$arch
-
-## Location  : Germany
-## Time      : 0.120
-## Last Sync : 3:39
-Server = http://ftp.rz.tu-bs.de/pub/mirror/manjaro.org/repos/unstable/$repo/$arch
+## Time      : 0.707
+## Last Sync : 0:20
+Server = http://mirror.dacentec.com/manjaro/testing/$repo/$arch
 
 ## Location  : Belgium
-## Time      : 0.139
-## Last Sync : 1:19
-Server = http://ftp.belnet.be/manjaro/unstable/$repo/$arch
-
-## Location  : Romania
-## Time      : 0.146
-## Last Sync : 3:19
-Server = http://ftp.lug.ro/manjaro/unstable/$repo/$arch
+## Time      : 0.117
+## Last Sync : 0:20
+Server = http://ftp.belnet.be/manjaro/testing/$repo/$arch
 
 ## Location  : United_Kingdom
-## Time      : 0.153
-## Last Sync : 2:39
-Server = http://www.mirrorservice.org/sites/repo.manjaro.org/repos/unstable/$repo/$arch
+## Time      : 0.149
+## Last Sync : 1:50
+Server = http://www.mirrorservice.org/sites/repo.manjaro.org/repos/testing/$repo/$arch
 
-## Location  : France
-## Time      : 0.162
-## Last Sync : 0:29
-Server = http://manjarolinux.polymorf.fr/unstable/$repo/$arch
+## Location  : Ireland
+## Time      : 0.178
+## Last Sync : 1:10
+Server = http://ftp.heanet.ie/mirrors/manjaro/testing/$repo/$arch
+
+## Location  : Germany
+## Time      : 0.199
+## Last Sync : 0:10
+Server = http://mirror.netzspielplatz.de/manjaro/packages/testing/$repo/$arch
 
 ## Location  : Russia
-## Time      : 0.203
-## Last Sync : 0:39
-Server = http://mirror.yandex.ru/mirrors/manjaro/unstable/$repo/$arch
+## Time      : 0.205
+## Last Sync : 0:40
+Server = http://mirror.yandex.ru/mirrors/manjaro/testing/$repo/$arch
 
 ## Location  : Sweden
-## Time      : 0.246
-## Last Sync : 3:39
-Server = http://mirror.zetup.net/manjaro/unstable/$repo/$arch
+## Time      : 0.254
+## Last Sync : 0:50
+Server = http://ftp.lysator.liu.se/pub/manjaro/testing/$repo/$arch
 
 ## Location  : United_Kingdom
 ## Time      : 0.255
-## Last Sync : 0:39
-Server = http://repo.manjaro.org.uk/unstable/$repo/$arch
-
-## Location  : Sweden
-## Time      : 0.259
-## Last Sync : 1:39
-Server = http://ftp.lysator.liu.se/pub/manjaro/unstable/$repo/$arch
-
-## Location  : Ireland
-## Time      : 0.274
-## Last Sync : 1:59
-Server = http://ftp.heanet.ie/mirrors/manjaro/unstable/$repo/$arch
-
-## Location  : Denmark
-## Time      : 0.349
-## Last Sync : 1:09
-Server = http://mirrors.dotsrc.org/manjaro/unstable/$repo/$arch
+## Last Sync : 0:50
+Server = http://manjaro.mirrors.uk2.net/testing/$repo/$arch
 
 ## Location  : United_Kingdom
-## Time      : 0.436
-## Last Sync : 0:49
-Server = http://manjaro.mirrors.uk2.net/unstable/$repo/$arch
+## Time      : 0.263
+## Last Sync : 0:50
+Server = http://repo.manjaro.org.uk/testing/$repo/$arch
 
-## Location  : Brasil
-## Time      : 1.208
-## Last Sync : 3:39
-Server = http://www.las.ic.unicamp.br/pub/manjarolinux/unstable/$repo/$arch
+## Location  : United_Kingdom
+## Time      : 0.278
+## Last Sync : 3:20
+Server = http://mirror.catn.com/pub/manjaro/testing/$repo/$arch
+
+## Location  : Sweden
+## Time      : 0.333
+## Last Sync : 0:40
+Server = http://mirror.zetup.net/manjaro/testing/$repo/$arch
+
+## Location  : Greece
+## Time      : 0.385
+## Last Sync : 2:30
+Server = http://ftp.cc.uoc.gr/mirrors/linux/manjaro/testing/$repo/$arch
+
+## Location  : France
+## Time      : 0.392
+## Last Sync : 0:30
+Server = http://manjarolinux.polymorf.fr/testing/$repo/$arch
+
+## Location  : Italy
+## Time      : 0.500
+## Last Sync : 0:10
+Server = http://manjaro.mirror.garr.it/mirrors/manjaro/testing/$repo/$arch
+
+## Location  : South_Korea
+## Time      : 0.710
+## Last Sync : 0:51
+Server = http://mirror.premi.st/manjaro/testing/$repo/$arch
 
 ## Location  : Netherlands
-## Time      : 1.628
-## Last Sync : 1:39
-Server = http://ftp.nluug.nl/pub/os/Linux/distr/manjaro/unstable/$repo/$arch
+## Time      : 1.042
+## Last Sync : 0:50
+Server = http://ftp.nluug.nl/pub/os/Linux/distr/manjaro/testing/$repo/$arch
+
+## Location  : Chile
+## Time      : 1.194
+## Last Sync : 2:50
+Server = http://manjaro.dcc.uchile.cl/testing/$repo/$arch
+
+## Location  : Japan
+## Time      : 1.373
+## Last Sync : 1:00
+Server = http://ftp.tsukuba.wide.ad.jp/Linux/manjaro/testing/$repo/$arch
 
 ## Location  : Brasil
-## Time      : 2.082
-## Last Sync : 1:49
-Server = http://manjaro.fis.unb.br/unstable/$repo/$arch
+## Time      : 1.559
+## Last Sync : 2:50
+Server = http://manjaro.fis.unb.br/testing/$repo/$arch
+
+## Location  : Bangladesh
+## Time      : 2.340
+## Last Sync : 3:40
+Server = http://mirrors.ispros.com.bd/manjaro/testing/$repo/$arch
