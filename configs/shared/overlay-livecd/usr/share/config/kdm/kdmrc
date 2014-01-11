@@ -461,7 +461,7 @@ UseTheme=true
 # The theme to use for the greeter. Can point to either a directory or an XML
 # file.
 # Default is ""
-Theme=/usr/share/apps/kdm/themes/manjaro-nature-kdm
+Theme=/usr/share/apps/kdm/themes/manjaro-style-kdm
 # Core config for local displays
 [X-:*-Core]
 # How often to try to run the X-server. Running includes executing it and
