@@ -1,5 +1,5 @@
 [Default Applications]
-application/pdf=evince.desktop
+application/pdf=raktpdf.desktop
 text/plain=gedit.desktop
 image/jpeg=viewnior.desktop
 application/xml=gedit.desktop

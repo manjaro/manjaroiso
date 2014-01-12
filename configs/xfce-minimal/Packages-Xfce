@@ -33,7 +33,6 @@ pa-applet
 pulseaudio-ctl
 
 ## Applications
-evince
 #gedit
 gksu
 gparted
@@ -43,16 +42,15 @@ manjaro-settings-manager
 #manjaro-welcome
 midori
 mousepad
-#pamac
-pamac-aur
+pamac
 parole
 polkit-gnome # for gparted
+raktpdf
 sylpheed
 xnoise
 
 ## Installer
 thus
->i686 python-pyqt4 # support for keyboard layout generator
 
 ## Xorg Packages
 inxi
