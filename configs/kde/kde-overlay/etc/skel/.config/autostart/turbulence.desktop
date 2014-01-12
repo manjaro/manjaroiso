@@ -1,6 +1,6 @@
 [Desktop Entry]
 Comment=A system configurer at first boot
-Exec=/usr/share/turbulence/turbulencerunner
+Exec=turbulence
 GenericName=A system configurer at first boot
 Icon=/usr/share/turbulence/images/manjaro-grey/turbulence.png
 Hidden=false
