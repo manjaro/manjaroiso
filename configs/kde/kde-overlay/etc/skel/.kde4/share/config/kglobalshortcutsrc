@@ -224,10 +224,6 @@ view_actual_size=Meta+0,Meta+0,Actual Size
 view_zoom_in=Meta+=,Meta+=,Zoom In
 view_zoom_out=Meta+-,Meta+-,Zoom Out
 
-[lancelot]
-Lancelot=Alt+F5,Alt+F5,Open Lancelot menu
-_k_friendly_name=Lancelot
-
 [plasma-desktop]
 Next Activity=Meta+Tab,Meta+Tab,Next Activity
 Previous Activity=Meta+Shift+Tab,Meta+Shift+Tab,Previous Activity

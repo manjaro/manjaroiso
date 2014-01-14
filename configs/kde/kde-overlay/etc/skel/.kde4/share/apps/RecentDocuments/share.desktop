@@ -1,6 +1,0 @@
-[Desktop Entry]
-Icon=inode-directory
-Name=share
-Type=Link
-URL[$e]=file://$HOME/.kde4/share
-X-KDE-LastOpenedWith=

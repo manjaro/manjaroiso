@@ -26,7 +26,7 @@ LastSeenMounted=false
 [Devices][/org/freedesktop/UDisks2/block_devices/sda1]
 EverMounted=true
 Icon=drive-harddisk
-LastNameSeen=mjnr
+LastNameSeen=manjaro
 LastSeenMounted=false
 
 [Devices][/org/freedesktop/UDisks2/block_devices/sr0]

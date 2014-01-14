@@ -124,9 +124,6 @@ InfoOutput=4
 [kwin]
 InfoOutput=2
 
-[lancelot]
-InfoOutput=4
-
 [nepomukfileindexer]
 InfoOutput=4
 

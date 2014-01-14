@@ -2,6 +2,12 @@
 Height 768=644
 Width 1366=790
 
+[KFileDialog Settings]
+Height 768=420
+Recent Files[$e]=manjaro-logo.png,/usr/share/icons/manjaro-logo.png
+Recent URLs[$e]=/usr/share/icons/
+Width 1366=683
+
 [KPropertiesDialog]
 Height 768=365
 Width 1366=388

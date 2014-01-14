@@ -105,27 +105,8 @@ zvalue=0
 [Containments][1][ActionPlugins]
 RightButton;NoModifier=contextmenu
 
-[Containments][1][Applets][15]
-geometry=0,3,33,33
-immutability=1
-plugin=lancelot_launcher
-zvalue=0
-
-[Containments][1][Applets][15][Configuration]
-activate=click
-geometry=4,4,32,32
-hiddenCategories=
-icon=/usr/share/icons/manjaro-logo.png
-immutability=1
-plugin=lancelot_launcher
-show=main
-zvalue=0
-
-[Containments][1][Applets][15][LayoutInformation]
-Order=0
-
 [Containments][1][Applets][16]
-geometry=37,3,33,33
+geometry=36,3,33,33
 immutability=1
 plugin=showdesktop
 zvalue=0
@@ -134,7 +115,7 @@ zvalue=0
 Order=1
 
 [Containments][1][Applets][17]
-geometry=74,3,33,33
+geometry=73,3,33,33
 immutability=1
 plugin=icon
 zvalue=0
@@ -146,7 +127,7 @@ Url=file:///usr/share/applications/kde4/systemsettings.desktop
 Order=2
 
 [Containments][1][Applets][18]
-geometry=111,3,33,33
+geometry=110,3,33,33
 immutability=1
 plugin=icon
 zvalue=0
@@ -158,7 +139,7 @@ Url=file:///usr/share/applications/kde4/dolphin.desktop
 Order=3
 
 [Containments][1][Applets][20]
-geometry=148,3,33,33
+geometry=147,3,33,33
 immutability=1
 plugin=icon
 zvalue=0
@@ -170,7 +151,7 @@ Url=file:///usr/share/applications/kde4/yakuake.desktop
 Order=4
 
 [Containments][1][Applets][22]
-geometry=185,3,33,33
+geometry=184,3,33,33
 immutability=1
 plugin=icon
 zvalue=0
@@ -182,7 +163,7 @@ Url=file:///usr/share/applications/kde4/konversation.desktop
 Order=5
 
 [Containments][1][Applets][26]
-geometry=259,3,720,33
+geometry=258,3,693,33
 immutability=1
 plugin=icontasks
 zvalue=0
@@ -191,7 +172,7 @@ zvalue=0
 Order=7
 
 [Containments][1][Applets][27]
-geometry=983,3,58,33
+geometry=955,3,58,33
 immutability=1
 plugin=pager
 zvalue=2
@@ -204,20 +185,8 @@ showWindowIcons=false
 [Containments][1][Applets][27][LayoutInformation]
 Order=8
 
-[Containments][1][Applets][28]
-geometry=222,3,33,33
-immutability=1
-plugin=icon
-zvalue=0
-
-[Containments][1][Applets][28][Configuration]
-Url=file:///usr/share/applications/firefox.desktop
-
-[Containments][1][Applets][28][LayoutInformation]
-Order=6
-
 [Containments][1][Applets][33]
-geometry=1045,3,33,33
+geometry=1017,3,33,33
 immutability=1
 plugin=icon
 zvalue=0
@@ -228,6 +197,29 @@ Url=file:///usr/share/applications/manjaro-settings-manager.desktop
 [Containments][1][Applets][33][LayoutInformation]
 Order=9
 
+[Containments][1][Applets][35]
+geometry=0,3,32,33
+immutability=1
+plugin=org.kde.homerun-kicker
+zvalue=0
+
+[Containments][1][Applets][35][Configuration][General]
+buttonImage=file:///usr/share/icons/manjaro-logo.png
+useCustomButtonImage=true
+
+[Containments][1][Applets][35][PopupApplet]
+DialogHeight=380
+DialogWidth=245
+
+[Containments][1][Applets][36]
+geometry=221,3,33,33
+immutability=1
+plugin=icon
+zvalue=0
+
+[Containments][1][Applets][36][Configuration]
+Url=file:///usr/share/applications/kde4/konqbrowser.desktop
+
 [Containments][1][Applets][4][Configuration]
 hideWhenSingleDesktop=true
 
@@ -235,7 +227,7 @@ hideWhenSingleDesktop=true
 Order=0
 
 [Containments][1][Applets][6]
-geometry=1082,3,190,33
+geometry=1054,3,218,33
 immutability=1
 plugin=systemtray
 zvalue=0

@@ -82,7 +82,6 @@ kdeutils-sweeper
 kdeplasma-addons-applets-showdesktop
 kdeplasma-addons-applets-icontasks
 kdeplasma-applets-plasma-nm
-#kdeplasma-addons-applets-lancelot
 kdeplasma-applets-homerun
 manjaro-settings-manager
 
@@ -118,7 +117,6 @@ yaourt
 openssh
 
 ## Applications
-#rekonq
 kdebase-konqueror
 kdepim
 k3b
@@ -133,16 +131,12 @@ vlc
 imagewriter
 kdenetwork
 ktorrent
-#kvirc
-#skype
-#steam
 #wine
 #q4wine
 #wine_gecko
 #winetricks
 yakuake
 konversation
-#clementine
 #manjaro-welcome
 turbulence
 
@@ -152,7 +146,7 @@ octopi-notifier
 #pamac
 
 ## GTK
-firefox
+#firefox
 #thunderbird
 oxygen-gtk2
 oxygen-gtk3
