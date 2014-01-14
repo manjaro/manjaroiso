@@ -82,7 +82,8 @@ kdeutils-sweeper
 kdeplasma-addons-applets-showdesktop
 kdeplasma-addons-applets-icontasks
 kdeplasma-applets-plasma-nm
-kdeplasma-addons-applets-lancelot
+#kdeplasma-addons-applets-lancelot
+kdeplasma-applets-homerun
 manjaro-settings-manager
 
 ## Graphical installer
@@ -114,6 +115,7 @@ patch
 patchutils
 svn
 yaourt
+openssh
 
 ## Applications
 #rekonq

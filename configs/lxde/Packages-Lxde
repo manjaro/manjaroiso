@@ -50,6 +50,7 @@ python2-xdg
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xscreensaver
+manjaro-welcome
 
 ## Applications
 catfish
@@ -67,6 +68,8 @@ pidgin
 smplayer
 simple-scan
 sylpheed
+openssh
+hexchat
 
 ## Package management
 pamac

@@ -84,7 +84,6 @@ mate-terminal
 mate-utils
 
 ## Applications
-
 gksu
 blueman
 brasero
@@ -109,6 +108,7 @@ udisks
 udisks2
 p7zip
 openssh
+hexchat
 
 ## Packages for Sound and Audio
 manjaro-alsa
