@@ -114,18 +114,6 @@ zvalue=0
 [Containments][1][Applets][16][LayoutInformation]
 Order=1
 
-[Containments][1][Applets][17]
-geometry=73,3,33,33
-immutability=1
-plugin=icon
-zvalue=0
-
-[Containments][1][Applets][17][Configuration]
-Url=file:///usr/share/applications/kde4/systemsettings.desktop
-
-[Containments][1][Applets][17][LayoutInformation]
-Order=2
-
 [Containments][1][Applets][18]
 geometry=110,3,33,33
 immutability=1
@@ -150,18 +138,6 @@ Url=file:///usr/share/applications/kde4/yakuake.desktop
 [Containments][1][Applets][20][LayoutInformation]
 Order=4
 
-[Containments][1][Applets][22]
-geometry=184,3,33,33
-immutability=1
-plugin=icon
-zvalue=0
-
-[Containments][1][Applets][22][Configuration]
-Url=file:///usr/share/applications/kde4/konversation.desktop
-
-[Containments][1][Applets][22][LayoutInformation]
-Order=5
-
 [Containments][1][Applets][26]
 geometry=258,3,693,33
 immutability=1
@@ -184,18 +160,6 @@ showWindowIcons=false
 
 [Containments][1][Applets][27][LayoutInformation]
 Order=8
-
-[Containments][1][Applets][33]
-geometry=1017,3,33,33
-immutability=1
-plugin=icon
-zvalue=0
-
-[Containments][1][Applets][33][Configuration]
-Url=file:///usr/share/applications/manjaro-settings-manager.desktop
-
-[Containments][1][Applets][33][LayoutInformation]
-Order=9
 
 [Containments][1][Applets][35]
 geometry=0,3,32,33
