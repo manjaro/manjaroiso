@@ -1,0 +1,7 @@
+<apps version="1">
+    <app serviceId="konqueror.desktop"/>
+    <app serviceId="kde4-dolphin.desktop"/>
+    <app serviceId="manjaro-settings-manager.desktop"/>
+    <app serviceId="octopi.desktop"/>
+    <app serviceId="kde4-systemsettings.desktop"/>
+</apps>
