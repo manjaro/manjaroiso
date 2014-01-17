@@ -182,7 +182,7 @@ plugin=icon
 zvalue=0
 
 [Containments][1][Applets][36][Configuration]
-Url=file:///usr/share/applications/kde4/konqbrowser.desktop
+Url=file:///usr/share/applications/kde4/rekonq.desktop
 
 [Containments][1][Applets][4][Configuration]
 hideWhenSingleDesktop=true
