@@ -1,0 +1,168 @@
+### Manjaro Packages
+
+## Xorg Packages
+inxi
+libdnet
+mesa
+mesa-demos
+>x86_64 lib32-mesa-demos
+netkit-bsd-finger
+uriparser
+xf86-input-acecad
+xf86-input-aiptek
+xf86-input-evdev
+xf86-input-joystick
+xf86-input-keyboard
+xf86-input-mouse
+xf86-input-synaptics
+xf86-input-void
+xf86-input-wacom
+#xf86-video-ati
+#xf86-video-nouveau
+#xf86-video-intel
+#xf86-video-vesa
+#virtualbox-guest-utils
+#KERNEL-virtualbox-guest-modules
+xinetd
+xorg-server
+xorg-server-utils
+xorg-twm
+xorg-utils
+xorg-xinit
+
+
+## Sound and Audio
+manjaro-alsa
+pnmixer
+gnome-alsamixer
+
+
+## File Management
+#spacefm
+thunar
+thunar-archive-plugin
+thunar-volman
+catfish
+file-roller	 # Archive support
+gvfs		 # Access file system
+gvfs-afc	 # Removable media support
+gvfs-smb	 # Samba support
+tumbler		 # Thumbnailing support (images)
+
+
+## Graphical Installer
+thus
+
+## Network Management
+network-manager-applet
+networkmanager-openconnect
+networkmanager-openvpn
+networkmanager-pptp
+networkmanager-vpnc
+midori
+
+## Multimedia Support
+#gst-libav
+#gst-plugins-bad
+#gst-plugins-base
+#gst-plugins-good
+#gst-plugins-ugly
+#gstreamer0.10-bad-plugins
+#gstreamer0.10-base-plugins
+#gstreamer0.10-good-plugins
+#gstreamer0.10-ugly-plugins
+#flashplugin
+#libdvdcss
+
+
+## Polkit
+gksu
+gnome-keyring
+lxpolkit
+#polkit-gnome
+
+
+## AUR Access
+#autoconf
+#automake
+#binutils
+#bison
+#fakeroot
+#flex
+#gcc
+#libtool
+#m4
+#make
+#patch
+#yaourt
+
+
+## Display Manager
+slim
+
+
+## Desktop Display
+compton
+conky
+xfce4-notifyd
+
+
+## Openbox Core Packages
+dmenu
+gnome-screenshot
+libgnomeui 	 # for qt to find gtk themes
+lxterminal
+nitrogen
+openbox
+oblogout
+obmenu-generator
+parcellite
+python2-xdg 	 # Enable use of .desktop files in /etc/xdg
+#synapse
+tint2
+xlockmore
+xautolock
+xterm
+
+
+## Desktop Configuration
+lxappearance-obconf
+lxinput
+lxrandr
+obconf
+tintwizard
+
+
+## Artwork, Icon, Mouse, and Desktop Themes
+faenza-green-icon-theme
+gnome-icon-theme
+openbox-themes
+numix-manjaro-themes
+manjarobox-artwork
+xcursor-vanilla-dmz-aa
+manjarobox-evolution-themes
+
+
+## Applications
+#geany
+#evince
+gparted
+gufw
+hardinfo
+htop
+leafpad
+libreoffice-installer
+openssh
+#viewnior
+
+## Turbulence live system configurer
+turbulence-evolution
+
+
+## Fonts
+#ttf-source-sans-pro
+
+## Java
+
+## Printing
+

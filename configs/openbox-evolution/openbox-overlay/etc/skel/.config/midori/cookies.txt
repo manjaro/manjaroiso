@@ -1,0 +1,7 @@
+.content.yieldmanager.com	TRUE	/	FALSE	1309952179	AK1	0
+ad.yieldmanager.com	FALSE	/	FALSE	1309824000	liday1	h6^[u!+xW.nq[jJ
+ad.yieldmanager.com	FALSE	/	FALSE	1312371378	uid	uid=d58b603e-a631-11e0-9708-03189d485061&_hmacv=1&_salt=3718088178&_keyid=k1&_hmac=18b3c0bf698354108972224cdafee3e8bf648ff5
+ad.yieldmanager.com	FALSE	/	FALSE	1312375358	BX	5r9srft7139di&b=4&s=tq&t=184
+ad.yieldmanager.com	FALSE	/	FALSE	1309824000	vuday1	uGFct!+xW.BUC9e
+ad.yieldmanager.com	FALSE	/	FALSE	1312375358	ih	"b!!!!#!/fhb!!!!#=*eA0"
+.yahoo.com	TRUE	/	FALSE	1312375357	B	5r9srft7139di&b=3&s=rp
