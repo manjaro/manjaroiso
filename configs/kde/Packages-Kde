@@ -115,6 +115,7 @@ patchutils
 svn
 yaourt
 openssh
+samba
 
 ## Applications
 #qtcreator
