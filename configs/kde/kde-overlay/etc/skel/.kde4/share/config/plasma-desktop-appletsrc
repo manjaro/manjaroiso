@@ -168,7 +168,7 @@ plugin=org.kde.homerun-kicker
 zvalue=0
 
 [Containments][1][Applets][35][Configuration][General]
-buttonImage=file:///usr/share/icons/manjaro-logo.png
+buttonImage=file:///usr/share/icons/manjaro-homerun-logo.png
 useCustomButtonImage=true
 
 [Containments][1][Applets][35][PopupApplet]
