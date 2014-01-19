@@ -1,0 +1,24 @@
+# ~/.gtkrc-2.0
+
+style "xfdesktop-icon-view" {
+XfdesktopIconView::label-alpha = 0
+}
+widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"
+
+# You can also change the font colors.
+
+style "xfdesktop-icon-view" {
+XfdesktopIconView::label-alpha = 0
+
+base[NORMAL] = "#ffffff"
+base[SELECTED] = "#5D97D1"
+base[ACTIVE] = "#5D97D1"
+
+fg[NORMAL] = "#ffffff"
+fg[SELECTED] = "#ffffff"
+fg[ACTIVE] = "#ffffff"
+
+XfdesktopIconView::cell-text-width-proportion = 3.5
+}
+widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"
+
