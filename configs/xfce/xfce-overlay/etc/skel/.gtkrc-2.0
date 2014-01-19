@@ -17,8 +17,6 @@ base[ACTIVE] = "#5D97D1"
 fg[NORMAL] = "#ffffff"
 fg[SELECTED] = "#ffffff"
 fg[ACTIVE] = "#ffffff"
-
-XfdesktopIconView::cell-text-width-proportion = 3.5
 }
 widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"
 
