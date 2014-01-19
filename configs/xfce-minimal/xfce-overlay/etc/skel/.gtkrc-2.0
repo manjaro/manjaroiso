@@ -1,6 +1,0 @@
-# ~/.gtkrc-2.0
-
-style "xfdesktop-icon-view" {
-XfdesktopIconView::label-alpha = 0
-}
-widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"
