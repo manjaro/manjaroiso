@@ -1,0 +1,13 @@
+[settings]
+default-encoding=ISO-8859-1
+enable-developer-extras=true
+enable-site-specific-quirks=true
+enable-javascript=true
+default-charset=ISO-8859-1
+last-window-state=MIDORI_WINDOW_MAXIMIZED
+location-entry-search=http://search.yahoo.com/search?p=
+toolbar-items=TabNew,Back,NextForward,ReloadStop,BookmarkAdd,Location,Search,Trash,CompactMenu
+homepage=http://manjaro.org/
+tabhome=about:dial
+download-folder=/home/manjaro/Downloads
+user-agent=Mozilla/5.0 (X11; Linux) AppleWebKit/537.6 (KHTML, like Gecko) Chrome/18.0.1025.133 Safari/537.6 Midori/0.5

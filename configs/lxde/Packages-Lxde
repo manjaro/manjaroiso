@@ -27,6 +27,9 @@ xorg-twm
 xorg-utils
 xorg-xinit
 
+## Graphical Installer
+thus
+
 ## Artwork
 manjaro-artwork
 
@@ -40,12 +43,9 @@ gvfs-afc
 gvfs-gphoto2
 gvfs-smb
 libgnome
-live-installer
 lxde
 manjaro-settings-manager
 network-manager-applet
-polkit-gnome
-polkit-qt
 python2-xdg
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
@@ -64,12 +64,18 @@ gimp
 lxmed
 midori
 mlocate
-pidgin
+#pidgin
 smplayer
 simple-scan
 sylpheed
 openssh
 hexchat
+udiskie
+udisks
+udisks2
+cdrdao
+dvd+rw-tools
+virtualgl
 
 ## Package management
 pamac
@@ -78,10 +84,11 @@ pamac
 ttf-source-sans-pro
 
 ## Extra Applications
-blueman
+#blueman
 icedtea-web-java7
 notification-daemon
 vinagre
+lm_sensors
 
 ## Packages for Sound and Audio
 gst-libav
@@ -99,8 +106,33 @@ pavucontrol
 pa-applet
 
 ## Office
+#libreoffice-en-US
+#libreoffice-base
+#libreoffice-calc
+#libreoffice-draw
+#libreoffice-gnome
+#libreoffice-impress
+#libreoffice-math
+#libreoffice-postgresql-connector
+#libreoffice-writer
 abiword
 gnumeric
 
 ## Printing
 manjaro-printer
+
+## AUR Access
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+gcc
+libtool
+m4
+make
+patch
+subversion
+svn
+yaourt
