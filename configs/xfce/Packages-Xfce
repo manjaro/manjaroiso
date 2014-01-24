@@ -60,7 +60,6 @@ xfce4-whiskermenu-plugin
 xfce4-xkb-plugin
 
 ## Applications
-blueman
 catfish # needed for desktop search
 evince
 file-roller
@@ -69,6 +68,7 @@ galculator
 gedit
 gimp
 gksu
+gnome-bluetooth
 gnome-vfs
 gparted
 gvfs
