@@ -24,7 +24,7 @@
       <property name="&lt;Control&gt;Escape" type="string" value="xfdesktop --menu"/>
       <property name="override" type="bool" value="true"/>
       <property name="Super_L" type="string" value="xfce4-popup-whiskermenu"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="xfce4-terminal --drop-down"/>
+      <property name="&lt;Shift&gt;t" type="string" value="xfce4-terminal --drop-down"/>
       <property name="Print" type="string" value="xfce4-screenshooter -f"/>
       <property name="&lt;Alt&gt;p" type="string" value="xfce4-display-settings --minimal"/>
       <property name="&lt;Shift&gt;Print" type="string" value="xfce4-screenshooter -w"/>
