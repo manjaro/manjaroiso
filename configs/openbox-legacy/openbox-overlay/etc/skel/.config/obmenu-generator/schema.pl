@@ -60,6 +60,10 @@ our $SCHEMA = [
     #          NAME            LABEL                ICON
     {cat => ['utility',     'Accessories', 'applications-utilities']},
     {cat => ['development', 'Development', 'applications-development']},
+	{begin_cat => ['Post Install',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
+		{item => ['lxterminal -e sudo postinstall','Configure, and add and remove new software.','lxterminal']},
+		{item => ['lxterminal -e obmenu-icons','Add Icons to your obmenu','lxterminal']},
+	{end_cat   => undef},
     {cat => ['education',   'Education',   'applications-science']},
     {cat => ['game',        'Games',       'applications-games']},
     {cat => ['graphics',    'Graphics',    'applications-graphics']},

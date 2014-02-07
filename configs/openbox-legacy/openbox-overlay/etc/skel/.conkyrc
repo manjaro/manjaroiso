@@ -1,0 +1,67 @@
+## ManjaroBox Conky Configuration Script
+##
+## Written by Carl Duff & Ugo Yak
+## Website: www.manjaro.org - Forum: http://forum.manjaro.org/
+##
+
+#  Basic Settings
+
+background yes
+use_xft yes
+xftfont sans:size=11
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type override #desktop
+own_window_hints below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 450 1
+maximum_width 600
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_color Black
+default_shade_color 000000
+default_outline_color d9d7d6
+alignment tr
+gap_x 5
+gap_y 40
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale yes
+
+## ManjaroBang Conky Display
+##
+## Note - if internet connection speeds do not show, then enter 'ip addr' into the terminal
+## to identify your correct Wireless and Ethernet connection names (e.g. wlo1, eno1)
+##
+TEXT
+${font sans:bold:size=18}${alignr}${color #35BF5C}${time %e} ${color #BEBEBE}${time %B}${color #35BF5C} ${time %Y}${color #BEBEBE} ${time %l:%M}${font sans:bold:size=15}${time %p}${voffset -8}
+${color #BEBEBE}${hr 1}${voffset -4}
+${font sans:bold:size=9}${alignr}${color #35BF5C}CPU ${color #BEBEBE}${cpu cpu0}%  -  ${color #35BF5C}RAM ${color #BEBEBE}$mem ${color #B22222} / ${color #BEBEBE}$memmax  -  ${color #35BF5C}HD ${color #BEBEBE}$fs_used ${color #B22222} / ${color #BEBEBE} $fs_size${voffset 2}
+${font sans:bold:size=9}${alignr}${color #35BF5C}Battery ${color #BEBEBE}$battery_percent%  -  ${color #35BF5C}Uptime ${color #BEBEBE}$uptime_short  -  ${color #35BF5C}Desktop ${color #BEBEBE}$desktop${voffset 3}
+${hr 1}${voffset 6}
+${font sans:bold:size=9}${alignr}${color #35BF5C}Shift + Left-Mouse
+${alignr}${color #BEBEBE}Drag Window${voffset -5}
+
+${font sans:bold:size=9}${alignr}${color #35BF5C}Super + d
+${alignr}${color #BEBEBE}Toggle Desktop${voffset -5}
+
+${font sans:bold:size=9}${alignr}${color #35BF5C}Super + f
+${alignr}${color #BEBEBE}File Manager${voffset -5}
+
+${font sans:bold:size=9}${alignr}${color #35BF5C}Super + m
+${alignr}${color #BEBEBE}DMenu${voffset -5}
+
+${font sans:bold:size=9}${alignr}${color #35BF5C}Super + s
+${alignr}${color #BEBEBE}Synapse${voffset -5}
+
+${font sans:bold:size=9}${alignr}${color #35BF5C}Super + t
+${alignr}${color #BEBEBE}Terminal${voffset -5}
+
+${font sans:bold:size=9}${alignr}${color #35BF5C}Super + x
+${alignr}${color #BEBEBE}Logout...

@@ -6,21 +6,27 @@
 
 # Background definitions
 # ID 1
-rounded = 3
+rounded = 4
 border_width = 1
-background_color = #2F2F2F 100
-border_color = #3C3737 80
+background_color = #2D2D2D 100
+border_color = #1A1A1A 100
 
 # ID 2
-rounded = 7
+rounded = 4
 border_width = 0
-background_color = #35BF5C 67
-border_color = #0A2010 100
+background_color = #38AC59 100
+border_color = #FFFFFF 100
+
+# ID 3
+rounded = 0
+border_width = 0
+background_color = #D52E2E 100
+border_color = #FFFFFF 100
 
 # Panel
 panel_monitor = all
 panel_position = top center horizontal
-panel_size = 100% 25
+panel_size = 100% 34
 panel_margin = 0 0
 panel_padding = 0 0 4
 panel_dock = 0
@@ -36,21 +42,21 @@ autohide_height = 5
 strut_policy = follow_size
 
 # Taskbar
-taskbar_mode = multi_desktop
+taskbar_mode = single_desktop
 taskbar_padding = 0 0 6
 taskbar_background_id = 1
 #taskbar_active_background_id = 0
 
 # Tasks
-urgent_nb_of_blink = 7
+urgent_nb_of_blink = 8
 task_icon = 1
-task_text = 1
+task_text = 0
 task_centered = 1
-task_maximum_size = 175 32
-task_padding = 6 3
+task_maximum_size = 32 32
+task_padding = 2 2
 task_background_id = 0
-task_active_background_id = 1
-task_urgent_background_id = 2
+task_active_background_id = 2
+task_urgent_background_id = 3
 task_iconified_background_id = 0
 
 # Task Icons
@@ -60,11 +66,11 @@ task_urgent_icon_asb = 100 0 0
 task_iconified_icon_asb = 40 0 0
 
 # Fonts
-task_font = Zekton 10
-task_font_color = #DEDEDE 80
-task_active_font_color = #37BF5D 80
+task_font = Sans 9
+task_font_color = #FFFFFF 60
+task_active_font_color = #FFFFFF 80
 task_urgent_font_color = #FFFFFF 80
-task_iconified_font_color = #FFFFFF 80
+task_iconified_font_color = #FFFFFF 60
 font_shadow = 0
 
 # System Tray
@@ -91,10 +97,10 @@ mouse_scroll_up = toggle
 mouse_scroll_down = iconify
 
 # Battery
-battery = 1
+battery = 0
 battery_low_status = 10
 battery_low_cmd = notify-send "battery low"
-battery_hide = 90
+battery_hide = 0
 bat1_font = Sans 8
 bat2_font = Sans 8
 battery_font_color = #FFFFFF 100

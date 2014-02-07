@@ -116,7 +116,7 @@ nitrogen
 openbox
 oblogout
 obmenu-generator
-#parcellite
+parcellite
 python2-xdg 	 # Enable use of .desktop files in /etc/xdg
 #synapse
 tint2
@@ -140,13 +140,12 @@ openbox-themes
 numix-manjaro-themes
 manjarobox-artwork
 xcursor-vanilla-dmz-aa
-manjarobox-legacy-themes
-manjarobox-legacy-postinstall-scripts
+manjarobox-evolution-themes
 
 
 ## Applications
-geany
-evince
+#geany
+#evince
 gparted
 gufw
 hardinfo
@@ -154,7 +153,10 @@ htop
 leafpad
 libreoffice-installer
 openssh
-viewnior
+#viewnior
+
+## Turbulence live system configurer
+turbulence-evolution
 
 
 ## Fonts

@@ -34,3 +34,6 @@ nitrogen --restore &
 
 ## Optionally disable touchpad
 #/usr/bin/synclient TouchpadOff=1 &
+
+## system configure at first boot
+turbulence &
