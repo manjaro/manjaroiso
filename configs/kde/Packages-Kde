@@ -48,6 +48,10 @@ kio-mtp
 mtpfs
 razor-qt
 kio-sysinfo
+gvfs-smb
+gvfs-mtp
+gvfs-afc
+gvfs
 
 ## KDE (minimal base)
 #kde-wallpapers
