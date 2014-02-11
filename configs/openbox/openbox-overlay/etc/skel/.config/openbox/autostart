@@ -11,6 +11,11 @@
 ## This is disabled by default to prevent auto-actions when
 ## the system is idle, such as screen blanking (10 mins) or
 ## suspending (1 hour).
+
+if [ ! -d /bootmnt/manjaro ]; then
+    rm ~/.config/autostart/manjaro-welcome.desktop
+fi
+
 xset -dpms; xset s off &
 
 ## Basic compositing effects
@@ -34,6 +39,3 @@ nitrogen --restore &
 
 ## Optionally disable touchpad
 #/usr/bin/synclient TouchpadOff=1 &
-
-## system configure at first boot
-turbulence &

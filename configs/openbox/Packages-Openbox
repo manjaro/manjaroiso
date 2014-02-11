@@ -144,7 +144,7 @@ manjarobox-evolution-themes
 
 
 ## Applications
-#geany
+geany
 #evince
 gparted
 gufw
@@ -158,11 +158,8 @@ openssh
 ## Turbulence live system configurer
 turbulence
 
+## Greeter
+manjaro-welcome
 
 ## Fonts
 #ttf-source-sans-pro
-
-## Java
-
-## Printing
-
