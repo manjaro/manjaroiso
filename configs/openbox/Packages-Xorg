@@ -18,21 +18,15 @@ KERNEL-bbswitch
 KERNEL-broadcom-wl
 
 ## Proprietary Drivers
->i686 catalyst-input			 # catalyst support now only for i686
->i686 catalyst-server			 # catalyst support now only for i686
->i686 catalyst-video			 # catalyst support now only for i686
->i686 catalyst-utils			 # catalyst support now only for i686
->i686 KERNEL-catalyst			 # catalyst support now only for i686
->i686 catalyst-legacy-utils		 # catalyst support now only for i686
->i686 KERNEL-catalyst-legacy		 # catalyst support now only for i686
+>nonfree_uni catalyst-utils
+>nonfree_uni KERNEL-catalyst
 >nonfree_uni nvidia-utils
 >nonfree_uni KERNEL-nvidia
->nonfree_uni nvidia-304xx-utils
->nonfree_uni KERNEL-nvidia-304xx
-##           lib32-catalyst-utils 	 # disabled for now on x86_64
-##           lib32-catalyst-legacy-utils # disabled for now on x86_64
+>i686 nvidia-304xx-utils		 # nvidia support now only for i686
+>i686 KERNEL-nvidia-304xx		 # nvidia support now only for i686
+>nonfree_x64 lib32-catalyst-utils
 >nonfree_x64 lib32-nvidia-utils
->nonfree_x64 lib32-nvidia-legacy-utils
+##           lib32-nvidia-legacy-utils # disabled for now on x86_64
 >nonfree_x64 lib32-gcc-libs
 >nonfree_x64 lib32-zlib 
 
