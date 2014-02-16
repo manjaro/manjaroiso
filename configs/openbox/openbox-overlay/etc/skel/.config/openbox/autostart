@@ -1,6 +1,6 @@
 ## ManjaroBox Autostart File
 ##
-## Written by Carl Duff
+## 
 ##
 ## Note that global autostart .desktop files will also be in 
 ## /etc/xdg/openbox/autostart. These will include applications

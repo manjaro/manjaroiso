@@ -6,7 +6,7 @@
 #
 # Executed by startx (run your window manager from here)
 #
-# Written by Phil Muller and Carl Duff
+# Written by Phil Muller 
 
 
 ## Ensure that the D-Bus Communication System is running properly to fix
