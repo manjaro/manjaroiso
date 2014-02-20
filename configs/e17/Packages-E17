@@ -31,12 +31,9 @@ thus
 manjaro-artwork
 
 ## E17 Main Packages
-
 adwaita-manjaro-themes
 numix-manjaro-themes
-engage
 enlightenment-manjaro-themes
-enlightenment17-conf-wallpaper2
 evas_generic_loaders
 faenza-green-icon-theme
 forecasts
@@ -50,16 +47,13 @@ xcursor-vanilla-dmz-aa
 ## Applications
 
 manjaro-welcome
-blueman
 gparted
 vlc
 viewnior
-xchat
 audacious
 audacious-plugins
 ttf-droid
-pamac-aur
-octopi
+pamac
 mdm
 mdm-themes
 openssh
@@ -100,21 +94,26 @@ polkit
 gstreamer0.10-bad-plugins
 gstreamer0.10-ffmpeg
 gstreamer0.10-ugly-plugins
+gstreamer0.10-good
 manjaro-alsa
+manjaro-pulse
+flashplugin
+pulseaudio-ctl
 
 ## Printing
 #manjaro-printer
 
 ## Office
-libreoffice-en-US
+libreoffice-installer
+#libreoffice-en-US
 #libreoffice-base
-libreoffice-calc
+#libreoffice-calc
 #libreoffice-draw
-libreoffice-gnome
+#libreoffice-gnome
 #libreoffice-impress
 #libreoffice-math
 #libreoffice-postgresql-connector
-libreoffice-writer
+#libreoffice-writer
 
 ## AUR Access
 autoconf

@@ -1,8 +1,12 @@
 [Desktop Entry]
+Encoding=UTF-8
+Type=Link
 Name=Temp
 Name[eo]=Dumtempaj
+Name[fr]=Temporaires
 Name[pt]=Temporários
 Name[ru]=Временный каталог
+Name[sr]=Привременo
 Comment=Temporary files
 Comment[eo]=Dumtempaj dosieroj
 Comment[es]=Archivos temporales
@@ -11,8 +15,8 @@ Comment[gl]=Ficheiros temporais
 Comment[it]=File temporanei
 Comment[pt]=Ficheiros temporários
 Comment[ru]=Временные файлы
-Type=Link
-X-Enlightenment-Type=Mount
-URL=file:/tmp
+Comment[sr]=Привремене датотеке
 Icon=user-temp
 NotShowIn=GNOME;KDE;LXDE;ROX;XFCE;
+URL=file:/tmp
+X-Enlightenment-Type=Mount
