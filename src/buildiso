@@ -58,7 +58,7 @@ if [ -e Packages-Mate ] ; then
     desktop="mate"
     pkgsfile="Packages-Mate"
 fi
-if [ -e Packages-ENLIGHTENMENT ] ; then
+if [ -e Packages-Enlightenment ] ; then
     de="-enlightenment"
     desktop="enlightenment"
     pkgsfile="Packages-Enlightenment"
