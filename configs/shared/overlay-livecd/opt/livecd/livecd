@@ -332,9 +332,9 @@ if [ -e "$_conf_file" ] ; then
       sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/lxde-image.sqfs|g" $_conf_file
       sed -i "s|_title_|Manjaro LXDE Edition|g" $_conf_file
    fi
-   if [ -e "/bootmnt/${install_dir}/${arch}/e17-image.sqfs" ] ; then
-      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/e17-image.sqfs|g" $_conf_file
-      sed -i "s|_title_|Manjaro E17 Edition|g" $_conf_file
+   if [ -e "/bootmnt/${install_dir}/${arch}/enlightenment-image.sqfs" ] ; then
+      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/enlightenment-image.sqfs|g" $_conf_file
+      sed -i "s|_title_|Manjaro Enlightenment Edition|g" $_conf_file
    fi
    if [ -e "/bootmnt/${install_dir}/${arch}/custom-image.sqfs" ] ; then
       sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/custom-image.sqfs|g" $_conf_file

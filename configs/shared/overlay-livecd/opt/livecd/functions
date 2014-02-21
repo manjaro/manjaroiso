@@ -36,9 +36,9 @@ if [ -e "/bootmnt/${install_dir}/${arch}/lxde-image.sqfs" ] ; then
    DESKTOP="LXDE"
    DESKTOP_IMG="lxde-image"
 fi
-if [ -e "/bootmnt/${install_dir}/${arch}/e17-image.sqfs" ] ; then
-   DESKTOP="E17"
-   DESKTOP_IMG="e17-image"
+if [ -e "/bootmnt/${install_dir}/${arch}/enlightenment-image.sqfs" ] ; then
+   DESKTOP="ENLIGHTENMENT"
+   DESKTOP_IMG="enlightenment-image"
 fi
 if [ -e "/bootmnt/${install_dir}/${arch}/custom-image.sqfs" ] ; then
    DESKTOP="CUSTOM"

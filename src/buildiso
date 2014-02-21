@@ -58,10 +58,10 @@ if [ -e Packages-Mate ] ; then
     desktop="mate"
     pkgsfile="Packages-Mate"
 fi
-if [ -e Packages-E17 ] ; then
-    de="-e17"
-    desktop="e17"
-    pkgsfile="Packages-E17"
+if [ -e Packages-ENLIGHTENMENT ] ; then
+    de="-enlightenment"
+    desktop="enlightenment"
+    pkgsfile="Packages-Enlightenment"
 fi
 if [ -e Packages-Net ] ; then
     de="-net"

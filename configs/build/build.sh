@@ -14,7 +14,7 @@ net="Y"
 # Manjaro Community Editions
 cinnamon="N"
 mate="N"
-e17="N"
+enlightenment="N"
 kde="N"
 
 if [ "$xfce" == "Y" ] ; then
@@ -63,27 +63,27 @@ if [ "$mate" == "Y" ] ; then
    rm work*/iso/manjaro/*/mate-image.sqfs
    ln -sfv ../shared/Packages-Lng Packages-Lng
 fi
-if [ "$e17" == "Y" ] ; then
-   echo ">> build e17 image"
+if [ "$enlightenment" == "Y" ] ; then
+   echo ">> build enlightenment image"
    if [ -e Packages-Lng ] ; then
       rm Packages-Lng
       rm -R work*/*lng*
       rm work*/iso/manjaro/*/lng-image.sqfs
    fi
-   ln -sfv ../e17/options.conf options.conf
-   ln -sfv ../e17/isomounts isomounts
-   ln -sfv ../e17/Packages-E17 Packages-E17
-   ln -sfv ../e17/Packages-Xorg Packages-Xorg
-   ln -sfv ../e17/pacman-gfx.conf pacman-gfx.conf
-   ln -sfv ../e17/pacman-i686.conf pacman-i686.conf
-   ln -sfv ../e17/pacman-x86_64.conf pacman-x86_64.conf
+   ln -sfv ../enlightenment/options.conf options.conf
+   ln -sfv ../enlightenment/isomounts isomounts
+   ln -sfv ../enlightenment/Packages-Enlightenment Packages-Enlightenment
+   ln -sfv ../enlightenment/Packages-Xorg Packages-Xorg
+   ln -sfv ../enlightenment/pacman-gfx.conf pacman-gfx.conf
+   ln -sfv ../enlightenment/pacman-i686.conf pacman-i686.conf
+   ln -sfv ../enlightenment/pacman-x86_64.conf pacman-x86_64.conf
    buildiso
-   echo ">> done build e17 image"
-   rm Packages-E17
-   rm -R work*/*e17*
+   echo ">> done build enlightenment image"
+   rm Packages-Enlightenment
+   rm -R work*/*enlightenment*
    rm -R work*/*isomounts*
    rm -R work*/build.make_de_image
-   rm work*/iso/manjaro/*/e17-image.sqfs
+   rm work*/iso/manjaro/*/enlightenment-image.sqfs
    ln -sfv ../shared/Packages-Lng Packages-Lng
 fi
 if [ "$cinnamon" == "Y" ] ; then
