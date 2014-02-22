@@ -15,5 +15,5 @@
 @ARCH@/overlay.sqfs @ARCH@ / squashfs
 #@ARCH@/lng-image.sqfs @ARCH@ / squashfs
 @ARCH@/pkgs-image.sqfs @ARCH@ / squashfs
-@ARCH@/e17-image.sqfs @ARCH@ / squashfs
+@ARCH@/enlightenment-image.sqfs @ARCH@ / squashfs
 @ARCH@/root-image.sqfs @ARCH@ / squashfs
