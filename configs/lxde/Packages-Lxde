@@ -42,6 +42,7 @@ gvfs
 gvfs-afc
 gvfs-gphoto2
 gvfs-smb
+gvfs-mtp
 libgnome
 lxde
 manjaro-settings-manager
@@ -76,9 +77,11 @@ udisks2
 cdrdao
 dvd+rw-tools
 virtualgl
+imagewriter
 
 ## Package management
-pamac
+octopi
+octopi-notifier
 
 ## Fonts
 ttf-source-sans-pro
@@ -106,16 +109,16 @@ pavucontrol
 pa-applet
 
 ## Office
-#libreoffice-en-US
-#libreoffice-base
-#libreoffice-calc
-#libreoffice-draw
-#libreoffice-gnome
-#libreoffice-impress
-#libreoffice-math
-#libreoffice-postgresql-connector
-#libreoffice-writer
-abiword
+#libreoffice-installer
+libreoffice-en-US
+libreoffice-base
+libreoffice-calc
+libreoffice-draw
+libreoffice-gnome
+libreoffice-impress
+libreoffice-math
+libreoffice-postgresql-connector
+libreoffice-writer
 gnumeric
 
 ## Printing
