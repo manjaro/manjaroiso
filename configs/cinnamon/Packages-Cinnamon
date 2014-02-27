@@ -57,7 +57,7 @@ libgnomeui
 libgsf
 libnautilus-extension
 mousetweaks
-mutter 
+#mutter 
 python2-gnomecanvas
 python2-gnomevfs
 python2-libgnome 
@@ -83,6 +83,9 @@ cjs
 muffin
 nemo
 nemo-fileroller
+nemo-preview
+nemo-seahorse
+chromium-bsu
 
 
 ## Extra
@@ -90,6 +93,7 @@ icedtea-web-java7
 vlc
 
 ## Theme
+#nitrux-icon-theme
 faenza-green-icon-theme
 adwaita-manjaro-themes
 xfce-theme-greenbird
@@ -102,7 +106,7 @@ firefox
 #leafpad
 imagewriter
 ttf-droid
-lxterminal
+#lxterminal
 mdm
 mdm-themes
 viewnior
