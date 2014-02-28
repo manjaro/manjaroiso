@@ -5,6 +5,7 @@ text/plain=leafpad.desktop
 application/xml=geany.desktop
 application/x-shellscript=geany.desktop
 image/png=viewnior.desktop;
+inode/directory=thunar.deskop;
 
 [Added Associations]
 application/x-executable=geany.desktop;
@@ -13,3 +14,4 @@ text/plain=leafpad.desktop;
 application/xml=geany.desktop;
 application/x-shellscript=geany.desktop;
 image/png=viewnior.desktop;
+inode/directory=thunar.deskop;

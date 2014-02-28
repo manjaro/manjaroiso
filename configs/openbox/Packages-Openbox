@@ -52,6 +52,7 @@ tumbler		 # Thumbnailing support (images)
 
 ## Graphical Installer
 thus
+base-devel
 
 ## Network Management
 network-manager-applet
@@ -123,6 +124,7 @@ tint2
 xlockmore
 xautolock
 xterm
+gvfs-mtp
 
 
 ## Desktop Configuration
@@ -153,6 +155,7 @@ leafpad
 libreoffice-installer
 openssh
 #viewnior
+yaourt
 
 ## Turbulence live system configurer
 turbulence
