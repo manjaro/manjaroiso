@@ -52,7 +52,6 @@ tumbler		 # Thumbnailing support (images)
 
 ## Graphical Installer
 thus
-base-devel
 
 ## Network Management
 network-manager-applet
@@ -155,7 +154,6 @@ leafpad
 libreoffice-installer
 openssh
 #viewnior
-yaourt
 
 ## Turbulence live system configurer
 turbulence
