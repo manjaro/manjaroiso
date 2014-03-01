@@ -1,7 +1,7 @@
 {
     "menu-icon": {
         "type": "iconfilechooser", 
-        "default": "/usr/share/cinnamon/theme/menu.png", 
+        "default": "/usr/share/icons/manjaro-cinnamon.png", 
         "description": "Icon", 
         "tooltip": "Select an icon to show in the panel.", 
         "value": "/usr/share/icons/manjaro-cinnamon.png"

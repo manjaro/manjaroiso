@@ -93,7 +93,6 @@ icedtea-web-java7
 vlc
 
 ## Theme
-nitrux-icon-theme
 faenza-green-icon-theme
 adwaita-manjaro-themes
 xfce-theme-greenbird
@@ -148,7 +147,6 @@ libdvdcss
 manjaro-alsa
 manjaro-pulse
 pavucontrol
-pa-applet
 pulseaudio-ctl
 
 ## Printing
