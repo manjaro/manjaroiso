@@ -3,7 +3,7 @@
 ## SCHEMA supports the following keys: item, cat, begin_cat, end_cat,
 ##                                     exit, raw, sep, obgenmenu
 ##
-## Modified by Carl Duff.
+## Modified by Dan
 
 =for comment
 
@@ -47,11 +47,11 @@ wine_apps: windows applications installed via wine
 #    * ICON can be a either a direct path to a icon or a valid icon name
 #    * By default, category names are case insensitive. (e.g.: X-XFCE == x_xfce)
 
-require '/home/_user_/.config/obmenu-generator/config.pl';
+require '/home/dan/.config/obmenu-generator/config.pl';
 
 our $SCHEMA = [
 #             COMMAND                 	LABEL          		ICON
-   {item => ['thunar',      		'Thunar','thunar']},
+   {item => ['thunar',      		'File Manager','thunar']},
    {item => ['lxterminal',   	 	'Terminal','lxterminal']},
    {item => ['gnome-screenshot --interactive',  'Screenshot','gnome-screenshot']},
    {item => ['nitrogen',   	 	'Nitrogen','nitrogen']},
@@ -64,13 +64,12 @@ our $SCHEMA = [
     {cat => ['game',        'Games',       'applications-games']},
     {cat => ['graphics',    'Graphics',    'applications-graphics']},
     {cat => ['audiovideo',  'Multimedia',  'applications-multimedia']},
-    {cat => ['network',     'Network',     'applications-internet']},
-    {cat => ['office',      'Office',      'applications-office']},
+    {cat => ['network',     'Network',     'applications-internet']},    
     {cat => ['settings',    'Settings',    'applications-accessories']},
 
-## Custom "Advanced Menu"
+## Custom "OB menu"
 
-   {begin_cat => ['Advanced Settings',  'gnome-settings']},
+   {begin_cat => ['OB Settings',  'gnome-settings']},
    {begin_cat => ['Desktop and Login',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
    {item => ['geany -m ~/.conkyrc','Conky RC','geany']},
    {item => ['geany -m ~/.config/tint2/tint2rc','Tint2 Panel','geany']},
@@ -118,3 +117,4 @@ our $SCHEMA = [
     #{wine_apps => ['Wine apps', 'applications-other']},
 
 ]
+

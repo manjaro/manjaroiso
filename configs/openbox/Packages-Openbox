@@ -151,7 +151,7 @@ gufw
 hardinfo
 htop
 leafpad
-libreoffice-installer
+#libreoffice-installer
 openssh
 #viewnior
 

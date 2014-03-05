@@ -3,7 +3,7 @@
 ## SCHEMA supports the following keys: item, cat, begin_cat, end_cat,
 ##                                     exit, raw, sep, obgenmenu
 ##
-## Modified by Carl Duff.
+## Modified by Dan.
 
 =for comment
 
@@ -73,9 +73,9 @@ our $SCHEMA = [
     {cat => ['office',      'Office',      'applications-office']},
     {cat => ['settings',    'Settings',    'applications-accessories']},
 
-## Custom "Advanced Menu"
+## Custom "OB menu"
 
-   {begin_cat => ['Advanced Settings',  'gnome-settings']},
+   {begin_cat => ['OB Settings',  'gnome-settings']},
    {begin_cat => ['Desktop and Login',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
    {item => ['geany -m ~/.conkyrc','Conky RC','geany']},
    {item => ['geany -m ~/.config/tint2/tint2rc','Tint2 Panel','geany']},
