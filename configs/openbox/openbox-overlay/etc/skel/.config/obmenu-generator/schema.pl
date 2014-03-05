@@ -47,7 +47,7 @@ wine_apps: windows applications installed via wine
 #    * ICON can be a either a direct path to a icon or a valid icon name
 #    * By default, category names are case insensitive. (e.g.: X-XFCE == x_xfce)
 
-require '/home/dan/.config/obmenu-generator/config.pl';
+require '/home/_user_/.config/obmenu-generator/config.pl';
 
 our $SCHEMA = [
 #             COMMAND                 	LABEL          		ICON
