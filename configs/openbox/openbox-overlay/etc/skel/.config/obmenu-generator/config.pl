@@ -99,7 +99,7 @@ our $CONFIG = {
   terminal                  => "lxterminal",
   use_only_my_icon_dirs     => 0,
   VERSION                   => 0.54,
-  wine_desktop_files_paths  => ["/home/_user_/.local/share/applications/wine"],
+  wine_desktop_files_paths  => ["_homedir_/.local/share/applications/wine"],
   wine_skip_exec_re         => undef,
   wine_skip_name_re         => qr/^(?:Uninstall|Readme|Help|Visit|Register|Technical Support)\b/i,
 }
