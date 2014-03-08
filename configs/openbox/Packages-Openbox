@@ -48,6 +48,7 @@ gvfs		 # Access file system
 gvfs-afc	 # Removable media support
 gvfs-smb	 # Samba support
 tumbler		 # Thumbnailing support (images)
+wxgtk2.8         # Needed for 7zip
 
 
 ## Graphical Installer
@@ -155,8 +156,10 @@ leafpad
 openssh
 #viewnior
 
+
 ## Turbulence live system configurer
 turbulence
+
 
 ## Greeter
 manjaro-welcome
