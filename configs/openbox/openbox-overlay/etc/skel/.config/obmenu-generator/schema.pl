@@ -51,10 +51,10 @@ require '_homedir_/.config/obmenu-generator/config.pl';
 
 our $SCHEMA = [
 #             COMMAND                 	LABEL          		ICON
-   {item => ['thunar',      		'File Manager','thunar']},
-   {item => ['lxterminal',   	 	'Terminal','lxterminal']},
-   {item => ['gnome-screenshot --interactive',  'Screenshot','gnome-screenshot']},
-   {item => ['nitrogen',   	 	'Nitrogen','nitrogen']},
+   {cat => ['filemanager',                      'File Managers',    'system-file-manager']},
+   {item => ['lxterminal',   	 	            'Terminal',         'lxterminal']},
+   {item => ['gnome-screenshot --interactive',  'Screenshot',       'gnome-screenshot']},
+   {item => ['nitrogen',   	 	                'Nitrogen',         'nitrogen']},
    {sep => undef},
 
     #          NAME            LABEL                ICON
@@ -89,8 +89,7 @@ our $SCHEMA = [
 		{item => ['geany -m ~/.config/openbox/menu.xml','Openbox Menu','geany']},
 		{item => ['gksu geany /etc/oblogout.conf','Openbox Logout','geany']},
    {end_cat   => undef},
-   {begin_cat => ['Pacman / Servers', '/usr/share/icons/Faenza/apps/48/package-manager-icon.png']},
-		{item => ['lxterminal -e sudo ~/.config/executables/change-repo.sh','Switch stable, testing and unstable repos','lxterminal']},
+   {begin_cat => ['Pacman / Servers', '/usr/share/icons/Faenza/apps/48/package-manager-icon.png']},		
 		{item => ['gksu geany /etc/pacman.conf','Pacman Config','geany']},
 		{item => ['gksu geany /etc/pacman.d/mirrorlist','Pacman Mirrorlist','geany']},
    {end_cat   => undef},

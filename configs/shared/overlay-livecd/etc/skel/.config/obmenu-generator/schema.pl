@@ -50,16 +50,16 @@ wine_apps: windows applications installed via wine
 require '/home/manjaro/.config/obmenu-generator/config.pl';
 
 our $SCHEMA = [
-#             COMMAND                 	LABEL          		ICON
-   {item => ['lxterminal -e sudo setup',      'Install - CLI', 'system-run']},
-   {item => ['sudo thus',  'Install - Graphical', '/usr/share/thus/data/manjaro-icon.png']},
-   {item => ['thunar ~/Manjaro',  'User-Guide','/usr/share/icons/logo5.png']},
+#             COMMAND                 	           LABEL          		ICON
+   {item => ['lxterminal -e sudo setup',      'Install - CLI',       'system-run']},
+   {item => ['sudo thus',                     'Install - Graphical', '/usr/share/thus/data/manjaro-icon.png']},
+   {item => ['thunar ~/Manjaro',              'User-Guide',          '/usr/share/icons/logo5.png']},
    {sep => undef},
    
-   {item => ['thunar',      		'Thunar','thunar']},
-   {item => ['lxterminal',   	 	'Terminal','lxterminal']},
-   {item => ['gnome-screenshot --interactive',  'Screenshot','gnome-screenshot']},
-   {item => ['nitrogen',   	 	'Nitrogen','nitrogen']},
+   {cat => ['filemanager',                      'File Managers',  'system-file-manager']},
+   {item => ['lxterminal',   	 	            'Terminal',       'lxterminal']},
+   {item => ['gnome-screenshot --interactive',  'Screenshot',     'gnome-screenshot']},
+   {item => ['nitrogen',   	 	                'Nitrogen',       'nitrogen']},
    {sep => undef},
 
     #          NAME            LABEL                ICON
@@ -95,8 +95,7 @@ our $SCHEMA = [
 		{item => ['geany -m ~/.config/openbox/menu.xml','Openbox Menu','geany']},
 		{item => ['gksu geany /etc/oblogout.conf','Openbox Logout','geany']},
    {end_cat   => undef},
-   {begin_cat => ['Pacman / Servers', '/usr/share/icons/Faenza/apps/48/package-manager-icon.png']},
-		{item => ['lxterminal -e sudo ~/.config/executables/change-repo.sh','Switch stable, testing and unstable repos','lxterminal']},
+   {begin_cat => ['Pacman / Servers', '/usr/share/icons/Faenza/apps/48/package-manager-icon.png']},		
 		{item => ['gksu geany /etc/pacman.conf','Pacman Config','geany']},
 		{item => ['gksu geany /etc/pacman.d/mirrorlist','Pacman Mirrorlist','geany']},
    {end_cat   => undef},
