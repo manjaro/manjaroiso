@@ -324,7 +324,7 @@
         </startupnotify>
         <command>lxterminal</command>
       </action>
-    </keybind><keybind key="W-s">
+    </keybind><keybind key="W-e">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -428,6 +428,9 @@
       </mousebind>
       <mousebind button="A-Right" action="Drag">
         <action name="Resize"/>
+      </mousebind>
+      <mousebind button="A-Left" action="Drag">
+        <action name="Move"/>  
       </mousebind>
       <mousebind button="A-Middle" action="Press">
         <action name="Lower"/>

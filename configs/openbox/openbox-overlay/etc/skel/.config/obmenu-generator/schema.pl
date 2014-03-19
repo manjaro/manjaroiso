@@ -50,8 +50,8 @@ wine_apps: windows applications installed via wine
 require '_homedir_/.config/obmenu-generator/config.pl';
 
 our $SCHEMA = [
-#             COMMAND                 	LABEL          		ICON
-   {cat => ['filemanager',                      'File Managers',    'system-file-manager']},
+#             COMMAND                           	LABEL          		ICON
+   {cat => ['filemanager',                     'File Managers',    'system-file-manager']},
    {item => ['lxterminal',   	 	            'Terminal',         'lxterminal']},
    {item => ['gnome-screenshot --interactive',  'Screenshot',       'gnome-screenshot']},
    {item => ['nitrogen',   	 	                'Nitrogen',         'nitrogen']},
