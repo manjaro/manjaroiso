@@ -6,27 +6,33 @@
 
 # Background definitions
 # ID 1
-rounded = 3
+rounded = 2
 border_width = 1
-background_color = #2F2F2F 100
-border_color = #3C3737 80
+background_color = #111111 100
+border_color = #090909 80
 
 # ID 2
-rounded = 7
+rounded = 0
 border_width = 0
-background_color = #35BF5C 67
+background_color = #35BF5C 60
 border_color = #0A2010 100
+
+# ID 3
+rounded = 2
+border_width = 0
+background_color = #090909 100
+border_color = #FFFFFF 100
 
 # Panel
 panel_monitor = all
 panel_position = top center horizontal
-panel_size = 100% 25
+panel_size = 100% 26
 panel_margin = 0 0
-panel_padding = 0 0 4
+panel_padding = 2 2 2
 panel_dock = 0
 wm_menu = 1
 panel_layer = bottom
-panel_background_id = 0
+panel_background_id = 3
 
 # Panel Autohide
 autohide = 0
@@ -37,43 +43,50 @@ strut_policy = follow_size
 
 # Taskbar
 taskbar_mode = multi_desktop
-taskbar_padding = 0 0 6
-taskbar_background_id = 1
-#taskbar_active_background_id = 0
+taskbar_padding = 20 0 0
+taskbar_background_id = 3
+taskbar_active_background_id = 1
 
 # Tasks
 urgent_nb_of_blink = 7
-task_icon = 1
+task_icon = 0
 task_text = 1
 task_centered = 1
-task_maximum_size = 175 32
-task_padding = 6 3
+task_maximum_size = 300 20
+task_padding = 0 0
 task_background_id = 0
-task_active_background_id = 1
-task_urgent_background_id = 2
+task_active_background_id = 0
+task_urgent_background_id = 0
 task_iconified_background_id = 0
 
 # Task Icons
 task_icon_asb = 100 0 0
 task_active_icon_asb = 100 0 0
 task_urgent_icon_asb = 100 0 0
-task_iconified_icon_asb = 40 0 0
+task_iconified_icon_asb = 20 0 0
 
 # Fonts
-task_font = Zekton 10
-task_font_color = #DEDEDE 80
-task_active_font_color = #37BF5D 80
-task_urgent_font_color = #FFFFFF 80
-task_iconified_font_color = #FFFFFF 80
+task_font = Droid Sans 8
+task_font_color = #D0D0D0 80
+task_active_font_color = #8CBC65 80
+task_urgent_font_color = #9E0000 100
+task_iconified_font_color = #5E5E5E 40
 font_shadow = 0
 
 # System Tray
 systray = 1
-systray_padding = 2 2 4
+systray_padding = 2 0 4
 systray_sort = ascending
-systray_background_id = 1
+systray_background_id = 3
 systray_icon_size = 20
 systray_icon_asb = 70 0 0
+
+# Clock
+time1_format = %H:%M %a %d %b
+time1_font = Droid Sans 8
+clock_font_color = #C5C5C5 100
+clock_padding = 0 0
+clock_background_id = 3
 
 # Tooltips
 tooltip = 1
@@ -81,24 +94,24 @@ tooltip_padding = 2 2
 tooltip_show_timeout = 0.7
 tooltip_hide_timeout = 0.3
 tooltip_background_id = 1
-tooltip_font = Sans 10
-tooltip_font_color = #FFFFFF 100
+tooltip_font = Droid Sans 9
+tooltip_font_color = #969696 100
 
 # Mouse
-mouse_middle = none
-mouse_right = close
-mouse_scroll_up = toggle
-mouse_scroll_down = iconify
+mouse_middle = close
+mouse_right = toggle_iconify
+mouse_scroll_up = prev_task
+mouse_scroll_down = next_task
 
 # Battery
 battery = 1
 battery_low_status = 10
 battery_low_cmd = notify-send "battery low"
 battery_hide = 90
-bat1_font = Sans 8
-bat2_font = Sans 8
-battery_font_color = #FFFFFF 100
+bat1_font = Droid Sans 7
+bat2_font = Droid Sans 7
+battery_font_color = #A5A5A5 100
 battery_padding = 3 1
-battery_background_id = 1
+battery_background_id = 3
 
 # End of config
