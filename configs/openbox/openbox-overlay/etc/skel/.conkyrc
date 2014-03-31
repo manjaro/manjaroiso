@@ -62,23 +62,24 @@ ${font Droid Sans:size=13}${color4}$alignr $sysname $kernel $color8 on $color4$m
 ${font Droid Sans:size=9}${color8}$alignr HD ${color4}$fs_used · ${color8}RAM ${color4}$mem · ${color8}CPU ${color4}${cpu cpu0}% @ ${platform coretemp.0 temp 2}°${voffset 2}
 ${font Droid Sans:size=9}${color8}$alignr Uptime ${color4}$uptime_short${voffset 2}
 
-$font$color8$alignr Window Snapping
-$font$color4$alignr Super + (Up,Down,Left,Right)
-
-$font$color8$alignr Dmenu
-$font$color4$alignr Super + Space
-
 $font$color8$alignr Show Desktop
 $font$color4$alignr Super + D
 
 $font$color8$alignr Lxterminal
-$font$color4$alignr Super + Enter
-
-$font$color8$alignr Thunar
-$font$color4$alignr Super + F
+$font$color4$alignr Super + T
 
 $font$color8$alignr Leafpad
 $font$color4$alignr Super + E
 
+$font$color8$alignr Thunar
+$font$color4$alignr Super + F
+
+$font$color8$alignr Resize
+$font$color4$alignr Alt + Right Click
+
+$font$color8$alignr Move
+$font$color4$alignr Alt + Left Click
+
 $font$color8$alignr Logout
-$font$color4$alignr Super + Alt + Esc
+$font$color4$alignr Super + X
+
