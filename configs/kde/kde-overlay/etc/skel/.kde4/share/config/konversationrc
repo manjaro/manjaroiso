@@ -1,0 +1,148 @@
+[$Version]
+update_info=konversation.upd:1.1-rememberline,konversation.upd:1.1-markerlines,konversation.upd:0.20-customfonts,konversation.upd:0.20-quickbuttons,konversation.upd:0.19-notifylists,konversation.upd:0.19-appearance,konversation.upd:0.19-browser,konversation.upd:0.19-flags,konversation.upd:0.19-highlightcolors,konversation.upd:0.19-osdcolors,konversation.upd:0.19-sortorder,konversation.upd:0.19-colors,konversation.upd:0.19-generaloptions,konversation.upd:0.19-cleanup-themes,konversation.upd:0.19-cleanup-notifylist,konversation.upd:0.19-cleanup-dcc,konversation.upd:0.19-cleanup-colors,konversation.upd:0.19-cleanup-hilightlist,konversation.upd:0.19-cleanup-notificationmessages,konversation.upd:0.19-cleanup-ledcolors,konversation.upd:0.19-cleanup-kmditaskbar,konversation.upd:0.19-channelsplitter
+
+[Aliases]
+AliasList=fortune /exec fortune,uptime /exec uptime,tinyurl /exec tinyurl,sayclip /exec sayclip,media /exec media,audio /exec media audio,video /exec media video,mail /exec mail,cmd /exec cmd,kdeversion /exec kdeversion,sysinfo /exec sysinfo,bug /exec bug,gauge /exec gauge
+
+[Appearance]
+ChannelSplitterSizes=1099,264
+ShowModeButtons=true
+ShowQuickButtons=true
+TopicSplitterSizes=54,555
+
+[Autoreplace List]
+Direction0=o
+Direction1=o
+Pattern0=\\[\\[([^\\s]+)\\]\\]#
+Pattern1=(BUG:|bug:)([0-9]+)#
+Regex0=1
+Regex1=1
+Replace0=http://en.wikipedia.org/wiki/Special:Search?go=Go&search=%1#
+Replace1=https://bugs.kde.org/show_bug.cgi?id=%2#
+
+[Button List]
+Button0=Op,/OP %u%n
+Button1=DeOp,/DEOP %u%n
+Button2=WhoIs,/WHOIS %s,%%u%n
+Button3=Version,/CTCP %s,%%u VERSION%n
+Button4=Kick,/KICK %u%n
+Button5=Ban,/BAN %u%n
+Button6=Part,/PART %c Leaving...%n
+Button7=Quit,/QUIT Leaving...%n
+
+[Channel 0]
+Name=#manjaro
+Password=
+
+[Channel 1]
+Name=#manjaro-talk
+Password=
+
+[Channel 2]
+EnableNotifications=true
+Name=#manjaro
+Password=
+
+[Channel 3]
+EnableNotifications=true
+Name=#manjaro-talk
+Password=
+
+[Channel 4]
+EnableNotifications=true
+Name=#linuxpark
+Password=
+
+[Colors]
+CurrentPalette=Forty Colors
+
+[DCC Settings]
+IPv4FallbackIface=0
+PanelSplitter=AAAA/wAAAAAAAAACAAAFQAAAANABAAAAAwEAAAAC
+
+[General Options]
+ShowRealNames=true
+ShowTrayIcon=true
+TrayNotify=true
+
+[Identity 0]
+AutomaticAway=false
+AutomaticUnaway=false
+AwayInactivity=10
+AwayMessage=
+AwayNick=
+AwayReason=Manjaro user gone away for now
+Bot=
+Codec=UTF-8
+Ident=manjaro-kde
+InsertRememberLineOnAway=false
+KickReason=User terminated!
+Name=Default Identity
+Nicknames=manjaro_user,manjaro_user_,manjaro_user__
+PartReason=Manjaro-KDE user leaving!
+Password=
+PreShellCommand=
+QuitReason=Manjaro-KDE user leaving!
+Realname=manjaro-kde
+ReturnMessage=
+ShowAwayMessage=false
+
+[MainWindow]
+Height 672=673
+Height 768=769
+State=AAAA/wAAAAD9AAAAAAAABVYAAAKgAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+Width 1366=1367
+
+[Notification Messages]
+ChannelListNoServerSelected=1
+ChannelListWarning=1
+ClearLogfileQuestion=1
+CloseQueryAfterIgnore=1
+HideMenuBarWarning=1
+HideOnCloseInfo=1
+IgnoreNick=1
+Invitation=1
+QuitChannelTab=1
+QuitDCCChatTab=1
+QuitQueryTab=1
+QuitServerTab=1
+QuitWithActiveDccTransfers=1
+ReconnectWithDifferentServer=1
+ReuseExistingConnection=1
+SaveLogfileNote=1
+UnignoreNick=1
+WarnEncodingConflict=1
+systemtrayquitKonversation=1
+
+[OSD]
+OSDBackgroundColor=0,128,0
+OSDUseCustomColors=true
+ShowOwnNick=true
+UseOSD=true
+
+[Server 0]
+Password=
+Port=8001
+SSLEnabled=false
+Server=chat.freenode.net
+
+[ServerGroup 0]
+AutoConnect=false
+AutoJoinChannels=Channel 0,Channel 1
+ChannelHistory=Channel 2,Channel 3,Channel 4
+ConnectCommands=
+EnableNotifications=true
+Expanded=false
+Identity=Default Identity
+Name=Freenode
+NotifyList=
+ServerList=Server 0
+
+[ServerListDialog]
+ServerListHeaderState=\x00\x00\x00ˇ\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02H\x00\x00\x00\x03\x00\x01\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00»ˇˇˇˇ\x00\x00\x00Å\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00\x00d\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00»\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x01\x1c\x00\x00\x00\x01\x00\x00\x00\x00
+Size=683,307
+
+[Themes]
+EmotIconTheme=Default
+EnableEmotIcons=true

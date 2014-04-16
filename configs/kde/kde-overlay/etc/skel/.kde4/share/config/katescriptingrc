@@ -1,0 +1,113 @@
+[Cache /usr/share/apps/katepart/script/commands/emmet.js]
+author=Gregor Petrin
+functions=emmetExpand, emmetWrap, emmetSelectTagPairInwards, emmetSelectTagPairOutwards, emmetMatchingPair, emmetToggleComment ,emmetNext, emmetPrev, emmetSelectNext, emmetSelectPrev, emmetDelete, emmetSplitJoinTab, emmetEvaluateMathExpression, emmetDecrementNumberBy1, emmetDecrementNumberBy10, emmetDecrementNumberBy01, emmetIncrementNumberBy1, emmetIncrementNumberBy10, emmetIncrementNumberBy01
+kate-version=3.4
+last-modified=1377709234
+license=BSD
+revision=1
+
+[Cache /usr/share/apps/katepart/script/commands/jumpMatchingIndent.js]
+author=Alan Prescott
+functions=jumpIndentUp, jumpIndentDown
+kate-version=3.4
+last-modified=1372439672
+license=GPLv2
+revision=1
+
+[Cache /usr/share/apps/katepart/script/commands/quickcoding.js]
+author=Christoph Cullmann
+functions=quickCodingExpand
+kate-version=3.4
+last-modified=1372439672
+license=BSD
+revision=1
+
+[Cache /usr/share/apps/katepart/script/commands/utils.js]
+author=Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>, Gerald Senarclens de Grancy <oss@senarclens.eu>, Alex Turbov <i.zaufi@gmail.com>
+functions=sort, moveLinesDown, moveLinesUp, natsort, uniq, rtrim, ltrim, trim, join, rmblank, unwrap, each, filter, map, duplicateLinesUp, duplicateLinesDown, rewrap, encodeURISelection, decodeURISelection
+kate-version=3.4
+last-modified=1377709234
+license=LGPL
+revision=8
+
+[Cache /usr/share/apps/katepart/script/indentation/cppstyle.js]
+author=Alex Turbov <i.zaufi@gmail.com>
+indent-languages=C++11, C++11/Qt4
+kate-version=3.4
+last-modified=1385650032
+license=LGPL
+name=C++/boost Style
+priority=10
+revision=10
+
+[Cache /usr/share/apps/katepart/script/indentation/cstyle.js]
+author=Dominik Haumann <dhdev@gmx.de>, Milian Wolff <mail@milianw.de>
+kate-version=3.4
+last-modified=1377709234
+license=LGPL
+name=C Style
+revision=1
+
+[Cache /usr/share/apps/katepart/script/indentation/haskell.js]
+author=Erlend Hamberg <ehamberg@gmail.com>
+kate-version=3.4
+last-modified=1372439672
+license=LGPL
+name=Haskell
+revision=2
+
+[Cache /usr/share/apps/katepart/script/indentation/lilypond.js]
+author=Wilbert Berendsen <info@wilbertberendsen.nl>
+indent-languages=lilypond
+kate-version=3.4
+last-modified=1372439672
+license=LGPL
+name=LilyPond
+required-syntax-style=lilypond
+revision=2
+
+[Cache /usr/share/apps/katepart/script/indentation/lisp.js]
+author=Matteo Sasso <matteo.sasso@gmail.com>
+kate-version=3.0
+last-modified=1372439672
+license=LGPL
+name=LISP
+version=1.1
+
+[Cache /usr/share/apps/katepart/script/indentation/lua.js]
+author=Jonathan Schmidt-Dominé <devel@the-user.org>
+kate-version=3.4
+last-modified=1372439672
+license=LGPL
+name=Lua
+revision=1
+
+[Cache /usr/share/apps/katepart/script/indentation/python.js]
+author=Paul Giannaros <paul@giannaros.org>, Gerald Senarclens de Grancy <oss@senarclens.eu>
+kate-version=3.10
+last-modified=1377709234
+license=LGPL
+name=Python
+revision=2
+
+[Cache /usr/share/apps/katepart/script/indentation/ruby.js]
+author=Robin Pedersen <robinpeder@gmail.com>
+indent-languages=ruby
+kate-version=3.4
+last-modified=1372439672
+license=LGPL
+name=Ruby
+priority=0
+required-syntax-style=ruby
+revision=1
+
+[Cache /usr/share/apps/katepart/script/indentation/xml.js]
+author=Milian Wolff <mail@milianw.de>, Gerald Senarclens de Grancy <oss@senarclens.eu>
+kate-version=3.10
+last-modified=1383320810
+license=LGPL
+name=XML Style
+revision=2
+
+[General]
+kate-version=3.7
