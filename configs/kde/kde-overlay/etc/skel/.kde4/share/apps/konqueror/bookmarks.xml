@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xbel>
+<xbel xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:kdepriv="http://www.kde.org/kdepriv" dbusName="konqueror" toolbar="yes">
+ <bookmark href="http://manjaro.org/">
+  <title>Manjaro Linux</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="text-html"/>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="http://forum.manjaro.org/">
+  <title>Manjaro Linux Forum</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="text-html"/>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="http://wiki.manjaro.org/index.php?title=Main_Page">
+  <title>Manjaro Linux Wiki</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="text-html"/>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="http://manjaro.org/irc-channel/">
+  <title>IRC Channel | Manjaro Linux</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="text-html"/>
+   </metadata>
+  </info>
+ </bookmark>
+</xbel>
