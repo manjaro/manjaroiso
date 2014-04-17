@@ -79,7 +79,7 @@ kdegraphics-kgamma
 kdegraphics-gwenview
 kdegraphics-ksnapshot
 kdegraphics-okular
-kdeutils-kwallet
+#kdeutils-kwallet
 kdeutils-kcalc
 kdeutils-ark
 kdeutils-kgpg
