@@ -1,6 +1,11 @@
 [General]
+ShowSpaceInfo=true
 Version=200
 ViewPropsTimestamp=2013,11,23,20,6,8
+
+[IconsMode]
+FontWeight=50
+IconSize=64
 
 [MainWindow]
 Height 768=367
