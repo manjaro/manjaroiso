@@ -60,14 +60,11 @@ xfce4-xkb-plugin
 
 ## Applications
 catfish # needed for desktop search
-evince
-file-roller
+engrampa-thunar
 firefox
-galculator
-gedit
+galculator-gtk2
 gimp
 gksu
-gnome-bluetooth
 gnome-vfs
 gparted
 gvfs
@@ -80,8 +77,10 @@ hexchat
 manjaro-welcome
 #midori
 mlocate
+mousepad
 #parole
 pidgin
+raktpdf
 thunderbird
 viewnior
 vlc

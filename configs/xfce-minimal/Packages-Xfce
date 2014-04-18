@@ -33,9 +33,9 @@ pa-applet
 pulseaudio-ctl
 
 ## Applications
-#gedit
 gksu
 gparted
+gst-libav
 libreoffice-installer
 lxpolkit
 manjaro-settings-manager
