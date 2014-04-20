@@ -95,6 +95,7 @@ if [ -e "/usr/bin/lightdm" ] ; then
    gpasswd -a ${username} autologin
    chmod +r /etc/lightdm/lightdm.conf
    # livecd fix
+   mkdir -p /var/lib/lightdm-data
    systemd-tmpfiles --create /usr/lib/tmpfiles.d/lightdm.conf
    /usr/bin/systemd-tmpfiles --create --remove
 fi
@@ -242,8 +243,8 @@ if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
 fi
 
 # configurate pacman
-pacman-key --init
-pacman-key --populate archlinux manjaro
+#pacman-key --init
+#pacman-key --populate archlinux manjaro
 
 # fix_ping_installation
 setcap cap_net_raw=ep /usr/bin/ping &> /dev/null

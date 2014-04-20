@@ -1,0 +1,11 @@
+[Unit]
+Description=Sync pacman on first boot
+After=pacman-init.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/pacman-boot
+
+[Install]
+WantedBy=multi-user.target

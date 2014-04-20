@@ -7,8 +7,9 @@ ffmpegthumbnailer
 gconf # fix qt-theme
 gnome-keyring # fix wlan segfault
 gufw # firewall
+lightdm-another-gtk-greeter-themes
 manjaro-settings-manager
-mdm-themes
+#mdm-themes
 menulibre
 network-manager-applet
 networkmanager-openconnect
