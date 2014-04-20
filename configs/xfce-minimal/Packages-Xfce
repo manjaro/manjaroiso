@@ -5,7 +5,9 @@ gconf # fix qt-theme
 gnome-keyring # fix wlan segfault
 >i686 gnome-vfs
 gvfs # to fix trash in thunar
-lightdm-another-gtk-greeter-themes
+#lightdm-another-gtk-greeter-themes
+lxdm
+lxdm-manjaro-theme
 #mdm-themes
 menulibre
 network-manager-applet

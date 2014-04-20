@@ -87,7 +87,21 @@ if [ -e "/usr/bin/lightdm" ] ; then
    chown -R lightdm:lightdm /var/run/lightdm > /dev/null
    if [ -e "/usr/bin/startxfce4" ] ; then
         sed -i -e 's/^.*user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
-        ln -s /usr/lib/lightdm/lightdm/gdmflexiserver /usr/bin/gdmflexiserver
+   fi
+   if [ -e "/usr/bin/cinnamon-session" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=cinnamon/' /etc/lightdm/lightdm.conf
+   fi
+   if [ -e "/usr/bin/mate-session" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=mate/' /etc/lightdm/lightdm.conf
+   fi
+   if [ -e "/usr/bin/enlightenment_start" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=enlightenment/' /etc/lightdm/lightdm.conf
+   fi
+   if [ -e "/usr/bin/openbox-session" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=openbox/' /etc/lightdm/lightdm.conf
+   fi
+   if [ -e "/usr/bin/lxsession" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=LXDE/' /etc/lightdm/lightdm.conf
    fi
    sed -i -e "s/^.*autologin-user=.*/autologin-user=${username}/" /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
@@ -221,6 +235,31 @@ if [ -e "/usr/bin/lxdm" ] ; then
    chgrp -R lxdm /var/lib/lxdm > /dev/null
    chgrp lxdm /etc/lxdm/lxdm.conf > /dev/null
    chmod +r /etc/lxdm/lxdm.conf > /dev/null
+fi
+
+echo "configure AccountsService" >> /tmp/livecd.log
+
+if [ -d "/var/lib/AccountsService/users" ] ; then
+     echo "[User]" > /var/lib/AccountsService/users/manjaro
+     if [ -e "/usr/bin/startxfce4" ] ; then
+        echo "XSession=xfce" >> /var/lib/AccountsService/users/manjaro
+     fi
+     if [ -e "/usr/bin/cinnamon-session" ] ; then
+        echo "XSession=cinnamon" >> /var/lib/AccountsService/users/manjaro
+     fi
+     if [ -e "/usr/bin/mate-session" ] ; then
+        echo "XSession=mate" >> /var/lib/AccountsService/users/manjaro
+     fi
+     if [ -e "/usr/bin/enlightenment_start" ] ; then
+        echo "XSession=enlightenment" >> /var/lib/AccountsService/users/manjaro
+     fi
+     if [ -e "/usr/bin/openbox-session" ] ; then
+        echo "XSession=openbox" >> /var/lib/AccountsService/users/manjaro
+     fi
+     if [ -e "/usr/bin/lxsession" ] ; then
+        echo "XSession=LXDE" >> /var/lib/AccountsService/users/manjaro
+     fi
+     echo "Icon=/var/lib/AccountsService/icons/manjaro.png" >> /var/lib/AccountsService/users/manjaro
 fi
 
 echo "configure sudoers" >> /tmp/livecd.log
