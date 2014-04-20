@@ -1,15 +1,11 @@
 ### Manjaro Packages
 
 ## XFCE Main Packages
-adwaita-manjaro-themes
-faenza-green-icon-theme
 ffmpegthumbnailer
 gconf # fix qt-theme
 gnome-keyring # fix wlan segfault
 gufw # firewall
-lightdm-another-gtk-greeter-themes
 manjaro-settings-manager
-#mdm-themes
 menulibre
 network-manager-applet
 networkmanager-openconnect
@@ -114,7 +110,11 @@ xorg-utils
 xorg-xinit
 
 ## Artwork
+faenza-green-icon-theme
 manjaro-artwork
+#mdm-themes
+lightdm-another-gtk-greeter-themes
+xfce-theme-greenbird
 #plymouth-theme-manjaro
 
 ## Packages for Sound and Audio
