@@ -6,7 +6,7 @@ imlib_cache_size 0
 double_buffer yes
 no_buffers yes
 use_xft yes
-Zekton:size=9
+xftfont Droid Sans:size=9
 override_utf8_locale yes
 text_buffer_size 2048
 own_window yes
@@ -21,7 +21,7 @@ default_bar_size 30 8
 draw_shades no
 default_color c5c5c5
 default_shade_color 000000
-color0 35bf5c
+color0 8DBC68
 color1 c5c5c5
 color2 c5c5c5
 own_window_argb_visual yes
@@ -29,18 +29,20 @@ own_window_colour 000000
 own_window_argb_value 0
 
 TEXT
-${goto 180}${color0}${font Zekton:style=bold:size=12}${voffset 40}${exec whoami}
-${voffset -30}${font}${color}${goto 40}${uptime}
-${goto 85}${color1}${font Zekton:style=Bold:size=9}${color1}${sysname}${color}${font}
-${voffset 80}${goto 20}${font Zekton:style=bold:size=30}${time %H:%M}${font}${goto 175}${font Zekton:style=Bold:size=9}CPU 
-${goto 175}${font Zekton:style=Bold:size=9}${color1}${cpu cpu1}%
+${goto 180}${color0}${font Droid Sans:style=bold:size=13}${voffset 40}${exec whoami}
+${voffset -30}${font Droid Sans:style=Bold:size=12}${color}${goto 40}${uptime}
+${goto 80}${color1}${font Droid Sans:style=Bold:size=12}${color1}${sysname}${color}${font}
+${voffset 90}${goto 20}${font Droid Sans:style=bold:size=30}${time %H:%M}${font}${goto 175}${font Droid Sans:style=Bold:size=11}CPU
+${goto 175}${font Droid Sans:style=Bold:size=11}${color1}${cpu cpu1}%
 ${voffset 40}${goto 35}/home${color1}${goto 128}SWAP
-${goto 38}${font Zekton:style=Bold:size=9}${fs_used /home}${goto 134}${swapperc}${font Zekton:style=Bold:size=9}${color1}${font}%
-${font Zekton:style=Bold:size=9}${font}
-${voffset 10}${goto 90}${font Zekton:style=Bold:size=9}RAM
-${goto 90}${font Zekton:style=Bold:size=9}${memperc}%
+${goto 38}${font Droid Sans:style=Bold:size=10}${fs_used /home}${goto 134}${font Droid Sans:style=Bold:size=11}${swapperc}${font Droid Sans:style=Bold:size=11}${color1}${font}%
+${font Droid Sans:style=Bold:size=11}${font}
+${voffset 10}${goto 90}${font Droid Sans:style=Bold:size=11}RAM
+${goto 90}${font Droid Sans:style=Bold:size=11}${memperc}%
 
 ${image /usr/share/conkypic/lsd.png -p 10,0}
+
+
 
 
 
