@@ -36,8 +36,6 @@ faenza-green-icon-theme
 numix-manjaro-themes
 
 ## MATE Main Packages
-dispcalgui
-emacs-haskell-mode
 mate
 mate-applet-lockkeys
 mate-applet-softupd
@@ -49,36 +47,33 @@ mate-extra
 thus
 
 ## Applications
+brasero
+epdfview
+flashplugin
+firefox
 gksu
 gnome-bluetooth
-brasero
-firefox
-thunderbird
 gparted
-transmission-gtk
-xnoise
-flashplugin
-imagewriter
-ttf-droid
-viewnior
-manjaro-settings-manager
-manjaro-welcome
-mdm
-mdm-themes
-epdfview
-udiskie
-udisks
-udisks2
-openssh
 gvfs
 gvfs-afc
 gvfs-afp
 gvfs-gphoto2
 gvfs-mtp
 gvfs-smb
-#p7zip
 hexchat
-chromium-bsu
+imagewriter
+libdvdcss
+manjaro-settings-manager
+manjaro-welcome
+mdm
+mdm-themes
+thunderbird
+transmission-gtk
+udiskie
+udisks
+udisks2
+vlc
+xnoise
 
 ## Packages for Sound and Audio
 gst-libav
@@ -90,8 +85,6 @@ gstreamer0.10-bad-plugins
 gstreamer0.10-base-plugins
 gstreamer0.10-good-plugins
 gstreamer0.10-ugly-plugins
-flashplugin
-libdvdcss
 manjaro-alsa
 manjaro-pulse
 pavucontrol
@@ -100,6 +93,9 @@ pulseaudio-ctl
 
 ## Package management
 pamac
+
+## Fonts
+ttf-droid
 
 ## Office
 #libreoffice-installer
