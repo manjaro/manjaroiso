@@ -88,7 +88,7 @@ gstreamer0.10-ugly-plugins
 manjaro-alsa
 manjaro-pulse
 pavucontrol
-pa-applet
+#pa-applet
 pulseaudio-ctl
 
 ## Package management
