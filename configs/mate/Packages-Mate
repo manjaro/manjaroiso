@@ -63,10 +63,10 @@ gvfs-smb
 hexchat
 imagewriter
 libdvdcss
+lightdm-another-gtk-greeter-themes
 manjaro-settings-manager
 manjaro-welcome
-mdm
-mdm-themes
+#mdm-themes
 thunderbird
 transmission-gtk
 udiskie
