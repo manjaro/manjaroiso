@@ -32,8 +32,8 @@ xorg-xinit
 manjaro-artwork
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
-faenza-green-icon-theme
-numix-manjaro-themes
+#faenza-green-icon-theme
+#numix-manjaro-themes
 
 ## MATE Main Packages
 mate
@@ -48,7 +48,6 @@ thus
 
 ## Applications
 brasero
-epdfview
 flashplugin
 firefox
 gksu
