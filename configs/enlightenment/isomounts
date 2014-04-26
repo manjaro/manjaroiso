@@ -1,0 +1,19 @@
+# manjaroiso isomounts file
+# img - location of image/directory to mount relative to addons directory
+# arch - architecture of this image
+# mount point - absolute location on the post-initrd root
+# type - either 'bind' or 'squashfs' for now
+# kernel argument (optional) - if the kernel argument is set the overlay will be loaded. Leave empty to ignore. 
+# Sample kernel argument in syslinux: overlay=extra,extra2
+
+# syntax: <img> <arch> <mount point> <type> <kernel argument>
+
+# ORDER MATTERS! Files take top-down precedence. Be careful
+
+#@ARCH@/pkgs-free-overlay.sqfs @ARCH@ / squashfs free
+#@ARCH@/pkgs-nonfree-overlay.sqfs @ARCH@ / squashfs nonfree
+@ARCH@/overlay.sqfs @ARCH@ / squashfs
+#@ARCH@/lng-image.sqfs @ARCH@ / squashfs
+@ARCH@/pkgs-image.sqfs @ARCH@ / squashfs
+@ARCH@/enlightenment-image.sqfs @ARCH@ / squashfs
+@ARCH@/root-image.sqfs @ARCH@ / squashfs
