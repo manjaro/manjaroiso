@@ -20,91 +20,111 @@ xf86-input-wacom
 xinetd
 xorg-server
 xorg-server-utils
-xorg-twm
 xorg-utils
 xorg-xinit
 
 ## Graphical installer
 thus
+iso-codes
 
 ## Artwork
 manjaro-artwork
 
-## E17 Main Packages
-adwaita-manjaro-themes
-numix-manjaro-themes
-enlightenment-manjaro-themes
-evas_generic_loaders
-faenza-green-icon-theme
-forecasts
+## Enlightenment Main Packages
+enlightenment
+connman
+econnman
+ofono
 gksu
-libgnomeui
 manjaro-settings-manager
-network-manager-applet
-xcursor-simpleandsoft
-xcursor-vanilla-dmz-aa
+lxmenu-data
+#mdm
+#mdm-themes
+entrance-git-manjaro
+polkit
+lxpolkit
+pamac
+manjaro-welcome
+e18-manjaro-themes
+gtk-theme-boje
+gtk-theme-e17gtk
+adwaita-manjaro-themes
+mediterraneannight-theme
+nouvegnomegray-icon-theme
+nitrux-icon-theme
+zenity
+
 
 ## Applications
-
-manjaro-welcome
+terminology
+#ristretto
+ephoto-git
+#mousepad
+ecrire-git
+equate-git
 gparted
 vlc
-viewnior
-audacious
-audacious-plugins
-ttf-droid
-pamac
-mdm
-mdm-themes
-openssh
-hexchat
-
-## Gnome & XFCE
 evince
 firefox
-gnome-screenshot
-gnome-terminal
-gedit
-thunderbird
-thunar
-thunar-volman
-thunar-archive-plugin
-thunar-media-tags-plugin
-gvfs
-gvfs-smb
-tumbler
-ffmpegthumbnailer
-poppler-glib
-libgsf
-libopenraw
-gimp
 file-roller
-transmission-gtk
-xfburn
-flashplugin
-imagewriter
-gnome-disk-utility
-p7zip
+
+## From what i see, everyone installs some FM other than E's default, so:
 udisks2
 udisks
-polkit-gnome
-polkit
+gvfs
+gvfs-afc
+gvfs-afp
+gvfs-gphoto2
+gvfs-mtp
+gvfs-smb
 
-## Packages for Sound and Audio
+## Stuff from the old E17 config that someday we may want
+
+#forecasts
+#enlightenment-manjaro-themes
+#evas_generic_loaders
+#xcursor-simpleandsoft
+#xcursor-vanilla-dmz-aa
+#libgnomeui
+
+#audacious
+#audacious-plugins
+#ttf-droid
+#openssh
+#hexchat
+
+#xfce4-screenshooter
+#thunderbird
+#thunar
+#thunar-volman
+#thunar-archive-plugin
+#thunar-media-tags-plugin
+#tumbler
+#ffmpegthumbnailer
+#poppler-glib
+#libgsf
+#libopenraw
+#gimp
+#transmission-gtk
+#xfburn
+#imagewriter
+#p7zip
+
+
+## Packages for Video and Audio
 gstreamer0.10-bad-plugins
-gstreamer0.10-ffmpeg
+gstreamer0.10-base-plugins
+gstreamer0.10-good-plugins
 gstreamer0.10-ugly-plugins
-gstreamer0.10-good
+gstreamer0.10-ffmpeg
 manjaro-alsa
-manjaro-pulse
+libdvdcss
 flashplugin
-pulseaudio-ctl
 
 ## Printing
-#manjaro-printer
+manjaro-printer
 
 ## Office
-libreoffice-installer
 #libreoffice-en-US
 #libreoffice-base
 #libreoffice-calc
