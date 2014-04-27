@@ -43,6 +43,12 @@ mate-applet-streamer
 mate-applets     
 mate-extra
 
+## Network
+netctl
+networkmanager
+networkmanager-dispatcher-ntpd
+openresolv
+
 ## Graphical Installer
 thus
 

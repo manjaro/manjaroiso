@@ -91,6 +91,12 @@ kdeplasma-applets-plasma-nm
 kdeplasma-applets-homerun
 manjaro-settings-manager
 
+## Network
+netctl
+networkmanager
+networkmanager-dispatcher-ntpd
+openresolv
+
 ## Graphical installer
 thus
 

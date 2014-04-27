@@ -34,3 +34,9 @@ manjaro-artwork
 
 ## Base Packages
 gtk2
+
+## Network
+netctl
+networkmanager
+networkmanager-dispatcher-ntpd
+openresolv

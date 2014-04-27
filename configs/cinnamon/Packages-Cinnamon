@@ -68,7 +68,6 @@ soundconverter
 polkit-gnome
 polkit
 gksu
-
  
 ## Cinnamon
 cinnamon
@@ -87,6 +86,11 @@ nemo-preview
 nemo-seahorse
 chromium-bsu
 
+## Network
+netctl
+networkmanager
+networkmanager-dispatcher-ntpd
+openresolv
 
 ## Extra
 icedtea-web-java7

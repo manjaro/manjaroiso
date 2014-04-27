@@ -53,6 +53,12 @@ xcursor-vanilla-dmz-aa
 xscreensaver
 manjaro-welcome
 
+## Network
+netctl
+networkmanager
+networkmanager-dispatcher-ntpd
+openresolv
+
 ## Applications
 catfish
 evince

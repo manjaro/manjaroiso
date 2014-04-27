@@ -85,6 +85,12 @@ xfburn
 xnoise
 yelp
 
+## Network
+netctl
+networkmanager
+networkmanager-dispatcher-ntpd
+openresolv
+
 ## Xorg Packages
 inxi
 libdnet

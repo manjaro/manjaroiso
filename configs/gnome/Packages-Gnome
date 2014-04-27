@@ -148,6 +148,12 @@ polkit
 polkit-gnome
 manjaro-welcome
 
+## Network
+netctl
+networkmanager
+networkmanager-dispatcher-ntpd
+openresolv
+
 ## Extra
 icedtea-web-java7
 vlc

@@ -55,12 +55,16 @@ wxgtk2.8         # Needed for 7zip
 thus
 
 ## Network Management
+netctl
+networkmanager
+networkmanager-dispatcher-ntpd
 network-manager-applet
 networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
 midori
+openresolv
 
 ## Multimedia Support
 #gst-libav
