@@ -5,10 +5,7 @@ gconf # fix qt-theme
 gnome-keyring # fix wlan segfault
 >i686 gnome-vfs
 gvfs # to fix trash in thunar
-lightdm-another-gtk-greeter-themes
-#lxdm
-#lxdm-manjaro-theme
-#mdm-themes
+lxdm
 menulibre
 network-manager-applet
 #numlockx
@@ -85,9 +82,14 @@ xorg-utils
 xorg-xinit
 
 ## Artwork
-xfce-theme-greenbird
 faenza-green-icon-theme
+gtk-theme-ceti
+gtk-theme-menda
 manjaro-artwork
+lxdm-manjaro-theme
+xfce-theme-greenbird
+#plymouth-theme-manjaro
 
 ## Fonts
+ttf-dejavu
 ttf-source-sans-pro
