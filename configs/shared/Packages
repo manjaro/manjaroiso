@@ -70,6 +70,8 @@ KERNEL
 grub
 mkinitcpio-nfs-utils
 os-prober
+plymouth
+plymouth-theme-manjaro
 pkg-config
 squashfs-tools
 sudo
