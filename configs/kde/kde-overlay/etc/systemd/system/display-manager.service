@@ -1,1 +1,1 @@
-usr/lib/systemd/system/kdm.service
+usr/lib/systemd/system/kdm-plymouth.service
