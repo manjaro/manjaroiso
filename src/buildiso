@@ -173,6 +173,10 @@ make_root_image() {
          # Clean up GnuPG keys
          rm -rf "${work_dir}/root-image/etc/pacman.d/gnupg"
 
+         # Change to given branch in options.conf
+         sed -i -e "s/stable/$branch/" ${work_dir}/root-image/etc/pacman.d/mirrorlist
+         sed -i -e "s/stable/$branch/" ${work_dir}/root-image/etc/pacman-mirrors.conf
+
          # Enable followed line if you want to use the pacman.conf used to build this image
          #cp pacman-${arch}.conf ${work_dir}/root-image/etc/pacman.conf
          : > ${work_dir}/build.${FUNCNAME}
