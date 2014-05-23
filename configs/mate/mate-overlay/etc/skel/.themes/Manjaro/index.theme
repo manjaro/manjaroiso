@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Manjaro
+Type=X-GNOME-Metatheme
+Comment=Manjaro MATE 0.8.10
+
+[X-GNOME-Metatheme]
+GtkTheme=Menta
+MetacityTheme=BlueMenta
+IconTheme=matefaenza
+GtkColorScheme=bg_color_dark:#3f3f3f,text_color_dark:#FFF
+CursorTheme=Vanilla-DMZ-AA
+CursorSize=18
+NotificationTheme=nodoka
+BackgroundImage=/usr/share/backgrounds/manjaro.jpg
