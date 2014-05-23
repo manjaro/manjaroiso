@@ -355,7 +355,12 @@ make_boot() {
         if [ ! -z "`mount -l | grep boot-image`" ]; then
            umount -l ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
         fi
+        echo -e -n "$_r >$_W mount root-image \n $_n"
         mount -t aufs -o br=${work_dir}/boot-image:${work_dir}/root-image=ro none ${work_dir}/boot-image
+        if [ ! -z "${de}" ] ; then
+             echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
+             mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/boot-image
+        fi
         mount -t proc none ${work_dir}/boot-image/proc
         mount -t sysfs none ${work_dir}/boot-image/sys
         mount -o bind /dev ${work_dir}/boot-image/dev
