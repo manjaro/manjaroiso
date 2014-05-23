@@ -5,7 +5,7 @@ ffmpegthumbnailer
 gconf # fix qt-theme
 gnome-keyring # fix wlan segfault
 gufw # firewall
-lxdm
+mdm-themes
 manjaro-settings-manager
 menulibre
 network-manager-applet
@@ -123,7 +123,7 @@ gtk-theme-menda
 manjaro-artwork
 lxdm-manjaro-theme
 xfce-theme-greenbird
-#plymouth-theme-manjaro
+plymouth-theme-manjaro-elegant
 
 ## Packages for Sound and Audio
 gst-libav

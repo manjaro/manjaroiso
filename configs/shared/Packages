@@ -71,7 +71,6 @@ grub
 mkinitcpio-nfs-utils
 os-prober
 pkg-config
-plymouth-theme-manjaro-elegant
 squashfs-tools
 sudo
 syslinux4

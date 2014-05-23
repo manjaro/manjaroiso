@@ -5,7 +5,7 @@ gconf # fix qt-theme
 gnome-keyring # fix wlan segfault
 >i686 gnome-vfs
 gvfs # to fix trash in thunar
-lxdm
+mdm-themes
 menulibre
 network-manager-applet
 #numlockx
@@ -19,10 +19,10 @@ xfwm4
 xfce4-appfinder
 xfce4-settings
 xfce4-notifyd
-#xfce4-datetime-plugin
 xfce4-screenshooter
 xfce4-taskmanager
 xfce4-battery-plugin
+xfce4-clipman-plugin
 xfce4-whiskermenu-plugin
 
 ## Audio Packages
@@ -88,7 +88,7 @@ gtk-theme-menda
 manjaro-artwork
 lxdm-manjaro-theme
 xfce-theme-greenbird
-#plymouth-theme-manjaro
+plymouth-theme-manjaro-elegant
 
 ## Fonts
 ttf-dejavu
