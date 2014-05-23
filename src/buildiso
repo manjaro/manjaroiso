@@ -206,6 +206,9 @@ if [ -e "${pkgsfile}" ] ; then
                  mkdir -p "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants"
                  ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants/cups.service"
               fi
+              if [ -e ${work_dir}/${desktop}-image/etc/plymouth/plymouthd.conf ] ; then
+                 sed -i -e "s/^.*Theme=.*/Theme=$plymouth_theme/" ${work_dir}/${desktop}-image/etc/plymouth/plymouthd.conf
+              fi
               umount -l ${work_dir}/${desktop}-image
               rm -R ${work_dir}/${desktop}-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
