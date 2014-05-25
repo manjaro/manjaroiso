@@ -37,6 +37,7 @@ kde-theme-air-black-remix-green
 kdeartwork-colorschemes-oxygreen
 kdeplasma-theme-cupertino-ish
 kdeicons-kfaenza
+plymouth-theme-manjaro-elegant
 
 ## Community KDE packages
 udiskie
@@ -90,6 +91,12 @@ kdeplasma-addons-applets-icontasks
 kdeplasma-applets-plasma-nm
 kdeplasma-applets-homerun
 manjaro-settings-manager
+
+## Network
+netctl
+networkmanager
+networkmanager-dispatcher-ntpd
+openresolv
 
 ## Graphical installer
 thus
@@ -146,8 +153,9 @@ ktorrent
 #winetricks
 yakuake
 konversation
-#manjaro-welcome
+manjaro-welcome
 turbulence
+turbulence-artwork
 
 ## Package management
 octopi

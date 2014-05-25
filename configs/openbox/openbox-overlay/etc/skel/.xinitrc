@@ -6,7 +6,7 @@
 #
 # Executed by startx (run your window manager from here)
 #
-# Written by Phil Muller and Carl Duff
+# Written by Phil Muller 
 
 
 ## Ensure that the D-Bus Communication System is running properly to fix
@@ -32,8 +32,8 @@ fi
 ## Does this for each session (i.e. ease of use for addtional
 ## accounts where created.
 
-sed 's/_user_/'$(whoami)'/' ~/.config/obmenu-generator/schema.pl -i
-sed 's/_user_/'$(whoami)'/' ~/.config/obmenu-generator/config.pl -i
+sed -i "s,_homedir_,${HOME}," ~/.config/obmenu-generator/schema.pl
+sed -i "s,_homedir_,${HOME}," ~/.config/obmenu-generator/config.pl
 
 
 ## Enable SLiM to enable selection of multiple desktop environments, or

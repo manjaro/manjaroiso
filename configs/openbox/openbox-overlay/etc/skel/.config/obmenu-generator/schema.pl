@@ -3,7 +3,7 @@
 ## SCHEMA supports the following keys: item, cat, begin_cat, end_cat,
 ##                                     exit, raw, sep, obgenmenu
 ##
-## Modified by Carl Duff.
+## Modified by Dan
 
 =for comment
 
@@ -47,38 +47,29 @@ wine_apps: windows applications installed via wine
 #    * ICON can be a either a direct path to a icon or a valid icon name
 #    * By default, category names are case insensitive. (e.g.: X-XFCE == x_xfce)
 
-require '/home/_user_/.config/obmenu-generator/config.pl';
+require '_homedir_/.config/obmenu-generator/config.pl';
 
 our $SCHEMA = [
-#             COMMAND                 	LABEL          		ICON
-   {item => ['thunar',      		'Thunar','thunar']},
-   {item => ['lxterminal',   	 	'Terminal','lxterminal']},
-   {item => ['gnome-screenshot --interactive',  'Screenshot','gnome-screenshot']},
-   {item => ['nitrogen',   	 	'Nitrogen','nitrogen']},
+#             COMMAND                           	LABEL          		ICON
+   {cat => ['filemanager',                     'File Managers',    'system-file-manager']},
+   {item => ['lxterminal',   	 	            'Terminal',         'lxterminal']},
+   {item => ['gnome-screenshot --interactive',  'Screenshot',       'gnome-screenshot']},
+   {item => ['nitrogen',   	 	                'Nitrogen',         'nitrogen']},
    {sep => undef},
 
     #          NAME            LABEL                ICON
     {cat => ['utility',     'Accessories', 'applications-utilities']},
     {cat => ['development', 'Development', 'applications-development']},
-	{begin_cat => ['Drivers and Support',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
-		{item => ['lxterminal -e sudo ~/.config/executables/updatedriver.sh','Detect and install graphics drivers','lxterminal']},
-		{item => ['lxterminal -e sudo ~/.config/executables/multimedia.sh','Install full multimedia support','lxterminal']},
-		{item => ['lxterminal -e sudo ~/.config/executables/aur.sh','Install full Arch User Repository support','lxterminal']},
-		{item => ['lxterminal -e sudo ~/.config/executables/printing.sh','Install full printing support','lxterminal']},
-		{item => ['lxterminal -e sudo ~/.config/executables/install-octopi.sh','Install graphical software manager','lxterminal']},
-		{item => ['lxterminal -e sudo ~/.config/executables/install-msm.sh','Install Manjaro Settings Manager','lxterminal']},
-	{end_cat   => undef},
     {cat => ['education',   'Education',   'applications-science']},
     {cat => ['game',        'Games',       'applications-games']},
     {cat => ['graphics',    'Graphics',    'applications-graphics']},
     {cat => ['audiovideo',  'Multimedia',  'applications-multimedia']},
-    {cat => ['network',     'Network',     'applications-internet']},
-    {cat => ['office',      'Office',      'applications-office']},
+    {cat => ['network',     'Network',     'applications-internet']},    
     {cat => ['settings',    'Settings',    'applications-accessories']},
 
-## Custom "Advanced Menu"
+## Custom "OB menu"
 
-   {begin_cat => ['Advanced Settings',  'gnome-settings']},
+   {begin_cat => ['OB Settings',  'gnome-settings']},
    {begin_cat => ['Desktop and Login',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
    {item => ['geany -m ~/.conkyrc','Conky RC','geany']},
    {item => ['geany -m ~/.config/tint2/tint2rc','Tint2 Panel','geany']},
@@ -98,8 +89,7 @@ our $SCHEMA = [
 		{item => ['geany -m ~/.config/openbox/menu.xml','Openbox Menu','geany']},
 		{item => ['gksu geany /etc/oblogout.conf','Openbox Logout','geany']},
    {end_cat   => undef},
-   {begin_cat => ['Pacman / Servers', '/usr/share/icons/Faenza/apps/48/package-manager-icon.png']},
-		{item => ['lxterminal -e sudo ~/.config/executables/change-repo.sh','Switch stable, testing and unstable repos','lxterminal']},
+   {begin_cat => ['Pacman / Servers', '/usr/share/icons/Faenza/apps/48/package-manager-icon.png']},		
 		{item => ['gksu geany /etc/pacman.conf','Pacman Config','geany']},
 		{item => ['gksu geany /etc/pacman.d/mirrorlist','Pacman Mirrorlist','geany']},
    {end_cat   => undef},
@@ -126,3 +116,4 @@ our $SCHEMA = [
     #{wine_apps => ['Wine apps', 'applications-other']},
 
 ]
+

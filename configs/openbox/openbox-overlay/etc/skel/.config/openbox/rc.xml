@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Numix-Manjaro</name>
+    <name>ManjaroFlatDark</name>
     <titleLayout>LIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -324,6 +324,14 @@
         </startupnotify>
         <command>lxterminal</command>
       </action>
+    </keybind><keybind key="W-e">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>leafpad</name>
+        </startupnotify>
+        <command>leafpad</command>
+      </action>
     </keybind>
     <keybind key="W-f">
       <action name="Execute">
@@ -333,16 +341,7 @@
         </startupnotify>
         <command>thunar</command>
       </action>
-    </keybind>
-    <keybind key="W-s">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>synapse</name>
-        </startupnotify>
-        <command>synapse</command>
-      </action>
-    </keybind>
+    </keybind>    
     <keybind key="W-m">
       <action name="Execute">
         <startupnotify>
@@ -429,6 +428,9 @@
       </mousebind>
       <mousebind button="A-Right" action="Drag">
         <action name="Resize"/>
+      </mousebind>
+      <mousebind button="A-Left" action="Drag">
+        <action name="Move"/>  
       </mousebind>
       <mousebind button="A-Middle" action="Press">
         <action name="Lower"/>

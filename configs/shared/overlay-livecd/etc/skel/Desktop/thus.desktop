@@ -2,7 +2,7 @@
 Name=Install Manjaro Linux
 GenericName=Live Installer
 Comment=Install the operating system to disk
-Exec=sudo /usr/bin/thus
+Exec=/usr/bin/thus
 Icon=/usr/share/thus/data/manjaro-icon.png
 Terminal=False
 Type=Application

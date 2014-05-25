@@ -54,7 +54,6 @@ five-or-more
 four-in-a-row
 gdl
 gdm
-gdm3setup
 gedit
 gjs
 glade
@@ -74,7 +73,7 @@ gnome-disk-utility
 gnome-doc-utils
 gnome-documents
 gnome-font-viewer
-gnome-getting-started-docs 
+gnome-getting-started-docs
 gnome-icon-theme
 gnome-icon-theme-extras
 gnome-icon-theme-symbolic
@@ -87,7 +86,7 @@ gnome-mines
 gnome-nettool
 gnome-nibbles
 gnome-online-accounts
-gnome-photos 
+gnome-photos
 gnome-power-manager
 gnome-python
 gnome-robots
@@ -120,7 +119,7 @@ libgsf
 libnautilus-extension
 lightsoff
 mousetweaks
-mutter
+#mutter
 nautilus
 network-manager-applet
 orca
@@ -147,14 +146,20 @@ muffin
 gksu
 polkit
 polkit-gnome
-lxpolkit
 manjaro-welcome
+
+## Network
+netctl
+networkmanager
+networkmanager-dispatcher-ntpd
+openresolv
 
 ## Extra
 icedtea-web-java7
 vlc
 
 ## Theme
+nitrux-icon-theme
 faenza-green-icon-theme
 xfce-theme-greenbird
 adwaita-manjaro-themes
@@ -163,44 +168,72 @@ numix-manjaro-themes
 
 ## Other Applications
 firefox
-leafpad
+#leafpad
 imagewriter
 ttf-droid
-lxterminal
+#lxterminal
 viewnior
 flashplugin
 numlockx
 gparted
-p7zip
+#p7zip
 udiskie
 udisks
+udisks2
 openssh
-
+gvfs
+gvfs-afc
+gvfs-afp
+gvfs-gphoto2
+gvfs-mtp
+gvfs-smb
+hexchat
+banshee
+rhythmbox
+gimp
+shotwell
+tomboy
+chromium-bsu
+        
 ## Package management
 
-pamac-aur
-octopi
+pamac
+manjaro-settings-manager
 ffmpegthumbnailer
 
 ## Packages for Sound and Audio
+gst-libav
+gst-plugins-bad
+gst-plugins-base
+gst-plugins-good
+gst-plugins-ugly
 gstreamer0.10-bad-plugins
-gstreamer0.10-ffmpeg
+gstreamer0.10-base-plugins
+gstreamer0.10-good-plugins
 gstreamer0.10-ugly-plugins
+flashplugin
+libdvdcss
 manjaro-alsa
 manjaro-pulse
+pavucontrol
+pa-applet
+pulseaudio-ctl
 
 ## Printing
 manjaro-printer
 
 ## Office
+
+## Office
+#libreoffice-installer
 libreoffice-en-US
-#libreoffice-base
+libreoffice-base
 libreoffice-calc
-#libreoffice-draw
+libreoffice-draw
 libreoffice-gnome
-#libreoffice-impress
-#libreoffice-math
-#libreoffice-postgresql-connector
+libreoffice-impress
+libreoffice-math
+libreoffice-postgresql-connector
 libreoffice-writer
 
 ## AUR Access

@@ -58,10 +58,10 @@ if [ -e Packages-Mate ] ; then
     desktop="mate"
     pkgsfile="Packages-Mate"
 fi
-if [ -e Packages-E17 ] ; then
-    de="-e17"
-    desktop="e17"
-    pkgsfile="Packages-E17"
+if [ -e Packages-Enlightenment ] ; then
+    de="-enlightenment"
+    desktop="enlightenment"
+    pkgsfile="Packages-Enlightenment"
 fi
 if [ -e Packages-Net ] ; then
     de="-net"
@@ -157,6 +157,9 @@ make_root_image() {
          if [ -e ${work_dir}/root-image/etc/plymouth/plymouthd.conf ] ; then
             sed -i -e "s/^.*Theme=.*/Theme=$plymouth_theme/" ${work_dir}/root-image/etc/plymouth/plymouthd.conf
          fi
+         if [ -e ${work_dir}/root-image/etc/lsb-release ] ; then
+            sed -i -e "s/^.*DISTRIB_RELEASE.*/DISTRIB_RELEASE=$version/" ${work_dir}/root-image/etc/lsb-release
+         fi
          if [ -e ${work_dir}/root-image/usr/sbin/cupsd ] ; then
             mkdir -p "${work_dir}/root-image/etc/systemd/system/multi-user.target.wants"
             ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/root-image/etc/systemd/system/multi-user.target.wants/cups.service"
@@ -169,6 +172,10 @@ make_root_image() {
 
          # Clean up GnuPG keys
          rm -rf "${work_dir}/root-image/etc/pacman.d/gnupg"
+
+         # Change to given branch in options.conf
+         sed -i -e "s/stable/$branch/" ${work_dir}/root-image/etc/pacman.d/mirrorlist
+         sed -i -e "s/stable/$branch/" ${work_dir}/root-image/etc/pacman-mirrors.conf
 
          # Enable followed line if you want to use the pacman.conf used to build this image
          #cp pacman-${arch}.conf ${work_dir}/root-image/etc/pacman.conf
@@ -199,10 +206,8 @@ if [ -e "${pkgsfile}" ] ; then
                  mkdir -p "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants"
                  ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants/cups.service"
               fi
-              # Copy pacman.conf from profile if it is mate
-              if [ "${desktop}" == "mate" ] ; then
-                 mkdir -p ${work_dir}/${desktop}-image/etc
-                 cp pacman-${arch}.conf ${work_dir}/${desktop}-image/etc/pacman.conf
+              if [ -e ${work_dir}/${desktop}-image/etc/plymouth/plymouthd.conf ] ; then
+                 sed -i -e "s/^.*Theme=.*/Theme=$plymouth_theme/" ${work_dir}/${desktop}-image/etc/plymouth/plymouthd.conf
               fi
               umount -l ${work_dir}/${desktop}-image
               rm -R ${work_dir}/${desktop}-image/.wh*
@@ -241,12 +246,6 @@ if [ -e Packages-Xorg ] ; then
                  echo -e -n "$_r >$_W Disabling Catalyst driver \n $_n"
                  mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst/
                  touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst/MHWDCONFIG
-                 echo -e "$_g >$_W done $_n"
-              fi
-              if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep catalyst-legacy-utils 2> /dev/null`" ]; then
-                 echo -e -n "$_r >$_W Disabling Catalyst-Legacy driver \n $_n"
-                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst-legacy/
-                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst-legacy/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
               # Disable Nvidia if not present
@@ -359,7 +358,12 @@ make_boot() {
         if [ ! -z "`mount -l | grep boot-image`" ]; then
            umount -l ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
         fi
+        echo -e -n "$_r >$_W mount root-image \n $_n"
         mount -t aufs -o br=${work_dir}/boot-image:${work_dir}/root-image=ro none ${work_dir}/boot-image
+        if [ ! -z "${de}" ] ; then
+             echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
+             mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/boot-image
+        fi
         mount -t proc none ${work_dir}/boot-image/proc
         mount -t sysfs none ${work_dir}/boot-image/sys
         mount -o bind /dev ${work_dir}/boot-image/dev
@@ -400,9 +404,9 @@ make_efi() {
             efiboot/loader/entries/${manjaroiso}-x86_64-nonfree-usb.conf > ${work_dir}/iso/loader/entries/${manjaroiso}-x86_64-nonfree.conf
 
         # EFI Shell 2.0 for UEFI 2.3+ ( http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=UEFI_Shell )
-        curl -o ${work_dir}/iso/EFI/shellx64_v2.efi https://svn.code.sf.net/p/edk2/code/trunk/edk2/ShellBinPkg/UefiShell/X64/Shell.efi
+        curl -k -o ${work_dir}/iso/EFI/shellx64_v2.efi https://svn.code.sf.net/p/edk2/code/trunk/edk2/ShellBinPkg/UefiShell/X64/Shell.efi
         # EFI Shell 1.0 for non UEFI 2.3+ ( http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=Efi-shell )
-        curl -o ${work_dir}/iso/EFI/shellx64_v1.efi https://svn.code.sf.net/p/edk2/code/trunk/edk2/EdkShellBinPkg/FullShell/X64/Shell_Full.efi
+        curl -k -o ${work_dir}/iso/EFI/shellx64_v1.efi https://svn.code.sf.net/p/edk2/code/trunk/edk2/EdkShellBinPkg/FullShell/X64/Shell_Full.efi
         : > ${work_dir}/build.${FUNCNAME}
         echo -e "$_g >$_W done $_n"
     fi

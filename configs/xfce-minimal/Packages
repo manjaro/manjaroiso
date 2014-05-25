@@ -1,0 +1,127 @@
+## The actual 'base' group, minus netctl
+bash
+bzip2
+coreutils
+cronie
+cryptsetup
+device-mapper
+dhcpcd
+diffutils
+e2fsprogs
+file
+filesystem
+findutils
+gawk
+gcc-libs
+gettext
+glibc
+grep
+gzip
+inetutils
+iproute2
+iputils
+jfsutils
+keyboardctl
+less
+licenses
+locale-info
+logrotate
+lvm2
+man-db
+man-pages
+manjaro-hotfixes
+manjaro-system
+mdadm
+mhwd
+mhwd-db
+nano
+pacman
+pciutils
+pcmciautils
+perl
+procps-ng
+psmisc
+reiserfsprogs
+s-nail
+sed
+shadow
+sysfsutils
+systemd-sysvcompat
+tar
+texinfo
+usbutils
+util-linux
+vi
+which
+xfsprogs
+
+## Base Packages
+linux-firmware
+lsb-release
+haveged # needed for pacman-init
+manjaro-firmware
+manjaro-release
+memtest86+
+
+## Kernel
+KERNEL
+
+## Extra Base Packages
+grub-bios
+mkinitcpio-nfs-utils
+os-prober
+pkg-config
+squashfs-tools
+sudo
+syslinux
+xdg-utils
+xdg-user-dirs
+
+## Encrypt support
+ecryptfs-utils
+rsync
+lsof
+
+## Filesystem Packages
+btrfs-progs
+dmraid
+dosfstools
+ecryptfs-utils
+testdisk
+nilfs-utils
+nfs-utils
+ntfs-3g
+
+## Needed by cli-installer
+dialog
+dmidecode
+gptfdisk
+parted
+pv
+tcpdump
+wget
+
+## EFI support (only x86_64)
+>x86_64 gummiboot
+>x86_64 prebootloader
+>x86_64 refind-efi
+
+## Network
+b43-fwcutter
+dhclient
+dnsmasq
+iptables
+ipw2100-fw
+ipw2200-fw
+mobile-broadband-provider-info
+modemmanager
+nbd
+KERNEL-ndiswrapper
+ndiswrapper-utils
+usb_modeswitch
+wpa_actiond
+wpa_supplicant
+zd1211-firmware
+
+## ucode for new cpus
+intel-ucode

@@ -1,0 +1,95 @@
+### Manjaro Packages
+
+## Minmal XFCE Desktop Packages
+gconf # fix qt-theme
+gnome-keyring # fix wlan segfault
+>i686 gnome-vfs
+gvfs # to fix trash in thunar
+mdm-themes
+menulibre
+network-manager-applet
+#numlockx
+xcursor-simpleandsoft
+xcursor-vanilla-dmz-aa
+xfce4-panel
+xfce4-session
+xfce4-terminal
+xfdesktop
+xfwm4
+xfce4-appfinder
+xfce4-settings
+xfce4-notifyd
+xfce4-screenshooter
+xfce4-taskmanager
+xfce4-battery-plugin
+xfce4-clipman-plugin
+xfce4-whiskermenu-plugin
+
+## Audio Packages
+manjaro-alsa
+manjaro-pulse
+pavucontrol
+pa-applet
+pulseaudio-ctl
+
+## Applications
+gksu
+gparted
+gst-libav
+libreoffice-installer
+lxpolkit
+manjaro-settings-manager
+manjaro-welcome
+midori
+mousepad
+pamac
+parole
+polkit-gnome # for gparted
+raktpdf
+sylpheed
+xnoise
+
+## Installer
+thus
+
+## Network
+netctl
+networkmanager
+networkmanager-dispatcher-ntpd
+openresolv
+
+## Xorg Packages
+inxi
+libdnet
+#>x86_64 lib32-mesa-demos
+mesa
+netkit-bsd-finger
+uriparser
+xf86-input-acecad
+xf86-input-aiptek
+xf86-input-evdev
+xf86-input-joystick
+xf86-input-keyboard
+xf86-input-mouse
+xf86-input-synaptics
+xf86-input-void
+xf86-input-wacom
+xinetd
+xorg-server
+xorg-server-utils
+xorg-twm
+xorg-utils
+xorg-xinit
+
+## Artwork
+faenza-green-icon-theme
+gtk-theme-ceti
+gtk-theme-menda
+manjaro-artwork
+lxdm-manjaro-theme
+xfce-theme-greenbird
+plymouth-theme-manjaro-elegant
+
+## Fonts
+ttf-dejavu
+ttf-source-sans-pro

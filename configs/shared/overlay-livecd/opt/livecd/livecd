@@ -87,7 +87,21 @@ if [ -e "/usr/bin/lightdm" ] ; then
    chown -R lightdm:lightdm /var/run/lightdm > /dev/null
    if [ -e "/usr/bin/startxfce4" ] ; then
         sed -i -e 's/^.*user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
-        ln -s /usr/lib/lightdm/lightdm/gdmflexiserver /usr/bin/gdmflexiserver
+   fi
+   if [ -e "/usr/bin/cinnamon-session" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=cinnamon/' /etc/lightdm/lightdm.conf
+   fi
+   if [ -e "/usr/bin/mate-session" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=mate/' /etc/lightdm/lightdm.conf
+   fi
+   if [ -e "/usr/bin/enlightenment_start" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=enlightenment/' /etc/lightdm/lightdm.conf
+   fi
+   if [ -e "/usr/bin/openbox-session" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=openbox/' /etc/lightdm/lightdm.conf
+   fi
+   if [ -e "/usr/bin/lxsession" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=LXDE/' /etc/lightdm/lightdm.conf
    fi
    sed -i -e "s/^.*autologin-user=.*/autologin-user=${username}/" /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
@@ -95,6 +109,7 @@ if [ -e "/usr/bin/lightdm" ] ; then
    gpasswd -a ${username} autologin
    chmod +r /etc/lightdm/lightdm.conf
    # livecd fix
+   mkdir -p /var/lib/lightdm-data
    systemd-tmpfiles --create /usr/lib/tmpfiles.d/lightdm.conf
    /usr/bin/systemd-tmpfiles --create --remove
 fi
@@ -222,6 +237,31 @@ if [ -e "/usr/bin/lxdm" ] ; then
    chmod +r /etc/lxdm/lxdm.conf > /dev/null
 fi
 
+echo "configure AccountsService" >> /tmp/livecd.log
+
+if [ -d "/var/lib/AccountsService/users" ] ; then
+     echo "[User]" > /var/lib/AccountsService/users/manjaro
+     if [ -e "/usr/bin/startxfce4" ] ; then
+        echo "XSession=xfce" >> /var/lib/AccountsService/users/manjaro
+     fi
+     if [ -e "/usr/bin/cinnamon-session" ] ; then
+        echo "XSession=cinnamon" >> /var/lib/AccountsService/users/manjaro
+     fi
+     if [ -e "/usr/bin/mate-session" ] ; then
+        echo "XSession=mate" >> /var/lib/AccountsService/users/manjaro
+     fi
+     if [ -e "/usr/bin/enlightenment_start" ] ; then
+        echo "XSession=enlightenment" >> /var/lib/AccountsService/users/manjaro
+     fi
+     if [ -e "/usr/bin/openbox-session" ] ; then
+        echo "XSession=openbox" >> /var/lib/AccountsService/users/manjaro
+     fi
+     if [ -e "/usr/bin/lxsession" ] ; then
+        echo "XSession=LXDE" >> /var/lib/AccountsService/users/manjaro
+     fi
+     echo "Icon=/var/lib/AccountsService/icons/manjaro.png" >> /var/lib/AccountsService/users/manjaro
+fi
+
 echo "configure sudoers" >> /tmp/livecd.log
 
 # do_fix_perms
@@ -242,8 +282,8 @@ if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
 fi
 
 # configurate pacman
-pacman-key --init
-pacman-key --populate archlinux manjaro
+#pacman-key --init
+#pacman-key --populate archlinux manjaro
 
 # fix_ping_installation
 setcap cap_net_raw=ep /usr/bin/ping &> /dev/null
@@ -313,7 +353,7 @@ if [ -e "$_conf_file" ] ; then
       sed -i "s|_title_|Manjaro Gnome Edition|g" $_conf_file
    fi
    if [ -e "/bootmnt/${install_dir}/${arch}/cinnamon-image.sqfs" ] ; then
-      sed -i "'s|_desktop_|/bootmnt/${install_dir}/_ARCH_/cinnamon-image.sqfs|g" $_conf_file
+      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/cinnamon-image.sqfs|g" $_conf_file
       sed -i "s|_title_|Manjaro Cinnamon Edition|g" $_conf_file
    fi
    if [ -e "/bootmnt/${install_dir}/${arch}/openbox-image.sqfs" ] ; then
@@ -332,9 +372,9 @@ if [ -e "$_conf_file" ] ; then
       sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/lxde-image.sqfs|g" $_conf_file
       sed -i "s|_title_|Manjaro LXDE Edition|g" $_conf_file
    fi
-   if [ -e "/bootmnt/${install_dir}/${arch}/e17-image.sqfs" ] ; then
-      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/e17-image.sqfs|g" $_conf_file
-      sed -i "s|_title_|Manjaro E17 Edition|g" $_conf_file
+   if [ -e "/bootmnt/${install_dir}/${arch}/enlightenment-image.sqfs" ] ; then
+      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/enlightenment-image.sqfs|g" $_conf_file
+      sed -i "s|_title_|Manjaro Enlightenment Edition|g" $_conf_file
    fi
    if [ -e "/bootmnt/${install_dir}/${arch}/custom-image.sqfs" ] ; then
       sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/custom-image.sqfs|g" $_conf_file

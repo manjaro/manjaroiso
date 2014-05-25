@@ -7,21 +7,22 @@ Global {
     margin=0
     widthtype=percent
     width=100
-    height=26
-    transparent=0
-    tintcolor=#000000
-    alpha=0
+    height=35
+    transparent=1
+    tintcolor=#13351e
+    alpha=133
     autohide=0
     heightwhenhidden=2
     setdocktype=1
     setpartialstrut=1
     usefontcolor=1
-    fontsize=10
-    fontcolor=#ffffff
-    usefontsize=0
-    background=1
+    fontsize=12
+    fontcolor=#11ec17
+    usefontsize=1
+    background=0
     backgroundfile=/usr/share/lxpanel/images/background.png
-    iconsize=24
+    iconsize=33
+    loglevel=2
 }
 
 Plugin {
@@ -34,7 +35,7 @@ Plugin {
 Plugin {
     type = menu
     Config {
-        image=/usr/share/icons/manjaro-logo.png
+        image=/usr/share/icons/manjaro-lxde-logo.png
         system {
         }
         separator {
@@ -52,25 +53,6 @@ Plugin {
 }
 
 Plugin {
-    type = launchbar
-    Config {
-        Button {
-            id=pcmanfm.desktop
-        }
-        Button {
-            id=/usr/share/applications/midori.desktop
-        }
-    }
-}
-
-Plugin {
-    type = space
-    Config {
-        Size=4
-    }
-}
-
-Plugin {
     type = wincmd
     Config {
         image=window-manager
@@ -83,12 +65,26 @@ Plugin {
 Plugin {
     type = space
     Config {
-        Size=4
+        Size=2
     }
 }
 
 Plugin {
-    type = pager
+    type = launchbar
+    Config {
+        Button {
+            id=pcmanfm.desktop
+        }
+        Button {
+            id=/usr/share/applications/lxterminal.desktop
+        }
+        Button {
+            id=/usr/share/applications/hexchat.desktop
+        }
+        Button {
+            id=/usr/share/applications/midori.desktop
+        }
+    }
 }
 
 Plugin {
@@ -108,14 +104,14 @@ Plugin {
         UseMouseWheel=1
         UseUrgencyHint=1
         FlatButton=0
-        MaxTaskWidth=150
+        MaxTaskWidth=100
         spacing=1
         GroupedTasks=0
     }
 }
 
 Plugin {
-    type = netstat
+    type = pager
 }
 
 Plugin {
@@ -131,9 +127,25 @@ Plugin {
     Config {
         ClockFmt=%R
         TooltipFmt=%A %x
-        BoldFont=0
+        BoldFont=1
         IconOnly=0
         CenterText=0
+    }
+}
+
+Plugin {
+    type = batt
+    Config {
+        HideIfNoBattery=0
+        AlarmCommand=xmessage Battery low
+        AlarmTime=5
+        BackgroundColor=black
+        BorderWidth=1
+        ChargingColor1=#28f200
+        ChargingColor2=#22cc00
+        DischargingColor1=#ffee00
+        DischargingColor2=#d9ca00
+        Size=12
     }
 }
 

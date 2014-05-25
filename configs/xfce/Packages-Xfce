@@ -1,14 +1,13 @@
 ### Manjaro Packages
 
 ## XFCE Main Packages
-adwaita-manjaro-themes
-faenza-green-icon-theme
 ffmpegthumbnailer
 gconf # fix qt-theme
 gnome-keyring # fix wlan segfault
 gufw # firewall
-manjaro-settings-manager
 mdm-themes
+manjaro-settings-manager
+menulibre
 network-manager-applet
 networkmanager-openconnect
 networkmanager-openvpn
@@ -24,7 +23,6 @@ thus
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xfce4
-xfce4-volumed-pulse
 xscreensaver
 
 ## XFCE Extra Packages
@@ -33,7 +31,7 @@ xfce4-battery-plugin
 xfce4-clipman-plugin
 xfce4-cpufreq-plugin
 xfce4-cpugraph-plugin
-xfce4-datetime-plugin
+#xfce4-datetime-plugin
 xfce4-dict
 xfce4-diskperf-plugin
 xfce4-fsguard-plugin
@@ -59,13 +57,10 @@ xfce4-whiskermenu-plugin
 xfce4-xkb-plugin
 
 ## Applications
-blueman
 catfish # needed for desktop search
-evince
-file-roller
+engrampa-thunar
 firefox
-galculator
-gedit
+galculator-gtk2
 gimp
 gksu
 gnome-vfs
@@ -77,18 +72,25 @@ gvfs-gphoto2
 gvfs-mtp
 gvfs-smb
 hexchat
-lxmed
 manjaro-welcome
 #midori
 mlocate
+mousepad
 #parole
 pidgin
+raktpdf
 thunderbird
 viewnior
 vlc
 xfburn
 xnoise
 yelp
+
+## Network
+netctl
+networkmanager
+networkmanager-dispatcher-ntpd
+openresolv
 
 ## Xorg Packages
 inxi
@@ -115,8 +117,13 @@ xorg-utils
 xorg-xinit
 
 ## Artwork
+faenza-green-icon-theme
+gtk-theme-ceti
+gtk-theme-menda
 manjaro-artwork
-#plymouth-theme-manjaro
+lxdm-manjaro-theme
+xfce-theme-greenbird
+plymouth-theme-manjaro-elegant
 
 ## Packages for Sound and Audio
 gst-libav
@@ -145,6 +152,7 @@ pamac
 steam
 
 ## Fonts
+ttf-dejavu
 ttf-source-sans-pro
 
 ## Java

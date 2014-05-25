@@ -3,9 +3,9 @@ Terminal=false
 Type=Application
 Categories=commmand
 StartupNotify=false
-Name=eraser
-Path=~/.config/autostart/firstboot.py
-Exec=~/.config/autostart/firstboot.py
+Name=Cleanup Manjaro-Welcome
+Path=~/.config/autostart/cleanup.sh
+Exec=~/.config/autostart/cleanup.sh
 Icon=none
-Comment=eraser
+Comment=Cleanup for Turbulence
 ##this script for turbulence

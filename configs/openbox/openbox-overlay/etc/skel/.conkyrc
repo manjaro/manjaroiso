@@ -1,67 +1,49 @@
-## ManjaroBox Conky Configuration Script
-##
-## Written by Carl Duff & Ugo Yak
-## Website: www.manjaro.org - Forum: http://forum.manjaro.org/
-##
-
-#  Basic Settings
-
-background yes
-use_xft yes
-xftfont sans:size=11
-xftalpha 1
-update_interval 1.0
+update_interval 1
 total_run_times 0
-own_window yes
-own_window_transparent yes
-own_window_type override #desktop
-own_window_hints below,sticky,skip_taskbar,skip_pager
+net_avg_samples 1
+cpu_avg_samples 1
+imlib_cache_size 0
 double_buffer yes
-minimum_size 450 1
-maximum_width 600
-draw_shades no
-draw_outline no
-draw_borders no
-draw_graph_borders no
-default_color Black
-default_shade_color 000000
-default_outline_color d9d7d6
-alignment tr
-gap_x 5
-gap_y 20
 no_buffers yes
-uppercase no
-cpu_avg_samples 2
+use_xft yes
+xftfont Droid Sans:size=9
 override_utf8_locale yes
+text_buffer_size 2048
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_hints undecorated,sticky,skip_taskbar,skip_pager
+alignment top_right
+gap_x 10
+gap_y 60
+minimum_size 280 0
+default_bar_size 30 8
+draw_shades no
+default_color c5c5c5
+default_shade_color 000000
+color0 8DBC68
+color1 c5c5c5
+color2 c5c5c5
+own_window_argb_visual yes
+own_window_colour 000000
+own_window_argb_value 0
 
-## ManjaroBang Conky Display
-##
-## Note - if internet connection speeds do not show, then enter 'ip addr' into the terminal
-## to identify your correct Wireless and Ethernet connection names (e.g. wlo1, eno1)
-##
 TEXT
-${font sans:bold:size=18}${alignr}${color #35BF5C}${time %e} ${color #BEBEBE}${time %B}${color #35BF5C} ${time %Y}${color #BEBEBE} ${time %l:%M}${font sans:bold:size=15}${time %p}${voffset -8}
-${color #BEBEBE}${hr 1}${voffset -4}
-${font sans:bold:size=9}${alignr}${color #35BF5C}CPU ${color #BEBEBE}${cpu cpu0}%  -  ${color #35BF5C}RAM ${color #BEBEBE}$mem ${color #B22222} / ${color #BEBEBE}$memmax  -  ${color #35BF5C}HD ${color #BEBEBE}$fs_used ${color #B22222} / ${color #BEBEBE} $fs_size${voffset 2}
-${font sans:bold:size=9}${alignr}${color #35BF5C}Battery ${color #BEBEBE}$battery_percent%  -  ${color #35BF5C}Uptime ${color #BEBEBE}$uptime_short  -  ${color #35BF5C}Desktop ${color #BEBEBE}$desktop${voffset 3}
-${hr 1}${voffset 6}
-${font sans:bold:size=9}${alignr}${color #35BF5C}Shift + Left-Mouse
-${alignr}${color #BEBEBE}Drag Window${voffset -5}
+${goto 180}${color0}${font Droid Sans:style=bold:size=13}${voffset 40}${exec whoami}
+${voffset -30}${font Droid Sans:style=Bold:size=12}${color}${goto 40}${uptime}
+${goto 80}${color1}${font Droid Sans:style=Bold:size=12}${color1}${sysname}${color}${font}
+${voffset 90}${goto 20}${font Droid Sans:style=bold:size=30}${time %H:%M}${font}${goto 175}${font Droid Sans:style=Bold:size=11}CPU
+${goto 175}${font Droid Sans:style=Bold:size=11}${color1}${cpu cpu1}%
+${voffset 40}${goto 35}/home${color1}${goto 128}SWAP
+${goto 38}${font Droid Sans:style=Bold:size=10}${fs_used /home}${goto 134}${font Droid Sans:style=Bold:size=11}${swapperc}${font Droid Sans:style=Bold:size=11}${color1}${font}%
+${font Droid Sans:style=Bold:size=11}${font}
+${voffset 10}${goto 90}${font Droid Sans:style=Bold:size=11}RAM
+${goto 90}${font Droid Sans:style=Bold:size=11}${memperc}%
 
-${font sans:bold:size=9}${alignr}${color #35BF5C}Super + d
-${alignr}${color #BEBEBE}Toggle Desktop${voffset -5}
+${image /usr/share/conkypic/lsd.png -p 10,0}
 
-${font sans:bold:size=9}${alignr}${color #35BF5C}Super + f
-${alignr}${color #BEBEBE}File Manager${voffset -5}
 
-${font sans:bold:size=9}${alignr}${color #35BF5C}Super + m
-${alignr}${color #BEBEBE}DMenu${voffset -5}
 
-${font sans:bold:size=9}${alignr}${color #35BF5C}Super + s
-${alignr}${color #BEBEBE}Synapse${voffset -5}
 
-${font sans:bold:size=9}${alignr}${color #35BF5C}Super + t
-${alignr}${color #BEBEBE}Terminal${voffset -5}
 
-${font sans:bold:size=9}${alignr}${color #35BF5C}Super + x
-${alignr}${color #BEBEBE}Logout...
+
