@@ -103,7 +103,7 @@ lxpolkit
 
 
 ## Display Manager
-slim
+lxdm
 
 
 ## Desktop Display
@@ -143,11 +143,12 @@ tintwizard
 faenza-green-icon-theme
 gnome-icon-theme
 openbox-themes
-numix-manjaro-themes
+gtk-theme-menda
 xcursor-vanilla-dmz-aa
 manjarobox-evolution-themes
 plymouth-theme-manjaro-elegant
 unified-manjaro-themes-openbox
+lxdm-manjaro-theme-openbox
 
 
 ## Applications

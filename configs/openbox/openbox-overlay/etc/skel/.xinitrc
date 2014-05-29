@@ -28,13 +28,6 @@ if [ -x /usr/bin/xdg-user-dirs-update ]; then
    /usr/bin/xdg-user-dirs-update
 fi
 
-## Ensure that obmenu-generator (a pipe menu) is set to the user.
-## Does this for each session (i.e. ease of use for addtional
-## accounts where created.
-
-sed -i "s,_homedir_,${HOME}," ~/.config/obmenu-generator/schema.pl
-sed -i "s,_homedir_,${HOME}," ~/.config/obmenu-generator/config.pl
-
 
 ## Enable SLiM to enable selection of multiple desktop environments, or
 ## set a single session. Only one or the other must be unhashed! In either
