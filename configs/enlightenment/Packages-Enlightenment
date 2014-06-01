@@ -29,6 +29,7 @@ iso-codes
 
 ## Artwork
 manjaro-artwork
+plymouth-theme-manjaro-elegant
 
 ## Enlightenment Main Packages
 enlightenment
@@ -45,7 +46,7 @@ polkit
 lxpolkit
 pamac
 manjaro-welcome
-e18-manjaro-themes
+enlightenment-manjaro-themes
 gtk-theme-boje
 gtk-theme-e17gtk
 adwaita-manjaro-themes
@@ -81,7 +82,6 @@ gvfs-smb
 ## Stuff from the old E17 config that someday we may want
 
 #forecasts
-#enlightenment-manjaro-themes
 #evas_generic_loaders
 #xcursor-simpleandsoft
 #xcursor-vanilla-dmz-aa
