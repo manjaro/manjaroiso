@@ -42,7 +42,6 @@ pangox-compat
 
 ## Xorg x86_64 Packages
 >x86_64 lib32-libxvmc
->x86_64 lib32-libgl
 >free_x64 lib32-ati-dri
 >x86_64 lib32-intel-dri
 >free_x64 lib32-nouveau-dri

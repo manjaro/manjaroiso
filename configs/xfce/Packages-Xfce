@@ -91,6 +91,7 @@ netctl
 networkmanager
 networkmanager-dispatcher-ntpd
 openresolv
+blueman
 
 ## Xorg Packages
 inxi

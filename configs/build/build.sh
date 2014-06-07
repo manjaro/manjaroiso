@@ -8,6 +8,7 @@ fi
 
 # Manjaro Editions
 xfce="Y"
+kde="Y"
 openbox="Y"
 net="Y"
 
@@ -15,7 +16,6 @@ net="Y"
 cinnamon="N"
 mate="N"
 enlightenment="N"
-kde="N"
 
 if [ "$xfce" == "Y" ] ; then
    echo ">> build xfce image"
@@ -191,4 +191,10 @@ if [ "$openbox" == "Y" ] ; then
    rm -R pacman-gfx.conf
    rm -R work*/*pkgs*
    rm work*/iso/manjaro/*/pkgs-image.sqfs
+   if [ -e Packages-Xorg ] ; then
+      rm -R Packages-Xorg
+      rm -R pacman-gfx.conf
+      rm -R work*/*pkgs*
+      rm work*/iso/manjaro/*/pkgs-image.sqfs
+   fi
 fi
