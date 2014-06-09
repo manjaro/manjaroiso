@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Swap to NetworkManager
-Comment=Swap from Connman to NetworkManager
-Exec=/opt/manjaro-enlightenment/nm-swap-ui.sh
-Icon=network-wireless
-Terminal=False
-Type=Application

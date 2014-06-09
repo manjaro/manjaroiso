@@ -327,8 +327,8 @@ offset=36
 [Containments][34][Wallpaper][image]
 slideTimer=10
 slidepaths=
-userswallpapers=/usr/share/wallpapers/manjaro-style/contents/images/1920x1400.png
-wallpaper=/usr/share/wallpapers/manjaro-style/
+userswallpapers=/usr/share/wallpapers/manjaro-vector/manjaro-vector-wallpaper.png
+wallpaper=/usr/share/wallpapers/manjaro-vector/manjaro-vector-wallpaper.png
 wallpapercolor=0,0,0
 wallpaperposition=0
 

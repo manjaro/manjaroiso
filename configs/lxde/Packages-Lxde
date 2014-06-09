@@ -6,7 +6,6 @@ mhwd
 ## Xorg Packages
 inxi
 libdnet
-mesa
 mesa-demos
 >x86_64 lib32-mesa-demos
 netkit-bsd-finger
@@ -90,7 +89,7 @@ octopi
 octopi-notifier
 
 ## Fonts
-ttf-source-sans-pro
+adobe-source-sans-pro-fonts
 
 ## Extra Applications
 #blueman

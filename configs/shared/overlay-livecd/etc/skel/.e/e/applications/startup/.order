@@ -1,0 +1,4 @@
+/etc/xdg/autostart/lxpolkit.desktop
+/etc/xdg/autostart/pamac-tray.desktop
+/etc/xdg/autostart/manjaro-settings-manager-daemon.desktop
+/usr/share/applications/manjaro-welcome.desktop

@@ -22,13 +22,13 @@ KERNEL-broadcom-wl
 >nonfree_uni KERNEL-catalyst
 >nonfree_uni nvidia-utils
 >nonfree_uni KERNEL-nvidia
->i686 nvidia-304xx-utils # nvidia support now only for i686
->i686 KERNEL-nvidia-304xx # nvidia support now only for i686
+>i686 nvidia-304xx-utils		 # nvidia support now only for i686
+>i686 KERNEL-nvidia-304xx		 # nvidia support now only for i686
 >nonfree_x64 lib32-catalyst-utils
 >nonfree_x64 lib32-nvidia-utils
-## lib32-nvidia-legacy-utils # disabled for now on x86_64
+##           lib32-nvidia-legacy-utils # disabled for now on x86_64
 >nonfree_x64 lib32-gcc-libs
->nonfree_x64 lib32-zlib
+>nonfree_x64 lib32-zlib 
 
 ## Virtualbox Drivers
 >free_uni virtualbox-guest-utils
@@ -42,7 +42,6 @@ pangox-compat
 
 ## Xorg x86_64 Packages
 >x86_64 lib32-libxvmc
->x86_64 lib32-libgl
 >free_x64 lib32-ati-dri
 >x86_64 lib32-intel-dri
 >free_x64 lib32-nouveau-dri

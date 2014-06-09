@@ -1,8 +1,8 @@
 # DO NOT EDIT! This file will be overwritten by LXAppearance.
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
-gtk-theme-name="ManjaroFlatDark"
-gtk-icon-theme-name="F-Dark-Black"
+gtk-theme-name="Menda"
+gtk-icon-theme-name="Faenza-Green"
 gtk-font-name="Droid Sans 10"
 gtk-cursor-theme-name="Vanilla-DMZ-AA"
 gtk-cursor-theme-size=0

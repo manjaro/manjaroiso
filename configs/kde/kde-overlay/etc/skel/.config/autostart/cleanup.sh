@@ -1,6 +1,7 @@
 #!/bin/sh
-## Prevent Manjaro-Welcome from Autostarting
+## Prevent Manjaro-Welcome from Autostarting on first boot-up
 
-if [ ! -d /bootmnt/manjaro ]; then
-    rm ~/.config/autostart/manjaro-welcome.desktop
+if [ ! -d /bootmnt/manjaro ] && [ ! -e ~/.config/.mcleanup ]; then
+    rm -v ~/.config/autostart/manjaro-welcome.desktop
 fi
+touch ~/.config/.mcleanup

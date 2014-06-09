@@ -6,7 +6,6 @@ mhwd
 ## Xorg Packages
 inxi
 libdnet
-mesa
 mesa-demos
 >x86_64 lib32-mesa-demos
 netkit-bsd-finger
@@ -29,6 +28,9 @@ xorg-xinit
 
 ## Artwork
 manjaro-artwork
+kdm-theme-manjaro-vector
+ksplash-theme-manjaro-vector
+kdeartwork-wallpapers-manjaro-vector
 kdm-theme-manjaro
 ksplash-theme-manjaro
 kdeartwork-wallpapers-tr-community

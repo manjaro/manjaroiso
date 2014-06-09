@@ -1,0 +1,33 @@
+Included in the Manjaro Enlightenment edition is a script to swap from
+Connman+EConnman to NetworkManager+NM-applet.
+
+This is probably only of interest to people with particular mobile
+broadband hardware or those wanting to connect to some enterprise wifi
+networks.
+
+You should not run this script if everything is working fine. Just keep
+using Connman, which is best supported within Enlightenment.
+
+It's safe to test out the script in live mode.
+
+If you do need to swap to NetworkManager you should run the script
+*immediately* after installation, BEFORE performing a system update.
+
+To run the script, open Terminology (the included terminal) and input:
+
+
+/opt/manjaro-enlightenment/nm-swap-ui.sh
+
+
+You should NOT run this as root (Do NOT run it with sudo), just open a
+terminal as normal and enter it exactly as above.
+
+If you are not going to swap to NetworkManager, or after you have
+successfully swapped to it, you can delete the folder with the scripts
+and packages:
+
+
+sudo rm -r /opt/manjaro-enlightenment
+
+
+...and delete this text file off your desktop. :)

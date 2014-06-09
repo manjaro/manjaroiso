@@ -16,6 +16,13 @@ if [ ! -d /bootmnt/manjaro ]; then
     rm ~/.config/autostart/manjaro-welcome.desktop
 fi
 
+## Ensure that obmenu-generator (a pipe menu) is set to the user.
+## Does this for each session (i.e. ease of use for addtional
+## accounts where created.
+
+sed -i "s,_homedir_,${HOME}," ~/.config/obmenu-generator/schema.pl
+sed -i "s,_homedir_,${HOME}," ~/.config/obmenu-generator/config.pl
+
 xset -dpms; xset s off &
 
 ## Basic compositing effects
