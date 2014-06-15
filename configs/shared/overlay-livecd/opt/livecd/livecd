@@ -61,8 +61,8 @@ fi
 
 ## FIXME - Workaround to launch mate-terminal
 if [ -e "/usr/bin/mate-session" ] ; then
-   sed -i -e "s~^.*Exec=.*~Exec=mate-terminal -e 'sudo setup'~" "/etc/skel/Desktop/Manjaro CLI Installer.desktop"
-   sed -i -e "s~^.*Terminal=.*~Terminal=false~" "/etc/skel/Desktop/Manjaro CLI Installer.desktop"
+   sed -i -e "s~^.*Exec=.*~Exec=mate-terminal -e 'sudo setup'~" "/etc/skel/Desktop/installer-launcher-cli.desktop"
+   sed -i -e "s~^.*Terminal=.*~Terminal=false~" "/etc/skel/Desktop/installer-launcher-cli.desktop"
 fi
 
 echo "configure user" >> /tmp/livecd.log
