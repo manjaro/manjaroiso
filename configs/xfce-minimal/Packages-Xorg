@@ -14,8 +14,10 @@ primus
 KERNEL-bbswitch
 >x86_64 lib32-primus
 
-## Broadcom Support
+## Network Support
 KERNEL-broadcom-wl
+KERNEL-rt3562sta
+KERNEL-r8168
 
 ## Proprietary Drivers
 >nonfree_uni catalyst-utils
