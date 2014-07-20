@@ -46,7 +46,7 @@ pamac-dev
 >i686 parole
 polkit-gnome # for gparted
 raktpdf
-sylpheed
+>i686 sylpheed
 >i686 xnoise
 
 ## Installer
