@@ -12,7 +12,8 @@ file
 filesystem
 findutils
 gawk
-gcc-libs
+>i686 gcc-libs
+>x86_64 gcc-libs-multilib
 gettext
 glibc
 grep
