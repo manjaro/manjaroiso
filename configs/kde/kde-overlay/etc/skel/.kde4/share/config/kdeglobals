@@ -133,7 +133,7 @@ DisabledValue=1
 Size=32
 
 [General]
-ColorScheme=OxyGreen
+ColorScheme=Oxygen
 XftHintStyle=hintmedium
 dbfile=/home/manjaro/.mozilla/firefox/9shb6xj3.default/places.sqlite
 shadeSortColumn=true
