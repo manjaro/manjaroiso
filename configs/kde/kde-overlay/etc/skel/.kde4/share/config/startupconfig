@@ -4,7 +4,7 @@ kcminputrc_mouse_cursortheme=Oxygen_Black
 # kcminputrc Mouse cursorSize ''
 kcminputrc_mouse_cursorsize=0
 # ksplashrc KSplash Theme Default
-ksplashrc_ksplash_theme=manjaro-vector-ksplash
+ksplashrc_ksplash_theme=manjaro-redefined
 # ksplashrc KSplash Engine KSplashX
 ksplashrc_ksplash_engine=KSplashX
 # krandrrc Display ApplyOnStartup false
