@@ -27,9 +27,10 @@ xorg-utils
 xorg-xinit
 
 ## Artwork
+kdeartwork-colorschemes-oxygreen
 kdeartwork-wallpapers-manjaro-redefined
 kdeartwork-wallpapers-tr-community
-kdeicons-faenzaflattr
+kdeicons-faenzaflattr-green
 kdm-theme-manjaro-redefined
 ksplash-theme-manjaro-redefined
 plymouth-theme-manjaro-elegant
