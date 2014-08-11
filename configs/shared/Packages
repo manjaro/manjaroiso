@@ -140,6 +140,7 @@ usb_modeswitch
 wpa_actiond
 wpa_supplicant
 zd1211-firmware
+rp-pppoe
 
 ## Laptop power management
 acpid
