@@ -14,7 +14,6 @@ shopt -s expand_aliases
 shopt -s extglob
 shopt -s histappend
 shopt -s hostcomplete
-shopt -s nocaseglob
 
 export HISTSIZE=10000
 export HISTFILESIZE=${HISTSIZE}
