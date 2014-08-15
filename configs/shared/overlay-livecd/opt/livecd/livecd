@@ -386,3 +386,43 @@ if [ -e "$_conf_file" ] ; then
       sed -i "s|_ARCH_|x86_64|g" $_conf_file
    fi
 fi
+
+if [ -e "/usr/share/calamares/settings.conf" ] ; then
+   echo "configure calamares" >> /tmp/livecd.log
+   _conf_file="/usr/share/calamares/modules/unsquashfs.conf"
+   sed -i "s|_root-image_|/bootmnt/${install_dir}/_ARCH_/root-image.sqfs|g" $_conf_file
+   sed -i "s|_kernel_|$manjaro_kernel|g" "/usr/share/calamares/modules/initcpio.conf"
+
+   if [ -e "/bootmnt/${install_dir}/${arch}/xfce-image.sqfs" ] ; then
+      sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/xfce-image.sqfs|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/gnome-image.sqfs" ] ; then
+      sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/gnome-image.sqfs|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/cinnamon-image.sqfs" ] ; then
+      sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/cinnamon-image.sqfs|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/openbox-image.sqfs" ] ; then
+      sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/openbox-image.sqfs|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/mate-image.sqfs" ] ; then
+      sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/mate-image.sqfs|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/kde-image.sqfs" ] ; then
+      sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/kde-image.sqfs|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/lxde-image.sqfs" ] ; then
+      sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/lxde-image.sqfs|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/enlightenment-image.sqfs" ] ; then
+      sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/enlightenment-image.sqfs|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/custom-image.sqfs" ] ; then
+      sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/custom-image.sqfs|g" $_conf_file
+   fi
+   if [ "${arch}" == "i686" ] ; then
+      sed -i "s|_ARCH_|i686|g" $_conf_file
+   else
+      sed -i "s|_ARCH_|x86_64|g" $_conf_file
+   fi
+fi
