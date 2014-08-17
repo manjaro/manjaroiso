@@ -119,6 +119,7 @@ modemmanager
 nbd
 KERNEL-ndiswrapper
 ndiswrapper-utils
+rp-pppoe
 usb_modeswitch
 wpa_actiond
 wpa_supplicant
