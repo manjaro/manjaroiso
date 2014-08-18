@@ -4,3 +4,4 @@
 # Syntax: simple "KEY=VAL" pairs on separate lines
 #
 QT_STYLE_OVERRIDE=gtk
+STEAM_RUNTIME=0
