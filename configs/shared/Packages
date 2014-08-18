@@ -131,6 +131,7 @@ dnsmasq
 iptables
 ipw2100-fw
 ipw2200-fw
+iw
 mobile-broadband-provider-info
 modemmanager
 nbd
@@ -146,9 +147,10 @@ zd1211-firmware
 acpid
 cpupower
 ethtool
-sdparm
 hdparm
-laptop-mode-tools
+sdparm
+smartmontools
+tlp
 wireless_tools
 xorg-xset
 

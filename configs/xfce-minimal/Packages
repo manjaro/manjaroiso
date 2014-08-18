@@ -114,6 +114,7 @@ dnsmasq
 iptables
 ipw2100-fw
 ipw2200-fw
+iw
 mobile-broadband-provider-info
 modemmanager
 nbd
@@ -124,6 +125,17 @@ usb_modeswitch
 wpa_actiond
 wpa_supplicant
 zd1211-firmware
+
+## Laptop power management
+acpid
+cpupower
+ethtool
+hdparm
+sdparm
+smartmontools
+tlp
+wireless_tools
+xorg-xset
 
 ## ucode for new cpus
 intel-ucode
