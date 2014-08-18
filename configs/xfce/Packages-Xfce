@@ -151,6 +151,7 @@ pamac
 
 ## Games
 steam
+steam-native
 
 ## Fonts
 ttf-dejavu
@@ -183,7 +184,8 @@ binutils
 bison
 fakeroot
 flex
-gcc
+>i686 gcc
+>x86_64 gcc-multilib
 libtool
 m4
 make
