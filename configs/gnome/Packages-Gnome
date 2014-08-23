@@ -154,7 +154,7 @@ networkmanager-dispatcher-ntpd
 openresolv
 
 ## Extra
-icedtea-web-java7
+icedtea-web
 vlc
 
 ## Theme
