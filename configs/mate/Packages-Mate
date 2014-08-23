@@ -103,15 +103,15 @@ ttf-droid
 
 ## Office
 #libreoffice-installer
-libreoffice-en-US
-libreoffice-base
-libreoffice-calc
-libreoffice-draw
-libreoffice-gnome
-libreoffice-impress
-libreoffice-math
-libreoffice-postgresql-connector
-libreoffice-writer
+libreoffice-still-en-US
+libreoffice-still-base
+libreoffice-still-calc
+libreoffice-still-draw
+libreoffice-still-gnome
+libreoffice-still-impress
+libreoffice-still-math
+libreoffice-still-postgresql-connector
+libreoffice-still-writer
 
 ## AUR Access
 autoconf
