@@ -203,9 +203,9 @@ _mkfs() {
                 xfs)      mkfs.xfs -f ${_device} >$LOG 2>&1; ret=$? ;;
                 jfs)      yes | mkfs.jfs ${_device} >$LOG 2>&1; ret=$? ;;
                 reiserfs) yes | mkreiserfs ${_device} >$LOG 2>&1; ret=$? ;;
-                ext2)     mke2fs "${_device}" >$LOG 2>&1; ret=$? ;;
-                ext3)     mke2fs -j ${_device} >$LOG 2>&1; ret=$? ;;
-                ext4)     mke2fs -t ext4 ${_device} >$LOG 2>&1; ret=$? ;;
+                ext2)     mke2fs -F "${_device}" >$LOG 2>&1; ret=$? ;;
+                ext3)     mke2fs -F -j ${_device} >$LOG 2>&1; ret=$? ;;
+                ext4)     mke2fs -F -t ext4 ${_device} >$LOG 2>&1; ret=$? ;;
                 nilfs2)   mkfs.nilfs2 ${_device} >$LOG 2>&1; ret=$? ;;
                 btrfs)   mkfs.btrfs ${_device} >$LOG 2>&1; ret=$? ;;
                 # don't handle anything else here, we will error later
