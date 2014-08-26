@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Keyboard and Mouse
+Name[fr]=Clavier et souris
+GenericName=Input settings
+GenericName[fr]=Paramètres d'entrée
+Comment=Configure keyboard, mouse, and other input devices
+Comment[fr]=Configure clavier, souris, périphériques d'entrée
+Exec=lxqt-config-input
+Icon=input-keyboard
+Categories=Qt;HardwareSettings;DesktopSettings;LXQt;
+OnlyShowIn=LXDE;LXQt;
+

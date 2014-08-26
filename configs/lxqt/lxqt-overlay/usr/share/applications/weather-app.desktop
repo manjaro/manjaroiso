@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.1
+Name=QuickForecast
+Name[fr]=Météo
+GenericName=Quick Forecast
+Comment=Weather Forecast
+Comment[fr]=Prévisions météo
+Categories=Network;
+Icon=weather-app
+Terminal=false
+Exec=QuickForecast

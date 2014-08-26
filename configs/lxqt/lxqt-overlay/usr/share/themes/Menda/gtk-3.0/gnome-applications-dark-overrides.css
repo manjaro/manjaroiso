@@ -1,0 +1,44 @@
+@define-color documents_collection_bg #000000;
+
+/* gnome-documents */
+
+.documents-collection-icon {
+    background-color: @documents_collection_bg;
+    border-radius: 8px;
+}
+
+/* Epiphany */
+#ephy-page-menu-button.active-menu {
+    background-image: -gtk-gradient(linear, left top, left bottom,
+                                     to (shade(@toolbar_button_top, 0.8)),
+                                     from (shade(@toolbar_button_bottom, 0.8)));
+    border-image: -gtk-scaled(url("borders/header-bar-generic-border-dark.png"),url("borders/header-bar-generic-border-dark@2.png")) 3 3 4 3 / 3px 3px 4px 3px stretch;
+}
+
+/* Nautilus */
+NautilusWindow .sidebar .view.cell:selected,
+NautilusWindow .sidebar .view.cell:selected:hover,
+NautilusWindow .sidebar .view.cell:selected:focus {
+    background-image: url("apps-assets/arrow_dark.png"),
+					  url("apps-assets/border.png"),
+					  url("apps-assets/top.png"),
+					  url("apps-assets/bottom.png"),
+					  url("apps-assets/menu-selected.svg");
+}
+
+.header-bar NautilusPathBar.linked .button {
+    border-image: -gtk-scaled(url("borders/header-bar-generic-border-dark.png"),url("borders/header-bar-generic-border-dark@2.png")) 3 3 4 3 / 3px 0px 4px 0px stretch;
+    box-shadow: inset -1px  0px shade(@toolbar_entry_top, 0.8),
+				inset  0px 2px 2px alpha(@dark_shadow, 0.2);
+}
+
+/* Rhythmbox */
+RBSource .toolbar .button {
+    border-image: -gtk-scaled(url("borders/button-border-dark.png"),url("borders/button-border-dark@2.png")) 3 3 4 3 / 3px 3px 4px 3px stretch;
+}
+
+RBSource .toolbar .button:active:hover,
+RBSource .toolbar .button:active {
+    border-image: -gtk-scaled(url("borders/generic-border-dark.png"),url("borders/generic-border-dark@2.png")) 3 3 4 3 / 3px 3px 4px 3px stretch;
+}
+

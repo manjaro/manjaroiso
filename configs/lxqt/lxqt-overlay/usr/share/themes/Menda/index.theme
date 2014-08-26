@@ -1,0 +1,10 @@
+[X-GNOME-Metatheme]
+_Name=Menda
+Type=X-GNOME-Metatheme
+_Comment=A nice theme
+Encoding=UTF-8
+GtkTheme=Menda
+MetacityTheme=Menda
+IconTheme=Faenza-Green
+CursorTheme=DMZ-Black
+CursorSize=24

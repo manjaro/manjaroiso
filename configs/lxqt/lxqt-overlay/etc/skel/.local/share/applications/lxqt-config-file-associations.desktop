@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=File Associations
+Name[fr]=Associations de fichiers
+GenericName=File Association Settings
+GenericName[fr]=Configurer les associations de fichiers
+Comment=Configure applications associated with known file types
+Comment[fr]=Choisir les applications associées aux types de fichiers connus
+Exec=lxqt-config-file-associations
+Icon=preferences-desktop-filetype-association
+Categories=DesktopSettings;Qt;LXQt;
+OnlyShowIn=LXDE;LXQt;
+

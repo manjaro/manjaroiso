@@ -1,0 +1,7 @@
+#!/usr/bin/sh
+while true
+do
+    cmst -m -w 1
+    sleep 0.1
+done
+

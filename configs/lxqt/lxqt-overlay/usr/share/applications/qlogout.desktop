@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Logout
+Icon=system-shutdown
+Exec=qlogout
+Categories=System;
+Terminal=false
+

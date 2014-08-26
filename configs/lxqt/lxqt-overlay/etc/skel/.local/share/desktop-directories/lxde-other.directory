@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Directory
+Name=Autre
+Comment=Applications qui n'entraient dans aucune autre catégorie
+Icon=applications-other
+NoDisplay=true
+StartupNotify=false
+Terminal=false
