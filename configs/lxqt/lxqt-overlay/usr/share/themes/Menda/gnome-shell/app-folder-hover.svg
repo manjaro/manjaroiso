@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="32"
+   height="32"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="app-folder-hover.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="15.839192"
+     inkscape:cx="18.733118"
+     inkscape:cy="17.096186"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="721"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1020.3622)">
+    <path
+       style="fill:#ffffff;fill-opacity:0.43137255"
+       d="M 4 0 C 1.784 0 4.9515947e-17 1.784 0 4 L 0 28 C 0 30.216 1.784 32 4 32 L 28 32 C 30.216 32 32 30.216 32 28 L 32 4 C 32 1.784 30.216 4.9515947e-17 28 0 L 4 0 z M 4 1 L 28 1 C 29.662 1 31 2.338 31 4 L 31 28 C 31 29.662 29.662 31 28 31 L 4 31 C 2.338 31 1 29.662 1 28 L 1 4 C 1 2.338 2.338 1 4 1 z "
+       transform="translate(0,1020.3622)"
+       id="rect2987" />
+    <rect
+       style="fill:#333333;fill-opacity:0.89803922000000003"
+       id="rect3761"
+       width="30"
+       height="30"
+       x="1"
+       y="1"
+       transform="translate(0,1020.3622)"
+       ry="3" />
+  </g>
+</svg>

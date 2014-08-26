@@ -1,0 +1,10 @@
+Source=/usr/share/applications
+
+for i in $(grep -l 'Settings.*DesktopSettings' $Source/*.desktop)
+do
+    d=$(basename $i)
+    echo $i $d
+    sed 's/Settings;//' $i > $d
+done
+rm lxqt-config.desktop
+

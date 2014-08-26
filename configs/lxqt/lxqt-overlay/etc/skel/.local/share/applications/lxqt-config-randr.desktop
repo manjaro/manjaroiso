@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=Screens
+Name[fr]=Ecrans
+GenericName=Screens and monitor settings
+GenericName[fr]=Paramétrages des écrans et moniteurs
+Comment=Configure your monitors
+Comment[fr]=Paramétre vos moniteurs
+Exec=lxqt-config-randr
+Icon=preferences-desktop-display
+Categories=DesktopSettings;Qt;LXQt;
+OnlyShowIn=LXQt;
+
+#TRANSLATIONS_DIR=translations

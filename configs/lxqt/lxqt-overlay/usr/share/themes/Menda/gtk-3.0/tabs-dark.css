@@ -1,0 +1,166 @@
+/* cool tabs for some applications */
+NautilusWindow .notebook,
+GeditWindow .notebook,
+EphyNotebook.notebook {
+    -GtkNotebook-initial-gap: 5;
+    -GtkNotebook-tab-overlap: 5;
+}
+
+TerminalWindow .notebook {
+    -GtkNotebook-initial-gap: 10;
+    -GtkNotebook-tab-overlap: 13;
+}
+
+TerminalWindow .notebook.header.top
+/*NautilusWindow .notebook.header.top,
+GeditWindow .notebook.header.top,
+EphyNotebook.notebook.header.top*/ {
+	background-image: none;
+}
+
+TerminalWindow .notebook .active-page,
+TerminalWindow .notebook tab .active-page GtkLabel,
+NautilusWindow .notebook .active-page,
+NautilusWindow .notebook tab .active-page GtkLabel,
+GeditWindow .notebook .active-page,
+GeditWindow .notebook tab .active-page GtkLabel,
+EphyNotebook.notebook .active-page,
+EphyNotebook.notebook tab .active-page GtkLabel {
+    color: @toolbar_fg_color;
+    transition: all 200ms ease-in;
+}
+
+NautilusWindow .notebook tab.reorderable-page,
+GeditWindow .notebook tab.reorderable-page,
+EphyNotebook.notebook tab.reorderable-page,
+TerminalWindow .notebook tab.reorderable-page:hover,
+NautilusWindow .notebook tab.reorderable-page:hover,
+GeditWindow .notebook tab.reorderable-page:hover,
+EphyNotebook.notebook tab.reorderable-page:hover {
+	border-width: 0 1px 0 1px;
+    background-image: -gtk-gradient(linear, left top, left bottom,
+                                     from (shade(@theme_bg_color, 1.01)),
+                                     to (shade(@theme_bg_color, 1.09)));
+}
+
+NautilusWindow .notebook tab.reorderable-page:active,
+GeditWindow .notebook tab.reorderable-page:active,
+EphyNotebook.notebook tab.reorderable-page:active {
+	padding-bottom: 5px;
+	padding-top: 4px;
+	border-image: -gtk-scaled(url("tabs/tab_active_dark.png")) 10 10 6 10 / 10px 10px 6px 10px stretch;
+    border-width: 0px 10px 6px 10px;
+    border-style: solid;
+    border-color: transparent;
+	background-color: #181D22;
+	background-image: none;
+}
+
+NautilusWindow .notebook tab.reorderable-page:active {
+	padding-bottom: 3px;
+	padding-top: 2px;
+}
+
+NautilusWindow .notebook .active-page .button,
+NautilusWindow .notebook tab.active-page .button,
+GeditWindow .notebook .active-page .button,
+GeditWindow .notebook tab.active-page .button,
+EphyNotebook.notebook .active-page .button,
+EphyNotebook.notebook tab.active-page .button,
+TerminalWindow .notebook .active-page .button,
+TerminalWindow .notebook tab.active-page .button {
+    color: @toolbar_fg_color;
+}
+
+NautilusWindow .notebook .active-page .button:hover,
+GeditWindow .notebook .active-page .button:hover,
+EphyNotebook.notebook .active-page .button:hover {
+    color: mix(@toolbar_fg_color, red, 0.7);
+    border-color: transparent;
+}
+
+NautilusWindow .notebook .active-page .button:active,
+GeditWindow .notebook .active-page .button:active,
+EphyNotebook.notebook .active-page .button:active {
+    color: alpha(@toolbar_fg_color, 0.3);
+    background-color: alpha(@dark_shadow, 0.2);
+	background-image: none;
+    box-shadow: inset 0 1px alpha(black, 0.05);
+	icon-shadow: none;
+    border-color: alpha(black, 0.4)
+                  alpha(black, 0.3)
+                  alpha(black, 0.3)
+                  alpha(black, 0.3);
+}
+
+/* special case for gnome-terminal*/
+TerminalWindow .notebook tab GtkLabel {
+    color: alpha(@toolbar_fg_color, 0.3);
+}
+
+TerminalWindow .notebook .prelight-page,
+TerminalWindow .notebook .prelight-page GtkLabel {
+    color: @toolbar_fg_color;
+}
+
+TerminalWindow .notebook.header {
+    background-color: shade(@terminal_bg, 1.0);
+    box-shadow: inset 0 3px alpha(black, 0.03), inset 0 2px alpha(black, 0.03), inset 0 1px alpha(black, 0.03);
+    border-width: 0px;
+	border-top: 1px solid shade(@terminal_bg, 0.5);
+}
+
+TerminalWindow .notebook {
+    border-top: 1px solid @terminal_bg;
+    -GtkNotebook-initial-gap: 1;
+}
+
+TerminalWindow .notebook tab.reorderable-page,
+TerminalWindow .notebook tab.reorderable-page:hover {
+    padding: 5px 20px 5px;
+	border-style: none;
+	background-image: none;
+	border-image: -gtk-scaled(url("tabs/terminal_tab_dark.svg")) 10 10 6 10 / 10px 10px 6px 10px stretch;
+    border-width: 0px 10px 6px 10px;
+    border-style: solid;
+    border-color: transparent;
+	background-color: #191E23;
+}
+
+TerminalWindow .notebook tab.reorderable-page:active {
+	border-image: -gtk-scaled(url("tabs/terminal_tab_active_dark.svg")) 10 10 6 10 / 10px 10px 6px 10px stretch;
+    border-width: 0px 10px 6px 10px;
+    border-style: solid;
+    border-color: transparent;
+	background-color: @toolbar_bg_color;
+	background-image: none;
+}
+
+TerminalWindow .notebook tab .button {
+    color: alpha(@toolbar_fg_color, 0.3);
+}
+
+TerminalWindow .notebook tab .button:hover {
+    color: mix(@toolbar_fg_color, red, 0.7);
+    border-color: alpha(white, 0.1);
+}
+
+TerminalWindow .notebook .prelight-page .button,
+TerminalWindow .notebook tab.prelight-page .button,
+TerminalWindow .notebook .active-page .button,
+TerminalWindow .notebook tab.active-page .button {
+    color: @toolbar_fg_color;
+}
+
+TerminalWindow .notebook tab .button:active,
+TerminalWindow .notebook tab .button:active:hover {
+    color: alpha(@toolbar_fg_color, 0.3);
+    background-color: alpha(@dark_shadow, 0.2);
+	background-image: none;
+    box-shadow: inset 0 1px alpha(black, 0.05);
+	icon-shadow: none;
+    border-color: alpha(black, 0.4)
+                  alpha(black, 0.3)
+                  alpha(black, 0.3)
+                  alpha(black, 0.3);
+}

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Openbox Settings
+Name[fr]=Paramètres Openbox
+GenericName=Window Manager Settings
+GenericName[fr]=Paramètrage du gestionnaire de fenêtre
+Comment=Configure the Openbox window manager
+Comment[fr]=Configure le gestionnaire de feêtres OpenBox
+Exec=obconf-qt
+Categories=Qt;DesktopSettings;
+Icon=/usr/share/pixmaps/obconf-qt.png
+StartupNotify=true

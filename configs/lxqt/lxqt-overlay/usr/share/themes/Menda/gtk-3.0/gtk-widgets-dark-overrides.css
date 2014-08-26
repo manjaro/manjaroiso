@@ -1,0 +1,206 @@
+* {
+    outline-color: alpha(@light_shadow, 0.4);
+}
+
+GtkIconView.cell:selected,
+GtkIconView.cell:selected:focus {
+    background-color: alpha(@theme_base_color, 0.0);
+
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 3px;
+    border-color: #d3d7cf;
+
+    /* FIXME: this probably needs to be better;
+     * see https://bugzilla.gnome.org/show_bug.cgi?id=644157
+     */
+    outline-color: alpha(@theme_text_color, 0.4);
+    outline-style: dashed;
+    outline-offset: 5px;
+}
+
+.button .separator,
+.button .separator:prelight {
+    color: alpha (@theme_text_color, 0.1);
+}
+
+.button:hover {
+    background-image: -gtk-gradient(linear, 1 0 ,1 1,
+										color-stop(0.4, shade(@button_bg_top, 1.2)),
+										color-stop(1, shade(@button_bg_bottom, 1.2)));
+}
+
+.button:active:hover {
+    background-image: -gtk-gradient(linear, left top, left bottom,
+                                    to (shade(@button_bg_top, 1.1)),
+                                    from (shade(@button_bg_bottom, 1.05)));
+}
+
+.entry:active,
+.entry:focus {
+	background-color: shade(@theme_base_color, 1.2);
+}
+
+.entry:selected {
+	background-color: @theme_selected_bg_color;
+}
+
+
+.sidebar .image,
+.sidebar .image:hover {
+	color: @theme_fg_color;
+}
+
+/*
+GtkColorSwatch,
+GtkColorSwatch:selected,
+GtkColorSwatch:hover,
+GtkColorSwatch:selected:hover,
+GtkColorEditor GtkColorSwatch.color-dark:hover,
+GtkColorEditor GtkColorSwatch.color-light:hover {
+    border-color: @borders;
+    box-shadow: inset 0 2px alpha(black, 0.15), inset 1px 1px alpha(black, 0.15);
+}
+
+GtkColorSwatch.color-dark:hover {
+    background-image: linear-gradient(to bottom,
+                                      alpha(white, 0) 40%,
+                                      alpha(white, 0.2)
+                                      );
+
+}
+
+GtkColorSwatch.color-light:hover {
+    background-image: linear-gradient(to top,
+                                      alpha(black, 0) 40%,
+                                      alpha(black, 0.3)
+                                      );
+
+}
+
+GtkColorSwatch:backdrop,
+GtkColorSwatch:backdrop:selected {
+    border-color: @unfocused_borders;
+}
+
+GtkColorSwatch:backdrop:hover {
+    border-color: @unfocused_borders;
+    background-image: none;
+    box-shadow: none;
+}
+
+GtkColorChooserWidget #add-color-button,
+GtkColorChooserWidget #add-color-button:hover {
+    color: @theme_bg_color;
+}
+
+.color-active-badge.color-light:backdrop {
+    border-color: #444444;
+    color: #444444;
+}
+
+.color-active-badge.color-dark:backdrop {
+    border-color: #cccccc;
+    color: #cccccc;
+}
+
+GtkColorEditor GtkColorSwatch.color-dark:hover,
+GtkColorEditor GtkColorSwatch.color-light:hover {
+    background-image: none;
+    border-color: @unfocused_borders;
+}
+*/
+/*
+GtkPopover {
+    box-shadow: 0 2px 8px 3px alpha(@wm_shadow, 0.4);
+}*/
+
+.menu .menuitem:hover {
+    border-bottom-color: shade(@lighter_selected_bg, 1.1);
+    border-top-color: @theme_selected_bg_color;
+}
+
+.menuitem .accelerator {
+    color: alpha(@light_shadow, 0.6);
+}
+
+.notebook {
+    background-color: mix(@theme_bg_color, @theme_base_color, 0.7);
+}
+
+.notebook tab.top:active,
+.notebook tab.bottom:active,
+.notebook tab.left:active,
+.notebook tab.right:active {
+    /*background-color: mix(@theme_bg_color, @theme_base_color, 0.3);*/
+}
+
+.notebook tab.top,
+.notebook tab.bottom {
+    padding: 6px 20px 4px;
+    border-left: 1px solid mix(@borders, @theme_bg_color, 0.5);
+    border-right: 1px solid mix(@borders, @theme_bg_color, 0.5);
+}
+
+
+row:selected,
+row:selected:hover,
+row:selected:focus {
+	box-shadow: inset 0px -1px shade(@lighter_selected_bg, 1.1);
+}
+
+.progressbar {
+	box-shadow: inset 0px 1px alpha(@light_shadow, 0.3);
+}
+
+.progressbar.vertical {
+	box-shadow: inset 1px 0px alpha(@light_shadow, 0.2);
+}
+
+.scale {
+    -GtkRange-slider-width: 16px;
+    -GtkScale-slider-length: 14px;
+    -GtkRange-trough-border: 1;
+	border-image: -gtk-scaled(url("borders/slider_trough_highlight_dark.svg")) 3 5 4 5 / 3px 5px 4px 5px stretch;
+}
+
+.trough {
+	border-bottom-color: alpha(@light_shadow, 0.1);
+}
+
+.trough.vertical {
+	border-right-color: alpha(@light_shadow, 0.1);
+}
+
+.header-bar .scale.trough,
+.primary-toolbar .scale.trough,
+.toolbar .scale.trough {
+    margin: 4px 0;
+	border: 1px solid transparent;
+	border-top-width: 0px;
+	border-bottom-color: alpha(@light_shadow, 0.1);
+	border-radius: 5px;
+	background-image: none;
+	background-color: @theme_base_color;
+	box-shadow: inset 0px 1px 2px alpha(@dark_shadow, 0.2),
+				inset 0px 1px shade(@toolbar_bg_color, 0.6),
+				inset 0px -1px shade(@toolbar_bg_color, 0.6),
+				inset 1px 0px shade(@toolbar_bg_color, 0.6),
+				inset -1px 0px shade(@toolbar_bg_color, 0.6);
+}
+
+.header-bar .scale.trough:insensitive,
+.primary-toolbar .scale.trough:insensitive,
+.toolbar .scale.trough:insensitive {
+	background-color: shade(@toolbar_bg_color, 0.85);
+    background-image: none;
+	box-shadow: none;
+	box-shadow: inset 0px 1px 2px alpha(@dark_shadow, 0.2),
+				inset 0px 1px shade(@toolbar_bg_color, 0.5),
+				inset 0px -1px shade(@toolbar_bg_color, 0.5),
+				inset 1px 0px shade(@toolbar_bg_color, 0.5),
+				inset -1px 0px shade(@toolbar_bg_color, 0.5);
+	border-color: transparent;
+}
+
+
