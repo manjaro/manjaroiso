@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ "$(glxinfo | grep -i 'llvmpipe')" != "" ]; then
+    compton -cCG --backend xrender
+else
+    compton -cCG --backend glx
+fi

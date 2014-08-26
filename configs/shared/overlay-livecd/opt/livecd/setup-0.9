@@ -2267,9 +2267,9 @@ _mkfs() {
                 xfs)      mkfs.xfs ${_fsoptions} -L ${_labelname} -f ${_device} >${LOG} 2>&1; ret=$? ;;
                 jfs)      yes | mkfs.jfs ${_fsoptions} -L ${_labelname} ${_device} >${LOG} 2>&1; ret=$? ;;
                 reiserfs) yes | mkreiserfs ${_fsoptions} -l ${_labelname} ${_device} >${LOG} 2>&1; ret=$? ;;
-                ext2)     mkfs.ext2 -L ${_fsoptions} ${_labelname} ${_device} >${LOG} 2>&1; ret=$? ;;
-                ext3)     mke2fs ${_fsoptions} -L ${_labelname} -t ext3 ${_device} >${LOG} 2>&1; ret=$? ;;
-                ext4)     mke2fs ${_fsoptions} -L ${_labelname} -t ext4 ${_device} >${LOG} 2>&1; ret=$? ;;
+                ext2)     mkfs.ext2 ${_fsoptions} -F -L ${_labelname} ${_device} >${LOG} 2>&1; ret=$? ;;
+                ext3)     mke2fs ${_fsoptions} -F -L ${_labelname} -t ext3 ${_device} >${LOG} 2>&1; ret=$? ;;
+                ext4)     mke2fs ${_fsoptions} -F -L ${_labelname} -t ext4 ${_device} >${LOG} 2>&1; ret=$? ;;
                 btrfs)    mkfs.btrfs ${_fsoptions} -L ${_labelname} ${_btrfsdevices} >${LOG} 2>&1; ret=$? ;;
                 nilfs2)   mkfs.nilfs2 ${_fsoptions} -L ${_labelname} ${_device} >${LOG} 2>&1; ret=$? ;;
                 ntfs-3g)  mkfs.ntfs ${_fsoptions} -L ${_labelname} ${_device} >${LOG} 2>&1; ret=$? ;;

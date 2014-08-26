@@ -90,7 +90,7 @@ BorderSize=1
 ButtonsOnLeft=MS
 ButtonsOnRight=HIAX
 CustomButtonPositions=false
-PluginLib=kwin3_aurorae
+PluginLib=kwin3_oxygen
 ShowToolTips=true
 
 [TabBox]

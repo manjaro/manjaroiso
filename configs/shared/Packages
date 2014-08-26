@@ -12,7 +12,8 @@ file
 filesystem
 findutils
 gawk
-gcc-libs
+>i686 gcc-libs
+>x86_64 gcc-libs-multilib
 gettext
 glibc
 grep
@@ -130,11 +131,13 @@ dnsmasq
 iptables
 ipw2100-fw
 ipw2200-fw
+iw
 mobile-broadband-provider-info
 modemmanager
 nbd
 KERNEL-ndiswrapper
 ndiswrapper-utils
+rp-pppoe
 usb_modeswitch
 wpa_actiond
 wpa_supplicant
@@ -144,9 +147,10 @@ zd1211-firmware
 acpid
 cpupower
 ethtool
-sdparm
 hdparm
-laptop-mode-tools
+sdparm
+smartmontools
+tlp
 wireless_tools
 xorg-xset
 

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="behavior" mtime="1390159337" type="string">
+		<stringvalue>disabled</stringvalue>
+	</entry>
+</gconf>

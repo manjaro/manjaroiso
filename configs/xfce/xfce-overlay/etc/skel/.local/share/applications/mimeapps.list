@@ -1,17 +1,21 @@
 [Default Applications]
-application/pdf=evince.desktop
-text/plain=gedit.desktop
+application/pdf=raktpdf.desktop
+text/plain=mousepad.desktop
 image/jpeg=viewnior.desktop
-application/xml=gedit.desktop
+application/xml=mousepad.desktop
 image/png=viewnior.desktop
 image/gif=viewnior.desktop
 video/x-ms-wmv=vlc.desktop
 video/mp4=vlc.desktop
 video/x-flv=vlc.desktop
+video/ogg=vlc.desktop
+video/x-ogm+ogg=vlc.desktop
+video/x-theora+ogg=vlc.desktop
+application/x-cd-image=open-fuse-iso.desktop
 
 [Added Associations]
-application/octet-stream=gedit.desktop;
-application/x-gettext-translation=gedit.desktop;
-application/x-wine-extension-ini=gedit.desktop;
+application/octet-stream=mousepad.desktop;
+application/x-gettext-translation=mousepad.desktop;
+application/x-wine-extension-ini=mousepad.desktop;
 image/gif=viewnior.desktop;gimp.desktop;
 

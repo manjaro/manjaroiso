@@ -42,12 +42,12 @@ manjaro-settings-manager
 manjaro-welcome
 midori
 mousepad
-pamac
-parole
+pamac-dev
+>i686 parole
 polkit-gnome # for gparted
 raktpdf
-sylpheed
-xnoise
+>i686 sylpheed
+>i686 xnoise
 
 ## Installer
 thus

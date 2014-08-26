@@ -27,18 +27,12 @@ xorg-utils
 xorg-xinit
 
 ## Artwork
-manjaro-artwork
-kdm-theme-manjaro-vector
-ksplash-theme-manjaro-vector
-kdeartwork-wallpapers-manjaro-vector
-kdm-theme-manjaro
-ksplash-theme-manjaro
-kdeartwork-wallpapers-tr-community
-kde-theme-violet-pastel
-kde-theme-air-black-remix-green
 kdeartwork-colorschemes-oxygreen
-kdeplasma-theme-cupertino-ish
-kdeicons-kfaenza
+kdeartwork-wallpapers-manjaro-redefined
+kdeartwork-wallpapers-tr-community
+kdeicons-faenzaflattr-green
+kdm-theme-manjaro-redefined
+ksplash-theme-manjaro-redefined
 plymouth-theme-manjaro-elegant
 
 ## Community KDE packages
@@ -139,46 +133,34 @@ kdebase-konqueror
 kdepim
 k3b
 digikam
-#smplayer
 simple-scan
 amarok
-#partitionmanager-svn
 gparted
 gimp
 vlc
 imagewriter
 kdenetwork
-ktorrent
-#wine
-#q4wine
-#wine_gecko
-#winetricks
 yakuake
 konversation
 manjaro-welcome
 turbulence
 turbulence-artwork
+open-fuse-iso
 
 ## Package management
 octopi
 octopi-notifier
-#pamac
 
 ## GTK
-#firefox
-#thunderbird
 oxygen-gtk2
 oxygen-gtk3
 kde-gtk-config
 
 ## Java
-icedtea-web-java7
+icedtea-web
 
 ## Printing
 manjaro-printer
 
 ## Office
-#libreoffice-installer
-libreoffice-en-US
-libreoffice
-libreoffice-kde4
+calligra-meta

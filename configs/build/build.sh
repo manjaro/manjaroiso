@@ -8,9 +8,9 @@ fi
 
 # Manjaro Editions
 xfce="Y"
-kde="Y"
+kde="N"
 openbox="Y"
-net="Y"
+net="N"
 
 # Manjaro Community Editions
 cinnamon="N"
