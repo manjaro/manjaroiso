@@ -470,6 +470,9 @@ make_isolinux() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
         echo -e -n "$_r >$_W Prepare ${install_dir}/iso/isolinux \n $_n"
         cp -Lr isolinux ${work_dir}/iso
+        if [[ -e isolinux-overlay ]]; then
+            cp -Lr isolinux-overlay/* ${work_dir}/iso/isolinux
+        fi
         if [[ -e ${work_dir}/root-image/usr/lib/syslinux/bios/ ]]; then
             cp ${work_dir}/root-image/usr/lib/syslinux/bios/isolinux.bin ${work_dir}/iso/isolinux/
             cp ${work_dir}/root-image/usr/lib/syslinux/bios/isohdpfx.bin ${work_dir}/iso/isolinux/
