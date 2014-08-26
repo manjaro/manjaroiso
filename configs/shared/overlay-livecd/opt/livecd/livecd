@@ -103,6 +103,9 @@ if [ -e "/usr/bin/lightdm" ] ; then
    if [ -e "/usr/bin/lxsession" ] ; then
         sed -i -e 's/^.*user-session=.*/user-session=LXDE/' /etc/lightdm/lightdm.conf
    fi
+   if [ -e "/usr/bin/lxqt-session" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=lxqt/' /etc/lightdm/lightdm.conf
+   fi
    sed -i -e "s/^.*autologin-user=.*/autologin-user=${username}/" /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
    groupadd autologin
@@ -153,6 +156,9 @@ if [ -e "/usr/bin/gdm" ] ; then
      if [ -e "/usr/bin/lxsession" ] ; then
         echo "XSession=LXDE" >> /var/lib/AccountsService/users/gdm
      fi
+     if [ -e "/usr/bin/lxqt-session" ] ; then
+        echo "XSession=LXQt" >> /var/lib/AccountsService/users/gdm
+     fi
      echo "Icon=" >> /var/lib/AccountsService/users/gdm
   fi
 fi
@@ -179,6 +185,9 @@ if [ -e "/usr/bin/mdm" ] ; then
   if [ -e "/usr/bin/lxsession" ] ; then
       sed -i 's|default.desktop|LXDE.desktop|g' /etc/mdm/custom.conf
   fi
+  if [ -e "/usr/bin/lxqt-session" ] ; then
+      sed -i 's|default.desktop|lxqt.desktop|g' /etc/mdm/custom.conf
+  fi
   if [ -e "/usr/bin/enlightenment_start" ] ; then
       sed -i 's|default.desktop|enlightenment.desktop|g' /etc/mdm/custom.conf
   fi
@@ -202,6 +211,9 @@ if [ -e "/usr/bin/sddm" ] ; then
   fi
   if [ -e "/usr/bin/lxsession" ] ; then
       sed -i -e 's|^.*LastSession=.*|LastSession=LXDE.desktop|' /etc/sddm.conf
+  fi
+  if [ -e "/usr/bin/lxqt-session" ] ; then
+      sed -i -e 's|^.*LastSession=.*|LastSession=lxqt.desktop|' /etc/sddm.conf
   fi
   if [ -e "/usr/bin/enlightenment_start" ] ; then
       sed -i -e 's|^.*LastSession=.*|LastSession=enlightenment.desktop|' /etc/sddm.conf
@@ -232,6 +244,9 @@ if [ -e "/usr/bin/lxdm" ] ; then
    if [ -e "/usr/bin/lxsession" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/lxsession|' /etc/lxdm/lxdm.conf
    fi
+   if [ -e "/usr/bin/lxqt-session" ] ; then
+      sed -i -e 's|^.*session=.*|session=/usr/bin/lxqt-session|' /etc/lxdm/lxdm.conf
+   fi
    chgrp -R lxdm /var/lib/lxdm > /dev/null
    chgrp lxdm /etc/lxdm/lxdm.conf > /dev/null
    chmod +r /etc/lxdm/lxdm.conf > /dev/null
@@ -258,6 +273,9 @@ if [ -d "/var/lib/AccountsService/users" ] ; then
      fi
      if [ -e "/usr/bin/lxsession" ] ; then
         echo "XSession=LXDE" >> /var/lib/AccountsService/users/manjaro
+     fi
+     if [ -e "/usr/bin/lxqt-session" ] ; then
+        echo "XSession=LXQt" >> /var/lib/AccountsService/users/manjaro
      fi
      echo "Icon=/var/lib/AccountsService/icons/manjaro.png" >> /var/lib/AccountsService/users/manjaro
 fi
@@ -372,6 +390,10 @@ if [ -e "$_conf_file" ] ; then
       sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/lxde-image.sqfs|g" $_conf_file
       sed -i "s|_title_|Manjaro LXDE Edition|g" $_conf_file
    fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/lxqt-image.sqfs" ] ; then
+      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/lxqt-image.sqfs|g" $_conf_file
+      sed -i "s|_title_|Manjaro LXQt Edition|g" $_conf_file
+   fi
    if [ -e "/bootmnt/${install_dir}/${arch}/enlightenment-image.sqfs" ] ; then
       sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/enlightenment-image.sqfs|g" $_conf_file
       sed -i "s|_title_|Manjaro Enlightenment Edition|g" $_conf_file
@@ -413,6 +435,9 @@ if [ -e "/usr/share/calamares/settings.conf" ] ; then
    fi
    if [ -e "/bootmnt/${install_dir}/${arch}/lxde-image.sqfs" ] ; then
       sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/lxde-image.sqfs|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/lxqt-image.sqfs" ] ; then
+      sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/lxqt-image.sqfs|g" $_conf_file
    fi
    if [ -e "/bootmnt/${install_dir}/${arch}/enlightenment-image.sqfs" ] ; then
       sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/enlightenment-image.sqfs|g" $_conf_file
