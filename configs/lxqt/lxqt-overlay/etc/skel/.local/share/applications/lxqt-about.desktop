@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=About LXQt
+GenericName=About LXQt
+Comment=Learn more about LXQt
+Exec=lxqt-about
+Icon=help-about
+Categories=System;Help;LXQt
+OnlyShowIn=LXQt;LXDE;
+
+GenericName[ru]=Узнать больше о LXDE-Qt
+Name[ru]=О LXDE-Qt

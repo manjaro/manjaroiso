@@ -1,0 +1,246 @@
+/***************
+ * Resize grip *
+ ***************/
+
+.grip {
+    background-color: transparent;
+    background-image: url("assets/resize-grip.svg");
+}
+
+/**********************************
+ * header-bar, toolbar separator  *
+ **********************************/
+.primary-toolbar GtkSeparatorToolItem,
+.primary-toolbar .separator,
+.primary-toolbar .separator:insensitive,
+.toolbar GtkSeparatorToolItem,
+.toolbar .separator,
+.toolbar .separator:insensitive
+.header-bar GtkSeparatorToolItem,
+.header-bar .separator,
+.header-bar .separator:insensitive {
+	-GtkWidget-wide-separators: true;
+	-GtkWidget-separator-width: 2px;
+	-GtkWidget-separator-height: 2px;
+
+	border-right-width: 2px;
+	border-color: transparent;
+	border-style: solid;
+	border-image: url("assets/header-separator.svg") 2;
+}
+
+
+/*******************
+ * check and radio *
+ *******************/
+.radio,
+.check {
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-position: center center;
+	box-shadow: none;
+	background-color: transparent;
+}
+
+.check,
+.check row:selected,
+.check row:selected:focus {
+	background-image: none;
+    background-image: url("assets/checkbox-unchecked.png");
+	border-radius: 2px;
+	box-shadow: none;
+}
+
+.check:insensitive,
+.check row:selected:insensitive,
+.check row:selected:focus:insensitive {
+    background-image: url("assets/checkbox-unchecked-insensitive.png");
+}
+
+.check:active,
+.check row:selected:active,
+.check row:selected:focus:active {
+    background-image: url("assets/checkbox-checked.png");
+}
+
+.check:active:insensitive,
+.check row:selected:active:insensitive,
+.check row:selected:focus:active:insensitive {
+    background-image: url("assets/checkbox-checked-insensitive.png");
+}
+
+.check:inconsistent,
+.check row:selected:inconsistent,
+.check row:selected:focus:inconsistent {
+    background-image: url("assets/checkbox-mixed.png");
+}
+
+.check:inconsistent:insensitive,
+.check row:selected:inconsistent:insensitive,
+.check row:selected:focus:inconsistent:insensitive {
+    background-image: url("assets/checkbox-mixed-insensitive.png");
+}
+
+.radio,
+.radio row:selected,
+.radio row:selected:focus {
+    background-image: url("assets/radio-unselected.png");
+}
+
+.radio:insensitive,
+.radio row:selected:insensitive,
+.radio row:selected:focus:insensitive {
+    background-image: url("assets/radio-unselected-insensitive.png");
+}
+
+.radio:active,
+.radio row:selected:active,
+.radio row:selected:focus:active {
+    background-image: url("assets/radio-selected.png");
+}
+
+.radio:active:insensitive,
+.radio row:selected:active:insensitive,
+.radio row:selected:focus:active:insensitive {
+    background-image: url("assets/radio-selected-insensitive.png");
+}
+
+.radio:inconsistent,
+.radio row:selected:inconsistent,
+.radio row:selected:focus:inconsistent {
+    background-image: url("assets/radio-mixed.png");
+}
+
+.radio:inconsistent:insensitive,
+.radio row:selected:inconsistent:insensitive,
+.radio row:selected:focus:inconsistent:insensitive {
+    background-image: url("assets/radio-mixed-insensitive.png");
+}
+
+.menuitem.check {
+    background-image: url("assets/menuitem-checkbox-unchecked.png");
+}
+
+.menuitem.check:hover {
+    background-image: url("assets/menuitem-checkbox-unchecked-hover.png");
+}
+
+.menuitem.check:insensitive {
+    background-image: url("assets/menuitem-checkbox-unchecked-insensitive.png");
+}
+
+.menuitem.check:active {
+    background-image: url("assets/menuitem-checkbox-checked.png");
+}
+
+.menuitem.check:active:hover {
+    background-image: url("assets/menuitem-checkbox-checked-hover.png");
+}
+
+.menuitem.check:active:insensitive {
+    background-image: url("assets/menuitem-checkbox-checked-insensitive.png");
+}
+
+.menuitem.radio {
+    background-image: url("assets/menuitem-radio-unchecked.png");
+}
+
+.menuitem.radio:hover {
+    background-image: url("assets/menuitem-radio-unchecked-hover.png");
+}
+
+.menuitem.radio:insensitive {
+    background-image: url("assets/menuitem-radio-unchecked-insensitive.png");
+}
+
+.menuitem.radio:active {
+    background-image: url("assets/menuitem-radio-checked.png");
+}
+
+.menuitem.radio:active:hover {
+    background-image: url("assets/menuitem-radio-checked-hover.png");
+}
+
+.menuitem.radio:active:insensitive {
+    background-image: url("assets/menuitem-radio-checked-insensitive.png");
+}
+
+GtkIconView.content-view.cell.check {
+    background-image: url("assets/grid-selection-unchecked.svg");
+}
+
+GtkIconView.content-view.cell.check:active {
+    background-image: url("assets/grid-selection-checked.svg");
+}
+
+/******************
+ * pane separator *
+ ******************/
+.pane-separator.horizontal {
+    background-image: url("assets/pane-handle.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.pane-separator.vertical {
+    background-image: url("assets/pane-handle-vertical.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/*********************
+ * GtkScale's slider *
+ *********************/
+.scale.slider {
+    background-image: url("assets/slider.svg");
+}
+
+.scale.slider:hover {
+    background-image: url("assets/slider_hover.svg");
+}
+
+.scale.slider:active:hover, 
+.scale.slider:active {
+    background-image: url("assets/slider_active.svg");
+}
+
+.scale.slider:insensitive {
+    background-image: url("assets/slider_insensitive.svg");
+	background-color: transparent;
+}
+
+/*toolbar scale*/
+.header-bar .scale.slider,
+.primary-toolbar .scale.slider,
+.toolbar .scale.slider {
+    background-image: url("assets/slider_toolbar.svg");
+}
+
+.header-bar .scale.slider:hover,
+.primary-toolbar .scale.slider:hover,
+.toolbar .scale.slider:hover {
+    background-image: url("assets/slider_toolbar_hover.svg");
+}
+
+.header-bar .scale.slider:active,
+.primary-toolbar .scale.slider:active,
+.toolbar .scale.slider:active {
+    background-image: url("assets/slider_toolbar_active.svg");
+}
+
+.header-bar .scale.slider:insensitive,
+.primary-toolbar .scale.slider:insensitive,
+.toolbar .scale.slider:insensitive {
+    background-image: url("assets/slider_toolbar_insensitive.svg");
+}
+
+/********************************
+ * Touch text selection handles *
+ ********************************/
+.cursor-handle.bottom {
+    background-image: -gtk-scaled(url("assets/scale-slider-up-backdrop.png"),url("assets/scale-slider-up-backdrop@2.png"));
+}
+
+.cursor-handle.top {
+    background-image: -gtk-scaled(url("assets/scale-slider-down-backdrop.png"),url("assets/scale-slider-down-backdrop@2.png"));
+}
