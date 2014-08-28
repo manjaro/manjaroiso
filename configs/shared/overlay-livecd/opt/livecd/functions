@@ -36,6 +36,10 @@ if [ -e "/bootmnt/${install_dir}/${arch}/lxde-image.sqfs" ] ; then
    DESKTOP="LXDE"
    DESKTOP_IMG="lxde-image"
 fi
+if [ -e "/bootmnt/${install_dir}/${arch}/lxqt-image.sqfs" ] ; then
+   DESKTOP="LXQt"
+   DESKTOP_IMG="lxqt-image"
+fi
 if [ -e "/bootmnt/${install_dir}/${arch}/enlightenment-image.sqfs" ] ; then
    DESKTOP="ENLIGHTENMENT"
    DESKTOP_IMG="enlightenment-image"
@@ -582,6 +586,9 @@ hd_config()
           if [ -e "/usr/bin/lxsession" ] ; then
              echo "XSession=LXDE" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
           fi
+          if [ -e "/usr/bin/lxqt-session" ] ; then
+             echo "XSession=LXQt" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
+          fi
           echo "Icon=" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
        fi
     fi
@@ -607,6 +614,9 @@ hd_config()
        fi
        if [ -e "/usr/bin/lxsession" ] ; then
              sed -i 's|default.desktop|LXDE.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
+       fi
+       if [ -e "/usr/bin/lxqt-session" ] ; then
+             sed -i 's|default.desktop|lxqt.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
        fi
        if [ -e "/usr/bin/enlightenment_start" ] ; then
              sed -i 's|default.desktop|enlightenment.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
@@ -635,6 +645,9 @@ hd_config()
        fi
        if [ -e "/usr/bin/lxsession" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/lxsession|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
+       fi
+       if [ -e "/usr/bin/lxqt-session" ] ; then
+         sed -i -e 's|^.*session=.*|session=/usr/bin/lxqt-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
        chgrp -R lxdm ${DESTDIR}/var/lib/lxdm  &>/dev/null
        chgrp lxdm ${DESTDIR}/etc/lxdm/lxdm.conf  &>/dev/null
@@ -1109,6 +1122,9 @@ _setup_user()
        fi
        if [ -e "/usr/bin/lxsession" ] ; then
           echo "XSession=LXDE" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
+       fi
+       if [ -e "/usr/bin/lxqt-session" ] ; then
+          echo "XSession=LXQt" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
        fi
        echo "Icon=" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
     fi
