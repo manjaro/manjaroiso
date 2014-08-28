@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Power Management
+Name[fr]=Gestion de l'alimentation
+GenericName=Power Management Settings
+GenericName[fr]=Paramètres de gestion de l'alimentation
+Exec=lxqt-config-powermanagement
+Icon=preferences-system-power-management
+Categories=DesktopSettings;Qt;LXQt;
+OnlyShowIn=LXQt;LXDE;
+

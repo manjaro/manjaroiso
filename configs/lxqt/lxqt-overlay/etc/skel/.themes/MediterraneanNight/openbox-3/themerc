@@ -1,0 +1,133 @@
+!! surreal by plb
+
+!!---------------------------------------------------------------------------
+!! Dimensions
+
+border.width:		        		1
+window.active.border.color:         #303030
+window.inactive.border.color:       #303030
+menu.inactive.border.color:         #303030
+window.active.title.separator.color: #626262
+window.inactive.title.separator.color: #626262
+
+padding.width:	        			4
+window.handle.width:	    		1
+window.client.padding.width:		0
+window.client.padding.height:		0
+
+osd.border.width:                   2
+
+!!---------------------------------------------------------------------------
+!! Fonts
+
+!! window.active.label.text.font:		shadow=y: shadowtint=70: shadowoffset=1
+!! window.inactive.label.text.font:		shadow=y: shadowtint=40: shadowoffset=1
+
+menu.title.text.font:			shadow=y: shadowtint=50: shadowoffset=1
+
+menu.items.font:			
+
+!!---------------------------------------------------------------------------
+!! Menu Settings
+
+menu.overlap.x:             3
+menu.title.bg:				flat solid
+menu.title.bg.color:			#383838
+menu.title.bg.colorTo:			#383838
+menu.title.text.color:			white
+
+menu.items.bg:				flat solid
+menu.items.bg.color:			#383838
+menu.items.text.color:			#dadada
+
+menu.items.active.bg:			flat GradientVertical
+menu.items.active.bg.color:         #4c6d90
+menu.items.active.bg.colorTo:		#4f77a0
+menu.items.active.text.color:		white
+menu.items.disabled.text.color:		#565656
+
+menu.separator.color            #606060
+menu.separator.width            4
+menu.separator.padding.width            10
+menu.separator.padding.height            10
+
+!!---------------------------------------------------------------------------
+!! Window Settings
+
+window.label.text.justify:          center
+
+window.inactive.client.color: #303030
+window.active.client.color: #404040
+
+window.active.padding.width:		10
+window.active.title.bg:			Gradient Vertical flat
+window.active.title.bg.color:		#737373
+window.active.title.bg.colorTo:		#626262
+
+
+window.active.label.bg:			parentrelative
+window.active.label.text.color:		#dadada
+
+window.active.handle.bg:	    parentrelative	
+window.active.grip.bg:		    parentrelative	
+
+window.inactive.title.bg:		Gradient Vertical flat 
+window.inactive.title.bg.color:		#737373
+window.inactive.title.bg.colorTo:		#626262
+
+window.inactive.label.bg:		parentrelative
+window.inactive.handle.bg:	    parentrelative
+window.inactive.grip.bg:		parentrelative
+
+!!---------------------------------------------------------------------------
+!! Button Settings
+
+window.active.button.unpressed.bg:			parentrelative
+window.active.button.unpressed.image.color:		#f0f0f0
+
+window.active.button.pressed.bg:			parentrelative
+window.active.button.pressed.image.color:		#969696
+
+window.active.button.hover.bg:			parentrelative
+window.active.button.hover.image.color:		#c0c0c0
+
+window.active.button.disabled.bg:			parentrelative
+window.active.button.disabled.image.color:		#808080
+
+!! window.active.button.toggled.image.color: #f0f0f0
+!! window.inactive.button.toggled.image.color: #f0f0f0
+
+window.inactive.button.unpressed.bg:			parentrelative
+window.inactive.button.unpressed.image.color:		#f0f0f0
+
+window.inactive.button.pressed.bg:			parentrelative
+window.inactive.button.pressed.image.color:		#868686
+
+window.inactive.button.hover.bg:			parentrelative
+window.inactive.button.hover.image.color:		#c0c0c0
+
+window.inactive.button.disabled.bg:			parentrelative
+window.inactive.button.disabled.image.color:		#808080
+
+
+
+
+
+!!---------------------------------------------------------------------------
+!! OSD Settings
+
+osd.bg:			flat solid
+osd.bg.color:		#616161
+
+osd.label.bg:			flat solid
+osd.label.bg.color:         #565656
+osd.label.text.color:       #f0f0f0
+
+osd.hilight.bg:			flat GradientVertical
+osd.hilight.bg.color:         #4c6d90
+osd.hilight.bg.colorTo:		#4f77a0
+
+osd.unhilight.bg:			flat GradientVertical
+osd.unhilight.bg.color:         #767676
+osd.unhilight.bg.colorTo:		#565656
+

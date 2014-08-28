@@ -1,0 +1,175 @@
+### Manjaro Packages
+
+## Xorg
+#mhwd
+
+## Xorg Packages
+inxi
+libdnet
+mesa
+#mesa-demos
+>x86_64 lib32-mesa-demos
+netkit-bsd-finger
+uriparser
+xf86-input-acecad
+xf86-input-aiptek
+xf86-input-evdev
+xf86-input-joystick
+xf86-input-keyboard
+xf86-input-mouse
+xf86-input-synaptics
+xf86-input-void
+xf86-input-wacom
+xinetd
+xorg-server
+xorg-server-utils
+xorg-twm
+xorg-utils
+xorg-xinit
+
+## Sound and Audio
+#gstreamer0.10-base-plugins	# 4 plugins for Clementine
+#gstreamer0.10-good-plugins
+#gstreamer0.10-bad-plugins
+#gstreamer0.10-ugly-plugins
+manjaro-alsa
+#manjaro-pulse
+#pavucontrol
+#pnmixer
+#gnome-alsamixer
+flashplugin
+qmplay2
+
+## Graphical Installer
+iso-codes
+thus
+#turbulence
+
+## Artwork
+humanity-wise
+lxqt-bckgs
+manjaro-artwork
+menda-light
+#unified-manjaro-themes-openbox
+#oxygen-icons
+#plymouth
+
+## AUR Access
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+gcc
+libconfig
+libtool
+m4
+make
+patch
+subversion
+yaourt
+
+## Main programs
+openbox
+sddm
+#sddm-git
+
+## AUR Lxqt
+repolxqt/libqtxdg-qt5-git
+repolxqt/liblxqt-git
+repolxqt/lxmenu-data-git
+repolxqt/menu-cache-git
+repolxqt/liblxqt-mount-git
+repolxqt/lxqt-globalkeys-git
+repolxqt/lxqt-notificationd-git
+repolxqt/libsysstat-qt5-git
+repolxqt/libfm-git
+repolxqt/lxqt-panel-git
+repolxqt/pcmanfm-qt-git
+libexif
+repolxqt/lxqt-session-git
+repolxqt/lxqt-runner-git
+repolxqt/lxqt-qtplugin-git
+#repolxqt/lxqt-appswitcher-git
+polkit-qt
+repolxqt/lxqt-policykit-git
+repolxqt/lxqt-openssh-askpass-git
+repolxqt/lxqt-powermanagement-git
+#repolxqt/lximage-qt-git
+repolxqt/lxqt-config-git
+repolxqt/obconf-qt-git
+#compton
+#repolxqt/compton-conf-git
+repolxqt/lxqt-about-git
+repolxqt/lxqt-admin-git
+repolxqt/lxqt-common-git
+repolxqt/lxqt-config-randr-git
+
+repolxqt/libqxt
+repolxqt/qtermwidget-git
+repolxqt/qterminal-git
+
+## Various
+#aisleriot
+#b1-free-archiver
+#mpd		# see cantata
+#cantata
+#mpc
+cmst
+connman
+file-roller
+qconnman-git
+#clementine
+#faenza-green-icon-theme
+#easypaint-git
+gnome-keyring
+gksu
+#gtksu
+gparted		# GTK !!!
+gvfs             # Access file system
+gvfs-afc         # Removable media support
+#gvfs-smb         # Samba support
+juffed
+ldm-git
+lazpaint-qt4
+libreoffice-installer
+lxappearance     # usefull to install new theme
+#lxterminal       # for turbulence only
+#>x86_64 manjaro-printer
+manjaro-settings-manager
+mpv
+#network-manager-applet
+numlockx
+octopi
+octopi-notifier
+qarma
+qisousb
+repolxqt/otter-browser
+phototonic
+python2-notify
+python2-xdg
+qastools
+#qmmp
+quassel-light
+qbittorrent
+qpdfview
+qps
+qlogout
+searchmonkey
+speedcrunch
+screengrab
+#steam
+synapse
+trojita
+weather-app
+#libpaper	# for xfburn
+#xfburn
+#xscreensaver
+
+# Infinality
+repolxqt/cairo-infinality-ultimate
+repolxqt/fontconfig-infinality-ultimate
+repolxqt/freetype2-infinality-ultimate
+#x86_64 repolxqt/lib32-freetype2-infinality-ultimate
+
