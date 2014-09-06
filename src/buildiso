@@ -53,6 +53,11 @@ if [ -e Packages-Lxde ] ; then
     desktop="lxde"
     pkgsfile="Packages-Lxde"
 fi
+if [ -e Packages-Lxqt ] ; then
+    de="-lxqt"
+    desktop="lxqt"
+    pkgsfile="Packages-Lxqt"
+fi
 if [ -e Packages-Mate ] ; then
     de="-mate"
     desktop="mate"
