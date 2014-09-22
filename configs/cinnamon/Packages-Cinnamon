@@ -6,7 +6,6 @@ mhwd
 ## Xorg Packages
 inxi
 libdnet
-mesa
 mesa-demos
 >x86_64 lib32-mesa-demos
 netkit-bsd-finger
@@ -33,42 +32,6 @@ thus
 ## Artwork
 manjaro-artwork
 
-## GNOME
-ffmpegthumbnailer
-file-roller
-gedit
-gjs
-glade 
-gnome-disk-utility
-gnome-keyring
-gnome-power-manager
-gnome-screenshot
-gnome-power-manager
-gnome-system-monitor
-gnome-terminal
-gnome-vfs
-gtksourceview3 
-icon-naming-utils
-libgnome
-libgnome-data
-libgnome-keyring
-libgnomecanvas
-libgnomeui
-libgsf
-libnautilus-extension
-mousetweaks
-#mutter 
-python2-gnomecanvas
-python2-gnomevfs
-python2-libgnome 
-seahorse   
-xdg-user-dirs-gtk   
-libgnome-media-profiles
-soundconverter
-polkit-gnome
-polkit
-gksu
- 
 ## Cinnamon
 cinnamon
 cinnamon-desktop
@@ -78,13 +41,42 @@ cinnamon-translations
 cinnamon-control-center
 cinnamon-screensaver
 cinnamon-theme-minty
+cinnamon-power-applet
 cjs
 muffin
 nemo
 nemo-fileroller
 nemo-preview
-nemo-seahorse
-chromium-bsu
+
+## GNOME related stuf
+ffmpegthumbnailer
+file-roller
+gedit
+gjs
+glade 
+gnome-disk-utility
+gnome-keyring
+gnome-screenshot
+gnome-system-monitor
+gnome-terminal
+gnome-vfs
+gtksourceview3 
+icon-naming-utils
+mousetweaks
+#mutter 
+python2-gnomecanvas
+python2-gnomevfs
+python2-libgnome 
+xdg-user-dirs-gtk   
+soundconverter
+
+## polkit
+
+polkit-gnome
+polkit
+gksu
+ 
+
 
 ## Network
 netctl
@@ -93,23 +85,27 @@ networkmanager-dispatcher-ntpd
 openresolv
 
 ## Extra
-icedtea-web-java7
+icedtea-web
 vlc
+pidgin
 
 ## Theme
 faenza-green-icon-theme
 adwaita-manjaro-themes
 xfce-theme-greenbird
 numix-manjaro-themes
+gtk-theme-zukitwo
+
+plymouth
+plymouth-theme-manjaro-elegant
 
 ## Other Applications
 gparted
 epdfview
 firefox
-#leafpad
+thunderbird
 imagewriter
 ttf-droid
-#lxterminal
 mdm
 mdm-themes
 viewnior
@@ -127,9 +123,11 @@ gvfs-mtp
 gvfs-smb
 pavucontrol
 openssh
-polkit
-polkit-gnome
 hexchat
+exfat-utils
+fuse-exfat
+nss
+nss-mdns
 
 ## Package management
 pamac
@@ -158,15 +156,15 @@ manjaro-printer
 
 ## Office
 #libreoffice-installer
-libreoffice-en-US
-libreoffice-base
-libreoffice-calc
-libreoffice-draw
-libreoffice-gnome
-libreoffice-impress
-libreoffice-math
-libreoffice-postgresql-connector
-libreoffice-writer
+libreoffice-still-en-US
+libreoffice-still-base
+libreoffice-still-calc
+libreoffice-still-draw
+libreoffice-still-gnome
+libreoffice-still-impress
+libreoffice-still-math
+libreoffice-still-postgresql-connector
+libreoffice-still-writer
 
 ## AUR Access
 autoconf
