@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE wallpapers SYSTEM "cinnamon-wp-list.dtd">
+<wallpapers>
+    <wallpaper deleted="false">
+    <name>cinnamon_shell_group_by_elchacmool-d50uppc</name>
+    <filename>/usr/share/backgrounds/cinnamon_shell_group_by_elchacmool-d50uppc.png</filename>
+    <options>zoom</options>
+    <pcolor>#c58357</pcolor>
+    <scolor>#c58357</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+    <wallpaper deleted="false">
+    <name>manjaro</name>
+    <filename>/usr/share/backgrounds/manjaro.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#c58357</pcolor>
+    <scolor>#c58357</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+    <wallpaper deleted="false">
+    <name>Wallpaper-ST2-Black</name>
+    <filename>/usr/share/backgrounds/Wallpaper-ST2-Black.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#c58357</pcolor>
+    <scolor>#c58357</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+    <wallpaper deleted="false">
+    <name>Wallpaper-ST2-Blue</name>
+    <filename>/usr/share/backgrounds/Wallpaper-ST2-Blue.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#c58357</pcolor>
+    <scolor>#c58357</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+    <wallpaper deleted="false">
+    <name>Wallpaper-ST2-Green</name>
+    <filename>/usr/share/backgrounds/Wallpaper-ST2-Green.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#c58357</pcolor>
+    <scolor>#c58357</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+    <wallpaper deleted="false">
+    <name>Wallpaper-ST2-Purple</name>
+    <filename>/usr/share/backgrounds/Wallpaper-ST2-Purple.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#c58357</pcolor>
+    <scolor>#c58357</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+    <wallpaper deleted="false">
+    <name>Wallpaper-ST2-Red</name>
+    <filename>/usr/share/backgrounds/Wallpaper-ST2-Red.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#c58357</pcolor>
+    <scolor>#c58357</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+</wallpapers>

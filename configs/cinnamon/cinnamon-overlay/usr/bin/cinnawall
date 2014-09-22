@@ -1,0 +1,97 @@
+#!/bin/bash
+#
+# This script will take all wallpapers in a given folder and
+# make them available as "default" background in the "Change Background" gui
+# frontend in Ubuntu.
+#
+################################################################################
+
+CONFIG_DIR="/usr/share/gnome-background-properties"
+#CONFIG_DIR=".cinnamon/backgrounds"
+XML_FILE="$CONFIG_DIR/manjaro.xml"
+
+if [ $# -ne 1 ]; then
+   echo "*** syntax cinnamon-wallpaper-generator <path to wallpaper folder> ***"
+   echo "*** for example ***"
+   echo "*** ubuntu-wallpaper-generator /usr/share/backgrounds ***"
+   exit 1
+else
+   WALLPAPER_DIR=$1
+   echo "*** parameters passed: $1 ***"
+fi
+
+#### First check if we have write permissions to the share dirctory. ####
+touch $CONFIG_DIR/testfile >/dev/null 2>/dev/null
+if [ $? -ne 0 ]; then
+   echo "**** No permissions to the desktop share directory. ****"
+   echo "**** $CONFIG_DIR ****"
+   echo "**** Procedure Terminated. ****"
+   exit 1
+else
+   rm $CONFIG_DIR/testfile 2>/dev/null
+fi
+
+#### Show the script description message. ###
+cat <<EOF
+
+################################################################################
+     This script makes all pictures in the $WALLPAPER_DIR
+     directory available to all users defined on this system as their
+     system-wide GNOME wallpapers.
+################################################################################
+EOF
+
+#### Fail if the wallpaper directory does not exist. ####
+if [ ! -d $WALLPAPER_DIR ]; then
+    echo "**** The wallpaper directory \"$WALLPAPER_DIR\" does not exist. ****"
+    echo "**** Precedure Terminated. ****"
+    exit 1
+fi
+
+#### Count the number of jpg/jpeg/png images. ####
+numfiles=`ls -1 $WALLPAPER_DIR/*.jpg WALLPAPER_DIR/*.jpeg WALLPAPER_DIR/*.png 2>/dev/null | wc -l`
+
+#### If there are no image files there then exit. ####
+if [ $numfiles -eq 0 ]; then
+    echo "**** The wallpaper directory \"$WALLPAPER_DIR\" has no images. ****"
+    echo "**** Precedure Terminated. ****"
+    exit 1
+fi
+
+#### Now we create the XML file containing the images for backgrounds. ####
+#### Start by creating the header in the XML file. ####
+cat <<EOF > $XML_FILE
+<?xml version="1.0"?>
+<!DOCTYPE wallpapers SYSTEM "cinnamon-wp-list.dtd">
+<wallpapers>
+EOF
+
+#### Add each file to the XML file. ####
+#### Doing it this way makes sure files with spaces in their names are ####
+#### handled properly.   (ls .... | while read fname; do)              ####
+ls -1 $WALLPAPER_DIR/*.jpg $WALLPAPER_DIR/*.png $WALLPAPER_DIR/*.jpeg 2> /dev/null |
+while read image_name; do
+   echo "   Adding: `basename "$image_name"`."
+   fname=`basename "$image_name"`
+   fname="${fname%%\.*}"
+   echo '    <wallpaper deleted="false">'                          >> $XML_FILE
+   echo "    <name>$fname</name>"                >> $XML_FILE
+   echo "    <filename>$image_name</filename>"   >> $XML_FILE
+   echo "    <options>zoom</options>"       >> $XML_FILE
+   echo "    <pcolor>#c58357</pcolor>"           >> $XML_FILE
+   echo "    <scolor>#c58357</scolor>"           >> $XML_FILE
+   echo "    <shade_type>solid</shade_type>"     >> $XML_FILE
+   echo "  </wallpaper>"                         >> $XML_FILE
+done
+
+#### Create the footer for the XML file. ####
+echo "</wallpapers>"                             >> $XML_FILE
+
+cat <<EOF
+################################################################################
+     You're almost done. copy the generated file ubuntu-wallpapers.xml to the
+     folder /usr/shared/gnome-background-properties
+     REMEMBER to backup the current ubuntu-wallpaper.xml in that folder first!
+################################################################################
+
+EOF

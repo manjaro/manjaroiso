@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+	<wallpaper deleted="false">
+		<name>Default Background</name>
+		<name xml:lang="ar">الخلفية المبدئية</name>
+		<name xml:lang="as">অবিকল্পিত পটভূমি</name>
+		<name xml:lang="ast">Fondu por defectu</name>
+		<name xml:lang="bg">Стандартен фон</name>
+		<name xml:lang="bn">পূর্বনির্ধারিত পটভূমি</name>
+		<name xml:lang="bn_IN">ডেস্কটপের ডিফল্ট পটভূমি</name>
+		<name xml:lang="br">Drekleur dre ziouer</name>
+		<name xml:lang="ca">Fons predeterminat</name>
+		<name xml:lang="ca@valencia">Fons predeterminat</name>
+		<name xml:lang="crh">Ög-belgilengen Arqa-zemin</name>
+		<name xml:lang="cs">Výchozí pozadí</name>
+		<name xml:lang="cy">Cefndir Rhagosodedig y Penbwrdd</name>
+		<name xml:lang="da">Standardbaggrund</name>
+		<name xml:lang="de">Vorgabe-Hintergrund</name>
+		<name xml:lang="el">Προεπιλεγμένο παρασκήνιο</name>
+		<name xml:lang="en@shaw">𐑛𐑦𐑓𐑷𐑤𐑑 𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛</name>
+		<name xml:lang="en_CA">Default Background</name>
+		<name xml:lang="en_GB">Default Background</name>
+		<name xml:lang="eo">Defaŭlta fono</name>
+		<name xml:lang="es">Tapiz predeterminado</name>
+		<name xml:lang="et">Vaikimisi taust</name>
+		<name xml:lang="eu">Atzeko plano lehenetsia</name>
+		<name xml:lang="fi">Oletustausta</name>
+		<name xml:lang="fr">Arrière-plan par défaut</name>
+		<name xml:lang="fur">Fondâl predefinît</name>
+		<name xml:lang="ga">Cúlra Réamhshocraithe</name>
+		<name xml:lang="gl">Fondo predefinido</name>
+		<name xml:lang="gu">મૂળભૂત પાશ્વ ભાગ</name>
+		<name xml:lang="he">Default Background</name>
+		<name xml:lang="hi">तयशुदा पृष्ठभूमि</name>
+		<name xml:lang="hr">Uobičajena pozadina</name>
+		<name xml:lang="hu">Alapértelmezett háttér</name>
+		<name xml:lang="id">Latar Belakang Bawaan</name>
+		<name xml:lang="it">Sfondo predefinito</name>
+		<name xml:lang="ja">デフォルトの背景</name>
+		<name xml:lang="ka">სამუშაო მაგიდის ნაგულისხმევი ფონი</name>
+		<name xml:lang="kk">Бастапқы фон</name>
+		<name xml:lang="kn">ಪೂರ್ವನಿಯೋಜಿತ ಹಿನ್ನಲೆ</name>
+		<name xml:lang="ko">기본 배경</name>
+		<name xml:lang="lt">Standartinis fonas</name>
+		<name xml:lang="lv">Noklusētais fons</name>
+		<name xml:lang="mg">Afaran'ny sehatrasa Tsotra</name>
+		<name xml:lang="mk">Стандардна позадина</name>
+		<name xml:lang="ml">സഹജമായ പശ്ചാത്തലം</name>
+		<name xml:lang="mn">Өгөгдмөл дэвсгэр</name>
+		<name xml:lang="mr">मुलभूत पार्श्वभूमी</name>
+		<name xml:lang="nb">Forvalgt bakgrunn</name>
+		<name xml:lang="nds">Standardachtergrund</name>
+		<name xml:lang="ne">पूर्वनिर्धारित पृष्ठभूमि</name>
+		<name xml:lang="nl">Standaard bureaubladachtergrond</name>
+		<name xml:lang="nn">Standard skrivebordsbakgrunn</name>
+		<name xml:lang="oc">Fons per defaut</name>
+		<name xml:lang="or">ପୂର୍ବନିର୍ଦ୍ଧାରିତ ପୃଷ୍ଠଭୂମି</name>
+		<name xml:lang="pa">ਡਿਫਾਲਟ ਬੈਕਗਰਾਊਂਡ</name>
+		<name xml:lang="pl">Domyślne tło</name>
+		<name xml:lang="pt">Fundo por Omissão</name>
+		<name xml:lang="pt_BR">Plano de fundo padrão</name>
+		<name xml:lang="ro">Fundal implicit</name>
+		<name xml:lang="ru">Фон рабочего стола по умолчанию</name>
+		<name xml:lang="sk">Štandardné pozadie</name>
+		<name xml:lang="sl">Privzeto ozadje</name>
+		<name xml:lang="sq">Sfondi i prezgjedhur</name>
+		<name xml:lang="sr">Подразумевана позадина радне површине</name>
+		<name xml:lang="sr@latin">Podrazumevana pozadina radne površine</name>
+		<name xml:lang="sv">Standardbakgrund</name>
+		<name xml:lang="ta">முன்னிருப்பு பின்னணி</name>
+		<name xml:lang="te">అప్రమేయ బ్యాక్‌గ్రౌండ్</name>
+		<name xml:lang="th">พื้นหลังปริยาย</name>
+		<name xml:lang="tr">Öntanımlı Arkaplanı</name>
+		<name xml:lang="ug">كۆڭۈلدىكى تەگلىك</name>
+		<name xml:lang="uk">Типове тло</name>
+		<name xml:lang="vi">Nền mặt bàn</name>
+		<name xml:lang="zh_CN">默认桌面背景</name>
+		<name xml:lang="zh_HK">預設背景</name>
+		<name xml:lang="zh_TW">預設背景</name>
+		<filename>/usr/share/pixmaps/backgrounds/gnome/background-default.jpg</filename>
+		<options>zoom</options>
+		<shade_type>solid</shade_type>
+		<pcolor>#66ba00</pcolor>
+	</wallpaper>
+</wallpapers>

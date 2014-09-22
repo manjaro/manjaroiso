@@ -1,0 +1,9 @@
+{
+    "ignoreTransientNotifications": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Ignore transient notifications",
+        "value": true
+    },
+    "__md5__": "16a7df3580eefefccf3f8d135a1575a6"
+}

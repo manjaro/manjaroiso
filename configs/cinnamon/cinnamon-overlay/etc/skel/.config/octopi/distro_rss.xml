@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Manjaro Linux | Manjaro Linux</title>
+	<atom:link href="http://manjaro.org/feed/" rel="self" type="application/rss+xml" />
+	<link>http://manjaro.org</link>
+	<description>Enjoy the simplicity</description>
+	<lastBuildDate>Sat, 16 Aug 2014 18:36:52 +0000</lastBuildDate>
+	<language>en-US</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Calamares &#8211; Our next graphical installer</title>
+		<link>http://manjaro.org/2014/08/16/calamares-our-next-graphical-installer/</link>
+		<comments>http://manjaro.org/2014/08/16/calamares-our-next-graphical-installer/#comments</comments>
+		<pubDate>Sat, 16 Aug 2014 18:35:07 +0000</pubDate>
+		<dc:creator><![CDATA[philm]]></dc:creator>
+				<category><![CDATA[general]]></category>
+		<category><![CDATA[news]]></category>
+		<category><![CDATA[videos]]></category>
+
+		<guid isPermaLink="false">http://manjaro.org/?p=4449</guid>
+		<description><![CDATA[With Manjaro 0.9-series we will introduce our new graphical installer Calamares. You can watch this video or download our latest development build to test it yourself on your own hardware.]]></description>
+				<content:encoded><![CDATA[<p>With <strong>Manjaro 0.9-series</strong> we will introduce our <strong>new graphical installer</strong> <a href="https://github.com/calamares">Calamares</a>. You can watch this video or <a href="https://sourceforge.net/projects/manjarotest/files/0.9.0/xfce-minimal/0.9.0-dev/">download</a> our latest development build to test it yourself on your own hardware.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://manjaro.org/2014/08/16/calamares-our-next-graphical-installer/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Update-Pack 6 is online now!</title>
+		<link>http://manjaro.org/2014/08/10/update-pack-6-is-online-now/</link>
+		<comments>http://manjaro.org/2014/08/10/update-pack-6-is-online-now/#comments</comments>
+		<pubDate>Sun, 10 Aug 2014 08:16:46 +0000</pubDate>
+		<dc:creator><![CDATA[philm]]></dc:creator>
+				<category><![CDATA[general]]></category>
+		<category><![CDATA[news]]></category>
+
+		<guid isPermaLink="false">http://manjaro.org/?p=4443</guid>
+		<description><![CDATA[I&#8217;m happy to present our sixth Update-Pack for Manjaro 0.8.10! Some might already noticed that Archlinux moved on to the xorg-server 1.16 series. Manjaro on the other hand will hold back and keep xorg115 a little longer. We noticed some bad regressions with the new xorg version, so to be stable we use our own [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p><a href="http://manjaro.org/wp-content/uploads/2013/08/system_software_update.png" rel="lightbox[4443]" title="Update-Pack 6 is online now!"><img src="http://manjaro.org/wp-content/uploads/2013/08/system_software_update.png" alt="system_software_update" width="128" height="128" class="alignleft size-full wp-image-3157" /></a>I&#8217;m happy to present our sixth Update-Pack for Manjaro 0.8.10!</p>
+<p>Some might already noticed that Archlinux moved on to the xorg-server 1.16 series. Manjaro on the other hand will hold back and <strong>keep xorg115 a little longer</strong>. We noticed some bad regressions with the new xorg version, so to be stable we use our own xorg-stack from now on. We might merge back with Arch when we think it is stable enough to use again.</p>
+<p>Beside this decision <strong>we updated our kernels</strong> once more and fixed samba for security reasons. The coding language gambas3 got another great point-release. With Libreoffice-fresh you can install the latest <strong>LibreOffice 4.3.0</strong> to your Manjaro box. We still recommend to keep the current version instead. <strong>Cinnamon</strong> got updated to <strong>2.2.14</strong>, which fixes some issues we had. <strong>KDE Framework</strong> got pushed to <strong>5.1</strong> which offers more stability and functionality.</p>
+<p>Other than that, we have regular upstream updates and rebuilds by Archlinux.</p>
+<p>Please report any issues you may find.</p>
+<p>kind regards<br />
+Philip</p>
+<hr />
+<p>If you have issues with Rob McCathies (korrode) signature, try this:</p>
+<pre class="wp-code-highlight prettyprint">sudo pacman-key -r 5C0102A6
+sudo pacman-key --lsign-key 5C0102A6</pre>
+<p>If you have issues with Joshuas Strots (dcell) signature, try this:</p>
+<pre class="wp-code-highlight prettyprint">sudo pacman-key -r CB6CDD17
+sudo pacman-key --lsign-key CB6CDD17</pre>
+<hr />
+<p><strong>Current supported kernels</strong></p>
+<ul>
+<li>Linux38 3.8.13.27</li>
+<li>Linux310 3.10.51</li>
+<li>Linux311 3.11.10.14</li>
+<li>Linux312 3.12.26</li>
+<li>Linux313 3.13.11.5</li>
+<li>Linux314 3.14.15</li>
+<li>Linux314 3.15.8</li>
+</ul>
+<hr />
+<p><strong>Updated packages</strong></p>
+<ul>
+<li>community i686:  317 new and 304 removed package(s)</li>
+<li>community x86_64:  314 new and 302 removed package(s)</li>
+<li>core i686:  28 new and 28 removed package(s)</li>
+<li>core x86_64:  28 new and 28 removed package(s)</li>
+<li>extra i686:  316 new and 314 removed package(s)</li>
+<li>extra x86_64:  316 new and 314 removed package(s)</li>
+<li>multilib x86_64:  19 new and 19 removed package(s)</li>
+</ul>
+<hr />
+<strong>Links</strong></p>
+<ul>
+<li><a href="https://forum.manjaro.org/index.php?topic=15710.0">Talk about this update-pack in our forum</a></li>
+<li><a href="https://forum.manjaro.org/index.php?topic=14139.msg127848#msg127848">Fixing libgl linkage</a></li>
+<li><a href="https://forum.manjaro.org/index.php?topic=14370.msg130371#msg130371">Fixing font issues in java applications</a></li>
+<li><a href="https://www.archlinux.org/news/mariadb-100-enters-extra/">Fix issues with MariaDB</li>
+<li><a href="https://forum.manjaro.org/index.php?topic=15159.msg140052#msg140052">Get KDE working again after MariaDB update</li>
+</ul>
+<hr />
+]]></content:encoded>
+			<wfw:commentRss>http://manjaro.org/2014/08/10/update-pack-6-is-online-now/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Manjaro 0.8.11-Pre2 is online now (XFCE, OB, KDE &amp; NET)</title>
+		<link>http://manjaro.org/2014/08/06/manjaro-0-8-11-pre2-is-online-now-xfce-ob-kde-net/</link>
+		<comments>http://manjaro.org/2014/08/06/manjaro-0-8-11-pre2-is-online-now-xfce-ob-kde-net/#comments</comments>
+		<pubDate>Wed, 06 Aug 2014 20:25:32 +0000</pubDate>
+		<dc:creator><![CDATA[philm]]></dc:creator>
+				<category><![CDATA[general]]></category>
+		<category><![CDATA[news]]></category>
+
+		<guid isPermaLink="false">http://manjaro.org/?p=4426</guid>
+		<description><![CDATA[Hi community! We present to you our second preview of Manjaro 0.8.11 based on our fifth update-pack we justed released to our stable branch. We updated our kernel to Linux 3.14 LTS and use the latest MESA release with latest free and proprietary drivers. Also you find our latest graphical tools we develop to get [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p><a href="http://manjaro.org/wp-content/uploads/2014/05/manjaro-0810-thus.png" rel="lightbox[4426]" title="Manjaro 0.8.11-Pre2 is online now (XFCE, OB, KDE & NET)"><img src="http://manjaro.org/wp-content/uploads/2014/05/manjaro-0810-thus-300x183.png" alt="manjaro-0810-thus" width="300" height="183" class="alignleft size-medium wp-image-4166" /></a>Hi community! We present to you our second preview of Manjaro 0.8.11 based on our fifth update-pack we justed released to our stable branch. We updated our kernel to <strong>Linux 3.14 LTS</strong> and use the <strong>latest MESA</strong> release with latest free and proprietary drivers. Also you find our latest graphical tools we develop to get Manjaro easier to be managed with a few mouse clicks. Also we worked on octopi and pamac. Mostly you will notice our <strong>new theme for our KDE Edition</strong> with this release cycle. Test it and tell us if you still find some issues with it.</p>
+<p><a href="http://manjaro.org/wp-content/uploads/2014/07/manjaro-kde-0811p1-3.png" rel="lightbox[4426]" title="Manjaro 0.8.11-Pre2 is online now (XFCE, OB, KDE & NET)"><img src="http://manjaro.org/wp-content/uploads/2014/07/manjaro-kde-0811p1-3-300x173.png" alt="manjaro-kde-0811p1-3" width="300" height="173" class="alignright size-medium wp-image-4380" /></a>With <strong>Manjaro Settings Manager 0.2.3</strong> we offer you an enhanced kernel and graphic driver management experience. We will notify you about newer drivers and kernels, tell you when you run an unsupported kernel or new language packages are available. Other nice and needful user interfaces will come to our settings manager soon.</p>
+<p><a href="http://manjaro.org/wp-content/uploads/2014/05/manjaro-openbox-0810rc1-2.png" rel="lightbox[4426]" title="Manjaro 0.8.11-Pre2 is online now (XFCE, OB, KDE & NET)"><img src="http://manjaro.org/wp-content/uploads/2014/05/manjaro-openbox-0810rc1-2-300x183.png" alt="manjaro-openbox-0810rc1-2" width="300" height="183" class="alignleft size-medium wp-image-4230" /></a>As office suite we ship now calligra in our KDE Edition and LibreOffice with our XFCE Edition. On our Openbox Edition you can choose with the help of Turbulence which office suite you want to install. <strong>Based on</strong> our <strong>stable branch</strong> everyone can test Manjaro 0.8.11. If you have time, please <a href="http://sourceforge.net/projects/manjarotest/files/0.8.11/">download our new install medias</a> and test them on your hardware, virtual machines to find issues we still might have missed.</p>
+<p>kind regards</p>
+<p>Philip</p>
+]]></content:encoded>
+			<wfw:commentRss>http://manjaro.org/2014/08/06/manjaro-0-8-11-pre2-is-online-now-xfce-ob-kde-net/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Learn how to do GTK Color theming</title>
+		<link>http://manjaro.org/2014/08/02/learn-how-to-do-gtk-color-theming/</link>
+		<comments>http://manjaro.org/2014/08/02/learn-how-to-do-gtk-color-theming/#comments</comments>
+		<pubDate>Sat, 02 Aug 2014 20:19:08 +0000</pubDate>
+		<dc:creator><![CDATA[Manjaro Team]]></dc:creator>
+				<category><![CDATA[videos]]></category>
+
+		<guid isPermaLink="false">http://manjaro.org/?p=4424</guid>
+		<description><![CDATA[Spatry shows you in this video how to theme. Discussion and downloadable content you can find here.]]></description>
+				<content:encoded><![CDATA[<p>Spatry shows you in this video how to theme. Discussion and downloadable content you can find <a href="http://www.cupoflinux.com/SBB/index.php/topic,1577.0.html">here</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://manjaro.org/2014/08/02/learn-how-to-do-gtk-color-theming/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Sonar Gnome 2014.1 is out!</title>
+		<link>http://manjaro.org/2014/07/30/sonar-gnome-2014-1-is-out/</link>
+		<comments>http://manjaro.org/2014/07/30/sonar-gnome-2014-1-is-out/#comments</comments>
+		<pubDate>Wed, 30 Jul 2014 17:14:55 +0000</pubDate>
+		<dc:creator><![CDATA[Manjaro Team]]></dc:creator>
+				<category><![CDATA[general]]></category>
+		<category><![CDATA[news]]></category>
+
+		<guid isPermaLink="false">http://manjaro.org/?p=4395</guid>
+		<description><![CDATA[Sonar is proud to announce Sonar GNU/Linux 2014.1! Sonar GNU/Linux is an accessible operating system focused on assistive technology. It is focused on being the most accessible operating system available using Free assistive technology. The following is a list of some of the assistive technology offered through Sonar: uses latest Gnome technology a screen reader [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p><a href="http://manjaro.org/wp-content/uploads/2014/06/sonar-2014.1-b1.png" rel="lightbox[4395]" title="Sonar Gnome 2014.1 is out!"><img src="http://manjaro.org/wp-content/uploads/2014/06/sonar-2014.1-b1-300x172.png" alt="sonar-2014.1-b1" width="300" height="172" class="alignright size-medium wp-image-4293" /></a></p>
+<p>Sonar is proud to announce Sonar GNU/Linux 2014.1!</p>
+<p><a href="http://sonargnulinux.com/">Sonar GNU/Linux</a> is an accessible operating system focused on assistive technology. It is focused on being the most accessible operating system available using Free assistive technology. The following is a list of some of the assistive technology offered through Sonar:</p>
+<ul>
+<li>uses latest Gnome technology</li>
+<li>a screen reader for blind and low vision people called Orca.</li>
+<li>a magnification program to help magnify the screen for low vision people.</li>
+<li>an on-screen keyboard for people who have low motor skills and have difficulty using a keyboard. (The on-screen keyboard can be used with a mouse or trackball to navigate the keyboard on the screen.</li>
+<li>a font for people with dyslexia.</li>
+</ul>
+<p>This has been a long time coming and it is finally here! A big thanks goes out to <strong>Kyle Brouhard</strong> for getting this release done. He has put a lot of work into this and it shows.</p>
+<p>This is the first release of Sonar being based on Manjaro Linux, which is built off Arch Linux. The Manjaro team has been really great to work with and has helped greatly with the transition from Ubuntu to Manjaro. </p>
+<p>Philip Müller, the project leader of Manjaro, has made the move a fantastic experience. Without the help from Philip and his team behind Manjaro, this wouldn’t have gotten off the groud. Sonar would also like to commend the manjaro development team for making sure they could make everything as accessible as possible.</p>
+<p>The Manjaro community is a great example of concerns with accessibility within the Free sofware community. Everyone should follow their lead and make sure that they play their part in assuring that people can access technology once and for all. That is the goal of Sonar the people behind it making this possible. </p>
+<p>With Sonar being based off of Manjaro this will assure:</p>
+<ul>
+<li>that Sonar will always be running the latest assistive technology</li>
+<li>to give our users the best experience</li>
+</ul>
+<p>If you have never tried out Sonar before what are you waiting for?<br />
+Go to the <a href="http://sonargnulinux.com/?page_id=47">download page</a> and get your copy now! </p>
+<p>kind regards<br />
+Jonathan Nadeau</p>
+<hr />
+<a href="http://sonargnulinux.com/">Visit Sonar GNU/Linux</a></p>
+<hr />
+]]></content:encoded>
+			<wfw:commentRss>http://manjaro.org/2014/07/30/sonar-gnome-2014-1-is-out/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Manjaro OB 0.8.11 Preview 1 is online now.</title>
+		<link>http://manjaro.org/2014/07/25/manjaro-ob-0-8-11-preview-1-is-online-now/</link>
+		<comments>http://manjaro.org/2014/07/25/manjaro-ob-0-8-11-preview-1-is-online-now/#comments</comments>
+		<pubDate>Fri, 25 Jul 2014 21:36:39 +0000</pubDate>
+		<dc:creator><![CDATA[philm]]></dc:creator>
+				<category><![CDATA[general]]></category>
+		<category><![CDATA[news]]></category>
+
+		<guid isPermaLink="false">http://manjaro.org/?p=4391</guid>
+		<description><![CDATA[Hi community! We present to you our first preview of Manjaro Openbox Edition. We updated our kernel to Linux 3.14 LTS and use the latest MESA release with latest free and proprietary drivers. Also you find our latest graphical tools we develop to get Manjaro easier to be managed with a few mouse clicks. We [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p><a href="http://manjaro.org/wp-content/uploads/2014/05/manjaro-openbox-0810rc1-1.png" rel="lightbox[4391]" title="Manjaro OB 0.8.11 Preview 1 is online now."><img src="http://manjaro.org/wp-content/uploads/2014/05/manjaro-openbox-0810rc1-1-300x183.png" alt="manjaro-openbox-0810rc1-1" width="300" height="183" class="alignleft size-medium wp-image-4227" /></a>Hi community! We present to you our first preview of Manjaro Openbox Edition. </p>
+<p>We updated our kernel to <strong>Linux 3.14 LTS</strong> and use the <strong>latest MESA</strong> release with latest free and proprietary drivers. Also you find our latest graphical tools we develop to get Manjaro easier to be managed with a few mouse clicks. We fixed some issues in our openbox theme and other small bugs so far.</p>
+<p><a href="http://manjaro.org/wp-content/uploads/2014/05/manjaro-openbox-0810rc1-2.png" rel="lightbox[4391]" title="Manjaro OB 0.8.11 Preview 1 is online now."><img src="http://manjaro.org/wp-content/uploads/2014/05/manjaro-openbox-0810rc1-2-300x183.png" alt="manjaro-openbox-0810rc1-2" width="300" height="183" class="alignright size-medium wp-image-4230" /></a>With <strong>Manjaro Settings Manager 0.2.3</strong> we offer you an enhanced kernel and graphic driver management experience. We will notify you about newer drivers and kernels, tell you when you run an unsupported kernel or new language packages are available. Other nice and needful user interfaces will come to our settings manager soon. </p>
+<p><a href="http://manjaro.org/wp-content/uploads/2014/05/manjaro-openbox-0810rc1-3.png" rel="lightbox[4391]" title="Manjaro OB 0.8.11 Preview 1 is online now."><img src="http://manjaro.org/wp-content/uploads/2014/05/manjaro-openbox-0810rc1-3-300x183.png" alt="manjaro-openbox-0810rc1-3" width="300" height="183" class="alignleft size-medium wp-image-4232" /></a>This install media is based on our unstable branch, so you get the latest packages with it. It is not for everyone in this early stage, but play with it and give us feedback. We will try to implement your ideas and thoughts on this one. So, if you have time, please <a href="http://sourceforge.net/projects/manjarotest/files/0.8.11/openbox/0.8.11-pre1/">download this install media</a> and test it on your hardware, virtual machines to find issues we still might have missed.</p>
+<p>kind regards<br />
+Philip</p>
+]]></content:encoded>
+			<wfw:commentRss>http://manjaro.org/2014/07/25/manjaro-ob-0-8-11-preview-1-is-online-now/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Manjaro KDE 0.8.11 Preview 1 is online now.</title>
+		<link>http://manjaro.org/2014/07/25/manjaro-kde-0-8-11-preview-1-is-online-now/</link>
+		<comments>http://manjaro.org/2014/07/25/manjaro-kde-0-8-11-preview-1-is-online-now/#comments</comments>
+		<pubDate>Fri, 25 Jul 2014 15:54:57 +0000</pubDate>
+		<dc:creator><![CDATA[philm]]></dc:creator>
+				<category><![CDATA[general]]></category>
+		<category><![CDATA[news]]></category>
+
+		<guid isPermaLink="false">http://manjaro.org/?p=4374</guid>
+		<description><![CDATA[Hi community! We present to you our first preview of Manjaro KDE Edition. We updated our kernel to Linux 3.14 LTS and use the latest MESA release with latest free and proprietary drivers. Also you find our latest graphical tools we develop to get Manjaro easier to be managed with a few mouse clicks. Also [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p><a href="http://manjaro.org/wp-content/uploads/2014/07/manjaro-kde-0811p1-1.png" rel="lightbox[4374]" title="Manjaro KDE 0.8.11 Preview 1 is online now."><img src="http://manjaro.org/wp-content/uploads/2014/07/manjaro-kde-0811p1-1-300x173.png" alt="manjaro-kde-0811p1-1" width="300" height="173" class="alignleft size-medium wp-image-4375" /></a>Hi community! We present to you our first preview of Manjaro KDE Edition. We updated our kernel to <strong>Linux 3.14 LTS</strong> and use the <strong>latest MESA</strong> release with latest free and proprietary drivers. Also you find our latest graphical tools we develop to get Manjaro easier to be managed with a few mouse clicks. Also we worked on octopi. Mostly you will notice our new theme design we started for this release cycle. It is still not the final look, but we think we will get there fast. So test it and tell us if you find some.</p>
+<p><a href="http://manjaro.org/wp-content/uploads/2014/07/manjaro-kde-0811p1-3.png" rel="lightbox[4374]" title="Manjaro KDE 0.8.11 Preview 1 is online now."><img src="http://manjaro.org/wp-content/uploads/2014/07/manjaro-kde-0811p1-3-300x173.png" alt="manjaro-kde-0811p1-3" width="300" height="173" class="alignright size-medium wp-image-4380" /></a>With <strong>Manjaro Settings Manager 0.2.3</strong> we offer you an enhanced kernel and graphic driver management experience. We will notify you about newer drivers and kernels, tell you when you run an unsupported kernel or new language packages are available. Other nice and needful user interfaces will come to our settings manager soon. As office suite we ship now calligra.</p>
+<p><a href="http://manjaro.org/wp-content/uploads/2014/07/manjaro-kde-0811p1-2.png" rel="lightbox[4374]" title="Manjaro KDE 0.8.11 Preview 1 is online now."><img src="http://manjaro.org/wp-content/uploads/2014/07/manjaro-kde-0811p1-2-300x173.png" alt="manjaro-kde-0811p1-2" width="300" height="173" class="alignleft size-medium wp-image-4383" /></a>This install media is <strong>based on</strong> our <strong>unstable branch</strong>, so you get the latest packages with it. It is not for everyone in this early stage, but play with it and give us feedback. We will try to implement your ideas and thoughts on this one. So, if you have time, please <a href="http://sourceforge.net/projects/manjarotest/files/0.8.11/kde/0.8.11-pre1/">download this install media</a> and test it on your hardware, virtual machines to find issues we still might have missed.</p>
+<p>kind regards</p>
+<p>Philip</p>
+]]></content:encoded>
+			<wfw:commentRss>http://manjaro.org/2014/07/25/manjaro-kde-0-8-11-preview-1-is-online-now/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Debunking Manjaro Myths</title>
+		<link>http://manjaro.org/2014/07/21/debunking-manjaro-myths/</link>
+		<comments>http://manjaro.org/2014/07/21/debunking-manjaro-myths/#comments</comments>
+		<pubDate>Mon, 21 Jul 2014 15:32:44 +0000</pubDate>
+		<dc:creator><![CDATA[Manjaro Team]]></dc:creator>
+				<category><![CDATA[videos]]></category>
+
+		<guid isPermaLink="false">http://manjaro.org/?p=4369</guid>
+		<description><![CDATA[Rob McCathie from the Manjaro project joins us to discuss some recent troubles in the community, bust common myths about Manjaro, their relationship with Arch Linux, and what the future holds for the project. Plus we look at some Fedora 21 features, Google’s Project Zero, Linus’ home office &#8230; AND SO MUCH MORE! All this [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Rob McCathie from the Manjaro project joins us to discuss some recent troubles in the community, bust common myths about Manjaro, their relationship with Arch Linux, and what the future holds for the project. Plus we look at some Fedora 21 features, Google’s Project Zero, Linus’ home office &#8230; AND SO MUCH MORE! </p>
+<p>All this week on, The Linux Action Show!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://manjaro.org/2014/07/21/debunking-manjaro-myths/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Update-Pack 4 is online now!</title>
+		<link>http://manjaro.org/2014/07/21/update-pack-4-is-online-now/</link>
+		<comments>http://manjaro.org/2014/07/21/update-pack-4-is-online-now/#comments</comments>
+		<pubDate>Mon, 21 Jul 2014 15:27:07 +0000</pubDate>
+		<dc:creator><![CDATA[philm]]></dc:creator>
+				<category><![CDATA[general]]></category>
+		<category><![CDATA[news]]></category>
+
+		<guid isPermaLink="false">http://manjaro.org/?p=4364</guid>
+		<description><![CDATA[This is our fourth update-pack for Manjaro 0.8.10! First of all: We dropped linux34 for good. Please remove this kernel with mhwd-kernel: sudo mhwd-kernel -r linux34 Speaking of kernels: We updated 310, 311, 314 and 315 to the latest point releases. Octopi 0.4.1 got released. Comes with: A bunch of obligatory bug fixes Argentinian, Basque [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p><a href="http://manjaro.org/wp-content/uploads/2013/08/system_software_update.png" rel="lightbox[4364]" title="Update-Pack 4 is online now!"><img src="http://manjaro.org/wp-content/uploads/2013/08/system_software_update.png" alt="system_software_update" width="128" height="128" class="alignleft size-full wp-image-3157" /></a>This is our fourth update-pack for Manjaro 0.8.10!</p>
+<p>First of all: We dropped linux34 for good. Please remove this kernel with mhwd-kernel: <strong><em>sudo mhwd-kernel -r linux34</em></strong></p>
+<p>Speaking of kernels: We updated 310, 311, 314 and 315 to the latest point releases.</p>
+<p><strong>Octopi 0.4.1</strong> got released. Comes with:</p>
+<ul>
+<li>A bunch of obligatory bug fixes</li>
+<li>Argentinian, Basque and Japanese translations</li>
+<li>Installed size info in tooltips</li>
+<li>Search by file option (with pacman -Qo)</li>
+<li>Installed packages are counted based on View filters</li>
+<li>A string validator is used in search widgets to prevent anomalous character entering</li>
+</ul>
+<p>KDE5 is around the corner. <strong>KF 5.0</strong> was released earlier this month. We are still waiting for <strong>Plasma 5</strong> hitting our repositories. Read about it <a href="http://kde.org/announcements/kde-frameworks-5.0.php">here</a> and <a href="http://kde.org/announcements/plasma5.0/">here</a>.</p>
+<p>Flash got another security fixes added and we updated both Nvidia drivers to the latest versions. More information about those <a href="https://devtalk.nvidia.com/default/topic/760145/unix-graphics-announcements-and-news/linux-solaris-and-freebsd-driver-340-24-long-lived-branch-release-/">here</a> and <a href="https://devtalk.nvidia.com/default/topic/760649/unix-graphics-announcements-and-news/linux-solaris-and-freebsd-driver-304-123-legacy-for-geforce-6-and-7-series-/">here</a>.</p>
+<p>Ayceman worked hard to get a [b]native version of Steam[/b] out there. You can read more about it <a href="https://forum.manjaro.org/index.php?topic=15153.0">here</a>. Beside that we have regular upstream updates and rebuilds by Archlinux.</p>
+<p>Please report any issues you may find.</p>
+<p>kind regards<br />
+Philip</p>
+<hr />
+<p>If you have issues with Rob McCathies (korrode) signature, try this:</p>
+<pre class="wp-code-highlight prettyprint">sudo pacman-key -r 5C0102A6
+sudo pacman-key --lsign-key 5C0102A6</pre>
+<p>If you have issues with Joshuas Strots (dcell) signature, try this:</p>
+<pre class="wp-code-highlight prettyprint">sudo pacman-key -r CB6CDD17
+sudo pacman-key --lsign-key CB6CDD17</pre>
+<hr />
+<p><strong>Current supported kernels</strong></p>
+<ul>
+<li>Linux38 3.8.13.25</li>
+<li>Linux310 3.10.49</li>
+<li>Linux311 3.11.10.13</li>
+<li>Linux312 3.12.24</li>
+<li>Linux313 3.13.11.4</li>
+<li>Linux314 3.14.13</li>
+<li>Linux314 3.15.6</li>
+</ul>
+<hr />
+<p><strong>Updated packages</strong></p>
+<ul>
+<li>community i686:  324 new and 313 removed package(s)</li>
+<li>community x86_64:  321 new and 311 removed package(s)</li>
+<li>core i686:  24 new and 26 removed package(s)</li>
+<li>core x86_64:  24 new and 26 removed package(s)</li>
+<li>extra i686:  261 new and 266 removed package(s)</li>
+<li>extra x86_64:  261 new and 266 removed package(s)</li>
+<li>multilib x86_64:  44 new and 32 removed package(s)</li>
+</ul>
+<hr />
+<strong>Links</strong></p>
+<ul>
+<li><a href="https://forum.manjaro.org/index.php?topic=15294.0">Talk about this update-pack in our forum</a></li>
+<li><a href="https://forum.manjaro.org/index.php?topic=14139.msg127848#msg127848">Fixing libgl linkage</a></li>
+<li><a href="https://forum.manjaro.org/index.php?topic=14370.msg130371#msg130371">Fixing font issues in java applications</a></li>
+<li><a href="https://www.archlinux.org/news/mariadb-100-enters-extra/">Fix issues with MariaDB</li>
+<li><a href="https://forum.manjaro.org/index.php?topic=15159.msg140052#msg140052">Get KDE working again after MariaDB update</li>
+</ul>
+<hr />
+]]></content:encoded>
+			<wfw:commentRss>http://manjaro.org/2014/07/21/update-pack-4-is-online-now/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Manjaro XFCE Minimal 0.8.11 Preview 1 is online now.</title>
+		<link>http://manjaro.org/2014/07/20/manjaro-xfce-minimal-0-8-11-preview-1-is-online-now/</link>
+		<comments>http://manjaro.org/2014/07/20/manjaro-xfce-minimal-0-8-11-preview-1-is-online-now/#comments</comments>
+		<pubDate>Sun, 20 Jul 2014 18:38:17 +0000</pubDate>
+		<dc:creator><![CDATA[philm]]></dc:creator>
+				<category><![CDATA[general]]></category>
+		<category><![CDATA[news]]></category>
+
+		<guid isPermaLink="false">http://manjaro.org/?p=4358</guid>
+		<description><![CDATA[Hi community! We present to you our first preview of Manjaro XFCE Minimal Edition. We updated our kernel to Linux 3.14 LTS and use the latest MESA release with latest free and proprietary drivers. Also you find our latest graphical tools we develop to get Manjaro easier to be managed with a few mouse clicks. [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p><a href="http://manjaro.org/wp-content/uploads/2014/04/manjaro-0810-menda.png" rel="lightbox[4358]" title="Manjaro XFCE Minimal 0.8.11 Preview 1 is online now."><img src="http://manjaro.org/wp-content/uploads/2014/04/manjaro-0810-menda-300x183.png" alt="manjaro-0810-menda" width="300" height="183" class="alignleft size-medium wp-image-4164" /></a>Hi community! We present to you our first preview of Manjaro XFCE Minimal Edition. We updated our kernel to <strong>Linux 3.14 LTS</strong> and use the <strong>latest MESA</strong> release with latest free and proprietary drivers. Also you find our latest graphical tools we develop to get Manjaro easier to be managed with a few mouse clicks. Also we worked on pamac. We added our development version of our popular graphical package manager to find issues we might have not found yet. So test it and tell us if you find some.</p>
+<p><a href="http://manjaro.org/wp-content/uploads/2014/04/manjaro-0810-welcome.png" rel="lightbox[4358]" title="Manjaro XFCE Minimal 0.8.11 Preview 1 is online now."><img src="http://manjaro.org/wp-content/uploads/2014/04/manjaro-0810-welcome-300x183.png" alt="manjaro-0810-welcome" width="300" height="183" class="alignright size-medium wp-image-4163" /></a>With <strong>Manjaro Settings Manager 0.2.0</strong> we offer you an enhanced kernel and graphic driver management experience. We will notify you about newer drivers and kernels, tell you when you run an unsupported kernel or new language packages are available. Other nice and needful user interfaces will come to our settings manager soon.</p>
+<p><a href="http://manjaro.org/wp-content/uploads/2014/05/manjaro-0810-thus.png" rel="lightbox[4358]" title="Manjaro XFCE Minimal 0.8.11 Preview 1 is online now."><img src="http://manjaro.org/wp-content/uploads/2014/05/manjaro-0810-thus-300x183.png" alt="manjaro-0810-thus" width="300" height="183" class="alignleft size-medium wp-image-4166" /></a>This install media is <strong>based on</strong> our <strong>unstable branch</strong>, so you get the latest packages with it. It is not for everyone in this early stage, but play with it and give us feedback when you did already issues. Speaking of issues: This media claims to come with an unsupported kernel. Don&#8217;t worry, we are already on this <a href="https://github.com/manjaro/manjaro-settings-manager/issues/6">bug</a>. So, if you have time, please <a href="http://sourceforge.net/projects/manjarotest/files/0.8.11/xfce-minimal/0.8.11-pre1/">download this install media</a> and test it on your hardware, virtual machines to find issues we still might have missed.</p>
+<p>kind regards</p>
+<p>Philip</p>
+]]></content:encoded>
+			<wfw:commentRss>http://manjaro.org/2014/07/20/manjaro-xfce-minimal-0-8-11-preview-1-is-online-now/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

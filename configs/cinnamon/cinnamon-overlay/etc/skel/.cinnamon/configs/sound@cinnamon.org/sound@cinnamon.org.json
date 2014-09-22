@@ -1,0 +1,33 @@
+{
+    "showtrack": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Show song information on the panel",
+        "value": false
+    },
+    "truncatetext": {
+        "type": "spinbutton",
+        "default": 30,
+        "min": 5,
+        "max": 512,
+        "units": "characters",
+        "step": 1,
+        "description": "Limit song information to",
+        "dependency": "showtrack",
+        "indent": true,
+        "value": 30
+    },
+    "showalbum": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Show album art as icon",
+        "value": false
+    },
+    "hideSystray": {
+        "type": "checkbox",
+        "description": "Hide system tray icons for compatible players",
+        "default": true,
+        "value": true
+    },
+    "__md5__": "0986cd55d94c4f7dec33d1936a3a370b"
+}

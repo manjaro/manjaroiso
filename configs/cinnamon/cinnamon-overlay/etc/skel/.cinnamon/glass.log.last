@@ -1,0 +1,58 @@
+error t=2014-08-24T04:25:37.763Z Cinnamon Software Rendering mode enabled
+info t=2014-08-24T04:25:41.276Z loading user theme: /home/manjaro/.themes/New-Minty/cinnamon/cinnamon.css
+info t=2014-08-24T04:25:41.344Z added icon directory: /home/manjaro/.themes/New-Minty/cinnamon/
+info t=2014-08-24T04:25:41.966Z loaded at Sun Aug 24 2014 06:25:41 GMT+0200 (CEST)
+info t=2014-08-24T04:25:43.374Z Loaded applet menu@cinnamon.org in 1378 ms
+info t=2014-08-24T04:25:43.409Z Loaded applet show-desktop@cinnamon.org in 29 ms
+info t=2014-08-24T04:25:43.442Z Loaded applet panel-launchers@cinnamon.org in 31 ms
+info t=2014-08-24T04:25:43.510Z Role locked: windowlist
+info t=2014-08-24T04:25:43.514Z Loaded applet window-list@cinnamon.org in 51 ms
+info t=2014-08-24T04:25:43.679Z Role locked: notifications
+info t=2014-08-24T04:25:43.689Z Loaded applet notifications@cinnamon.org in 173 ms
+info t=2014-08-24T04:25:44.034Z Loaded applet user@cinnamon.org in 330 ms
+info t=2014-08-24T04:25:44.085Z Loaded applet removable-drives@cinnamon.org in 47 ms
+info t=2014-08-24T04:25:44.291Z Loaded applet keyboard@cinnamon.org in 205 ms
+error t=2014-08-24T04:25:44.373Z Requiring GnomeBluetoothApplet, version none: Typelib file for namespace 'GnomeBluetoothApplet' (any version) not found
+trace t=2014-08-24T04:25:44.373Z 
+<----------------
+@/usr/share/cinnamon/applets/bluetooth@cinnamon.org/applet.js:4
+---------------->
+error t=2014-08-24T04:25:44.374Z [Applet "bluetooth@cinnamon.org"]: Error importing applet.js from bluetooth@cinnamon.org
+error t=2014-08-24T04:25:44.375Z Could not load applet bluetooth@cinnamon.org
+info t=2014-08-24T04:25:44.613Z Loaded applet network@cinnamon.org in 235 ms
+info t=2014-08-24T04:25:44.993Z Loaded applet sound@cinnamon.org in 365 ms
+info t=2014-08-24T04:25:45.042Z Loaded applet systray@cinnamon.org in 45 ms
+error t=2014-08-24T04:25:45.140Z No signal 'notify-resume' on object 'UpClient'
+trace t=2014-08-24T04:25:45.141Z 
+<----------------
+(2,30,"13")@/usr/share/cinnamon/applets/calendar@cinnamon.org/applet.js:97
+MyApplet(2,30,"13")@/usr/share/cinnamon/applets/calendar@cinnamon.org/applet.js:36
+main([object Object],2,30,"13")@/usr/share/cinnamon/applets/calendar@cinnamon.org/applet.js:208
+createApplet([object Object],[object Object])@/usr/share/cinnamon/js/ui/appletManager.js:330
+addAppletToPanels([object Object],[object Object])@/usr/share/cinnamon/js/ui/appletManager.js:246
+finishExtensionLoad([object Object])@/usr/share/cinnamon/js/ui/appletManager.js:56
+loadExtension("calendar@cinnamon.org",[object Object])@/usr/share/cinnamon/js/ui/extension.js:391
+init()@/usr/share/cinnamon/js/ui/appletManager.js:43
+start()@/usr/share/cinnamon/js/ui/main.js:402
+@<main>:1
+---------------->
+info t=2014-08-24T04:25:45.146Z Loaded applet calendar@cinnamon.org in 100 ms
+info t=2014-08-24T04:25:45.185Z Loaded applet windows-quick-list@cinnamon.org in 30 ms
+info t=2014-08-24T04:25:45.213Z Loaded applet power@airlog.pisz.pl in 26 ms
+info t=2014-08-24T04:25:45.228Z Loaded applet workspace-switcher@cinnamon.org in 11 ms
+error t=2014-08-24T04:25:45.693Z 1,0,,0,0,0
+info t=2014-08-24T04:25:46.477Z Adding systray: pamac-tray (20x20px)
+info t=2014-08-24T04:30:18.119Z loading user theme: /home/manjaro/.themes/Zukitwo-Cinnamon/cinnamon/cinnamon.css
+info t=2014-08-24T04:30:18.434Z added icon directory: /home/manjaro/.themes/Zukitwo-Cinnamon/cinnamon/
+info t=2014-08-24T04:30:27.501Z loading user theme: /home/manjaro/.themes/New-Minty/cinnamon/cinnamon.css
+info t=2014-08-24T04:30:27.670Z added icon directory: /home/manjaro/.themes/New-Minty/cinnamon/
+info t=2014-08-24T05:55:31.276Z Adding systray: pamac-tray (20x20px)
+error t=2014-08-24T05:55:31.283Z 1,0,,0,0,0
+info t=2014-08-24T05:55:53.484Z 15 applet already loaded
+info t=2014-08-24T05:55:53.506Z 16 applet already loaded
+info t=2014-08-24T05:55:53.642Z 5 applet already loaded
+info t=2014-08-24T05:55:53.646Z 6 applet already loaded
+info t=2014-08-24T05:55:53.659Z 7 applet already loaded
+info t=2014-08-24T05:55:53.668Z 9 applet already loaded
+info t=2014-08-24T05:55:53.679Z 10 applet already loaded
+info t=2014-08-24T05:55:53.716Z Adding systray: pamac-tray (20x20px)

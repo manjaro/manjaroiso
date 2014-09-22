@@ -1,0 +1,10 @@
+RELEASE=0.8
+CODENAME=Ascella
+EDITION="Cinnamon "
+DESCRIPTION="Manjaro Linux"
+DESKTOP=Gnome
+TOOLKIT=GTK
+NEW_FEATURES_URL=http://www.linuxmint.com/rel_qiana_cinnamon_whatsnew.php
+RELEASE_NOTES_URL=http://www.linuxmint.com/rel_qiana_cinnamon.php
+USER_GUIDE_URL=http://www.linuxmint.com/documentation.php
+GRUB_TITLE=Manjaro Linux Cinnamon
