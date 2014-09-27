@@ -129,7 +129,9 @@ nss
 nss-mdns
 
 ## Package management
-pamac
+#pamac  #octopi more stability over updates
+octopi
+octopi-notifier
 manjaro-welcome
 manjaro-settings-manager
 
