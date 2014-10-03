@@ -136,17 +136,17 @@ kdepim
 k3b
 digikam
 simple-scan
-amarok
+#amarok
 gparted
-gimp
+#gimp
 vlc
 imagewriter
 kdenetwork
 yakuake
 konversation
 manjaro-welcome
-turbulence
-turbulence-artwork
+#turbulence
+#turbulence-artwork
 open-fuse-iso
 
 ## Package management
