@@ -31,10 +31,11 @@ kdeartwork-colorschemes-oxygreen
 kdeartwork-wallpapers-manjaro-redefined
 kdeartwork-wallpapers-tr-community
 kdeicons-faenzaflattr-green
-kdm-theme-manjaro-redefined
+manjaro-redefined-kdm
 ksplash-theme-manjaro-redefined
 plymouth-theme-manjaro-elegant
 xcursor-breeze
+kde-theme-violet-pastel
 
 ## Community KDE packages
 udiskie
