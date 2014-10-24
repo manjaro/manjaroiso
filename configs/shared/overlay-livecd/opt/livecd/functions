@@ -703,12 +703,6 @@ hd_config()
        echo "TERM=mate-terminal" >> ${DESTDIR}/etc/profile
     fi
 
-
-    # Fix QT-theme in XFCE
-    if [ -e "/usr/bin/startxfce4" ] ; then
-       echo "QT_STYLE_OVERRIDE=gtk" >> ${DESTDIR}/etc/environment
-    fi
-
     # Adjust Steam-Native when libudev.so.0 is available
     if [ -e "/usr/lib/libudev.so.0" ] || [ -e "/usr/lib32/libudev.so.0" ] ; then
        echo -e "STEAM_RUNTIME=0\nSTEAM_FRAME_FORCE_CLOSE=1" >> ${DESTDIR}/etc/environment
