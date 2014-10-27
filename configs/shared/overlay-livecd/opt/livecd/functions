@@ -583,7 +583,7 @@ hd_config()
           if [ -e "/usr/bin/openbox-session" ] ; then
              echo "XSession=openbox" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
           fi
-          if [ -e "/usr/bin/lxsession" ] ; then
+          if [ -e "/usr/bin/startlxde" ] ; then
              echo "XSession=LXDE" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
           fi
           if [ -e "/usr/bin/lxqt-session" ] ; then
@@ -612,7 +612,7 @@ hd_config()
        if [ -e "/usr/bin/mate-session" ] ; then
              sed -i 's|default.desktop|mate.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
        fi
-       if [ -e "/usr/bin/lxsession" ] ; then
+       if [ -e "/usr/bin/startlxde" ] ; then
              sed -i 's|default.desktop|LXDE.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
        fi
        if [ -e "/usr/bin/lxqt-session" ] ; then
@@ -643,7 +643,7 @@ hd_config()
        if [ -e "/usr/bin/openbox-session" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/openbox-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
-       if [ -e "/usr/bin/lxsession" ] ; then
+       if [ -e "/usr/bin/startlxde" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/lxsession|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
        if [ -e "/usr/bin/lxqt-session" ] ; then
@@ -677,7 +677,7 @@ hd_config()
        if [ -e "/usr/bin/mate-session" ] ; then
          sed -i -e 's|^.*LastSession=.*|LastSession=mate.desktop|' ${DESTDIR}/etc/sddm.conf
        fi
-       if [ -e "/usr/bin/lxsession" ] ; then
+       if [ -e "/usr/bin/startlxde" ] ; then
          sed -i -e 's|^.*LastSession=.*|LastSession=LXDE.desktop|' ${DESTDIR}/etc/sddm.conf
        fi
        if [ -e "/usr/bin/lxqt-session" ] ; then
@@ -1150,7 +1150,7 @@ _setup_user()
        if [ -e "/usr/bin/openbox-session" ] ; then
           echo "XSession=openbox" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
        fi
-       if [ -e "/usr/bin/lxsession" ] ; then
+       if [ -e "/usr/bin/startlxde" ] ; then
           echo "XSession=LXDE" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
        fi
        if [ -e "/usr/bin/lxqt-session" ] ; then
