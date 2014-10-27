@@ -100,7 +100,7 @@ if [ -e "/usr/bin/lightdm" ] ; then
    if [ -e "/usr/bin/openbox-session" ] ; then
         sed -i -e 's/^.*user-session=.*/user-session=openbox/' /etc/lightdm/lightdm.conf
    fi
-   if [ -e "/usr/bin/lxsession" ] ; then
+   if [ -e "/usr/bin/startlxde" ] ; then
         sed -i -e 's/^.*user-session=.*/user-session=LXDE/' /etc/lightdm/lightdm.conf
    fi
    if [ -e "/usr/bin/lxqt-session" ] ; then

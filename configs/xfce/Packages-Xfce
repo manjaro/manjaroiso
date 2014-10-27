@@ -5,7 +5,11 @@ ffmpegthumbnailer
 gconf # fix qt-theme
 gnome-keyring # fix wlan segfault
 gufw # firewall
-mdm-themes
+#mdm-themes
+accountsservice
+lightdm-gtk3-greeter
+lightdm-gtk-greeter-settings
+light-locker
 manjaro-settings-manager
 menulibre
 network-manager-applet
@@ -23,7 +27,7 @@ thus
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xfce4
-xscreensaver
+#xscreensaver
 
 ## XFCE Extra Packages
 xfce4-artwork
@@ -120,7 +124,7 @@ xorg-xinit
 ## Artwork
 faenza-green-icon-theme
 gtk-theme-ceti
-gtk-theme-menda
+menda-themes
 manjaro-artwork
 lxdm-manjaro-theme
 xfce-theme-greenbird
@@ -146,7 +150,7 @@ pulseaudio-ctl
 
 ## Package management
 #octopi
-lxpolkit
+lxsession
 pamac
 
 ## Games
@@ -155,7 +159,8 @@ steam-native
 
 ## Fonts
 ttf-dejavu
-adobe-source-sans-pro-fonts
+#adobe-source-sans-pro-fonts
+cantarell-fonts
 
 ## Java
 icedtea-web
