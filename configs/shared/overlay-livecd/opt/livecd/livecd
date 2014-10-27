@@ -153,7 +153,7 @@ if [ -e "/usr/bin/gdm" ] ; then
      if [ -e "/usr/bin/openbox-session" ] ; then
         echo "XSession=openbox" >> /var/lib/AccountsService/users/gdm
      fi
-     if [ -e "/usr/bin/lxsession" ] ; then
+     if [ -e "/usr/bin/startlxde" ] ; then
         echo "XSession=LXDE" >> /var/lib/AccountsService/users/gdm
      fi
      if [ -e "/usr/bin/lxqt-session" ] ; then
@@ -182,7 +182,7 @@ if [ -e "/usr/bin/mdm" ] ; then
   if [ -e "/usr/bin/mate-session" ] ; then
       sed -i 's|default.desktop|mate.desktop|g' /etc/mdm/custom.conf
   fi
-  if [ -e "/usr/bin/lxsession" ] ; then
+  if [ -e "/usr/bin/startlxde" ] ; then
       sed -i 's|default.desktop|LXDE.desktop|g' /etc/mdm/custom.conf
   fi
   if [ -e "/usr/bin/lxqt-session" ] ; then
@@ -209,7 +209,7 @@ if [ -e "/usr/bin/sddm" ] ; then
   if [ -e "/usr/bin/mate-session" ] ; then
       sed -i -e 's|^.*LastSession=.*|LastSession=mate.desktop|' /etc/sddm.conf
   fi
-  if [ -e "/usr/bin/lxsession" ] ; then
+  if [ -e "/usr/bin/startlxde" ] ; then
       sed -i -e 's|^.*LastSession=.*|LastSession=LXDE.desktop|' /etc/sddm.conf
   fi
   if [ -e "/usr/bin/lxqt-session" ] ; then
@@ -241,7 +241,7 @@ if [ -e "/usr/bin/lxdm" ] ; then
    if [ -e "/usr/bin/openbox-session" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/openbox-session|' /etc/lxdm/lxdm.conf
    fi
-   if [ -e "/usr/bin/lxsession" ] ; then
+   if [ -e "/usr/bin/startlxde" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/lxsession|' /etc/lxdm/lxdm.conf
    fi
    if [ -e "/usr/bin/lxqt-session" ] ; then
@@ -271,7 +271,7 @@ if [ -d "/var/lib/AccountsService/users" ] ; then
      if [ -e "/usr/bin/openbox-session" ] ; then
         echo "XSession=openbox" >> /var/lib/AccountsService/users/manjaro
      fi
-     if [ -e "/usr/bin/lxsession" ] ; then
+     if [ -e "/usr/bin/startlxde" ] ; then
         echo "XSession=LXDE" >> /var/lib/AccountsService/users/manjaro
      fi
      if [ -e "/usr/bin/lxqt-session" ] ; then
