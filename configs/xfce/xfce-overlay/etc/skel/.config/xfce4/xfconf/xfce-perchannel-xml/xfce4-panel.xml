@@ -13,6 +13,7 @@
         <value type="int" value="1"/>
         <value type="int" value="4"/>
         <value type="int" value="6"/>
+        <value type="int" value="9"/>
         <value type="int" value="5"/>
         <value type="int" value="2"/>
       </property>
@@ -50,7 +51,6 @@
         <value type="string" value="pamac-tray"/>
         <value type="string" value="blueman-applet"/>
         <value type="string" value="clipman"/>
-        <value type="string" value="xfce4-power-manager"/>
         <value type="string" value="pa-applet"/>
         <value type="string" value="xnoise"/>
       </property>
@@ -64,6 +64,7 @@
     <property name="plugin-8" type="string" value="whiskermenu"/>
     <property name="plugin-5" type="string" value="clock"/>
     <property name="plugin-1" type="string" value="showdesktop"/>
+    <property name="plugin-9" type="string" value="power-manager-plugin"/>
   </property>
   <property name="configver" type="int" value="2"/>
 </channel>
