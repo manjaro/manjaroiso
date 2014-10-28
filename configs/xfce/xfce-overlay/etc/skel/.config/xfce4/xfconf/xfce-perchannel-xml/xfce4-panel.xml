@@ -21,7 +21,7 @@
       <property name="autohide" type="bool" value="false"/>
       <property name="length-adjust" type="bool" value="true"/>
       <property name="background-style" type="uint" value="0"/>
-      <property name="size" type="uint" value="27"/>
+      <property name="size" type="uint" value="29"/>
       <property name="mode" type="uint" value="0"/>
     </property>
   </property>
