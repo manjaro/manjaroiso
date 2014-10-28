@@ -340,11 +340,6 @@ fi
 dbus-uuidgen --ensure=/etc/machine-id
 dbus-uuidgen --ensure=/var/lib/dbus/machine-id
 
-echo "configure keyboard" >> /tmp/livecd.log
-
-# load keys
-keyboardctl --setup
-
 # depmod extramodules
 depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 

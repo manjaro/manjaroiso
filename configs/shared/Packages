@@ -22,7 +22,6 @@ inetutils
 iproute2
 iputils
 jfsutils
-keyboardctl
 less
 licenses
 locale-info
@@ -34,7 +33,7 @@ manjaro-hotfixes
 manjaro-system
 mdadm
 mesa
-mhwd
+mhwd-dev
 mhwd-db
 nano
 pacman
