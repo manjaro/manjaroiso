@@ -24,6 +24,8 @@ KERNEL-r8168
 >nonfree_uni KERNEL-catalyst
 >nonfree_uni nvidia-utils
 >nonfree_uni KERNEL-nvidia
+>nonfree_uni nvidia-340xx-utils
+>nonfree_uni KERNEL-nvidia-340xx
 >nonfree_uni nvidia-304xx-utils
 >nonfree_uni KERNEL-nvidia-304xx
 >nonfree_x64 lib32-catalyst-utils
