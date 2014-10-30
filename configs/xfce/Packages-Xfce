@@ -82,8 +82,9 @@ mlocate
 mousepad
 #parole
 pidgin
-evince
+#evince
 #raktpdf
+qpdfview
 thunderbird
 viewnior
 vlc
