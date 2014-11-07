@@ -151,10 +151,10 @@ pa-applet
 pulseaudio-ctl
 
 ## Package management
-octopi
-octopi-notifier
+#octopi
+#octopi-notifier
 lxsession
-#pamac
+pamac
 
 ## Games
 steam
