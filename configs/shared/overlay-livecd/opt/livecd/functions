@@ -205,11 +205,8 @@ set_locale() {
   [ -n "$KEYMAP" ] || KEYMAP="us"
   [ -n "$KBLAYOUT" ] || KBLAYOUT="us"
 
-  # set kblayout
-  keyboardctl --set-layout "$KBLAYOUT" ""
-  if [ ! -z ${DESTDIR} ]; then
-     cp -f /etc/keyboard.conf ${DESTDIR}/etc/keyboard.conf
-  fi
+  # set keymap and kblayout
+  localectl set-keymap "${KEYMAP}"
 
   # set systemwide language
   echo "LANG=${LOCALE}.UTF-8" > ${DESTDIR}/etc/locale.conf
