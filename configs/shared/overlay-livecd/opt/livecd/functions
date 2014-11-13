@@ -36,6 +36,10 @@ if [ -e "/bootmnt/${install_dir}/${arch}/lxde-image.sqfs" ] ; then
    DESKTOP="LXDE"
    DESKTOP_IMG="lxde-image"
 fi
+if [ -e "/bootmnt/${install_dir}/${arch}/lxqt-image.sqfs" ] ; then
+   DESKTOP="LXQt"
+   DESKTOP_IMG="lxqt-image"
+fi
 if [ -e "/bootmnt/${install_dir}/${arch}/enlightenment-image.sqfs" ] ; then
    DESKTOP="ENLIGHTENMENT"
    DESKTOP_IMG="enlightenment-image"
@@ -201,11 +205,8 @@ set_locale() {
   [ -n "$KEYMAP" ] || KEYMAP="us"
   [ -n "$KBLAYOUT" ] || KBLAYOUT="us"
 
-  # set kblayout
-  keyboardctl --set-layout "$KBLAYOUT" ""
-  if [ ! -z ${DESTDIR} ]; then
-     cp -f /etc/keyboard.conf ${DESTDIR}/etc/keyboard.conf
-  fi
+  # set keymap and kblayout
+  localectl set-keymap "${KEYMAP}"
 
   # set systemwide language
   echo "LANG=${LOCALE}.UTF-8" > ${DESTDIR}/etc/locale.conf
@@ -214,7 +215,7 @@ set_locale() {
 
   # generate LOCALE
   local TLANG=${LOCALE%.*} # remove everything after the ., including the dot from LOCALE
-  sed -i -r "s/#(.*${TLANG}.*UTF-8)/\1/g" ${DESTDIR}/etc/locale.gen
+  sed -i -r "s/#(${TLANG}.*UTF-8)/\1/g" ${DESTDIR}/etc/locale.gen
   # add also American English as safe default
   sed -i -r "s/#(en_US.*UTF-8)/\1/g" ${DESTDIR}/etc/locale.gen
 }
@@ -579,8 +580,11 @@ hd_config()
           if [ -e "/usr/bin/openbox-session" ] ; then
              echo "XSession=openbox" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
           fi
-          if [ -e "/usr/bin/lxsession" ] ; then
+          if [ -e "/usr/bin/startlxde" ] ; then
              echo "XSession=LXDE" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
+          fi
+          if [ -e "/usr/bin/lxqt-session" ] ; then
+             echo "XSession=LXQt" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
           fi
           echo "Icon=" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
        fi
@@ -605,8 +609,11 @@ hd_config()
        if [ -e "/usr/bin/mate-session" ] ; then
              sed -i 's|default.desktop|mate.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
        fi
-       if [ -e "/usr/bin/lxsession" ] ; then
+       if [ -e "/usr/bin/startlxde" ] ; then
              sed -i 's|default.desktop|LXDE.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
+       fi
+       if [ -e "/usr/bin/lxqt-session" ] ; then
+             sed -i 's|default.desktop|lxqt.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
        fi
        if [ -e "/usr/bin/enlightenment_start" ] ; then
              sed -i 's|default.desktop|enlightenment.desktop|g' ${DESTDIR}/etc/mdm/custom.conf
@@ -633,8 +640,11 @@ hd_config()
        if [ -e "/usr/bin/openbox-session" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/openbox-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
-       if [ -e "/usr/bin/lxsession" ] ; then
+       if [ -e "/usr/bin/startlxde" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/lxsession|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
+       fi
+       if [ -e "/usr/bin/lxqt-session" ] ; then
+         sed -i -e 's|^.*session=.*|session=/usr/bin/lxqt-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
        chgrp -R lxdm ${DESTDIR}/var/lib/lxdm  &>/dev/null
        chgrp lxdm ${DESTDIR}/etc/lxdm/lxdm.conf  &>/dev/null
@@ -650,6 +660,31 @@ hd_config()
        chroot ${DESTDIR} update-desktop-database -q
     fi
 
+    # setup sddm
+    if [ -e "/usr/bin/sddm" ] ; then
+       if [ -e "/usr/bin/startxfce4" ] ; then
+         sed -i -e 's|^.*LastSession=.*|LastSession=xfce.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
+       if [ -e "/usr/bin/cinnamon-session" ] ; then
+         sed -i -e 's|^.*LastSession=.*|LastSession=cinnamon.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
+       if [ -e "/usr/bin/openbox-session" ] ; then
+         sed -i -e 's|^.*LastSession=.*|LastSession=openbox.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
+       if [ -e "/usr/bin/mate-session" ] ; then
+         sed -i -e 's|^.*LastSession=.*|LastSession=mate.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
+       if [ -e "/usr/bin/startlxde" ] ; then
+         sed -i -e 's|^.*LastSession=.*|LastSession=LXDE.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
+       if [ -e "/usr/bin/lxqt-session" ] ; then
+         sed -i -e 's|^.*LastSession=.*|LastSession=lxqt.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
+       if [ -e "/usr/bin/enlightenment_start" ] ; then
+         sed -i -e 's|^.*LastSession=.*|LastSession=enlightenment.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
+    fi
+
     # fix some apps
 
     DIALOG --infobox "${_fixapps}" 6 40
@@ -663,6 +698,11 @@ hd_config()
     if [ -e "/bootmnt/${install_dir}/${arch}/mate-image.sqfs" ] ; then
        echo "TERM=mate-terminal" >> ${DESTDIR}/etc/environment
        echo "TERM=mate-terminal" >> ${DESTDIR}/etc/profile
+    fi
+
+    # Adjust Steam-Native when libudev.so.0 is available
+    if [ -e "/usr/lib/libudev.so.0" ] || [ -e "/usr/lib32/libudev.so.0" ] ; then
+       echo -e "STEAM_RUNTIME=0\nSTEAM_FRAME_FORCE_CLOSE=1" >> ${DESTDIR}/etc/environment
     fi
 
     # fix_gnome_apps
@@ -1107,8 +1147,11 @@ _setup_user()
        if [ -e "/usr/bin/openbox-session" ] ; then
           echo "XSession=openbox" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
        fi
-       if [ -e "/usr/bin/lxsession" ] ; then
+       if [ -e "/usr/bin/startlxde" ] ; then
           echo "XSession=LXDE" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
+       fi
+       if [ -e "/usr/bin/lxqt-session" ] ; then
+          echo "XSession=LXQt" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
        fi
        echo "Icon=" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
     fi

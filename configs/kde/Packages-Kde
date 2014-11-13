@@ -31,9 +31,11 @@ kdeartwork-colorschemes-oxygreen
 kdeartwork-wallpapers-manjaro-redefined
 kdeartwork-wallpapers-tr-community
 kdeicons-faenzaflattr-green
-kdm-theme-manjaro-redefined
+manjaro-redefined-kdm-theme
 ksplash-theme-manjaro-redefined
 plymouth-theme-manjaro-elegant
+xcursor-breeze
+kde-theme-violet-pastel
 
 ## Community KDE packages
 udiskie
@@ -95,6 +97,7 @@ networkmanager-dispatcher-ntpd
 openresolv
 
 ## Graphical installer
+calamares
 thus
 
 ## Packages for Sound and Audio
@@ -134,17 +137,17 @@ kdepim
 k3b
 digikam
 simple-scan
-amarok
+#amarok
 gparted
-gimp
+#gimp
 vlc
 imagewriter
 kdenetwork
 yakuake
 konversation
 manjaro-welcome
-turbulence
-turbulence-artwork
+#turbulence
+#turbulence-artwork
 open-fuse-iso
 
 ## Package management

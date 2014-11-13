@@ -70,7 +70,7 @@ memtest86+
 KERNEL
 
 ## Extra Base Packages
-grub-bios
+grub
 mkinitcpio-nfs-utils
 os-prober
 pkg-config

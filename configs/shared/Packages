@@ -75,7 +75,7 @@ os-prober
 pkg-config
 squashfs-tools
 sudo
-syslinux4
+syslinux
 xdg-utils
 xdg-user-dirs
 

@@ -100,8 +100,11 @@ if [ -e "/usr/bin/lightdm" ] ; then
    if [ -e "/usr/bin/openbox-session" ] ; then
         sed -i -e 's/^.*user-session=.*/user-session=openbox/' /etc/lightdm/lightdm.conf
    fi
-   if [ -e "/usr/bin/lxsession" ] ; then
+   if [ -e "/usr/bin/startlxde" ] ; then
         sed -i -e 's/^.*user-session=.*/user-session=LXDE/' /etc/lightdm/lightdm.conf
+   fi
+   if [ -e "/usr/bin/lxqt-session" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=lxqt/' /etc/lightdm/lightdm.conf
    fi
    sed -i -e "s/^.*autologin-user=.*/autologin-user=${username}/" /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
@@ -150,8 +153,11 @@ if [ -e "/usr/bin/gdm" ] ; then
      if [ -e "/usr/bin/openbox-session" ] ; then
         echo "XSession=openbox" >> /var/lib/AccountsService/users/gdm
      fi
-     if [ -e "/usr/bin/lxsession" ] ; then
+     if [ -e "/usr/bin/startlxde" ] ; then
         echo "XSession=LXDE" >> /var/lib/AccountsService/users/gdm
+     fi
+     if [ -e "/usr/bin/lxqt-session" ] ; then
+        echo "XSession=LXQt" >> /var/lib/AccountsService/users/gdm
      fi
      echo "Icon=" >> /var/lib/AccountsService/users/gdm
   fi
@@ -176,8 +182,11 @@ if [ -e "/usr/bin/mdm" ] ; then
   if [ -e "/usr/bin/mate-session" ] ; then
       sed -i 's|default.desktop|mate.desktop|g' /etc/mdm/custom.conf
   fi
-  if [ -e "/usr/bin/lxsession" ] ; then
+  if [ -e "/usr/bin/startlxde" ] ; then
       sed -i 's|default.desktop|LXDE.desktop|g' /etc/mdm/custom.conf
+  fi
+  if [ -e "/usr/bin/lxqt-session" ] ; then
+      sed -i 's|default.desktop|lxqt.desktop|g' /etc/mdm/custom.conf
   fi
   if [ -e "/usr/bin/enlightenment_start" ] ; then
       sed -i 's|default.desktop|enlightenment.desktop|g' /etc/mdm/custom.conf
@@ -186,25 +195,35 @@ fi
 
 # do_setupsddm
 if [ -e "/usr/bin/sddm" ] ; then
-  sed -i -e "s|^.*LastUser=.*|LastUser=${username}|" /etc/sddm.conf
-  sed -i -e "s|^.*AutoUser=.*|AutoUser=${username}|" /etc/sddm.conf
+  getent group sddm > /dev/null 2>&1 || groupadd --system sddm
+  getent passwd sddm > /dev/null 2>&1 || usr/bin/useradd -c "Simple Desktop Display Manager" --system -d /var/lib/sddm -s /usr/bin/nologin -g sddm sddm
+  passwd -l sddm > /dev/null
+  mkdir -p /var/lib/sddm
+  chown -R sddm:sddm /var/lib/sddm > /dev/null
+  sed -i -e "s|^User=.*|User=${username}|" /etc/sddm.conf
   if [ -e "/usr/bin/startxfce4" ] ; then
-      sed -i -e 's|^.*LastSession=.*|LastSession=xfce.desktop|' /etc/sddm.conf
+      sed -i -e 's|^Session=.*|Session=xfce.desktop|' /etc/sddm.conf
   fi
   if [ -e "/usr/bin/cinnamon-session" ] ; then
-      sed -i -e 's|^.*LastSession=.*|LastSession=cinnamon.desktop|' /etc/sddm.conf
+      sed -i -e 's|^Session=.*|Session=cinnamon.desktop|' /etc/sddm.conf
   fi
   if [ -e "/usr/bin/openbox-session" ] ; then
-      sed -i -e 's|^.*LastSession=.*|LastSession=openbox.desktop|' /etc/sddm.conf
+      sed -i -e 's|^Session=.*|Session=openbox.desktop|' /etc/sddm.conf
   fi
   if [ -e "/usr/bin/mate-session" ] ; then
-      sed -i -e 's|^.*LastSession=.*|LastSession=mate.desktop|' /etc/sddm.conf
+      sed -i -e 's|^Session=.*|Session=mate.desktop|' /etc/sddm.conf
   fi
   if [ -e "/usr/bin/lxsession" ] ; then
-      sed -i -e 's|^.*LastSession=.*|LastSession=LXDE.desktop|' /etc/sddm.conf
+      sed -i -e 's|^Session=.*|Session=LXDE.desktop|' /etc/sddm.conf
+  fi
+  if [ -e "/usr/bin/lxqt-session" ] ; then
+      sed -i -e 's|^Session=.*|Session=lxqt.desktop|' /etc/sddm.conf
   fi
   if [ -e "/usr/bin/enlightenment_start" ] ; then
-      sed -i -e 's|^.*LastSession=.*|LastSession=enlightenment.desktop|' /etc/sddm.conf
+      sed -i -e 's|^Session=.*|Session=enlightenment.desktop|' /etc/sddm.conf
+  fi
+  if [ -e "/usr/bin/startkde" ] ; then
+      sed -i -e 's|^Session=.*|Session=plasma.desktop|' /etc/sddm.conf
   fi
 fi
 
@@ -229,8 +248,11 @@ if [ -e "/usr/bin/lxdm" ] ; then
    if [ -e "/usr/bin/openbox-session" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/openbox-session|' /etc/lxdm/lxdm.conf
    fi
-   if [ -e "/usr/bin/lxsession" ] ; then
+   if [ -e "/usr/bin/startlxde" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/lxsession|' /etc/lxdm/lxdm.conf
+   fi
+   if [ -e "/usr/bin/lxqt-session" ] ; then
+      sed -i -e 's|^.*session=.*|session=/usr/bin/lxqt-session|' /etc/lxdm/lxdm.conf
    fi
    chgrp -R lxdm /var/lib/lxdm > /dev/null
    chgrp lxdm /etc/lxdm/lxdm.conf > /dev/null
@@ -256,8 +278,11 @@ if [ -d "/var/lib/AccountsService/users" ] ; then
      if [ -e "/usr/bin/openbox-session" ] ; then
         echo "XSession=openbox" >> /var/lib/AccountsService/users/manjaro
      fi
-     if [ -e "/usr/bin/lxsession" ] ; then
+     if [ -e "/usr/bin/startlxde" ] ; then
         echo "XSession=LXDE" >> /var/lib/AccountsService/users/manjaro
+     fi
+     if [ -e "/usr/bin/lxqt-session" ] ; then
+        echo "XSession=LXQt" >> /var/lib/AccountsService/users/manjaro
      fi
      echo "Icon=/var/lib/AccountsService/icons/manjaro.png" >> /var/lib/AccountsService/users/manjaro
 fi
@@ -315,11 +340,6 @@ fi
 dbus-uuidgen --ensure=/etc/machine-id
 dbus-uuidgen --ensure=/var/lib/dbus/machine-id
 
-echo "configure keyboard" >> /tmp/livecd.log
-
-# load keys
-keyboardctl --setup
-
 # depmod extramodules
 depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 
@@ -372,6 +392,10 @@ if [ -e "$_conf_file" ] ; then
       sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/lxde-image.sqfs|g" $_conf_file
       sed -i "s|_title_|Manjaro LXDE Edition|g" $_conf_file
    fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/lxqt-image.sqfs" ] ; then
+      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/lxqt-image.sqfs|g" $_conf_file
+      sed -i "s|_title_|Manjaro LXQt Edition|g" $_conf_file
+   fi
    if [ -e "/bootmnt/${install_dir}/${arch}/enlightenment-image.sqfs" ] ; then
       sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/enlightenment-image.sqfs|g" $_conf_file
       sed -i "s|_title_|Manjaro Enlightenment Edition|g" $_conf_file
@@ -413,6 +437,9 @@ if [ -e "/usr/share/calamares/settings.conf" ] ; then
    fi
    if [ -e "/bootmnt/${install_dir}/${arch}/lxde-image.sqfs" ] ; then
       sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/lxde-image.sqfs|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/lxqt-image.sqfs" ] ; then
+      sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/lxqt-image.sqfs|g" $_conf_file
    fi
    if [ -e "/bootmnt/${install_dir}/${arch}/enlightenment-image.sqfs" ] ; then
       sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/enlightenment-image.sqfs|g" $_conf_file

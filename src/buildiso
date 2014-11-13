@@ -53,6 +53,11 @@ if [ -e Packages-Lxde ] ; then
     desktop="lxde"
     pkgsfile="Packages-Lxde"
 fi
+if [ -e Packages-Lxqt ] ; then
+    de="-lxqt"
+    desktop="lxqt"
+    pkgsfile="Packages-Lxqt"
+fi
 if [ -e Packages-Mate ] ; then
     de="-mate"
     desktop="mate"
@@ -272,9 +277,15 @@ if [ -e Packages-Xorg ] ; then
                  echo -e "$_g >$_W done $_n"
               fi
               if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep nvidia-304xx-utils 2> /dev/null`" ]; then
-                 echo -e -n "$_r >$_W Disabling Nvidia-Legacy driver \n $_n"
-                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-legacy/
-                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-legacy/MHWDCONFIG
+                 echo -e -n "$_r >$_W Disabling Nvidia 304xx driver \n $_n"
+                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-304xx/
+                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-304xx/MHWDCONFIG
+                 echo -e "$_g >$_W done $_n"
+              fi
+              if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep nvidia-340xx-utils 2> /dev/null`" ]; then
+                 echo -e -n "$_r >$_W Disabling Nvidia 340xx driver \n $_n"
+                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-340xx/
+                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-340xx/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
               umount -l ${work_dir}/pkgs-image
