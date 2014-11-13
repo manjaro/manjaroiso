@@ -1,9 +1,8 @@
 *~
 .gitignore
 .directory
-work-*
-*.iso
-*-x86_64*
-*-i686*
+*/work-*
+*/*.iso
+*/*-pkgs.txt
 diff
 configs/guidelines.txt
