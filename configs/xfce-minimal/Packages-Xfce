@@ -91,7 +91,7 @@ manjaro-artwork
 #mdm-themes
 lxdm-consolekit
 xfce-theme-greenbird
-plymouth-theme-manjaro-elegant
+#plymouth-theme-manjaro-elegant
 
 ## Fonts
 ttf-dejavu
