@@ -1,60 +1,10 @@
 ### Manjaro Packages
 
-## Minmal XFCE Desktop Packages
-gconf # fix qt-theme
-gnome-keyring # fix wlan segfault
->i686 gnome-vfs
-gvfs # to fix trash in thunar
-menulibre
-network-manager-applet
-#numlockx
-xcursor-simpleandsoft
-xcursor-vanilla-dmz-aa
-xfce4-panel
-xfce4-session
-xfce4-terminal
-xfdesktop
-xfwm4
-xfce4-appfinder
-xfce4-settings
-xfce4-notifyd
-xfce4-screenshooter
-xfce4-taskmanager
-xfce4-battery-plugin
-xfce4-clipman-plugin
-xfce4-power-manager
-xfce4-whiskermenu-plugin
-
-## Audio Packages
-manjaro-alsa
-manjaro-pulse
-pavucontrol
-pa-applet
-pulseaudio-ctl
-
-## Applications
-gksu
-gparted
-gst-libav
-libreoffice-installer
-lxpolkit
-manjaro-settings-manager
-manjaro-welcome
-midori
-mousepad
-pamac-dev
->i686 parole
-polkit-gnome # for gparted
-raktpdf
->i686 sylpheed
->i686 xnoise
-
-## Installer
-thus
-
 ## Network
-netctl
-networkmanager
+#netctl # systemd only
+#networkmanager
+eudev # hack for networkmanager-openrc
+networkmanager-openrc
 networkmanager-dispatcher-ntpd
 openresolv
 blueman
@@ -81,14 +31,69 @@ xorg-twm
 xorg-utils
 xorg-xinit
 
+## Audio Packages
+manjaro-alsa
+#manjaro-pulse
+#pavucontrol
+#pa-applet
+#pulseaudio-ctl
+
+## Minmal XFCE Desktop Packages
+gconf # fix qt-theme
+gnome-keyring # fix wlan segfault
+>i686 gnome-vfs
+gvfs # to fix trash in thunar
+menulibre
+network-manager-applet
+#numlockx
+xcursor-simpleandsoft
+xcursor-vanilla-dmz-aa
+xfce4-panel
+#xfce4-session
+xfce4-session-consolekit
+xfce4-terminal
+xfdesktop
+xfwm4
+xfce4-appfinder
+xfce4-settings
+xfce4-notifyd
+xfce4-screenshooter
+xfce4-taskmanager
+xfce4-battery-plugin
+xfce4-clipman-plugin
+#xfce4-power-manager
+xfce4-power-manager-upower0
+xfce4-whiskermenu-plugin
+
+## Applications
+gksu
+gparted
+gst-libav
+libreoffice-installer
+lxsession
+manjaro-settings-manager
+manjaro-welcome
+midori
+mousepad
+pamac-dev
+>i686 parole
+polkit-gnome # for gparted
+raktpdf
+>i686 sylpheed
+>i686 xnoise
+
+## Installer
+thus
+
 ## Artwork
 faenza-green-icon-theme
 gtk-theme-ceti
-gtk-theme-menda
+menda-themes
 manjaro-artwork
-mdm-themes
+#mdm-themes
+lxdm-consolekit
 xfce-theme-greenbird
-plymouth-theme-manjaro-elegant
+#plymouth-theme-manjaro-elegant
 
 ## Fonts
 ttf-dejavu
