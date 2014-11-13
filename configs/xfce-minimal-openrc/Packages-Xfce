@@ -33,6 +33,7 @@ xorg-xinit
 
 ## Audio Packages
 manjaro-alsa
+pnmixer
 #manjaro-pulse
 #pavucontrol
 #pa-applet
