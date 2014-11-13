@@ -6,3 +6,4 @@ work-*
 *-x86_64*
 *-i686*
 diff
+configs/guidelines.txt
