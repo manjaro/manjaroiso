@@ -1,4 +1,4 @@
-Configs for [manjaroiso] (https://wiki.manjaro.org/index.php?title=ManjaroISO) for the [OpenRC edition] (https://forum.manjaro.org/index.php?topic=16177.0).
+Configs for [manjaroiso] (https://wiki.manjaro.org/index.php?title=ManjaroISO) for the [OpenRC edition] (https://forum.manjaro.org/index.php?topic=17585.0).
 
 An ISO can be built by downloading a copy of these configs, and running
 <pre>sudo buildiso</pre>
