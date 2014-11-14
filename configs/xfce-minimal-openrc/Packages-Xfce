@@ -7,6 +7,7 @@ eudev # hack for networkmanager-openrc
 networkmanager-openrc
 networkmanager-dispatcher-ntpd
 openresolv
+bluez-openrc
 blueman
 
 ## Xorg Packages
@@ -82,6 +83,7 @@ polkit-gnome # for gparted
 raktpdf
 >i686 sylpheed
 >i686 xnoise
+downgrade
 
 ## Installer
 #thus # requires localectl (systemd specific)
