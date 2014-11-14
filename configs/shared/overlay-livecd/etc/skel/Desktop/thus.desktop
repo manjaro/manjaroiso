@@ -7,3 +7,4 @@ Icon=/usr/share/thus/data/manjaro-icon.png
 Terminal=False
 Type=Application
 Categories=System;
+NoDisplay=True

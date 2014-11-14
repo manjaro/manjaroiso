@@ -84,7 +84,7 @@ raktpdf
 >i686 xnoise
 
 ## Installer
-thus
+#thus # requires localectl (systemd specific)
 
 ## Artwork
 faenza-green-icon-theme
