@@ -10,27 +10,33 @@
       <property name="&lt;Alt&gt;F3" type="empty">
         <property name="startup-notify" type="empty"/>
       </property>
-      <property name="&lt;Control&gt;&lt;Alt&gt;Delete" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Delete" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="empty"/>
       <property name="XF86Display" type="empty"/>
       <property name="&lt;Super&gt;p" type="empty"/>
+      <property name="&lt;Primary&gt;Escape" type="empty"/>
+      <property name="XF86WWW" type="empty"/>
+      <property name="XF86Mail" type="empty"/>
+      <property name="&lt;Control&gt;&lt;Alt&gt;Delete" type="empty"/>
       <property name="&lt;Control&gt;Escape" type="empty"/>
     </property>
     <property name="custom" type="empty">
-
-      <property name="XF86Calculator" type="galculator"/>
-      <property name="XF86WWW" type="exo-open --launch WebBrowser"/>
-      <property name="XF86Mail" type="exo-open --launch MailReader"/>
-      <property name="&lt;Alt&gt;F2" type="string" value="xfrun4"/>
-      <property name="&lt;Control&gt;&lt;Alt&gt;Delete" type="string" value="xflock4"/>
-      <property name="&lt;Control&gt;&lt;Alt&gt;x" type="string" value="xkill"/>
-      <property name="&lt;Control&gt;&lt;Alt&gt;m" type="string" value="xfce4-taskmanager"/>
-      <property name="&lt;Control&gt;Escape" type="string" value="xfdesktop --menu"/>
+      <property name="&lt;Alt&gt;F3" type="empty">
+        <property name="startup-notify" type="bool" value="true"/>
+      </property>
+      <property name="&lt;Alt&gt;F2" type="string" value="xfce4-appfinder --collapsed">
+        <property name="startup-notify" type="bool" value="true"/>
+      </property>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Delete" type="string" value="xflock4"/>
+      <property name="XF86Mail" type="string" value="exo-open --launch MailReader"/>
+      <property name="XF86WWW" type="string" value="exo-open --launch WebBrowser"/>
+      <property name="&lt;Super&gt;p" type="string" value="xfce4-display-settings --minimal"/>
+      <property name="&lt;Primary&gt;Escape" type="string" value="xfdesktop --menu"/>
       <property name="override" type="bool" value="true"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;x" type="string" value="xkill"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;m" type="string" value="xfce4-taskmanager"/>
       <property name="Super_L" type="string" value="xfce4-popup-whiskermenu"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="xfce4-terminal --drop-down"/>
-      <property name="Print" type="string" value="xfce4-screenshooter -f"/>
-      <property name="&lt;Alt&gt;p" type="string" value="xfce4-display-settings --minimal"/>
-      <property name="&lt;Shift&gt;Print" type="string" value="xfce4-screenshooter -w"/>
+      <property name="XF86Calculator" type="string" value="galculator"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
