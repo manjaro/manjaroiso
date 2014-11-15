@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?xml version="1.0" encoding="UTF-8"?>
+
 <channel name="xfce4-keyboard-shortcuts" version="1.0">
   <property name="commands" type="empty">
     <property name="default" type="empty">
@@ -35,8 +37,9 @@
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;x" type="string" value="xkill"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;m" type="string" value="xfce4-taskmanager"/>
-      <property name="Super_L" type="string" value="xfce4-popup-whiskermenu"/>
       <property name="XF86Calculator" type="string" value="galculator"/>
+      <property name="Super_L" type="string" value="xfce4-popup-whiskermenu"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="xfce4-terminal --drop-down"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
