@@ -69,6 +69,7 @@ gimp
 gksu
 gnome-vfs
 gparted
+guayadeque
 gvfs
 gvfs-afc
 gvfs-afp
@@ -89,7 +90,7 @@ thunderbird
 viewnior
 vlc
 xfburn
-xnoise
+#xnoise
 yelp
 open-fuse-iso
 
