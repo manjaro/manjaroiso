@@ -1,7 +1,5 @@
 # Use keymap to specify the default console keymap.  There is a complete tree
 # of keymaps in /usr/share/kbd/keymaps to choose from.
-# For more information see 
-# http://wiki.gentoo.org/wiki/Keyboard_layout_switching
 keymap="us"
 
 # Should we first load the 'windowkeys' console keymap?  Most x86 users will
