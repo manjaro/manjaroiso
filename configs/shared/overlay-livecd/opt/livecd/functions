@@ -208,6 +208,25 @@ set_locale() {
   # set keymap and kblayout
   localectl set-keymap "${KEYMAP}"
 
+  # for openrc
+  if [ -e /run/openrc ]; then
+    # Set keymap
+    sed -i "s/keymap=\"us\"/keymap=\"${KEYMAP}\"/" ${DESTDIR}/etc/conf.d/keymaps
+    # Create X11 keyboard layout config
+    XORGKBLAYOUT="${DESTDIR}/etc/X11/xorg.conf.d/20-keyboard.conf"
+    echo "" >> "$XORGKBLAYOUT"
+    echo "Section \"InputClass\"" >> "$XORGKBLAYOUT"
+    echo " Identifier \"system-keyboard\"" >> "$XORGKBLAYOUT"
+    echo " MatchIsKeyboard \"on\"" >> "$XORGKBLAYOUT"
+    echo " Option \"XkbLayout\" \"$KBLAYOUT\"" >> "$XORGKBLAYOUT"
+    echo " Option \"XkbModel\" \"pc105\"" >> "$XORGKBLAYOUT"
+    echo " Option \"XkbVariant\" \"\"" >> "$XORGKBLAYOUT"
+    echo "EndSection" >> "$XORGKBLAYOUT"
+    # load keymaps
+    loadkeys "$KEYMAP"
+    setxkbmap "$KBLAYOUT"
+  fi
+
   # set systemwide language
   echo "LANG=${LOCALE}.UTF-8" > ${DESTDIR}/etc/locale.conf
   echo "LC_MESSAGES=${LOCALE}.UTF-8" >> ${DESTDIR}/etc/locale.conf
@@ -539,6 +558,12 @@ hd_config()
     chroot ${DESTDIR} systemctl enable dcron.service &>/dev/null
     chroot ${DESTDIR} systemctl enable NetworkManager.service &>/dev/null
     chroot ${DESTDIR} systemctl enable remote-fs.target &>/dev/null
+
+    # for openrc
+    if [ -e /run/openrc ]; then
+      # Setup /tmp as tmpfs in fstab
+      echo "tmpfs     /tmp    tmpfs    nodev,nosuid    0  0" >> ${DESTDIR}/etc/fstab
+    fi
 
     DIALOG --infobox "${_setupdisplaymanager}" 6 40
     sleep 3
