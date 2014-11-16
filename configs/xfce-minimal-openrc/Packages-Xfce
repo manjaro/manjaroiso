@@ -77,7 +77,7 @@ manjaro-settings-manager
 manjaro-welcome
 midori
 mousepad
-pamac-dev
+pamac
 >i686 parole
 polkit-gnome # for gparted
 raktpdf
@@ -94,7 +94,7 @@ gtk-theme-ceti
 menda-themes
 manjaro-artwork
 #mdm-themes
-lxdm-consolekit
+lightdm-gtk2-greeter
 xfce-theme-greenbird
 #plymouth-theme-manjaro-elegant
 
