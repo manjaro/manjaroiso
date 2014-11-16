@@ -71,6 +71,7 @@ KERNEL
 
 ## OpenRC
 sysvinit
+openrc-core
 openrc-base
 openrc-desktop
 
