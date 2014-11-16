@@ -12,8 +12,4 @@ depend() {
 start() {
 	/usr/bin/pacman-key --init
 	/usr/bin/pacman-key --populate archlinux manjaro
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> upstream/development
