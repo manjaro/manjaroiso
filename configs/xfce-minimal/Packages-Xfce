@@ -80,9 +80,10 @@ xorg-server-utils
 xorg-twm
 xorg-utils
 xorg-xinit
+xorg-xkill
 
 ## Artwork
-faenza-green-icon-theme
+menda-icon-themes
 gtk-theme-ceti
 gtk-theme-menda
 manjaro-artwork

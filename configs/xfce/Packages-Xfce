@@ -69,6 +69,7 @@ gimp
 gksu
 gnome-vfs
 gparted
+guayadeque
 gvfs
 gvfs-afc
 gvfs-afp
@@ -89,7 +90,7 @@ thunderbird
 viewnior
 vlc
 xfburn
-xnoise
+#xnoise
 yelp
 open-fuse-iso
 
@@ -122,9 +123,10 @@ xorg-server-utils
 xorg-twm
 xorg-utils
 xorg-xinit
+xorg-xkill
 
 ## Artwork
-faenza-green-icon-theme
+menda-icon-themes
 gtk-theme-ceti
 menda-themes
 manjaro-artwork
