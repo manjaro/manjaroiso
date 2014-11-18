@@ -4,8 +4,4 @@
 #
 /usr/bin/rc-service checknet start  # Check if networkmanager started correctly
 /usr/bin/pacman-boot &  # Setup pacman databases
-# Source /etc/conf.d/xdm if it exists
-[ -e /etc/conf.d/xdm ] && . /etc/conf.d/xdm
-if [ $DISPLAYMANAGER == "lxdm" ]; then
-	rc-service xdm restart  # Restart xdm as lxdm does not get get started correctly the first time, does not happen with lightdm
-fi
+rc-service xdm restart  # Restart xdm as lxdm does not get get started correctly the first time, does not happen with lightdm

@@ -207,6 +207,11 @@ set_locale() {
 
   # set keymap and kblayout
   localectl set-keymap "${KEYMAP}"
+ 
+  # fix por text installer
+  if [ ! -z ${DESTDIR} ]; then
+    sed -i -e "s/^XKBLAYOUT=.*/XKBLAYOUT=\"${KBLAYOUT}\"/g" ${DESTDIR}/etc/keyboard.conf
+  fi
 
   # for openrc
   if [ -e /run/openrc ]; then

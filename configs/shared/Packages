@@ -48,7 +48,7 @@ s-nail
 sed
 shadow
 sysfsutils
-#systemd-sysvcompat
+systemd-sysvcompat
 tar
 texinfo
 usbutils
@@ -60,24 +60,13 @@ xfsprogs
 ## Base Packages
 linux-firmware
 lsb-release
-haveged-openrc # needed for pacman-init
-metalog-openrc # syslog alternative
+haveged # needed for pacman-init
 manjaro-firmware
 manjaro-release
 memtest86+
 
 ## Kernel
 KERNEL
-
-## OpenRC
-sysvinit
-openrc-core
-openrc-base
-openrc-desktop
-
-## Eudev
-eudev
-eudev-base
 
 ## Extra Base Packages
 grub
@@ -161,8 +150,7 @@ ethtool
 hdparm
 sdparm
 smartmontools
-#tlp # conflicts with pm-utils
-laptop-mode-tools
+tlp
 wireless_tools
 xorg-xset
 

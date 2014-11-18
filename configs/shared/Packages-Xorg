@@ -20,20 +20,20 @@ KERNEL-rt3562sta
 KERNEL-r8168
 
 ## Proprietary Drivers
-#>nonfree_uni catalyst-utils
-#>nonfree_uni KERNEL-catalyst
-#>nonfree_uni nvidia-utils
-#>nonfree_uni KERNEL-nvidia
-#>nonfree_uni nvidia-340xx-utils
-#>nonfree_uni KERNEL-nvidia-340xx
-#>nonfree_uni nvidia-304xx-utils
-#>nonfree_uni KERNEL-nvidia-304xx
-#>nonfree_x64 lib32-catalyst-utils
-#>nonfree_x64 lib32-nvidia-utils
-#>nonfree_x64 lib32-nvidia-304xx-utils
-#>nonfree_x64 lib32-nvidia-340xx-utils
-#>nonfree_x64 lib32-gcc-libs
-#>nonfree_x64 lib32-zlib 
+>nonfree_uni catalyst-utils
+>nonfree_uni KERNEL-catalyst
+>nonfree_uni nvidia-utils
+>nonfree_uni KERNEL-nvidia
+>nonfree_uni nvidia-340xx-utils
+>nonfree_uni KERNEL-nvidia-340xx
+>nonfree_uni nvidia-304xx-utils
+>nonfree_uni KERNEL-nvidia-304xx
+>nonfree_x64 lib32-catalyst-utils
+>nonfree_x64 lib32-nvidia-utils
+>nonfree_x64 lib32-nvidia-304xx-utils
+>nonfree_x64 lib32-nvidia-340xx-utils
+>nonfree_x64 lib32-gcc-libs
+>nonfree_x64 lib32-zlib 
 
 ## Virtualbox Drivers
 >free_uni virtualbox-guest-utils
