@@ -9,7 +9,7 @@ gufw # firewall
 accountsservice
 lightdm-gtk3-greeter
 lightdm-gtk-greeter-settings
-light-locker
+light-locker-xfce
 manjaro-settings-manager
 menulibre
 network-manager-applet
@@ -26,6 +26,7 @@ thunar-media-tags-plugin
 thus
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
+xcursor-menda
 xfce4
 #xscreensaver
 
