@@ -9,7 +9,7 @@ gufw # firewall
 accountsservice
 lightdm-gtk3-greeter
 lightdm-gtk-greeter-settings
-light-locker
+light-locker-xfce
 manjaro-settings-manager
 menulibre
 network-manager-applet
@@ -26,7 +26,10 @@ thunar-media-tags-plugin
 thus
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
+xcursor-menda
 xfce4
+libgsf       # support ODF and
+libopenraw   # RAW thumbnailing
 #xscreensaver
 
 ## XFCE Extra Packages
@@ -129,8 +132,9 @@ xorg-xkill
 menda-icon-themes
 gtk-theme-ceti
 menda-themes
+gnome-themes-standard
 manjaro-artwork
-lxdm-manjaro-theme
+#lxdm-manjaro-theme
 xfce-theme-greenbird
 plymouth-theme-manjaro-elegant
 
@@ -166,6 +170,7 @@ steam-native
 ttf-dejavu
 #adobe-source-sans-pro-fonts
 cantarell-fonts
+ttf-droid
 
 ## Java
 icedtea-web
