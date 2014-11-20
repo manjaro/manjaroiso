@@ -61,7 +61,7 @@ xfsprogs
 linux-firmware
 lsb-release
 haveged-openrc # needed for pacman-init
-metalog-openrc # syslog alternative
+metalog-openrc # logger (syslog-ng alternative)
 manjaro-firmware
 manjaro-release
 memtest86+
