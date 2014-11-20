@@ -167,7 +167,7 @@ make_root_image() {
          fi
          if [ -e ${work_dir}/root-image/usr/bin/cupsd ] ; then
             mkdir -p "${work_dir}/root-image/etc/systemd/system/multi-user.target.wants"
-            ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/root-image/etc/systemd/system/multi-user.target.wants/cups.service"
+            ln -sf '/usr/lib/systemd/system/org.cups.cupsd.service' "${work_dir}/root-image/etc/systemd/system/multi-user.target.wants/org.cups.cupsd.service"
          fi
          if [ -e ${work_dir}/root-image/usr/bin/keyboardctl ] ; then
             mkdir -p "${work_dir}/root-image/etc/systemd/system/sysinit.target.wants"
@@ -214,7 +214,7 @@ if [ -e "${pkgsfile}" ] ; then
               fi
               if [ -e ${work_dir}/${desktop}-image/usr/bin/cupsd ] ; then
                  mkdir -p "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants"
-                 ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants/cups.service"
+                 ln -sf '/usr/lib/systemd/system/org.cups.cupsd.service' "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants/org.cups.cupsd.service"
               fi
               if [ -e ${work_dir}/root-image/usr/bin/tlp ] ; then
                  mkdir -p "${work_dir}/${desktop}-image"/etc/systemd/system/{sleep.target.wants,multi-user.target.wants}

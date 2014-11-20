@@ -559,7 +559,7 @@ hd_config()
     DIALOG --infobox "${_setupsystemd}" 6 40
     sleep 3
 
-    chroot ${DESTDIR} systemctl enable cups.service &>/dev/null
+    chroot ${DESTDIR} systemctl enable org.cups.cupsd.service &>/dev/null
     chroot ${DESTDIR} systemctl enable dcron.service &>/dev/null
     chroot ${DESTDIR} systemctl enable NetworkManager.service &>/dev/null
     chroot ${DESTDIR} systemctl enable remote-fs.target &>/dev/null
