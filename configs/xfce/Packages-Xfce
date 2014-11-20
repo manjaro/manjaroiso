@@ -28,6 +28,8 @@ xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xcursor-menda
 xfce4
+libgsf       # support ODF and
+libopenraw   # RAW thumbnailing
 #xscreensaver
 
 ## XFCE Extra Packages
@@ -130,8 +132,9 @@ xorg-xkill
 menda-icon-themes
 gtk-theme-ceti
 menda-themes
+gnome-themes-standard
 manjaro-artwork
-lxdm-manjaro-theme
+#lxdm-manjaro-theme
 xfce-theme-greenbird
 plymouth-theme-manjaro-elegant
 
