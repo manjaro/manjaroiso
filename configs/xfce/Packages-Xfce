@@ -129,7 +129,8 @@ xorg-xinit
 xorg-xkill
 
 ## Artwork
-menda-icon-themes
+menda-circle-icon-theme
+#menda-square-icon-theme
 gtk-theme-ceti
 menda-themes
 gnome-themes-standard
