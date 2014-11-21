@@ -19,6 +19,7 @@
 #
 # Completed by ManjaroPek Team.
 
+lxpolkit &
 xrdb -merge ~/.Xresources &
 nitrogen --restore &
 compton -cC -z &    

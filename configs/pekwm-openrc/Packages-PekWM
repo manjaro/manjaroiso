@@ -87,7 +87,8 @@ pekwm
 pekwm-themes
 #slim
 #slim-themes
-lxdm-consolekit
+lightdm-gtk2-greeter
+lxsession
 tint2
  
 ## Desktop Configuration
@@ -99,6 +100,7 @@ faenza-green-icon-theme
 gnome-icon-theme
 numix-manjaro-themes
 xcursor-vanilla-dmz-aa
+menda-themes # used by lightdm
  
 ## Applications
 libgnomeui       
@@ -138,7 +140,7 @@ p7zip
 file-roller
 gsimplecal
 gnome-screenshot
-thus
+#thus # does not work with openrc
 abiword
 gnumeric
 gvfs-mtp
