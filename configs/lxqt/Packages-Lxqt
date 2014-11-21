@@ -38,18 +38,21 @@ manjaro-alsa
 #pnmixer
 #gnome-alsamixer
 flashplugin
-qmplay2
+#qmplay2 AUR
 
 ## Graphical Installer
 iso-codes
 thus
+calamares
 #turbulence
 
 ## Artwork
 manjaro-artwork
 #unified-manjaro-themes-openbox
 #oxygen-icons
-#plymouth
+menda-themes
+menda-circle-icon-theme
+xcursor-menda
 
 ## AUR Access
 autoconf
@@ -70,103 +73,91 @@ yaourt
 ## Main programs
 openbox
 sddm
-#sddm-git
 
-## AUR Lxqt
-repolxqt/libqtxdg-qt5-git
-repolxqt/liblxqt-git
-repolxqt/lxmenu-data-git
-repolxqt/menu-cache-git
-repolxqt/liblxqt-mount-git
-repolxqt/lxqt-globalkeys-git
-repolxqt/lxqt-notificationd-git
-repolxqt/libsysstat-qt5-git
-repolxqt/libfm-git
-repolxqt/lxqt-panel-git
-repolxqt/pcmanfm-qt-git
+## LXQt
+lximage-qt
+lxqt-about
+lxqt-common
+lxqt-config 
+lxqt-globalkeys
+lxqt-notificationd
+lxqt-openssh-askpass
+lxqt-panel
+lxqt-policykit
+lxqt-powermanagement
+lxqt-qtplugin
+lxqt-runner
+lxqt-session
+pcmanfm-qt
+qterminal
+libqtxdg
 libexif
-repolxqt/lxqt-session-git
-repolxqt/lxqt-runner-git
-repolxqt/lxqt-qtplugin-git
+
+#Missing lxqt-admin in repos!!!
 #repolxqt/lxqt-appswitcher-git
-polkit-qt
-repolxqt/lxqt-policykit-git
-repolxqt/lxqt-openssh-askpass-git
-repolxqt/lxqt-powermanagement-git
-#repolxqt/lximage-qt-git
-repolxqt/lxqt-config-git
-repolxqt/obconf-qt-git
+#repolxqt/obconf-qt-git
+#repolxqt/lxqt-admin-git
+#repolxqt/libqxt
+
 #compton
 #repolxqt/compton-conf-git
-repolxqt/lxqt-about-git
-repolxqt/lxqt-admin-git
-repolxqt/lxqt-common-git
-repolxqt/lxqt-config-randr-git
-
-repolxqt/libqxt
-repolxqt/qtermwidget-git
-repolxqt/qterminal-git
 
 ## Various
 #aisleriot
-#b1-free-archiver
 #mpd		# see cantata
 #cantata
 #mpc
 cmst
 connman
 file-roller
-qconnman-git
 #clementine
-#faenza-green-icon-theme
-#easypaint-git
 gnome-keyring
 gksu
 #gtksu
-gparted		# GTK !!!
+gparted
 gvfs             # Access file system
 gvfs-afc         # Removable media support
 #gvfs-smb         # Samba support
-juffed
-ldm-git
-lazpaint-qt4
 libreoffice-installer
 lxappearance     # usefull to install new theme
-#lxterminal       # for turbulence only
 #>x86_64 manjaro-printer
 manjaro-settings-manager
 mpv
-#network-manager-applet
 numlockx
 octopi
 octopi-notifier
-qarma
-qisousb
-repolxqt/otter-browser
-phototonic
+qupzilla
 python2-notify
 python2-xdg
-qastools
-#qmmp
-quassel-light
 qbittorrent
 qpdfview
 qps
-qlogout
-searchmonkey
-speedcrunch
-screengrab
 #steam
 synapse
 trojita
-weather-app
 #libpaper	# for xfburn
 #xfburn
 #xscreensaver
 
-# Infinality
-repolxqt/cairo-infinality-ultimate
-repolxqt/fontconfig-infinality-ultimate
-repolxqt/freetype2-infinality-ultimate
-#x86_64 repolxqt/lib32-freetype2-infinality-ultimate
+mousepad # to change with juffed or something else
 
+#b1-free-archiver AUR
+#qconnman-git AUR
+#easypaint-git AUR
+#juffed AUR
+#ldm-git AUR
+#lazpaint-qt4 AUR
+#qarma AUR
+#qisousb AUR
+#phototonic AUR
+#qastools AUR
+#qmmp
+#quassel-light AUR
+#qlogout AUR
+#searchmonkey AUR
+#speedcrunch AUR
+#screengrab AUR
+#weather-app AUR
+
+## CJK font fix
+ttf-droid
