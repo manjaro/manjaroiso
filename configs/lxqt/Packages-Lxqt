@@ -164,6 +164,9 @@ weather-app
 #xfburn
 #xscreensaver
 
+## CJK font fix
+ttf-droid
+
 # Infinality
 repolxqt/cairo-infinality-ultimate
 repolxqt/fontconfig-infinality-ultimate
