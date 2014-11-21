@@ -507,9 +507,9 @@ make_isolinux() {
             cp ${work_dir}/root-image/usr/lib/syslinux/hdt.c32 ${work_dir}/iso/isolinux/
             cp ${work_dir}/root-image/usr/lib/syslinux/chain.c32 ${work_dir}/iso/isolinux/
         fi
-        sed "s|%MISO_LABEL%|${iso_label}|g;
+        sed -i "s|%MISO_LABEL%|${iso_label}|g;
                 s|%INSTALL_DIR%|${install_dir}|g;
-                s|%ARCH%|${arch}|g" isolinux/isolinux.cfg > ${work_dir}/iso/isolinux/isolinux.cfg
+                s|%ARCH%|${arch}|g" ${work_dir}/iso/isolinux/isolinux.cfg
         : > ${work_dir}/build.${FUNCNAME}
         echo -e "$_g >$_W done $_n"
     fi
