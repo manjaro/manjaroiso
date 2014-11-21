@@ -1,4 +1,4 @@
-#!/usr/bin/runscript
+#!/usr/bin/openrc-run
 # Copyright 2014 Aaditya Bagga (aaditya_gnulinux@zoho.com)
 # Distributed under the terms of the GNU General Public License v2
 
