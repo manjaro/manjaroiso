@@ -20,7 +20,7 @@
 # Completed by ManjaroPek Team.
 
 lxpolkit &
-xrdb -merge ~/.Xresources &
+#xrdb -merge ~/.Xresources &
 nitrogen --restore &
 compton -cC -z &    
 (sleep 2s && tint2) &
@@ -30,5 +30,5 @@ compton -cC -z &
 (sleep 5s && octopi-notifier) &
 #(sleep 6s && wbar) &
 (sleep 8s && clipit) &
-(sleep 10s && numlockx) &
+#(sleep 10s && numlockx) &
 

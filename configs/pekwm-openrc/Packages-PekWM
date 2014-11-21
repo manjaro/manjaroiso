@@ -91,6 +91,7 @@ pekwm-themes
 lightdm-gtk2-greeter
 lxsession
 tint2
+fluxbox # for testing
  
 ## Desktop Configuration
 lxappearance
