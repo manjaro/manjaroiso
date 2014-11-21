@@ -43,14 +43,16 @@ flashplugin
 ## Graphical Installer
 iso-codes
 thus
+calamares
 #turbulence
 
 ## Artwork
 manjaro-artwork
 #unified-manjaro-themes-openbox
 #oxygen-icons
-#plymouth
-#faenza-green-icon-theme
+menda-themes
+menda-circle-icon-theme
+xcursor-menda
 
 ## AUR Access
 autoconf
@@ -72,11 +74,11 @@ yaourt
 openbox
 sddm
 
-## AUR Lxqt
+## LXQt
 lximage-qt
 lxqt-about
 lxqt-common
-lxqt-config # includes lxqt-config-randr?
+lxqt-config 
 lxqt-globalkeys
 lxqt-notificationd
 lxqt-openssh-askpass
@@ -137,6 +139,8 @@ trojita
 #xfburn
 #xscreensaver
 
+mousepad # to change with juffed or something else
+
 #b1-free-archiver AUR
 #qconnman-git AUR
 #easypaint-git AUR
@@ -157,11 +161,3 @@ trojita
 
 ## CJK font fix
 ttf-droid
-
-# Infinality
-#repolxqt/cairo-infinality-ultimate
-#repolxqt/fontconfig-infinality-ultimate
-#repolxqt/freetype2-infinality-ultimate
-#x86_64 repolxqt/lib32-freetype2-infinality-ultimate
-
-
