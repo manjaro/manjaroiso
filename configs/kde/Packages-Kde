@@ -159,6 +159,9 @@ oxygen-gtk2
 oxygen-gtk3
 kde-gtk-config
 
+## CJK font fix
+ttf-droid
+
 ## Java
 icedtea-web
 

@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<gconf>
-	<entry name="theme" mtime="1338220640" type="string">
-		<stringvalue>Greenbird</stringvalue>
-	</entry>
-	<entry name="button_layout" mtime="1338220742" type="string">
-		<stringvalue>:minimize,maximize,close</stringvalue>
-	</entry>
-</gconf>

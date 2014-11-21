@@ -1,0 +1,18 @@
+01.05.2013
+---------------
+* qt config issues can be fixed with:
+  gconftool-2 --set --type string /desktop/gnome/interface/gtk_theme [name of theme]
+  created gconf folder needs to be copied to etc/skel/.config/gconf
+
+30.04.2013
+---------------
+* test if new services will fix livecd/mhwd issues
+* qt config issues might be due qt changes by Arch
+
+29.04.2013
+---------------
+* fix pacmac/mhwd conflict (pacman.db/online)
+* find a better way for pacman-mirrors (default mirror)
+  - workaround: shared/overlay/etc/pacman.d/mirrorlist
+* fix qt config for root account
+
