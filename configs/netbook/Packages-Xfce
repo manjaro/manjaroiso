@@ -42,7 +42,6 @@ lightdm-gtk2-greeter
 lightdm-gtk-greeter-settings
 accountsservice
 thus
-blueman
 manjaro-welcome
 wmctrl
 gparted
@@ -56,6 +55,13 @@ xfce4-screenshooter
 >i686 flashplugin-netbook
 >i686 manjaro-netbook-initial
 python2-imaging-alt
+
+## Network
+netctl
+networkmanager
+networkmanager-dispatcher-ntpd
+openresolv
+blueman
 
 ## Xorg Packages
 inxi

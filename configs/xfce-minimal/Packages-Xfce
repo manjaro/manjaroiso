@@ -10,6 +10,7 @@ network-manager-applet
 #numlockx
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
+xcursor-menda
 xfce4-panel
 xfce4-session
 xfce4-terminal
@@ -80,9 +81,10 @@ xorg-server-utils
 xorg-twm
 xorg-utils
 xorg-xinit
+xorg-xkill
 
 ## Artwork
-faenza-green-icon-theme
+menda-circle-icon-theme
 gtk-theme-ceti
 gtk-theme-menda
 manjaro-artwork

@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# /etc/rc.local: Local multi-user startup script.
+#
+/usr/bin/rc-service checknet start  # Check if networkmanager started correctly
+/usr/bin/pacman-boot &  # Setup pacman databases
+rc-service xdm restart  # Restart xdm as lxdm does not get get started correctly the first time, does not happen with lightdm

@@ -32,42 +32,6 @@ thus
 ## Artwork
 manjaro-artwork
 
-## GNOME
-ffmpegthumbnailer
-file-roller
-gedit
-gjs
-glade 
-gnome-disk-utility
-gnome-keyring
-gnome-power-manager
-gnome-screenshot
-gnome-power-manager
-gnome-system-monitor
-gnome-terminal
-gnome-vfs
-gtksourceview3 
-icon-naming-utils
-libgnome
-libgnome-data
-libgnome-keyring
-libgnomecanvas
-libgnomeui
-libgsf
-libnautilus-extension
-mousetweaks
-#mutter 
-python2-gnomecanvas
-python2-gnomevfs
-python2-libgnome 
-seahorse   
-xdg-user-dirs-gtk   
-libgnome-media-profiles
-soundconverter
-polkit-gnome
-polkit
-gksu
- 
 ## Cinnamon
 cinnamon
 cinnamon-desktop
@@ -77,40 +41,80 @@ cinnamon-translations
 cinnamon-control-center
 cinnamon-screensaver
 cinnamon-theme-minty
+cinnamon-power-applet
+cinnamon-menus
 cjs
 muffin
 nemo
 nemo-fileroller
 nemo-preview
-nemo-seahorse
-chromium-bsu
+nemo-python
+nemo-share
+
+jre7-openjdk
+## GNOME related stuf
+#ffmpegthumbnailer
+file-roller
+medit
+#glade 
+gnome-disk-utility
+gnome-keyring
+gnome-system-monitor
+#gnome-terminal
+terminator
+gnome-vfs
+#gtksourceview3 
+icon-naming-utils
+mousetweaks
+#mutter 
+python2-gnomecanvas
+python2-gnomevfs
+python2-libgnome 
+xdg-user-dirs-gtk   
+
+
+## polkit
+
+polkit-gnome
+polkit
+gksu
+ 
 
 ## Network
 netctl
 networkmanager
 networkmanager-dispatcher-ntpd
 openresolv
-
+net-tools
 ## Extra
-icedtea-web-java7
+icedtea-web
 vlc
+guayadeque
+pidgin
+pidgin-libnotify
 
 ## Theme
 faenza-green-icon-theme
-adwaita-manjaro-themes
+menda-themes
+menda-themes-dark
+menda-icon-themes
 xfce-theme-greenbird
-numix-manjaro-themes
+gtk-theme-vertex
+
+#plymouth
+#plymouth-theme-manjaro-elegant
 
 ## Other Applications
 gparted
-epdfview
+evince
 firefox
-#leafpad
+thunderbird
 imagewriter
 ttf-droid
-#lxterminal
-mdm
-mdm-themes
+#mdm
+#mdm-themes
+lightdm-gtk3-greeter
+lightdm-gtk-greeter-settings
 viewnior
 flashplugin
 numlockx
@@ -126,9 +130,11 @@ gvfs-mtp
 gvfs-smb
 pavucontrol
 openssh
-polkit
-polkit-gnome
 hexchat
+exfat-utils
+fuse-exfat
+nss
+nss-mdns
 
 ## Package management
 pamac
@@ -151,6 +157,7 @@ manjaro-alsa
 manjaro-pulse
 pavucontrol
 pulseaudio-ctl
+#zscreen # from exeternal repo, aur package
 
 ## Printing
 manjaro-printer
@@ -158,14 +165,15 @@ manjaro-printer
 ## Office
 #libreoffice-installer
 libreoffice-still-en-US
-libreoffice-still-base
+#libreoffice-still-base
 libreoffice-still-calc
-libreoffice-still-draw
+#libreoffice-still-draw
 libreoffice-still-gnome
-libreoffice-still-impress
-libreoffice-still-math
-libreoffice-still-postgresql-connector
+#libreoffice-still-impress
+#libreoffice-still-math
+#libreoffice-still-postgresql-connector
 libreoffice-still-writer
+zim
 
 ## AUR Access
 autoconf
@@ -180,3 +188,4 @@ m4
 make
 patch
 subversion
+yaourt

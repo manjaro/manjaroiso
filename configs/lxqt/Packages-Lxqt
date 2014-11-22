@@ -1,0 +1,163 @@
+### Manjaro Packages
+
+## Xorg
+#mhwd
+
+## Xorg Packages
+inxi
+libdnet
+mesa
+#mesa-demos
+>x86_64 lib32-mesa-demos
+netkit-bsd-finger
+uriparser
+xf86-input-acecad
+xf86-input-aiptek
+xf86-input-evdev
+xf86-input-joystick
+xf86-input-keyboard
+xf86-input-mouse
+xf86-input-synaptics
+xf86-input-void
+xf86-input-wacom
+xinetd
+xorg-server
+xorg-server-utils
+xorg-twm
+xorg-utils
+xorg-xinit
+
+## Sound and Audio
+#gstreamer0.10-base-plugins	# 4 plugins for Clementine
+#gstreamer0.10-good-plugins
+#gstreamer0.10-bad-plugins
+#gstreamer0.10-ugly-plugins
+manjaro-alsa
+#manjaro-pulse
+#pavucontrol
+#pnmixer
+#gnome-alsamixer
+flashplugin
+#qmplay2 AUR
+
+## Graphical Installer
+iso-codes
+thus
+calamares
+#turbulence
+
+## Artwork
+manjaro-artwork
+#unified-manjaro-themes-openbox
+#oxygen-icons
+menda-themes
+menda-circle-icon-theme
+xcursor-menda
+
+## AUR Access
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+gcc
+libconfig
+libtool
+m4
+make
+patch
+subversion
+yaourt
+
+## Main programs
+openbox
+sddm
+
+## LXQt
+lximage-qt
+lxqt-about
+lxqt-common
+lxqt-config 
+lxqt-globalkeys
+lxqt-notificationd
+lxqt-openssh-askpass
+lxqt-panel
+lxqt-policykit
+lxqt-powermanagement
+lxqt-qtplugin
+lxqt-runner
+lxqt-session
+pcmanfm-qt
+qterminal
+libqtxdg
+libexif
+
+#Missing lxqt-admin in repos!!!
+#repolxqt/lxqt-appswitcher-git
+#repolxqt/obconf-qt-git
+#repolxqt/lxqt-admin-git
+#repolxqt/libqxt
+
+#compton
+#repolxqt/compton-conf-git
+
+## Various
+#aisleriot
+#mpd		# see cantata
+#cantata
+#mpc
+cmst
+connman
+file-roller
+#clementine
+gnome-keyring
+gksu
+#gtksu
+gparted
+gvfs             # Access file system
+gvfs-afc         # Removable media support
+#gvfs-smb         # Samba support
+libreoffice-installer
+lxappearance     # usefull to install new theme
+#>x86_64 manjaro-printer
+manjaro-settings-manager
+mpv
+numlockx
+octopi
+octopi-notifier
+qupzilla
+python2-notify
+python2-xdg
+qbittorrent
+qpdfview
+qps
+#steam
+synapse
+trojita
+#libpaper	# for xfburn
+#xfburn
+#xscreensaver
+
+mousepad # to change with juffed or something else
+
+#b1-free-archiver AUR
+#qconnman-git AUR
+#easypaint-git AUR
+#juffed AUR
+#ldm-git AUR
+#lazpaint-qt4 AUR
+#qarma AUR
+#qisousb AUR
+#phototonic AUR
+#qastools AUR
+#qmmp
+#quassel-light AUR
+#qlogout AUR
+#searchmonkey AUR
+#speedcrunch AUR
+#screengrab AUR
+#weather-app AUR
+
+## CJK font fix
+ttf-droid

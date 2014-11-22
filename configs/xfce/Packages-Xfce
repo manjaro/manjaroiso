@@ -5,7 +5,11 @@ ffmpegthumbnailer
 gconf # fix qt-theme
 gnome-keyring # fix wlan segfault
 gufw # firewall
-mdm-themes
+#mdm-themes
+accountsservice
+lightdm-gtk3-greeter
+lightdm-gtk-greeter-settings
+light-locker-xfce
 manjaro-settings-manager
 menulibre
 network-manager-applet
@@ -22,8 +26,11 @@ thunar-media-tags-plugin
 thus
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
+xcursor-menda
 xfce4
-xscreensaver
+libgsf       # support ODF and
+libopenraw   # RAW thumbnailing
+#xscreensaver
 
 ## XFCE Extra Packages
 xfce4-artwork
@@ -65,6 +72,7 @@ gimp
 gksu
 gnome-vfs
 gparted
+guayadeque
 gvfs
 gvfs-afc
 gvfs-afp
@@ -78,12 +86,14 @@ mlocate
 mousepad
 #parole
 pidgin
-raktpdf
+#evince
+#raktpdf
+qpdfview
 thunderbird
 viewnior
 vlc
 xfburn
-xnoise
+#xnoise
 yelp
 open-fuse-iso
 
@@ -116,13 +126,17 @@ xorg-server-utils
 xorg-twm
 xorg-utils
 xorg-xinit
+xorg-xkill
 
 ## Artwork
-faenza-green-icon-theme
+menda-circle-icon-theme
+menda-square-icon-theme
 gtk-theme-ceti
-gtk-theme-menda
+menda-themes
+menda-themes-dark
+gnome-themes-standard
 manjaro-artwork
-lxdm-manjaro-theme
+#lxdm-manjaro-theme
 xfce-theme-greenbird
 plymouth-theme-manjaro-elegant
 
@@ -146,7 +160,8 @@ pulseaudio-ctl
 
 ## Package management
 #octopi
-lxpolkit
+#octopi-notifier
+lxsession
 pamac
 
 ## Games
@@ -155,7 +170,9 @@ steam-native
 
 ## Fonts
 ttf-dejavu
-adobe-source-sans-pro-fonts
+#adobe-source-sans-pro-fonts
+cantarell-fonts
+ttf-droid
 
 ## Java
 icedtea-web

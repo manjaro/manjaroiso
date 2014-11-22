@@ -53,6 +53,11 @@ if [ -e Packages-Lxde ] ; then
     desktop="lxde"
     pkgsfile="Packages-Lxde"
 fi
+if [ -e Packages-Lxqt ] ; then
+    de="-lxqt"
+    desktop="lxqt"
+    pkgsfile="Packages-Lxqt"
+fi
 if [ -e Packages-Mate ] ; then
     de="-mate"
     desktop="mate"
@@ -162,7 +167,7 @@ make_root_image() {
          fi
          if [ -e ${work_dir}/root-image/usr/bin/cupsd ] ; then
             mkdir -p "${work_dir}/root-image/etc/systemd/system/multi-user.target.wants"
-            ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/root-image/etc/systemd/system/multi-user.target.wants/cups.service"
+            ln -sf '/usr/lib/systemd/system/org.cups.cupsd.service' "${work_dir}/root-image/etc/systemd/system/multi-user.target.wants/org.cups.cupsd.service"
          fi
          if [ -e ${work_dir}/root-image/usr/bin/keyboardctl ] ; then
             mkdir -p "${work_dir}/root-image/etc/systemd/system/sysinit.target.wants"
@@ -209,7 +214,7 @@ if [ -e "${pkgsfile}" ] ; then
               fi
               if [ -e ${work_dir}/${desktop}-image/usr/bin/cupsd ] ; then
                  mkdir -p "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants"
-                 ln -sf '/usr/lib/systemd/system/cups.service' "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants/cups.service"
+                 ln -sf '/usr/lib/systemd/system/org.cups.cupsd.service' "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants/org.cups.cupsd.service"
               fi
               if [ -e ${work_dir}/root-image/usr/bin/tlp ] ; then
                  mkdir -p "${work_dir}/${desktop}-image"/etc/systemd/system/{sleep.target.wants,multi-user.target.wants}
@@ -272,9 +277,15 @@ if [ -e Packages-Xorg ] ; then
                  echo -e "$_g >$_W done $_n"
               fi
               if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep nvidia-304xx-utils 2> /dev/null`" ]; then
-                 echo -e -n "$_r >$_W Disabling Nvidia-Legacy driver \n $_n"
-                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-legacy/
-                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-legacy/MHWDCONFIG
+                 echo -e -n "$_r >$_W Disabling Nvidia 304xx driver \n $_n"
+                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-304xx/
+                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-304xx/MHWDCONFIG
+                 echo -e "$_g >$_W done $_n"
+              fi
+              if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep nvidia-340xx-utils 2> /dev/null`" ]; then
+                 echo -e -n "$_r >$_W Disabling Nvidia 340xx driver \n $_n"
+                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-340xx/
+                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-340xx/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
               umount -l ${work_dir}/pkgs-image
@@ -471,7 +482,8 @@ make_isolinux() {
         echo -e -n "$_r >$_W Prepare ${install_dir}/iso/isolinux \n $_n"
         cp -Lr isolinux ${work_dir}/iso
         if [[ -e isolinux-overlay ]]; then
-            cp -Lr isolinux-overlay/* ${work_dir}/iso/isolinux
+            echo -e -n "$_r >$_W isolinux overlay found. Overwriting files. \n $_n"
+            cp -LPr isolinux-overlay/* ${work_dir}/iso/isolinux
         fi
         if [[ -e ${work_dir}/root-image/usr/lib/syslinux/bios/ ]]; then
             cp ${work_dir}/root-image/usr/lib/syslinux/bios/isolinux.bin ${work_dir}/iso/isolinux/
@@ -495,9 +507,9 @@ make_isolinux() {
             cp ${work_dir}/root-image/usr/lib/syslinux/hdt.c32 ${work_dir}/iso/isolinux/
             cp ${work_dir}/root-image/usr/lib/syslinux/chain.c32 ${work_dir}/iso/isolinux/
         fi
-        sed "s|%MISO_LABEL%|${iso_label}|g;
+        sed -i "s|%MISO_LABEL%|${iso_label}|g;
                 s|%INSTALL_DIR%|${install_dir}|g;
-                s|%ARCH%|${arch}|g" isolinux/isolinux.cfg > ${work_dir}/iso/isolinux/isolinux.cfg
+                s|%ARCH%|${arch}|g" ${work_dir}/iso/isolinux/isolinux.cfg
         : > ${work_dir}/build.${FUNCNAME}
         echo -e "$_g >$_W done $_n"
     fi
