@@ -1,0 +1,170 @@
+## The actual 'base' group, minus netctl
+bash
+bzip2
+coreutils
+cronie
+cryptsetup
+device-mapper
+dhcpcd
+diffutils
+e2fsprogs
+file
+filesystem
+findutils
+gawk
+>i686 gcc-libs
+>x86_64 gcc-libs-multilib
+gettext
+glibc
+grep
+gzip
+inetutils
+iproute2
+iputils
+jfsutils
+keyboardctl
+less
+licenses
+locale-info
+logrotate
+lvm2
+man-db
+man-pages
+manjaro-hotfixes
+manjaro-system
+mdadm
+mesa
+mhwd
+mhwd-db
+nano
+pacman
+pciutils
+pcmciautils
+perl
+procps-ng
+psmisc
+reiserfsprogs
+s-nail
+sed
+shadow
+sysfsutils
+#systemd-sysvcompat
+tar
+texinfo
+usbutils
+util-linux
+vi
+which
+xfsprogs
+
+## Base Packages
+linux-firmware
+lsb-release
+haveged-openrc # needed for pacman-init
+metalog-openrc # logger (syslog-ng alternative)
+manjaro-firmware
+manjaro-release
+memtest86+
+
+## Kernel
+KERNEL
+
+## OpenRC
+sysvinit
+openrc-core
+openrc-base
+openrc-desktop
+
+## Eudev
+eudev
+eudev-base
+
+## Extra Base Packages
+grub
+mkinitcpio-nfs-utils
+os-prober
+pkg-config
+squashfs-tools
+sudo
+syslinux
+xdg-utils
+xdg-user-dirs
+
+## Compression Codecs
+arj
+lzop
+unrar
+unzip
+xz
+zip
+
+## encrypt support
+ecryptfs-utils
+rsync
+lsof
+
+## needed by cli-installer
+dialog
+dmidecode
+gptfdisk
+parted
+pv
+tcpdump
+wget
+
+## efi support (only x86_64)
+>x86_64 gummiboot
+>x86_64 prebootloader
+>x86_64 refind-efi
+
+## Filesystem Packages
+btrfs-progs
+dmraid
+dosfstools
+ecryptfs-utils
+testdisk
+nilfs-utils
+nfs-utils
+ntfs-3g
+
+## Fonts
+terminus-font
+ttf-bitstream-vera
+ttf-dejavu
+ttf-inconsolata
+ttf-indic-otf
+ttf-liberation
+
+## Network
+b43-fwcutter
+dhclient
+dnsmasq
+iptables
+ipw2100-fw
+ipw2200-fw
+iw
+mobile-broadband-provider-info
+modemmanager
+nbd
+KERNEL-ndiswrapper
+ndiswrapper-utils
+rp-pppoe
+usb_modeswitch
+wpa_actiond
+wpa_supplicant
+zd1211-firmware
+
+## Laptop power management
+acpid
+cpupower
+ethtool
+hdparm
+sdparm
+smartmontools
+#tlp # conflicts with pm-utils
+laptop-mode-tools
+wireless_tools
+xorg-xset
+
+## ucode for new cpus
+intel-ucode
