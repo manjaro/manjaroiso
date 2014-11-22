@@ -87,7 +87,6 @@ pekwm
 pekwm-themes
 #slim
 #slim-themes
-#lxdm-consolekit
 lightdm-gtk2-greeter
 lxsession
 tint2
