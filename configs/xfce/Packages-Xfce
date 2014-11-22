@@ -130,9 +130,10 @@ xorg-xkill
 
 ## Artwork
 menda-circle-icon-theme
-#menda-square-icon-theme
+menda-square-icon-theme
 gtk-theme-ceti
 menda-themes
+menda-themes-dark
 gnome-themes-standard
 manjaro-artwork
 #lxdm-manjaro-theme
