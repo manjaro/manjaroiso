@@ -588,9 +588,6 @@ hd_config()
             sed -i -e 's/^.*user-session=.*/user-session=xfce/' ${DESTDIR}/etc/lightdm/lightdm.conf
             ln -s /usr/lib/lightdm/lightdm/gdmflexiserver ${DESTDIR}/usr/bin/gdmflexiserver
        fi
-       if [ -e "/usr/bin/pekwm" ] ; then
-            sed -i -e 's/^.*user-session=.*/user-session=pekwm/' ${DESTDIR}/etc/lightdm/lightdm.conf
-       fi
        chmod +r ${DESTDIR}/etc/lightdm/lightdm.conf &>/dev/null
     fi
 
