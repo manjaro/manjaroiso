@@ -14,6 +14,6 @@ including flash, codecs, java web-applet and DVD-player capabilities.
 Press ${grnb}<enter>${nrml} to proceed. You may still cancel the process when prompted."
 
 read
-pacman -S flashplugin icedtea-web-java7
+pacman -S flashplugin icedtea-web
 read -p $'\n'"Process Complete. Press ${grnb}<enter>${nrml} to continue"$'\n'
 exit 0
