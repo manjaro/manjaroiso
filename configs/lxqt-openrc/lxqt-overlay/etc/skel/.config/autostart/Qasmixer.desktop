@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/usr/bin/qasmixer -t
+Name=Qasmixer
+Type=Application
+Version=1.0
+X-LXQt-Need-Tray=true
