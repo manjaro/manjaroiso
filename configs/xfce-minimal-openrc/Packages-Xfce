@@ -80,7 +80,8 @@ mousepad
 pamac
 >i686 parole
 polkit-gnome # for gparted
-raktpdf
+#raktpdf
+qpdfview
 >i686 sylpheed
 >i686 xnoise
 downgrade
