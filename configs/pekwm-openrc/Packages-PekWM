@@ -47,7 +47,8 @@ thunar-archive-plugin
 thunar-media-tags-plugin
 thunar-volman
 catfish
-file-roller
+#file-roller
+xarchiver
 gvfs
 gvfs-afc
 gvfs-smb
@@ -85,7 +86,7 @@ xfce4-notifyd
 ## PekWM Core Packages
 pekwm
 pekwm-themes
-#slim # does not work with openrc
+#slim # does not work with ck/openrc
 lightdm-gtk2-greeter
 lxsession
 tint2
@@ -116,7 +117,6 @@ smplayer
 smplayer-skins
 smplayer-themes
 smtube
-geany
 conky
 xfburn
 hexchat

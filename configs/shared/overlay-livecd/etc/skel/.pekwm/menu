@@ -126,9 +126,8 @@ Submenu = "Customize" {
 Submenu = "System" { 
               Entry = "Htop" { Actions = "Exec $TERM -title htop -e htop" }
               Entry = "MSM" { Actions = "Exec manjaro-settings-manager-gui" }
-              Entry = "Thunar Root" { Actions = "Exec gksu thunar" }
-              Entry = "GParted" { Actions = "Exec gksu gparted" }
-              Entry = "GUFW" { Actions = "Exec gksu gufw" }
+              Entry = "Thunar Root" { Actions = "Exec sudo thunar" }
+              Entry = "GParted" { Actions = "Exec sudo gparted" }
               Entry = "Octopi" { Actions = "Exec octopi" }   
 Submenu = "Pekwm" { 
       Submenu = "Theme" {
