@@ -28,9 +28,6 @@ desktop-file-utils
 ## Packages for Sound and Audio
 manjaro-alsa
 
-## Artwork
-manjaro-artwork
-
 ## Base Packages
 gtk2
 
@@ -48,7 +45,8 @@ obmenu
 tint2
 lxdm-consolekit
 gtk-aurora-engine
-#lightdm-gtk2-greeter
+
+## Apps
 wicd-gtk
 python2-notify
 clipit
@@ -60,14 +58,16 @@ pcmanfm		# file manager
 netsurf		# web browser
 lxsession
 gparted
-manjaro-artwork
-numix-manjaro-themes
 gpicview
 dmenu
 conky
 compton
 lxappearance
-lxde-icon-theme
-xcursor-vanilla-dmz-aa
 galculator-gtk2
 nitrogen
+
+## Artwork
+manjaro-artwork
+numix-manjaro-themes
+lxde-icon-theme
+xcursor-vanilla-dmz-aa

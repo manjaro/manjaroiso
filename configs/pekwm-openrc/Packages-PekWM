@@ -1,0 +1,168 @@
+### Manjaro Packages-PekWM
+ 
+## Xorg Packages
+libdnet
+mesa
+mesa-demos
+>x86_64 lib32-mesa-demos
+netkit-bsd-finger
+uriparser
+xf86-input-acecad
+xf86-input-aiptek
+xf86-input-evdev
+xf86-input-joystick
+xf86-input-keyboard
+xf86-input-mouse
+xf86-input-synaptics
+xf86-input-void
+xf86-input-wacom
+xinetd
+xorg-server
+xorg-server-utils
+xorg-twm
+xorg-utils
+xorg-xinit
+
+## SIS Suportt
+sis-dri
+sisctrl
+xf86-video-sis
+xf86-video-sisimedia
+xf86-video-sisusb
+
+
+## Sound and Audio
+manjaro-alsa 
+pnmixer
+#volwheel
+gnome-alsamixer 
+
+## Package Management
+octopi
+octopi-notifier
+ 
+## File Management
+thunar
+thunar-archive-plugin
+thunar-media-tags-plugin
+thunar-volman
+catfish
+#file-roller
+xarchiver
+gvfs
+gvfs-afc
+gvfs-smb
+tumbler 
+
+## Network Management
+networkmanager-openrc # for openrc
+network-manager-applet
+networkmanager-openconnect
+networkmanager-openvpn
+networkmanager-pptp
+networkmanager-vpnc
+ 
+## Multimedia Support
+gst-libav
+gst-plugins-bad
+gst-plugins-base
+gst-plugins-good
+gst-plugins-ugly
+gstreamer0.10-bad-plugins
+gstreamer0.10-base-plugins
+gstreamer0.10-good-plugins
+gstreamer0.10-ugly-plugins
+gstreamer0.10-ffmpeg
+libdvdcss
+ 
+## Polkit
+gksu
+gnome-keyring
+polkit-gnome
+ 
+## Desktop Display
+xfce4-notifyd
+
+## PekWM Core Packages
+pekwm
+pekwm-themes
+#slim # does not work with ck/openrc
+lightdm-gtk2-greeter
+lxsession
+tint2
+ 
+## Desktop Configuration
+lxappearance
+tintwizard
+ 
+## Artwork, Icon, Mouse, and Desktop Themes
+faenza-green-icon-theme
+gnome-icon-theme
+numix-manjaro-themes
+xcursor-vanilla-dmz-aa
+menda-themes # manjaro default, used by lightdm
+manjaro-artwork # manjaro default, used by lightdm
+ 
+## Applications
+libgnomeui       
+python2-xdg      
+xlockmore
+xterm
+wbar
+xournal
+viewnior
+htop
+deadbeef
+smplayer
+smplayer-skins
+smplayer-themes
+smtube
+leafpad
+conky
+xfburn
+hexchat
+qupzilla
+claws-mail
+qbittorrent
+xautolock
+galculator
+geany
+gxmessage
+htop
+nitrogen
+screenfetch
+compton
+simple-scan
+guvcview
+cherrytree
+gparted
+manjaro-settings-manager
+p7zip
+file-roller
+gsimplecal
+gnome-screenshot
+#thus # does not work with openrc
+abiword
+gnumeric
+gvfs-mtp
+numlockx
+clipit
+libreoffice-installer
+lxrandr
+sakura
+mlocate
+libopenraw
+libgsf
+
+## Fonts
+ttf-ubuntu-font-family
+freetype2
+cairo
+fontconfig
+
+## Games
+xboard
+gnuchess
+pingus
+gweled
+lbreakout2

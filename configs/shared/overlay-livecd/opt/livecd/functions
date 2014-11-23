@@ -44,6 +44,10 @@ if [ -e "/bootmnt/${install_dir}/${arch}/enlightenment-image.sqfs" ] ; then
    DESKTOP="ENLIGHTENMENT"
    DESKTOP_IMG="enlightenment-image"
 fi
+if [ -e "/bootmnt/${install_dir}/${arch}/pekwm-image.sqfs" ] ; then
+   DESKTOP="PekWM"
+   DESKTOP_IMG="pekwm-image"
+fi
 if [ -e "/bootmnt/${install_dir}/${arch}/custom-image.sqfs" ] ; then
    DESKTOP="CUSTOM"
    DESKTOP_IMG="custom-image"
@@ -675,6 +679,9 @@ hd_config()
        fi
        if [ -e "/usr/bin/lxqt-session" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/lxqt-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
+       fi
+       if [ -e "/usr/bin/pekwm" ] ; then
+         sed -i -e 's|^.*session=.*|session=/usr/bin/pekwm|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
        chgrp -R lxdm ${DESTDIR}/var/lib/lxdm  &>/dev/null
        chgrp lxdm ${DESTDIR}/etc/lxdm/lxdm.conf  &>/dev/null
