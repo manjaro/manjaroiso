@@ -47,7 +47,8 @@ thunar-archive-plugin
 thunar-media-tags-plugin
 thunar-volman
 catfish
-file-roller
+#file-roller
+xarchiver
 gvfs
 gvfs-afc
 gvfs-smb
@@ -117,7 +118,6 @@ smplayer
 smplayer-skins
 smplayer-themes
 smtube
-geany
 conky
 xfburn
 hexchat

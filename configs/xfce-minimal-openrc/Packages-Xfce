@@ -48,7 +48,7 @@ gvfs # to fix trash in thunar
 menulibre
 network-manager-applet
 #numlockx
-xcursor-simpleandsoft
+#xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xfce4-panel
 #xfce4-session
@@ -90,7 +90,7 @@ downgrade
 
 ## Artwork
 faenza-green-icon-theme
-gtk-theme-ceti
+#gtk-theme-ceti
 menda-themes
 manjaro-artwork
 #mdm-themes
