@@ -1,0 +1,51 @@
+##His is another minimalistic openbox SLiM (Simple Login Manager) theme. It is based off of DevilX's splashy theme found here:
+##http://gnome-look.org/content/show.php/LinuxOsX+Splashy+Theme?content=72225
+##
+##minimal-tux theme for SLiM
+##misha.thegoat@gmail.com
+##
+##ManjaroPek Team: tropper, Holmes, tourada and mips
+##Homepage: http://www.manjaro-linux.com.br - https://forum.manjaro.org/index.php
+##IRC: #manjaro-br - #manjaropek
+##
+##License GPLv3 - Homepage: http://www.gnu.org/licenses/gpl.html
+##
+##Version: 0.1 - Date: 15/10/2014
+
+##Basic Settings and Output
+
+# Messages (ie: shutdown)
+msg_color               #666666
+msg_font                Oxygen:size=16:dpi=75
+msg_x                   50%
+msg_y                   40%
+#msg_shadow_color 	#ffffff
+msg_shadow_xoffset 	1
+msg_shadow_yoffset 	1
+
+# valid values: stretch, tile
+background_style        center
+background_color        #bfbfbf
+
+# Input controls
+input_panel_x           50%
+input_panel_y           50%
+input_name_x            225
+input_name_y            90
+input_font          	Oxygen:size=16:dpi=75
+input_fgcolor           #666666
+input_color		#666666
+
+# Username / password request
+username_font          	Oxygen:size=16:dpi=75
+username_color        	#666666
+username_x              125
+username_y              90
+password_x              125
+password_y              90
+#username_shadow_color   #ffffff
+#username_shadow_xoffset 1
+#username_shadow_yoffset 1
+
+username_msg            username
+password_msg            password
