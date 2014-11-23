@@ -106,6 +106,9 @@ if [ -e "/usr/bin/lightdm" ] ; then
    if [ -e "/usr/bin/lxqt-session" ] ; then
         sed -i -e 's/^.*user-session=.*/user-session=lxqt/' /etc/lightdm/lightdm.conf
    fi
+   if [ -e "/usr/bin/pekwm" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=pekwm/' /etc/lightdm/lightdm.conf
+   fi
    sed -i -e "s/^.*autologin-user=.*/autologin-user=${username}/" /etc/lightdm/lightdm.conf
    sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
    groupadd autologin
@@ -254,6 +257,9 @@ if [ -e "/usr/bin/lxdm" ] ; then
    if [ -e "/usr/bin/lxqt-session" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/lxqt-session|' /etc/lxdm/lxdm.conf
    fi
+   if [ -e "/usr/bin/pekwm" ] ; then
+      sed -i -e 's|^.*session=.*|session=/usr/bin/pekwm|' /etc/lxdm/lxdm.conf
+   fi
    chgrp -R lxdm /var/lib/lxdm > /dev/null
    chgrp lxdm /etc/lxdm/lxdm.conf > /dev/null
    chmod +r /etc/lxdm/lxdm.conf > /dev/null
@@ -399,6 +405,10 @@ if [ -e "$_conf_file" ] ; then
    if [ -e "/bootmnt/${install_dir}/${arch}/enlightenment-image.sqfs" ] ; then
       sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/enlightenment-image.sqfs|g" $_conf_file
       sed -i "s|_title_|Manjaro Enlightenment Edition|g" $_conf_file
+   fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/pekwm-image.sqfs" ] ; then
+      sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/pekwm-image.sqfs|g" $_conf_file
+      sed -i "s|_title_|Manjaro PekWM Edition|g" $_conf_file
    fi
    if [ -e "/bootmnt/${install_dir}/${arch}/custom-image.sqfs" ] ; then
       sed -i "s|_desktop_|/bootmnt/${install_dir}/_ARCH_/custom-image.sqfs|g" $_conf_file

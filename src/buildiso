@@ -73,6 +73,11 @@ if [ -e Packages-Net ] ; then
     desktop="net"
     pkgsfile="Packages-Net"
 fi
+if [ -e Packages-PekWM ] ; then
+    de="-pekwm"
+    desktop="pekwm"
+    pkgsfile="Packages-PekWM"
+fi
 if [ -e Packages-Custom ] ; then
     de="-custom"
     desktop="custom"
