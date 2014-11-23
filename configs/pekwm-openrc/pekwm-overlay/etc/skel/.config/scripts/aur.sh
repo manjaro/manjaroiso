@@ -3,7 +3,7 @@
 # Simple bash script to install the necessary software packages to
 # access the AUR.
 #
-# Written by Carl Duff
+# Written by Carl Duff (Adapted ManjaroPek Team)
 
 # Information about this script for the user
 echo "${title}Install full Arch User Repository (AUR) support${nrml}

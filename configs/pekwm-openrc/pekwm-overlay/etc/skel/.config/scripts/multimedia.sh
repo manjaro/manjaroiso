@@ -3,7 +3,7 @@
 # Simple bash script to install the necessary software packages to
 # enable full multimedia capabilities.
 #
-# Written by Carl Duff
+# Written by Carl Duff (Adapted ManjaroPek Team)
 
 # Information about this script for the user
 echo "${title}Install Full Multimedia Support${nrml}
