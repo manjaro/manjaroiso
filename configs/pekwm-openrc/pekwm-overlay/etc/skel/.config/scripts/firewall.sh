@@ -14,6 +14,6 @@ This will install all the necessary software to enable firewall.
 Press ${grnb}<enter>${nrml} to proceed. You may still cancel the process when prompted."
 
 read
-pacman -S gufw ufw && systemctl enable ufw -f && systemctl start ufw && ufw enable && ufw status
+pacman -S gufw ufw ufw-openrc && rc-update add ufw default && rc-service ufw start
 read -p $'\n'"Process Complete. Press ${grnb}<enter>${nrml} to continue"$'\n'
 exit 0

@@ -4,7 +4,7 @@
 # enable printing capabilities. CUPs service is then enabled and
 # started.
 #
-# Written by Carl Duff
+# Written by Carl Duff (Adapted ManjaroPek Team) 
 
 # Information about this script for the user
 echo "${title}Install and Enable Full Printing Capabilities${nrml}
@@ -15,6 +15,6 @@ You will then be able to connect and set-up your printer straight away.
 Press ${grnb}<enter>${nrml} to proceed. You may still cancel the process when prompted."
 
 read
-pacman -S manjaro-printer && systemctl enable cups.service -f && systemctl start cups.service
+pacman -S manjaro-printer cups-openrc && rc-update add cupsd default && rc-service cupsd start
 read -p $'\n'"Process Complete. Press ${grnb}<enter>${nrml} to continue"$'\n'
 exit 0
