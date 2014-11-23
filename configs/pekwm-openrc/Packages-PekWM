@@ -85,8 +85,7 @@ xfce4-notifyd
 ## PekWM Core Packages
 pekwm
 pekwm-themes
-#slim
-#slim-themes
+#slim # does not work with openrc
 lightdm-gtk2-greeter
 lxsession
 tint2
