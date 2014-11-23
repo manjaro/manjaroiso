@@ -1,0 +1,232 @@
+##ManjaroPek Menu Configuration Script
+##
+##Written Core Team Pekwm
+##Homepage: http://www.pekwm.org - IRC: #pekwm 
+##
+##ManjaroPek Team
+##
+##Homepage: http://www.manjaro-linux.com.br - https://forum.manjaro.org/index.php
+##IRC: #manjaro-br - #manjaropek
+##
+##License GPLv3 - Homepage: http://www.gnu.org/licenses/gpl.html
+##
+##Version: 0.2 - Date: 09/10/2014
+
+##Basic Settings and Output
+
+# Menu config for pekwm
+
+# Variables
+    INCLUDE = "vars"
+
+RootMenu = "Pek" {
+               Entry = "Setup" { Actions = "Exec sakura -e 'sudo /usr/bin/setup'" }
+
+ 	  Separator {}
+
+               #Entry = "Grun" { Actions = "Exec grun" }
+               Entry = "Terminal" { Actions = "Exec sakura" }
+               Entry = "Geany" { Actions = "Exec geany" }
+               Entry = "Thunar" { Actions = "Exec thunar" }
+	       Entry = "QupZilla" { Actions = "Exec qupzilla" }
+               #Entry = "Chromium" { Actions = "Exec chromium" }
+               #Entry = "Firefox" { Actions = "Exec firefox" }
+               #Entry = "Midori" { Actions = "Exec midori" }
+               
+         Separator {}
+               
+Submenu = "Screenshot" {
+              Entry = "Display Monitor" { Actions = "Exec gnome-screenshot --delay=1" }
+              Entry = "Windows" { Actions = "Exec gnome-screenshot --window" }
+              Entry = "Delay 5" { Actions = "Exec gnome-screenshot --delay=5" }
+              Entry = "Delay 10" { Actions = "Exec gnome-screenshot --delay=10" }
+              Entry = "Select Area" { Actions = "Exec gnome-screenshot --area" }
+              }
+         
+         Separator {}
+
+Submenu = "Tools" { 
+               #Entry = "ISOUSB" { Actions = "Exec isousb" }
+               #Entry = "Vokoscreen" { Actions = "Exec vokoscreen" }
+               #Entry = "Keepass" { Actions = "Exec keepass2" }
+               #Entry = "Keepassx" { Actions = "Exec keepassx" }
+               #Entry = "vim" { Actions = "Exec $TERM -title vim -e vim" }
+               #Entry = "FinalTerm" { Actions = "Exec finalterm" }
+               #Entry = "Lxterminal" { Actions = "Exec lxterminal" }
+               #Entry = "Terminator" { Actions = "Exec terminator" }
+               #Entry = "Tilda" { Actions = "Exec tilda" }
+               Entry = "Catfish" { Actions = "Exec catfish" }
+	       Entry = "Cherrytree" { Actions = "Exec cherrytree" }
+               }
+Submenu = "Office" { 
+              Entry = "Abiword" { Actions = "Exec abiword" }
+              Entry = "Gnumeric" { Actions = "Exec gnumeric" }         
+              Entry = "Xournal" { Actions = "Exec xournal" }
+              Entry = "Galculator" { Actions = "Exec galculator"  }
+              Entry = "Simple Scan" { Actions = "Exec simple-scan" }
+	      Entry = "LibreOffice Installer" { Actions = "Exec /opt/libreoffice-installer/libreoffice-installer" }
+              #Entry = "Libre Office Writer" { Actions = "Exec lowriter" }
+              #Entry = "Libre Office Calc" { Actions = "Exec localc" }
+              #Entry = "Libre Office Impress" { Actions = "Exec loimpress" }
+              #Entry = "Xmind" { Actions = "Exec XMind" }
+              #Entry = "MasterPDF Editor" { Actions = "Exec /usr/bin/pdfeditor" }
+              #Entry = "Rednotebook" { Actions = "Exec rednotebook" }
+              #Entry = "Scribus" { Actions = "Exec scribus" }
+              }
+Submenu = "Graphics" { 
+              #Entry = "Gimp" { Actions = "Exec gimp" }
+              #Entry = "Inkscape" { Actions = "Exec inkscape" }
+              #Entry = "Blender" { Actions = "Exec blender" }
+              #Entry = "Converseen" { Actions = "Exec converseen" }
+              #Entry = "Gcolor" { Actions = "Exec gcolor2" }
+              Entry = "Viewnior" { Actions = "Exec viewnior" }
+              #Entry = "shotwell" { Actions = "Exec shotwell" }
+              }
+Submenu = "Multimedia" { 
+              Entry = "DeadBeef" { Actions = "Exec deadbeef" }
+	      #Entry = "Guayadeque" { Actions = "Exec guayadeque" }
+              #Entry = "Audacious" { Actions = "Exec audacious" }
+              #Entry = "LxMusic" { Actions = "Exec lxmusic" }
+              Entry = "Smtube" { Actions = "Exec smtube" }
+              Entry = "Smplayer" { Actions = "Exec smplayer" }         
+              #Entry = "Audacity" { Actions = "Exec audacity" }
+              #Entry = "Open Shot" { Actions = "Exec openshot" }
+              #Entry = "HandBrake" { Actions = "Exec ghb" }
+              Entry = "AlsaMixer" { Actions = "Exec gnome-alsamixer" }
+              #Entry = "MP3 Gain" { Actions = "Exec easymp3gain" }
+              #Entry = "MOC Player" { Actions = "Exec $TERM -title mocp -e mocp" }
+              Entry = "XFBurn" { Actions = "Exec xfburn" }
+              }
+Submenu = "Network" { 
+              Entry = "Claws-Mail" { Actions = "Exec claws-mail" }
+              #Entry = "Thunderbird" { Actions = "Exec thunderbird" }
+              #Entry = "Pidgin" { Actions = "Exec pidgin" }
+              Entry = "HexChat" { Actions = "Exec hexchat" }
+              #Entry = "Polly" { Actions = "Exec polly" }
+              #Entry = "Liferea" { Actions = "Exec liferea" }
+              Entry = "QbitTorrent" { Actions = "Exec qbittorrent" }
+              #Entry = "Dropbox" { Actions = "Exec dropboxd" }
+              #Entry = "Filezilla" { Actions = "Exec filezilla" }
+              #Entry = "gFTP" { Actions = "Exec gftp" }   
+              }
+Submenu = "Game" { 
+              Entry = "XBoard" { Actions = "Exec xboard" }
+              Entry = "LBreakout" { Actions = "Exec lbreakout2" }
+              Entry = "Pingus" { Actions = "Exec pingus" }
+              Entry = "Gweled" { Actions = "Exec gweled" }     
+              }
+Submenu = "Customize" { 
+              Entry = "Nitrogen" { Actions = "Exec nitrogen" }
+              Entry = "LXAppearance" { Actions = "Exec lxappearance" }
+              Entry = "Notifications" { Actions = "Exec xfce4-notifyd-config" }
+              #Entry = "Wbar Manager" { Actions = "Exec wbar-config" }
+              Entry = "Tintwizard" { Actions = "Exec tintwizard" }
+              Entry = "Conky Manager" { Actions = "Exec geany ~/.conkyrc" }
+              }
+Submenu = "System" { 
+              Entry = "Htop" { Actions = "Exec $TERM -title htop -e htop" }
+              Entry = "MSM" { Actions = "Exec manjaro-settings-manager-gui" }
+              Entry = "Thunar Root" { Actions = "Exec sudo thunar" }
+              Entry = "GParted" { Actions = "Exec sudo gparted" }
+              Entry = "Octopi" { Actions = "Exec octopi" }   
+Submenu = "Pekwm" { 
+      Submenu = "Theme" {
+              Entry { Actions = "Dynamic $_PEKWM_SCRIPT_PATH/pekwm_themeset.sh $_PEKWM_THEME_PATH" }
+              Entry { Actions = "Dynamic $_PEKWM_SCRIPT_PATH/pekwm_themeset.sh ~/.pekwm/themes" }
+              }
+      Submenu = "Setting" { 
+	      Entry = "Menu" { Actions = "Exec geany ~/.pekwm/menu" }
+              Entry = "Autoproperties" { Actions = "Exec geany ~/.pekwm/autoproperties" }
+              Entry = "Config" { Actions = "Exec geany ~/.pekwm/config" }
+              Entry = "Keys" { Actions = "Exec geany ~/.pekwm/keys" }
+              Entry = "Mouse" { Actions = "Exec geany ~/.pekwm/mouse" }
+              Entry = "Start" { Actions = "Exec geany ~/.pekwm/start" }
+              Entry = "Vars" { Actions = "Exec geany ~/.pekwm/vars" }
+	      }
+      Submenu = "Action" { 
+	      Entry = "Reload" { Actions = "Reload" }
+              Entry = "Restart" { Actions = "Restart" }
+	      }
+        }
+
+      Submenu = "Script Support" {
+              Entry = "AUR" { Actions = "Exec xterm -e sudo ~/.config/scripts/aur.sh &" }
+              Entry = "Multimedia" { Actions = "Exec xterm -e sudo ~/.config/scripts/multimedia.sh &" }
+              Entry = "Printing" { Actions = "Exec xterm -e sudo ~/.config/scripts/printing.sh &" }
+	      Entry = "Firewall" { Actions = "Exec xterm -e sudo ~/.config/scripts/firewall.sh &" }
+              }
+       }
+ 
+       Separator {}
+
+Submenu = "Go to" { 
+         SubMenu = "Workspace" {
+              # Create goto menu once per pekwm config reload. The fast way that
+              # will work for most if not all users.
+              COMMAND = "$_PEKWM_SCRIPT_PATH/pekwm_ws_menu.sh goto"
+              # Create goto menu every time the menu is opened. The slow way.
+              # This is what you want if you are using external tools to make
+              # the amount of workspaces something else than what you define in
+              # ~/.pekwm/config. You will know if you want this.
+              # Entry = "" { Actions = "Dynamic $_PEKWM_SCRIPT_PATH/pekwm_ws_menu.sh goto dynamic" }
+              }
+              Entry = "Focus Client" { Actions = "ShowMenu GotoClient True" }
+              Entry = "Focus Frame" { Actions = "ShowMenu Goto" }
+           }            
+       
+           Separator {}
+
+       Submenu = "Session" {
+              Entry = "Suspend" { Actions = "Exec dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend" }
+              Entry = "Hibernate" { Actions = "Exec dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Hibernate" } 
+              Entry = "Logout" { Actions = "Exec pekwm --replace" }
+              Entry = "Restart" { Actions = "Exec dbus-send --system --print-reply --dest='org.freedesktop.ConsoleKit' /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart" }   
+              Entry = "Shutdown" { Actions = "Exec dbus-send --system --print-reply --dest='org.freedesktop.ConsoleKit' /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop" }            
+              }
+
+WindowMenu = "Window Menu" {
+           Entry = "(Un)Stick" { Actions = "Toggle Sticky" }
+           Entry = "(Un)Shade" { Actions = "Toggle Shaded" }
+           Entry = "Iconify" { Actions = "Set Iconified" }
+           Entry = "Command.." { Actions = "ShowCmdDialog" }
+
+Submenu = "Maximize" {
+              Entry = "Toggle Full" { Actions = "Toggle Maximized True True" }
+              Entry = "Toggle Horizontal" { Actions = "Toggle Maximized True False" }
+              Entry = "Toggle Vertical" { Actions = "Toggle Maximized False True" }
+           }
+Submenu = "Fill" {
+              Entry = "Full" { Actions = "MaxFill True True" }
+              Entry = "Horizontal" { Actions = "MaxFill True False" }
+              Entry = "Vertical" { Actions = "MaxFill False True" }
+           }
+Submenu = "Stacking" {
+              Entry = "Raise" { Actions = "Raise" }
+              Entry = "Lower" { Actions = "Lower" }
+              Entry = "Toggle Always On Top" { Actions = "Toggle AlwaysOnTop" }
+              Entry = "Toggle Always Below" { Actions = "Toggle AlwaysBelow" }
+           }
+Submenu = "Decorations" {
+              Entry = "Toggle Decorations" { Actions = "Toggle DecorBorder; Toggle DecorTitlebar" }
+              Entry = "Toggle Borders" { Actions = "Toggle DecorBorder" }
+              Entry = "Toggle Titlebar" { Actions = "Toggle DecorTitlebar" }
+           }
+Submenu = "Skip" {
+              Entry = "Toggle showing this frame in menus" { Actions = "Toggle Skip Menus" }
+              Entry = "Toggle including this frame in focus toggle" { Actions = "Toggle Skip FocusToggle" }
+              Entry = "Toggle if this frame snaps to other windows" { Actions = "Toggle Skip Snap" }
+           }
+SubMenu = "Send To" {
+              # Create sendto menu once per pekwm config reload. The fast way that
+              # will work for most if not all users.
+              COMMAND = "$_PEKWM_SCRIPT_PATH/pekwm_ws_menu.sh send"
+              # Create sendto menu every time the menu is opened. The slow way.
+              # This is what you want if you are using external tools to make
+              # the amount of workspaces something else than what you define in
+              # ~/.pekwm/config. You will know if you want this.
+              # Entry = "" { Actions = "Dynamic $_PEKWM_SCRIPT_PATH/pekwm_ws_menu.sh send dynamic" }
+           }
+           Separator {}
+           Entry = "Close" { Actions = "Close" }
+           Submenu = "Kill" { Entry = "Kill application" { Actions = "Kill" } }
+        }
