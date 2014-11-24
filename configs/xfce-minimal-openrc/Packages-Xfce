@@ -7,7 +7,7 @@ eudev # hack for networkmanager-openrc
 networkmanager-openrc
 networkmanager-dispatcher-ntpd
 openresolv
-bluez-openrc=20141114
+bluez-openrc
 blueman
 
 ## Xorg Packages
@@ -80,7 +80,6 @@ mousepad
 pamac
 >i686 parole
 polkit-gnome # for gparted
-#raktpdf
 qpdfview
 >i686 sylpheed
 >i686 xnoise
@@ -94,7 +93,6 @@ faenza-green-icon-theme
 #gtk-theme-ceti
 menda-themes
 manjaro-artwork
-#mdm-themes
 lightdm-gtk2-greeter
 xfce-theme-greenbird
 #plymouth-theme-manjaro-elegant
