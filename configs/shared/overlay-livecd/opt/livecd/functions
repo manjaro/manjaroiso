@@ -699,36 +699,36 @@ hd_config()
 
     # setup sddm
     if [ -e "/usr/bin/sddm" ] ; then
-      getent group sddm > /dev/null 2>&1 || groupadd --system sddm
-      getent passwd sddm > /dev/null 2>&1 || usr/bin/useradd -c "Simple Desktop Display Manager" --system -d /var/lib/sddm -s /usr/bin/nologin -g sddm sddm
-      passwd -l sddm > /dev/null
-      mkdir -p /var/lib/sddm
-      chown -R sddm:sddm /var/lib/sddm > /dev/null
-      sed -i -e "s|^User=.*|User=${username}|" /etc/sddm.conf
-      if [ -e "/usr/bin/startxfce4" ] ; then
-	  sed -i -e 's|^Session=.*|Session=xfce.desktop|' /etc/sddm.conf
-      fi
-      if [ -e "/usr/bin/cinnamon-session" ] ; then
-	  sed -i -e 's|^Session=.*|Session=cinnamon.desktop|' /etc/sddm.conf
-      fi
-      if [ -e "/usr/bin/openbox-session" ] ; then
-	  sed -i -e 's|^Session=.*|Session=openbox.desktop|' /etc/sddm.conf
-      fi
-      if [ -e "/usr/bin/mate-session" ] ; then
-	  sed -i -e 's|^Session=.*|Session=mate.desktop|' /etc/sddm.conf
-      fi
-      if [ -e "/usr/bin/lxsession" ] ; then
-	  sed -i -e 's|^Session=.*|Session=LXDE.desktop|' /etc/sddm.conf
-      fi
-      if [ -e "/usr/bin/lxqt-session" ] ; then
-	  sed -i -e 's|^Session=.*|Session=lxqt.desktop|' /etc/sddm.conf
-      fi
-      if [ -e "/usr/bin/enlightenment_start" ] ; then
-	  sed -i -e 's|^Session=.*|Session=enlightenment.desktop|' /etc/sddm.conf
-      fi
-      if [ -e "/usr/bin/startkde" ] ; then
-	  sed -i -e 's|^Session=.*|Session=plasma.desktop|' /etc/sddm.conf
-      fi
+       chroot ${DESTDIR} getent group sddm > /dev/null 2>&1 || groupadd --system sddm
+       chroot ${DESTDIR} getent passwd sddm > /dev/null 2>&1 || usr/bin/useradd -c "Simple Desktop Display Manager" --system -d /var/lib/sddm -s /usr/bin/nologin -g sddm sddm
+       chroot ${DESTDIR} passwd -l sddm > /dev/null
+       chroot ${DESTDIR} mkdir -p /var/lib/sddm
+       chroot ${DESTDIR} chown -R sddm:sddm /var/lib/sddm > /dev/null
+       sed -i -e "s|^User=.*|User=${username}|" /etc/sddm.conf
+       if [ -e "/usr/bin/startxfce4" ] ; then
+         sed -i -e 's|^Session=.*|Session=xfce.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
+       if [ -e "/usr/bin/cinnamon-session" ] ; then
+         sed -i -e 's|^Session=.*|Session=cinnamon.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
+       if [ -e "/usr/bin/openbox-session" ] ; then
+         sed -i -e 's|^Session=.*|Session=openbox.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
+       if [ -e "/usr/bin/mate-session" ] ; then
+         sed -i -e 's|^Session=.*|Session=mate.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
+       if [ -e "/usr/bin/lxsession" ] ; then
+         sed -i -e 's|^Session=.*|Session=LXDE.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
+       if [ -e "/usr/bin/lxqt-session" ] ; then
+         sed -i -e 's|^Session=.*|Session=lxqt.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
+       if [ -e "/usr/bin/enlightenment_start" ] ; then
+         sed -i -e 's|^Session=.*|Session=enlightenment.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
+       if [ -e "/usr/bin/startkde" ] ; then
+         sed -i -e 's|^Session=.*|Session=plasma.desktop|' ${DESTDIR}/etc/sddm.conf
+       fi
     fi
 
     # fix some apps
