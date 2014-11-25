@@ -76,13 +76,13 @@ lxsession
 manjaro-settings-manager
 manjaro-welcome
 midori
+sylpheed
 mousepad
+viewnior
 pamac
->i686 parole
+#>i686 parole
 polkit-gnome # for gparted
 qpdfview
->i686 sylpheed
->i686 xnoise
 downgrade
 
 ## Installer
@@ -94,6 +94,7 @@ faenza-green-icon-theme
 menda-themes
 manjaro-artwork
 lightdm-gtk2-greeter
+lightdm-gtk-greeter-settings
 xfce-theme-greenbird
 #plymouth-theme-manjaro-elegant
 
