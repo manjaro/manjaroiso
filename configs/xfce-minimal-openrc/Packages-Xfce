@@ -70,23 +70,24 @@ xfce4-whiskermenu-plugin
 ## Applications
 gksu
 gparted
+#polkit-gnome # for gparted
+lxsession # contains lxpolit
 gst-libav
 libreoffice-installer
-lxsession
 manjaro-settings-manager
 manjaro-welcome
+pamac
+octopi # because pamac does not seem to work all the time
 midori
 sylpheed
 mousepad
 viewnior
-pamac
 #>i686 parole
-polkit-gnome # for gparted
 qpdfview
 downgrade
 
 ## Installer
-#thus # requires localectl (systemd specific)
+thus
 
 ## Artwork
 faenza-green-icon-theme
