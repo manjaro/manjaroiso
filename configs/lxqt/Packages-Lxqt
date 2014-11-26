@@ -114,10 +114,16 @@ menda-themes-dark 		# new manjaro GTK2 theme
 menda-circle-icon-theme 	# new manjaro icon theme - much lighter
 menda-lxqt-panel 		# new manjaro theme for lxqt/panel
 
+infinality-bundle		# to improve text rendering
 
 
+# 6) Minimal set of tools
+# =======================
+mpv				# replace mplayer/mplayer2
+qpdfview			# pdf reader
 
-# x) AUR Access
+
+# 7) AUR Access
 # =============
 autoconf
 automake
