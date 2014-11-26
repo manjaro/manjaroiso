@@ -3,6 +3,9 @@
 .directory
 work-*
 *.iso
-*-x86_64*
-*-i686*
+*-pkgs.txt
+configs/*/work-*
+configs/*/*.iso
+configs/*/*-pkgs.txt
 diff
+configs/guidelines.txt
