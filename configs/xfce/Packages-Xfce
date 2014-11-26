@@ -28,6 +28,7 @@ xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xcursor-menda
 xfce4
+xfce4-weather-plugin-menda-circle-icons
 libgsf       # support ODF and
 libopenraw   # RAW thumbnailing
 #xscreensaver
@@ -131,7 +132,7 @@ xorg-xkill
 ## Artwork
 menda-circle-icon-theme
 menda-square-icon-theme
-#faenza-green-icon-theme
+faenza-green-icon-theme
 gtk-theme-ceti
 menda-themes
 menda-themes-dark
