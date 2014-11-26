@@ -1,6 +1,9 @@
 *~
 .gitignore
 .directory
+work-*
+*.iso
+*-pkgs.txt
 configs/*/work-*
 configs/*/*.iso
 configs/*/*-pkgs.txt
