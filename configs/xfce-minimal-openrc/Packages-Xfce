@@ -7,7 +7,7 @@ eudev # hack for networkmanager-openrc
 networkmanager-openrc
 networkmanager-dispatcher-ntpd
 openresolv
-bluez-openrc
+bluez-openrc # required for bluetooth
 blueman
 
 ## Xorg Packages
