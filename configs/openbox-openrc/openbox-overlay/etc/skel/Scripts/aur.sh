@@ -17,6 +17,6 @@ instructions on how to access the AUR once these packages are installed.
 Press ${grnb}<enter>${nrml} to proceed. You may still cancel the process when prompted."
 
 read
-pacman -S autoconf automake binutils bison fakeroot flex gcc libtool m4 make patch yaourt
+pacman -Sy autoconf automake binutils bison fakeroot flex gcc libtool m4 make patch yaourt
 read -p $'\n'"Process Complete. Press ${grnb}<enter>${nrml} to continue"$'\n'
 exit 0

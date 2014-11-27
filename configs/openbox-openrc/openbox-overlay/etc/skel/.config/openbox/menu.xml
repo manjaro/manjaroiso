@@ -18,6 +18,11 @@
 		</item>
 		<separator/>
 		<menu id="3" label="Accessories">
+			<item label="Find Application">
+				<action name="Execute">
+					<execute>xfce4-appfinder</execute>
+				</action>
+			</item>
 			<item label="Galculator">
 				<action name="Execute">
 					<execute>galculator</execute>
@@ -77,7 +82,7 @@
 			</item>
 			<item label="GParted">
 				<action name="Execute">
-					<execute>gksu gparted</execute>
+					<execute>gksudo gparted</execute>
 				</action>
 			</item>
 			<item label="Octopi">
@@ -87,7 +92,7 @@
 			</item>
 			<item label="Manjaro Settings Manager">
 				<action name="Execute">
-					<execute>gksu manjaro-settings-manager-gui</execute>
+					<execute>gksudo manjaro-settings-manager-gui</execute>
 				</action>
 			</item>
 		</menu>

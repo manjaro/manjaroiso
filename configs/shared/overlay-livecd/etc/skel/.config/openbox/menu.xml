@@ -8,6 +8,11 @@
 		</item>
 		<separator/>
 		<menu id="3" label="Accessories">
+			<item label="Find Application">
+				<action name="Execute">
+					<execute>xfce4-appfinder</execute>
+				</action>
+			</item>
 			<item label="Galculator">
 				<action name="Execute">
 					<execute>galculator</execute>
