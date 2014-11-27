@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="parole" version="1.0">
+  <property name="subtitles" type="empty">
+    <property name="font" type="string" value="Sans Bold 20"/>
+  </property>
+  <property name="folders" type="empty">
+    <property name="last-used-media" type="string" value="/home/aaditya/DataLinux/S/Daily Mp3"/>
+  </property>
+  <property name="window" type="empty">
+    <property name="width" type="int" value="517"/>
+    <property name="height" type="int" value="352"/>
+    <property name="maximized" type="bool" value="false"/>
+  </property>
+  <property name="audio" type="empty">
+    <property name="volume" type="int" value="72"/>
+  </property>
+  <property name="playlist" type="empty">
+    <property name="show-playlist" type="bool" value="false"/>
+    <property name="repeat" type="bool" value="false"/>
+  </property>
+  <property name="parole" type="empty">
+    <property name="plugins" type="string" value=""/>
+  </property>
+  <property name="video" type="empty">
+    <property name="videosink" type="string" value="xvimagesink"/>
+  </property>
+</channel>

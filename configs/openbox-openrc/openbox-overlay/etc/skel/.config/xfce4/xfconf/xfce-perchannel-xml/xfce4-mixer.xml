@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-mixer" version="1.0">
+  <property name="active-card" type="string" value="Intel82801AAICHAlsamixer"/>
+  <property name="volume-step-size" type="uint" value="2"/>
+  <property name="sound-card" type="string" value="HDAIntelPCHAlsamixer"/>
+  <property name="sound-cards" type="empty">
+    <property name="HDAIntelPCHAlsamixer" type="array">
+      <value type="string" value="Master"/>
+      <value type="string" value="Headphone"/>
+      <value type="string" value="Speaker"/>
+      <value type="string" value="PCM"/>
+      <value type="string" value="Microphone"/>
+      <value type="string" value="IEC958"/>
+      <value type="string" value="Beep"/>
+      <value type="string" value="Capture"/>
+    </property>
+  </property>
+  <property name="window-height" type="int" value="718"/>
+  <property name="window-width" type="int" value="1358"/>
+</channel>

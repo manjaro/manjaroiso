@@ -3,17 +3,17 @@
 	<menu id="root-menu" label="Openbox">
 		<item label="Terminal">
 			<action name="Execute">
-				<command>lxterminal</command>
+				<command>xfce4-terminal</command>
 			</action>
 		</item>
 		<item label="File Manager">
 			<action name="Execute">
-				<command>pcmanfm</command>
+				<command>thunar</command>
 			</action>
 		</item>
 		<item label="Web Browser">
 			<action name="Execute">
-				<command>netsurf</command>
+				<command>qupzilla</command>
 			</action>
 		</item>
 		<separator/>
@@ -37,49 +37,69 @@
 			</item>
 		</menu>
 		<menu id="6" label="Graphics">
-			<item label="Gpicview">
+			<item label="Viewnior">
 				<action name="Execute">
-					<execute>gpicview</execute>
+					<execute>viewnior</execute>
 				</action>
 			</item>
 		</menu>
 		<menu id="7" label="Multimedia">
 			<item label="Alsamixer">
 				<action name="Execute">
-					<execute>lxterminal -e alsamixer</execute>
+					<execute>xfce4-terminal -e alsamixer</execute>
 				</action>
 			</item>
 		</menu>
 		<menu id="8" label="Network">
-			<item label="Netsurf">
+			<item label="Qupzilla">
 				<action name="Execute">
-					<execute>netsurf</execute>
+					<execute>qupzilla</execute>
 				</action>
 			</item>
 		</menu>
 		<menu id="9" label="Office">
-			<item label="PDFViewer">
+			<item label="Qpdfview">
 				<action name="Execute">
-					<execute>epdfview</execute>
+					<execute>qpdfview</execute>
+				</action>
+			</item>
+			<item label="LibreOffice Installer">
+				<action name="Execute">
+					<execute>/opt/libreoffice-installer/libreoffice-installer</execute>
 				</action>
 			</item>
 		</menu>
 		<menu id="37" label="System">
+			<item label="Enable AUR Support">
+				<action name="Execute">
+					<execute>xterm -e sudo ~/Scripts/aur.sh &amp;</execute>
+				</action>
+			</item>
 			<item label="GParted">
 				<action name="Execute">
-					<execute>pkexec gparted</execute>
+					<execute>gksu gparted</execute>
+				</action>
+			</item>
+			<item label="Octopi">
+				<action name="Execute">
+					<execute>octopi</execute>
+				</action>
+			</item>
+			<item label="Manjaro Settings Manager">
+				<action name="Execute">
+					<execute>gksu manjaro-settings-manager-gui</execute>
 				</action>
 			</item>
 		</menu>
 		<menu id="38" label="Utilities">
-			<item label="LXTerminal">
+			<item label="Terminal">
 				<action name="Execute">
-					<execute>lxterminal</execute>
+					<execute>xfce4-terminal</execute>
 				</action>
 			</item>
-			<item label="PCManFM">
+			<item label="File Manager">
 				<action name="Execute">
-					<command>pcmanfm</command>
+					<command>thunar</command>
 					<startupnotify>
 						<enabled>yes</enabled>
 					</startupnotify>
@@ -98,6 +118,11 @@
 					<execute>lxappearance</execute>
 				</action>
 			</item>
+			<item label="Display Settings">
+				<action name="Execute">
+					<execute>lxrandr</execute>
+				</action>
+			</item>
 			<item label="Panel tint2">
 				<action name="Execute">
 					<execute>tint2conf</execute>
@@ -105,9 +130,19 @@
 			</item>
 			<separator/>
 			<menu id="40" label="OpenBox">
+				<item label="Edit Autostart">
+					<action name="Execute">
+						<execute>leafpad ~/.config/openbox/autostart</execute>
+					</action>
+				</item>
 				<item label="Openbox Menu Editor">
 					<action name="Execute">
 						<execute>obmenu</execute>
+					</action>
+				</item>
+				<item label="Openbox Key Editor">
+					<action name="Execute">
+						<execute>obkey</execute>
 					</action>
 				</item>
 				<item label="Openbox Configuration Manager">
