@@ -129,6 +129,24 @@ DisabledSemiTransparent=true
 DisabledValue=1
 Size=32
 
+[General]
+BrowserApplication[$e]=firefox.desktop
+ColorScheme=menda
+Name=menda
+XftAntialias=true
+XftHintStyle=hintmedium
+XftSubPixel=none
+dbfile=/home/anex/.mozilla/firefox/9shb6xj3.default/places.sqlite
+desktopFont=Oxygen-Sans,10,-1,5,50,0,0,0,0,0
+fixed=Droid Sans Mono,10,-1,5,50,0,0,0,0,0
+font=Oxygen-Sans,10,-1,5,50,0,0,0,0,0
+menuFont=Oxygen-Sans,10,-1,5,50,0,0,0,0,0
+shadeSortColumn=true
+smallestReadableFont=Oxygen-Sans,8,-1,5,50,0,0,0,0,0
+taskbarFont=Oxygen-Sans,10,-1,5,50,0,0,0,0,0
+toolBarFont=Oxygen-Sans,9,-1,5,50,0,0,0,0,0
+widgetStyle=menda
+
 [Icons]
 Theme=Menda-Circle
 

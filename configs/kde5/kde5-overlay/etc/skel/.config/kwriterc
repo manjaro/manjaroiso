@@ -1,0 +1,31 @@
+[General Options]
+ShowMenuBar=true
+ShowPath=false
+ShowStatusBar=true
+
+[MainWindow]
+State=AAAA/wAAAAD9AAAAAAAABQAAAAJIAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+Window-Maximized 720x1280=true
+
+[Recent Files]
+File1[$e]=$HOME/.config/startupconfigkeys
+File10[$e]=$HOME/.config/kwriterc
+File2[$e]=$HOME/.config/systemsettingsrc
+File3[$e]=$HOME/work/configs/kde/kde-overlay/etc/skel/.config/systemsettingsrc
+File4[$e]=$HOME/.config/plasma-localerc
+File5[$e]=$HOME/.config/plasma-org.kde.plasma.desktop-appletsrc
+File6[$e]=$HOME/.config/plasmarc
+File7[$e]=$HOME/.config/plasmashellrc
+File8[$e]=$HOME/.config/powermanagementprofilesrc
+File9[$e]=$HOME/.config/kwinrulesrc
+Name1[$e]=startupconfigkeys
+Name10[$e]=kwriterc
+Name2[$e]=systemsettingsrc
+Name3[$e]=systemsettingsrc
+Name4[$e]=plasma-localerc
+Name5[$e]=plasma-org.kde.plasma.desktop-appletsrc
+Name6[$e]=plasmarc
+Name7[$e]=plasmashellrc
+Name8[$e]=powermanagementprofilesrc
+Name9[$e]=kwinrulesrc

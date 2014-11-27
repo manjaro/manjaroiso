@@ -1,5 +1,5 @@
-[$Version]
-update_info=kded.upd:kde3.0
+[Appmenu Style]
+Style=InApplication
 
 [ColorEffects:Disabled]
 Color=56,56,56
@@ -129,13 +129,61 @@ DisabledSemiTransparent=true
 DisabledValue=1
 Size=32
 
+[General]
+BrowserApplication[$e]=firefox.desktop
+ColorScheme=menda
+Name=menda
+XftAntialias=true
+XftHintStyle=hintmedium
+XftSubPixel=none
+desktopFont=Oxygen-Sans,10,-1,5,50,0,0,0,0,0
+fixed=Droid Sans Mono,10,-1,5,50,0,0,0,0,0
+font=Oxygen-Sans,10,-1,5,50,0,0,0,0,0
+menuFont=Oxygen-Sans,10,-1,5,50,0,0,0,0,0
+shadeSortColumn=true
+smallestReadableFont=Oxygen-Sans,8,-1,5,50,0,0,0,0,0
+taskbarFont=Oxygen-Sans,10,-1,5,50,0,0,0,0,0
+toolBarFont=Oxygen-Sans,9,-1,5,50,0,0,0,0,0
+
 [Icons]
 Theme=Menda-Circle
 
 [KDE]
+AutoSelectDelay=-1
+ChangeCursor=true
+ColorScheme=Menda
+DoubleClickInterval=400
+LookAndFeelPackage=org.kde.menda.desktop
+ShowDeleteCommand=false
 ShowIconsInMenuItems=true
 ShowIconsOnPushButtons=true
-contrast=4
+SingleClick=false
+StartDragDist=4
+StartDragTime=500
+WheelScrollLines=3
+contrast=7
+widgetStyle=menda
+
+[KDE-Global GUI Settings]
+GraphicEffectsLevel=6
+
+[KFileDialog Settings]
+Automatically select filename extension=true
+Breadcrumb Navigation=true
+Decoration position=0
+LocationCombo Completionmode=5
+PathCombo Completionmode=5
+Previews=false
+Show Bookmarks=false
+Show Full Path=false
+Show Speedbar=true
+Show hidden files=false
+Sort by=Name
+Sort directories first=true
+Sort reversed=false
+Speedbar Width=87
+View Style=Detail
+detailedViewIconSize=0
 
 [MainToolbarIcons]
 ActiveColor=169,156,255
@@ -174,6 +222,9 @@ DisabledEffect=togray
 DisabledSemiTransparent=true
 DisabledValue=1
 Size=32
+
+[PreviewSettings]
+MaximumRemoteSize=0
 
 [SmallIcons]
 ActiveColor=169,156,255
@@ -220,6 +271,7 @@ Size=22
 [WM]
 activeBackground=30,30,30
 activeBlend=30,30,30
+activeFont=Oxygen-Sans,10,-1,5,50,0,0,0,0,0
 activeForeground=239,240,241
 inactiveBackground=239,240,241
 inactiveBlend=75,71,67

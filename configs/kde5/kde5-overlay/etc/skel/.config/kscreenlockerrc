@@ -1,0 +1,5 @@
+[Daemon]
+Timeout=0
+
+[Greeter]
+Theme=org.kde.menda.desktop

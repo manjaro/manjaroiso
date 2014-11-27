@@ -27,68 +27,32 @@ xorg-utils
 xorg-xinit
 
 ## Artwork
-kdeartwork-colorschemes-oxygreen
-kdeartwork-wallpapers-manjaro-redefined
-kdeartwork-wallpapers-tr-community
-faenzaflattr-green-icon-theme
-manjaro-redefined-kdm-theme
-ksplash-theme-manjaro-redefined
-plymouth-theme-manjaro-elegant
-xcursor-breeze
-kde-theme-violet-pastel
+plasma-workspace-wallpapers
+breeze
+breeze-kde4
+oxygen
+oxygen-kde4
+oxygen-icons
+menda-plasma-next
 
-## Community KDE packages
+## Conn. Packages
 udiskie
 udisks
 udisks2
 cdrdao
+cdrkit
+cdrtools
+normalize
+transcode
+emovix
 dvd+rw-tools
 virtualgl
 kio-mtp
 mtpfs
-razor-qt
-kio-sysinfo
 gvfs-smb
 gvfs-mtp
 gvfs-afc
 gvfs
-kdeconnect
-
-## KDE (minimal base)
-#kde-wallpapers
-kdelibs
-kdepimlibs
-kdebase-runtime
-kdebase-dolphin
-kdebase-katepart
-kdebase-kdepasswd
-kdebase-kdialog
-kdebase-keditbookmarks
-kdebase-kfind
-kdebase-konsole
-kdebase-plasma
-kdebase-workspace
-oxygen-icons
-
-## KDE (everything else)
-kdeadmin
-kdemultimedia
-kdesdk-kate
-kdegraphics-kgamma
-kdegraphics-gwenview
-kdegraphics-ksnapshot
-kdegraphics-okular
-#kdeutils-kwallet
-kdeutils-kcalc
-kdeutils-ark
-kdeutils-kgpg
-kdeutils-print-manager
-kdeutils-sweeper
-kdeplasma-addons-applets-showdesktop
-kdeplasma-addons-applets-icontasks
-kdeplasma-applets-plasma-nm
-kdeplasma-applets-homerun
-manjaro-settings-manager
 
 ## Network
 netctl
@@ -101,14 +65,24 @@ calamares
 thus
 
 ## Packages for Sound and Audio
+gst-libav
+gst-plugins-bad
+gst-plugins-base
+gst-plugins-good
+gst-plugins-ugly
 gstreamer0.10-bad-plugins
-gstreamer0.10-ffmpeg
+gstreamer0.10-base-plugins
+gstreamer0.10-good-plugins
 gstreamer0.10-ugly-plugins
-gstreamer0.10-good
+libdvdcss
 manjaro-alsa
 manjaro-pulse
-flashplugin
+phonon-qt5-gstreamer
+phonon-qt4-gstreamer
 pulseaudio-ctl
+qt-gstreamer
+cantata-kde-svn
+mpd
 
 ## Devel Packages
 autoconf
@@ -130,43 +104,75 @@ openssh
 samba
 
 ## Applications
-qtcreator
-rekonq
-kdebase-konqueror
-kdepim
-k3b
-digikam
-simple-scan
-#amarok
-gparted
-#gimp
-vlc
+qbittorrent
 imagewriter
-kdenetwork
-yakuake
-konversation
+firefox
+flashplugin
+google-talkplugin
+ntfsprogs
+manjaro-settings-manager
 manjaro-welcome
-#turbulence
-#turbulence-artwork
 open-fuse-iso
+simple-scan
+vlc
+npapi-vlc-git
+wmsystemtray
+qterminal-git
+android-tools
+android-udev
+>x86_64 lib32-libxft
+
+## Font
+ttf-liberation
+ttf-droid
+ttf-inconsolata
 
 ## Package management
-octopi
-octopi-notifier
+octopi-frameworks-git
+ssx
+pacmanxg4-bin
 
 ## GTK
 oxygen-gtk2
 oxygen-gtk3
-kde-gtk-config
-
-## CJK font fix
-ttf-droid
+kde-gtk-config-frameworks
+menda-themes
+menda-themes-dark
+qtcurve-gtk2
 
 ## Java
+jdk7-openjdk
 icedtea-web
 
 ## Printing
-manjaro-printer
+#manjaro-printer
 
 ## Office
-calligra-meta
+#libreoffice-fresh
+#calligra-meta
+
+## Plasma 5
+kf5
+kf5-aids
+sddm
+sddm-kcm
+plasma-desktop
+plasma-nm
+bluedevil-frameworks
+kscreen-frameworks
+plasma-workspace-wallpapers
+kdepim-kmail
+partitionmanager
+yakuake-frameworks-git
+konversation-frameworks-git
+konsole-git
+kmix-git
+kdeconnect-frameworks-git
+k3b-frameworks-git
+kcalc-frameworks-git
+kate-git
+gwenview-git
+dolphin-frameworks-git
+ark-frameworks-git
+okular-frameworks-git
+ksnapshot-frameworks-git

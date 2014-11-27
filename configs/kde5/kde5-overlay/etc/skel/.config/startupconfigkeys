@@ -1,0 +1,5 @@
+kcminputrc Mouse cursorTheme 'menda_cursors'
+kcminputrc Mouse cursorSize ''
+ksplashrc KSplash Theme Menda
+ksplashrc KSplash Engine KSplashQML
+kcmfonts General forceFontDPI 0

@@ -1,8 +1,0 @@
-<apps version="1">
-    <app serviceId="kde4-rekonq.desktop"/>
-    <app serviceId="kde4-dolphin.desktop"/>
-    <app serviceId="manjaro-settings-manager.desktop"/>
-    <app serviceId="octopi.desktop"/>
-    <app serviceId="kde4-systemsettings.desktop"/>
-    <app serviceId="kde4-konversation.desktop"/>
-</apps>
