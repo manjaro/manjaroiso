@@ -147,7 +147,7 @@ if [ "$kde5" == "Y" ] ; then
    ln -sfv ../kde5/pacman-x86_64.conf pacman-x86_64.conf
    buildiso
    echo ">> done build kde5 image"
-   rm Packages-Kde5
+   rm Packages-Kde
    rm -R work*/*kde5*
    rm -R work*/*isomounts*
    rm -R work*/build.make_de_image
