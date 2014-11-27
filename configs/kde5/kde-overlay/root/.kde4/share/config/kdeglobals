@@ -136,7 +136,6 @@ Name=menda
 XftAntialias=true
 XftHintStyle=hintmedium
 XftSubPixel=none
-dbfile=/home/anex/.mozilla/firefox/9shb6xj3.default/places.sqlite
 desktopFont=Oxygen-Sans,10,-1,5,50,0,0,0,0,0
 fixed=Droid Sans Mono,10,-1,5,50,0,0,0,0,0
 font=Oxygen-Sans,10,-1,5,50,0,0,0,0,0
