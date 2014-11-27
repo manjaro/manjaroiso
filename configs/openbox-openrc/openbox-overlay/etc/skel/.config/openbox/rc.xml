@@ -347,6 +347,11 @@
         <command>octopi</command>
       </action>
     </keybind>
+    <keybind key="W-a">
+      <action name="Execute">
+        <command>xfce4-appfinder</command>
+      </action>
+    </keybind>
     <keybind key="W-d">
       <action name="Execute">
         <startupnotify>
@@ -359,15 +364,6 @@
     <keybind key="C-A-r">
       <action name="Reconfigure"/>
     </keybind>
-    <!--    <keybind key="W-e">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Konqueror</name>
-        </startupnotify>
-        <command>kfmclient openProfile filemanagement</command>
-      </action>
-    </keybind> -->
     <!-- Keybindings for multimedia keys -->
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">

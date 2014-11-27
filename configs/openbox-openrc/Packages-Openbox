@@ -78,6 +78,7 @@ xfce4-power-manager-upower0 # battery icon
 obkey # from AUR
 lxrandr # Display settings
 libreoffice-installer
+xfce4-appfinder
 
 ## Artwork
 manjaro-artwork

@@ -56,6 +56,9 @@ ${alignr}${color #BEBEBE}Terminal${voffset -5}
 ${font sans:bold:size=9}${alignr}${color #35BF5C}Super + w
 ${alignr}${color #BEBEBE}Web Browser${voffset -5}
 
+${font sans:bold:size=9}${alignr}${color #35BF5C}Super + a
+${alignr}${color #BEBEBE}App Finder${voffset -5}
+
 ${font sans:bold:size=9}${alignr}${color #35BF5C}Ctrl + Alt + d
 ${alignr}${color #BEBEBE}Show Desktop${voffset -5}
 
