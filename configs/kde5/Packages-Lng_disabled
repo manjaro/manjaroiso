@@ -1,0 +1,103 @@
+## Language Support
+
+#American English
+hunspell-en
+#libreoffice-still-en-US
+
+#Belarusian
+firefox-i18n-be
+#thunderbird-i18n-be
+libreoffice-still-be
+
+#British English
+firefox-i18n-en-gb
+#thunderbird-i18n-en-gb
+libreoffice-still-en-GB
+
+#Brazilian Portuguese
+firefox-i18n-pt-br
+#thunderbird-i18n-pt-br
+>kde kde-l10n-pt_br
+libreoffice-still-pt-BR
+
+#Bulgarian
+firefox-i18n-bg
+#thunderbird-i18n-bg
+libreoffice-still-bg
+>kde kde-l10n-bg
+
+#Deutsch
+firefox-i18n-de
+#thunderbird-i18n-de
+hunspell-de
+>kde kde-l10n-de
+libreoffice-still-de
+
+#Espanol
+firefox-i18n-es-es
+#thunderbird-i18n-es-es
+hunspell-es
+libreoffice-still-es
+>kde kde-l10n-es
+
+#Espanol (Argentina)
+firefox-i18n-es-ar
+#thunderbird-i18n-es-ar
+
+#Francais
+firefox-i18n-fr
+#thunderbird-i18n-fr
+hunspell-fr
+libreoffice-still-fr
+>kde kde-l10n-fr
+
+#Italian
+firefox-i18n-it
+#thunderbird-i18n-it
+hunspell-it
+libreoffice-still-it
+>kde kde-l10n-it
+
+#Polish
+firefox-i18n-pl
+#thunderbird-i18n-pl
+hunspell-pl
+libreoffice-still-pl
+>kde kde-l10n-pl
+
+#Portuguese
+firefox-i18n-pt-pt
+#thunderbird-i18n-pt-pt
+libreoffice-still-pt
+>kde kde-l10n-pt
+
+#Russian
+firefox-i18n-ru
+#thunderbird-i18n-ru
+libreoffice-still-ru
+>kde kde-l10n-ru
+
+#Romanian
+firefox-i18n-ro
+#thunderbird-i18n-ro
+hunspell-ro
+libreoffice-still-ro
+>kde kde-l10n-ro
+
+#Swedish
+firefox-i18n-sv-se
+#thunderbird-i18n-sv-se
+libreoffice-still-sv
+>kde kde-l10n-sv
+
+#Turkish
+firefox-i18n-tr
+#thunderbird-i18n-tr
+libreoffice-still-tr
+>kde kde-l10n-tr
+
+#Ukrainian
+firefox-i18n-uk
+#thunderbird-i18n-uk
+libreoffice-still-uk
+>kde kde-l10n-uk

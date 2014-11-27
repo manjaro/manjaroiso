@@ -1,0 +1,17 @@
+# File created by KDE Gtk Config
+# Configs for GTK2 programs 
+
+include "/usr/share/themes/oxygen-gtk/gtk-2.0/gtkrc"
+include "/etc/gtk-2.0/gtkrc"
+style "user-font" 
+{
+	font_name="Sans Serif"
+}
+widget_class "*" style "user-font"
+gtk-font-name="Sans Serif 9"
+gtk-theme-name="oxygen-gtk"
+gtk-icon-theme-name="FaenzaFlattr-Green"
+gtk-fallback-icon-theme="FaenzaFlattr-Green"
+gtk-toolbar-style=GTK_TOOLBAR_ICONS
+gtk-menu-images=1
+gtk-button-images=1

@@ -1,0 +1,172 @@
+### Manjaro Packages
+
+## Xorg
+mhwd
+
+## Xorg Packages
+inxi
+libdnet
+mesa-demos
+>x86_64 lib32-mesa-demos
+netkit-bsd-finger
+uriparser
+xf86-input-acecad
+xf86-input-aiptek
+xf86-input-evdev
+xf86-input-joystick
+xf86-input-keyboard
+xf86-input-mouse
+xf86-input-synaptics
+xf86-input-void
+xf86-input-wacom
+xinetd
+xorg-server
+xorg-server-utils
+xorg-twm
+xorg-utils
+xorg-xinit
+
+## Artwork
+kdeartwork-colorschemes-oxygreen
+kdeartwork-wallpapers-manjaro-redefined
+kdeartwork-wallpapers-tr-community
+faenzaflattr-green-icon-theme
+manjaro-redefined-kdm-theme
+ksplash-theme-manjaro-redefined
+plymouth-theme-manjaro-elegant
+xcursor-breeze
+kde-theme-violet-pastel
+
+## Community KDE packages
+udiskie
+udisks
+udisks2
+cdrdao
+dvd+rw-tools
+virtualgl
+kio-mtp
+mtpfs
+razor-qt
+kio-sysinfo
+gvfs-smb
+gvfs-mtp
+gvfs-afc
+gvfs
+kdeconnect
+
+## KDE (minimal base)
+#kde-wallpapers
+kdelibs
+kdepimlibs
+kdebase-runtime
+kdebase-dolphin
+kdebase-katepart
+kdebase-kdepasswd
+kdebase-kdialog
+kdebase-keditbookmarks
+kdebase-kfind
+kdebase-konsole
+kdebase-plasma
+kdebase-workspace
+oxygen-icons
+
+## KDE (everything else)
+kdeadmin
+kdemultimedia
+kdesdk-kate
+kdegraphics-kgamma
+kdegraphics-gwenview
+kdegraphics-ksnapshot
+kdegraphics-okular
+#kdeutils-kwallet
+kdeutils-kcalc
+kdeutils-ark
+kdeutils-kgpg
+kdeutils-print-manager
+kdeutils-sweeper
+kdeplasma-addons-applets-showdesktop
+kdeplasma-addons-applets-icontasks
+kdeplasma-applets-plasma-nm
+kdeplasma-applets-homerun
+manjaro-settings-manager
+
+## Network
+netctl
+networkmanager
+networkmanager-dispatcher-ntpd
+openresolv
+
+## Graphical installer
+calamares
+thus
+
+## Packages for Sound and Audio
+gstreamer0.10-bad-plugins
+gstreamer0.10-ffmpeg
+gstreamer0.10-ugly-plugins
+gstreamer0.10-good
+manjaro-alsa
+manjaro-pulse
+flashplugin
+pulseaudio-ctl
+
+## Devel Packages
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+gcc
+git
+libtool
+m4
+make
+patch
+patchutils
+svn
+yaourt
+openssh
+samba
+
+## Applications
+qtcreator
+rekonq
+kdebase-konqueror
+kdepim
+k3b
+digikam
+simple-scan
+#amarok
+gparted
+#gimp
+vlc
+imagewriter
+kdenetwork
+yakuake
+konversation
+manjaro-welcome
+#turbulence
+#turbulence-artwork
+open-fuse-iso
+
+## Package management
+octopi
+octopi-notifier
+
+## GTK
+oxygen-gtk2
+oxygen-gtk3
+kde-gtk-config
+
+## CJK font fix
+ttf-droid
+
+## Java
+icedtea-web
+
+## Printing
+manjaro-printer
+
+## Office
+calligra-meta
