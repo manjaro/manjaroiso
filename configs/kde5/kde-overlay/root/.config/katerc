@@ -1,0 +1,34 @@
+[General]
+Config Revision=10
+Days Meta Infos=30
+Last Session=
+Save Meta Infos=true
+Show Full Path in Title=false
+Show Menu Bar=true
+Show Status Bar=true
+Show Tab Bar=true
+
+[KFileDialog Settings]
+Recent Files[$e]=/usr/share/kservices5/plasma-lookandfeel-org.kde.menda,/usr/share/kservices5/plasma-lookandfeel-org.kde.menda.desktop.desktop
+Recent URLs[$e]=/usr/share/kservices5/,/usr/share/kservices5/
+
+[KTextEditor::Search]
+Search History=#,bree,breeze,menda
+
+[MainWindow]
+Height 480=423
+Height 599=423
+State=AAAA/wAAAAD9AAAAAAAABQAAAAHgAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+Width 1280=765
+Width 640=765
+Window-Maximized 571x1280=true
+Window-Maximized 599x1280=true
+
+[filetree]
+editShade=182,230,143
+listMode=false
+shadingEnabled=true
+showFullPathOnRoots=false
+sortRole=0
+viewShade=193,208,207
