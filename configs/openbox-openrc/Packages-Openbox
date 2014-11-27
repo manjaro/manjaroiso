@@ -27,6 +27,7 @@ desktop-file-utils
 
 ## Packages for Sound and Audio
 manjaro-alsa
+pnmixer
 
 ## Base Packages
 gtk2
@@ -51,23 +52,37 @@ wicd-gtk
 python2-notify
 clipit
 leafpad
-epdfview
+#epdfview
+qpdfview
 xarchiver
-lxterminal	# terminal
-pcmanfm		# file manager
-netsurf		# web browser
+xfce4-terminal	# terminal
+thunar		# file manager
+qupzilla	# web browser
+#lxterminal
+#pcmanfm
+#netsurf
 lxsession
 gparted
-gpicview
+#gpicview
+viewnior
 dmenu
 conky
 compton
 lxappearance
 galculator-gtk2
 nitrogen
+manjaro-settings-manager
+octopi
+gksu # required for octopi
+xfce4-power-manager-upower0 # battery icon
+obkey # from AUR
+lxrandr # Display settings
+libreoffice-installer
+xfce4-appfinder
 
 ## Artwork
 manjaro-artwork
 numix-manjaro-themes
 lxde-icon-theme
 xcursor-vanilla-dmz-aa
+menda-themes

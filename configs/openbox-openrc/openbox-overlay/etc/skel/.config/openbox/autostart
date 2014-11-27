@@ -7,6 +7,8 @@ tint2 &
 (sleep 1s && compton -GCbc) &
 
 ## Startup
-(sleep 2s && wicd-gtk --tray) &
-(sleep 2s && clipit) &
-(sleep 3s && conky) &
+(sleep 2s && conky) &
+(sleep 3s && wicd-gtk --tray) &
+(sleep 3s && clipit) &
+(sleep 4s && pnmixer) &
+(sleep 4s && xfce4-power-manager) &
