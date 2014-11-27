@@ -9,6 +9,7 @@ fi
 # Manjaro Editions
 xfce="Y"
 kde="N"
+kde5="N"
 openbox="Y"
 net="N"
 
@@ -126,6 +127,28 @@ if [ "$kde" == "Y" ] ; then
    echo ">> done build kde image"
    rm Packages-Kde
    rm -R work*/*kde*
+   rm -R work*/*isomounts*
+   rm -R work*/build.make_de_image
+   rm work*/iso/manjaro/*/kde-image.sqfs
+fi
+if [ "$kde5" == "Y" ] ; then
+   echo ">> build kde5 image"
+   if [ -e Packages-Lng ] ; then
+      rm Packages-Lng
+      rm -R work*/*lng*
+      rm work*/iso/manjaro/*/lng-image.sqfs
+   fi
+   ln -sfv ../kde5/options.conf options.conf
+   ln -sfv ../kde5/isomounts isomounts
+   ln -sfv ../kde5/Packages-Kde Packages-Kde
+   ln -sfv ../kde5/Packages-Xorg Packages-Xorg
+   ln -sfv ../kde5/pacman-gfx.conf pacman-gfx.conf
+   ln -sfv ../kde5/pacman-i686.conf pacman-i686.conf
+   ln -sfv ../kde5/pacman-x86_64.conf pacman-x86_64.conf
+   buildiso
+   echo ">> done build kde5 image"
+   rm Packages-Kde5
+   rm -R work*/*kde5*
    rm -R work*/*isomounts*
    rm -R work*/build.make_de_image
    rm work*/iso/manjaro/*/kde-image.sqfs
