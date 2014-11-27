@@ -1,0 +1,12 @@
+[Behavior]
+FocusFollowsMouse=true
+
+[Desktop Entry]
+DefaultProfile=Shell.profile
+
+[Favorite Profiles]
+Favorites=
+
+[Window]
+DynamicTabTitles=true
+KeepOpen=false

@@ -1,0 +1,13 @@
+[Show]
+arkAutoExtractHere=true
+arkExtractHere=true
+arkExtractTo=true
+compressAsRar=true
+compressAsTar=true
+compressAsZip=true
+compressHere=true
+compressTo=true
+installFont=true
+kactivitymanagerd_fileitem_linking_plugin=true
+openTerminalHere=true
+runInKonsole=true
