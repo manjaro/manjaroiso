@@ -1,0 +1,7 @@
+[Mouse]
+Acceleration=3
+MouseButtonMapping=RightHanded
+ReverseScrollPolarity=false
+Threshold=4
+cursorSize=0
+cursorTheme=Menda-Cursor
