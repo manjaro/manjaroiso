@@ -83,6 +83,7 @@ pulseaudio-ctl
 qt-gstreamer
 cantata-kde-svn
 mpd
+python-pyqt4
 
 ## Devel Packages
 autoconf
