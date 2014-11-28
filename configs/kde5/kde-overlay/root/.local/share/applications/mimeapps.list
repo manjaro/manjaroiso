@@ -1,0 +1,7 @@
+[Default Applications]
+application/x-cd-image=open-fuse-iso.desktop
+
+[Added Associations]
+inode/directory=org.kde.dolphin.desktop;
+application/x-shellscript=org.kde.kate.desktop;
+

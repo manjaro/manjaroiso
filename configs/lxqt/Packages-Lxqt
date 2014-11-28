@@ -96,7 +96,8 @@ gvfs-afc			# enables support for external media (e.g. USB sticks)
 
 # 4) LXDE packages (mostly GTK2 dependent - there is no good Qt5 alternative)
 # ===========================================================================
-gksu				# GUI for su and sudo - there is no alternative for it in lxqt
+gksu				# (GTK2) GUI for su and sudo - there is no alternative for it in lxqt
+gnome-keyring			# (GTK3) - stores passwords for other applications, e.g. gksu
 
 leafpad				# default lxde text editor - very lightweight - heavier alternative: notepadqq
 
@@ -113,6 +114,8 @@ obconf				# openbox appearance settings - needed for window title and border con
 menda-themes-dark 		# new manjaro GTK2 theme
 menda-circle-icon-theme 	# new manjaro icon theme - much lighter
 menda-lxqt-panel 		# new manjaro theme for lxqt/panel
+xcursor-menda			# menda mouse cursor theme
+sddm-menda-theme		# sddm theme
 
 infinality-bundle		# to improve text rendering
 
