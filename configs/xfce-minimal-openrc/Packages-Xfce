@@ -64,7 +64,7 @@ xfce4-taskmanager
 xfce4-battery-plugin
 xfce4-clipman-plugin
 #xfce4-power-manager
-xfce4-power-manager-upower0
+xfce4-power-manager-pmu
 xfce4-whiskermenu-plugin
 
 ## Applications
