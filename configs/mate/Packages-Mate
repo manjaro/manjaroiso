@@ -94,6 +94,7 @@ manjaro-pulse
 pavucontrol
 #pa-applet
 pulseaudio-ctl
+python-pyqt4
 
 ## Package management
 pamac
