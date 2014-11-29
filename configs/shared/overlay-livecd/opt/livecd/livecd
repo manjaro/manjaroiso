@@ -454,6 +454,9 @@ if [ -e "/usr/share/calamares/settings.conf" ] ; then
    if [ -e "/bootmnt/${install_dir}/${arch}/enlightenment-image.sqfs" ] ; then
       sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/enlightenment-image.sqfs|g" $_conf_file
    fi
+   if [ -e "/bootmnt/${install_dir}/${arch}/pekwm-image.sqfs" ] ; then
+      sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/pekwm-image.sqfs|g" $_conf_file
+   fi
    if [ -e "/bootmnt/${install_dir}/${arch}/custom-image.sqfs" ] ; then
       sed -i "s|_desktop-image_|/bootmnt/${install_dir}/_ARCH_/custom-image.sqfs|g" $_conf_file
    fi

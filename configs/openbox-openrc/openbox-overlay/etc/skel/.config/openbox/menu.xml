@@ -18,7 +18,7 @@
 		</item>
 		<separator/>
 		<menu id="3" label="Accessories">
-			<item label="Find Applications">
+			<item label="Application Finder">
 				<action name="Execute">
 					<execute>xfce4-appfinder</execute>
 				</action>

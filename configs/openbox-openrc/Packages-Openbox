@@ -71,6 +71,9 @@ compton
 lxappearance
 galculator-gtk2
 nitrogen
+
+## More Apps
+udisks2 # removable disk management
 manjaro-settings-manager
 octopi
 gksu # required for octopi
@@ -79,6 +82,7 @@ obkey # from AUR
 lxrandr # Display settings
 libreoffice-installer
 xfce4-appfinder
+thunar-archive-plugin
 
 ## Artwork
 manjaro-artwork
