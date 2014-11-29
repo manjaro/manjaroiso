@@ -64,6 +64,7 @@
     <property name="plugin-8" type="string" value="whiskermenu"/>
     <property name="plugin-5" type="string" value="clock"/>
     <property name="plugin-1" type="string" value="showdesktop"/>
+    <property name="plugin-9" type="string" value="power-manager-plugin"/>
   </property>
   <property name="configver" type="int" value="2"/>
 </channel>
