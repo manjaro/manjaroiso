@@ -52,7 +52,6 @@ pangox-compat
 >free_x64 lib32-nouveau-dri
 
 ## VMWare Support
-KERNEL-open-vm-tools-modules
 open-vm-tools
 
 ## Cleanup Xorg packages

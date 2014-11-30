@@ -7,7 +7,7 @@ eudev # hack for networkmanager-openrc
 networkmanager-openrc
 networkmanager-dispatcher-ntpd
 openresolv
-bluez-openrc=20141114
+bluez-openrc # required for bluetooth
 blueman
 
 ## Xorg Packages
@@ -64,38 +64,42 @@ xfce4-taskmanager
 xfce4-battery-plugin
 xfce4-clipman-plugin
 #xfce4-power-manager
-xfce4-power-manager-upower0
+xfce4-power-manager-pmu
 xfce4-whiskermenu-plugin
 
 ## Applications
 gksu
 gparted
+#polkit-gnome # for gparted
+lxsession # contains lxpolit
 gst-libav
 libreoffice-installer
-lxsession
 manjaro-settings-manager
 manjaro-welcome
-midori
-mousepad
 pamac
->i686 parole
-polkit-gnome # for gparted
-#raktpdf
+octopi # because pamac does not seem to work all the time
+midori
+sylpheed
+mousepad
+viewnior
+xarchiver
+galculator
+thunar-archive-plugin
+catfish # for thunar search
+#>i686 parole
 qpdfview
->i686 sylpheed
->i686 xnoise
 downgrade
 
 ## Installer
-#thus # requires localectl (systemd specific)
+thus
 
 ## Artwork
 faenza-green-icon-theme
 #gtk-theme-ceti
 menda-themes
 manjaro-artwork
-#mdm-themes
 lightdm-gtk2-greeter
+lightdm-gtk-greeter-settings
 xfce-theme-greenbird
 #plymouth-theme-manjaro-elegant
 

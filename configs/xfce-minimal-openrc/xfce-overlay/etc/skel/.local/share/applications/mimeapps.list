@@ -1,5 +1,5 @@
 [Default Applications]
-application/pdf=raktpdf.desktop
+application/pdf=qpdfview.desktop
 text/plain=mousepad.desktop
 image/jpeg=viewnior.desktop
 application/xml=mousepad.desktop
