@@ -123,6 +123,7 @@ xscreensaver			# screensaver
 # =======================
 mpv				# replace mplayer/mplayer2
 qpdfview			# pdf reader
+vi				# CLI text editor
 
 octopi				# Qt5 package manager
 octopi-notifier
