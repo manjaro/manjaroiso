@@ -14,7 +14,6 @@ findutils
 gawk
 >i686 gcc-libs
 >x86_64 gcc-libs-multilib
-gcc-libs
 gettext
 glibc
 grep
@@ -49,7 +48,7 @@ s-nail
 sed
 shadow
 sysfsutils
-systemd-sysvcompat
+#systemd-sysvcompat
 tar
 texinfo
 usbutils
@@ -61,13 +60,24 @@ xfsprogs
 ## Base Packages
 linux-firmware
 lsb-release
-haveged # needed for pacman-init
+haveged-openrc # needed for pacman-init
+metalog-openrc # logger (syslog-ng alternative)
 manjaro-firmware
 manjaro-release
 memtest86+
 
 ## Kernel
 KERNEL
+
+## OpenRC
+sysvinit
+openrc-core
+openrc-base
+openrc-desktop
+
+## Eudev
+eudev
+eudev-base
 
 ## Extra Base Packages
 grub
@@ -80,10 +90,32 @@ syslinux
 xdg-utils
 xdg-user-dirs
 
-## Encrypt support
+## Compression Codecs
+arj
+lzop
+unrar
+unzip
+xz
+zip
+
+## encrypt support
 ecryptfs-utils
 rsync
 lsof
+
+## needed by cli-installer
+dialog
+dmidecode
+gptfdisk
+parted
+pv
+tcpdump
+wget
+
+## efi support (only x86_64)
+>x86_64 gummiboot
+>x86_64 prebootloader
+>x86_64 refind-efi
 
 ## Filesystem Packages
 btrfs-progs
@@ -95,19 +127,13 @@ nilfs-utils
 nfs-utils
 ntfs-3g
 
-## Needed by cli-installer
-dialog
-dmidecode
-gptfdisk
-parted
-pv
-tcpdump
-wget
-
-## EFI support (only x86_64)
->x86_64 gummiboot
->x86_64 prebootloader
->x86_64 refind-efi
+## Fonts
+terminus-font
+ttf-bitstream-vera
+ttf-dejavu
+ttf-inconsolata
+ttf-indic-otf
+ttf-liberation
 
 ## Network
 b43-fwcutter
@@ -135,7 +161,8 @@ ethtool
 hdparm
 sdparm
 smartmontools
-tlp
+#tlp # conflicts with pm-utils
+laptop-mode-tools
 wireless_tools
 xorg-xset
 
