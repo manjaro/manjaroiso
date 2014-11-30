@@ -8,15 +8,15 @@ fi
 
 # Manjaro Editions
 xfce="Y"
-kde="N"
-kde5="N"
-openbox="Y"
-net="N"
+kde="Y"
+net="Y"
 
 # Manjaro Community Editions
+kde5="N"
 cinnamon="N"
 mate="N"
 enlightenment="N"
+openbox="N"
 
 if [ "$xfce" == "Y" ] ; then
    echo ">> build xfce image"
