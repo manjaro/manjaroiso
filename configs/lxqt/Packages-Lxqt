@@ -84,11 +84,9 @@ qtermwidget
 # 3) System-packages (most of them coming from xfce)
 # ==================================================
 thus				# GUI installer of manjaro
+#calamares			# new GUI installer of manjaro - test for manjaro 0.9
 
 manjaro-settings-manager
-
-octopi				# Qt5 package manager
-octopi-notifier
 
 gvfs				# for mounting file other systems
 gvfs-afc			# enables support for external media (e.g. USB sticks)
@@ -114,16 +112,26 @@ obconf				# openbox appearance settings - needed for window title and border con
 menda-themes-dark 		# new manjaro GTK2 theme
 menda-circle-icon-theme 	# new manjaro icon theme - much lighter
 menda-lxqt-panel 		# new manjaro theme for lxqt/panel
-xcursor-menda			# menda mouse cursor theme
+xcursor-menda			# menda mouse cursor theme - this needs to be activated
 sddm-menda-theme		# sddm theme
 
 infinality-bundle		# to improve text rendering
+xscreensaver			# screensaver
 
 
 # 6) Minimal set of tools
 # =======================
 mpv				# replace mplayer/mplayer2
 qpdfview			# pdf reader
+
+octopi				# Qt5 package manager
+octopi-notifier
+
+#qupzilla			# internet browser (Qt5)
+#flashplugin			# flash support for internet browser
+
+
+
 
 
 # 7) AUR Access
