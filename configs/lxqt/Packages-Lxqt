@@ -126,7 +126,6 @@ qpdfview			# pdf reader
 vi				# CLI text editor
 
 xarchiver			# GUI frontend for many archive file formats
-p7zip				# GUI for 7z files (and adds 7z support to xarchiver)
 
 octopi				# Qt5 package manager
 octopi-notifier
