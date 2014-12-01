@@ -85,6 +85,10 @@ gnome-keyring
 lxsession
 #polkit-gnome
 
+## Basic packages
+dconf
+desktop-file-utils
+
 
 ## AUR Access
 #autoconf
@@ -100,16 +104,13 @@ lxsession
 #patch
 #yaourt
 
-
 ## Display Manager
 lxdm
-
 
 ## Desktop Display
 compton
 conky
 xfce4-notifyd
-
 
 ## Openbox Core Packages
 dmenu
@@ -139,14 +140,14 @@ tintwizard
 
 
 ## Artwork, Icon, Mouse, and Desktop Themes
-faenza-green-icon-theme
-gnome-icon-theme
+menda-circle-icon-theme
+menda-square-icon-theme
 openbox-themes
 menda-themes
+menda-themes-dark
 xcursor-vanilla-dmz-aa
 xcursor-menda
 manjarobox-evolution-themes
-plymouth-theme-manjaro-elegant
 unified-manjaro-themes-openbox
 lxdm-manjaro-theme-openbox
 
@@ -158,12 +159,13 @@ gparted
 gufw
 hardinfo
 htop
+qpdfview
 leafpad
 #libreoffice-installer
 manjaro-settings-manager
 openssh
 #viewnior
-
+udisks2
 
 ## Turbulence live system configurer
 turbulence
@@ -174,4 +176,8 @@ turbulence-artwork
 manjaro-welcome
 
 ## Fonts
-#adobe-source-sans-pro-fonts
+adobe-source-sans-pro-fonts
+ttf-droid
+
+# Documentaion Guide
+manjaro-documentation
