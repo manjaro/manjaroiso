@@ -4,4 +4,3 @@
   xsi:schemaLocation="http://openbox.org/">
     <menu id="root-menu" label="obmenu-generator" execute="/usr/bin/obmenu-generator -i" />
 </openbox_menu>
-
