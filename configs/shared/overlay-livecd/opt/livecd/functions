@@ -197,7 +197,7 @@ get_layout() {
 }
 
 _find_legacy_keymap() {
-  file="kbd-model-map"
+  file="/opt/livecd/kbd-model-map"
   while read -r line || [[ -n $line ]]; do  
     if [[ -z $line ]] || [[ $line == \#* ]]; then
       continue
@@ -205,7 +205,6 @@ _find_legacy_keymap() {
     
     mapping=( $line ); # parses columns
     if [[ ${#mapping[@]} != 5 ]]; then
-      echo "LINE WRONG"
       continue
     fi
     
@@ -219,14 +218,9 @@ _find_legacy_keymap() {
     
     X11_LAYOUT=${mapping[1]}
     X11_MODEL=${mapping[2]}
-    X11_VARIANTS=${mapping[3]}
+    X11_VARIANT=${mapping[3]}
     x11_OPTIONS=${mapping[4]}
   done < $file
-  
-  # fix por keyboardctl
-  if [ -d "${DESTDIR}/etc/keyboard.conf" ]; then
-    sed -i -e "s/^XKBLAYOUT=.*/XKBLAYOUT=\"${X11_LAYOUT}\"/g" ${DESTDIR}/etc/keyboard.conf
-  fi  
 }
 
 _write_x11_config_file() {
@@ -235,12 +229,12 @@ _write_x11_config_file() {
   # it will provide the correct keymap, but not kblayout value
   local X11_LAYOUT=
   local X11_MODEL="pc105"
-  local X11_VARIANTS=""
+  local X11_VARIANT=""
   local X11_OPTIONS="terminate:ctrl_alt_bksp"  
   _find_legacy_keymap 
   
   # layout not found, use KBLAYOUT
-  if [[ -z $X11_LAYOUT ]]; then
+  if [[ -z "$X11_LAYOUT" ]]; then
     X11_LAYOUT="$KBLAYOUT"    
   fi
   
@@ -261,6 +255,11 @@ _write_x11_config_file() {
   echo " Option \"XkbVariant\" \"$X11_VARIANT\"" >> "$XORGKBLAYOUT"
   echo " Option \"XkbOptions\" \"$X11_OPTIONS\"" >> "$XORGKBLAYOUT"
   echo "EndSection" >> "$XORGKBLAYOUT"
+
+  # fix por keyboardctl
+  if [ -f "${DESTDIR}/etc/keyboard.conf" ]; then
+    sed -i -e "s/^XKBLAYOUT=.*/XKBLAYOUT=\"${X11_LAYOUT}\"/g" ${DESTDIR}/etc/keyboard.conf
+  fi  
 }
 
 # sets the locale as well the keymap
@@ -288,6 +287,10 @@ set_locale() {
   loadkeys "$KEYMAP"
 
   _write_x11_config_file
+  
+  cat /etc/keyboard.conf
+  cat /etc/vconsole.conf
+  cat /etc/X11/xorg.conf.d/00-keyboard.conf
   
   # set systemwide language
   echo "LANG=${LOCALE}.UTF-8" > ${DESTDIR}/etc/locale.conf
