@@ -288,10 +288,6 @@ set_locale() {
 
   _write_x11_config_file
   
-  cat /etc/keyboard.conf
-  cat /etc/vconsole.conf
-  cat /etc/X11/xorg.conf.d/00-keyboard.conf
-  
   # set systemwide language
   echo "LANG=${LOCALE}.UTF-8" > ${DESTDIR}/etc/locale.conf
   echo "LC_MESSAGES=${LOCALE}.UTF-8" >> ${DESTDIR}/etc/locale.conf
