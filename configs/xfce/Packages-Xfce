@@ -28,6 +28,7 @@ xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xcursor-menda
 xfce4
+xfce4-weather-plugin-menda-circle-icons
 libgsf       # support ODF and
 libopenraw   # RAW thumbnailing
 #xscreensaver
@@ -134,7 +135,7 @@ menda-square-icon-theme
 faenza-green-icon-theme
 gtk-theme-ceti
 menda-themes
-menda-themes-dark
+#menda-themes-dark
 gnome-themes-standard
 manjaro-artwork
 #lxdm-manjaro-theme
@@ -158,6 +159,7 @@ manjaro-pulse
 pavucontrol
 pa-applet
 pulseaudio-ctl
+python-pyqt4
 
 ## Package management
 #octopi
