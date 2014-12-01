@@ -341,7 +341,16 @@
         </startupnotify>
         <command>thunar</command>
       </action>
-    </keybind>    
+    </keybind> 
+    <keybind key="W-w">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>midori</name>
+        </startupnotify>
+        <command>midori</command>
+      </action>
+    </keybind>       
     <keybind key="W-m">
       <action name="Execute">
         <startupnotify>
@@ -350,6 +359,9 @@
         </startupnotify>
         <command>dmenu_run -fn -misc-fixed-*-*-*-*-20-200-*-*-*-*-*-*  -i -nf 'gray' -sb 'dark green' -nb 'dim gray'</command>
       </action>
+    </keybind>
+    <keybind key="C-A-r">
+      <action name="Reconfigure"/>
     </keybind>
     <keybind key="W-x">
       <action name="Execute">

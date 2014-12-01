@@ -20,10 +20,13 @@ fi
 ## Does this for each session (i.e. ease of use for addtional
 ## accounts where created.
 
+obmenu-generator -d &
+
+(sleep 2s && xset -dpms; xset s off) &
+
 sed -i "s,_homedir_,${HOME}," ~/.config/obmenu-generator/schema.pl
 sed -i "s,_homedir_,${HOME}," ~/.config/obmenu-generator/config.pl
 
-xset -dpms; xset s off &
 
 ## Basic compositing effects
 compton -CGb &
@@ -46,3 +49,5 @@ nitrogen --restore &
 
 ## Optionally disable touchpad
 #/usr/bin/synclient TouchpadOff=1 &
+
+(sleep 3s && obmenu-generator -d) &
