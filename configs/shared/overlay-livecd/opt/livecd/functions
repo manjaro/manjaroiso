@@ -222,6 +222,11 @@ _find_legacy_keymap() {
     X11_VARIANTS=${mapping[3]}
     x11_OPTIONS=${mapping[4]}
   done < $file
+  
+  # fix por keyboardctl
+  if [ -d "${DESTDIR}/etc/keyboard.conf" ]; then
+    sed -i -e "s/^XKBLAYOUT=.*/XKBLAYOUT=\"${X11_LAYOUT}\"/g" ${DESTDIR}/etc/keyboard.conf
+  fi  
 }
 
 _write_x11_config_file() {
@@ -283,11 +288,6 @@ set_locale() {
   loadkeys "$KEYMAP"
 
   _write_x11_config_file
-
-  # fix por keyboardctl
-  if [ ! -z ${DESTDIR} ]; then
-    sed -i -e "s/^XKBLAYOUT=.*/XKBLAYOUT=\"${X11_LAYOUT}\"/g" ${DESTDIR}/etc/keyboard.conf
-  fi
   
   # set systemwide language
   echo "LANG=${LOCALE}.UTF-8" > ${DESTDIR}/etc/locale.conf
