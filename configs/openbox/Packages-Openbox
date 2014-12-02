@@ -44,11 +44,14 @@ thunar-volman
 catfish
 file-roller	 # Archive support
 gvfs		 # Access file system
+gvfs-mtp
 gvfs-afc	 # Removable media support
 gvfs-smb	 # Samba support
 tumbler		 # Thumbnailing support (images)
 wxgtk2.8         # Needed for 7zip
-
+android-tools
+android-udev
+mtpfs
 
 ## Graphical Installer
 thus
@@ -128,7 +131,7 @@ tint2
 xlockmore
 xautolock
 xterm
-gvfs-mtp
+
 
 
 ## Desktop Configuration
