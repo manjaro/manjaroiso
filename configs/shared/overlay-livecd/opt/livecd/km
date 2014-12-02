@@ -42,72 +42,6 @@ error_kmset()
     DIALOG --msgbox "${_error}" 0 0
 }
 
-_find_legacy_keymap() {
-  file="/opt/livecd/kbd-model-map"
-  while read -r line || [[ -n $line ]]; do  
-    if [[ -z $line ]] || [[ $line == \#* ]]; then
-      continue
-    fi
-
-    mapping=( $line ); # parses columns
-    if [[ ${#mapping[@]} != 5 ]]; then
-      continue
-    fi
-
-    if  [[ "$KEYMAP" != "${mapping[0]}" ]]; then
-      continue
-    fi
-
-    if [[ "${mapping[3]}" = "-" ]]; then
-      mapping[3]=""
-    fi
-
-    X11_LAYOUT=${mapping[1]}
-    X11_MODEL=${mapping[2]}
-    X11_VARIANT=${mapping[3]}
-    x11_OPTIONS=${mapping[4]}
-  done < $file
-}
-
-_write_x11_config_file() {
-  # find a x11 layout that matches the keymap
-  # in isolinux if you select a keyboard layout and a language that doesnt match this layout,
-  # it will provide the correct keymap, but not kblayout value
-  local X11_LAYOUT=
-  local X11_MODEL="pc105"
-  local X11_VARIANT=""
-  local X11_OPTIONS="terminate:ctrl_alt_bksp"
-  _find_legacy_keymap
-
-  # layout not found, use KBLAYOUT
-  if [[ -z "$X11_LAYOUT" ]]; then
-    X11_LAYOUT="$KBLAYOUT"
-  fi
-
-  # create X11 keyboard layout config
-  mkdir -p "${DESTDIR}/etc/X11/xorg.conf.d"
-  if [ -e /run/openrc ]; then
-    local XORGKBLAYOUT="${DESTDIR}/etc/X11/xorg.conf.d/20-keyboard.conf"
-  else
-    local XORGKBLAYOUT="${DESTDIR}/etc/X11/xorg.conf.d/00-keyboard.conf"
-  fi
-
-  echo "" >> "$XORGKBLAYOUT"
-  echo "Section \"InputClass\"" > "$XORGKBLAYOUT"
-  echo " Identifier \"system-keyboard\"" >> "$XORGKBLAYOUT"
-  echo " MatchIsKeyboard \"on\"" >> "$XORGKBLAYOUT"
-  echo " Option \"XkbLayout\" \"$X11_LAYOUT\"" >> "$XORGKBLAYOUT"
-  echo " Option \"XkbModel\" \"$X11_MODEL\"" >> "$XORGKBLAYOUT"
-  echo " Option \"XkbVariant\" \"$X11_VARIANT\"" >> "$XORGKBLAYOUT"
-  echo " Option \"XkbOptions\" \"$X11_OPTIONS\"" >> "$XORGKBLAYOUT"
-  echo "EndSection" >> "$XORGKBLAYOUT"
-
-  # fix for keyboardctl
-  if [ -f "${DESTDIR}/etc/keyboard.conf" ]; then
-    sed -i -e "s/^XKBLAYOUT=.*/XKBLAYOUT=\"${X11_LAYOUT}\"/g" ${DESTDIR}/etc/keyboard.conf
-  fi
-}
-
 dokeymap() {
     echo "${_scanning}"
     KEYMAPS=
@@ -131,24 +65,18 @@ dokeymap() {
         DIALOG --infobox "{$_load} ${keymap}" 0 0
         #loadkeys -q ${BASEDIR}/keymaps/${keymap}
         loadkeys -q ${keymap} > /dev/null 2>&1 || error_kmset 
-        # for openrc
-        if [ -e /run/openrc ]; then
-            # get keymap without extension (.map.gz)
-            KEYMAP=$(echo ${keymap} | cut -f 1 -d ".")
-            # get stored keymap
-            CKMAP=$(cat ${DESTDIR}/etc/conf.d/keymaps | grep -w keymap= | cut -f 2 -d '"')
-            # if stored keymap is different from current selected keymap, replace it
-            if [ ! ${CKMAP} == ${KEYMAP} ]; then
-                sed -i "s/keymap=\"${CKMAP}\"/keymap=\"${KEYMAP}\"/" ${DESTDIR}/etc/conf.d/keymaps
-            fi
-        fi
+	# for openrc
+	if [ -e /run/openrc ]; then
+	  # get keymap without extension (.map.gz)
+	  KEYMAP=$(echo ${keymap} | cut -f 1 -d ".")
+	  # get stored keymap
+	  CKMAP=$(cat ${DESTDIR}/etc/conf.d/keymaps | grep -w keymap= | cut -f 2 -d '"')
+	  # if stored keymap is different from current selected keymap, replace it
+	  if [ ! ${CKMAP} == ${KEYMAP} ]; then
+		sed -i "s/keymap=\"${CKMAP}\"/keymap=\"${KEYMAP}\"/" ${DESTDIR}/etc/conf.d/keymaps
+	  fi
+	fi
     fi
-    
-    # Setup x11 config file
-    local KBLAYOUT=$(get_layout)
-    local KEYMAP=$(cat /tmp/.keymap | sed -e 's/\..*//g')
-    _write_x11_config_file()
-    
 S_NEXTITEM=2
 }
 
