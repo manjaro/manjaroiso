@@ -196,46 +196,98 @@ get_layout() {
   echo $LAYOUT
 }
 
+_find_legacy_keymap() {
+  file="/opt/livecd/kbd-model-map"
+  while read -r line || [[ -n $line ]]; do  
+    if [[ -z $line ]] || [[ $line == \#* ]]; then
+      continue
+    fi
+    
+    mapping=( $line ); # parses columns
+    if [[ ${#mapping[@]} != 5 ]]; then
+      continue
+    fi
+    
+    if  [[ "$KEYMAP" != "${mapping[0]}" ]]; then
+      continue
+    fi
+    
+    if [[ "${mapping[3]}" = "-" ]]; then
+      mapping[3]=""
+    fi
+    
+    X11_LAYOUT=${mapping[1]}
+    X11_MODEL=${mapping[2]}
+    X11_VARIANT=${mapping[3]}
+    x11_OPTIONS=${mapping[4]}
+  done < $file
+}
+
+_write_x11_config_file() {
+  # find a x11 layout that matches the keymap
+  # in isolinux if you select a keyboard layout and a language that doesnt match this layout,
+  # it will provide the correct keymap, but not kblayout value
+  local X11_LAYOUT=
+  local X11_MODEL="pc105"
+  local X11_VARIANT=""
+  local X11_OPTIONS="terminate:ctrl_alt_bksp"  
+  _find_legacy_keymap 
+  
+  # layout not found, use KBLAYOUT
+  if [[ -z "$X11_LAYOUT" ]]; then
+    X11_LAYOUT="$KBLAYOUT"    
+  fi
+  
+  # create X11 keyboard layout config
+  mkdir -p "${DESTDIR}/etc/X11/xorg.conf.d"
+  if [ -e /run/openrc ]; then
+    local XORGKBLAYOUT="${DESTDIR}/etc/X11/xorg.conf.d/20-keyboard.conf"
+  else
+    local XORGKBLAYOUT="${DESTDIR}/etc/X11/xorg.conf.d/00-keyboard.conf"
+  fi
+  
+  echo "" >> "$XORGKBLAYOUT"
+  echo "Section \"InputClass\"" > "$XORGKBLAYOUT"
+  echo " Identifier \"system-keyboard\"" >> "$XORGKBLAYOUT"
+  echo " MatchIsKeyboard \"on\"" >> "$XORGKBLAYOUT"
+  echo " Option \"XkbLayout\" \"$X11_LAYOUT\"" >> "$XORGKBLAYOUT"
+  echo " Option \"XkbModel\" \"$X11_MODEL\"" >> "$XORGKBLAYOUT"
+  echo " Option \"XkbVariant\" \"$X11_VARIANT\"" >> "$XORGKBLAYOUT"
+  echo " Option \"XkbOptions\" \"$X11_OPTIONS\"" >> "$XORGKBLAYOUT"
+  echo "EndSection" >> "$XORGKBLAYOUT"
+
+  # fix por keyboardctl
+  if [ -f "${DESTDIR}/etc/keyboard.conf" ]; then
+    sed -i -e "s/^XKBLAYOUT=.*/XKBLAYOUT=\"${X11_LAYOUT}\"/g" ${DESTDIR}/etc/keyboard.conf
+  fi  
+}
+
 # sets the locale as well the keymap
 set_locale() {
   # hack to be able to set the locale on bootup
   local LOCALE=$(get_country)
   local KEYMAP=$(get_keyboard)
   local KBLAYOUT=$(get_layout)
-		
+
   # set a default value, in case something goes wrong, or a language doesn't have
   # good defult settings
   [ -n "$LOCALE" ] || LOCALE="en_US"
   [ -n "$KEYMAP" ] || KEYMAP="us"
   [ -n "$KBLAYOUT" ] || KBLAYOUT="us"
 
-  # set keymap and kblayout
-  localectl set-keymap "${KEYMAP}"
- 
-  # fix por text installer
-  if [ ! -z ${DESTDIR} ]; then
-    sed -i -e "s/^XKBLAYOUT=.*/XKBLAYOUT=\"${KBLAYOUT}\"/g" ${DESTDIR}/etc/keyboard.conf
-  fi
-
-  # for openrc
+  # set keymap
   if [ -e /run/openrc ]; then
-    # Set keymap
-    sed -i "s/keymap=\"us\"/keymap=\"${KEYMAP}\"/" ${DESTDIR}/etc/conf.d/keymaps
-    # Create X11 keyboard layout config
-    XORGKBLAYOUT="${DESTDIR}/etc/X11/xorg.conf.d/20-keyboard.conf"
-    echo "" >> "$XORGKBLAYOUT"
-    echo "Section \"InputClass\"" >> "$XORGKBLAYOUT"
-    echo " Identifier \"system-keyboard\"" >> "$XORGKBLAYOUT"
-    echo " MatchIsKeyboard \"on\"" >> "$XORGKBLAYOUT"
-    echo " Option \"XkbLayout\" \"$KBLAYOUT\"" >> "$XORGKBLAYOUT"
-    echo " Option \"XkbModel\" \"pc105\"" >> "$XORGKBLAYOUT"
-    echo " Option \"XkbVariant\" \"\"" >> "$XORGKBLAYOUT"
-    echo "EndSection" >> "$XORGKBLAYOUT"
-    # load keymaps
-    loadkeys "$KEYMAP"
-    setxkbmap "$KBLAYOUT"
+    sed -i "s/keymap=.*/keymap=\"${KEYMAP}\"/" ${DESTDIR}/etc/conf.d/keymaps
+  else
+    echo "KEYMAP=us" > ${DESTDIR}/etc/vconsole.conf
+    sed -i "s/^KEYMAP=.*/KEYMAP=\"${KEYMAP}\"/" ${DESTDIR}/etc/vconsole.conf
   fi
+  
+  # load keymaps
+  loadkeys "$KEYMAP"
 
+  _write_x11_config_file
+  
   # set systemwide language
   echo "LANG=${LOCALE}.UTF-8" > ${DESTDIR}/etc/locale.conf
   echo "LC_MESSAGES=${LOCALE}.UTF-8" >> ${DESTDIR}/etc/locale.conf
