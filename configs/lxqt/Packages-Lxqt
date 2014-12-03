@@ -133,6 +133,8 @@ octopi-notifier
 qupzilla			# internet browser (Qt5)
 flashplugin			# flash support for internet browser
 
+qtfind				# add a file search to pcmanfm-qt
+
 
 
 
