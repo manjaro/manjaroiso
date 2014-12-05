@@ -72,7 +72,7 @@ time1_format = %H:%M
 time1_font = Sans 10
 clock_font_color = #EFEFEF 100
 clock_padding = 0 0
-clock_background_id = 0
+clock_background_id = 1
 clock_rclick_command = orage
 
 # Tooltips
