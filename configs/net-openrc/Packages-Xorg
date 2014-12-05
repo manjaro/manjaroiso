@@ -36,7 +36,7 @@ KERNEL-r8168
 #>nonfree_x64 lib32-zlib 
 
 ## Virtualbox Drivers
->free_uni virtualbox-guest-utils
+>free_uni virtualbox-guest-utils-openrc
 >free_uni KERNEL-virtualbox-guest-modules
 
 ## Xorg Packages
