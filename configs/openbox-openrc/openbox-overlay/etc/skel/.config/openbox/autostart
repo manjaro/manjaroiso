@@ -6,8 +6,8 @@ nitrogen --restore &
 tint2 &
 
 ## Startup
-(sleep 1s && compton) &
-(sleep 2s && conky) &
+(sleep 1s && conky) &
+(sleep 2s && compton) &
 (sleep 3s && wicd-gtk --tray) &
 (sleep 3s && xfce4-power-manager) &
 (sleep 4s && clipit) &
