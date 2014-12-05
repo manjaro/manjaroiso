@@ -46,7 +46,9 @@ gtk2
 
 # 2) lxqt main packages
 # =====================
-sddm				# default login manager (Qt5) of lxqt
+#sddm				# default login manager (Qt5) of lxqt
+lightdm-gtk3-greeter
+lightdm-gtk-greeter-settings
 
 openbox				# default window manager (GTK2) of lxqt
 
@@ -113,7 +115,7 @@ menda-themes-dark 		# new manjaro GTK2 theme
 menda-circle-icon-theme 	# new manjaro icon theme - much lighter
 menda-lxqt-panel 		# new manjaro theme for lxqt/panel
 xcursor-menda			# menda mouse cursor theme - this needs to be activated
-sddm-menda-theme		# sddm theme
+#sddm-menda-theme		# sddm theme
 
 infinality-bundle		# to improve text rendering
 xscreensaver			# screensaver
