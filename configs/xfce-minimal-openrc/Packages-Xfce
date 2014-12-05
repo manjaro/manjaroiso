@@ -107,3 +107,18 @@ xfce-theme-greenbird
 ## Fonts
 ttf-dejavu
 adobe-source-sans-pro-fonts
+
+## AUR Access
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+>i686 gcc
+>x86_64 gcc-multilib
+libtool
+m4
+make
+patch
+yaourt
