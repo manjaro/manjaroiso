@@ -52,18 +52,16 @@ wicd-gtk
 python2-notify
 clipit
 leafpad
-#epdfview
 qpdfview
 xarchiver
 xfce4-terminal	# terminal
 thunar		# file manager
-qupzilla	# web browser
+midori		# web browser
 #lxterminal
 #pcmanfm
-#netsurf
+#qupzilla
 lxsession
 gparted
-#gpicview
 viewnior
 dmenu
 conky

@@ -257,10 +257,10 @@
     </keybind>
     <keybind key="W-w">
       <action name="Execute">
-        <command>qupzilla</command>
+        <command>midori</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <name>Qupzilla</name>
+          <name>Midori</name>
         </startupnotify>
       </action>
     </keybind>

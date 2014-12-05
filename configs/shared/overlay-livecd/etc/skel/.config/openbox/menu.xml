@@ -46,9 +46,9 @@
 			</item>
 		</menu>
 		<menu id="8" label="Network">
-			<item label="Qupzilla">
+			<item label="Web Browser">
 				<action name="Execute">
-					<execute>qupzilla</execute>
+					<execute>midori</execute>
 				</action>
 			</item>
 		</menu>
