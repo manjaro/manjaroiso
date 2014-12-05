@@ -13,7 +13,7 @@
 		</item>
 		<item label="Web Browser">
 			<action name="Execute">
-				<command>qupzilla</command>
+				<command>midori</command>
 			</action>
 		</item>
 		<separator/>
