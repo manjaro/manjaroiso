@@ -83,6 +83,7 @@ lxrandr # Display settings
 libreoffice-installer
 xfce4-appfinder
 thunar-archive-plugin
+gvfs
 
 ## Artwork
 manjaro-artwork
