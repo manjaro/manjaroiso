@@ -75,6 +75,11 @@
 					<execute>sudo gparted</execute>
 				</action>
 			</item>
+			<item label="Htop">
+				<action name="Execute">
+					<execute>xfce4-terminal -e htop</execute>
+				</action>
+			</item>
 			<item label="Octopi">
 				<action name="Execute">
 					<execute>octopi</execute>
