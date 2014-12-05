@@ -33,6 +33,7 @@ breeze-kde4
 oxygen
 oxygen-kde4
 oxygen-icons
+gnome-icon-theme
 menda-plasma-next
 
 ## Conn. Packages
@@ -84,6 +85,11 @@ qt-gstreamer
 cantata-kde-svn
 mpd
 python-pyqt4
+libcanberra
+libcanberra-pulse
+libcanberra-gstreamer
+>x86_64 lib32-libcanberra
+>x86_64 lib32-libcanberra-pulse
 
 ## Devel Packages
 autoconf
@@ -146,7 +152,7 @@ jdk7-openjdk
 icedtea-web
 
 ## Printing
-#manjaro-printer
+manjaro-printer
 
 ## Office
 #libreoffice-fresh
