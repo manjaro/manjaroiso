@@ -16,7 +16,7 @@ update_interval 1.0
 total_run_times 0
 own_window yes
 own_window_transparent yes
-own_window_type desktop
+own_window_type override
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 double_buffer yes
 minimum_size 300 1
@@ -55,3 +55,12 @@ ${alignr}${color #BEBEBE}Terminal${voffset -5}
 
 ${font sans:bold:size=9}${alignr}${color #35BF5C}Super + w
 ${alignr}${color #BEBEBE}Web Browser${voffset -5}
+
+${font sans:bold:size=9}${alignr}${color #35BF5C}Super + a
+${alignr}${color #BEBEBE}App Finder${voffset -5}
+
+${font sans:bold:size=9}${alignr}${color #35BF5C}Ctrl + Alt + d
+${alignr}${color #BEBEBE}Show Desktop${voffset -5}
+
+${font sans:bold:size=9}${alignr}${color #35BF5C}Ctrl + Alt + r
+${alignr}${color #BEBEBE}Reconfigure${voffset -5}

@@ -65,18 +65,24 @@ dokeymap() {
         DIALOG --infobox "{$_load} ${keymap}" 0 0
         #loadkeys -q ${BASEDIR}/keymaps/${keymap}
         loadkeys -q ${keymap} > /dev/null 2>&1 || error_kmset 
-	# for openrc
-	if [ -e /run/openrc ]; then
-	  # get keymap without extension (.map.gz)
-	  KEYMAP=$(echo ${keymap} | cut -f 1 -d ".")
-	  # get stored keymap
-	  CKMAP=$(cat ${DESTDIR}/etc/conf.d/keymaps | grep -w keymap= | cut -f 2 -d '"')
-	  # if stored keymap is different from current selected keymap, replace it
-	  if [ ! ${CKMAP} == ${KEYMAP} ]; then
-		sed -i "s/keymap=\"${CKMAP}\"/keymap=\"${KEYMAP}\"/" ${DESTDIR}/etc/conf.d/keymaps
-	  fi
-	fi
+        # for openrc
+        if [ -e /run/openrc ]; then
+            # get keymap without extension (.map.gz)
+            KEYMAP=$(echo ${keymap} | cut -f 1 -d ".")
+            # get stored keymap
+            CKMAP=$(cat ${DESTDIR}/etc/conf.d/keymaps | grep -w keymap= | cut -f 2 -d '"')
+            # if stored keymap is different from current selected keymap, replace it
+            if [ ! ${CKMAP} == ${KEYMAP} ]; then
+                sed -i "s/keymap=\"${CKMAP}\"/keymap=\"${KEYMAP}\"/" ${DESTDIR}/etc/conf.d/keymaps
+            fi
+        fi
     fi
+    
+    # Setup x11 config file
+    local KBLAYOUT=$(get_layout)
+    local KEYMAP=$(cat /tmp/.keymap | sed -e 's/\..*//g')
+    _write_x11_config_file
+    
 S_NEXTITEM=2
 }
 

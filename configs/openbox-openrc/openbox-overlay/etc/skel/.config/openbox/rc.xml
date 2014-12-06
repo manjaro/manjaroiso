@@ -317,25 +317,39 @@
           <enabled>true</enabled>
           <name>Terminal</name>
         </startupnotify>
-        <command>lxterminal</command>
+        <command>xfce4-terminal</command>
       </action>
     </keybind>
     <keybind key="W-w">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>Netsurf</name>
+          <name>Qupzilla</name>
         </startupnotify>
-        <command>netsurf</command>
+        <command>qupzilla</command>
       </action>
     </keybind>
     <keybind key="W-f">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>pcmanfm</name>
+          <name>Thunar</name>
         </startupnotify>
-        <command>pcmanfm</command>
+        <command>thunar</command>
+      </action>
+    </keybind>
+    <keybind key="W-o">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Octopi</name>
+        </startupnotify>
+        <command>octopi</command>
+      </action>
+    </keybind>
+    <keybind key="W-a">
+      <action name="Execute">
+        <command>xfce4-appfinder</command>
       </action>
     </keybind>
     <keybind key="W-d">
@@ -350,15 +364,6 @@
     <keybind key="C-A-r">
       <action name="Reconfigure"/>
     </keybind>
-    <!--    <keybind key="W-e">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Konqueror</name>
-        </startupnotify>
-        <command>kfmclient openProfile filemanagement</command>
-      </action>
-    </keybind> -->
     <!-- Keybindings for multimedia keys -->
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
