@@ -44,7 +44,7 @@ xfce4-mixer
 ## Minmal XFCE Desktop Packages
 gconf # fix qt-theme
 gnome-keyring # fix wlan segfault
->i686 gnome-vfs
+#>i686 gnome-vfs
 gvfs # to fix trash in thunar
 menulibre
 network-manager-applet
@@ -96,7 +96,6 @@ thus
 
 ## Artwork
 faenza-green-icon-theme
-#gtk-theme-ceti
 menda-themes
 manjaro-artwork
 lightdm-gtk2-greeter
@@ -105,7 +104,6 @@ xfce-theme-greenbird
 #plymouth-theme-manjaro-elegant
 
 ## Fonts
-#ttf-dejavu
 ttf-droid
 adobe-source-sans-pro-fonts
 
