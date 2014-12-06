@@ -115,8 +115,7 @@ binutils
 bison
 fakeroot
 flex
->i686 gcc
->x86_64 gcc-multilib
+gcc
 libtool
 m4
 make
