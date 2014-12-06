@@ -105,7 +105,8 @@ xfce-theme-greenbird
 #plymouth-theme-manjaro-elegant
 
 ## Fonts
-ttf-dejavu
+#ttf-dejavu
+ttf-droid
 adobe-source-sans-pro-fonts
 
 ## AUR Access
