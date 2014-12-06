@@ -168,7 +168,7 @@ plasma-nm
 bluedevil-frameworks
 kscreen-frameworks
 plasma-workspace-wallpapers
-kdepim-kmail
+trojita-qt5-git
 partitionmanager
 yakuake-frameworks-git
 konversation-frameworks-git
@@ -189,3 +189,4 @@ kscreen-frameworks
 kdeplasma-addons-frameworks
 kcm-touchpad-frameworks
 bluedevil-frameworks
+kfind-frameworks-git
