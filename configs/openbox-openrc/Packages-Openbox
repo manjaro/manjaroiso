@@ -27,7 +27,8 @@ desktop-file-utils
 
 ## Packages for Sound and Audio
 manjaro-alsa
-pnmixer
+#pnmixer
+volumeicon-gtk2
 
 ## Base Packages
 gtk2
