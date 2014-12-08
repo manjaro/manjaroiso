@@ -1,9 +1,10 @@
 # DO NOT EDIT! This file will be overwritten by LXAppearance.
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
-gtk-theme-name="Menda"
+include "/home/manjaro/.gtkrc-2.0.mine"
+gtk-theme-name="Menda-Dark"
 gtk-icon-theme-name="Menda-Circle"
-gtk-font-name="Droid Sans 11"
+gtk-font-name="Cantarell 11"
 gtk-cursor-theme-name="Menda-Cursor"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
@@ -16,4 +17,3 @@ gtk-xft-antialias=1
 gtk-xft-hinting=1
 gtk-xft-hintstyle="hintslight"
 gtk-xft-rgba="rgb"
-include "/home/manjaro/.gtkrc-2.0.mine"
