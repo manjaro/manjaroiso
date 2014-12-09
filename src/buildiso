@@ -260,7 +260,7 @@ if [ -e Packages-Xorg ] ; then
               fi
               cp pacman-gfx.conf ${work_dir}/pkgs-image/opt/livecd
               rm -r ${work_dir}/pkgs-image/var
-              repo-ad ${work_dir}/pkgs-image/opt/livecd/pkgs/gfx-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/livecd/pkgs/*pkg*z
+              repo-add ${work_dir}/pkgs-image/opt/livecd/pkgs/gfx-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/livecd/pkgs/*pkg*z
               # Disable Catalyst if not present
               if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep catalyst-utils 2> /dev/null`" ]; then
                  echo -e -n "$_r >$_W Disabling Catalyst driver \n $_n"
@@ -364,7 +364,7 @@ if [ -e Packages-Lng ] ; then
               fi
               cp pacman-lng.conf ${work_dir}/lng-image/opt/livecd
               rm -r ${work_dir}/lng-image/var
-              repo-ad ${work_dir}/lng-image/opt/livecd/lng/lng-pkgs.db.tar.gz ${work_dir}/lng-image/opt/livecd/lng/*pkg*z
+              repo-add ${work_dir}/lng-image/opt/livecd/lng/lng-pkgs.db.tar.gz ${work_dir}/lng-image/opt/livecd/lng/*pkg*z
               umount -l ${work_dir}/lng-image
               rm -R ${work_dir}/lng-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
