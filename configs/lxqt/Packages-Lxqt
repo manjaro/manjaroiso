@@ -117,7 +117,9 @@ menda-lxqt-panel 		# new manjaro theme for lxqt/panel
 xcursor-menda			# menda mouse cursor theme - this needs to be activated
 #sddm-menda-theme		# sddm theme
 
-infinality-bundle		# to improve text rendering
+#infinality-bundle		# to improve text rendering
+freetype2-infinality-ultimate
+fontconfig-infinality-ultimate
 xscreensaver			# screensaver
 
 
@@ -135,7 +137,7 @@ octopi-notifier
 qupzilla			# internet browser (Qt5)
 flashplugin			# flash support for internet browser
 
-qtfind				# add a file search to pcmanfm-qt
+#qtfind				# add a file search to pcmanfm-qt
 
 
 
