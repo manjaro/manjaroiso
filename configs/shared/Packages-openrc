@@ -74,6 +74,7 @@ sysvinit
 openrc-core
 openrc-base
 openrc-desktop
+openrc-systemdcompat
 
 ## Eudev
 eudev
