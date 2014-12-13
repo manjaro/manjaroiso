@@ -77,8 +77,9 @@ gst-libav
 libreoffice-installer
 manjaro-settings-manager
 manjaro-welcome
-pamac
+#pamac
 octopi # because pamac does not seem to work all the time
+octopi-notifier
 midori
 sylpheed
 mousepad

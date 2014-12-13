@@ -75,6 +75,7 @@ nitrogen
 udisks2 # removable disk management
 manjaro-settings-manager
 octopi
+octopi-notifier
 gksu # required for octopi
 xfce4-power-manager-upower0 # battery icon
 obkey # from AUR
