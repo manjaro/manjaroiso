@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Encoding=UTF-8
+Exec=cb-exit
+Icon=gnome-session-logout
+StartupNotify=false
+Terminal=false
+Categories=X-XFCE;X-Xfce-Toplevel;
+OnlyShowIn=XFCE;
+Name=Logout
+Comment=Logut using cb-exit

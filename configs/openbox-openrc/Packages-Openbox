@@ -44,7 +44,8 @@ wicd-openrc
 openbox
 obconf
 obmenu
-tint2
+#tint2
+xfce4-panel
 lxdm-consolekit
 gtk-aurora-engine
 
@@ -75,17 +76,18 @@ nitrogen
 udisks2 # removable disk management
 manjaro-settings-manager
 octopi
-octopi-notifier
+octopi-notifier-qt5
 gksu # required for octopi
 xfce4-power-manager-upower0 # battery icon
-obkey # from AUR
+obkey
 lxrandr # Display settings
 libreoffice-installer
 xfce4-appfinder
 thunar-archive-plugin
 gvfs
-orage # calender
+#orage # calender
 htop
+sylpheed # email
 
 ## Artwork
 manjaro-artwork

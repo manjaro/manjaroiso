@@ -133,11 +133,6 @@
 					<execute>lxrandr</execute>
 				</action>
 			</item>
-			<item label="Panel tint2">
-				<action name="Execute">
-					<execute>tint2conf</execute>
-				</action>
-			</item>
 			<separator/>
 			<menu id="40" label="OpenBox">
 				<item label="Edit Autostart">

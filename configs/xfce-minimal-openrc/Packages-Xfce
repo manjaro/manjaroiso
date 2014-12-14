@@ -79,7 +79,7 @@ manjaro-settings-manager
 manjaro-welcome
 #pamac
 octopi # because pamac does not seem to work all the time
-octopi-notifier
+octopi-notifier-qt5
 midori
 sylpheed
 mousepad
