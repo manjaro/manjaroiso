@@ -3,6 +3,7 @@
 
 ## Panel and desktop
 nitrogen --restore &
+#tint2 &
 xfce4-panel &
 
 ## Startup
