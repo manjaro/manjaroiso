@@ -3,7 +3,7 @@
 
 ## Panel and desktop
 nitrogen --restore &
-tint2 &
+xfce4-panel &
 
 ## Startup
 (sleep 1s && conky) &
@@ -11,4 +11,5 @@ tint2 &
 (sleep 3s && wicd-gtk --tray) &
 (sleep 3s && xfce4-power-manager) &
 (sleep 4s && clipit) &
-(sleep 4s && pnmixer) &
+(sleep 4s && volumeicon) &
+(sleep 5s && octopi-notifier) &

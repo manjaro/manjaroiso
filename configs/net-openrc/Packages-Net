@@ -20,6 +20,7 @@ xorg-server-utils
 xorg-twm
 xorg-utils
 xorg-xinit
+xterm
 
 ## Basic packages
 dconf
