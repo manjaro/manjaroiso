@@ -13,7 +13,7 @@
 	<icon>stock_folder</icon>
 	<name>Thunar Root</name>
 	<unique-id>1367866030392883-2</unique-id>
-	<command>gksu thunar</command>
+	<command>pkexec thunar %f</command>
 	<description>Thunar Root</description>
 	<patterns>*</patterns>
 	<directories/>
