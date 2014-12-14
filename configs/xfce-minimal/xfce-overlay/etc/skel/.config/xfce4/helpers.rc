@@ -1,4 +1,4 @@
 FileManager=Thunar
-WebBrowser=firefox
-MailReader=thunderbird
+WebBrowser=midori
+MailReader=sylpheed
 
