@@ -183,7 +183,7 @@ make_root_image() {
             ln -sf '/usr/lib/systemd/system/tlp-sleep.service' "${work_dir}/root-image/etc/systemd/system/sleep.target.wants/tlp-sleep.service"
             ln -sf '/usr/lib/systemd/system/tlp.service' "${work_dir}/root-image/etc/systemd/system/multi-user.target.wants/tlp.service"
          fi
-         cp -R --preserve=links overlay/* ${work_dir}/root-image
+         cp -a --no-preserve=ownership overlay/* ${work_dir}/root-image
 
          # Clean up GnuPG keys
          rm -rf "${work_dir}/root-image/etc/pacman.d/gnupg"
@@ -215,7 +215,7 @@ if [ -e "${pkgsfile}" ] ; then
               pacman -Qr "${work_dir}/${desktop}-image" > "${work_dir}/${desktop}-image/${desktop}-image-pkgs.txt"
               cp "${work_dir}/${desktop}-image/${desktop}-image-pkgs.txt" ${name}${de}-${version}-${arch}-pkgs.txt
               if [ -e ${desktop}-overlay ] ; then
-                 cp -R --preserve=links ${desktop}-overlay/* ${work_dir}/${desktop}-image
+                 cp -a --no-preserve=ownership ${desktop}-overlay/* ${work_dir}/${desktop}-image
               fi
               if [ -e ${work_dir}/${desktop}-image/usr/bin/cupsd ] ; then
                  mkdir -p "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants"
@@ -485,10 +485,11 @@ make_efiboot() {
 make_isolinux() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
         echo -e -n "$_r >$_W Prepare ${install_dir}/iso/isolinux \n $_n"
-        cp -R --preserve=links isolinux ${work_dir}/iso
+        mkdir -p ${work_dir}/iso/isolinux
+        cp -a --no-preserve=ownership isolinux/* ${work_dir}/iso/isolinux
         if [[ -e isolinux-overlay ]]; then
             echo -e -n "$_r >$_W isolinux overlay found. Overwriting files. \n $_n"
-            cp -R --preserve=links isolinux-overlay/* ${work_dir}/iso/isolinux
+            cp -a --no-preserve=ownership isolinux-overlay/* ${work_dir}/iso/isolinux
         fi
         if [[ -e ${work_dir}/root-image/usr/lib/syslinux/bios/ ]]; then
             cp ${work_dir}/root-image/usr/lib/syslinux/bios/isolinux.bin ${work_dir}/iso/isolinux/
@@ -525,7 +526,7 @@ make_overlay() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
         echo -e -n "$_r >$_W Prepare overlay-image \n $_n"
         mkdir -p ${work_dir}/overlay/etc/pacman.d
-        cp -R --preserve=links overlay-livecd/* ${work_dir}/overlay
+        cp -a --no-preserve=ownership overlay-livecd/* ${work_dir}/overlay
         cp options.conf ${work_dir}/overlay/opt/livecd/options.conf
         #wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist
         cp ${work_dir}/root-image/etc/pacman.d/mirrorlist ${work_dir}/overlay/etc/pacman.d/mirrorlist
