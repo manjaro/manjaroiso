@@ -44,7 +44,7 @@ wicd-openrc
 openbox
 obconf
 obmenu
-#tint2
+tint2
 xfce4-panel
 lxdm-consolekit
 gtk-aurora-engine
