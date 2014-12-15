@@ -120,7 +120,7 @@ xcursor-menda			# menda mouse cursor theme - this needs to be activated
 #infinality-bundle		# to improve text rendering
 freetype2-infinality-ultimate
 fontconfig-infinality-ultimate
-xscreensaver			# screensaver
+
 
 
 # 6) Minimal set of tools
@@ -137,8 +137,9 @@ octopi-notifier
 qupzilla			# internet browser (Qt5)
 flashplugin			# flash support for internet browser
 
-#qtfind				# add a file search to pcmanfm-qt
-
+qtfind				# add a file search to pcmanfm-qt
+xscreensaver			# screensaver and power managment
+imagewriter			# usb burning application
 
 
 
