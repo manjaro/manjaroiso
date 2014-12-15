@@ -40,6 +40,9 @@ gtk2
 openresolv
 wicd-openrc
 
+# Extra services
+ntp-openrc
+
 ## Openbox
 openbox
 obconf

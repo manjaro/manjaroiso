@@ -10,6 +10,9 @@ openresolv
 bluez-openrc # required for bluetooth
 blueman
 
+# Extra services
+ntp-openrc
+
 ## Xorg Packages
 inxi
 libdnet
