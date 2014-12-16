@@ -52,7 +52,6 @@ gvfs # to fix trash in thunar
 menulibre
 network-manager-applet
 #numlockx
-#xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xfce4-panel
 #xfce4-session
@@ -76,10 +75,10 @@ gksu
 gparted
 #polkit-gnome # for gparted
 lxsession # contains lxpolit
-gst-libav
+#gst-libav
 libreoffice-installer
 manjaro-settings-manager
-manjaro-welcome
+#manjaro-welcome
 #pamac
 octopi # because pamac does not seem to work all the time
 octopi-notifier-qt5
@@ -104,7 +103,8 @@ menda-themes
 manjaro-artwork
 lightdm-gtk2-greeter
 lightdm-gtk-greeter-settings
-xfce-theme-greenbird
+numix-manjaro-themes
+#xfce-theme-greenbird
 #plymouth-theme-manjaro-elegant
 
 ## Fonts
