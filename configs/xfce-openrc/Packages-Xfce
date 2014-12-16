@@ -93,6 +93,7 @@ catfish # for thunar search
 #>i686 parole
 qpdfview
 downgrade
+tumbler # thumbnails support
 
 ## Installer
 thus
@@ -103,7 +104,6 @@ menda-themes
 manjaro-artwork
 lightdm-gtk2-greeter
 lightdm-gtk-greeter-settings
-numix-manjaro-themes
 #xfce-theme-greenbird
 #plymouth-theme-manjaro-elegant
 
