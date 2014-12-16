@@ -85,7 +85,7 @@ tooltip_font_color = #D7D7D7 100
 
 # Mouse
 mouse_middle = close
-mouse_right = maximize_restore
+mouse_right = shade
 mouse_scroll_up = iconify
 mouse_scroll_down = toggle
 
