@@ -137,10 +137,10 @@ octopi-notifier
 qupzilla			# internet browser (Qt5)
 flashplugin			# flash support for internet browser
 
-qtfind				# add a file search to pcmanfm-qt
+qtfind				# add a file search to pcmanfm-qt (qt5)
 xscreensaver			# screensaver and power managment
-imagewriter			# usb burning application
-
+imagewriter			# usb burning application (qt4)
+gparted				# partitioning program (GTK2)
 
 
 
