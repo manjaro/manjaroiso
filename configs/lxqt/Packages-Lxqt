@@ -134,12 +134,12 @@ xarchiver			# GUI frontend for many archive file formats
 octopi				# Qt5 package manager
 octopi-notifier
 
-qupzilla			# internet browser (Qt5)
+>x86_64 firefox			
+>i686 qupzilla			# internet browser (Qt5)
 flashplugin			# flash support for internet browser
 
 qtfind				# add a file search to pcmanfm-qt (qt5)
 xscreensaver			# screensaver and power managment
-imagewriter			# usb burning application (qt4)
 gparted				# partitioning program (GTK2)
 
 
