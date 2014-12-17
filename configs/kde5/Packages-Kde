@@ -33,6 +33,7 @@ breeze-kde4
 oxygen
 oxygen-kde4
 oxygen-icons
+gnome-icon-theme
 menda-plasma-next
 
 ## Conn. Packages
@@ -84,6 +85,11 @@ qt-gstreamer
 cantata-kde-svn
 mpd
 python-pyqt4
+libcanberra
+libcanberra-pulse
+libcanberra-gstreamer
+>x86_64 lib32-libcanberra
+>x86_64 lib32-libcanberra-pulse
 
 ## Devel Packages
 autoconf
@@ -105,7 +111,7 @@ openssh
 samba
 
 ## Applications
-qbittorrent
+qbittorrent-qt5-git
 imagewriter
 firefox
 flashplugin
@@ -146,7 +152,7 @@ jdk7-openjdk
 icedtea-web
 
 ## Printing
-#manjaro-printer
+manjaro-printer
 
 ## Office
 #libreoffice-fresh
@@ -162,7 +168,7 @@ plasma-nm
 bluedevil-frameworks
 kscreen-frameworks
 plasma-workspace-wallpapers
-kdepim-kmail
+trojita-qt5-git
 partitionmanager
 yakuake-frameworks-git
 konversation-frameworks-git
@@ -183,3 +189,8 @@ kscreen-frameworks
 kdeplasma-addons-frameworks
 kcm-touchpad-frameworks
 bluedevil-frameworks
+kfind-frameworks-git
+qca-qt5-git
+audiothumbs-frameworks-git
+kget-frameworks-git
+skanlite-frameworks-git

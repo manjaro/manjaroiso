@@ -13,7 +13,7 @@
 		</item>
 		<item label="Web Browser">
 			<action name="Execute">
-				<command>qupzilla</command>
+				<command>midori</command>
 			</action>
 		</item>
 		<separator/>
@@ -56,9 +56,9 @@
 			</item>
 		</menu>
 		<menu id="8" label="Network">
-			<item label="Qupzilla">
+			<item label="Web Browser">
 				<action name="Execute">
-					<execute>qupzilla</execute>
+					<execute>midori</execute>
 				</action>
 			</item>
 		</menu>
@@ -83,6 +83,11 @@
 			<item label="GParted">
 				<action name="Execute">
 					<execute>gksudo gparted</execute>
+				</action>
+			</item>
+			<item label="Htop">
+				<action name="Execute">
+					<execute>xfce4-terminal -e htop</execute>
 				</action>
 			</item>
 			<item label="Octopi">
@@ -126,11 +131,6 @@
 			<item label="Display Settings">
 				<action name="Execute">
 					<execute>lxrandr</execute>
-				</action>
-			</item>
-			<item label="Panel tint2">
-				<action name="Execute">
-					<execute>tint2conf</execute>
 				</action>
 			</item>
 			<separator/>

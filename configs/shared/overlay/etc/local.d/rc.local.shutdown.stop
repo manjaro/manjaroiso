@@ -1,5 +1,10 @@
 #!/bin/bash
 #
-# /etc/rc.local.shutdown: Local shutdown script.
+# /etc/rc.local.shutdown.stop: Local shutdown script.
 #
+
+if [ -e /etc/rc.local.shutdown ]; then
+	# Execute it
+	/etc/rc.local.shutdown
+fi
 

@@ -74,6 +74,7 @@ sysvinit
 openrc-core
 openrc-base
 openrc-desktop
+openrc-systemdcompat
 
 ## Eudev
 eudev
@@ -128,7 +129,7 @@ nfs-utils
 ntfs-3g
 
 ## Fonts
-terminus-font
+#terminus-font
 ttf-bitstream-vera
 ttf-dejavu
 ttf-inconsolata

@@ -1,0 +1,12 @@
+location:/usr/share/applications/firefox.desktop
+location:/usr/share/applications/thunderbird.desktop
+location:/usr/share/applications/deluge.desktop
+location:/usr/share/applications/pidgin.desktop
+separator
+location:/usr/share/applications/pluma.desktop
+location:/usr/share/applications/mate-terminal.desktop
+location:/usr/share/applications/mate-volume-control.desktop
+location:/usr/share/applications/pamac-manager.desktop
+separator
+location:/usr/share/applications/mate-display-properties.desktop
+location:/usr/share/applications/mate-system-monitor.desktop

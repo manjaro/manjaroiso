@@ -1,5 +1,10 @@
 #!/bin/bash
 #
-# /etc/rc.local: Local multi-user startup script.
+# /etc/rc.local.start: Local multi-user startup script.
 #
+
+if [ -e /etc/rc.local ]; then
+	# Execute it
+	/etc/rc.local
+fi
 
