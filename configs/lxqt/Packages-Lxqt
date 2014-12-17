@@ -100,6 +100,7 @@ gksu				# (GTK2) GUI for su and sudo - there is no alternative for it in lxqt
 gnome-keyring			# (GTK3) - stores passwords for other applications, e.g. gksu
 
 leafpad				# default lxde text editor - very lightweight - heavier alternative: notepadqq
+lxtask				# LXDE task manager - qt4 alternative: qps
 
 lxappearance 			# appearance settings of GTK2 themes - there is no alternative for it in lxqt
 
