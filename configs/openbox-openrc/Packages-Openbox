@@ -50,7 +50,6 @@ obmenu
 tint2
 xfce4-panel
 lxdm-consolekit
-gtk-aurora-engine
 
 ## Apps
 wicd-gtk
@@ -92,6 +91,7 @@ gvfs
 htop
 sylpheed # email
 tumbler # for thumbnails
+xfce4-screenshooter
 
 ## Artwork
 manjaro-artwork

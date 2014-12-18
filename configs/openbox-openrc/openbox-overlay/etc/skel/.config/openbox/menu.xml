@@ -28,6 +28,11 @@
 					<execute>galculator</execute>
 				</action>
 			</item>
+			<item label="Screenshot">
+				<action name="Execute">
+					<execute>xfce4-screenshooter</execute>
+				</action>
+			</item>
 			<item label="Xarchiver">
 				<action name="Execute">
 					<execute>xarchiver</execute>
@@ -123,6 +128,11 @@
 					<execute>nitrogen /usr/share/backgrounds</execute>
 				</action>
 			</item>
+			<item label="Configure Lxdm">
+				<action name="Execute">
+					<execute>gksudo lxdm-config</execute>
+				</action>
+			</item>
 			<item label="Customize Look and Feel">
 				<action name="Execute">
 					<execute>lxappearance</execute>
@@ -131,6 +141,11 @@
 			<item label="Display Settings">
 				<action name="Execute">
 					<execute>lxrandr</execute>
+				</action>
+			</item>
+			<item label="Panel tint2">
+				<action name="Execute">
+					<execute>tint2conf</execute>
 				</action>
 			</item>
 			<separator/>

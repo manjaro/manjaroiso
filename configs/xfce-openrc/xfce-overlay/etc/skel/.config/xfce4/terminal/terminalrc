@@ -17,5 +17,6 @@ MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
 ScrollingLines=999999
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
-BackgroundDarkness=0.700000
+BackgroundDarkness=0.800000
+ScrollingOnOutput=FALSE
 
