@@ -100,6 +100,7 @@ gksu				# (GTK2) GUI for su and sudo - there is no alternative for it in lxqt
 gnome-keyring			# (GTK3) - stores passwords for other applications, e.g. gksu
 
 leafpad				# default lxde text editor - very lightweight - heavier alternative: notepadqq
+lxtask				# LXDE task manager - qt4 alternative: qps
 
 lxappearance 			# appearance settings of GTK2 themes - there is no alternative for it in lxqt
 
@@ -117,8 +118,10 @@ menda-lxqt-panel 		# new manjaro theme for lxqt/panel
 xcursor-menda			# menda mouse cursor theme - this needs to be activated
 #sddm-menda-theme		# sddm theme
 
-infinality-bundle		# to improve text rendering
-xscreensaver			# screensaver
+#infinality-bundle		# to improve text rendering
+freetype2-infinality-ultimate
+fontconfig-infinality-ultimate
+
 
 
 # 6) Minimal set of tools
@@ -132,12 +135,13 @@ xarchiver			# GUI frontend for many archive file formats
 octopi				# Qt5 package manager
 octopi-notifier
 
-qupzilla			# internet browser (Qt5)
+>x86_64 firefox			
+>i686 qupzilla			# internet browser (Qt5)
 flashplugin			# flash support for internet browser
 
-qtfind				# add a file search to pcmanfm-qt
-
-
+qtfind				# add a file search to pcmanfm-qt (qt5)
+xscreensaver			# screensaver and power managment
+gparted				# partitioning program (GTK2)
 
 
 

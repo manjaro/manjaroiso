@@ -1,7 +1,79 @@
 ### Manjaro Packages
 
-## Xorg
-mhwd
+## gnome package group, minus epiphany, because we'll use firefox
+adwaita-icon-theme
+baobab
+empathy
+eog
+#epiphany
+evince
+gdm
+gnome-backgrounds
+gnome-calculator
+gnome-contacts
+gnome-control-center
+gnome-desktop
+gnome-dictionary
+gnome-disk-utility
+gnome-font-viewer
+gnome-icon-theme
+gnome-icon-theme-extras
+gnome-icon-theme-symbolic
+gnome-keyring
+gnome-screenshot
+gnome-session
+gnome-settings-daemon
+gnome-shell
+gnome-shell-extensions
+gnome-system-log
+gnome-system-monitor
+gnome-terminal
+gnome-themes-standard
+gnome-user-docs
+gnome-user-share
+grilo-plugins
+gucharmap
+mousetweaks
+mutter
+nautilus
+sushi
+totem
+tracker
+vino
+xdg-user-dirs-gtk
+yelp
+
+
+## Gnome Main Packages
+gnome-extra
+gnome-tweak-tool
+gufw # firewall
+manjaro-settings-manager
+networkmanager-openconnect
+networkmanager-openvpn
+networkmanager-pptp
+networkmanager-vpnc
+thus
+#lightdm-gtk3-greeter   ### Remember to comment gdm above and adjust the DM symlink if using LightDM
+#lightdm-gtk-greeter-settings   ### Remember to comment gdm above and adjust the DM symlink if using LightDM
+
+## Applications
+firefox
+#thunderbird
+gimp
+gksu
+gparted
+gvfs-afc
+gvfs-afp
+gvfs-gphoto2
+gvfs-mtp
+gvfs-smb
+manjaro-welcome
+
+## Network
+netctl
+openresolv
+blueman
 
 ## Xorg Packages
 inxi
@@ -25,180 +97,11 @@ xorg-server-utils
 xorg-twm
 xorg-utils
 xorg-xinit
-
-## Graphical Installer
-thus
+xorg-xkill
 
 ## Artwork
 manjaro-artwork
-
-## GNOME
-
-accerciser
-aisleriot
-alacarte
-anjuta
-baobab
-brasero
-caribou
-cheese
-devhelp
-empathy
-eog
-epiphany
-evince
-evolution
-file-roller
-five-or-more
-four-in-a-row
-gdl
-gdm
-gedit
-gjs
-glade
-gnome-backgrounds
-gnome-bluetooth
-gnome-calculator
-gnome-chess
-gnome-clocks
-gnome-color-manager
-gnome-common
-gnome-contacts
-gnome-control-center
-gnome-desktop
-gnome-devel-docs
-gnome-dictionary
-gnome-disk-utility
-gnome-doc-utils
-gnome-documents
-gnome-font-viewer
-gnome-getting-started-docs
-gnome-icon-theme
-gnome-icon-theme-extras
-gnome-icon-theme-symbolic
-gnome-keyring
-gnome-klotski
-gnome-mahjongg
-gnome-menus
-gnome-mime-data
-gnome-mines
-gnome-nettool
-gnome-nibbles
-gnome-online-accounts
-gnome-photos
-gnome-power-manager
-gnome-python
-gnome-robots
-gnome-screenshot
-gnome-session
-gnome-shell
-gnome-shell-extensions
-gnome-settings-daemon
-gnome-power-manager
-gnome-sudoku
-gnome-system-log
-gnome-system-monitor
-gnome-terminal
-gnome-tetravex
-gnome-themes-standard
-gnome-tweak-tool
-gnome-user-docs
-gnome-user-share
-gnome-vfs
-gnome-weather
-gtksourceview3
-iagno
-icon-naming-utils
-libgnome
-libgnome-data
-libgnome-keyring
-libgnomecanvas
-libgnomeui
-libgsf
-libnautilus-extension
-lightsoff
-mousetweaks
-#mutter
-nautilus
-network-manager-applet
-orca
-python2-gnomecanvas
-python2-gnomevfs
-python2-libgnome
-quadrapassel
-rygel
-seahorse
-sushi
-swell-foop
-tali
-totem
-tracker
-vinagre
-vino
-xdg-user-dirs-gtk
-yelp
-gnome-media
-gnome-web-photo
-libgnome-media-profiles
-soundconverter
-muffin
-gksu
-polkit
-polkit-gnome
-manjaro-welcome
-
-## Network
-netctl
-networkmanager
-networkmanager-dispatcher-ntpd
-openresolv
-
-## Extra
-icedtea-web
-vlc
-
-## Theme
-nitrux-icon-theme
-faenza-green-icon-theme
-xfce-theme-greenbird
-adwaita-manjaro-themes
-zukitwo-themes
-numix-manjaro-themes
-
-## Other Applications
-firefox
-#leafpad
-imagewriter
-ttf-droid
-#lxterminal
-viewnior
-flashplugin
-numlockx
-gparted
-#p7zip
-udiskie
-udisks
-udisks2
-openssh
-gvfs
-gvfs-afc
-gvfs-afp
-gvfs-gphoto2
-gvfs-mtp
-gvfs-smb
-hexchat
-banshee
-rhythmbox
-gimp
-shotwell
-tomboy
-chromium-bsu
-        
-## Package management
-
-pamac
-manjaro-settings-manager
-ffmpegthumbnailer
+plymouth-theme-manjaro-elegant
 
 ## Packages for Sound and Audio
 gst-libav
@@ -214,25 +117,33 @@ flashplugin
 libdvdcss
 manjaro-alsa
 manjaro-pulse
-pavucontrol
-pa-applet
-pulseaudio-ctl
+
+## Package management
+pamac
+polkit-gnome
+
+## Games
+steam
+steam-native
+
+## Java
+icedtea-web
 
 ## Printing
 manjaro-printer
 
 ## Office
-
-## Office
+#abiword
+#gnumeric
 #libreoffice-installer
 libreoffice-still-en-US
-libreoffice-still-base
+#libreoffice-still-base
 libreoffice-still-calc
-libreoffice-still-draw
+#libreoffice-still-draw
 libreoffice-still-gnome
 libreoffice-still-impress
 libreoffice-still-math
-libreoffice-still-postgresql-connector
+#libreoffice-still-postgresql-connector
 libreoffice-still-writer
 
 ## AUR Access
@@ -242,11 +153,11 @@ binutils
 bison
 fakeroot
 flex
-gcc
+>i686 gcc
+>x86_64 gcc-multilib
 libtool
 m4
 make
 patch
 subversion
-svn
 yaourt
