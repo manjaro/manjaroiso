@@ -76,7 +76,7 @@
 					<execute>sylpheed</execute>
 				</action>
 			</item>
-			<item label="Xchat">
+			<item label="IRC">
 				<action name="Execute">
 					<execute>xchat</execute>
 				</action>
