@@ -90,14 +90,14 @@
 			</item>
 			<item label="LibreOffice Installer">
 				<action name="Execute">
-					<execute>sudo /opt/libreoffice-installer/libreoffice-installer</execute>
+					<execute>/opt/libreoffice-installer/libreoffice-installer</execute>
 				</action>
 			</item>
 		</menu>
 		<menu id="37" label="System">
 			<item label="GParted">
 				<action name="Execute">
-					<execute>sudo gparted</execute>
+					<execute>gksudo gparted</execute>
 				</action>
 			</item>
 			<item label="Htop">
@@ -112,7 +112,7 @@
 			</item>
 			<item label="Manjaro Settings Manager">
 				<action name="Execute">
-					<execute>sudo manjaro-settings-manager-gui</execute>
+					<execute>gksudo manjaro-settings-manager-gui</execute>
 				</action>
 			</item>
 		</menu>

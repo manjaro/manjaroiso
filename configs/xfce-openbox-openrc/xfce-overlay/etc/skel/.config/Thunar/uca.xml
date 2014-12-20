@@ -22,7 +22,7 @@
 	<icon>accessories-text-editor</icon>
 	<name>Edit as root</name>
 	<unique-id>1397728485286396-1</unique-id>
-	<command>gksudo leafpad %f</command>
+	<command>gksudo mousepad %f</command>
 	<description></description>
 	<patterns>*</patterns>
 	<other-files/>
