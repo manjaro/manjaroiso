@@ -85,6 +85,9 @@ if [ -e "/usr/bin/lightdm" ] ; then
    getent passwd lightdm > /dev/null 2>&1 || useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /usr/bin/nologin lightdm
    passwd -l lightdm > /dev/null
    chown -R lightdm:lightdm /var/run/lightdm > /dev/null
+   if [ -e "/usr/bin/openbox-session" ] ; then
+        sed -i -e 's/^.*user-session=.*/user-session=openbox/' /etc/lightdm/lightdm.conf
+   fi
    if [ -e "/usr/bin/startxfce4" ] ; then
         sed -i -e 's/^.*user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
    fi
@@ -96,9 +99,6 @@ if [ -e "/usr/bin/lightdm" ] ; then
    fi
    if [ -e "/usr/bin/enlightenment_start" ] ; then
         sed -i -e 's/^.*user-session=.*/user-session=enlightenment/' /etc/lightdm/lightdm.conf
-   fi
-   if [ -e "/usr/bin/openbox-session" ] ; then
-        sed -i -e 's/^.*user-session=.*/user-session=openbox/' /etc/lightdm/lightdm.conf
    fi
    if [ -e "/usr/bin/startlxde" ] ; then
         sed -i -e 's/^.*user-session=.*/user-session=LXDE/' /etc/lightdm/lightdm.conf
@@ -236,6 +236,9 @@ if [ -e "/usr/bin/lxdm" ] ; then
         groupadd --system lxdm > /dev/null
    fi
    sed -i -e "s/^.*autologin=.*/autologin=${username}/" /etc/lxdm/lxdm.conf
+   if [ -e "/usr/bin/openbox-session" ] ; then
+      sed -i -e 's|^.*session=.*|session=/usr/bin/openbox-session|' /etc/lxdm/lxdm.conf
+   fi
    if [ -e "/usr/bin/startxfce4" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/startxfce4|' /etc/lxdm/lxdm.conf
    fi
@@ -247,9 +250,6 @@ if [ -e "/usr/bin/lxdm" ] ; then
    fi
    if [ -e "/usr/bin/enlightenment_start" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/enlightenment_start|' /etc/lxdm/lxdm.conf
-   fi
-   if [ -e "/usr/bin/openbox-session" ] ; then
-      sed -i -e 's|^.*session=.*|session=/usr/bin/openbox-session|' /etc/lxdm/lxdm.conf
    fi
    if [ -e "/usr/bin/startlxde" ] ; then
       sed -i -e 's|^.*session=.*|session=/usr/bin/lxsession|' /etc/lxdm/lxdm.conf
@@ -269,6 +269,9 @@ echo "configure AccountsService" >> /tmp/livecd.log
 
 if [ -d "/var/lib/AccountsService/users" ] ; then
      echo "[User]" > /var/lib/AccountsService/users/manjaro
+     if [ -e "/usr/bin/openbox-session" ] ; then
+        echo "XSession=openbox" >> /var/lib/AccountsService/users/manjaro
+     fi
      if [ -e "/usr/bin/startxfce4" ] ; then
         echo "XSession=xfce" >> /var/lib/AccountsService/users/manjaro
      fi
@@ -280,9 +283,6 @@ if [ -d "/var/lib/AccountsService/users" ] ; then
      fi
      if [ -e "/usr/bin/enlightenment_start" ] ; then
         echo "XSession=enlightenment" >> /var/lib/AccountsService/users/manjaro
-     fi
-     if [ -e "/usr/bin/openbox-session" ] ; then
-        echo "XSession=openbox" >> /var/lib/AccountsService/users/manjaro
      fi
      if [ -e "/usr/bin/startlxde" ] ; then
         echo "XSession=LXDE" >> /var/lib/AccountsService/users/manjaro

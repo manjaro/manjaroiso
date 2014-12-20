@@ -620,11 +620,11 @@ hd_config()
     chroot ${DESTDIR} systemctl enable NetworkManager.service &>/dev/null
     chroot ${DESTDIR} systemctl enable remote-fs.target &>/dev/null
 
-    # for openrc
-    if [ -e /run/openrc ]; then
-      # Setup /tmp as tmpfs in fstab
-      echo "tmpfs     /tmp    tmpfs    nodev,nosuid    0  0" >> ${DESTDIR}/etc/fstab
-    fi
+    # for openrc (deprecated: /tmp will not be mounted as tmpfs by default)
+    #if [ -e /run/openrc ]; then
+    #  # Setup /tmp as tmpfs in fstab
+    #  echo "tmpfs     /tmp    tmpfs    nodev,nosuid    0  0" >> ${DESTDIR}/etc/fstab
+    #fi
 
     DIALOG --infobox "${_setupdisplaymanager}" 6 40
     sleep 3
@@ -711,6 +711,9 @@ hd_config()
        if [ -z "`chroot ${DESTDIR} getent group "lxdm" 2> /dev/null`" ]; then
          chroot ${DESTDIR} groupadd --system lxdm  &>/dev/null
        fi
+       if [ -e "/usr/bin/openbox-session" ] ; then
+         sed -i -e 's|^.*session=.*|session=/usr/bin/openbox-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
+       fi
        if [ -e "/usr/bin/startxfce4" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/startxfce4|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
@@ -722,9 +725,6 @@ hd_config()
        fi
        if [ -e "/usr/bin/enlightenment_start" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/enlightenment_start|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
-       fi
-       if [ -e "/usr/bin/openbox-session" ] ; then
-         sed -i -e 's|^.*session=.*|session=/usr/bin/openbox-session|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
        fi
        if [ -e "/usr/bin/startlxde" ] ; then
          sed -i -e 's|^.*session=.*|session=/usr/bin/lxsession|' ${DESTDIR}/etc/lxdm/lxdm.conf &>/dev/null
@@ -1230,6 +1230,9 @@ _setup_user()
 
     if [ -d "${DESTDIR}/var/lib/AccountsService/users" ] ; then
        echo "[User]" > ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
+       if [ -e "/usr/bin/openbox-session" ] ; then
+          echo "XSession=openbox" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
+       fi
        if [ -e "/usr/bin/startxfce4" ] ; then
           echo "XSession=xfce" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
        fi
@@ -1241,9 +1244,6 @@ _setup_user()
        fi
        if [ -e "/usr/bin/enlightenment_start" ] ; then
           echo "XSession=enlightenment" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
-       fi
-       if [ -e "/usr/bin/openbox-session" ] ; then
-          echo "XSession=openbox" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
        fi
        if [ -e "/usr/bin/startlxde" ] ; then
           echo "XSession=LXDE" >> ${DESTDIR}/var/lib/AccountsService/users/$PASSWDUSER
