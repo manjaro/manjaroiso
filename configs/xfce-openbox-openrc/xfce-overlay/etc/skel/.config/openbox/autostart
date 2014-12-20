@@ -1,0 +1,16 @@
+# Polkit agent
+#/usr/bin/lxpolkit & # started automatically
+
+## Panel and desktop
+nitrogen --restore &
+tint2 &
+#xfce4-panel & # Alternate to tint2
+
+## Startup
+(sleep 1s && conky) &
+(sleep 2s && xcompmgr -n) &
+#(sleep 3s && wicd-gtk --tray) & # started automatically
+(sleep 3s && xfce4-power-manager) &
+(sleep 4s && clipit) &
+(sleep 4s && volumeicon) &
+(sleep 5s && octopi-notifier) &
