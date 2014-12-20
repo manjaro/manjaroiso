@@ -1,4 +1,4 @@
 [Desktop Entry]
-Hidden=true
+Hidden=false
 TryExec=xfce4-clipman
 Exec=xfce4-clipman
