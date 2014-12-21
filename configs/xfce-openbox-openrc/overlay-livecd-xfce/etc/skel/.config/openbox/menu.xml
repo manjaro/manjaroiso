@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu>
+	<menu id="root-menu" label="Openbox">
+		<item label="Setup">
+			<action name="Execute">
+				<command>xfce4-terminal -e 'sudo /usr/bin/setup'</command>
+			</action>
+		</item>
+		<separator/>
+		<menu id="3" label="Accessories">
+			<item label="Application Finder">
+				<action name="Execute">
+					<execute>xfce4-appfinder</execute>
+				</action>
+			</item>
+			<item label="Galculator">
+				<action name="Execute">
+					<execute>galculator</execute>
+				</action>
+			</item>
+			<item label="Screenshot">
+				<action name="Execute">
+					<execute>xfce4-screenshooter</execute>
+				</action>
+			</item>
+			<item label="Xarchiver">
+				<action name="Execute">
+					<execute>xarchiver</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="5" label="Editors">
+			<item label="Leafpad">
+				<action name="Execute">
+					<execute>leafpad</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="6" label="Graphics">
+			<item label="Viewnior">
+				<action name="Execute">
+					<execute>viewnior</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="7" label="Multimedia">
+			<item label="Alsamixer">
+				<action name="Execute">
+					<execute>xfce4-terminal -e alsamixer</execute>
+				</action>
+			</item>
+			<item label="Mixer Gui">
+				<action name="Execute">
+					<execute>xfce4-mixer</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="8" label="Network">
+			<item label="Web Browser">
+				<action name="Execute">
+					<execute>midori</execute>
+				</action>
+			</item>
+			<item label="Email">
+				<action name="Execute">
+					<execute>sylpheed</execute>
+				</action>
+			</item>
+			<item label="IRC">
+				<action name="Execute">
+					<execute>xchat</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="9" label="Office">
+			<item label="Qpdfview">
+				<action name="Execute">
+					<execute>qpdfview</execute>
+				</action>
+			</item>
+			<item label="LibreOffice Installer">
+				<action name="Execute">
+					<execute>sudo /opt/libreoffice-installer/libreoffice-installer</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="37" label="System">
+			<item label="GParted">
+				<action name="Execute">
+					<execute>sudo gparted</execute>
+				</action>
+			</item>
+			<item label="Htop">
+				<action name="Execute">
+					<execute>xfce4-terminal -e htop</execute>
+				</action>
+			</item>
+			<item label="Octopi">
+				<action name="Execute">
+					<execute>octopi</execute>
+				</action>
+			</item>
+			<item label="Manjaro Settings Manager">
+				<action name="Execute">
+					<execute>sudo manjaro-settings-manager-gui</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="38" label="Utilities">
+			<item label="Terminal">
+				<action name="Execute">
+					<execute>xfce4-terminal</execute>
+				</action>
+			</item>
+			<item label="File Manager">
+				<action name="Execute">
+					<command>thunar</command>
+					<startupnotify>
+						<enabled>yes</enabled>
+					</startupnotify>
+				</action>
+			</item>
+		</menu>
+		<separator/>
+		<menu id="36" label="Settings">
+			<item label="Change Desktop">
+				<action name="Execute">
+					<execute>nitrogen /usr/share/backgrounds</execute>
+				</action>
+			</item>
+			<item label="Configure Lxdm">
+				<action name="Execute">
+					<execute>gksudo lxdm-config</execute>
+				</action>
+			</item>
+			<item label="Customize Look and Feel">
+				<action name="Execute">
+					<execute>lxappearance</execute>
+				</action>
+			</item>
+			<item label="Display Settings">
+				<action name="Execute">
+					<execute>lxrandr</execute>
+				</action>
+			</item>
+			<item label="Panel tint2">
+				<action name="Execute">
+					<execute>tint2conf</execute>
+				</action>
+			</item>
+			<separator/>
+			<menu id="40" label="OpenBox">
+				<item label="Edit Autostart">
+					<action name="Execute">
+						<execute>leafpad ~/.config/openbox/autostart</execute>
+					</action>
+				</item>
+				<item label="Openbox Menu Editor">
+					<action name="Execute">
+						<execute>obmenu</execute>
+					</action>
+				</item>
+				<item label="Openbox Key Editor">
+					<action name="Execute">
+						<execute>obkey</execute>
+					</action>
+				</item>
+				<item label="Openbox Configuration Manager">
+					<action name="Execute">
+						<execute>obconf</execute>
+					</action>
+				</item>
+				<separator/>
+				<item label="Reconfigure">
+					<action name="Reconfigure"/>
+				</item>
+			</menu>
+		</menu>
+		<separator/>
+		<item label="Logout">
+			<action name="Execute">
+				<command>cb-exit</command>
+			</action>
+		</item>
+	</menu>
+</openbox_menu>
