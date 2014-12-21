@@ -61,11 +61,6 @@
 					<execute>midori</execute>
 				</action>
 			</item>
-			<item label="Email">
-				<action name="Execute">
-					<execute>sylpheed</execute>
-				</action>
-			</item>
 			<item label="IRC">
 				<action name="Execute">
 					<execute>xchat</execute>

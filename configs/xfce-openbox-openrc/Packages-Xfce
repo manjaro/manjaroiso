@@ -94,7 +94,6 @@ gksu # required for octopi
 libreoffice-installer
 thunar-archive-plugin
 htop
-sylpheed # email
 tumbler # for thumbnails
 catfish # for thunar search
 downgrade
