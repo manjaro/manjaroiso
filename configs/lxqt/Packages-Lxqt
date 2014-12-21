@@ -113,7 +113,8 @@ obconf				# openbox appearance settings - needed for window title and border con
 #oxygen-icons			# default icon theme of lxqt - pretty heavy
 
 menda-themes-dark 		# new manjaro GTK2 theme
-menda-circle-icon-theme 	# new manjaro icon theme - much lighter
+#menda-circle-icon-theme 	# new manjaro icon theme - much lighter
+azenis-icon-theme
 menda-lxqt-panel 		# new manjaro theme for lxqt/panel
 xcursor-menda			# menda mouse cursor theme - this needs to be activated
 #sddm-menda-theme		# sddm theme
@@ -133,14 +134,17 @@ vi				# CLI text editor
 xarchiver			# GUI frontend for many archive file formats
 
 octopi				# Qt5 package manager
-octopi-notifier
+octopi-notifier-qt5
 
->x86_64 firefox			
->i686 qupzilla			# internet browser (Qt5)
+firefox			
+#>i686 qupzilla			# internet browser (Qt5)
 flashplugin			# flash support for internet browser
 
+#libreoffice-installer		# GUI installer for LibreOffice
+qarma-git			# zenity Qt5
+qisousb				# write an ISO on an USB stick
 qtfind				# add a file search to pcmanfm-qt (qt5)
-xscreensaver			# screensaver and power managment
+#xscreensaver			# screensaver and power managment
 gparted				# partitioning program (GTK2)
 
 
