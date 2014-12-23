@@ -620,11 +620,11 @@ hd_config()
     chroot ${DESTDIR} systemctl enable NetworkManager.service &>/dev/null
     chroot ${DESTDIR} systemctl enable remote-fs.target &>/dev/null
 
-    # for openrc (deprecated: /tmp will not be mounted as tmpfs by default)
-    #if [ -e /run/openrc ]; then
-    #  # Setup /tmp as tmpfs in fstab
-    #  echo "tmpfs     /tmp    tmpfs    nodev,nosuid    0  0" >> ${DESTDIR}/etc/fstab
-    #fi
+    # for openrc (add comment for mounting /tmp will as tmpfs in /etc/fstab)
+    if [ -e /run/openrc ]; then
+      echo "# Uncomment the line below to setup /tmp as tmpfs" >> ${DESTDIR}/etc/fstab
+      echo "# tmpfs    /tmp    tmpfs    nodev,nosuid    0   0" >> ${DESTDIR}/etc/fstab
+    fi
 
     DIALOG --infobox "${_setupdisplaymanager}" 6 40
     sleep 3
