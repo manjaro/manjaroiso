@@ -13,7 +13,7 @@
 		</item>
 		<item label="Web Browser">
 			<action name="Execute">
-				<command>midori</command>
+				<command>firefox</command>
 			</action>
 		</item>
 		<separator/>
@@ -68,7 +68,7 @@
 		<menu id="8" label="Network">
 			<item label="Web Browser">
 				<action name="Execute">
-					<execute>midori</execute>
+					<execute>firefox</execute>
 				</action>
 			</item>
 			<item label="IRC">
