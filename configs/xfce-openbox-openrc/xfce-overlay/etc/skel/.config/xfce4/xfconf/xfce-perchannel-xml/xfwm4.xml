@@ -78,5 +78,6 @@
       <value type="string" value="Workspace 4"/>
     </property>
     <property name="tile_on_move" type="bool" value="false"/>
+    <property name="sync_to_vblank" type="bool" value="true"/>
   </property>
 </channel>
