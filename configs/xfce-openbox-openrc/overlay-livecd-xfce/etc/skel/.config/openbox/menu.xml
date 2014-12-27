@@ -100,6 +100,11 @@
 					<execute>sudo manjaro-settings-manager-gui</execute>
 				</action>
 			</item>
+			<item label="Time Settings">
+				<action name="Execute">
+					<execute>gksudo timeset-gui</execute>
+				</action>
+			</item>
 		</menu>
 		<menu id="38" label="Utilities">
 			<item label="Terminal">

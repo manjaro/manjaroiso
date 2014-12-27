@@ -99,6 +99,7 @@ catfish # for thunar search
 downgrade
 menulibre
 xchat
+timeset-gui # MSM does not work with OpenRC
 
 ## Artwork, icons
 manjaro-artwork
