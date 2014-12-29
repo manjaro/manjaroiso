@@ -399,6 +399,8 @@ make_boot() {
         _kernver=`cat ${work_dir}/boot-image/usr/lib/modules/*-MANJARO/version`
         chroot ${work_dir}/boot-image /usr/bin/mkinitcpio -k ${_kernver} -c /etc/mkinitcpio-${manjaroiso}.conf -g /boot/${name}.img
         mv ${work_dir}/boot-image/boot/${name}.img ${work_dir}/iso/${install_dir}/boot/${arch}/${name}.img
+        cp ${work_dir}/boot-image/boot/intel-ucode.img ${work_dir}/iso/${install_dir}/boot/intel_ucode.img
+        cp ${work_dir}/boot-image/usr/share/licenses/intel-ucode/LICENSE ${work_dir}/iso/${install_dir}/boot/intel_ucode.LICENSE
         umount -l ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
         rm -R ${work_dir}/boot-image
 	: > ${work_dir}/build.${FUNCNAME}
@@ -452,6 +454,7 @@ make_efiboot() {
         mkdir -p ${work_dir}/efiboot/EFI/miso
         cp ${work_dir}/iso/${install_dir}/boot/x86_64/${manjaroiso} ${work_dir}/efiboot/EFI/miso/${manjaroiso}.efi
         cp ${work_dir}/iso/${install_dir}/boot/x86_64/${name}.img ${work_dir}/efiboot/EFI/miso/${name}.img
+        cp ${work_dir}/iso/${install_dir}/boot/intel_ucode.img ${work_dir}/efiboot/EFI/miso/intel_ucode.img
 
         mkdir -p ${work_dir}/efiboot/EFI/boot
         cp ${work_dir}/root-image/usr/lib/prebootloader/PreLoader.efi ${work_dir}/efiboot/EFI/boot/bootx64.efi
