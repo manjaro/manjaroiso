@@ -77,6 +77,10 @@ openrc-desktop
 openrc-systemdcompat
 modules-load-openrc
 
+# Extra services
+openssh-openrc
+ntp-openrc
+
 ## Eudev
 eudev
 eudev-base

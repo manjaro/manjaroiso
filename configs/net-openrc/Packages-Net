@@ -40,7 +40,3 @@ gtk2
 networkmanager-openrc
 networkmanager-dispatcher-ntpd
 openresolv
-
-# Extra services
-openssh-openrc
-ntp-openrc
