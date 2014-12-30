@@ -80,6 +80,7 @@ modules-load-openrc
 # Extra services
 openssh-openrc
 ntp-openrc
+tmpwatch
 
 ## Eudev
 eudev
