@@ -4,7 +4,7 @@
 ## Panel and desktop
 nitrogen --restore &
 tint2 &
-#xfce4-panel & # Alternate to tint2
+#xfce4-panel & # alternative to tint2
 
 ## Startup
 (sleep 1s && conky) &

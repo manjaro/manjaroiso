@@ -158,33 +158,32 @@
 					<execute>tint2conf</execute>
 				</action>
 			</item>
+		</menu>
+		<menu id="40" label="OpenBox">
+			<item label="Edit Autostart">
+				<action name="Execute">
+					<execute>leafpad ~/.config/openbox/autostart</execute>
+				</action>
+			</item>
+			<item label="Openbox Configuration Manager">
+				<action name="Execute">
+					<execute>obconf</execute>
+				</action>
+			</item>
+			<item label="Openbox Key Editor">
+				<action name="Execute">
+					<execute>obkey</execute>
+				</action>
+			</item>
+			<item label="Openbox Menu Editor">
+				<action name="Execute">
+					<execute>obmenu</execute>
+				</action>
+			</item>
 			<separator/>
-			<menu id="40" label="OpenBox">
-				<item label="Edit Autostart">
-					<action name="Execute">
-						<execute>leafpad ~/.config/openbox/autostart</execute>
-					</action>
-				</item>
-				<item label="Openbox Menu Editor">
-					<action name="Execute">
-						<execute>obmenu</execute>
-					</action>
-				</item>
-				<item label="Openbox Key Editor">
-					<action name="Execute">
-						<execute>obkey</execute>
-					</action>
-				</item>
-				<item label="Openbox Configuration Manager">
-					<action name="Execute">
-						<execute>obconf</execute>
-					</action>
-				</item>
-				<separator/>
-				<item label="Reconfigure">
-					<action name="Reconfigure"/>
-				</item>
-			</menu>
+			<item label="Reconfigure">
+				<action name="Reconfigure"/>
+			</item>
 		</menu>
 		<separator/>
 		<item label="Logout">
