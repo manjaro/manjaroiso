@@ -61,7 +61,7 @@
 					<execute>firefox</execute>
 				</action>
 			</item>
-			<item label="IRC">
+			<item label="IRC Client">
 				<action name="Execute">
 					<execute>xchat</execute>
 				</action>
