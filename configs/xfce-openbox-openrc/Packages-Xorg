@@ -4,9 +4,7 @@
 >free_uni xf86-video-ati
 xf86-video-intel
 >free_uni xf86-video-nouveau
->free_uni ati-dri
-intel-dri
->free_uni nouveau-dri
+mesa
 
 ## Bumblebee Support
 bumblebee
@@ -47,9 +45,8 @@ pangox-compat
 
 ## Xorg x86_64 Packages
 >x86_64 lib32-libxvmc
->free_x64 lib32-ati-dri
->x86_64 lib32-intel-dri
->free_x64 lib32-nouveau-dri
+>x86_64 lib32-eudev-systemdcompat # to avoid lib32-systemd
+>x86_64 lib32-mesa
 
 ## VMWare Support
 open-vm-tools
