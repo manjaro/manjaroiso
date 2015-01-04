@@ -81,6 +81,7 @@ modules-load-openrc
 openssh-openrc
 ntp-openrc
 tmpwatch
+mlocate
 
 ## Eudev
 eudev
