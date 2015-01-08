@@ -145,7 +145,7 @@ command_create () {
         echo "Cleaning up what we can"
         if [ -d "${work_dir}/${IMAGE_FOLDER}/boot/" ]; then
             # remove the initcpio images that were generated for the host system
-            find "${work_dir}/${IMAGE_FOLDER}/boot" -name '*.img' -delete
+            find "${work_dir}/${IMAGE_FOLDER}/boot" -name 'initramfs*.img' -delete
         fi
 
         if [ ${CREATE_DEFAULT} == "y" ]; then

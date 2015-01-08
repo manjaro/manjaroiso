@@ -1,0 +1,11 @@
+T 1419889896 19*	Vous parlez maintenant sur 22#manjaro-talk
+T 1419889896 22*	Le sujet de 22#manjaro-talk est : Welcome to #manjaro-talk. This channel is general offtopic. For technical support please join #manjaro. Visit http//bit.ly/manjaroirc for more information italoian channel ##manjaro-it
+T 1419889896 22*	Sujet de 22#manjaro-talk choisi par 26ringo32!~ringo_man@176.131-64-87.adsl-dyn.isp.belgacom.be (24Tue Dec  9 15:43:40 2014)
+T 1419889896 -18ChanServ-	[#manjaro-talk] * Welcome <user> to #manjaro-talk offtopic please see this -> [Irc-channels]   #manjaro (main) -  #manjaro-talk (off-topic)  - #manjaro-br (brasil) - #manjaro-es (spanish) - #manjaro-de (German) - #manjaro-nl (dutch) - #manjaro-fr (fench) - #linuxpark (Turkish) #manjaro-ru (russia ) Read for IRC NewB: http://bit.ly/ircmag  ******** READ :) ****
+T 1419890057 Python interface unloaded
+T 1419890094 19*	Vous parlez maintenant sur 22#manjaro-talk
+T 1419890094 22*	Le sujet de 22#manjaro-talk est : Welcome to #manjaro-talk. This channel is general offtopic. For technical support please join #manjaro. Visit http//bit.ly/manjaroirc for more information italoian channel ##manjaro-it
+T 1419890094 22*	Sujet de 22#manjaro-talk choisi par 26ringo32!~ringo_man@176.131-64-87.adsl-dyn.isp.belgacom.be (24Tue Dec  9 15:43:40 2014)
+T 1419890094 -18ChanServ-	[#manjaro-talk] * Welcome <user> to #manjaro-talk offtopic please see this -> [Irc-channels]   #manjaro (main) -  #manjaro-talk (off-topic)  - #manjaro-br (brasil) - #manjaro-es (spanish) - #manjaro-de (German) - #manjaro-nl (dutch) - #manjaro-fr (fench) - #linuxpark (Turkish) #manjaro-ru (russia ) Read for IRC NewB: http://bit.ly/ircmag  ******** READ :) ****
+T 1419890115 Python interface unloaded
+T 1419890115 FiSHLiM plugin unloaded

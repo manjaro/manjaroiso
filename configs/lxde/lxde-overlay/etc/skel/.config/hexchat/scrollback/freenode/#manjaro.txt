@@ -1,0 +1,24 @@
+T 1419889896 19*	Vous parlez maintenant sur 22#manjaro
+T 1419889896 22*	Le sujet de 22#manjaro est : A warm welcome to the official Manjaro Linux IRC channel |  http://forum.manjaro.org/ - irc: http://bit.ly/irc-guide  info: http://bit.ly/irc-info www.manjaro.org/blog |  ! http://bit.ly/manjarofaq  for some faq : use gist.github.com to paste on the channel!
+T 1419889896 22*	Sujet de 22#manjaro choisi par 26ringo32!~ringo_man@unaffiliated/ringo32 (24Tue Dec 23 10:48:43 2014)
+T 1419889896 -18ChanServ-	[#manjaro] From the whole IRC channel and staff : Merry christmas and a better new year ! for an stable 2015!
+T 1419889896 22*	Canal 22#manjaro URL : 24www.manjaro.org/blog
+T 1419889927 18<Batch18>	yeah hmm lxpolkit.desktop is in etc xdg autostart
+T 1419889928 18<pdkl18>	I watched the linux action show on myths of manjaro
+T 1419889931 18<Batch18>	uhm
+T 1419889934 18<pdkl18>	it was insightful
+T 1419889942 18<Batch18>	i think i'll check systemd or systemctl for fails?
+T 1419889955 18<ringo3218>	its no systemd thing
+T 1419889967 18<Batch18>	ok
+T 1419889971 18<ringo3218>	look in .config/autostart eventually
+T 1419889980 18<pdkl18>	basically, archlinux users are testing packages for manjaro, more buffer ona  broken install with rolling updates
+T 1419890039 18<jonathon18>	pdkl: link please. i wonder whether they asked any manjaro devs about anything...
+T 1419890040 18<ringo3218>	 manjaro just get more feedback so it can change the system for you
+T 1419890041 18<Batch18>	only disable dpms and pulseaudio-ctl.desktop
+T 1419890052 18<Batch18>	in .config/autostart
+T 1419890057 FiSHLiM plugin unloaded
+T 1419890094 19*	Vous parlez maintenant sur 22#manjaro
+T 1419890094 22*	Le sujet de 22#manjaro est : A warm welcome to the official Manjaro Linux IRC channel |  http://forum.manjaro.org/ - irc: http://bit.ly/irc-guide  info: http://bit.ly/irc-info www.manjaro.org/blog |  ! http://bit.ly/manjarofaq  for some faq : use gist.github.com to paste on the channel!
+T 1419890094 22*	Sujet de 22#manjaro choisi par 26ringo32!~ringo_man@unaffiliated/ringo32 (24Tue Dec 23 10:48:43 2014)
+T 1419890094 -18ChanServ-	[#manjaro] From the whole IRC channel and staff : Merry christmas and a better new year ! for an stable 2015!
+T 1419890094 22*	Canal 22#manjaro URL : 24www.manjaro.org/blog

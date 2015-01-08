@@ -3,7 +3,7 @@
 ## SCHEMA supports the following keys: item, cat, begin_cat, end_cat,
 ##                                     exit, raw, sep, obgenmenu
 ##
-## Modified by Carl Duff.
+## Modified by Dan.
 
 =for comment
 
@@ -50,25 +50,21 @@ wine_apps: windows applications installed via wine
 require '/home/manjaro/.config/obmenu-generator/config.pl';
 
 our $SCHEMA = [
-#             COMMAND                 	LABEL          		ICON
-   {item => ['lxterminal -e sudo setup',      'Install - CLI', 'system-run']},
-   {item => ['sudo thus',  'Install - Graphical', '/usr/share/thus/data/manjaro-icon.png']},
-   {item => ['thunar ~/Manjaro',  'User-Guide','/usr/share/icons/logo5.png']},
+#             COMMAND                 	           LABEL          		ICON
+   {item => ['lxterminal -e sudo setup',      'Install - CLI',       'system-run']},
+   {item => ['sudo thus',                     'Install - Graphical', '/usr/share/thus/data/manjaro-icon.png']},
+   {item => ['thunar ~/Manjaro',              'User-Guide',          '/usr/share/icons/logo5.png']},
    {sep => undef},
    
-   {item => ['thunar',      		'Thunar','thunar']},
-   {item => ['lxterminal',   	 	'Terminal','lxterminal']},
-   {item => ['gnome-screenshot --interactive',  'Screenshot','gnome-screenshot']},
-   {item => ['nitrogen',   	 	'Nitrogen','nitrogen']},
+   {cat => ['filemanager',                      'File Managers',  'system-file-manager']},
+   {item => ['lxterminal',   	 	            'Terminal',       'lxterminal']},
+   {item => ['gnome-screenshot --interactive',  'Screenshot',     'gnome-screenshot']},
+   {item => ['nitrogen',   	 	                'Nitrogen',       'nitrogen']},
    {sep => undef},
 
     #          NAME            LABEL                ICON
     {cat => ['utility',     'Accessories', 'applications-utilities']},
     {cat => ['development', 'Development', 'applications-development']},
-	{begin_cat => ['Post Install',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
-		{item => ['lxterminal -e sudo disabled.sh','Configure, and add and remove new software.','lxterminal']},
-		{item => ['lxterminal -e sudo disabled.sh','Add Icons to your obmenu','lxterminal']},
-	{end_cat   => undef},
     {cat => ['education',   'Education',   'applications-science']},
     {cat => ['game',        'Games',       'applications-games']},
     {cat => ['graphics',    'Graphics',    'applications-graphics']},
@@ -77,9 +73,9 @@ our $SCHEMA = [
     {cat => ['office',      'Office',      'applications-office']},
     {cat => ['settings',    'Settings',    'applications-accessories']},
 
-## Custom "Advanced Menu"
+## Custom "OB menu"
 
-   {begin_cat => ['Advanced Settings',  'gnome-settings']},
+   {begin_cat => ['OB Settings',  'gnome-settings']},
    {begin_cat => ['Desktop and Login',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
    {item => ['geany -m ~/.conkyrc','Conky RC','geany']},
    {item => ['geany -m ~/.config/tint2/tint2rc','Tint2 Panel','geany']},
@@ -99,8 +95,7 @@ our $SCHEMA = [
 		{item => ['geany -m ~/.config/openbox/menu.xml','Openbox Menu','geany']},
 		{item => ['gksu geany /etc/oblogout.conf','Openbox Logout','geany']},
    {end_cat   => undef},
-   {begin_cat => ['Pacman / Servers', '/usr/share/icons/Faenza/apps/48/package-manager-icon.png']},
-		{item => ['lxterminal -e sudo ~/.config/executables/change-repo.sh','Switch stable, testing and unstable repos','lxterminal']},
+   {begin_cat => ['Pacman / Servers', '/usr/share/icons/Faenza/apps/48/package-manager-icon.png']},		
 		{item => ['gksu geany /etc/pacman.conf','Pacman Config','geany']},
 		{item => ['gksu geany /etc/pacman.d/mirrorlist','Pacman Mirrorlist','geany']},
    {end_cat   => undef},

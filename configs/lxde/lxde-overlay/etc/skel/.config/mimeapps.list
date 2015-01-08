@@ -1,0 +1,5 @@
+[Default Applications]
+inode/directory=pcmanfm.desktop
+
+[Added Associations]
+inode/directory=pcmanfm.desktop;

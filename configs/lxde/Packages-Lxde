@@ -34,6 +34,7 @@ manjaro-artwork
 
 ## LXDE Main Packages
 faenza-green-icon-theme
+menda-themes
 gamin
 gksu
 gnome-keyring
@@ -43,12 +44,33 @@ gvfs-gphoto2
 gvfs-smb
 gvfs-mtp
 libgnome
-lxde
+
+#lxde
+gpicview
+lxappearance
+lxappearance-obconf
+lxde-common
+#lxde-icon-theme
+lxdm
+lxinput
+lxlauncher
+lxmenu-data
+#lxmusic
+mpv
+lxpanel
+lxrandr
+lxsession
+lxtask
+lxterminal
+openbox
+pcmanfm
+
 manjaro-settings-manager
 network-manager-applet
 python2-xdg
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
+xcursor-menda
 xscreensaver
 manjaro-welcome
 
@@ -89,7 +111,10 @@ octopi
 octopi-notifier
 
 ## Fonts
-adobe-source-sans-pro-fonts
+#adobe-source-sans-pro-fonts
+ttf-droid
+freetype2-infinality-ultimate
+fontconfig-infinality-ultimate
 
 ## Extra Applications
 #blueman
@@ -116,15 +141,14 @@ pa-applet
 ## Office
 #libreoffice-installer
 libreoffice-still-en-US
-libreoffice-still-base
-libreoffice-still-calc
-libreoffice-still-draw
+#libreoffice-still-base
+#libreoffice-still-calc
+#libreoffice-still-draw
 libreoffice-still-gnome
-libreoffice-still-impress
-libreoffice-still-math
-libreoffice-still-postgresql-connector
+#libreoffice-still-impress
+#libreoffice-still-math
+#libreoffice-still-postgresql-connector
 libreoffice-still-writer
-gnumeric
 
 ## Printing
 manjaro-printer

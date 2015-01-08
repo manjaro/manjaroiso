@@ -1,0 +1,15 @@
+#!/usr/bin/sh -x
+
+user=esclapion
+#project=repolxqt
+project=manjarodev
+files=$*
+path=users/esclapion/lxde/0.8.11/
+pwfile=/home/pat/Scripts/passwd
+
+sshpass -f $pwfile rsync -vP  --progress -e ssh $files $user,$project@frs.sourceforge.net:/home/frs/project/$project/${path}
+
+cd $curdir
+
+#shutdown -h now
+
