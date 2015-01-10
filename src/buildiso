@@ -158,13 +158,14 @@ fi
 make_root_image() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
          echo -e -n "$_r >$_W Base installation (root-image) \n $_n"
-         mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "root-image" -p "${packages}" create "${work_dir}"
 
          # set unique machine-id
 	 mkdir -p ${work_dir}/root-image/etc
 	 mkdir -p ${work_dir}/root-image/var/lib/dbus
          dbus-uuidgen --ensure=${work_dir}/root-image/etc/machine-id
          cp ${work_dir}/root-image/etc/machine-id ${work_dir}/root-image/var/lib/dbus/machine-id
+
+         mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "root-image" -p "${packages}" create "${work_dir}"
 
          pacman -Qr "${work_dir}/root-image" > "${work_dir}/root-image/root-image-pkgs.txt"
          cp ${work_dir}/root-image/etc/locale.gen.bak ${work_dir}/root-image/etc/locale.gen
@@ -213,7 +214,7 @@ if [ -e "${pkgsfile}" ] ; then
               echo -e -n "$_r >$_W ${desktop} installation (${desktop}-image) \n $_n"
               mkdir -p ${work_dir}/${desktop}-image
               if [ ! -z "`mount -l | grep ${desktop}-image`" ]; then
-                 umount -l ${work_dir}/${desktop}-image
+                 umount ${work_dir}/${desktop}-image
               fi
               mount -t aufs -o br=${work_dir}/${desktop}-image:${work_dir}/root-image=ro none ${work_dir}/${desktop}-image
 
@@ -236,7 +237,7 @@ if [ -e "${pkgsfile}" ] ; then
               if [ -e ${work_dir}/${desktop}-image/etc/plymouth/plymouthd.conf ] ; then
                  sed -i -e "s/^.*Theme=.*/Theme=$plymouth_theme/" ${work_dir}/${desktop}-image/etc/plymouth/plymouthd.conf
               fi
-              umount -l ${work_dir}/${desktop}-image
+              umount ${work_dir}/${desktop}-image
               rm -R ${work_dir}/${desktop}-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
@@ -251,7 +252,7 @@ if [ -e Packages-Xorg ] ; then
               echo -e -n "$_r >$_W Prepare pkgs-image \n $_n"
               mkdir -p ${work_dir}/pkgs-image/opt/livecd/pkgs
               if [ ! -z "`mount -l | grep pkgs-image`" ]; then
-                 umount -l ${work_dir}/pkgs-image
+                 umount ${work_dir}/pkgs-image
               fi
               echo -e -n "$_r >$_W mount root-image \n $_n"
               mount -t aufs -o br=${work_dir}/pkgs-image:${work_dir}/root-image=ro none ${work_dir}/pkgs-image
@@ -300,13 +301,13 @@ if [ -e Packages-Xorg ] ; then
                  touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-340xx/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
-              umount -l ${work_dir}/pkgs-image
+              umount ${work_dir}/pkgs-image
               rm -R ${work_dir}/pkgs-image/.wh*
               if [ "${xorg_overlays}" = "yes" ] ; then
                  echo -e -n "$_r >$_W Prepare pkgs-free-overlay \n $_n"
                  mkdir -p ${work_dir}/pkgs-free-overlay
                  if [ ! -z "`mount -l | grep pkgs-free-overlay`" ]; then
-                    umount -l ${work_dir}/pkgs-free-overlay
+                    umount ${work_dir}/pkgs-free-overlay
                  fi
                  echo -e -n "$_r >$_W mount root-image \n $_n"
                  mount -t aufs -o br=${work_dir}/pkgs-free-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-free-overlay
@@ -315,7 +316,7 @@ if [ -e Packages-Xorg ] ; then
                     mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/pkgs-free-overlay
                  fi
                  mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-free-overlay" -p "${xorg_free_overlay}" create "${work_dir}"
-                 umount -l ${work_dir}/pkgs-free-overlay
+                 umount ${work_dir}/pkgs-free-overlay
                  if [ -e ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf ] ; then
                     rm ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf
                  fi
@@ -323,7 +324,7 @@ if [ -e Packages-Xorg ] ; then
                  echo -e -n "$_r >$_W Prepare pkgs-nonfree-overlay \n $_n"
                  mkdir -p ${work_dir}/pkgs-nonfree-overlay
                  if [ ! -z "`mount -l | grep pkgs-nonfree-overlay`" ]; then
-                    umount -l ${work_dir}/pkgs-nonfree-overlay
+                    umount ${work_dir}/pkgs-nonfree-overlay
                  fi
                  echo -e -n "$_r >$_W mount root-image \n $_n"
                  mount -t aufs -o br=${work_dir}/pkgs-nonfree-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-nonfree-overlay
@@ -332,7 +333,7 @@ if [ -e Packages-Xorg ] ; then
                     mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/pkgs-nonfree-overlay
                  fi
                  mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-nonfree-overlay" -p "${xorg_nonfree_overlay}" create "${work_dir}"
-                 umount -l ${work_dir}/pkgs-nonfree-overlay
+                 umount ${work_dir}/pkgs-nonfree-overlay
                  if [ -e ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf ] ; then
                     rm ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf
                  fi
@@ -351,7 +352,7 @@ if [ -e Packages-Lng ] ; then
               echo -e -n "$_r >$_W Prepare lng-image \n $_n"
               mkdir -p ${work_dir}/lng-image/opt/livecd/lng
               if [ ! -z "`mount -l | grep lng-image`" ]; then
-                 umount -l ${work_dir}/lng-image
+                 umount ${work_dir}/lng-image
               fi
               echo -e -n "$_r >$_W mount root-image \n $_n"
               mount -t aufs -o br=${work_dir}/lng-image:${work_dir}/root-image=ro none ${work_dir}/lng-image
@@ -372,7 +373,7 @@ if [ -e Packages-Lng ] ; then
               cp pacman-lng.conf ${work_dir}/lng-image/opt/livecd
               rm -r ${work_dir}/lng-image/var
               repo-add ${work_dir}/lng-image/opt/livecd/lng/lng-pkgs.db.tar.gz ${work_dir}/lng-image/opt/livecd/lng/*pkg*z
-              umount -l ${work_dir}/lng-image
+              umount ${work_dir}/lng-image
               rm -R ${work_dir}/lng-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
@@ -389,7 +390,7 @@ make_boot() {
 	cp ${work_dir}/root-image/boot/vmlinuz* ${work_dir}/iso/${install_dir}/boot/${arch}/${manjaroiso}
         mkdir -p ${work_dir}/boot-image
         if [ ! -z "`mount -l | grep boot-image`" ]; then
-           umount -l ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
+           umount ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
         fi
         echo -e -n "$_r >$_W mount root-image \n $_n"
         mount -t aufs -o br=${work_dir}/boot-image:${work_dir}/root-image=ro none ${work_dir}/boot-image
@@ -408,7 +409,7 @@ make_boot() {
         mv ${work_dir}/boot-image/boot/${name}.img ${work_dir}/iso/${install_dir}/boot/${arch}/${name}.img
         cp ${work_dir}/boot-image/boot/intel-ucode.img ${work_dir}/iso/${install_dir}/boot/intel_ucode.img
         cp ${work_dir}/boot-image/usr/share/licenses/intel-ucode/LICENSE ${work_dir}/iso/${install_dir}/boot/intel_ucode.LICENSE
-        umount -l ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
+        umount ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
         rm -R ${work_dir}/boot-image
 	: > ${work_dir}/build.${FUNCNAME}
 	echo -e "$_g >$_W done $_n"
