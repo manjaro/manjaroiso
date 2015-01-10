@@ -561,7 +561,12 @@ make_isomounts() {
 # Build ISO
 make_iso() {
         # cleanup machine-id
-        rm ${work_dir}/root-image/etc/machine-id ${work_dir}/root-image/var/lib/dbus/machine-id
+	if [[ -e ${work_dir}/root-image/etc/machine-id ]]; then
+            rm ${work_dir}/root-image/etc/machine-id &> /dev/null
+        fi
+	if [[ -e ${work_dir}/root-image/var/lib/dbus/machine-id ]]; then
+            rm ${work_dir}/root-image/var/lib/dbus/machine-id &> /dev/null
+        fi
         echo -e -n "$_r >$_W Build ISO \n $_n"
         touch "${work_dir}/iso/.miso"
         mkiso "${verbose}" "${overwrite}" -D "${install_dir}" -L "${iso_label}" -a "${arch}" -c "${compression}" "${high_compression}" iso "${work_dir}" "${name}${de}-${version}-${arch}.iso"
