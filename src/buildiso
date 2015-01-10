@@ -213,7 +213,7 @@ if [ -e "${pkgsfile}" ] ; then
               echo -e -n "$_r >$_W ${desktop} installation (${desktop}-image) \n $_n"
               mkdir -p ${work_dir}/${desktop}-image
               if [ ! -z "`mount -l | grep ${desktop}-image`" ]; then
-                 umount ${work_dir}/${desktop}-image
+                 umount -R ${work_dir}/${desktop}-image
               fi
               mount -t aufs -o br=${work_dir}/${desktop}-image:${work_dir}/root-image=ro none ${work_dir}/${desktop}-image
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "${desktop}-image" -p "${de_packages}" create "${work_dir}"
@@ -235,7 +235,7 @@ if [ -e "${pkgsfile}" ] ; then
               if [ -e ${work_dir}/${desktop}-image/etc/plymouth/plymouthd.conf ] ; then
                  sed -i -e "s/^.*Theme=.*/Theme=$plymouth_theme/" ${work_dir}/${desktop}-image/etc/plymouth/plymouthd.conf
               fi
-              umount ${work_dir}/${desktop}-image
+              umount -R ${work_dir}/${desktop}-image
               rm -R ${work_dir}/${desktop}-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
@@ -251,7 +251,7 @@ if [ -e Packages-Xorg ] ; then
               echo -e -n "$_r >$_W Prepare ${image} \n $_n"
               mkdir -p ${work_dir}/${image}/opt/livecd/lng
               if [ ! -z "`mount -l | grep ${image}`" ]; then
-                 umount ${work_dir}/${image}
+                 umount -R ${work_dir}/${image}
               fi
               echo -e -n "$_r >$_W mount root-image \n $_n"
               mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
@@ -300,14 +300,14 @@ if [ -e Packages-Xorg ] ; then
                  touch ${work_dir}/${image}/var/lib/mhwd/db/pci/graphic_drivers/nvidia-340xx/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
-              umount ${work_dir}/${image}
+              umount -R ${work_dir}/${image}
               rm -R ${work_dir}/${image}/.wh*
               if [ "${xorg_overlays}" = "yes" ] ; then
                  image='pkgs-free-overlay'
                  echo -e -n "$_r >$_W Prepare ${image} \n $_n"
                  mkdir -p ${work_dir}/${image}
                  if [ ! -z "`mount -l | grep ${image}`" ]; then
-                    umount ${work_dir}/${image}
+                    umount -R ${work_dir}/${image}
                  fi
                  echo -e -n "$_r >$_W mount root-image \n $_n"
                  mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
@@ -316,7 +316,7 @@ if [ -e Packages-Xorg ] ; then
                     mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
                  fi
                  mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "${image}" -p "${xorg_free_overlay}" create "${work_dir}"
-                 umount ${work_dir}/${image}
+                 umount -R ${work_dir}/${image}
                  if [ -e ${work_dir}/${image}/etc/modules-load.d/*virtualbox*conf ] ; then
                     rm ${work_dir}/${image}/etc/modules-load.d/*virtualbox*conf
                  fi
@@ -325,7 +325,7 @@ if [ -e Packages-Xorg ] ; then
                  echo -e -n "$_r >$_W Prepare ${image} \n $_n"
                  mkdir -p ${work_dir}/${image}
                  if [ ! -z "`mount -l | grep ${image}`" ]; then
-                    umount ${work_dir}/${image}
+                    umount -R ${work_dir}/${image}
                  fi
                  echo -e -n "$_r >$_W mount root-image \n $_n"
                  mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
@@ -334,7 +334,7 @@ if [ -e Packages-Xorg ] ; then
                     mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
                  fi
                  mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "${image}" -p "${xorg_nonfree_overlay}" create "${work_dir}"
-                 umount ${work_dir}/${image}
+                 umount -R ${work_dir}/${image}
                  if [ -e ${work_dir}/${image}/etc/modules-load.d/*virtualbox*conf ] ; then
                     rm ${work_dir}/${image}/etc/modules-load.d/*virtualbox*conf
                  fi
@@ -354,7 +354,7 @@ if [ -e Packages-Lng ] ; then
               echo -e -n "$_r >$_W Prepare ${image} \n $_n"
               mkdir -p ${work_dir}/${image}/opt/livecd/lng
               if [ ! -z "`mount -l | grep ${image}`" ]; then
-                 umount ${work_dir}/${image}
+                 umount -R ${work_dir}/${image}
               fi
               echo -e -n "$_r >$_W mount root-image \n $_n"
               mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
@@ -375,7 +375,7 @@ if [ -e Packages-Lng ] ; then
               cp pacman-lng.conf ${work_dir}/${image}/opt/livecd
               rm -r ${work_dir}/${image}/var
               repo-add ${work_dir}/${image}/opt/livecd/lng/lng-pkgs.db.tar.gz ${work_dir}/${image}/opt/livecd/lng/*pkg*z
-              umount ${work_dir}/${image}
+              umount -R ${work_dir}/${image}
               rm -R ${work_dir}/${image}/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
