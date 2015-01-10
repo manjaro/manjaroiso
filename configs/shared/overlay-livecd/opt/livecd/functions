@@ -834,7 +834,7 @@ hd_config()
 
     # set unique machine-id
     chroot ${DESTDIR} dbus-uuidgen --ensure=/etc/machine-id
-    chroot ${DESTDIR} ln -s /etc/machine-id /var/lib/dbus/machine-id
+    chroot ${DESTDIR} ln -sf /etc/machine-id /var/lib/dbus/machine-id
 
     chroot_umount
 }

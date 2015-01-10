@@ -164,7 +164,7 @@ make_root_image() {
 	 mkdir -p ${work_dir}/root-image/var/lib/dbus
          dbus-uuidgen --ensure=${work_dir}/root-image/etc/machine-id
          # needs to be copied here, else symlinked
-         cp /etc/machine-id ${work_dir}/root-image/var/lib/dbus/machine-id
+         cp ${work_dir}/root-image/etc/machine-id ${work_dir}/root-image/var/lib/dbus/machine-id
 
          mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "root-image" -p "${packages}" create "${work_dir}"
          pacman -Qr "${work_dir}/root-image" > "${work_dir}/root-image/root-image-pkgs.txt"
