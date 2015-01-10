@@ -78,6 +78,11 @@ if [ -e Packages-PekWM ] ; then
     desktop="pekwm"
     pkgsfile="Packages-PekWM"
 fi
+if [ -e Packages-i3 ] ; then
+    de="-i3"
+    desktop="i3"
+    pkgsfile="Packages-i3"
+fi
 if [ -e Packages-Custom ] ; then
     de="-custom"
     desktop="custom"
