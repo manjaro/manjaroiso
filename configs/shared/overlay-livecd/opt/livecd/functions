@@ -1282,23 +1282,42 @@ _config_system()
         else
             DEFAULT=""
         fi
-        DIALOG $DEFAULT --menu "Configuration" 17 78 10 \
-            "/etc/fstab"                "${_fstabtext}" \
-            "/etc/mkinitcpio.conf"      "${_mkinitcpioconftext}" \
-            "/etc/resolv.conf"          "${_resolvconftext}" \
-            "/etc/hostname"             "${_hostnametext}" \
-            "/etc/hosts"                "${_hoststext}" \
-            "/etc/hosts.deny"           "${_hostsdenytext}" \
-            "/etc/hosts.allow"          "${_hostsallowtext}" \
-            "/etc/locale.gen"           "${_localegentext}" \
-            "/etc/locale.conf"           "${_localeconftext}" \
-            "/etc/environment"           "${_environmenttext}" \
-            "/etc/pacman.d/mirrorlist"  "${_mirrorlisttext}" \
-            "/etc/X11/xorg.conf.d/10-evdev.conf"  "${_xorgevdevconftext}" \
-            "/etc/keyboard.conf"        "${_vconsoletext}" \
-            "${_return_label}"        "${_return_label}" 2>${ANSWER} || NEXTITEM="${_return_label}"
-        NEXTITEM="$(cat ${ANSWER})"
-
+        if [ -e /run/openrc ]; then
+          DIALOG $DEFAULT --menu "Configuration" 17 78 10 \
+              "/etc/fstab"                "${_fstabtext}" \
+              "/etc/mkinitcpio.conf"      "${_mkinitcpioconftext}" \
+              "/etc/resolv.conf"          "${_resolvconftext}" \
+              "/etc/conf.d/hostname"      "${_hostnametext}" \
+              "/etc/hosts"                "${_hoststext}" \
+              "/etc/hosts.deny"           "${_hostsdenytext}" \
+              "/etc/hosts.allow"          "${_hostsallowtext}" \
+              "/etc/locale.gen"           "${_localegentext}" \
+              "/etc/locale.conf"          "${_localeconftext}" \
+              "/etc/environment"          "${_environmenttext}" \
+              "/etc/pacman.d/mirrorlist"  "${_mirrorlisttext}" \
+              "/etc/X11/xorg.conf.d/10-evdev.conf"  "${_xorgevdevconftext}" \
+              "/etc/conf.d/keymaps"       "Console keymap" \
+              "/etc/X11/xorg.conf.d/20-keyboard.conf"  "X11 keyboard configuration" \
+              "${_return_label}"        "${_return_label}" 2>${ANSWER} || NEXTITEM="${_return_label}"
+          NEXTITEM="$(cat ${ANSWER})"
+        else
+          DIALOG $DEFAULT --menu "Configuration" 17 78 10 \
+              "/etc/fstab"                "${_fstabtext}" \
+              "/etc/mkinitcpio.conf"      "${_mkinitcpioconftext}" \
+              "/etc/resolv.conf"          "${_resolvconftext}" \
+              "/etc/hostname"             "${_hostnametext}" \
+              "/etc/hosts"                "${_hoststext}" \
+              "/etc/hosts.deny"           "${_hostsdenytext}" \
+              "/etc/hosts.allow"          "${_hostsallowtext}" \
+              "/etc/locale.gen"           "${_localegentext}" \
+              "/etc/locale.conf"           "${_localeconftext}" \
+              "/etc/environment"           "${_environmenttext}" \
+              "/etc/pacman.d/mirrorlist"  "${_mirrorlisttext}" \
+              "/etc/X11/xorg.conf.d/10-evdev.conf"  "${_xorgevdevconftext}" \
+              "/etc/keyboard.conf"        "${_vconsoletext}" \
+              "${_return_label}"        "${_return_label}" 2>${ANSWER} || NEXTITEM="${_return_label}"
+          NEXTITEM="$(cat ${ANSWER})"
+        fi
         if [ "${NEXTITEM}" = "${_return_label}" -o -z "${NEXTITEM}" ]; then       # exit
            DONE=1
         else
