@@ -1295,7 +1295,6 @@ _config_system()
               "/etc/locale.conf"          "${_localeconftext}" \
               "/etc/environment"          "${_environmenttext}" \
               "/etc/pacman.d/mirrorlist"  "${_mirrorlisttext}" \
-              "/etc/X11/xorg.conf.d/10-evdev.conf"  "${_xorgevdevconftext}" \
               "/etc/conf.d/keymaps"       "Console keymap" \
               "/etc/X11/xorg.conf.d/20-keyboard.conf"  "X11 keyboard configuration" \
               "${_return_label}"        "${_return_label}" 2>${ANSWER} || NEXTITEM="${_return_label}"
