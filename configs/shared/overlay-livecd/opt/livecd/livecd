@@ -344,7 +344,7 @@ fi
 
 # set unique machine-id
 dbus-uuidgen --ensure=/etc/machine-id
-cp /etc/machine-id /var/lib/dbus/machine-id
+ln -sf /etc/machine-id /var/lib/dbus/machine-id
 
 # depmod extramodules
 depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
