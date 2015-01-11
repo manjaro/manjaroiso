@@ -39,4 +39,4 @@ gtk2
 #netctl	# systemd only
 networkmanager-openrc
 networkmanager-dispatcher-ntpd
-openresolv
+openresolv-openrc

@@ -30,7 +30,7 @@ xfce4-mixer
 volumeicon-gtk2
 
 ## Network
-openresolv
+openresolv-openrc
 wicd-openrc
 bluez-openrc # required for bluetooth
 blueman
