@@ -35,9 +35,6 @@ wicd-openrc
 bluez-openrc # required for bluetooth
 blueman
 
-# Extra services
-ntp-openrc
-
 ## Openbox
 openbox
 obconf
@@ -99,7 +96,7 @@ catfish # for thunar search
 downgrade
 menulibre
 xchat
-timeset-gui # MSM does not work with OpenRC
+timeset-gui # MSM time module does not work with OpenRC
 
 ## Artwork, icons
 manjaro-artwork
