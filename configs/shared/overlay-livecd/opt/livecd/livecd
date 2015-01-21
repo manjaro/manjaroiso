@@ -97,10 +97,6 @@ chmod 440 /etc/sudoers
 
 echo "configure applications" >> /tmp/livecd.log
 
-# configurate pacman
-#pacman-key --init
-#pacman-key --populate archlinux manjaro
-
 # installing localization packages
 if [ -e "/bootmnt/${install_dir}/${arch}/lng-image.sqfs" ] ; then
    echo "install translation packages" >> /tmp/livecd.log
