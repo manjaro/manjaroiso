@@ -262,13 +262,16 @@ if [ -e Packages-Xorg ] ; then
               if [ ! -z "`mount -l | grep ${image}`" ]; then
                  umount -R ${work_dir}/${image}
               fi
-              echo -e -n "$_r >$_W mount root-image \n $_n"
-              mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
               if [ ! -z "${de}" ] ; then
                  echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
-                 mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+                 mount -t aufs -o br=${work_dir}/${image}:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+                 echo -e -n "$_r >$_W append root-image \n $_n"
+                 mount -t aufs -o remount,append:${work_dir}/root-image=ro none ${work_dir}/${image}
+              else
+                 echo -e -n "$_r >$_W mount root-image \n $_n"
+                 mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
               fi
-              pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/${image}" --cache ${work_dir}/pkgs-image/opt/livecd/pkgs -Syw ${xorg_packages} --noconfirm
+              pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/${image}" --cache ${work_dir}/${image}/opt/livecd/pkgs -Syw ${xorg_packages} --noconfirm
               if [ ! -z "${xorg_packages_cleanup}" ]; then
                  for xorg_clean in ${xorg_packages_cleanup};
                     do  rm ${work_dir}/${image}/opt/livecd/pkgs/${xorg_clean}
@@ -318,11 +321,14 @@ if [ -e Packages-Xorg ] ; then
                  if [ ! -z "`mount -l | grep ${image}`" ]; then
                     umount -R ${work_dir}/${image}
                  fi
-                 echo -e -n "$_r >$_W mount root-image \n $_n"
-                 mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
                  if [ ! -z "${de}" ] ; then
                     echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
-                    mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+                    mount -t aufs -o br=${work_dir}/${image}:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+                    echo -e -n "$_r >$_W append root-image \n $_n"
+                    mount -t aufs -o remount,append:${work_dir}/root-image=ro none ${work_dir}/${image}
+                 else
+                    echo -e -n "$_r >$_W mount root-image \n $_n"
+                    mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
                  fi
                  mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "${image}" -p "${xorg_free_overlay}" create "${work_dir}"
                  umount -R ${work_dir}/${image}
@@ -336,11 +342,14 @@ if [ -e Packages-Xorg ] ; then
                  if [ ! -z "`mount -l | grep ${image}`" ]; then
                     umount -R ${work_dir}/${image}
                  fi
-                 echo -e -n "$_r >$_W mount root-image \n $_n"
-                 mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
                  if [ ! -z "${de}" ] ; then
                     echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
-                    mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+                    mount -t aufs -o br=${work_dir}/${image}:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+                    echo -e -n "$_r >$_W append root-image \n $_n"
+                    mount -t aufs -o remount,append:${work_dir}/root-image=ro none ${work_dir}/${image}
+                 else
+                    echo -e -n "$_r >$_W mount root-image \n $_n"
+                    mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
                  fi
                  mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "${image}" -p "${xorg_nonfree_overlay}" create "${work_dir}"
                  umount -R ${work_dir}/${image}
@@ -365,11 +374,14 @@ if [ -e Packages-Lng ] ; then
               if [ ! -z "`mount -l | grep ${image}`" ]; then
                  umount -R ${work_dir}/${image}
               fi
-              echo -e -n "$_r >$_W mount root-image \n $_n"
-              mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
               if [ ! -z "${de}" ] ; then
                  echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
-                 mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+                 mount -t aufs -o br=${work_dir}/${image}:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+                 echo -e -n "$_r >$_W append root-image \n $_n"
+                 mount -t aufs -o remount,append:${work_dir}/root-image=ro none ${work_dir}/${image}
+              else
+                 echo -e -n "$_r >$_W mount root-image \n $_n"
+                 mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
               fi
               if [ "${kde_lng_packages}" = "yes" ] ; then
                  pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/${image}" --cache ${work_dir}/${image}/opt/livecd/lng -Syw ${lng_packages} ${lng_packages_kde} --noconfirm
@@ -404,11 +416,14 @@ make_boot() {
         if [ ! -z "`mount -l | grep ${image}`" ]; then
            umount ${work_dir}/${image}/proc ${work_dir}/${image}/sys ${work_dir}/${image}/dev ${work_dir}/${image}
         fi
-        echo -e -n "$_r >$_W mount root-image \n $_n"
-        mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
         if [ ! -z "${de}" ] ; then
-             echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
-             mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+           echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
+           mount -t aufs -o br=${work_dir}/${image}:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+           echo -e -n "$_r >$_W append root-image \n $_n"
+           mount -t aufs -o remount,append:${work_dir}/root-image=ro none ${work_dir}/${image}
+        else
+           echo -e -n "$_r >$_W mount root-image \n $_n"
+           mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
         fi
         mount -t proc none ${work_dir}/${image}/proc
         mount -t sysfs none ${work_dir}/${image}/sys

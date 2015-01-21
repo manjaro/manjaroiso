@@ -111,6 +111,7 @@ btrfs-progs
 dmraid
 dosfstools
 ecryptfs-utils
+exfat-utils
 testdisk
 nilfs-utils
 nfs-utils
