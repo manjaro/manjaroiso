@@ -7,3 +7,4 @@ Type=Application
 Icon=/usr/share/icons/gnome/scalable/actions/view-restore-symbolic.svg
 StartupNotify=false
 Hidden=true
+X-XFCE-Source=file:///usr/share/applications/unmaximize_active-manjaro-netbook.desktop
