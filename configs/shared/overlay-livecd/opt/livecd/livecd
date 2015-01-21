@@ -135,10 +135,12 @@ fi
 if [ -e "/etc/live-installer/install.conf" ] ; then
    echo "configure live-installer" >> /tmp/livecd.log
    _conf_file="/etc/live-installer/install.conf"
+   _desktop_file="live-installer.desktop"
 fi
 if [ -e "/etc/thus.conf" ] ; then
    echo "configure thus" >> /tmp/livecd.log
    _conf_file="/etc/thus.conf"
+   _desktop_file="thus.desktop"
 fi
 
 if [ -e "$_conf_file" ] ; then
@@ -201,6 +203,7 @@ fi
 if [ -e "/usr/share/calamares/settings.conf" ] ; then
    echo "configure calamares" >> /tmp/livecd.log
    _conf_file="/usr/share/calamares/modules/unpackfs.conf"
+   _desktop_file="calamares.desktop"
    sed -i "s|_root-image_|/bootmnt/${install_dir}/_ARCH_/root-image.sqfs|g" $_conf_file
    sed -i "s|_kernel_|$manjaro_kernel|g" "/usr/share/calamares/modules/initcpio.conf"
 
@@ -242,4 +245,10 @@ if [ -e "/usr/share/calamares/settings.conf" ] ; then
    else
       sed -i "s|_ARCH_|x86_64|g" $_conf_file
    fi
+fi
+
+if [ -e "/usr/share/applications/$_desktop_file" ] ; then
+   mkdir -p /home/${username}/Desktop
+   cp /usr/share/applications/$_desktop_file /home/${username}/Desktop/$_desktop_file
+   chmod a+x /home/${username}/Desktop/$_desktop_file
 fi
