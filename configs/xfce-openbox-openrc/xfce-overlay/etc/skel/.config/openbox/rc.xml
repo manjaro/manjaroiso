@@ -287,11 +287,6 @@
         <command>xfce4-appfinder --collapsed</command>
       </action>
     </keybind>
-    <keybind key="W-d">
-      <action name="Execute">
-        <command>dmenu_run -fn &quot;-*-*-r-*-*-*-110-*-*-*-*-iso8859-*&quot;</command>
-      </action>
-    </keybind>
     <keybind key="W-l">
       <action name="Execute">
         <command>cb-exit</command>
