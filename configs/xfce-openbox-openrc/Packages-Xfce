@@ -98,6 +98,9 @@ downgrade
 menulibre
 xchat
 timeset-gui # MSM time module does not work with OpenRC
+parole
+mpg123 # for parole
+gst-libav # for parole
 
 ## Artwork, icons
 manjaro-artwork

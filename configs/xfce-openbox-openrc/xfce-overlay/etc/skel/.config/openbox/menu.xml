@@ -54,14 +54,14 @@
 			</item>
 		</menu>
 		<menu id="7" label="Multimedia">
-			<item label="Alsamixer">
-				<action name="Execute">
-					<execute>xfce4-terminal -e alsamixer</execute>
-				</action>
-			</item>
-			<item label="Mixer Gui">
+			<item label="Audio Mixer">
 				<action name="Execute">
 					<execute>xfce4-mixer</execute>
+				</action>
+			</item>
+			<item label="Parole Media Player">
+				<action name="Execute">
+					<execute>parole</execute>
 				</action>
 			</item>
 		</menu>
