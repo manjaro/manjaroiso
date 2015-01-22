@@ -8,7 +8,7 @@ tint2 &
 
 ## Startup
 (sleep 1s && conky) &
-(sleep 2s && xcompmgr -n) &
+(sleep 2s && compton -b) &
 (sleep 3s && wicd-gtk --tray) &
 (sleep 3s && xfce4-power-manager) &
 (sleep 4s && clipit) &

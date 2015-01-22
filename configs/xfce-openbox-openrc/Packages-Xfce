@@ -42,7 +42,7 @@ obmenu
 obkey
 tint2
 lxrandr
-xcompmgr
+compton
 
 ## Xfce
 xfce4-panel
