@@ -570,7 +570,7 @@ configure_displaymanager(){
     elif [[ -f "/usr/bin/sddm" ]];then
            sed -i -e "s|^Session=.*|Session=${xsession}.desktop|" /etc/sddm.conf
     elif [[ -f "/usr/bin/lxdm" ]];then
-           sed -i -e "s|^.*session=.*|session=${binxsession}|" /etc/lxdm/lxdm.conf
+           sed -i -e "s|^.*session=.*|session=${binsession}|" /etc/lxdm/lxdm.conf
     fi
 }
 
