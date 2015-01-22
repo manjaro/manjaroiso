@@ -42,12 +42,12 @@ gksu
 gparted
 gst-libav
 libreoffice-installer
-lxpolkit
 manjaro-settings-manager
 manjaro-welcome
 midori
 mousepad
-pamac-dev
+lxsession
+pamac
 >i686 parole
 polkit-gnome # for gparted
 qpdfview
