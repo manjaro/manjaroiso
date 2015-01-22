@@ -7,4 +7,4 @@ Type=Application
 Icon=/usr/share/icons/gnome/32x32/actions/window-close.png
 StartupNotify=false
 Hidden=true
-X-XFCE-Source=file:///home/manjaro/.local/share/applications/close_active.desktop
+X-XFCE-Source=file:///usr/share/applications/close_active-manjaro-netbook.desktop

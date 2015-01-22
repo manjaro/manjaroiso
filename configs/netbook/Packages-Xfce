@@ -1,6 +1,9 @@
 ### Manjaro Packages
 
 ## Netbook Edition packages
+manjaro-netbook-system
+>i686 netbook-kernel-initialiser     ### (will get replaced by the netbook kernel after installation)
+faenza-manjaro-netbook-icon-theme
 xfwm4-manjaro-netbook
 exo
 garcon
@@ -8,6 +11,8 @@ gtk2-xfce-engine
 gtk3-xfce-engine
 thunar
 thunar-volman
+thunar-archive-plugin
+thunar-media-tags-plugin
 tumbler
 xfce4-appfinder
 xfce4-mixer
@@ -21,40 +26,44 @@ xfce4-notifyd
 xfconf
 xfwm4-themes
 xfce4-taskmanager
-thunar-archive-plugin
 catfish
 gksu
 gvfs
-gvfs-smb
+gvfs-afc
+gvfs-afp
+gvfs-gphoto2
 gvfs-mtp
+gvfs-smb
 gnome-keyring
 network-manager-applet
+networkmanager-openconnect
+networkmanager-openvpn
+networkmanager-pptp
+networkmanager-vpnc
 manjaro-settings-manager
 nitrogen
 compton
 engrampa-thunar
-midori
 mousepad
 gpicview
-vlc
-audacious
-lightdm-gtk2-greeter
-lightdm-gtk-greeter-settings
+parole
 accountsservice
+lightdm-gtk3-greeter
+lightdm-gtk-greeter-settings
+light-locker-xfce
 thus
 manjaro-welcome
 wmctrl
 gparted
-evince
+qpdfview
+hexchat
+mlocate
 xf86-video-modesetting
 dockbarx
 xfce4-dockbarx-plugin
 xfce4-screenshooter
-
-## From Rob's netbook repo
->i686 flashplugin-netbook
->i686 manjaro-netbook-initial
-python2-imaging-alt
+open-fuse-iso
+palemoon-bin
 
 ## Network
 netctl
@@ -66,7 +75,6 @@ blueman
 ## Xorg Packages
 inxi
 libdnet
-mesa
 mesa-demos
 >x86_64 lib32-mesa-demos
 netkit-bsd-finger
@@ -86,26 +94,37 @@ xorg-server-utils
 xorg-twm
 xorg-utils
 xorg-xinit
+xorg-xkill
 
 ## Artwork
 faenza-green-icon-theme
 gtk-theme-ceti
-gtk-theme-menda
+menda-themes
+gnome-themes-standard
 manjaro-artwork
 plymouth-theme-manjaro-elegant
 
 ## Packages for Sound and Audio
->x86_64 flashplugin
-manjaro-alsa
+gst-libav
+gst-plugins-bad
+gst-plugins-base
+gst-plugins-good
+gst-plugins-ugly
+gstreamer0.10-bad-plugins
+gstreamer0.10-base-plugins
+gstreamer0.10-good-plugins
+gstreamer0.10-ugly-plugins
 libdvdcss
+manjaro-alsa
 
 ## Package management
-lxpolkit
+lxsession
 pamac
 
 ## Fonts
 ttf-dejavu
-adobe-source-sans-pro-fonts
+cantarell-fonts
+ttf-droid
 
 ## Printing
 #manjaro-printer
@@ -117,7 +136,8 @@ binutils
 bison
 fakeroot
 flex
-gcc
+>i686 gcc
+>x86_64 gcc-multilib
 libtool
 m4
 make
