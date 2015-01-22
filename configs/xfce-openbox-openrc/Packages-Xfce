@@ -2,6 +2,7 @@
 inxi
 libdnet
 #>x86_64 lib32-mesa-demos
+mesa-demos # used by inxi
 netkit-bsd-finger
 uriparser
 xf86-input-acecad
