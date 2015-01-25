@@ -6,21 +6,33 @@ source /opt/livecd/functions
 USENONFREE="$(kernel_cmdline nonfree no)"
 VIDEO="$(kernel_cmdline xdriver no)"
 
+seconds="0"
+while [ -e "/var/lib/pacman/db.lck" ];
+do
+	echo 'Pacman is not ready yet. Will try again in 5 seconds.' >> /tmp/livecd.log
+	seconds=$(($seconds + 5))
+	sleep 5
+	if [[ "$seconds" == "15" ]]; then
+		rm /var/lib/pacman/db.lck
+	fi
+done
+
 # hwdetect_graphics
-if [ -e "/opt/livecd/pacman-gfx.conf" ] ; then
+if [[ -e "/opt/livecd/pacman-gfx.conf" ]]; then
    echo "run mhwd" >> /tmp/livecd.log
-   if  [ "${USENONFREE}" == "yes" ] || [ "${USENONFREE}" == "true" ]; then
-   	if  [ "${VIDEO}" == "vesa" ]; then
-		mhwd --install pci video-vesa --pmconfig "/opt/livecd/pacman-gfx.conf"
+   if  [[ "${USENONFREE}" == "yes" ]] || [[ "${USENONFREE}" == "true" ]]; then
+   	if  [[ "${VIDEO}" == "vesa" ]]; then
+		mhwd --install pci video-vesa --pmconfig "/opt/livecd/pacman-gfx.conf" >> /tmp/livecd.log
 	else
-		mhwd --auto pci nonfree 0300 --pmconfig "/opt/livecd/pacman-gfx.conf"
+		mhwd --auto pci nonfree 0300 --pmconfig "/opt/livecd/pacman-gfx.conf" >> /tmp/livecd.log
 	fi
    else
-   	if  [ "${VIDEO}" == "vesa" ]; then
-		mhwd --install pci video-vesa --pmconfig "/opt/livecd/pacman-gfx.conf"
+   	if  [[ "${VIDEO}" == "vesa" ]]; then
+		mhwd --install pci video-vesa --pmconfig "/opt/livecd/pacman-gfx.conf" >> /tmp/livecd.log
 	else
-		mhwd --auto pci free 0300 --pmconfig "/opt/livecd/pacman-gfx.conf"
+		mhwd --auto pci free 0300 --pmconfig "/opt/livecd/pacman-gfx.conf" >> /tmp/livecd.log
 	fi
    fi
 fi
-echo "MHWD DONE" > /tmp/mhwd.task
+
+echo "MHWD DONE" >> /tmp/livecd.log
