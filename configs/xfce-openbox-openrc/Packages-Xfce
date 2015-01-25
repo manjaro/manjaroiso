@@ -1,0 +1,129 @@
+## Xorg Packages
+inxi
+libdnet
+#>x86_64 lib32-mesa-demos
+mesa-demos # used by inxi
+netkit-bsd-finger
+uriparser
+xf86-input-acecad
+xf86-input-aiptek
+xf86-input-evdev
+xf86-input-joystick
+xf86-input-keyboard
+xf86-input-mouse
+xf86-input-synaptics
+xf86-input-void
+xf86-input-wacom
+xinetd
+xorg-server
+xorg-server-utils
+xorg-twm
+xorg-utils
+xorg-xinit
+
+## Basic packages
+dconf
+desktop-file-utils
+
+## Audio Packages
+manjaro-alsa
+xfce4-mixer
+volumeicon-gtk2
+
+## Network
+openresolv-openrc
+wicd-openrc
+bluez-openrc # required for bluetooth
+blueman
+
+## Openbox
+openbox
+obconf
+obmenu
+obkey
+tint2
+lxrandr
+compton
+
+## Xfce
+xfce4-panel
+xfce4-session-consolekit
+xfce4-terminal
+xfdesktop
+xfwm4
+xfce4-appfinder
+xfce4-settings
+xfce4-notifyd
+xfce4-screenshooter
+xfce4-taskmanager
+xfce4-power-manager-upower0
+xfce4-whiskermenu-plugin
+#xfce4-clipman-plugin
+xfce4-xkb-plugin
+
+## Basic Apps
+lxdm-consolekit
+wicd-gtk
+python2-notify
+clipit
+leafpad
+qpdfview
+xarchiver
+thunar
+firefox
+lxsession # contains lxpolit
+gparted
+viewnior
+dmenu
+conky
+lxappearance
+galculator-gtk2
+nitrogen
+
+## More Apps
+gconf # fix qt-theme
+gnome-keyring # fix wlan segfault
+gvfs # to fix trash in thunar
+udisks2 # removable disk management
+manjaro-settings-manager
+octopi
+octopi-notifier-qt5
+gksu # required for octopi
+libreoffice-installer
+thunar-archive-plugin
+htop
+tumbler # for thumbnails
+catfish # for thunar search
+downgrade
+menulibre
+xchat
+timeset-gui # MSM time module does not work with OpenRC
+parole
+mpg123 # for parole
+gst-libav # for parole
+
+## Artwork, icons
+manjaro-artwork
+menda-themes
+numix-manjaro-themes
+xfce-theme-greenbird
+faenza-green-icon-theme
+xcursor-vanilla-dmz-aa
+
+## Fonts
+ttf-droid
+adobe-source-sans-pro-fonts
+
+## AUR Access
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+gcc
+libtool
+m4
+make
+patch
+yaourt

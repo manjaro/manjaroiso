@@ -1,0 +1,10 @@
+#!/bin/sh
+# tmpwatch: remove temporary files at regular interbals
+# http://www.gentoo-wiki.info/HOWTO_clean_/tmp
+
+TMPWATCH="/usr/bin/tmpwatch"
+
+if [[ -d /tmp ]]; then
+  # Cleans files in /tmp that have not been accessed in a week
+  ${TMPWATCH} --atime 168 /tmp
+fi

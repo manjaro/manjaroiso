@@ -2,7 +2,6 @@
 #
 # /etc/rc.local: Local multi-user startup script.
 #
-/usr/bin/rc-service checknet start  # Check if networkmanager started correctly
 /usr/bin/pacman-boot &  # Setup pacman databases
 # Source /etc/conf.d/xdm if it exists
 [ -e /etc/conf.d/xdm ] && . /etc/conf.d/xdm

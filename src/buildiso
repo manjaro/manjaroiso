@@ -78,6 +78,11 @@ if [ -e Packages-PekWM ] ; then
     desktop="pekwm"
     pkgsfile="Packages-PekWM"
 fi
+if [ -e Packages-i3 ] ; then
+    de="-i3"
+    desktop="i3"
+    pkgsfile="Packages-i3"
+fi
 if [ -e Packages-Custom ] ; then
     de="-custom"
     desktop="custom"
@@ -560,6 +565,11 @@ make_overlay() {
         echo -e -n "$_r >$_W Prepare overlay-image \n $_n"
         mkdir -p ${work_dir}/overlay/etc/pacman.d
         cp -a --no-preserve=ownership overlay-livecd/* ${work_dir}/overlay
+        # If overlay-livecd-${desktop} exists, copy it too
+        if [[ -e overlay-livecd-${desktop} ]]; then
+            echo -e -n "$_r >$_W Copying overlay-livecd-${desktop} \n $_n"
+            cp -a --no-preserve=ownership overlay-livecd-${desktop}/* ${work_dir}/overlay
+        fi
         cp options.conf ${work_dir}/overlay/opt/livecd/options.conf
         #wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist
         cp ${work_dir}/root-image/etc/pacman.d/mirrorlist ${work_dir}/overlay/etc/pacman.d/mirrorlist

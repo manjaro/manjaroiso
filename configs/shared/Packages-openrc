@@ -75,6 +75,14 @@ openrc-core
 openrc-base
 openrc-desktop
 openrc-systemdcompat
+modules-load-openrc
+
+# Extra services
+openssh-openrc
+ntp-openrc
+tmpwatch
+mlocate
+keyboardctl
 
 ## Eudev
 eudev
