@@ -508,17 +508,15 @@ configure_displaymanager_autologin(){
     groupadd -r autologin
     gpasswd -a ${username} autologin &> /dev/null
     if [[ -f /usr/bin/lightdm ]];then
-	sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
-	sed -i -e "s/^.*autologin-user=.*/autologin-user=${username}/" /etc/lightdm/lightdm.conf
+	sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' ${DESTDIR}/etc/lightdm/lightdm.conf
+	sed -i -e "s/^.*autologin-user=.*/autologin-user=${username}/" ${DESTDIR}/etc/lightdm/lightdm.conf
     elif [[ -f /usr/bin/kdm ]];then
-	sed -i -e "s/^.*AutoLoginUser=.*/AutoLoginUser=${username}/" /usr/share/config/kdm/kdmrc
-	sed -i -e "s/^.*AutoLoginPass=.*/AutoLoginPass=${password}/" /usr/share/config/kdm/kdmrc
-	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-	[[ -e "/usr/bin/update-desktop-database" ]] && update-desktop-database -q
+	sed -i -e "s/^.*AutoLoginUser=.*/AutoLoginUser=${username}/" ${DESTDIR}/usr/share/config/kdm/kdmrc
+	sed -i -e "s/^.*AutoLoginPass=.*/AutoLoginPass=${password}/" ${DESTDIR}/usr/share/config/kdm/kdmrc
     elif [[ -f /usr/bin/sddm ]];then
-	sed -i -e "s|^User=.*|User=${username}|" /etc/sddm.conf
+	sed -i -e "s|^User=.*|User=${username}|" ${DESTDIR}/etc/sddm.conf
     elif [[ -f /usr/bin/lxdm ]];then
-	sed -i -e "s/^.*autologin=.*/autologin=${username}/" /etc/lxdm/lxdm.conf
+	sed -i -e "s/^.*autologin=.*/autologin=${username}/" ${DESTDIR}/etc/lxdm/lxdm.conf
     fi
 }
 
@@ -558,19 +556,19 @@ configure_displaymanager(){
 
     # configure display managers
     if [[ -f /usr/bin/lightdm ]];then
-         sed -i -e "s/^.*user-session=.*/user-session=${xsession}/" /etc/lightdm/lightdm.conf
+         sed -i -e "s/^.*user-session=.*/user-session=${xsession}/" ${DESTDIR}/etc/lightdm/lightdm.conf
     elif [[ -f "/usr/bin/gdm" ]];then
          if [[ -d "/var/lib/AccountsService/users" ]];then
-              echo "[User]" > /var/lib/AccountsService/users/gdm
-              echo "XSession=${xsession}" >> /var/lib/AccountsService/users/gdm
-              echo "Icon=/var/lib/AccountsService/icons/manjaro.png" >> /var/lib/AccountsService/users/gdm
+              echo "[User]" > ${DESTDIR}/var/lib/AccountsService/users/gdm
+              echo "XSession=${xsession}" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
+              echo "Icon=/var/lib/AccountsService/icons/manjaro.png" >> ${DESTDIR}/var/lib/AccountsService/users/gdm
          fi
     elif [[ -f "/usr/bin/mdm" ]];then
-           sed -i "s|default.desktop|${xsession}.desktop|g" /etc/mdm/custom.conf
+           sed -i "s|default.desktop|${xsession}.desktop|g" ${DESTDIR}/etc/mdm/custom.conf
     elif [[ -f "/usr/bin/sddm" ]];then
-           sed -i -e "s|^Session=.*|Session=${xsession}.desktop|" /etc/sddm.conf
+           sed -i -e "s|^Session=.*|Session=${xsession}.desktop|" ${DESTDIR}/etc/sddm.conf
     elif [[ -f "/usr/bin/lxdm" ]];then
-           sed -i -e "s|^.*session=.*|session=${binsession}|" /etc/lxdm/lxdm.conf
+           sed -i -e "s|^.*session=.*|session=${binsession}|" ${DESTDIR}/etc/lxdm/lxdm.conf
     fi
 }
 
