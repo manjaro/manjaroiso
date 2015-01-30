@@ -119,7 +119,7 @@ _kill_chroot_process ()
                 # this process is in the chroot...
                 PID=$(basename $(dirname "$ROOT"))
                 NAME=$(ps -p $PID -o comm=)
-                msg3 "Killing chroot process: $NAME ($PID)"
+                echo "Killing chroot process: $NAME ($PID)"
                 kill -9 "$PID"
             fi
         fi
