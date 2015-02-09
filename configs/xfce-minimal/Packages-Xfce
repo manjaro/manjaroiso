@@ -7,6 +7,10 @@ gnome-keyring # fix wlan segfault
 gvfs # to fix trash in thunar
 menulibre
 network-manager-applet
+accountsservice
+lightdm-gtk3-greeter
+lightdm-gtk-greeter-settings
+light-locker-xfce
 #numlockx
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
@@ -38,15 +42,15 @@ gksu
 gparted
 gst-libav
 libreoffice-installer
-lxpolkit
 manjaro-settings-manager
 manjaro-welcome
 midori
 mousepad
-pamac-dev
+lxsession
+pamac
 >i686 parole
 polkit-gnome # for gparted
-raktpdf
+qpdfview
 >i686 sylpheed
 >i686 xnoise
 
@@ -64,7 +68,6 @@ blueman
 inxi
 libdnet
 #>x86_64 lib32-mesa-demos
-netkit-bsd-finger
 uriparser
 xf86-input-acecad
 xf86-input-aiptek
@@ -85,10 +88,9 @@ xorg-xkill
 
 ## Artwork
 menda-circle-icon-theme
-gtk-theme-ceti
-gtk-theme-menda
+menda-themes
+gnome-themes-standard
 manjaro-artwork
-mdm-themes
 xfce-theme-greenbird
 plymouth-theme-manjaro-elegant
 

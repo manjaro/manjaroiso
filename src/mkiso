@@ -108,6 +108,24 @@ echo "${APPNAME} : Configuration Settings"
 echo "        working directory:   ${work_dir}"
 echo "               image name:   ${imgname}"
 
+# kill chroot process if needed (TODO: check if needed at all)
+_kill_chroot_process ()
+{
+    PREFIX="${work_dir}"
+    for ROOT in /proc/*/root; do
+        LINK=$(readlink $ROOT)
+        if [ "x$LINK" != "x" ]; then
+            if [ "x${LINK:0:${#PREFIX}}" = "x$PREFIX" ]; then
+                # this process is in the chroot...
+                PID=$(basename $(dirname "$ROOT"))
+                NAME=$(ps -p $PID -o comm=)
+                echo "Killing chroot process: $NAME ($PID)"
+                kill -9 "$PID"
+            fi
+        fi
+    done
+}
+
 # usage: _pacman <packages>...
 _pacman ()
 {
@@ -141,11 +159,12 @@ command_create () {
     if [ ! -z "${PKGLIST}" ]; then
         echo "====> Installing packages to '${work_dir}/${IMAGE_FOLDER}/'"
         _pacman "${PKGLIST}"
+        _kill_chroot_process
 
         echo "Cleaning up what we can"
         if [ -d "${work_dir}/${IMAGE_FOLDER}/boot/" ]; then
             # remove the initcpio images that were generated for the host system
-            find "${work_dir}/${IMAGE_FOLDER}/boot" -name '*.img' -delete
+            find "${work_dir}/${IMAGE_FOLDER}/boot" -name 'initramfs*.img' -delete
         fi
 
         if [ ${CREATE_DEFAULT} == "y" ]; then

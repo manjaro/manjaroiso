@@ -1,5 +1,5 @@
 button-title=Menu\ 
-button-icon=/usr/share/icons/manjaro.png
+button-icon=distributor-logo-manjaro
 show-button-title=true
 launcher-show-name=true
 launcher-show-description=true
@@ -16,5 +16,3 @@ command-logout=xfce4-session-logout
 show-command-logout=true
 command-menueditor=menulibre
 show-command-menueditor=true
-
-

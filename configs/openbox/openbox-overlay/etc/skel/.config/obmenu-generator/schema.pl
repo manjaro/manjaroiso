@@ -1,61 +1,34 @@
-##!/usr/bin/perl
-##
-## SCHEMA supports the following keys: item, cat, begin_cat, end_cat,
-##                                     exit, raw, sep, obgenmenu
-##
-## Modified by Dan
+#!/usr/bin/perl
+
+# obmenu-generator - schema file
+# Modified by Dan
 
 =for comment
-
-item: add an item into the menu
-{item => ["command", "label", "icon"]}
-
-cat: add a category into the menu
-{cat => ["name", "label", "icon"]}
-
-begin_cat: begin of a category
-{begin_cat => ["name", "icon"]}
-
-end_cat: end of a category
-{end_cat => undef}
-
-sep: menu line separator
-{sep => undef} or {sep => "label"}
-
-exit: default "Exit" action
-{exit => ["label", "icon"]}
-
-raw: any valid Openbox XML string
-{raw => q(xml string)},
-
-obgenmenu: category provided by obmenu-generator
-{obgenmenu => "label"}
-
-scripts: executable scripts from a directory
-{scripts => ["/my/dir", BOOL, "icon"]}
-BOOL - can be either true or false (1 or 0)
-0 == open the script in background
-1 == open the script in a new terminal
-
-wine_apps: windows applications installed via wine
-{wine_apps => ["label", "icon"]}
-
+    item:      add an item inside the menu               {item => ["command", "label", "icon"]},
+    cat:       add a category inside the menu             {cat => ["name", "label", "icon"]},
+    sep:       horizontal line separator                  {sep => undef}, {sep => "label"},
+    pipe:      a pipe menu entry                         {pipe => ["command", "label", "icon"]},
+    raw:       any valid Openbox XML string               {raw => q(xml string)},
+    begin_cat: begin of a category                  {begin_cat => ["name", "icon"]},
+    end_cat:   end of a category                      {end_cat => undef},
+    obgenmenu: generic menu settings                {obgenmenu => ["label", "icon"]},
+    exit:      default "Exit" action                     {exit => ["label", "icon"]},
 =cut
 
 # NOTE:
 #    * Keys and values are case sensitive. Keep all keys lowercase.
-#    * ICON can be a either a direct path to a icon or a valid icon name
-#    * By default, category names are case insensitive. (e.g.: X-XFCE == x_xfce)
+#    * ICON can be a either a direct path to an icon or a valid icon name
+#    * Category names are case insensitive. (X-XFCE and x_xfce are equivalent)
 
-require '_homedir_/.config/obmenu-generator/config.pl';
+require "$ENV{HOME}/.config/obmenu-generator/config.pl";
 
 our $SCHEMA = [
 #             COMMAND                           	LABEL          		ICON
-   {cat => ['filemanager',                     'File Managers',    'system-file-manager']},
+   {cat  => ['filemanager',                         'File Managers',    'system-file-manager']},
    {item => ['lxterminal',   	 	            'Terminal',         'lxterminal']},
-   {item => ['gnome-screenshot --interactive',  'Screenshot',       'gnome-screenshot']},
-   {item => ['nitrogen',   	 	                'Nitrogen',         'nitrogen']},
-   {sep => undef},
+   {item => ['gnome-screenshot --interactive',      'Screenshot',       'gnome-screenshot']},
+   {item => ['nitrogen',   	 	            'Nitrogen',         'nitrogen']},
+   {sep  => undef},
 
     #          NAME            LABEL                ICON
     {cat => ['utility',     'Accessories', 'applications-utilities']},
@@ -66,21 +39,24 @@ our $SCHEMA = [
     {cat => ['audiovideo',  'Multimedia',  'applications-multimedia']},
     {cat => ['network',     'Network',     'applications-internet']},    
     {cat => ['settings',    'Settings',    'applications-accessories']},
+    
+    #            COMMAND     LABEL        ICON
+    #{pipe => ['obbrowser', 'Disk', 'drive-harddisk']},
 
 ## Custom "OB menu"
 
    {begin_cat => ['OB Settings',  'gnome-settings']},
-   {begin_cat => ['Desktop and Login',  '/usr/share/icons/Faenza/apps/48/dconf-editor.png']},
+   {begin_cat => ['Desktop and Login',  '48/dconf-editor']},
    {item => ['geany -m ~/.conkyrc','Conky RC','geany']},
    {item => ['geany -m ~/.config/tint2/tint2rc','Tint2 Panel','geany']},
-   {item => ['gksu geany /etc/slim.conf','Slim Configuration','geany']},
+   {item => ['gksu geany /etc/lxdm/lxdm.conf','SLxdm Configuration','geany']},
    {item => ['geany -m ~/.xinitrc','.xinitrc','geany']},
    {item => ['geany -m ~/.xprofile','.xprofile','geany']},
    {end_cat   => undef},
-   {begin_cat => ['Obmenu-Generator', '/usr/share/icons/Faenza/apps/48/menu-editor.png']},
+   {begin_cat => ['Obmenu-Generator', 'menu-editor']},
 		{item => ['geany -m ~/.config/obmenu-generator/schema.pl','Pipe Menu Schema','geany']},
 		{item => ['geany -m ~/.config/obmenu-generator/config.pl','Pipe Menu Config','geany']},
-		{item => ['obmenu-generator -d','Refresh Icon Set','/usr/share/icons/Faenza/apps/48/application-default-icon.png']},
+		{item => ['obmenu-generator -d','Refresh Icon Set','application-default-icon']},
    {end_cat   => undef},
    {begin_cat => ['Openbox',  'openbox']},
 		{item => ['openbox --reconfigure','Reconfigure Openbox','openbox']},
@@ -89,7 +65,7 @@ our $SCHEMA = [
 		{item => ['geany -m ~/.config/openbox/menu.xml','Openbox Menu','geany']},
 		{item => ['gksu geany /etc/oblogout.conf','Openbox Logout','geany']},
    {end_cat   => undef},
-   {begin_cat => ['Pacman / Servers', '/usr/share/icons/Faenza/apps/48/package-manager-icon.png']},		
+   {begin_cat => ['Pacman / Servers', 'package-manager-icon']},		
 		{item => ['gksu geany /etc/pacman.conf','Pacman Config','geany']},
 		{item => ['gksu geany /etc/pacman.d/mirrorlist','Pacman Mirrorlist','geany']},
    {end_cat   => undef},
@@ -111,9 +87,4 @@ our $SCHEMA = [
     #{cat => ['x_xfce',      'XFCE Applications',  'applications-other']},
     #{cat => ['gnome',       'GNOME Applications', 'gnome-applications']},
     #{cat => ['consoleonly', 'CLI Applications',   'applications-utilities']},
-
-    #                  LABEL             ICON
-    #{wine_apps => ['Wine apps', 'applications-other']},
-
 ]
-

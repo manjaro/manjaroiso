@@ -8,7 +8,6 @@ inxi
 libdnet
 mesa-demos
 >x86_64 lib32-mesa-demos
-netkit-bsd-finger
 uriparser
 xf86-input-acecad
 xf86-input-aiptek
@@ -46,7 +45,6 @@ dvd+rw-tools
 virtualgl
 kio-mtp
 mtpfs
-razor-qt
 kio-sysinfo
 gvfs-smb
 gvfs-mtp
@@ -97,7 +95,7 @@ networkmanager-dispatcher-ntpd
 openresolv
 
 ## Graphical installer
-calamares
+#calamares
 thus
 
 ## Packages for Sound and Audio

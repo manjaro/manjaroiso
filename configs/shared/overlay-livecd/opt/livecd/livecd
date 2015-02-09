@@ -39,7 +39,7 @@ fi
 # save settings
 alsactl -f /etc/asound.state store &>/dev/null
 
-echo "enable default mirror" >> /tmp/livecd.log
+#echo "enable default mirror" >> /tmp/livecd.log
 
 # enable default mirror
 #cp -f /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
@@ -77,219 +77,14 @@ echo "Icon=/var/lib/AccountsService/icons/${username}.png" >> /var/lib/AccountsS
 cp -a /etc/skel/. /root/
 
 echo "configure display managers" >> /tmp/livecd.log
-
-# do_setuplightdm
-if [ -e "/usr/bin/lightdm" ] ; then
-   mkdir -p /run/lightdm > /dev/null
-   getent group lightdm > /dev/null 2>&1 || groupadd -g 620 lightdm
-   getent passwd lightdm > /dev/null 2>&1 || useradd -c 'LightDM Display Manager' -u 620 -g lightdm -d /var/run/lightdm -s /usr/bin/nologin lightdm
-   passwd -l lightdm > /dev/null
-   chown -R lightdm:lightdm /var/run/lightdm > /dev/null
-   if [ -e "/usr/bin/startxfce4" ] ; then
-        sed -i -e 's/^.*user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
-   fi
-   if [ -e "/usr/bin/cinnamon-session" ] ; then
-        sed -i -e 's/^.*user-session=.*/user-session=cinnamon/' /etc/lightdm/lightdm.conf
-   fi
-   if [ -e "/usr/bin/mate-session" ] ; then
-        sed -i -e 's/^.*user-session=.*/user-session=mate/' /etc/lightdm/lightdm.conf
-   fi
-   if [ -e "/usr/bin/enlightenment_start" ] ; then
-        sed -i -e 's/^.*user-session=.*/user-session=enlightenment/' /etc/lightdm/lightdm.conf
-   fi
-   if [ -e "/usr/bin/openbox-session" ] ; then
-        sed -i -e 's/^.*user-session=.*/user-session=openbox/' /etc/lightdm/lightdm.conf
-   fi
-   if [ -e "/usr/bin/startlxde" ] ; then
-        sed -i -e 's/^.*user-session=.*/user-session=LXDE/' /etc/lightdm/lightdm.conf
-   fi
-   if [ -e "/usr/bin/lxqt-session" ] ; then
-        sed -i -e 's/^.*user-session=.*/user-session=lxqt/' /etc/lightdm/lightdm.conf
-   fi
-   if [ -e "/usr/bin/pekwm" ] ; then
-        sed -i -e 's/^.*user-session=.*/user-session=pekwm/' /etc/lightdm/lightdm.conf
-   fi
-   sed -i -e "s/^.*autologin-user=.*/autologin-user=${username}/" /etc/lightdm/lightdm.conf
-   sed -i -e 's/^.*autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
-   groupadd autologin
-   gpasswd -a ${username} autologin
-   chmod +r /etc/lightdm/lightdm.conf
-   # livecd fix
-   mkdir -p /var/lib/lightdm-data
-   systemd-tmpfiles --create /usr/lib/tmpfiles.d/lightdm.conf
-   /usr/bin/systemd-tmpfiles --create --remove
-fi
-
-# do_setupkdm
-if [ -e "/usr/share/config/kdm/kdmrc" ] ; then
-   getent group kdm >/dev/null 2>&1 || groupadd -g 135 kdm &>/dev/null
-   getent passwd kdm >/dev/null 2>&1 || useradd -u 135 -g kdm -d /var/lib/kdm -s /bin/false -r -M kdm &>/dev/null
-   chown -R 135:135 var/lib/kdm &>/dev/null
-   xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-   if [ -e "/usr/bin/update-desktop-database" ] ; then
-       update-desktop-database -q
-   fi
-   sed -i -e "s/^.*AutoLoginUser=.*/AutoLoginUser=${username}/" /usr/share/config/kdm/kdmrc
-   sed -i -e "s/^.*AutoLoginPass=.*/AutoLoginPass=${username}/" /usr/share/config/kdm/kdmrc
-fi
-
-# do_setupgdm
-if [ -e "/usr/bin/gdm" ] ; then
-  getent group gdm >/dev/null 2>&1 || groupadd -g 120 gdm
-  getent passwd gdm > /dev/null 2>&1 || usr/bin/useradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /usr/bin/nologin gdm
-  passwd -l gdm > /dev/null
-  chown -R gdm:gdm /var/lib/gdm &> /dev/null
-  if [ -d "/var/lib/AccountsService/users" ] ; then
-     echo "[User]" > /var/lib/AccountsService/users/gdm
-     if [ -e "/usr/bin/startxfce4" ] ; then
-        echo "XSession=xfce" >> /var/lib/AccountsService/users/gdm
-     fi
-     if [ -e "/usr/bin/cinnamon-session" ] ; then
-        echo "XSession=cinnamon" >> /var/lib/AccountsService/users/gdm
-     fi
-     if [ -e "/usr/bin/mate-session" ] ; then
-        echo "XSession=mate" >> /var/lib/AccountsService/users/gdm
-     fi
-     if [ -e "/usr/bin/enlightenment_start" ] ; then
-        echo "XSession=enlightenment" >> /var/lib/AccountsService/users/gdm
-     fi
-     if [ -e "/usr/bin/openbox-session" ] ; then
-        echo "XSession=openbox" >> /var/lib/AccountsService/users/gdm
-     fi
-     if [ -e "/usr/bin/startlxde" ] ; then
-        echo "XSession=LXDE" >> /var/lib/AccountsService/users/gdm
-     fi
-     if [ -e "/usr/bin/lxqt-session" ] ; then
-        echo "XSession=LXQt" >> /var/lib/AccountsService/users/gdm
-     fi
-     echo "Icon=" >> /var/lib/AccountsService/users/gdm
-  fi
-fi
-
-# do_setupmdm
-if [ -e "/usr/bin/mdm" ] ; then
-  getent group mdm >/dev/null 2>&1 || groupadd -g 128 mdm
-  getent passwd mdm >/dev/null 2>&1 || usr/bin/useradd -c 'Linux Mint Display Manager' -u 128 -g mdm -d /var/lib/mdm -s /usr/bin/nologin mdm
-  passwd -l mdm > /dev/null
-  chown root:mdm /var/lib/mdm > /dev/null
-  chmod 1770 /var/lib/mdm > /dev/null
-  if [ -e "/usr/bin/startxfce4" ] ; then
-      sed -i 's|default.desktop|xfce.desktop|g' /etc/mdm/custom.conf
-  fi
-  if [ -e "/usr/bin/cinnamon-session" ] ; then
-      sed -i 's|default.desktop|cinnamon.desktop|g' /etc/mdm/custom.conf
-  fi
-  if [ -e "/usr/bin/openbox-session" ] ; then
-      sed -i 's|default.desktop|openbox.desktop|g' /etc/mdm/custom.conf
-  fi
-  if [ -e "/usr/bin/mate-session" ] ; then
-      sed -i 's|default.desktop|mate.desktop|g' /etc/mdm/custom.conf
-  fi
-  if [ -e "/usr/bin/startlxde" ] ; then
-      sed -i 's|default.desktop|LXDE.desktop|g' /etc/mdm/custom.conf
-  fi
-  if [ -e "/usr/bin/lxqt-session" ] ; then
-      sed -i 's|default.desktop|lxqt.desktop|g' /etc/mdm/custom.conf
-  fi
-  if [ -e "/usr/bin/enlightenment_start" ] ; then
-      sed -i 's|default.desktop|enlightenment.desktop|g' /etc/mdm/custom.conf
-  fi
-fi
-
-# do_setupsddm
-if [ -e "/usr/bin/sddm" ] ; then
-  getent group sddm > /dev/null 2>&1 || groupadd --system sddm
-  getent passwd sddm > /dev/null 2>&1 || usr/bin/useradd -c "Simple Desktop Display Manager" --system -d /var/lib/sddm -s /usr/bin/nologin -g sddm sddm
-  passwd -l sddm > /dev/null
-  mkdir -p /var/lib/sddm
-  chown -R sddm:sddm /var/lib/sddm > /dev/null
-  sed -i -e "s|^User=.*|User=${username}|" /etc/sddm.conf
-  if [ -e "/usr/bin/startxfce4" ] ; then
-      sed -i -e 's|^Session=.*|Session=xfce.desktop|' /etc/sddm.conf
-  fi
-  if [ -e "/usr/bin/cinnamon-session" ] ; then
-      sed -i -e 's|^Session=.*|Session=cinnamon.desktop|' /etc/sddm.conf
-  fi
-  if [ -e "/usr/bin/openbox-session" ] ; then
-      sed -i -e 's|^Session=.*|Session=openbox.desktop|' /etc/sddm.conf
-  fi
-  if [ -e "/usr/bin/mate-session" ] ; then
-      sed -i -e 's|^Session=.*|Session=mate.desktop|' /etc/sddm.conf
-  fi
-  if [ -e "/usr/bin/lxsession" ] ; then
-      sed -i -e 's|^Session=.*|Session=LXDE.desktop|' /etc/sddm.conf
-  fi
-  if [ -e "/usr/bin/lxqt-session" ] ; then
-      sed -i -e 's|^Session=.*|Session=lxqt.desktop|' /etc/sddm.conf
-  fi
-  if [ -e "/usr/bin/enlightenment_start" ] ; then
-      sed -i -e 's|^Session=.*|Session=enlightenment.desktop|' /etc/sddm.conf
-  fi
-  if [ -e "/usr/bin/startkde" ] ; then
-      sed -i -e 's|^Session=.*|Session=plasma.desktop|' /etc/sddm.conf
-  fi
-fi
-
-# do_setuplxdm
-if [ -e "/usr/bin/lxdm" ] ; then
-   if [ -z "`getent group "lxdm" 2> /dev/null`" ]; then
-        groupadd --system lxdm > /dev/null
-   fi
-   sed -i -e "s/^.*autologin=.*/autologin=${username}/" /etc/lxdm/lxdm.conf
-   if [ -e "/usr/bin/startxfce4" ] ; then
-      sed -i -e 's|^.*session=.*|session=/usr/bin/startxfce4|' /etc/lxdm/lxdm.conf
-   fi
-   if [ -e "/usr/bin/cinnamon-session" ] ; then
-      sed -i -e 's|^.*session=.*|session=/usr/bin/cinnamon-session|' /etc/lxdm/lxdm.conf
-   fi
-   if [ -e "/usr/bin/mate-session" ] ; then
-      sed -i -e 's|^.*session=.*|session=/usr/bin/mate-session|' /etc/lxdm/lxdm.conf
-   fi
-   if [ -e "/usr/bin/enlightenment_start" ] ; then
-      sed -i -e 's|^.*session=.*|session=/usr/bin/enlightenment_start|' /etc/lxdm/lxdm.conf
-   fi
-   if [ -e "/usr/bin/openbox-session" ] ; then
-      sed -i -e 's|^.*session=.*|session=/usr/bin/openbox-session|' /etc/lxdm/lxdm.conf
-   fi
-   if [ -e "/usr/bin/startlxde" ] ; then
-      sed -i -e 's|^.*session=.*|session=/usr/bin/lxsession|' /etc/lxdm/lxdm.conf
-   fi
-   if [ -e "/usr/bin/lxqt-session" ] ; then
-      sed -i -e 's|^.*session=.*|session=/usr/bin/lxqt-session|' /etc/lxdm/lxdm.conf
-   fi
-   if [ -e "/usr/bin/pekwm" ] ; then
-      sed -i -e 's|^.*session=.*|session=/usr/bin/pekwm|' /etc/lxdm/lxdm.conf
-   fi
-   chgrp -R lxdm /var/lib/lxdm > /dev/null
-   chgrp lxdm /etc/lxdm/lxdm.conf > /dev/null
-   chmod +r /etc/lxdm/lxdm.conf > /dev/null
-fi
+configure_displaymanager
+configure_displaymanager_autologin
 
 echo "configure AccountsService" >> /tmp/livecd.log
 
 if [ -d "/var/lib/AccountsService/users" ] ; then
      echo "[User]" > /var/lib/AccountsService/users/manjaro
-     if [ -e "/usr/bin/startxfce4" ] ; then
-        echo "XSession=xfce" >> /var/lib/AccountsService/users/manjaro
-     fi
-     if [ -e "/usr/bin/cinnamon-session" ] ; then
-        echo "XSession=cinnamon" >> /var/lib/AccountsService/users/manjaro
-     fi
-     if [ -e "/usr/bin/mate-session" ] ; then
-        echo "XSession=mate" >> /var/lib/AccountsService/users/manjaro
-     fi
-     if [ -e "/usr/bin/enlightenment_start" ] ; then
-        echo "XSession=enlightenment" >> /var/lib/AccountsService/users/manjaro
-     fi
-     if [ -e "/usr/bin/openbox-session" ] ; then
-        echo "XSession=openbox" >> /var/lib/AccountsService/users/manjaro
-     fi
-     if [ -e "/usr/bin/startlxde" ] ; then
-        echo "XSession=LXDE" >> /var/lib/AccountsService/users/manjaro
-     fi
-     if [ -e "/usr/bin/lxqt-session" ] ; then
-        echo "XSession=LXQt" >> /var/lib/AccountsService/users/manjaro
-     fi
+     echo "XSession=${xsession}" >> /var/lib/AccountsService/users/manjaro
      echo "Icon=/var/lib/AccountsService/icons/manjaro.png" >> /var/lib/AccountsService/users/manjaro
 fi
 
@@ -301,24 +96,6 @@ sed -i -e 's|# %wheel ALL=(ALL) ALL|%wheel ALL=(ALL) ALL|g' /etc/sudoers
 chmod 440 /etc/sudoers
 
 echo "configure applications" >> /tmp/livecd.log
-
-# fix_gnome_apps
-glib-compile-schemas /usr/share/glib-2.0/schemas
-gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-if [ -e "/usr/bin/dconf" ] ; then
-   dconf update
-fi
-if [ -e "/usr/bin/gnome-keyring-daemon" ] ; then
-   setcap cap_ipc_lock=ep /usr/bin/gnome-keyring-daemon &> /dev/null
-fi
-
-# configurate pacman
-#pacman-key --init
-#pacman-key --populate archlinux manjaro
-
-# fix_ping_installation
-setcap cap_net_raw=ep /usr/bin/ping &> /dev/null
-setcap cap_net_raw=ep /usr/bin/ping6 &> /dev/null
 
 # installing localization packages
 if [ -e "/bootmnt/${install_dir}/${arch}/lng-image.sqfs" ] ; then
@@ -344,7 +121,7 @@ fi
 
 # set unique machine-id
 dbus-uuidgen --ensure=/etc/machine-id
-dbus-uuidgen --ensure=/var/lib/dbus/machine-id
+ln -sf /etc/machine-id /var/lib/dbus/machine-id
 
 # depmod extramodules
 depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
@@ -358,10 +135,12 @@ fi
 if [ -e "/etc/live-installer/install.conf" ] ; then
    echo "configure live-installer" >> /tmp/livecd.log
    _conf_file="/etc/live-installer/install.conf"
+   _desktop_file="live-installer.desktop"
 fi
 if [ -e "/etc/thus.conf" ] ; then
    echo "configure thus" >> /tmp/livecd.log
    _conf_file="/etc/thus.conf"
+   _desktop_file="thus.desktop"
 fi
 
 if [ -e "$_conf_file" ] ; then
@@ -424,6 +203,7 @@ fi
 if [ -e "/usr/share/calamares/settings.conf" ] ; then
    echo "configure calamares" >> /tmp/livecd.log
    _conf_file="/usr/share/calamares/modules/unpackfs.conf"
+   _desktop_file="calamares.desktop"
    sed -i "s|_root-image_|/bootmnt/${install_dir}/_ARCH_/root-image.sqfs|g" $_conf_file
    sed -i "s|_kernel_|$manjaro_kernel|g" "/usr/share/calamares/modules/initcpio.conf"
 
@@ -465,4 +245,10 @@ if [ -e "/usr/share/calamares/settings.conf" ] ; then
    else
       sed -i "s|_ARCH_|x86_64|g" $_conf_file
    fi
+fi
+
+if [ -e "/usr/share/applications/$_desktop_file" ] ; then
+   mkdir -p /home/${username}/Desktop
+   cp /usr/share/applications/$_desktop_file /home/${username}/Desktop/$_desktop_file
+   chmod a+x /home/${username}/Desktop/$_desktop_file
 fi

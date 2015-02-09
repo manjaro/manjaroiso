@@ -3,7 +3,6 @@ inxi
 libdnet
 mesa-demos
 >x86_64 lib32-mesa-demos
-netkit-bsd-finger
 uriparser
 xf86-input-acecad
 xf86-input-aiptek
@@ -27,7 +26,8 @@ desktop-file-utils
 
 ## Packages for Sound and Audio
 manjaro-alsa
-pnmixer
+#pnmixer
+volumeicon-gtk2
 
 ## Base Packages
 gtk2
@@ -43,7 +43,8 @@ wicd-openrc
 openbox
 obconf
 obmenu
-tint2
+#tint2
+xfce4-panel
 lxdm-consolekit
 gtk-aurora-engine
 
@@ -52,18 +53,16 @@ wicd-gtk
 python2-notify
 clipit
 leafpad
-#epdfview
 qpdfview
 xarchiver
 xfce4-terminal	# terminal
 thunar		# file manager
-qupzilla	# web browser
+midori		# web browser
 #lxterminal
 #pcmanfm
-#netsurf
+#qupzilla
 lxsession
 gparted
-#gpicview
 viewnior
 dmenu
 conky
@@ -76,13 +75,19 @@ nitrogen
 udisks2 # removable disk management
 manjaro-settings-manager
 octopi
+octopi-notifier-qt5
 gksu # required for octopi
 xfce4-power-manager-upower0 # battery icon
-obkey # from AUR
+obkey
 lxrandr # Display settings
 libreoffice-installer
 xfce4-appfinder
 thunar-archive-plugin
+gvfs
+#orage # calender
+htop
+sylpheed # email
+tumbler # for thumbnails
 
 ## Artwork
 manjaro-artwork

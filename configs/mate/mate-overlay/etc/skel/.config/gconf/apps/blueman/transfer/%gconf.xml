@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="ftp_allow_write" mtime="1417655421" type="bool" value="false"/>
+	<entry name="shared_path" mtime="1417655421" type="string">
+		<stringvalue>/home/manjaro/Public</stringvalue>
+	</entry>
+	<entry name="ftp_enabled" mtime="1417655421" type="bool" value="true"/>
+	<entry name="opp_enabled" mtime="1417655421" type="bool" value="true"/>
+</gconf>

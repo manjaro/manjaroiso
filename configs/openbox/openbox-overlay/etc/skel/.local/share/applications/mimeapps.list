@@ -1,6 +1,6 @@
 [Default Applications]
 application/x-executable=geany.desktop
-application/pdf=evince.desktop
+application/pdf=qpdfview.desktop
 text/plain=leafpad.desktop
 application/xml=geany.desktop
 application/x-shellscript=geany.desktop
@@ -9,7 +9,7 @@ inode/directory=thunar.deskop;
 
 [Added Associations]
 application/x-executable=geany.desktop;
-application/pdf=evince.desktop;
+application/pdf=qpdfview.desktop;
 text/plain=leafpad.desktop;
 application/xml=geany.desktop;
 application/x-shellscript=geany.desktop;

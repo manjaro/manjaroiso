@@ -154,11 +154,22 @@ if [ -e "${pkgsfile}" ] ; then
      fi
 fi
 
+# Generate machine-id
+gen_machine_id() {
+	 mkdir -p ${work_dir}/root-image/etc
+	 mkdir -p ${work_dir}/root-image/var/lib/dbus
+         dbus-uuidgen --ensure=${work_dir}/root-image/etc/machine-id
+         # needs to be copied here, else symlinked
+         cp ${work_dir}/root-image/etc/machine-id ${work_dir}/root-image/var/lib/dbus/machine-id
+}
+
 # Base installation (root-image)
 make_root_image() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
          echo -e -n "$_r >$_W Base installation (root-image) \n $_n"
+         gen_machine_id
          mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "root-image" -p "${packages}" create "${work_dir}"
+         gen_machine_id
          pacman -Qr "${work_dir}/root-image" > "${work_dir}/root-image/root-image-pkgs.txt"
          cp ${work_dir}/root-image/etc/locale.gen.bak ${work_dir}/root-image/etc/locale.gen
          if [ -e ${work_dir}/root-image/boot/grub/grub.cfg ] ; then
@@ -183,7 +194,7 @@ make_root_image() {
             ln -sf '/usr/lib/systemd/system/tlp-sleep.service' "${work_dir}/root-image/etc/systemd/system/sleep.target.wants/tlp-sleep.service"
             ln -sf '/usr/lib/systemd/system/tlp.service' "${work_dir}/root-image/etc/systemd/system/multi-user.target.wants/tlp.service"
          fi
-         cp -LPr overlay/* ${work_dir}/root-image
+         cp -a --no-preserve=ownership overlay/* ${work_dir}/root-image
 
          # Clean up GnuPG keys
          rm -rf "${work_dir}/root-image/etc/pacman.d/gnupg"
@@ -206,16 +217,15 @@ if [ -e "${pkgsfile}" ] ; then
               echo -e -n "$_r >$_W ${desktop} installation (${desktop}-image) \n $_n"
               mkdir -p ${work_dir}/${desktop}-image
               if [ ! -z "`mount -l | grep ${desktop}-image`" ]; then
-                 umount -l ${work_dir}/${desktop}-image
+                 umount -R ${work_dir}/${desktop}-image
               fi
               mount -t aufs -o br=${work_dir}/${desktop}-image:${work_dir}/root-image=ro none ${work_dir}/${desktop}-image
-
               mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "${desktop}-image" -p "${de_packages}" create "${work_dir}"
 
               pacman -Qr "${work_dir}/${desktop}-image" > "${work_dir}/${desktop}-image/${desktop}-image-pkgs.txt"
               cp "${work_dir}/${desktop}-image/${desktop}-image-pkgs.txt" ${name}${de}-${version}-${arch}-pkgs.txt
               if [ -e ${desktop}-overlay ] ; then
-                 cp -LPr ${desktop}-overlay/* ${work_dir}/${desktop}-image
+                 cp -a --no-preserve=ownership ${desktop}-overlay/* ${work_dir}/${desktop}-image
               fi
               if [ -e ${work_dir}/${desktop}-image/usr/bin/cupsd ] ; then
                  mkdir -p "${work_dir}/${desktop}-image/etc/systemd/system/multi-user.target.wants"
@@ -229,7 +239,7 @@ if [ -e "${pkgsfile}" ] ; then
               if [ -e ${work_dir}/${desktop}-image/etc/plymouth/plymouthd.conf ] ; then
                  sed -i -e "s/^.*Theme=.*/Theme=$plymouth_theme/" ${work_dir}/${desktop}-image/etc/plymouth/plymouthd.conf
               fi
-              umount -l ${work_dir}/${desktop}-image
+              umount -R ${work_dir}/${desktop}-image
               rm -R ${work_dir}/${desktop}-image/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
@@ -241,95 +251,107 @@ if [ -e Packages-Xorg ] ; then
      # Prepare pkgs-image
      make_pkgs_image() {
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
-              echo -e -n "$_r >$_W Prepare pkgs-image \n $_n"
-              mkdir -p ${work_dir}/pkgs-image/opt/livecd/pkgs
-              if [ ! -z "`mount -l | grep pkgs-image`" ]; then
-                 umount -l ${work_dir}/pkgs-image
+              image='pkgs-image'
+              echo -e -n "$_r >$_W Prepare ${image} \n $_n"
+              mkdir -p ${work_dir}/${image}/opt/livecd/lng
+              if [ ! -z "`mount -l | grep ${image}`" ]; then
+                 umount -R ${work_dir}/${image}
               fi
-              echo -e -n "$_r >$_W mount root-image \n $_n"
-              mount -t aufs -o br=${work_dir}/pkgs-image:${work_dir}/root-image=ro none ${work_dir}/pkgs-image
               if [ ! -z "${de}" ] ; then
                  echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
-                 mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/pkgs-image
+                 mount -t aufs -o br=${work_dir}/${image}:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+                 echo -e -n "$_r >$_W append root-image \n $_n"
+                 mount -t aufs -o remount,append:${work_dir}/root-image=ro none ${work_dir}/${image}
+              else
+                 echo -e -n "$_r >$_W mount root-image \n $_n"
+                 mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
               fi
-              pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/pkgs-image" --cache ${work_dir}/pkgs-image/opt/livecd/pkgs -Syw ${xorg_packages} --noconfirm
+              pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/${image}" --cache ${work_dir}/${image}/opt/livecd/pkgs -Syw ${xorg_packages} --noconfirm
               if [ ! -z "${xorg_packages_cleanup}" ]; then
                  for xorg_clean in ${xorg_packages_cleanup};
-                    do  rm ${work_dir}/pkgs-image/opt/livecd/pkgs/${xorg_clean}
+                    do  rm ${work_dir}/${image}/opt/livecd/pkgs/${xorg_clean}
                     done
               fi
-              cp pacman-gfx.conf ${work_dir}/pkgs-image/opt/livecd
-              rm -r ${work_dir}/pkgs-image/var
-              repo-add ${work_dir}/pkgs-image/opt/livecd/pkgs/gfx-pkgs.db.tar.gz ${work_dir}/pkgs-image/opt/livecd/pkgs/*pkg*z
+              cp pacman-gfx.conf ${work_dir}/${image}/opt/livecd
+              rm -r ${work_dir}/${image}/var
+              repo-add ${work_dir}/${image}/opt/livecd/pkgs/gfx-pkgs.db.tar.gz ${work_dir}/${image}/opt/livecd/pkgs/*pkg*z
               # Disable Catalyst if not present
-              if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep catalyst-utils 2> /dev/null`" ]; then
+              if  [ -z "`ls ${work_dir}/${image}/opt/livecd/pkgs/ | grep catalyst-utils 2> /dev/null`" ]; then
                  echo -e -n "$_r >$_W Disabling Catalyst driver \n $_n"
-                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst/
-                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/catalyst/MHWDCONFIG
+                 mkdir -p ${work_dir}/${image}/var/lib/mhwd/db/pci/graphic_drivers/catalyst/
+                 touch ${work_dir}/${image}/var/lib/mhwd/db/pci/graphic_drivers/catalyst/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
               # Disable Nvidia if not present
-              if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep nvidia-utils 2> /dev/null`" ]; then
+              if  [ -z "`ls ${work_dir}/${image}/opt/livecd/pkgs/ | grep nvidia-utils 2> /dev/null`" ]; then
                  echo -e -n "$_r >$_W Disabling Nvidia driver \n $_n"
-                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia/
-                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia/MHWDCONFIG
+                 mkdir -p ${work_dir}/${image}/var/lib/mhwd/db/pci/graphic_drivers/nvidia/
+                 touch ${work_dir}/${image}/var/lib/mhwd/db/pci/graphic_drivers/nvidia/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
-              if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep nvidia-utils 2> /dev/null`" ]; then
+              if  [ -z "`ls ${work_dir}/${image}/opt/livecd/pkgs/ | grep nvidia-utils 2> /dev/null`" ]; then
                  echo -e -n "$_r >$_W Disabling Nvidia Bumblebee driver \n $_n"
-                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/hybrid-intel-nvidia-bumblebee/
-                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/hybrid-intel-nvidia-bumblebee/MHWDCONFIG
+                 mkdir -p ${work_dir}/${image}/var/lib/mhwd/db/pci/graphic_drivers/hybrid-intel-nvidia-bumblebee/
+                 touch ${work_dir}/${image}/var/lib/mhwd/db/pci/graphic_drivers/hybrid-intel-nvidia-bumblebee/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
-              if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep nvidia-304xx-utils 2> /dev/null`" ]; then
+              if  [ -z "`ls ${work_dir}/${image}/opt/livecd/pkgs/ | grep nvidia-304xx-utils 2> /dev/null`" ]; then
                  echo -e -n "$_r >$_W Disabling Nvidia 304xx driver \n $_n"
-                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-304xx/
-                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-304xx/MHWDCONFIG
+                 mkdir -p ${work_dir}/${image}/var/lib/mhwd/db/pci/graphic_drivers/nvidia-304xx/
+                 touch ${work_dir}/${image}/var/lib/mhwd/db/pci/graphic_drivers/nvidia-304xx/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
-              if  [ -z "`ls ${work_dir}/pkgs-image/opt/livecd/pkgs/ | grep nvidia-340xx-utils 2> /dev/null`" ]; then
+              if  [ -z "`ls ${work_dir}/${image}/opt/livecd/pkgs/ | grep nvidia-340xx-utils 2> /dev/null`" ]; then
                  echo -e -n "$_r >$_W Disabling Nvidia 340xx driver \n $_n"
-                 mkdir -p ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-340xx/
-                 touch ${work_dir}/pkgs-image/var/lib/mhwd/db/pci/graphic_drivers/nvidia-340xx/MHWDCONFIG
+                 mkdir -p ${work_dir}/${image}/var/lib/mhwd/db/pci/graphic_drivers/nvidia-340xx/
+                 touch ${work_dir}/${image}/var/lib/mhwd/db/pci/graphic_drivers/nvidia-340xx/MHWDCONFIG
                  echo -e "$_g >$_W done $_n"
               fi
-              umount -l ${work_dir}/pkgs-image
-              rm -R ${work_dir}/pkgs-image/.wh*
+              umount -R ${work_dir}/${image}
+              rm -R ${work_dir}/${image}/.wh*
               if [ "${xorg_overlays}" = "yes" ] ; then
-                 echo -e -n "$_r >$_W Prepare pkgs-free-overlay \n $_n"
-                 mkdir -p ${work_dir}/pkgs-free-overlay
-                 if [ ! -z "`mount -l | grep pkgs-free-overlay`" ]; then
-                    umount -l ${work_dir}/pkgs-free-overlay
+                 image='pkgs-free-overlay'
+                 echo -e -n "$_r >$_W Prepare ${image} \n $_n"
+                 mkdir -p ${work_dir}/${image}
+                 if [ ! -z "`mount -l | grep ${image}`" ]; then
+                    umount -R ${work_dir}/${image}
                  fi
-                 echo -e -n "$_r >$_W mount root-image \n $_n"
-                 mount -t aufs -o br=${work_dir}/pkgs-free-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-free-overlay
                  if [ ! -z "${de}" ] ; then
                     echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
-                    mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/pkgs-free-overlay
+                    mount -t aufs -o br=${work_dir}/${image}:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+                    echo -e -n "$_r >$_W append root-image \n $_n"
+                    mount -t aufs -o remount,append:${work_dir}/root-image=ro none ${work_dir}/${image}
+                 else
+                    echo -e -n "$_r >$_W mount root-image \n $_n"
+                    mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
                  fi
-                 mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-free-overlay" -p "${xorg_free_overlay}" create "${work_dir}"
-                 umount -l ${work_dir}/pkgs-free-overlay
-                 if [ -e ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf ] ; then
-                    rm ${work_dir}/pkgs-free-overlay/etc/modules-load.d/*virtualbox*conf
+                 mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "${image}" -p "${xorg_free_overlay}" create "${work_dir}"
+                 umount -R ${work_dir}/${image}
+                 if [ -e ${work_dir}/${image}/etc/modules-load.d/*virtualbox*conf ] ; then
+                    rm ${work_dir}/${image}/etc/modules-load.d/*virtualbox*conf
                  fi
-                 rm -R ${work_dir}/pkgs-free-overlay/.wh*
-                 echo -e -n "$_r >$_W Prepare pkgs-nonfree-overlay \n $_n"
-                 mkdir -p ${work_dir}/pkgs-nonfree-overlay
-                 if [ ! -z "`mount -l | grep pkgs-nonfree-overlay`" ]; then
-                    umount -l ${work_dir}/pkgs-nonfree-overlay
+                 rm -R ${work_dir}/${image}/.wh*
+                 image='pkgs-nonfree-overlay'
+                 echo -e -n "$_r >$_W Prepare ${image} \n $_n"
+                 mkdir -p ${work_dir}/${image}
+                 if [ ! -z "`mount -l | grep ${image}`" ]; then
+                    umount -R ${work_dir}/${image}
                  fi
-                 echo -e -n "$_r >$_W mount root-image \n $_n"
-                 mount -t aufs -o br=${work_dir}/pkgs-nonfree-overlay:${work_dir}/root-image=ro none ${work_dir}/pkgs-nonfree-overlay
                  if [ ! -z "${de}" ] ; then
                     echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
-                    mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/pkgs-nonfree-overlay
+                    mount -t aufs -o br=${work_dir}/${image}:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+                    echo -e -n "$_r >$_W append root-image \n $_n"
+                    mount -t aufs -o remount,append:${work_dir}/root-image=ro none ${work_dir}/${image}
+                 else
+                    echo -e -n "$_r >$_W mount root-image \n $_n"
+                    mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
                  fi
-                 mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "pkgs-nonfree-overlay" -p "${xorg_nonfree_overlay}" create "${work_dir}"
-                 umount -l ${work_dir}/pkgs-nonfree-overlay
-                 if [ -e ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf ] ; then
-                    rm ${work_dir}/pkgs-nonfree-overlay/etc/modules-load.d/*virtualbox*conf
+                 mkiso -v -C "pacman-${arch}.conf" -a "${arch}" -D "${install_dir}" -i "${image}" -p "${xorg_nonfree_overlay}" create "${work_dir}"
+                 umount -R ${work_dir}/${image}
+                 if [ -e ${work_dir}/${image}/etc/modules-load.d/*virtualbox*conf ] ; then
+                    rm ${work_dir}/${image}/etc/modules-load.d/*virtualbox*conf
                  fi
-                 rm -R ${work_dir}/pkgs-nonfree-overlay/.wh*
+                 rm -R ${work_dir}/${image}/.wh*
               fi
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
@@ -341,32 +363,36 @@ if [ -e Packages-Lng ] ; then
      # Prepare lng-image
      make_lng_image() {
          if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
-              echo -e -n "$_r >$_W Prepare lng-image \n $_n"
-              mkdir -p ${work_dir}/lng-image/opt/livecd/lng
-              if [ ! -z "`mount -l | grep lng-image`" ]; then
-                 umount -l ${work_dir}/lng-image
+              image='lng-image'
+              echo -e -n "$_r >$_W Prepare ${image} \n $_n"
+              mkdir -p ${work_dir}/${image}/opt/livecd/lng
+              if [ ! -z "`mount -l | grep ${image}`" ]; then
+                 umount -R ${work_dir}/${image}
               fi
-              echo -e -n "$_r >$_W mount root-image \n $_n"
-              mount -t aufs -o br=${work_dir}/lng-image:${work_dir}/root-image=ro none ${work_dir}/lng-image
               if [ ! -z "${de}" ] ; then
                  echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
-                 mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/lng-image
+                 mount -t aufs -o br=${work_dir}/${image}:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+                 echo -e -n "$_r >$_W append root-image \n $_n"
+                 mount -t aufs -o remount,append:${work_dir}/root-image=ro none ${work_dir}/${image}
+              else
+                 echo -e -n "$_r >$_W mount root-image \n $_n"
+                 mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
               fi
               if [ "${kde_lng_packages}" = "yes" ] ; then
-                 pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/livecd/lng -Syw ${lng_packages} ${lng_packages_kde} --noconfirm
+                 pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/${image}" --cache ${work_dir}/${image}/opt/livecd/lng -Syw ${lng_packages} ${lng_packages_kde} --noconfirm
               else
-                 pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/lng-image" --cache ${work_dir}/lng-image/opt/livecd/lng -Syw ${lng_packages} --noconfirm
+                 pacman -v --config "pacman-${arch}.conf" --arch "${arch}" --root "${work_dir}/${image}" --cache ${work_dir}/${image}/opt/livecd/lng -Syw ${lng_packages} --noconfirm
               fi
               if [ ! -z "${lng_packages_cleanup}" ]; then
                  for lng_clean in ${lng_packages_cleanup};
-                    do  rm ${work_dir}/lng-image/opt/livecd/lng/${lng_clean}
+                    do  rm ${work_dir}/${image}/opt/livecd/lng/${lng_clean}
                     done
               fi
-              cp pacman-lng.conf ${work_dir}/lng-image/opt/livecd
-              rm -r ${work_dir}/lng-image/var
-              repo-add ${work_dir}/lng-image/opt/livecd/lng/lng-pkgs.db.tar.gz ${work_dir}/lng-image/opt/livecd/lng/*pkg*z
-              umount -l ${work_dir}/lng-image
-              rm -R ${work_dir}/lng-image/.wh*
+              cp pacman-lng.conf ${work_dir}/${image}/opt/livecd
+              rm -r ${work_dir}/${image}/var
+              repo-add ${work_dir}/${image}/opt/livecd/lng/lng-pkgs.db.tar.gz ${work_dir}/${image}/opt/livecd/lng/*pkg*z
+              umount -R ${work_dir}/${image}
+              rm -R ${work_dir}/${image}/.wh*
               : > ${work_dir}/build.${FUNCNAME}
               echo -e "$_g >$_W done $_n"
          fi
@@ -376,31 +402,37 @@ fi
 # Prepare ${install_dir}/boot/
 make_boot() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
+        image='boot-image'
 	echo -e -n "$_r >$_W Prepare ${install_dir}/boot/ \n $_n"
 	mkdir -p ${work_dir}/iso/${install_dir}/boot/${arch}
         cp ${work_dir}/root-image/boot/memtest86+/memtest.bin ${work_dir}/iso/${install_dir}/boot/${arch}/memtest
 	cp ${work_dir}/root-image/boot/vmlinuz* ${work_dir}/iso/${install_dir}/boot/${arch}/${manjaroiso}
-        mkdir -p ${work_dir}/boot-image
-        if [ ! -z "`mount -l | grep boot-image`" ]; then
-           umount -l ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
+        mkdir -p ${work_dir}/${image}
+        if [ ! -z "`mount -l | grep ${image}`" ]; then
+           umount ${work_dir}/${image}/proc ${work_dir}/${image}/sys ${work_dir}/${image}/dev ${work_dir}/${image}
         fi
-        echo -e -n "$_r >$_W mount root-image \n $_n"
-        mount -t aufs -o br=${work_dir}/boot-image:${work_dir}/root-image=ro none ${work_dir}/boot-image
         if [ ! -z "${de}" ] ; then
-             echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
-             mount -t aufs -o remount,append:${work_dir}/${desktop}-image=ro none ${work_dir}/boot-image
+           echo -e -n "$_r >$_W mount ${desktop}-image \n $_n"
+           mount -t aufs -o br=${work_dir}/${image}:${work_dir}/${desktop}-image=ro none ${work_dir}/${image}
+           echo -e -n "$_r >$_W append root-image \n $_n"
+           mount -t aufs -o remount,append:${work_dir}/root-image=ro none ${work_dir}/${image}
+        else
+           echo -e -n "$_r >$_W mount root-image \n $_n"
+           mount -t aufs -o br=${work_dir}/${image}:${work_dir}/root-image=ro none ${work_dir}/${image}
         fi
-        mount -t proc none ${work_dir}/boot-image/proc
-        mount -t sysfs none ${work_dir}/boot-image/sys
-        mount -o bind /dev ${work_dir}/boot-image/dev
-        cp /usr/lib/initcpio/hooks/miso* ${work_dir}/boot-image/usr/lib/initcpio/hooks
-        cp /usr/lib/initcpio/install/miso* ${work_dir}/boot-image/usr/lib/initcpio/install
-        cp mkinitcpio.conf ${work_dir}/boot-image/etc/mkinitcpio-${manjaroiso}.conf
-        _kernver=`cat ${work_dir}/boot-image/usr/lib/modules/*-MANJARO/version`
-        chroot ${work_dir}/boot-image /usr/bin/mkinitcpio -k ${_kernver} -c /etc/mkinitcpio-${manjaroiso}.conf -g /boot/${name}.img
-        mv ${work_dir}/boot-image/boot/${name}.img ${work_dir}/iso/${install_dir}/boot/${arch}/${name}.img
-        umount -l ${work_dir}/boot-image/proc ${work_dir}/boot-image/sys ${work_dir}/boot-image/dev ${work_dir}/boot-image
-        rm -R ${work_dir}/boot-image
+        mount -t proc none ${work_dir}/${image}/proc
+        mount -t sysfs none ${work_dir}/${image}/sys
+        mount -o bind /dev ${work_dir}/${image}/dev
+        cp /usr/lib/initcpio/hooks/miso* ${work_dir}/${image}/usr/lib/initcpio/hooks
+        cp /usr/lib/initcpio/install/miso* ${work_dir}/${image}/usr/lib/initcpio/install
+        cp mkinitcpio.conf ${work_dir}/${image}/etc/mkinitcpio-${manjaroiso}.conf
+        _kernver=`cat ${work_dir}/${image}/usr/lib/modules/*-MANJARO/version`
+        chroot ${work_dir}/${image} /usr/bin/mkinitcpio -k ${_kernver} -c /etc/mkinitcpio-${manjaroiso}.conf -g /boot/${name}.img
+        mv ${work_dir}/${image}/boot/${name}.img ${work_dir}/iso/${install_dir}/boot/${arch}/${name}.img
+        cp ${work_dir}/${image}/boot/intel-ucode.img ${work_dir}/iso/${install_dir}/boot/intel_ucode.img
+        cp ${work_dir}/${image}/usr/share/licenses/intel-ucode/LICENSE ${work_dir}/iso/${install_dir}/boot/intel_ucode.LICENSE
+        umount ${work_dir}/${image}/proc ${work_dir}/${image}/sys ${work_dir}/${image}/dev ${work_dir}/boot-image
+        rm -R ${work_dir}/${image}
 	: > ${work_dir}/build.${FUNCNAME}
 	echo -e "$_g >$_W done $_n"
     fi
@@ -452,6 +484,7 @@ make_efiboot() {
         mkdir -p ${work_dir}/efiboot/EFI/miso
         cp ${work_dir}/iso/${install_dir}/boot/x86_64/${manjaroiso} ${work_dir}/efiboot/EFI/miso/${manjaroiso}.efi
         cp ${work_dir}/iso/${install_dir}/boot/x86_64/${name}.img ${work_dir}/efiboot/EFI/miso/${name}.img
+        cp ${work_dir}/iso/${install_dir}/boot/intel_ucode.img ${work_dir}/efiboot/EFI/miso/intel_ucode.img
 
         mkdir -p ${work_dir}/efiboot/EFI/boot
         cp ${work_dir}/root-image/usr/lib/prebootloader/PreLoader.efi ${work_dir}/efiboot/EFI/boot/bootx64.efi
@@ -485,10 +518,11 @@ make_efiboot() {
 make_isolinux() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
         echo -e -n "$_r >$_W Prepare ${install_dir}/iso/isolinux \n $_n"
-        cp -Lr isolinux ${work_dir}/iso
+        mkdir -p ${work_dir}/iso/isolinux
+        cp -a --no-preserve=ownership isolinux/* ${work_dir}/iso/isolinux
         if [[ -e isolinux-overlay ]]; then
             echo -e -n "$_r >$_W isolinux overlay found. Overwriting files. \n $_n"
-            cp -LPr isolinux-overlay/* ${work_dir}/iso/isolinux
+            cp -a --no-preserve=ownership isolinux-overlay/* ${work_dir}/iso/isolinux
         fi
         if [[ -e ${work_dir}/root-image/usr/lib/syslinux/bios/ ]]; then
             cp ${work_dir}/root-image/usr/lib/syslinux/bios/isolinux.bin ${work_dir}/iso/isolinux/
@@ -525,7 +559,7 @@ make_overlay() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
         echo -e -n "$_r >$_W Prepare overlay-image \n $_n"
         mkdir -p ${work_dir}/overlay/etc/pacman.d
-        cp -LPrd overlay-livecd/* ${work_dir}/overlay
+        cp -a --no-preserve=ownership overlay-livecd/* ${work_dir}/overlay
         cp options.conf ${work_dir}/overlay/opt/livecd/options.conf
         #wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist http://git.manjaro.org/packages-sources/basis/blobs/raw/master/pacman-mirrorlist/mirrorlist
         cp ${work_dir}/root-image/etc/pacman.d/mirrorlist ${work_dir}/overlay/etc/pacman.d/mirrorlist
@@ -549,6 +583,7 @@ make_isomounts() {
 
 # Build ISO
 make_iso() {
+        # cleanup machine-id
         echo -e -n "$_r >$_W Build ISO \n $_n"
         touch "${work_dir}/iso/.miso"
         mkiso "${verbose}" "${overwrite}" -D "${install_dir}" -L "${iso_label}" -a "${arch}" -c "${compression}" "${high_compression}" iso "${work_dir}" "${name}${de}-${version}-${arch}.iso"
