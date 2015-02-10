@@ -10,7 +10,7 @@ network-manager-applet
 accountsservice
 lightdm-gtk3-greeter
 lightdm-gtk-greeter-settings
-light-locker-xfce
+light-locker
 #numlockx
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa

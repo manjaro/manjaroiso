@@ -9,7 +9,7 @@ gufw # firewall
 accountsservice
 lightdm-gtk3-greeter
 lightdm-gtk-greeter-settings
-light-locker-xfce
+light-locker
 manjaro-settings-manager
 menulibre
 network-manager-applet
