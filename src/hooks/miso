@@ -20,12 +20,12 @@ kernel_cmdline ()
 
 # 1$ : kernel argument to check
 overlay_arg_available() {
-	for arg in $(echo "$(kernel_cmdline overlay)" | /bin/sed 's/,/ /g')
-	do
-		[ "${arg}" == "$1" ] && return 0
-	done
+    for arg in $(echo "$(kernel_cmdline overlay)" | /bin/sed 's/,/ /g')
+    do
+        [ "${arg}" == "$1" ] && return 0
+    done
 
-	return 1
+    return 1
 }
 
 # args: source, mountpoint
@@ -240,7 +240,7 @@ miso_mount_handler() {
         overlay_arg_available "$kernelarg"
 
         if [ $? == 1 ] && [ "$kernelarg" != "" ]; then
-	        continue
+            continue
         fi
 
         if [ "${type}" = "bind" ]; then
